@@ -1,0 +1,49 @@
+// pulse
+@mixin pulse($name, $color) {
+  @keyframes #{$name} {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba($color, 0.7);
+      box-shadow: 0 0 0 0 rgba($color, 0.7);
+    }
+    70% {
+      -moz-box-shadow: 0 0 0 10px rgba($color, 0);
+      box-shadow: 0 0 0 10px rgba($color, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba($color, 0);
+      box-shadow: 0 0 0 0 rgba($color, 0);
+    }
+  }
+}
+
+// fade
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin fadeBackground($name, $color) {
+  @keyframes #{$name} {
+    from {
+      background: rgba($color, 0);
+    }
+    to {
+      background: rgba($color, 1);
+    }
+  }
+}
+
+@mixin fadeExactBackground($name, $color) {
+  @keyframes #{$name} {
+    from {
+      background: rgba($color, 0);
+    }
+    to {
+      background: $color;
+    }
+  }
+}
