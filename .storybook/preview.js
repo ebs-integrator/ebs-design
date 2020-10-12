@@ -1,4 +1,4 @@
-import '../src/resources/styles/index.scss';
+import '../src/styles/index.scss';
 
 const modalRoot = document.createElement('div');
 modalRoot.setAttribute('id', 'portal');

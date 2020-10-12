@@ -11,7 +11,7 @@ body {
   font-size: rem(14px);
   @include fontMedium;
   color: $font-text-1;
-  cursor: url('../svg/cursor-default.svg'), auto;
+  cursor: url('../resources/svg/cursor-default.svg'), auto;
 
   @include mq($until: desktop) {
     font-size: rem(12px);
@@ -34,7 +34,7 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
-  cursor: url('../svg/cursor-text.svg'), auto;
+  cursor: url('../resources/svg/cursor-text.svg'), auto;
 
   &.size {
     &-l {
@@ -56,7 +56,7 @@ span {
   margin: 0;
   padding: 0;
   line-height: 1.5;
-  cursor: url('../svg/cursor-text.svg'), auto;
+  cursor: url('../resources/svg/cursor-text.svg'), auto;
 
   &.size {
     &-l {
@@ -75,20 +75,20 @@ span {
 
 a {
   text-decoration: none;
-  cursor: url('../svg/cursor-pointer.svg'), auto;
+  cursor: url('../resources/svg/cursor-pointer.svg'), auto;
 }
 
 .cursor {
   &-default {
-    cursor: url('../svg/cursor-default.svg'), auto;
+    cursor: url('../resources/svg/cursor-default.svg'), auto;
   }
 
   &-pointer {
-    cursor: url('../svg/cursor-pointer.svg'), auto;
+    cursor: url('../resources/svg/cursor-pointer.svg'), auto;
   }
 
   &-text {
-    cursor: url('../svg/cursor-text.svg'), auto;
+    cursor: url('../resources/svg/cursor-text.svg'), auto;
   }
 }
 
