@@ -1,1 +1,1 @@
-console.log('lll');
+export { Button } from './atoms/Button/Button';

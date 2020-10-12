@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+@import './mixins/index';
+@import './palette';
+
+// @include mq-show-breakpoints;
+
+html,
+body {
+  display: block;
+  font-size: rem(14px);
+  @include fontMedium;
+  color: $font-text-1;
+  cursor: url('../svg/cursor-default.svg'), auto;
+
+  @include mq($until: desktop) {
+    font-size: rem(12px);
+  }
+
+  @include mq($until: small-desktop) {
+    font-size: rem(10px);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  cursor: url('../svg/cursor-text.svg'), auto;
+
+  &.size {
+    &-l {
+      font-size: rem(20px);
+    }
+
+    &-m {
+      font-size: rem(18px);
+    }
+
+    &-s {
+      font-size: rem(16px);
+    }
+  }
+}
+
+p,
+span {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  cursor: url('../svg/cursor-text.svg'), auto;
+
+  &.size {
+    &-l {
+      font-size: rem(14px);
+    }
+
+    &-m {
+      font-size: rem(12px);
+    }
+
+    &-s {
+      font-size: rem(10px);
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  cursor: url('../svg/cursor-pointer.svg'), auto;
+}
+
+.cursor {
+  &-default {
+    cursor: url('../svg/cursor-default.svg'), auto;
+  }
+
+  &-pointer {
+    cursor: url('../svg/cursor-pointer.svg'), auto;
+  }
+
+  &-text {
+    cursor: url('../svg/cursor-text.svg'), auto;
+  }
+}
+
+.hide {
+  display: none;
+}
