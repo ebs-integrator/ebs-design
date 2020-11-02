@@ -13,6 +13,7 @@
   text-align: center;
   border-radius: rem(4px);
   transition: 0.3s ease;
+  border: 1px solid transparent;
 
   &.has-prefix {
     .zh-button {
@@ -20,8 +21,9 @@
     }
   }
 
+  // button size
   &.zh-button-size {
-    &-L {
+    &-large {
       .zh-button {
         padding: rem(10px 20px);
         font-weight: 700;
@@ -29,7 +31,7 @@
       }
     }
 
-    &-M {
+    &-medium {
       .zh-button {
         padding: rem(6px 12px);
         font-weight: 500;
@@ -37,7 +39,7 @@
       }
     }
 
-    &-S {
+    &-small {
       .zh-button {
         padding: rem(4px 8px);
         font-weight: 500;
@@ -46,8 +48,10 @@
     }
   }
 
+  // button type (Color)
   &.zh-button-type {
     &-primary {
+      border-color: $primary-500;
       background: $primary-500;
 
       .zh-button {
@@ -64,11 +68,13 @@
 
       &:hover,
       &.hover {
+        border-color: $primary-600;
         background: $primary-600;
       }
 
       &:active,
       &.active {
+        border-color: $primary-700;
         background: $primary-700;
       }
 
@@ -78,6 +84,7 @@
     }
 
     &-fill {
+      border-color: $primary-100;
       background: $primary-100;
 
       .zh-button {
@@ -90,6 +97,7 @@
 
       &:hover,
       &.hover {
+        border-color: $primary-500;
         background: $primary-500;
 
         & .zh-button {
@@ -99,6 +107,7 @@
 
       &:active,
       &.active {
+        border-color: $primary-600;
         background: $primary-600;
 
         & .zh-button {
@@ -113,7 +122,7 @@
 
     &-ghost {
       background: transparent;
-      border: 1px solid $primary-500;
+      border-color: $primary-500;
 
       .zh-button {
         color: $primary-500;
@@ -125,6 +134,7 @@
 
       &:hover,
       &.hover {
+        border-color: $primary-500;
         background: $primary-500;
 
         & .zh-button {
@@ -134,6 +144,7 @@
 
       &:active,
       &.active {
+        border-color: $primary-600;
         background: $primary-600;
 
         & .zh-button {
@@ -181,10 +192,10 @@
     }
 
     &-disabled {
-      background: transparent;
+      background: $grey-200;
 
       .zh-button {
-        cursor: default;
+        cursor: not-allowed;
         color: $grey-500;
       }
 

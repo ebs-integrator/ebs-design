@@ -41,17 +41,19 @@ export default {
       resolve: ['.ts'],
       types: path.resolve(__dirname, './src/types.ts'),
     }),
-    copy([
-      { files: 'src/index.js.flow', dest: 'dist' },
-      { files: 'src/**/*.scss', dest: 'dist' },
-      { files: 'src/resources/**/*.*', dest: 'dist/resources' }
-    ], { verbose: true, watch: true }),
+    copy(
+      [
+        { files: 'src/**/*.scss', dest: 'dist' },
+        { files: 'src/resources/**/*.*', dest: 'dist/resources' },
+      ],
+      { verbose: true, watch: true },
+    ),
     commonjs({
       include: 'node_modules/**',
       namedExports: {
         'node_modules/react-is/index.js': ['isValidElementType'],
       },
-      "node_modules/react-dom/index.js": ["render"],
+      'node_modules/react-dom/index.js': ['render'],
     }),
   ],
 };

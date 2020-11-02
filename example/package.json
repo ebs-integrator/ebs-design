@@ -7,7 +7,7 @@
     "@react-ebs-ui": "link:..",
     "react": "link:../node_modules/react",
     "react-dom": ">= 16.8",
-    "react-scripts": "3.4.1"
+    "react-scripts": "^3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",

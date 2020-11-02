@@ -3,10 +3,12 @@ import { LoaderSpinner } from 'atoms/Loader/LoaderSpinner';
 
 import './Button.scss';
 
+export type ButtonSize = 'small' | 'medium' | 'large';
+
 interface Props {
   onClick?: () => void;
   prefix?: React.ReactNode;
-  size?: 'S' | 'M' | 'L';
+  size?: ButtonSize;
   type?: 'text' | 'primary' | 'fill' | 'ghost';
   loading?: boolean;
   submit?: boolean;
@@ -21,7 +23,7 @@ export const Button: React.FC<Props> = ({
   onClick,
   prefix,
   className = '',
-  size = 'L',
+  size = 'large',
   type = 'text',
   loading,
   ...props
@@ -79,4 +81,6 @@ export const Button: React.FC<Props> = ({
   );
 };
 
-export const ButtonGroup: React.FC = ({ children }) => <div className="zh-button-group">{children}</div>;
+export const ButtonGroup: React.FC<{ className?: string }> = ({ children, className = '' }) => (
+  <div className={`zh-button-group ${className}`}>{children}</div>
+);
