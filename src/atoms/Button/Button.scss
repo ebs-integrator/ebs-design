@@ -95,8 +95,77 @@
       }
     }
 
+    &-ghost {
+      background: transparent;
+      border: 1px solid $primary-500;
+
+      .zh-button {
+        color: $primary-500;
+      }
+
+      .zh-button-prefix svg path {
+        fill: $primary-500;
+      }
+
+      &:hover,
+      &.hover {
+        background: $primary-500;
+
+        & .zh-button {
+          color: #fff;
+        }
+      }
+
+      &:active,
+      &.active {
+        background: $primary-600;
+
+        & .zh-button {
+          color: #fff;
+        }
+      }
+
+      .zh-button-pulse {
+        animation: simplePulse 1s forwards;
+      }
+    }
+
+    &-text {
+      background: transparent;
+
+      .zh-button {
+        color: $primary-500;
+      }
+
+      .zh-button-prefix svg path {
+        fill: $primary-500;
+      }
+
+      &:hover,
+      &.hover {
+        background: transparent;
+
+        & .zh-button {
+          color: $primary-600;
+        }
+      }
+
+      &:active,
+      &.active {
+        background: transparent;
+
+        & .zh-button {
+          color: $primary-700;
+        }
+      }
+
+      .zh-button-pulse {
+        animation: simplePulse 1s forwards;
+      }
+    }
+
     &-disabled {
-      background: $grey-200;
+      background: transparent;
 
       .zh-button {
         cursor: default;
