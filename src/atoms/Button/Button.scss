@@ -28,6 +28,22 @@
         font-size: rem(14px);
       }
     }
+
+    &-M {
+      .zh-button {
+        padding: rem(6px 12px);
+        font-weight: 500;
+        font-size: rem(14px);
+      }
+    }
+
+    &-S {
+      .zh-button {
+        padding: rem(4px 8px);
+        font-weight: 500;
+        font-size: rem(12px);
+      }
+    }
   }
 
   &.zh-button-type {
