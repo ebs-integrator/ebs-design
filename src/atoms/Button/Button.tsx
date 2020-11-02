@@ -6,8 +6,8 @@ import './Button.scss';
 interface Props {
   onClick?: () => void;
   prefix?: React.ReactNode;
-  size?: 'small' | 'regular';
-  type?: 'primary';
+  size?: 'S' | 'M' | 'L';
+  type?: 'text' | 'primary' | 'fill' | 'ghost';
   loading?: boolean;
   submit?: boolean;
   disabled?: boolean;
@@ -21,8 +21,8 @@ export const Button: React.FC<Props> = ({
   onClick,
   prefix,
   className = '',
-  size = 'regular',
-  type = 'regular',
+  size = 'L',
+  type = 'text',
   loading,
   ...props
 }) => {

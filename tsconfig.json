@@ -2,7 +2,6 @@
   "compilerOptions": {
     "target": "ES2015",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -11,13 +10,11 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
     "baseUrl": "./src",
     "outDir": "./dist",
-    "rootDir": "./src",
-    "declaration": true
+    "rootDir": "./src"
   },
   "exclude": ["node_modules", "dist", ".storybook"],
   "include": ["./src/**/*"]
