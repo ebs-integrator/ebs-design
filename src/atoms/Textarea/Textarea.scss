@@ -12,8 +12,8 @@
     color: $font-text-1;
 
     @include fontRegular;
-    font-size: rem(15px);
-    padding: rem(15px);
+    font-size: rem(14px);
+    padding: rem(10px);
 
     @include placeholder {
       color: $font-text-3;

@@ -27,20 +27,24 @@ export const Textarea: React.FC<Props> = ({
     onChange !== undefined ? onChange(ev.target.value) : undefined;
 
   return (
-    <div className="ebs-textarea-wrapper">
-      {label && <div className="ebs-textarea-label">{label}</div>}
+    <div className={`ebs-textarea-wrapper ${className}`}>
+      {label && (
+        <div className={`ebs-textarea-label${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''}`}>{label}</div>
+      )}
 
       <textarea
         className={`ebs-textarea${value ? ' has-value' : ''}${hasError ? ' has-error' : ''}${
           disabled ? ' disabled' : ''
-        } ${className}`}
+        }`}
         placeholder={placeholder}
         onChange={onChangeHandler}
         value={value || ''}
         disabled={disabled}
       />
 
-      {extra && <div className="ebs-textarea-extra">{extra}</div>}
+      {extra && (
+        <div className={`ebs-textarea-extra${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''}`}>{extra}</div>
+      )}
     </div>
   );
 };

@@ -1,0 +1,183 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+.ebs-stepper-wrapper {
+  &.left .ebs-stepper .rc-input-number-handler-wrap {
+    float: left;
+    border-left-width: 0px;
+    border-right-width: 1px;
+    border-right-style: solid;
+  }
+
+  &.right .ebs-stepper .rc-input-number-handler-wrap {
+    float: right;
+    border-right-width: 0px;
+    border-left-width: 1px;
+    border-left-style: solid;
+  }
+
+  &.active {
+    .ebs-stepper,
+    .ebs-stepper:hover {
+      border-color: $primary-500;
+      background-color: $simple-white;
+
+      .rc-input-number-handler-wrap {
+        border-color: $primary-500;
+      }
+
+      .rc-input-number-input {
+        color: $font-text-1;
+      }
+    }
+  }
+
+  &.has-error {
+    .ebs-stepper,
+    .rc-input-number-handler-wrap {
+      border-color: $semantic-danger-500 !important;
+    }
+
+    .ebs-stepper-extra {
+      color: $semantic-danger-500;
+    }
+  }
+
+  &.disabled {
+    .ebs-stepper-label,
+    .ebs-stepper-label {
+      color: $grey-500;
+    }
+
+    .ebs-stepper,
+    .ebs-stepper:hover {
+      border-color: $grey-500;
+
+      &.rc-input-number-disabled .rc-input-number-input {
+        background-color: $simple-white;
+
+        @include placeholder {
+          color: $grey-500;
+        }
+      }
+
+      .rc-input-number-handler-wrap,
+      .rc-input-number-handler-wrap:hover {
+        border-color: $grey-500;
+
+        .rc-input-number-handler .ebs-icon path {
+          fill: $grey-500;
+        }
+      }
+    }
+  }
+
+  .ebs-stepper {
+    width: 100%;
+    height: rem(40px);
+    border: 1px solid $grey-200;
+    background-color: $simple-white;
+    border-radius: rem(4px);
+
+    &:focus,
+    &:hover,
+    &.rc-input-number-focused {
+      box-shadow: inherit;
+      outline: none !important;
+    }
+
+    &:hover {
+      border-color: $grey-200;
+
+      .rc-input-number-handler-wrap {
+        border-color: $grey-200;
+      }
+    }
+
+    &.rc-input-number-focused {
+      border-color: $primary-500;
+      background-color: $simple-white;
+
+      .rc-input-number-handler-wrap {
+        border-color: $primary-500;
+      }
+
+      .rc-input-number-input {
+        color: $font-text-1;
+      }
+    }
+
+    .rc-input-number-handler-wrap {
+      border-color: $grey-200;
+      width: rem(30px);
+    }
+
+    .rc-input-number-handler {
+      height: 50%;
+      width: 100%;
+
+      > * {
+        font-size: rem(10px);
+      }
+
+      &.rc-input-number-handler-up,
+      &.rc-input-number-handler-down {
+        position: relative;
+
+        .ebs-icon {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+
+          path {
+            fill: $font-text-2;
+          }
+        }
+      }
+
+      &.rc-input-number-handler-up {
+        border-bottom-color: transparent;
+
+        .ebs-icon {
+          bottom: rem(2px);
+        }
+      }
+
+      &.rc-input-number-handler-down {
+        border-bottom-color: transparent;
+
+        .ebs-icon {
+          top: rem(2px);
+          transform: translateX(-50%) rotate(180deg);
+        }
+      }
+    }
+
+    .rc-input-number-input-wrap .rc-input-number-input {
+      padding: rem(10px);
+      text-align: left;
+      color: $font-text-1;
+      font-size: rem(14px);
+
+      @include placeholder {
+        color: $font-text-3 !important;
+      }
+    }
+  }
+
+  // Label
+  .ebs-stepper-label {
+    margin-bottom: rem(5px);
+    color: $font-text-2;
+    @include fontRegular;
+    font-size: rem(12px);
+  }
+
+  // Extra
+  .ebs-stepper-extra {
+    margin-top: rem(2.5px);
+    color: $font-text-3;
+    @include fontRegular;
+    font-size: rem(10px);
+  }
+}

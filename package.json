@@ -89,5 +89,7 @@
       "atoms/(.*)": "<rootDir>/src/atoms/$1"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "rc-input-number": "^6.1.1"
+  }
 }
