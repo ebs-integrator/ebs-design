@@ -1,0 +1,145 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+// Input
+.ebs-input-wrapper {
+  position: relative;
+  border: 1px solid $grey-200;
+  background-color: $simple-white;
+  border-radius: rem(4px);
+
+  &.has-prefix .ebs-input {
+    padding-left: rem(37.5px);
+  }
+
+  &.has-suffix .ebs-input {
+    padding-right: rem(37.5px);
+  }
+
+  &.ebs-input-wrapper {
+    &-active,
+    &.focus {
+      border: 1px solid $primary-500;
+      background-color: $simple-white !important;
+
+      .ebs-input {
+        color: $font-text-1;
+      }
+    }
+
+    &-unactive {
+      border: 1px solid $grey-200;
+      background-color: $simple-white;
+    }
+  }
+
+  &.has-error {
+    border-color: $semantic-danger-500;
+    background-color: $simple-white;
+  }
+
+  &.disabled {
+    border-color: $grey-500;
+    background-color: $simple-white;
+
+    .ebs-input {
+      color: $grey-500;
+      cursor: not-allowed;
+
+      @include placeholder {
+        color: $grey-500 !important;
+      }
+    }
+
+    .ebs-input-prefix .ebs-icon path,
+    .ebs-input-suffix .ebs-icon path {
+      stroke: $grey-500;
+    }
+  }
+
+  .ebs-input-prefix,
+  .ebs-input-suffix {
+    position: absolute;
+    left: rem(10px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+
+    &.not-clickable {
+      pointer-events: none;
+    }
+
+    &.clickable {
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .ebs-icon {
+      font-size: rem(16px);
+    }
+  }
+
+  .ebs-input-suffix {
+    left: inherit;
+    right: rem(10px);
+  }
+
+  &.ebs-input-search input {
+    height: rem(50px);
+  }
+}
+
+// input html element
+.ebs-input {
+  @include fontRegular;
+  background: transparent;
+  border: none;
+  width: 100%;
+  display: block;
+  height: rem(40px);
+  font-size: rem(14px);
+  padding: rem(0 10px);
+  color: $font-text-1;
+
+  &-container {
+    position: relative;
+    width: 100%;
+  }
+
+  @include placeholder {
+    color: $font-text-3 !important;
+  }
+
+  &:focus {
+    outline: none !important;
+  }
+}
+
+// Label
+.ebs-input-label {
+  margin-bottom: rem(5px);
+  color: $font-text-2;
+  @include fontRegular;
+  font-size: rem(12px);
+
+  &.disabled {
+    color: $grey-500;
+  }
+}
+
+// Extra
+.ebs-input-extra {
+  margin-top: rem(2.5px);
+  color: $font-text-3;
+  @include fontRegular;
+  font-size: rem(10px);
+
+  &.has-error {
+    color: $semantic-danger-500;
+  }
+
+  &.disabled {
+    color: $grey-500;
+  }
+}

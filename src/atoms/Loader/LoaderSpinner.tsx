@@ -10,7 +10,7 @@ export interface Props {
 
 export const LoaderSpinner: React.FC<Props> = ({ fixed, size = 'regular', className = '' }) => (
   <div
-    className={`zh-loader-spinner zh-loader-spinner-type-simple zh-loader-spinner-size-${size}${
+    className={`ebs-loader-spinner ebs-loader-spinner-type-simple ebs-loader-spinner-size-${size}${
       fixed ? ' fixed' : ''
     } ${className}`}
   />

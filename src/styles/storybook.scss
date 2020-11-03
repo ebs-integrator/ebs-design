@@ -1,0 +1,33 @@
+@import './mixins/index';
+@import './palette';
+
+.storybook-rows {
+  display: flex;
+
+  .storybook-row {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-right: rem(25px);
+      padding-right: rem(25px);
+      border-right: 1px solid $grey-200;
+    }
+
+    .storybook-row-item {
+      &:not(:last-child) {
+        margin-bottom: rem(15px);
+      }
+    }
+  }
+}
+
+.storybook-label {
+  @include fontMedium;
+  margin-bottom: rem(7.5px);
+}
+
+.storybook-header {
+  @include fontBold;
+  margin-bottom: rem(15px);
+  font-size: rem(20px);
+}

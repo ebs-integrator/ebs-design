@@ -14,7 +14,7 @@ export interface Props {
 
 export const Loader: React.FC<Props> = ({ fade = true, fixed, size = 'regular', loading, height = 350, children }) => {
   return (
-    <div className="zh-loader" style={{ minHeight: loading ? height : undefined }}>
+    <div className="ebs-loader" style={{ minHeight: loading ? height : undefined }}>
       <LoaderSpinner fixed={fixed} size={size} className={!loading ? 'hide' : ''} />
 
       {fade ? (
@@ -30,7 +30,7 @@ export const Loader: React.FC<Props> = ({ fade = true, fixed, size = 'regular', 
 
 export const LoaderInline: React.FC = () => {
   return (
-    <span className="zh-loader-inline">
+    <span className="ebs-loader-inline">
       <LoaderSpinner size="small" />
       Loading ...
     </span>

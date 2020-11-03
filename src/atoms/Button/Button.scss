@@ -7,7 +7,7 @@
 // fade
 @include fadeBackground('regularFade', #000);
 
-.zh-button-wrapper {
+.ebs-button-wrapper {
   position: relative;
   display: inline-block;
   text-align: center;
@@ -16,15 +16,15 @@
   border: 1px solid transparent;
 
   &.has-prefix {
-    .zh-button {
+    .ebs-button {
       padding-left: rem(30px);
     }
   }
 
   // button size
-  &.zh-button-size {
+  &.ebs-button-size {
     &-large {
-      .zh-button {
+      .ebs-button {
         padding: rem(10px 20px);
         font-weight: 700;
         font-size: rem(14px);
@@ -32,7 +32,7 @@
     }
 
     &-medium {
-      .zh-button {
+      .ebs-button {
         padding: rem(6px 12px);
         font-weight: 500;
         font-size: rem(14px);
@@ -40,7 +40,7 @@
     }
 
     &-small {
-      .zh-button {
+      .ebs-button {
         padding: rem(4px 8px);
         font-weight: 500;
         font-size: rem(12px);
@@ -49,21 +49,17 @@
   }
 
   // button type (Color)
-  &.zh-button-type {
+  &.ebs-button-type {
     &-primary {
       border-color: $primary-500;
       background: $primary-500;
 
-      .zh-button {
+      .ebs-button {
         color: #fff;
 
         &:hover {
           color: #fff;
         }
-      }
-
-      .zh-button-prefix svg path {
-        fill: #fff;
       }
 
       &:hover,
@@ -78,7 +74,7 @@
         background: $primary-700;
       }
 
-      .zh-button-pulse {
+      .ebs-button-pulse {
         animation: simplePulse 1s forwards;
       }
     }
@@ -87,12 +83,8 @@
       border-color: $primary-100;
       background: $primary-100;
 
-      .zh-button {
+      .ebs-button {
         color: $primary-500;
-      }
-
-      .zh-button-prefix svg path {
-        fill: $primary-500;
       }
 
       &:hover,
@@ -100,7 +92,7 @@
         border-color: $primary-500;
         background: $primary-500;
 
-        & .zh-button {
+        & .ebs-button {
           color: #fff;
         }
       }
@@ -110,12 +102,12 @@
         border-color: $primary-600;
         background: $primary-600;
 
-        & .zh-button {
+        & .ebs-button {
           color: #fff;
         }
       }
 
-      .zh-button-pulse {
+      .ebs-button-pulse {
         animation: simplePulse 1s forwards;
       }
     }
@@ -124,12 +116,8 @@
       background: transparent;
       border-color: $primary-500;
 
-      .zh-button {
+      .ebs-button {
         color: $primary-500;
-      }
-
-      .zh-button-prefix svg path {
-        fill: $primary-500;
       }
 
       &:hover,
@@ -137,7 +125,7 @@
         border-color: $primary-500;
         background: $primary-500;
 
-        & .zh-button {
+        & .ebs-button {
           color: #fff;
         }
       }
@@ -147,12 +135,12 @@
         border-color: $primary-600;
         background: $primary-600;
 
-        & .zh-button {
+        & .ebs-button {
           color: #fff;
         }
       }
 
-      .zh-button-pulse {
+      .ebs-button-pulse {
         animation: simplePulse 1s forwards;
       }
     }
@@ -160,19 +148,15 @@
     &-text {
       background: transparent;
 
-      .zh-button {
+      .ebs-button {
         color: $primary-500;
-      }
-
-      .zh-button-prefix svg path {
-        fill: $primary-500;
       }
 
       &:hover,
       &.hover {
         background: transparent;
 
-        & .zh-button {
+        & .ebs-button {
           color: $primary-600;
         }
       }
@@ -181,12 +165,12 @@
       &.active {
         background: transparent;
 
-        & .zh-button {
+        & .ebs-button {
           color: $primary-700;
         }
       }
 
-      .zh-button-pulse {
+      .ebs-button-pulse {
         animation: simplePulse 1s forwards;
       }
     }
@@ -194,22 +178,18 @@
     &-disabled {
       background: $grey-200;
 
-      .zh-button {
+      .ebs-button {
         cursor: not-allowed;
         color: $grey-500;
       }
 
-      .zh-button-prefix svg path {
-        fill: $grey-500;
-      }
-
-      .zh-button-pulse {
+      .ebs-button-pulse {
         animation: simplePulse 1s forwards;
       }
     }
   }
 
-  .zh-button-loading {
+  .ebs-button-loading {
     position: absolute;
     left: 0;
     top: 0;
@@ -218,13 +198,13 @@
     border-radius: rem(4px);
     pointer-events: none;
 
-    &.zh-button-loading {
+    &.ebs-button-loading {
       &-regular {
         animation: regularFade 0.25s forwards;
       }
     }
 
-    .zh-loader-spinner {
+    .ebs-loader-spinner {
       position: absolute;
       left: calc(50% - 7.5px);
       top: calc(50% - 7.5px);
@@ -232,7 +212,7 @@
     }
   }
 
-  .zh-button-pulse {
+  .ebs-button-pulse {
     position: absolute;
     left: 0;
     top: 0;
@@ -244,7 +224,7 @@
     padding: 0 !important;
   }
 
-  .zh-button-prefix {
+  .ebs-button-prefix {
     position: absolute;
     left: rem(10px);
     top: 50%;
@@ -254,7 +234,7 @@
     align-items: center;
   }
 
-  .zh-button {
+  .ebs-button {
     cursor: pointer;
     font-size: rem(13px);
     border-color: transparent;
@@ -265,11 +245,11 @@
   }
 }
 
-.zh-button-group {
+.ebs-button-group {
   display: flex;
   flex-wrap: wrap;
 
-  > .zh-button-wrapper {
+  > .ebs-button-wrapper {
     &:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;

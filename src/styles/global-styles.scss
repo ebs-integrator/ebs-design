@@ -13,11 +13,11 @@ body {
   color: $font-text-1;
 
   @include mq($until: desktop) {
-    font-size: rem(12px);
+    font-size: rem(13px);
   }
 
   @include mq($until: small-desktop) {
-    font-size: rem(10px);
+    font-size: rem(12px);
   }
 }
 

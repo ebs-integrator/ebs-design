@@ -1,0 +1,10 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+.ebs-icon {
+  font-size: rem(16px);
+
+  path {
+    stroke: $font-text-2;
+  }
+}

@@ -5,11 +5,13 @@ import './Button.scss';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
+export type ButtonType = 'text' | 'primary' | 'fill' | 'ghost';
+
 interface Props {
   onClick?: () => void;
   prefix?: React.ReactNode;
   size?: ButtonSize;
-  type?: 'text' | 'primary' | 'fill' | 'ghost';
+  type?: ButtonType;
   loading?: boolean;
   submit?: boolean;
   disabled?: boolean;
@@ -53,34 +55,34 @@ export const Button: React.FC<Props> = ({
 
   return (
     <div
-      className={`zh-button-wrapper zh-button-size-${size} zh-button-type-${props.disabled ? 'disabled' : type} ${
+      className={`ebs-button-wrapper ebs-button-size-${size} ebs-button-type-${props.disabled ? 'disabled' : type} ${
         prefix !== undefined ? 'has-prefix' : ''
       } ${className}`}
       onClick={onClickHandler}
       role="presentation"
     >
       {prefix ? (
-        <div className="zh-button-prefix">{loading ? <LoaderSpinner size="small" /> : prefix}</div>
+        <div className="ebs-button-prefix">{loading ? <LoaderSpinner size="small" /> : prefix}</div>
       ) : loading ? (
-        <div className={`zh-button-loading zh-button-loading-${type}`}>
+        <div className={`ebs-button-loading ebs-button-loading-${type}`}>
           <LoaderSpinner size="small" />
         </div>
       ) : null}
 
       <button
         type={submit ? 'submit' : 'button'}
-        className="zh-button"
+        className="ebs-button"
         disabled={props.disabled || loading}
         form={props.form}
       >
         {props.children}
       </button>
 
-      {pulse ? <div className="zh-button-pulse" /> : null}
+      {pulse ? <div className="ebs-button-pulse" /> : null}
     </div>
   );
 };
 
 export const ButtonGroup: React.FC<{ className?: string }> = ({ children, className = '' }) => (
-  <div className={`zh-button-group ${className}`}>{children}</div>
+  <div className={`ebs-button-group ${className}`}>{children}</div>
 );
