@@ -1,6 +1,5 @@
 import * as React from 'react';
 import InputNumber from 'rc-input-number';
-import 'rc-input-number/assets/index.css';
 import { Icon } from 'atoms';
 
 import './Stepper.scss';

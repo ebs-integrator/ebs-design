@@ -66,7 +66,7 @@ export const Input = React.forwardRef<any, InputProps>(
 
     return (
       <>
-        {label && <div className={`ebs-input-label${disabled ? ' disabled' : ''}`}>{label}</div>}
+        {label && <div className={`ebs-atom-label${disabled ? ' disabled' : ''}`}>{label}</div>}
 
         <div
           className={`ebs-input-wrapper ${value === '' ? 'ebs-input-empty' : ''} ebs-input-wrapper-${
@@ -114,7 +114,7 @@ export const Input = React.forwardRef<any, InputProps>(
         </div>
 
         {extra && (
-          <div className={`ebs-input-extra${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''}`}>{extra}</div>
+          <div className={`ebs-atom-extra${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''}`}>{extra}</div>
         )}
       </>
     );

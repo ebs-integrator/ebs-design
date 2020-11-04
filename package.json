@@ -52,6 +52,7 @@
     "@types/jest": "^25.2.1",
     "@types/node": "^13.11.1",
     "@types/react": ">= 16.8",
+    "@types/react-datepicker": "^3.1.1",
     "@types/react-dom": ">= 16.8",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -90,6 +91,8 @@
     }
   },
   "dependencies": {
-    "rc-input-number": "^6.1.1"
+    "dayjs": "^1.9.4",
+    "rc-input-number": "^6.1.1",
+    "react-datepicker": "^3.3.0"
   }
 }

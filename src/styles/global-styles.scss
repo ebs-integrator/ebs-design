@@ -89,3 +89,31 @@ a {
     margin-right: rem(15px);
   }
 }
+
+// Label
+.ebs-atom-label {
+  margin-bottom: rem(5px);
+  color: $font-text-2;
+  @include fontRegular;
+  font-size: rem(12px);
+
+  &.disabled {
+    color: $grey-500;
+  }
+}
+
+// Extra
+.ebs-atom-extra {
+  margin-top: rem(2.5px);
+  color: $font-text-3;
+  @include fontRegular;
+  font-size: rem(10px);
+
+  &.has-error {
+    color: $semantic-danger-500;
+  }
+
+  &.disabled {
+    color: $grey-500;
+  }
+}

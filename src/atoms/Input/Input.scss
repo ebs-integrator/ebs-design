@@ -19,7 +19,7 @@
   &.ebs-input-wrapper {
     &-active,
     &.focus {
-      border: 1px solid $primary-500;
+      border-color: $primary-500;
       background-color: $simple-white !important;
 
       .ebs-input {
@@ -28,7 +28,7 @@
     }
 
     &-unactive {
-      border: 1px solid $grey-200;
+      border-color: $grey-200;
       background-color: $simple-white;
     }
   }
@@ -113,33 +113,5 @@
 
   &:focus {
     outline: none !important;
-  }
-}
-
-// Label
-.ebs-input-label {
-  margin-bottom: rem(5px);
-  color: $font-text-2;
-  @include fontRegular;
-  font-size: rem(12px);
-
-  &.disabled {
-    color: $grey-500;
-  }
-}
-
-// Extra
-.ebs-input-extra {
-  margin-top: rem(2.5px);
-  color: $font-text-3;
-  @include fontRegular;
-  font-size: rem(10px);
-
-  &.has-error {
-    color: $semantic-danger-500;
-  }
-
-  &.disabled {
-    color: $grey-500;
   }
 }
