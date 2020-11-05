@@ -1,106 +1,107 @@
 import * as React from 'react';
-import { Textarea } from './Textarea';
+
+import { InputPhone } from './InputPhone';
 
 export default {
-  title: 'Textarea',
-  component: Textarea,
+  title: 'InputPhone',
+  component: InputPhone,
 };
 
-export const simple = (): React.ReactElement => (
+export const regular: React.FC = () => (
   <div className="storybook-rows">
     <div className="storybook-row">
-      <div className="storybook-header">Text Input</div>
+      <div className="storybook-header">Input Phone</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Textarea placeholder="Text field" />
+        <InputPhone />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Textarea placeholder="Text field" value="Text field" onChange={(): null => null} />
+        <InputPhone value="+37378014910" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Textarea hasError placeholder="Text field" />
+        <InputPhone hasError />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Textarea disabled placeholder="Text field" />
+        <InputPhone disabled />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Text Input + Label</div>
+      <div className="storybook-header">Input Phone + Label</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Textarea label="Label" placeholder="Text field" />
+        <InputPhone label="Label" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Textarea label="Label" placeholder="Text field" value="Text field" />
+        <InputPhone label="Label" value="+37378014910" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Textarea label="Label" hasError placeholder="Text field" />
+        <InputPhone label="Label" hasError />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Textarea label="Label" disabled placeholder="Text field" />
+        <InputPhone label="Label" disabled />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Text Input + Extra</div>
+      <div className="storybook-header">Input Phone + Extra</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Textarea extra="Extra" placeholder="Text field" />
+        <InputPhone extra="Extra" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Textarea extra="Extra" placeholder="Text field" value="Text field" />
+        <InputPhone extra="Extra" value="+37378014910" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Textarea extra="Extra" hasError placeholder="Text field" />
+        <InputPhone extra="Extra" hasError />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Textarea extra="Extra" disabled placeholder="Text field" />
+        <InputPhone extra="Extra" disabled />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Text Input + Label + Extra</div>
+      <div className="storybook-header">Input Phone + Label & Extra</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Textarea label="Label" extra="Extra" placeholder="Text field" />
+        <InputPhone label="Label" extra="Extra" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Textarea label="Label" extra="Extra" placeholder="Text field" value="Text field" />
+        <InputPhone label="Label" extra="Extra" value="+37378014910" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Textarea label="Label" extra="Extra" hasError placeholder="Text field" />
+        <InputPhone label="Label" extra="Extra" hasError />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Textarea label="Label" extra="Extra" disabled placeholder="Text field" />
+        <InputPhone label="Label" extra="Extra" disabled />
       </div>
     </div>
   </div>

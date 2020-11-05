@@ -1,6 +1,8 @@
 import * as React from 'react';
 import DatePicker from 'react-datepicker';
 import { format, dateTimeFormat } from 'libs/date';
+import { Extra, Label } from 'atoms';
+
 import { DateState, LimitTimeState } from './Calendar.types';
 
 import './Calendar.scss';
@@ -28,8 +30,6 @@ interface Props {
   to?: any;
   date?: any;
 }
-
-// might delete it after build
 
 export const Calendar: React.FC<Props> = ({
   type = 'period',
@@ -129,7 +129,7 @@ export const Calendar: React.FC<Props> = ({
         hasError ? ' has-error' : ''
       }${from || to || date ? ' active' : ''} ${className}`}
     >
-      {label && <div className={`ebs-atom-label${disabled ? ' disabled' : ''}`}>{label}</div>}
+      <Label text={label} disabled={disabled} />
 
       <div className="ebs-calendar-input-wrapper">
         {type === 'period' && (
@@ -213,9 +213,7 @@ export const Calendar: React.FC<Props> = ({
         )}
       </div>
 
-      {extra && (
-        <div className={`ebs-atom-extra${hasError ? ' has-error' : ''}${disabled ? ' disabled' : ''}`}>{extra}</div>
-      )}
+      <Extra text={extra} hasError={hasError} disabled={disabled} />
     </div>
   );
 };

@@ -2,7 +2,7 @@ const path = require('path');
 const { override, useEslintRc } = require('customize-cra');
 
 module.exports = {
-  stories: ['../src/atoms/**/*.stories.tsx'],
+  stories: ['../src/atoms/**/*.stories.tsx', '../src/organisms/**/*.stories.tsx'],
   presets: [
     {
       name: '@storybook/preset-create-react-app',

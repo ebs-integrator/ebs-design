@@ -1,0 +1,17 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+.ebs-extra {
+  margin-top: rem(2.5px);
+  color: $font-text-3;
+  @include fontRegular;
+  font-size: rem(10px);
+
+  &.has-error {
+    color: $semantic-danger-500;
+  }
+
+  &.disabled {
+    color: $grey-500;
+  }
+}

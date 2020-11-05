@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LoaderSpinner } from 'atoms/Loader/LoaderSpinner';
+import { LoaderSpinner } from 'atoms';
 
 import './Button.scss';
 

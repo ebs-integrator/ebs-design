@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Loader, LoaderInline } from './Loader';
-import { LoaderSpinner } from './LoaderSpinner';
 
 export default {
   title: 'Loader',
@@ -23,8 +22,4 @@ export const DefaultLoader: React.FC = () => {
   );
 };
 
-export const oaderInline = (): React.ReactElement => <LoaderInline />;
-
-export const loaderSpinnerSimpleSmall = (): React.ReactElement => <LoaderSpinner size="small" />;
-
-export const loaderSpinnerSimple = (): React.ReactElement => <LoaderSpinner />;
+export const loaderInline = (): React.ReactElement => <LoaderInline />;

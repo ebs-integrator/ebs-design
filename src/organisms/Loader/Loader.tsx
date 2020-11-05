@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { LoaderSpinner, Size } from './LoaderSpinner';
+import { LoaderSpinner } from 'atoms';
+import { SpinnerSize } from 'atoms/LoaderSpinner/LoaderSpinner';
 
 import './Loader.scss';
 
 export interface Props {
   fade?: boolean;
-  size?: Size;
+  size?: SpinnerSize;
   loading: boolean;
   fixed?: boolean;
   height?: number | string;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LoaderSpinner } from 'atoms';
+import { Extra, Label, LoaderSpinner } from 'atoms';
 
 import './Input.scss';
 
@@ -23,6 +23,7 @@ export interface InputProps {
   disabled?: boolean;
   width?: number | string;
   className?: string;
+  containerClass?: string;
 }
 
 export const Input = React.forwardRef<any, InputProps>(
@@ -42,6 +43,7 @@ export const Input = React.forwardRef<any, InputProps>(
       disabled,
       width,
       className = '',
+      containerClass = '',
       ...props
     },
     ref,
@@ -65,8 +67,8 @@ export const Input = React.forwardRef<any, InputProps>(
     };
 
     return (
-      <>
-        {label && <div className={`ebs-atom-label${disabled ? ' disabled' : ''}`}>{label}</div>}
+      <div className={`ebs-input-container ${containerClass}`}>
+        <Label text={label} disabled={disabled} />
 
         <div
           className={`ebs-input-wrapper ${value === '' ? 'ebs-input-empty' : ''} ebs-input-wrapper-${
@@ -113,10 +115,8 @@ export const Input = React.forwardRef<any, InputProps>(
           </div>
         </div>
 
-        {extra && (
-          <div className={`ebs-atom-extra${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''}`}>{extra}</div>
-        )}
-      </>
+        <Extra text={extra} hasError={hasError} disabled={disabled} />
+      </div>
     );
   },
 );

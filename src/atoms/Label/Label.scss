@@ -1,0 +1,14 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+// Label
+.ebs-label {
+  margin-bottom: rem(5px);
+  color: $font-text-2;
+  @include fontRegular;
+  font-size: rem(12px);
+
+  &.disabled {
+    color: $grey-500;
+  }
+}

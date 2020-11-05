@@ -1,306 +1,308 @@
 import * as React from 'react';
-import { Calendar } from './Calendar';
+import { Icon } from 'atoms';
+
+import { Input } from './Input';
 
 export default {
-  title: 'Calendar',
-  component: Calendar,
+  title: 'Input',
+  component: Input,
 };
 
-export const period = (): React.ReactElement => (
+export const simple = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
-      <div className="storybook-header">Calendar</div>
+      <div className="storybook-header">Text Input</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar type="period" />
+        <Input placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar type="period" from="2020-10-11" to="2020-12-11" />
+        <Input placeholder="Text field" value="Text field" onChange={(): null => null} />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar hasError type="period" />
+        <Input hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar disabled type="period" />
+        <Input disabled placeholder="Text field" />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Calendar + Label</div>
+      <div className="storybook-header">Text Input + Label</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar label="Label" type="period" />
+        <Input label="Label" placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar label="Label" type="period" from="2020-10-11" to="2020-12-11" />
+        <Input label="Label" placeholder="Text field" value="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar label="Label" hasError type="period" />
+        <Input label="Label" hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar label="Label" disabled type="period" />
+        <Input label="Label" disabled placeholder="Text field" />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Calendar + Extra</div>
+      <div className="storybook-header">Text Input + Extra</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar extra="Extra" type="period" />
+        <Input extra="Extra" placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar extra="Extra" type="period" from="2020-10-11" to="2020-12-11" />
+        <Input extra="Extra" placeholder="Text field" value="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar extra="Extra" hasError type="period" />
+        <Input extra="Extra" hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar extra="Extra" disabled type="period" />
+        <Input extra="Extra" disabled placeholder="Text field" />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Calendar + Label & Extra</div>
+      <div className="storybook-header">Text Input + Label + Extra</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar label="Label" extra="Extra" type="period" />
+        <Input label="Label" extra="Extra" placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar label="Label" extra="Extra" type="period" from="2020-10-11" to="2020-12-11" />
+        <Input label="Label" extra="Extra" placeholder="Text field" value="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar label="Label" extra="Extra" hasError type="period" />
+        <Input label="Label" extra="Extra" hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar label="Label" extra="Extra" disabled type="period" />
+        <Input label="Label" extra="Extra" disabled placeholder="Text field" />
       </div>
     </div>
   </div>
 );
 
-export const date = (): React.ReactElement => (
+export const iconRight = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
-      <div className="storybook-header">Calendar</div>
+      <div className="storybook-header">Text Input</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar type="date" />
+        <Input suffix={<Icon type="eye" />} placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar type="date" date="2020-12-11" />
+        <Input suffix={<Icon type="eye" />} placeholder="Text field" value="Text field" onChange={(): null => null} />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar hasError type="date" />
+        <Input suffix={<Icon type="eye" />} hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar disabled type="date" />
+        <Input suffix={<Icon type="eye" />} disabled placeholder="Text field" />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Calendar + Label</div>
+      <div className="storybook-header">Text Input + Label</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar label="Label" type="date" />
+        <Input suffix={<Icon type="eye" />} label="Label" placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar label="Label" type="date" date="2020-12-11" />
+        <Input suffix={<Icon type="eye" />} label="Label" placeholder="Text field" value="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar label="Label" hasError type="date" />
+        <Input suffix={<Icon type="eye" />} label="Label" hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar label="Label" disabled type="date" />
+        <Input suffix={<Icon type="eye" />} label="Label" disabled placeholder="Text field" />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Calendar + Extra</div>
+      <div className="storybook-header">Text Input + Extra</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar extra="Extra" type="date" />
+        <Input suffix={<Icon type="eye" />} extra="Extra" placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar extra="Extra" type="date" date="2020-12-11" />
+        <Input suffix={<Icon type="eye" />} extra="Extra" placeholder="Text field" value="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar extra="Extra" hasError type="date" />
+        <Input suffix={<Icon type="eye" />} extra="Extra" hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar extra="Extra" disabled type="date" />
+        <Input suffix={<Icon type="eye" />} extra="Extra" disabled placeholder="Text field" />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Calendar + Label & Extra</div>
+      <div className="storybook-header">Text Input + Label + Extra</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar label="Label" extra="Extra" type="date" />
+        <Input suffix={<Icon type="eye" />} label="Label" extra="Extra" placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar label="Label" extra="Extra" type="date" date="2020-12-11" />
+        <Input suffix={<Icon type="eye" />} label="Label" extra="Extra" placeholder="Text field" value="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar label="Label" extra="Extra" hasError type="date" />
+        <Input suffix={<Icon type="eye" />} label="Label" extra="Extra" hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar label="Label" extra="Extra" disabled type="date" />
+        <Input suffix={<Icon type="eye" />} label="Label" extra="Extra" disabled placeholder="Text field" />
       </div>
     </div>
   </div>
 );
 
-export const dateTime = (): React.ReactElement => (
+export const iconLeft = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
-      <div className="storybook-header">Calendar</div>
+      <div className="storybook-header">Text Input</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar type="date-time" />
+        <Input prefix={<Icon type="eye" />} placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar type="date-time" date="2020-12-11 11:30" />
+        <Input prefix={<Icon type="eye" />} placeholder="Text field" value="Text field" onChange={(): null => null} />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar hasError type="date-time" />
+        <Input prefix={<Icon type="eye" />} hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar disabled type="date-time" />
+        <Input prefix={<Icon type="eye" />} disabled placeholder="Text field" />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Calendar + Label</div>
+      <div className="storybook-header">Text Input + Label</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar label="Label" type="date-time" />
+        <Input prefix={<Icon type="eye" />} label="Label" placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar label="Label" type="date-time" date="2020-12-11 11:30" />
+        <Input prefix={<Icon type="eye" />} label="Label" placeholder="Text field" value="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar label="Label" hasError type="date-time" />
+        <Input prefix={<Icon type="eye" />} label="Label" hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar label="Label" disabled type="date-time" />
+        <Input prefix={<Icon type="eye" />} label="Label" disabled placeholder="Text field" />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Calendar + Extra</div>
+      <div className="storybook-header">Text Input + Extra</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar extra="Extra" type="date-time" />
+        <Input prefix={<Icon type="eye" />} extra="Extra" placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar extra="Extra" type="date-time" date="2020-12-11 11:30" />
+        <Input prefix={<Icon type="eye" />} extra="Extra" placeholder="Text field" value="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar extra="Extra" hasError type="date-time" />
+        <Input prefix={<Icon type="eye" />} extra="Extra" hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar extra="Extra" disabled type="date-time" />
+        <Input prefix={<Icon type="eye" />} extra="Extra" disabled placeholder="Text field" />
       </div>
     </div>
 
     <div className="storybook-row">
-      <div className="storybook-header">Calendar + Label & Extra</div>
+      <div className="storybook-header">Text Input + Label + Extra</div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Inactive</div>
-        <Calendar label="Label" extra="Extra" type="date-time" />
+        <Input prefix={<Icon type="eye" />} label="Label" extra="Extra" placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
-        <Calendar label="Label" extra="Extra" type="date-time" date="2020-12-11 11:30" />
+        <Input prefix={<Icon type="eye" />} label="Label" extra="Extra" placeholder="Text field" value="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
-        <Calendar label="Label" extra="Extra" hasError type="date-time" />
+        <Input prefix={<Icon type="eye" />} label="Label" extra="Extra" hasError placeholder="Text field" />
       </div>
 
       <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
-        <Calendar label="Label" extra="Extra" disabled type="date-time" />
+        <Input prefix={<Icon type="eye" />} label="Label" extra="Extra" disabled placeholder="Text field" />
       </div>
     </div>
   </div>

@@ -1,0 +1,88 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+.ebs-switch {
+  border-radius: rem(8px);
+  height: rem(16px);
+  width: rem(32px);
+  position: relative;
+  cursor: pointer;
+
+  &.ebs-switch {
+    &-unchecked {
+      background: $grey-200;
+
+      &:hover .ebs-switch-dot {
+        border-color: $primary-200;
+        box-shadow: 0px 0px 0px 2px $primary-500 inset;
+      }
+
+      .ebs-switch-dot {
+        border-color: $grey-200;
+        background-color: $simple-white;
+        box-shadow: 0px 0px 0px 2px $grey-500 inset;
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        background-color: $grey-200;
+
+        .ebs-switch-dot,
+        .ebs-switch-dot:hover {
+          background: $simple-white;
+          border-color: $grey-200;
+        }
+      }
+    }
+
+    &-checked {
+      background-color: $primary-200;
+
+      &:hover .ebs-switch-dot {
+        border-color: $primary-300;
+        box-shadow: 0px 0px 0px 2px $primary-500 inset;
+      }
+
+      .ebs-switch-dot {
+        transform: translate(16px, -50%);
+        background: $primary-400;
+        border-color: $primary-200;
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        background-color: $primary-100;
+
+        .ebs-switch-dot,
+        .ebs-switch-dot:hover {
+          box-shadow: 0px 0px 0px 2px $primary-400 inset;
+          background: $primary-300;
+          border-color: $primary-100;
+        }
+      }
+    }
+  }
+
+  .ebs-switch-dot {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: rem(16px);
+    height: rem(16px);
+    border: 2px solid transparent;
+    box-shadow: 0px 0px 0px 2px $primary-500 inset;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+
+  .ebs-switch-checked-sheet {
+    border-radius: rem(25px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

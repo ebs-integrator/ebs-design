@@ -1,7 +1,4 @@
-export { Button, ButtonGroup } from './Button/Button';
-export { Loader } from './Loader/Loader';
-export { LoaderSpinner } from './Loader/LoaderSpinner';
-export { Input } from './Input/Input';
+export { LoaderSpinner } from './LoaderSpinner/LoaderSpinner';
 export { Icon } from './Icon/Icon';
-export { Stepper } from './Stepper/Stepper';
-export { Calendar } from './Calendar/Calendar';
+export { Label } from './Label/Label';
+export { Extra } from './Extra/Extra';

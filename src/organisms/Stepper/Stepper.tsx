@@ -1,6 +1,6 @@
 import * as React from 'react';
 import InputNumber from 'rc-input-number';
-import { Icon } from 'atoms';
+import { Extra, Label, Icon } from 'atoms';
 
 import './Stepper.scss';
 
@@ -43,7 +43,7 @@ export const Stepper: React.FC<Props> = ({
       value ? ' active' : ''
     } ${align} ${className}`}
   >
-    {label && <div className="ebs-stepper-label">{label}</div>}
+    <Label text={label} disabled={disabled} />
 
     <InputNumber
       className="ebs-stepper"
@@ -54,6 +54,6 @@ export const Stepper: React.FC<Props> = ({
       {...props}
     />
 
-    {extra && <div className="ebs-stepper-extra">{extra}</div>}
+    <Extra text={extra} hasError={hasError} disabled={disabled} />
   </div>
 );

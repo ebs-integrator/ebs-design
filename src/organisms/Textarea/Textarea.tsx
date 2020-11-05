@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Extra, Label } from 'atoms';
 
 import './Textarea.scss';
 
@@ -28,9 +29,7 @@ export const Textarea: React.FC<Props> = ({
 
   return (
     <div className={`ebs-textarea-wrapper ${className}`}>
-      {label && (
-        <div className={`ebs-textarea-label${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''}`}>{label}</div>
-      )}
+      <Label text={label} disabled={disabled} />
 
       <textarea
         className={`ebs-textarea${value ? ' has-value' : ''}${hasError ? ' has-error' : ''}${
@@ -42,9 +41,7 @@ export const Textarea: React.FC<Props> = ({
         disabled={disabled}
       />
 
-      {extra && (
-        <div className={`ebs-textarea-extra${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''}`}>{extra}</div>
-      )}
+      <Extra text={extra} hasError={hasError} disabled={disabled} />
     </div>
   );
 };

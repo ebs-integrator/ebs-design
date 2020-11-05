@@ -14,6 +14,19 @@
     }
 
     .storybook-row-item {
+      &.inline {
+        display: flex;
+        align-items: center;
+
+        > *:first-child {
+          min-width: rem(125px);
+        }
+
+        > *:not(:last-child) {
+          margin-right: rem(50px);
+        }
+      }
+
       &:not(:last-child) {
         margin-bottom: rem(15px);
       }
