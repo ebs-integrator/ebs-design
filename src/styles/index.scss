@@ -1,6 +1,7 @@
 @import 'styles/global-styles';
 
-@import 'atoms/LoaderSpinner/LoaderSpinner', 'atoms/Icon/Icon';
+@import 'atoms/LoaderSpinner/LoaderSpinner', 'atoms/Icon/Icon', 'atoms/Label/Label', 'atoms/Extra/Extra',
+  'atoms/Switch/Switch', 'atoms/Chips/Chips';
 
 @import 'organisms/Button/Button', 'organisms/Input/Input', 'organisms/Stepper/Stepper', 'organisms/Textarea/Textarea',
   'organisms/Loader/Loader', 'organisms/Calendar/Calendar', 'organisms/InputPhone/InputPhone';
