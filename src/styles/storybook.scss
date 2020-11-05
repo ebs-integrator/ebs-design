@@ -20,6 +20,7 @@
 
         > *:first-child {
           min-width: rem(125px);
+          margin-bottom: 0;
         }
 
         > *:not(:last-child) {
