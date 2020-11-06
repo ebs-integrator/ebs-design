@@ -14,6 +14,8 @@ export interface Option {
 export interface Props {
   className?: string;
   radioAlign?: RadioAlign;
+  textClass?: string;
+  textStyle?: { [key: string]: any };
   onChange?: (value: string) => void;
   value?: string | number;
   options?: Option[];
@@ -21,7 +23,15 @@ export interface Props {
 
 // name attribute makes it grouped ones
 
-export const Radio: React.FC<Props> = ({ className = '', radioAlign = 'left', onChange, value, options }) => {
+export const Radio: React.FC<Props> = ({
+  className = '',
+  radioAlign = 'left',
+  textClass = '',
+  textStyle,
+  onChange,
+  value,
+  options,
+}) => {
   const name = React.useMemo(() => makeid(), []);
 
   const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
@@ -49,8 +59,8 @@ export const Radio: React.FC<Props> = ({ className = '', radioAlign = 'left', on
             className="ebs-radio-input"
             name={name}
             onClick={() => onClickHandler(option.value)}
-            onChange={onChangeHandler}
             value={option.value}
+            onChange={onChangeHandler}
             {...(value !== undefined && option.value !== undefined
               ? { checked: `${value}` === `${option.value}` }
               : {})}
@@ -61,7 +71,11 @@ export const Radio: React.FC<Props> = ({ className = '', radioAlign = 'left', on
             <div className="ebs-radio-dot" />
           </div>
 
-          {option.text && <div className="ebs-radio-text">{option.text}</div>}
+          {option.text && (
+            <div className={`ebs-radio-text ${textClass}`} style={textStyle}>
+              {option.text}
+            </div>
+          )}
         </div>
       ))}
     </div>

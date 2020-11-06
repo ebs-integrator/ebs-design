@@ -52,7 +52,6 @@ export const Icon: React.FC<Props> = ({ onClick, type, className = '' }) => {
           width="1em"
           height="1em"
           viewBox="0 0 10 5"
-          fill="none"
           className={`ebs-icon ebs-icon-${type} ${className}`}
           onClick={onClick}
         >
@@ -77,8 +76,39 @@ export const Icon: React.FC<Props> = ({ onClick, type, className = '' }) => {
           />
         </svg>
       );
+    case 'check-2':
+      return (
+        <svg
+          width="1em"
+          height="1em"
+          viewBox="0 0 9 6"
+          fill="none"
+          className={`ebs-icon ebs-icon-${type} ${className}`}
+          onClick={onClick}
+        >
+          <path
+            d="M1.08325 3.00001L3.16659 5.08334L7.33325 0.916672"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case 'indeterminate':
+      return (
+        <svg
+          width="1em"
+          height="1em"
+          viewBox="0 0 10 2"
+          className={`ebs-icon ebs-icon-${type} ${className}`}
+          onClick={onClick}
+        >
+          <rect width="10" height="2" rx="1" />
+        </svg>
+      );
     default:
       console.warn(`<Icon /> couldn't find ${type} icon.`);
-      return null;
   }
+
+  return null;
 };
