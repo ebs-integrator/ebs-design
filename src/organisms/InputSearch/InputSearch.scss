@@ -1,0 +1,17 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+.ebs-input-search-wrapper {
+  &.ebs-input-search-type {
+    &-fill {
+      .ebs-input-search,
+      .ebs-input-wrapper-active {
+        background-color: $grey-100 !important;
+      }
+    }
+  }
+
+  &.disabled .cursor {
+    cursor: not-allowed;
+  }
+}

@@ -10,3 +10,6 @@ export const makeid = (length = 10): string => {
 
   return result;
 };
+
+export const capitalize = (str: string): string =>
+  str && typeof str === 'string' ? str.charAt(0).toUpperCase() + str.slice(1) : '';

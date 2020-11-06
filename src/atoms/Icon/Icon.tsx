@@ -106,6 +106,26 @@ export const Icon: React.FC<Props> = ({ onClick, type, className = '' }) => {
           <rect width="10" height="2" rx="1" />
         </svg>
       );
+    case 'search':
+      return (
+        <svg
+          width="1em"
+          height="1em"
+          viewBox="0 0 16 16"
+          fill="none"
+          className={`ebs-icon ebs-icon-${type} ${className}`}
+          onClick={onClick}
+        >
+          <path
+            d="M6.66667 11.3333C9.244 11.3333 11.3333 9.244 11.3333 6.66667C11.3333 4.08934 9.244 2 6.66667 2C4.08934 2 2 4.08934 2 6.66667C2 9.244 4.08934 11.3333 6.66667 11.3333Z"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          <path d="M14 14L10 10" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
     default:
       console.warn(`<Icon /> couldn't find ${type} icon.`);
   }
