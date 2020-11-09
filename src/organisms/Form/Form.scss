@@ -1,0 +1,45 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+.ebs-form {
+  .ebs-form-items {
+    display: flex;
+    justify-content: space-between;
+
+    @include mq($until: small-desktop) {
+      display: block;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(20px);
+    }
+
+    &.ebs-form-items-three {
+      .ebs-form-item {
+        width: calc(33% - 7.5px);
+      }
+    }
+
+    .ebs-form-item {
+      @include mq($from: small-desktop) {
+        margin-bottom: 0 !important;
+
+        &:not(:first-child) {
+          margin-left: rem(12.5px);
+        }
+      }
+
+      @include mq($until: small-desktop) {
+        width: 100% !important;
+      }
+    }
+  }
+
+  .ebs-form-item {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: rem(20px);
+    }
+  }
+}

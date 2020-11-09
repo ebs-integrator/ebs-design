@@ -38,6 +38,6 @@ export const InputPhone: React.FC<Props> = ({
       {...props}
     />
 
-    <Extra text={extra} hasError={hasError} disabled={disabled} />
+    <Extra text={extra} status={hasError ? 'danger' : 'text'} disabled={disabled} />
   </div>
 );

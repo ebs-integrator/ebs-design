@@ -20,7 +20,9 @@ export const Label: React.FC<Props> = ({ className = '', type = 'regular', statu
   }
 
   return (
-    <div className={`ebs-label ebs-label-${type} ebs-status-${status}${disabled ? ' disabled' : ''} ${className}`}>
+    <div
+      className={`ebs-label ebs-label-${type} ebs-label-status-${status}${disabled ? ' disabled' : ''} ${className}`}
+    >
       {text}
     </div>
   );

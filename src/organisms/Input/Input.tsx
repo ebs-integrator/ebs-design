@@ -115,7 +115,7 @@ export const Input = React.forwardRef<any, InputProps>(
           </div>
         </div>
 
-        <Extra text={extra} hasError={hasError} disabled={disabled} />
+        <Extra text={extra} status={hasError ? 'danger' : 'text'} disabled={disabled} />
       </div>
     );
   },
