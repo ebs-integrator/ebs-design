@@ -3,12 +3,55 @@
 
 // Label
 .ebs-label {
-  margin-bottom: rem(5px);
-  color: $font-text-2;
   @include fontRegular;
-  font-size: rem(12px);
+
+  &.ebs-label {
+    &-regular {
+      font-size: rem(12px);
+      margin-bottom: rem(5px);
+      color: $font-text-2;
+    }
+
+    &-circle {
+      display: inline;
+      font-size: rem(10px);
+      padding: rem(5px 12px);
+      color: $font-text-2;
+      border: 1px solid $font-text-2;
+      border-radius: rem(12px);
+    }
+  }
+
+  &.ebs-status {
+    &-success {
+      color: $semantic-success-500;
+      border-color: $semantic-success-500;
+    }
+
+    &-warning {
+      color: $semantic-warning-500;
+      border-color: $semantic-warning-500;
+    }
+
+    &-danger {
+      color: $semantic-danger-500;
+      border-color: $semantic-danger-500;
+    }
+
+    &-info {
+      color: $semantic-info-500;
+      border-color: $semantic-info-500;
+    }
+
+    &-text {
+      color: $font-text-2;
+      border-color: $font-text-2;
+    }
+  }
 
   &.disabled {
+    cursor: not-allowed;
     color: $grey-500;
+    border-color: $grey-500;
   }
 }

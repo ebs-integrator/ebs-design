@@ -45,3 +45,11 @@
   margin-bottom: rem(15px);
   font-size: rem(20px);
 }
+
+.storybook-flex {
+  display: flex;
+
+  > *:not(:last-child) {
+    margin-right: rem(25px);
+  }
+}

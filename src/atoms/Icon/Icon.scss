@@ -8,7 +8,8 @@
     transform: rotate(90deg);
   }
 
-  &.ebs-icon-arrow-down {
+  &.ebs-icon-arrow-down,
+  &.ebs-icon-arrow-bottom {
     transform: rotate(180deg);
   }
 

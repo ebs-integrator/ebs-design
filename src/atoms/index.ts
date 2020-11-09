@@ -5,3 +5,4 @@ export { Extra } from './Extra/Extra';
 export { Switch } from './Switch/Switch';
 export { Chips } from './Chips/Chips';
 export { Radio } from './Radio/Radio';
+export { Tooltip } from './Tooltip/Tooltip';

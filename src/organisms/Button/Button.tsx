@@ -73,10 +73,8 @@ export const Button: React.FC<Props> = ({
         type={submit ? 'submit' : 'button'}
         className="ebs-button"
         disabled={props.disabled || loading}
-        form={props.form}
-      >
-        {props.children}
-      </button>
+        {...props}
+      />
 
       {pulse ? <div className="ebs-button-pulse" /> : null}
     </div>
