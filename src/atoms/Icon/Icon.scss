@@ -4,17 +4,19 @@
 .ebs-icon {
   font-size: rem(16px);
 
-  &.ebs-icon-arrow-right {
-    transform: rotate(90deg);
-  }
+  &.ebs-icon-arrow,
+  .ebs-icon-arrow-outlined {
+    &-right {
+      transform: rotate(90deg);
+    }
 
-  &.ebs-icon-arrow-down,
-  &.ebs-icon-arrow-bottom {
-    transform: rotate(180deg);
-  }
+    &-bottom {
+      transform: rotate(180deg);
+    }
 
-  &.ebs-icon-arrow-left {
-    transform: rotate(270deg);
+    &-left {
+      transform: rotate(270deg);
+    }
   }
 
   path {

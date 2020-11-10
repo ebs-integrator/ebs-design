@@ -45,9 +45,7 @@ export const Icon: React.FC<Props> = ({ onClick, type, className = '', ...props 
         </svg>
       );
     case 'arrow-top':
-    case 'arrow-up':
     case 'arrow-right':
-    case 'arrow-down':
     case 'arrow-bottom':
     case 'arrow-left':
       return (
@@ -60,6 +58,23 @@ export const Icon: React.FC<Props> = ({ onClick, type, className = '', ...props 
           {...props}
         >
           <path d="M4.64645 0.353553C4.84171 0.158291 5.15829 0.158291 5.35355 0.353553L9.14645 4.14645C9.46143 4.46143 9.23835 5 8.79289 5L1.20711 5C0.761654 5 0.538571 4.46143 0.853553 4.14645L4.64645 0.353553Z" />
+        </svg>
+      );
+    case 'arrow-outlined-top':
+    case 'arrow-outlined-right':
+    case 'arrow-outlined-bottom':
+    case 'arrow-outlined-left':
+      return (
+        <svg
+          width="1em"
+          height="1em"
+          viewBox="0 0 10 6"
+          fill="none"
+          className={`ebs-icon ebs-icon-${type} ${className}`}
+          onClick={onClick}
+          {...props}
+        >
+          <path d="M1 5L5 0.999999L9 5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
     case 'check':

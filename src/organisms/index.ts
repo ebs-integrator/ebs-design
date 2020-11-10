@@ -7,3 +7,4 @@ export { InputPhone } from './InputPhone/InputPhone';
 export { Checkbox } from './Checkbox/Checkbox';
 export { CheckboxGroup } from './Checkbox/CheckboxGroup';
 export { InputSearch } from './InputSearch/InputSearch';
+export { Table } from './Table/Table';

@@ -49,8 +49,8 @@ export const Stepper: React.FC<Props> = ({
       className="ebs-stepper"
       disabled={disabled}
       value={value}
-      upHandler={<Icon type="arrow-up" />}
-      downHandler={<Icon type="arrow-down" />}
+      upHandler={<Icon type="arrow-top" />}
+      downHandler={<Icon type="arrow-bottom" />}
       {...props}
     />
 
