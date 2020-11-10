@@ -78,6 +78,10 @@ a {
   display: none;
 }
 
+.no-wrap {
+  white-space: nowrap;
+}
+
 .p {
   &-0 {
     padding: 0;

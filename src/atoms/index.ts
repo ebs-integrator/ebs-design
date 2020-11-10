@@ -6,3 +6,4 @@ export { Switch } from './Switch/Switch';
 export { Chips } from './Chips/Chips';
 export { Radio } from './Radio/Radio';
 export { Tooltip } from './Tooltip/Tooltip';
+export { Card, CardHeader, CardFooter } from './Card/Card';

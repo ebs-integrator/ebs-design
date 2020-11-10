@@ -1,0 +1,94 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+// HEADER
+.ebs-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: rem(20px);
+
+  .ebs-card-header-title {
+    font-size: rem(14px);
+    @include fontBold;
+    margin-right: rem(20px);
+    white-space: nowrap;
+  }
+
+  .ebs-card-header-side {
+    &-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      text-align: right;
+
+      @include mq($until: tablet) {
+        text-align: left;
+      }
+
+      > * {
+        white-space: nowrap;
+
+        &:not(:first-child) {
+          margin-left: rem(15px);
+        }
+      }
+
+      .picker-label {
+        margin-right: 0;
+      }
+    }
+
+    &-left,
+    &-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      > * {
+        margin-bottom: rem(22.5px);
+      }
+    }
+  }
+}
+
+// FOOTER
+.ebs-card-footer {
+  padding: rem(20px);
+  align-items: center;
+  display: flex;
+  border: 1px solid $grey-100;
+  border-top: unset;
+
+  .ebs-card-footer-side {
+    &-left {
+      position: relative;
+    }
+
+    &-right {
+      width: 100%;
+      text-align: right;
+
+      .ebs-button-wrapper:not(:last-child) {
+        margin-right: rem(10px);
+      }
+    }
+  }
+
+  .ebs-button-wrapper {
+    @include elevation-1;
+
+    &:not(:last-child) {
+      margin-right: rem(10px);
+    }
+  }
+}
+
+.ebs-card .ebs-table-mobile {
+  .ebs-table-mobile-item :last-child {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: unset;
+  }
+}
