@@ -8,4 +8,3 @@ export { Checkbox } from './Checkbox/Checkbox';
 export { CheckboxGroup } from './Checkbox/CheckboxGroup';
 export { InputSearch } from './InputSearch/InputSearch';
 export { Table } from './Table/Table';
-export { Card, CardHeader, CardFooter } from './Card/Card';
