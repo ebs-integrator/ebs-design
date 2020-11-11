@@ -1,12 +1,30 @@
-@import '../../styles/mixins/index';
-@import '../../styles/palette';
+@import '../../../../styles/mixins/index';
+@import '../../../../styles/palette';
 
 .ebs-layout {
-  &.ebs-layout-toggled {
-    .ebs-layout-content-wrapper,
-    .ebs-layout-footer {
-      // 57px
-      width: calc(100% - 3.95224rem);
+  &.ebs-layout-sidebar {
+    &-untoggled {
+      &.has-options {
+        .ebs-layout-content-wrapper,
+        .ebs-layout-footer {
+          width: calc(100% - 25.6736rem);
+        }
+      }
+    }
+
+    &-toggled {
+      &.has-options {
+        .ebs-layout-content-wrapper,
+        .ebs-layout-footer {
+          width: calc(100% - 16.64772rem);
+        }
+      }
+
+      .ebs-layout-content-wrapper,
+      .ebs-layout-footer {
+        // 57px
+        width: calc(100% - 3.95224rem);
+      }
     }
   }
 
@@ -114,7 +132,8 @@
     }
   }
 
-  .ebs-sidebar {
+  .ebs-sidebar,
+  .ebs-optionsbar {
     margin-top: rem(58px);
 
     // 58px
@@ -131,8 +150,8 @@
     transition: width 0.2s;
     margin-left: auto;
 
-    // 210.27px
-    width: calc(100% - 14.04025rem);
+    // 191px
+    width: calc(100% - 12.8368rem);
   }
 
   .ebs-layout-content-wrapper {

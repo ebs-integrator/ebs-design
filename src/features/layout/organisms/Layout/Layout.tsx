@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Sidebar } from 'organisms';
 import { Icon } from 'atoms';
+
+import { Sidebar } from '../';
 
 import './Layout.scss';
 
@@ -12,6 +13,8 @@ interface Props {
   rightSide?: React.ReactNode;
   sidebarTop?: React.ReactNode;
   sidebarBottom?: React.ReactNode;
+  optionsTop?: React.ReactNode;
+  optionsBottom?: React.ReactNode;
 }
 
 export const Layout: React.FC<Props> = ({
@@ -23,6 +26,8 @@ export const Layout: React.FC<Props> = ({
   children,
   sidebarTop,
   sidebarBottom,
+  optionsTop,
+  optionsBottom,
 }) => {
   const [toggled, setToggled] = React.useState(localStorage.getItem('toggled') === 'true');
   const [mobileOpened, setMobileOpened] = React.useState(false);
@@ -37,7 +42,11 @@ export const Layout: React.FC<Props> = ({
   const onToggleMobile = (): void => setMobileOpened((s) => !s);
 
   return (
-    <div className={`ebs-layout ebs-layout-${toggled ? 'toggled' : 'untoggled'} ${className}`}>
+    <div
+      className={`ebs-layout ebs-layout-sidebar-${toggled ? 'toggled' : 'untoggled'} ${
+        optionsTop || optionsBottom ? ' has-options' : ''
+      } ${className}`}
+    >
       <div className="ebs-layout-top-bar">
         {/* mobile part */}
         <div className="ebs-layout-top-bar-mobile">
@@ -61,6 +70,8 @@ export const Layout: React.FC<Props> = ({
         onToggleMenu={onToggle}
         top={sidebarTop}
         bottom={sidebarBottom}
+        optionsTop={optionsTop}
+        optionsBottom={optionsBottom}
       />
 
       <div className="ebs-layout-content-wrapper">

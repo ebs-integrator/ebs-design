@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { SidebarItem } from 'organisms';
 import { Icon } from 'atoms';
+
+import { SidebarItem } from '../';
+import { OptionsbarItem } from '../../atoms';
 
 import { Layout } from './Layout';
 
@@ -32,6 +34,13 @@ export const regular = (): React.ReactNode => (
     sidebarBottom={
       <>
         <SidebarItem prefix={<Icon type="check" />} text="Bottom tab" />
+      </>
+    }
+    optionsTop={
+      <>
+        <OptionsbarItem text="Organizations" />
+
+        <OptionsbarItem text="Company profile" disabled />
       </>
     }
   >

@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { SidebarItem } from 'organisms';
 import { Icon } from 'atoms';
+
+import { Optionsbar } from '../../atoms';
+import { SidebarItem } from '../';
 
 import './Sidebar.scss';
 
@@ -12,6 +14,8 @@ interface Props {
   onCloseMenu?: () => void;
   top?: React.ReactNode;
   bottom?: React.ReactNode;
+  optionsTop?: React.ReactNode;
+  optionsBottom?: React.ReactNode;
 }
 
 export const Sidebar: React.FC<Props> = ({
@@ -22,8 +26,14 @@ export const Sidebar: React.FC<Props> = ({
   onCloseMenu,
   top,
   bottom,
+  optionsTop,
+  optionsBottom,
 }) => (
   <>
+    {/* mobile part */}
+    {opened && <div className="ebs-sidebar-mask" onClick={onCloseMenu} />}
+    {/* mobile part */}
+
     <div
       className={`ebs-sidebar ebs-sidebar-${toggled ? 'toggled' : 'untoggled'} ebs-sidebar-mobile-${
         opened ? 'opened' : 'closed'
@@ -44,10 +54,10 @@ export const Sidebar: React.FC<Props> = ({
       </div>
 
       <div className="ebs-sidebar-bottom">{bottom}</div>
-    </div>
 
-    {/* mobile part */}
-    {opened && <div className="ebs-sidebar-mask" onClick={onCloseMenu} />}
-    {/* mobile part */}
+      {optionsTop || optionsBottom ? (
+        <Optionsbar className="ebs-sidebar-options" top={optionsTop} bottom={optionsBottom} />
+      ) : null}
+    </div>
   </>
 );

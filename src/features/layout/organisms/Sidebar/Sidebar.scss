@@ -1,11 +1,11 @@
-@import '../../styles/mixins/index';
-@import '../../styles/palette';
+@import '../../../../styles/mixins/index';
+@import '../../../../styles/palette';
 
 .ebs-sidebar {
   position: fixed;
   left: 0;
   top: 0;
-  width: rem(210px);
+  width: rem(192px);
   height: 100vh;
   border-right: 1px solid #e9e8e5;
   transition: width 0.2s;
@@ -27,13 +27,17 @@
       }
 
       &-opened {
-        width: rem(210px) !important;
+        width: rem(192px) !important;
         transform: translateX(0);
       }
     }
   }
 
   &.ebs-sidebar {
+    &-untoggled .ebs-sidebar-options {
+      left: rem(192px);
+    }
+
     &-toggled {
       overflow: hidden;
       width: rem(57px);
@@ -46,6 +50,10 @@
       .ebs-sidebar-item .ebs-sidebar-text {
         animation: fadeOut 0.1s forwards;
         white-space: nowrap;
+      }
+
+      .ebs-sidebar-options {
+        left: rem(57px);
       }
     }
   }
