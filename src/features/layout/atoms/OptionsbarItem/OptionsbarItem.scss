@@ -12,6 +12,7 @@
   &.disabled:hover {
     cursor: not-allowed;
     color: $grey-300;
+    background-color: transparent;
   }
 
   &:hover,

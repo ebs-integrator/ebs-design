@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Icon } from 'atoms';
 
 import { SidebarItem, Sidebar } from '..';
+import { OptionsbarItem } from '../../atoms';
 
 export default {
   title: 'Sidebar',
@@ -32,6 +33,12 @@ export const regular = (): React.ReactNode => (
         <SidebarItem prefix={<Icon type="check" />} text="Bottom tab" />
       </>
     }
-    optionsTop={<a href="hello">Hello world</a>}
+    optionsTop={
+      <>
+        <OptionsbarItem text="Organizations" />
+
+        <OptionsbarItem text="Company profile" disabled />
+      </>
+    }
   />
 );
