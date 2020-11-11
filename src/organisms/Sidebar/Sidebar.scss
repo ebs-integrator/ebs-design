@@ -1,0 +1,75 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+.ebs-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: rem(210px);
+  height: 100vh;
+  border-right: 1px solid #e9e8e5;
+  transition: width 0.2s;
+  background: $simple-white;
+  z-index: 5;
+
+  @include mq($until: small-desktop) {
+    padding-top: rem(80px);
+
+    &.ebs-sidebar-mobile {
+      &-closed,
+      &-opened {
+        transition: 0.2s;
+        padding-top: 0;
+      }
+
+      &-closed {
+        transform: translateX(-100%);
+      }
+
+      &-opened {
+        width: rem(210px) !important;
+        transform: translateX(0);
+      }
+    }
+
+    .ebs-sidebar-mask {
+      display: block !important;
+    }
+  }
+
+  &.ebs-sidebar {
+    &-toggled {
+      overflow: hidden;
+      width: rem(57px);
+
+      .ebs-sidebar-item {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .ebs-sidebar-bottom {
+    background-color: $simple-white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-top: rem(20px);
+    padding-bottom: rem(20px);
+
+    @include mq($until: small-desktop) {
+      padding-bottom: rem(120px);
+    }
+  }
+}
+
+.ebs-sidebar-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($simple-black, 0.5);
+  transition: background-color 0.2s;
+  z-index: 4;
+}

@@ -74,6 +74,11 @@ a {
   text-decoration: none;
 }
 
+b,
+strong {
+  @include fontBold;
+}
+
 .hide {
   display: none;
 }
@@ -88,14 +93,20 @@ a {
   }
 }
 
-.mb {
-  &-30 {
-    margin-bottom: rem(30px);
+.m {
+  &-15 {
+    margin: rem(15px);
   }
 }
 
 .mr {
   &-15 {
     margin-right: rem(15px);
+  }
+}
+
+.mb {
+  &-30 {
+    margin-bottom: rem(30px);
   }
 }

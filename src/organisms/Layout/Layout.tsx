@@ -1,0 +1,82 @@
+import * as React from 'react';
+import { Sidebar } from 'organisms';
+import { Icon } from 'atoms';
+
+import './Layout.scss';
+
+interface Props {
+  contentClass?: string;
+  className?: string;
+  title?: React.ReactNode;
+  leftSide?: React.ReactNode;
+  rightSide?: React.ReactNode;
+  sidebarTop?: React.ReactNode;
+  sidebarBottom?: React.ReactNode;
+}
+
+export const Layout: React.FC<Props> = ({
+  contentClass = '',
+  className = '',
+  title,
+  leftSide,
+  rightSide,
+  children,
+  sidebarTop,
+  sidebarBottom,
+}) => {
+  const [toggled, setToggled] = React.useState(false);
+  // const [toggled, setToggled] = React.useState(`${load('toggled')}` === 'true');
+  const [mobileOpened, setMobileOpened] = React.useState(false);
+
+  const onToggle = (): void =>
+    setToggled((s) => {
+      // save('toggled', `${!s}`, { path: '/' });
+
+      return !s;
+    });
+
+  const onToggleMobile = (): void => setMobileOpened((s) => !s);
+
+  return (
+    <div
+      className={`ebs-layout ebs-layout-mobile-${mobileOpened ? 'opened' : 'closed'} ebs-layout-${
+        toggled ? 'toggled' : 'untoggled'
+      } ${className}`}
+    >
+      <div className="ebs-layout-top-bar">
+        {/* mobile part */}
+        <div className="ebs-layout-top-bar-mobile">
+          <div className="ebs-layout-top-bar-mobile-toggler" onClick={onToggleMobile}>
+            <Icon type="menu-fold" />
+          </div>
+        </div>
+        {/* mobile part */}
+
+        {title && <div className="ebs-layout-top-bar-title">{title}</div>}
+
+        {leftSide && <div className="ebs-layout-top-bar-left">{leftSide}</div>}
+
+        <div className="ebs-layout-top-bar-right">{rightSide}</div>
+      </div>
+
+      <Sidebar
+        toggled={toggled}
+        opened={mobileOpened}
+        onCloseMenu={onToggleMobile}
+        onToggleMenu={onToggle}
+        top={sidebarTop}
+        bottom={sidebarBottom}
+      />
+
+      <div className="ebs-layout-content-wrapper">
+        <div className={`ebs-layout-content ${contentClass}`}>{children}</div>
+      </div>
+
+      <div className="ebs-layout-footer">
+        <span>
+          Designed by <b>EBS Integrator</b>
+        </span>
+      </div>
+    </div>
+  );
+};

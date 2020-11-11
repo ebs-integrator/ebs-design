@@ -18,6 +18,7 @@ interface Props {
   className?: string;
   form?: string;
   icon?: string;
+  block?: boolean;
 }
 
 export const Button: React.FC<Props> = ({
@@ -28,6 +29,7 @@ export const Button: React.FC<Props> = ({
   size = 'large',
   type = 'ghost',
   loading,
+  block,
   ...props
 }) => {
   const [pulse, setPulse] = React.useState<boolean>(false);
@@ -55,9 +57,9 @@ export const Button: React.FC<Props> = ({
 
   return (
     <div
-      className={`ebs-button-wrapper ebs-button-size-${size} ebs-button-type-${props.disabled ? 'disabled' : type} ${
-        prefix !== undefined ? 'has-prefix' : ''
-      } ${className}`}
+      className={`ebs-button-wrapper ebs-button-size-${size} ebs-button-type-${props.disabled ? 'disabled' : type}${
+        prefix !== undefined ? ' has-prefix' : ''
+      }${block ? ' block' : ''} ${className}`}
       onClick={onClickHandler}
       role="presentation"
     >

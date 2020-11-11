@@ -1,6 +1,12 @@
 @import './mixins/index';
 @import './palette';
 
+.sb-show-main {
+  .ebs-layout {
+    margin: -1rem;
+  }
+}
+
 .storybook-rows {
   display: flex;
 

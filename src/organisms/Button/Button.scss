@@ -21,6 +21,11 @@
     }
   }
 
+  &.block {
+    width: 100%;
+    display: block;
+  }
+
   // button size
   &.ebs-button-size {
     &-large {

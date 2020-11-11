@@ -61,9 +61,7 @@ export const Icon: React.FC<Props> = ({ onClick, type, className = '', ...props 
         </svg>
       );
     case 'arrow-outlined-top':
-    case 'arrow-outlined-right':
     case 'arrow-outlined-bottom':
-    case 'arrow-outlined-left':
       return (
         <svg
           width="1em"
@@ -74,7 +72,13 @@ export const Icon: React.FC<Props> = ({ onClick, type, className = '', ...props 
           onClick={onClick}
           {...props}
         >
-          <path d="M1 5L5 0.999999L9 5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          {type === 'arrow-outlined-top' && (
+            <path d="M1 5L5 0.999999L9 5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          )}
+
+          {type === 'arrow-outlined-bottom' && (
+            <path d="M9 1L5 5L1 1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          )}
         </svg>
       );
     case 'check':
@@ -147,6 +151,37 @@ export const Icon: React.FC<Props> = ({ onClick, type, className = '', ...props 
           />
 
           <path d="M14 14L10 10" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case 'menu-fold':
+      return (
+        <svg
+          width="1em"
+          height="1em"
+          viewBox="0 0 24 24"
+          fill="none"
+          className={`ebs-icon ebs-icon-${type} ${className}`}
+          onClick={onClick}
+          {...props}
+        >
+          <path d="M4 6H20" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M4 12H14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M3.81836 18H20.182" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case 'close':
+      return (
+        <svg
+          width="1em"
+          height="1em"
+          viewBox="0 0 16 16"
+          fill="none"
+          className={`ebs-icon ebs-icon-${type} ${className}`}
+          onClick={onClick}
+          {...props}
+        >
+          <path d="M12 4L4 12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M4 4L12 12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
     default:

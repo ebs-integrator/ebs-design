@@ -8,3 +8,6 @@ export { Checkbox } from './Checkbox/Checkbox';
 export { CheckboxGroup } from './Checkbox/CheckboxGroup';
 export { InputSearch } from './InputSearch/InputSearch';
 export { Table } from './Table/Table';
+export { Layout } from './Layout/Layout';
+export { Sidebar } from './Sidebar/Sidebar';
+export { SidebarItem } from './SidebarItem/SidebarItem';
