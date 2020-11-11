@@ -26,6 +26,15 @@
   }
 }
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @mixin fadeBackground($name, $color) {
   @keyframes #{$name} {
     from {

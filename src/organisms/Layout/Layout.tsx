@@ -24,13 +24,12 @@ export const Layout: React.FC<Props> = ({
   sidebarTop,
   sidebarBottom,
 }) => {
-  const [toggled, setToggled] = React.useState(false);
-  // const [toggled, setToggled] = React.useState(`${load('toggled')}` === 'true');
+  const [toggled, setToggled] = React.useState(localStorage.getItem('toggled') === 'true');
   const [mobileOpened, setMobileOpened] = React.useState(false);
 
   const onToggle = (): void =>
     setToggled((s) => {
-      // save('toggled', `${!s}`, { path: '/' });
+      localStorage.setItem('toggled', `${!s}`);
 
       return !s;
     });
@@ -38,11 +37,7 @@ export const Layout: React.FC<Props> = ({
   const onToggleMobile = (): void => setMobileOpened((s) => !s);
 
   return (
-    <div
-      className={`ebs-layout ebs-layout-mobile-${mobileOpened ? 'opened' : 'closed'} ebs-layout-${
-        toggled ? 'toggled' : 'untoggled'
-      } ${className}`}
-    >
+    <div className={`ebs-layout ebs-layout-${toggled ? 'toggled' : 'untoggled'} ${className}`}>
       <div className="ebs-layout-top-bar">
         {/* mobile part */}
         <div className="ebs-layout-top-bar-mobile">

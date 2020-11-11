@@ -31,10 +31,6 @@
         transform: translateX(0);
       }
     }
-
-    .ebs-sidebar-mask {
-      display: block !important;
-    }
   }
 
   &.ebs-sidebar {
@@ -42,7 +38,13 @@
       overflow: hidden;
       width: rem(57px);
 
-      .ebs-sidebar-item {
+      .ebs-sidebar-label {
+        animation: fadeOut 0.1s forwards;
+        white-space: nowrap;
+      }
+
+      .ebs-sidebar-item .ebs-sidebar-text {
+        animation: fadeOut 0.1s forwards;
         white-space: nowrap;
       }
     }
@@ -70,6 +72,6 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba($simple-black, 0.5);
-  transition: background-color 0.2s;
   z-index: 4;
+  animation: fadeIn 0.3s forwards;
 }

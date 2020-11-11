@@ -119,6 +119,11 @@
 
     // 58px
     height: calc(100vh - 3.87778rem);
+
+    @include mq($until: small-desktop) {
+      margin-top: 0;
+      height: 100vh;
+    }
   }
 
   .ebs-layout-content-wrapper,

@@ -1,11 +1,14 @@
 import * as React from 'react';
 import AnimateHeight from 'react-animate-height';
-import { Icon } from 'atoms';
+import { Icon, Label } from 'atoms';
 
 import './SidebarItem.scss';
 
 interface TabProps {
   className?: string;
+  labelClass?: string;
+  optionsClass?: string;
+  label?: React.ReactNode;
   prefix?: React.ReactNode;
   invert?: boolean;
   text?: React.ReactNode;
@@ -17,6 +20,9 @@ interface TabProps {
 
 export const SidebarItem: React.FC<TabProps> = ({
   className = '',
+  labelClass = '',
+  optionsClass = '',
+  label,
   active,
   prefix,
   invert,
@@ -36,17 +42,21 @@ export const SidebarItem: React.FC<TabProps> = ({
   );
 
   const onClickHandler = (): void => {
-    if (options !== undefined) {
-      setCollapsed((s) => !s);
-    }
+    if (!disabled) {
+      if (options !== undefined) {
+        setCollapsed((s) => !s);
+      }
 
-    if (onClick !== undefined) {
-      onClick();
+      if (onClick !== undefined) {
+        onClick();
+      }
     }
   };
 
   return (
     <>
+      {label && <Label className={`ebs-sidebar-label ${labelClass}`} text={label} />}
+
       <div className={classNames} onClick={onClickHandler}>
         {prefix && <div className="ebs-sidebar-prefix">{prefix}</div>}
 
@@ -60,7 +70,7 @@ export const SidebarItem: React.FC<TabProps> = ({
       </div>
 
       <AnimateHeight duration={150} height={collapsed ? 'auto' : 0}>
-        <div className="ebs-sidebar-options">{options}</div>
+        <div className={`ebs-sidebar-options ${optionsClass}`}>{options}</div>
       </AnimateHeight>
     </>
   );

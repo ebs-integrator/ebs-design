@@ -15,11 +15,13 @@ export const regular = (): React.ReactNode => (
     sidebarTop={
       <>
         <SidebarItem
+          label="Category 1"
           prefix={<Icon type="search" />}
           text="Top parent tab"
           options={
             <>
               <SidebarItem text="Child tab" />
+              <SidebarItem text="Disabled Child tab" disabled />
             </>
           }
         />
