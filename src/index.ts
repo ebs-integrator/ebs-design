@@ -13,3 +13,7 @@ export {
   Checkbox,
   CheckboxGroup,
 } from './organisms';
+
+// Features
+export { Optionsbar, OptionsbarItem } from './features/layout/atoms';
+export { Layout, Sidebar, SidebarItem } from './features/layout/organisms';
