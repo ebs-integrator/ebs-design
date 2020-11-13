@@ -18,7 +18,7 @@
 .picker-container {
   position: absolute;
   flex-direction: column-reverse;
-  background: #fff;
+  background: $simple-white;
   border: inherit;
   transform: translate3d(-50%, rem(55px, 0));
   max-width: rem(600px);

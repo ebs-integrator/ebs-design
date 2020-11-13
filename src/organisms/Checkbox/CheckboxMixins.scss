@@ -1,0 +1,21 @@
+@import '../../styles/mixins/index';
+@import '../../styles/palette';
+
+// TODO use these in Checkbox.scss
+
+@mixin checkbox-hover() {
+  border-color: $primary-500;
+
+  &:before {
+    background-color: $primary-100;
+  }
+}
+
+@mixin checkbox-checked-hover() {
+  border-color: $primary-500;
+  background-color: $primary-500;
+
+  &:before {
+    background-color: $primary-100;
+  }
+}

@@ -7,7 +7,7 @@
   top: 0;
   width: rem(192px);
   height: 100vh;
-  border-right: 1px solid #e9e8e5;
+  border-right: 1px solid $grey-200;
   transition: width 0.2s;
   background: $simple-white;
   z-index: 5;

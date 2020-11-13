@@ -46,11 +46,11 @@
           position: relative;
           height: rem(58px);
           width: rem(58px);
-          border-right: 1px solid #e9e8e5;
+          border-right: 1px solid $grey-200;
           cursor: pointer;
 
           &:hover {
-            background-color: #f4f3f2;
+            background-color: $primary-000;
           }
 
           .ebs-icon {
@@ -70,7 +70,7 @@
 
   .ebs-layout-top-bar,
   .ebs-layout-footer {
-    background-color: #fff;
+    background-color: $simple-white;
 
     &-top,
     &-bottom {
@@ -82,7 +82,7 @@
     right: 0;
     top: 0;
     position: fixed;
-    border-bottom: 1px solid #e9e8e5;
+    border-bottom: 1px solid $grey-200;
     height: rem(58px);
     display: flex;
     align-items: center;

@@ -22,6 +22,7 @@ export interface InputProps {
   loading?: boolean;
   disabled?: boolean;
   width?: number | string;
+  autoFocus?: boolean;
   className?: string;
   containerClass?: string;
 }
@@ -42,6 +43,7 @@ export const Input = React.forwardRef<any, InputProps>(
       loading,
       disabled,
       width,
+      autoFocus,
       className = '',
       containerClass = '',
       ...props
@@ -104,6 +106,7 @@ export const Input = React.forwardRef<any, InputProps>(
               name={name}
               ref={ref}
               type={type}
+              autoFocus={autoFocus}
               className="ebs-input"
               value={value || ''}
               onChange={onClickHandler}

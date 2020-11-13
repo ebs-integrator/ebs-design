@@ -3,6 +3,7 @@
 
 // Label
 .ebs-label {
+  position: relative;
   @include fontRegular;
 
   &.ebs-label {
@@ -26,26 +27,62 @@
     &-success {
       color: $semantic-success-500;
       border-color: $semantic-success-500;
+
+      .ebs-label-prefix svg path,
+      .ebs-label-suffix svg path {
+        stroke: $semantic-success-500;
+      }
     }
 
     &-warning {
       color: $semantic-warning-500;
       border-color: $semantic-warning-500;
+
+      .ebs-label-prefix svg path,
+      .ebs-label-suffix svg path {
+        stroke: $semantic-warning-500;
+      }
     }
 
     &-danger {
       color: $semantic-danger-500;
       border-color: $semantic-danger-500;
+
+      .ebs-label-prefix svg path,
+      .ebs-label-suffix svg path {
+        stroke: $semantic-danger-500;
+      }
     }
 
     &-info {
       color: $semantic-info-500;
       border-color: $semantic-info-500;
+
+      .ebs-label-prefix svg path,
+      .ebs-label-suffix svg path {
+        stroke: $semantic-info-500;
+      }
     }
 
     &-text {
       color: $font-text-2;
       border-color: $font-text-2;
+
+      .ebs-label-prefix svg path,
+      .ebs-label-suffix svg path {
+        stroke: $font-text-2;
+      }
+    }
+
+    &-primary {
+      background-color: $primary-000;
+      color: $primary-500;
+      border-color: $primary-500;
+
+      .ebs-label-prefix svg path,
+      .ebs-label-suffix svg path {
+        stroke: $primary-500;
+      }
     }
   }
 
@@ -53,5 +90,43 @@
     cursor: not-allowed;
     color: $grey-500;
     border-color: $grey-500;
+
+    .ebs-label-prefix svg path,
+    .ebs-label-suffix svg path {
+      stroke: $grey-500;
+    }
+  }
+
+  &.has-prefix,
+  &.has-prefix.ebs-label-circle {
+    padding-left: rem(22.5px);
+  }
+
+  &.has-suffix,
+  &.has-suffix.ebs-label-circle {
+    padding-right: rem(27.5px);
+  }
+
+  .ebs-label-prefix,
+  .ebs-label-suffix {
+    position: absolute;
+    top: calc(50% + 1px);
+    transform: translateY(-50%);
+
+    .ebs-icon-close:hover svg {
+      opacity: 0.5;
+    }
+
+    svg {
+      font-size: rem(12px);
+    }
+  }
+
+  .ebs-label-prefix {
+    left: rem(7.5px);
+  }
+
+  .ebs-label-suffix {
+    right: rem(7.5px);
   }
 }

@@ -11,8 +11,9 @@ export type InputSearchStyleType = 'stroke' | 'fill';
 
 interface Props {
   className?: string;
-  iconAlign?: InputSearchIconAlign;
   styleType?: InputSearchStyleType;
+  iconAlign?: InputSearchIconAlign;
+  autoFocus?: boolean;
   onSearch?: (value: string) => void;
   value?: string;
   placeholder?: string;
@@ -25,6 +26,7 @@ export const InputSearch: React.FC<Props> = ({
   className = '',
   styleType = 'stroke',
   iconAlign = 'suffix',
+  autoFocus,
   onSearch,
   value: $value,
   placeholder,
@@ -72,6 +74,7 @@ export const InputSearch: React.FC<Props> = ({
     >
       <Input
         className="ebs-input-search"
+        autoFocus={autoFocus}
         {...{
           [`onClick${capitalize(iconAlign)}`]: onSearchHandler,
           [iconAlign]: <Icon type="search" className="cursor" />,

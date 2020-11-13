@@ -1,3 +1,5 @@
+@import '../palette';
+
 @mixin hiddenScroll {
   scrollbar-color: transparent transparent;
   scrollbar-width: none;
@@ -17,5 +19,27 @@
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
+  }
+}
+
+@mixin greyScroll {
+  scrollbar-color: transparent $grey-200;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: rem(3px);
+    height: rem(3px);
+    background: transparent;
+    border-radius: 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $grey-200;
+    border-radius: 50%;
+  }
+
+  &::-webkit-scrollbar {
+    width: rem(3px);
+    height: rem(3px);
   }
 }

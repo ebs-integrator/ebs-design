@@ -1,0 +1,86 @@
+@import '../../../../styles/mixins/index';
+@import '../../../../styles/palette';
+
+@import '../../../../organisms/Checkbox/CheckboxMixins';
+
+.ebs-select-dropdown-item {
+  position: relative;
+  padding: rem(6px 8px);
+  border-radius: rem(4px);
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &.has-prefix {
+    padding-left: rem(32.5px);
+  }
+
+  &.active {
+    .ebs-select-dropdown-item-text {
+      color: $primary-500;
+    }
+
+    .ebs-select-dropdown-item-prefix path,
+    .ebs-select-dropdown-item-suffix path {
+      stroke: $primary-500;
+    }
+  }
+
+  &.selected {
+    background-color: $primary-000;
+
+    .ebs-select-dropdown-item-suffix .ebs-checkbox-wrapper .ebs-checkbox,
+    .ebs-select-dropdown-item-prefix .ebs-checkbox-wrapper .ebs-checkbox {
+      @include checkbox-hover;
+    }
+  }
+
+  &:hover {
+    background-color: $primary-000;
+
+    .ebs-select-dropdown-item-text {
+      color: $primary-500;
+    }
+
+    .ebs-select-dropdown-item-suffix,
+    .ebs-select-dropdown-item-prefix {
+      path {
+        stroke: $primary-500;
+      }
+
+      .ebs-checkbox-wrapper .ebs-checkbox,
+      .ebs-checkbox-wrapper .ebs-checkbox {
+        @include checkbox-hover;
+      }
+
+      .ebs-checkbox-wrapper .ebs-checkbox-input:checked ~ .ebs-checkbox,
+      .ebs-checkbox-wrapper .ebs-checkbox-input:checked ~ .ebs-checkbox {
+        @include checkbox-checked-hover;
+      }
+    }
+  }
+
+  .ebs-select-dropdown-item-text {
+    color: $font-text-2;
+    font-size: rem(14px);
+    line-height: 140%;
+  }
+
+  .ebs-select-dropdown-item-prefix,
+  .ebs-select-dropdown-item-suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    path {
+      stroke: $font-text-2;
+    }
+  }
+
+  .ebs-select-dropdown-item-prefix {
+    left: rem(10px);
+  }
+
+  .ebs-select-dropdown-item-suffix {
+    right: rem(10px);
+  }
+}
