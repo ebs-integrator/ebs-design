@@ -47,7 +47,10 @@ export const InputSelect: React.FC<Props> = ({
 
   const $value = React.useMemo(() => (hasExternalValue ? value : scopeValue), [value, scopeValue, hasExternalValue]);
 
-  const isValueArray = React.useMemo(() => Array.isArray($value), [$value]);
+  const hasValue = React.useMemo(() => {
+    const isValueArray = Array.isArray($value);
+    return (!isValueArray && $value !== undefined) || (isValueArray && $value.length > 0);
+  }, [$value]);
 
   const textValue = React.useMemo(() => {
     if (options) {
@@ -111,9 +114,9 @@ export const InputSelect: React.FC<Props> = ({
       {openDropdown && <Mask onClick={onToggleOpenDropdown} />}
 
       <div
-        className={`ebs-select-input-wrapper ebs-select-input-mode-${mode}${
-          (!isValueArray && $value !== undefined) || (isValueArray && $value.length > 0) ? ' active' : ''
-        }${hasError ? ' has-error' : ''}${disabled ? ' disabled' : ''} ${className}`}
+        className={`ebs-select-input-wrapper ebs-select-input-mode-${mode}${hasValue ? ' active' : ''}${
+          hasError ? ' has-error' : ''
+        }${disabled ? ' disabled' : ''} ${className}`}
       >
         <Label text={label} disabled={disabled} />
 
@@ -139,6 +142,14 @@ export const InputSelect: React.FC<Props> = ({
                   : textValue
                 : placeholder}
             </div>
+
+            {hasValue && textValue && mode === 'multiple' && (
+              <>
+                <div className="ebs-select-input-transition" />
+
+                <div className="ebs-select-input-count">{textValue.length}</div>
+              </>
+            )}
 
             <div className="ebs-select-input-suffix">
               <Icon type={`arrow-${openDropdown ? 'top' : 'bottom'}`} />

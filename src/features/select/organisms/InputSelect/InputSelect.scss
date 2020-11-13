@@ -25,6 +25,10 @@
     }
   }
 
+  &.active.ebs-select-input-mode-multiple .ebs-select-input-value {
+    padding-right: rem(75px);
+  }
+
   .ebs-select-input-dropdown-wrapper {
     position: relative;
 
@@ -37,7 +41,7 @@
 
       .ebs-select-input-value {
         color: $font-text-3;
-
+        overflow: auto hidden;
         white-space: nowrap;
         @include hiddenScroll;
 
@@ -53,6 +57,30 @@
             margin-right: rem(4px);
           }
         }
+      }
+
+      .ebs-select-input-transition {
+        width: rem(90px);
+        height: calc(100% - 2px);
+        margin: 1px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-top-right-radius: rem(4px);
+        border-bottom-right-radius: rem(4px);
+        box-shadow: inset -90px 0px 15px -12px rgba($simple-white, 1);
+      }
+
+      .ebs-select-input-count {
+        position: absolute;
+        right: (35px);
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: $primary-500;
+        color: $simple-white;
+        font-size: rem(12px);
+        border-radius: rem(4px);
+        padding: rem(5px 8px);
       }
 
       .ebs-select-input-suffix {
