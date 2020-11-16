@@ -59,3 +59,28 @@
     margin-right: rem(25px);
   }
 }
+
+.storybook-icon-items {
+  display: flex;
+  flex-wrap: wrap;
+
+  .storybook-icon-item {
+    width: 18.486%;
+    margin: rem(12.5px);
+    padding: rem(22.5px 12.5px);
+    border-radius: rem(8px);
+    border: 1px solid $primary-100;
+    text-align: center;
+
+    .storybook-icon svg {
+      font-size: rem(20px);
+    }
+
+    .storybook-icon-name {
+      font-size: rem(12px);
+      color: $font-text-3;
+      @include fontMedium;
+      margin-top: rem(25px);
+    }
+  }
+}

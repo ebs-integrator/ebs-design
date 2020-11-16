@@ -1,5 +1,5 @@
-import { Icon } from 'atoms';
 import * as React from 'react';
+import { Icon } from 'atoms';
 import { Chips } from './Chips';
 
 export default {
