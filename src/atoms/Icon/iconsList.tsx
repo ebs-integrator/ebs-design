@@ -28,4 +28,5 @@ export const iconsList = [
   'euro',
   'refresh',
   'star',
+  'globe',
 ];

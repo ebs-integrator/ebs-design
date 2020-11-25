@@ -30,35 +30,12 @@ export const Button: React.FC<Props> = ({
   block,
   ...props
 }) => {
-  const [pulse, setPulse] = React.useState<boolean>(false);
-  const timer = React.useRef<NodeJS.Timeout>();
-
-  React.useEffect(() => {
-    return (): void => {
-      if (timer.current !== undefined) {
-        clearTimeout(timer.current);
-      }
-    };
-  }, []);
-
-  const onClickHandler = (): void => {
-    setPulse(true);
-
-    timer.current = setTimeout(() => {
-      setPulse(false);
-    }, 1000);
-
-    if (onClick !== undefined) {
-      return onClick();
-    }
-  };
-
   return (
     <div
       className={`ebs-button-wrapper ebs-button-size-${size} ebs-button-type-${props.disabled ? 'disabled' : type}${
         prefix !== undefined ? ' has-prefix' : ''
       }${block ? ' block' : ''} ${className}`}
-      onClick={onClickHandler}
+      onClick={onClick}
       role="presentation"
     >
       {prefix ? (
@@ -75,8 +52,6 @@ export const Button: React.FC<Props> = ({
         disabled={props.disabled || loading}
         {...props}
       />
-
-      {pulse ? <div className="ebs-button-pulse" /> : null}
     </div>
   );
 };

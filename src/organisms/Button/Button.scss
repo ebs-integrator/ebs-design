@@ -1,6 +1,3 @@
-// pulses
-@include pulse('regularPulse', #000);
-
 // fade
 @include fadeBackground('regularFade', #000);
 
@@ -11,17 +8,6 @@
   border-radius: rem(4px);
   transition: 0.3s ease;
   border: 1px solid transparent;
-
-  &.has-prefix {
-    .ebs-button {
-      padding-left: rem(30px);
-    }
-  }
-
-  &.block {
-    width: 100%;
-    display: block;
-  }
 
   // button size
   &.ebs-button-size {
@@ -75,10 +61,6 @@
         border-color: $primary-700;
         background: $primary-700;
       }
-
-      .ebs-button-pulse {
-        animation: simplePulse 1s forwards;
-      }
     }
 
     &-fill {
@@ -107,10 +89,6 @@
         & .ebs-button {
           color: $simple-white;
         }
-      }
-
-      .ebs-button-pulse {
-        animation: simplePulse 1s forwards;
       }
     }
 
@@ -141,10 +119,6 @@
           color: $simple-white;
         }
       }
-
-      .ebs-button-pulse {
-        animation: simplePulse 1s forwards;
-      }
     }
 
     &-text {
@@ -171,10 +145,6 @@
           color: $primary-700;
         }
       }
-
-      .ebs-button-pulse {
-        animation: simplePulse 1s forwards;
-      }
     }
 
     &-disabled {
@@ -184,11 +154,18 @@
         cursor: not-allowed;
         color: $grey-500;
       }
-
-      .ebs-button-pulse {
-        animation: simplePulse 1s forwards;
-      }
     }
+  }
+
+  &.has-prefix {
+    .ebs-button {
+      padding-left: rem(30px);
+    }
+  }
+
+  &.block {
+    width: 100%;
+    display: block;
   }
 
   .ebs-button-loading {
@@ -212,18 +189,6 @@
       top: calc(50% - 7.5px);
       transform: translate(-50%, -50%);
     }
-  }
-
-  .ebs-button-pulse {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    pointer-events: none;
-    border-radius: rem(2px);
-    margin: 0 !important;
-    padding: 0 !important;
   }
 
   .ebs-button-prefix {
