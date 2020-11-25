@@ -1,15 +1,20 @@
-@import 'styles/global-styles';
+@import './global-styles';
 
 // atoms
-@import 'atoms/LoaderSpinner/LoaderSpinner', 'atoms/Icon/Icon', 'atoms/Label/Label', 'atoms/Extra/Extra',
-  'atoms/Switch/Switch', 'atoms/Chips/Chips', 'atoms/Radio/Radio', 'atoms/Tooltip/Tooltip', 'atoms/Card/Card';
+@import '../atoms/LoaderSpinner/LoaderSpinner', '../atoms/Icon/Icon', '../atoms/Label/Label', '../atoms/Extra/Extra',
+  '../atoms/Switch/Switch', '../atoms/Chips/Chips', '../atoms/Radio/Radio', '../atoms/Tooltip/Tooltip',
+  '../atoms/Card/Card';
 
 // organisms
-@import 'organisms/Button/Button', 'organisms/Input/Input', 'organisms/Stepper/Stepper', 'organisms/Textarea/Textarea',
-  'organisms/Loader/Loader', 'organisms/Calendar/Calendar', 'organisms/InputPhone/InputPhone',
-  'organisms/Checkbox/Checkbox', 'organisms/InputSearch/InputSearch', 'organisms/Form/Form', 'organisms/Table/Table';
+@import '../organisms/Button/Button', '../organisms/Input/Input', '../organisms/Stepper/Stepper',
+  '../organisms/Textarea/Textarea', '../organisms/Loader/Loader', '../organisms/Calendar/Calendar',
+  '../organisms/InputPhone/InputPhone', '../organisms/Checkbox/Checkbox', '../organisms/InputSearch/InputSearch',
+  '../organisms/Form/Form', '../organisms/Table/Table';
 
 // features
-@import 'features/layout/atoms/Optionsbar/Optionsbar', 'features/layout/atoms/OptionsbarItem/OptionsbarItem',
-  'features/layout/organisms/Layout/Layout', 'features/layout/organisms/Sidebar/Sidebar',
-  'features/layout/organisms/SidebarItem/SidebarItem';
+@import '../features/layout/atoms/Optionsbar/Optionsbar', '../features/layout/atoms/OptionsbarItem/OptionsbarItem',
+  '../features/layout/organisms/Layout/Layout', '../features/layout/organisms/Sidebar/Sidebar',
+  '../features/layout/organisms/SidebarItem/SidebarItem';
+
+@import '../features/select/organisms/SelectDropdownItem/SelectDropdownItem',
+  '../features/select/organisms/SelectDropdown/SelectDropdown', '../features/select/organisms/InputSelect/InputSelect';

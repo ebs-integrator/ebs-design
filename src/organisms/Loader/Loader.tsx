@@ -2,8 +2,6 @@ import * as React from 'react';
 import { LoaderSpinner } from 'atoms';
 import { SpinnerSize } from 'atoms/LoaderSpinner/LoaderSpinner';
 
-import './Loader.scss';
-
 export interface Props {
   fade?: boolean;
   size?: SpinnerSize;

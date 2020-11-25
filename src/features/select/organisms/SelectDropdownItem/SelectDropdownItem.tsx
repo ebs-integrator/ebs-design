@@ -3,8 +3,6 @@ import { Checkbox } from 'organisms';
 
 import { InputSelectMode } from '../InputSelect/InputSelect';
 
-import './SelectDropdownItem.scss';
-
 export interface Props {
   className?: string;
   mode: InputSelectMode;

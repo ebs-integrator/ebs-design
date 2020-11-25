@@ -1,10 +1,10 @@
 {
-  "name": "@react-ebs-ui/example",
+  "name": "react-ebs-ui-example",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@react-ebs-ui": "link:..",
+    "react-ebs-ui": "link:..",
     "react": "link:../node_modules/react",
     "react-dom": ">= 16.8",
     "react-scripts": "^3.4.3"

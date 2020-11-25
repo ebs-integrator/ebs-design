@@ -2,8 +2,6 @@ import * as React from 'react';
 import PhoneInput, { PhoneInputProps } from 'react-phone-input-2';
 import { Extra, Label } from 'atoms';
 
-import './InputPhone.scss';
-
 export interface Props extends PhoneInputProps {
   className?: string;
   dropdownClass?: string;

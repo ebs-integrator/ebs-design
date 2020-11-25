@@ -1,8 +1,5 @@
 @import '~rc-table/assets/index.css';
 
-@import '../../styles/mixins/index';
-@import '../../styles/palette';
-
 .ebs-table {
   @include mq($until: desktop) {
     display: none;

@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import './Optionsbar.scss';
-
 export interface Props {
   className?: string;
   top?: React.ReactNode;

@@ -3,8 +3,6 @@ import { Extra, Label, Icon, Mask } from 'atoms';
 
 import { SelectDropdown } from '..';
 
-import './InputSelect.scss';
-
 export type InputSelectMode = 'single' | 'multiple';
 
 export type Option = {

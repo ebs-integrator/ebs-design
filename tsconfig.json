@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
+    "declaration": true,
+    "isolatedModules": false,
+    "allowJs": false,
+
+    "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -12,10 +16,19 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": "./src",
-    "outDir": "./dist",
-    "rootDir": "./src"
+    "baseUrl": "src"
   },
-  "exclude": ["node_modules", "dist", ".storybook"],
-  "include": ["./src/**/*"]
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "example",
+    "rollup.config.js",
+    ".storybook",
+    "*/throw.ts",
+    "*/setupTests.ts",
+    "*/**/*.stories.tsx",
+    "*/**/*.types.ts"
+  ]
 }

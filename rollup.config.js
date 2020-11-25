@@ -1,10 +1,8 @@
-import path from 'path';
 import copy from 'rollup-plugin-copy-glob';
 import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
-import scss from 'rollup-plugin-scss';
-import alias from 'rollup-plugin-alias';
+import bundleScss from 'rollup-plugin-bundle-scss';
 import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
@@ -29,22 +27,23 @@ export default {
   ],
   plugins: [
     external(),
-    scss(),
+    bundleScss({
+      output: './styles/index.scss',
+    }),
     url(),
     svgr(),
     resolve(),
     typescript({
+      typescript: require('typescript'),
+      objectHashIgnoreUnknownHack: true,
       rollupCommonJSResolveHack: true,
       clean: true,
     }),
-    alias({
-      resolve: ['.ts'],
-      types: path.resolve(__dirname, './src/types.ts'),
-    }),
     copy(
       [
-        { files: 'src/**/*.scss', dest: 'dist' },
-        { files: 'src/resources/**/*.*', dest: 'dist/resources' },
+        { files: 'src/atoms/**/*.scss', dest: 'dist/atoms' },
+        { files: 'src/organisms/**/*.scss', dest: 'dist/organisms' },
+        { files: 'src/features/**/*.scss', dest: 'dist/features' },
       ],
       { verbose: true, watch: true },
     ),

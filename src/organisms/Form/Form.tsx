@@ -3,8 +3,6 @@ import { validate } from 'libs/object/object';
 import { Extra, Label } from 'atoms';
 import { ExtraStatus } from 'atoms/Extra/Extra';
 
-import './Form.scss';
-
 interface Props {
   onSubmit?: () => void;
   className?: string;

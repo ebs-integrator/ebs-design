@@ -6,8 +6,6 @@ import { Animated, Icon } from 'atoms';
 import { SelectDropdownItem } from '..';
 import { InputSelectMode, Option } from '../InputSelect/InputSelect';
 
-import './SelectDropdown.scss';
-
 export interface Props {
   mode: InputSelectMode;
   className?: string;

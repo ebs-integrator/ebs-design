@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Extra, Label, LoaderSpinner } from 'atoms';
 
-import './Input.scss';
-
 export type InputType = 'text' | 'email' | 'password';
 
 export interface InputProps {

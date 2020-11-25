@@ -1,8 +1,6 @@
 import * as React from 'react';
 import InputNumber from 'rc-input-number';
-import { Extra, Label, Icon } from 'atoms';
-
-import './Stepper.scss';
+import { Extra, Label, Icon } from 'atoms/';
 
 export type AlignType = 'left' | 'right';
 

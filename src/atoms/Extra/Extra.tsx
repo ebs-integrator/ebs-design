@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import './Extra.scss';
-
 export type ExtraStatus = 'success' | 'warning' | 'danger' | 'info' | 'text';
 
 export interface Props {

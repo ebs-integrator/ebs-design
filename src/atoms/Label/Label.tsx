@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import './Label.scss';
-
 export type LabelType = 'regular' | 'circle';
 
 export type LabelStatus = 'success' | 'warning' | 'danger' | 'info' | 'text' | 'primary';

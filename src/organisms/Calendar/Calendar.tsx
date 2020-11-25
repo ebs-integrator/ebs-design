@@ -5,8 +5,6 @@ import { Extra, Label } from 'atoms';
 
 import { DateState, LimitTimeState } from './Calendar.types';
 
-import './Calendar.scss';
-
 export { registerLocale } from 'react-datepicker';
 
 export type CalendarType = 'period' | 'date' | 'date-time';

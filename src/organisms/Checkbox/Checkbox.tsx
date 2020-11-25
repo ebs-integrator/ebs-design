@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Icon } from 'atoms';
 
-import './Checkbox.scss';
-
 export type CheckAlign = 'left' | 'right';
 
 export type CheckboxValue = string | number;

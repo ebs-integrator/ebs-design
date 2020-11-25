@@ -3,8 +3,6 @@ import { capitalize } from 'libs/string';
 import { Input } from 'organisms';
 import { Icon } from 'atoms';
 
-import './InputSearch.scss';
-
 export type InputSearchIconAlign = 'prefix' | 'suffix';
 
 export type InputSearchStyleType = 'stroke' | 'fill';

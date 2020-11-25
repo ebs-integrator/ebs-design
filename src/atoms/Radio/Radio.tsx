@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { makeid } from 'libs/string';
 
-import './Radio.scss';
-
 export type RadioAlign = 'left' | 'right';
 
 export interface Option {

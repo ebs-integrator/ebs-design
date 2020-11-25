@@ -2,8 +2,6 @@ import * as React from 'react';
 import AnimateHeight from 'react-animate-height';
 import { Icon, Label } from 'atoms';
 
-import './SidebarItem.scss';
-
 interface TabProps {
   className?: string;
   labelClass?: string;

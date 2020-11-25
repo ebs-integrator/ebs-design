@@ -2,8 +2,6 @@ import * as React from 'react';
 import OldTable from 'rc-table';
 import { Icon } from 'atoms';
 
-import './Table.scss';
-
 const types: ['desc', 'asc'] = ['desc', 'asc'];
 
 export interface Column<T> {

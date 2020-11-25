@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import './Chips.scss';
-
 interface Props {
   className?: string;
   prefix?: React.ReactNode;

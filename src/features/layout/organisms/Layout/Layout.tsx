@@ -3,8 +3,6 @@ import { Icon } from 'atoms';
 
 import { Sidebar } from '../';
 
-import './Layout.scss';
-
 interface Props {
   contentClass?: string;
   className?: string;

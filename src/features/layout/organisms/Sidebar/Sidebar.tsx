@@ -4,8 +4,6 @@ import { Icon } from 'atoms';
 import { Optionsbar } from '../../atoms';
 import { SidebarItem } from '../';
 
-import './Sidebar.scss';
-
 interface Props {
   className?: string;
   toggled?: boolean;

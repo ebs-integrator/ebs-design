@@ -1,3 +1,5 @@
+import './styles/index.scss';
+
 // Atoms
 export { LoaderSpinner, Label, Extra, Icon, Switch, Chips, Radio } from './atoms';
 

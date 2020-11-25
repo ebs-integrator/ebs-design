@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import './OptionsbarItem.scss';
-
 export interface Props {
   className?: string;
   onClick?: () => void;

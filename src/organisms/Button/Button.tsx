@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { LoaderSpinner } from 'atoms';
 
-import './Button.scss';
-
 export type ButtonSize = 'small' | 'medium' | 'large';
 
 export type ButtonType = 'text' | 'primary' | 'fill' | 'ghost';

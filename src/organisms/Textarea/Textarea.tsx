@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Extra, Label } from 'atoms';
 
-import './Textarea.scss';
-
 interface Props {
   className?: string;
   placeholder?: string;

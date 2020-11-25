@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Button, Calendar } from '@react-ebs-ui';
+import { Button, Calendar } from 'react-ebs-ui';
 
 import './index.scss';
 
