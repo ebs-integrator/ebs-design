@@ -16,6 +16,7 @@ export {
   CheckboxGroup,
   Form,
   FormItem,
+  FormItems,
 } from './organisms';
 
 // Features

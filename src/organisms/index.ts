@@ -8,4 +8,4 @@ export { Checkbox } from './Checkbox/Checkbox';
 export { CheckboxGroup } from './Checkbox/CheckboxGroup';
 export { InputSearch } from './InputSearch/InputSearch';
 export { Table } from './Table/Table';
-export { Form, FormItem } from './Form/Form';
+export { Form, FormItem, FormItems } from './Form/Form';
