@@ -28,3 +28,25 @@ export const regular = (): React.ReactNode => (
     </FormItems>
   </Form>
 );
+
+export const inline = (): React.ReactNode => (
+  <Form type="inline">
+    <FormItem label="Text">
+      <Input />
+    </FormItem>
+
+    <FormItem label="Text" extra="This field is required">
+      <Input />
+    </FormItem>
+
+    <FormItems>
+      <FormItem label="Text">
+        <Input />
+      </FormItem>
+
+      <FormItem label="Text" extra="This field is required">
+        <Input />
+      </FormItem>
+    </FormItems>
+  </Form>
+);

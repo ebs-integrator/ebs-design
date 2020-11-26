@@ -74,6 +74,10 @@ a {
   text-decoration: none;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 b,
 strong {
   @include fontBold;

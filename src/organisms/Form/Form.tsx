@@ -3,13 +3,16 @@ import { validate } from 'libs/object/object';
 import { Extra, Label } from 'atoms';
 import { ExtraStatus } from 'atoms/Extra/Extra';
 
+export type FormType = 'regular' | 'inline';
+
 interface Props {
+  type?: FormType;
   onSubmit?: () => void;
   className?: string;
   id?: string;
 }
 
-export const Form: React.FC<Props> = ({ onSubmit, className = '', id, children }) => {
+export const Form: React.FC<Props> = ({ onSubmit, type = 'regular', className = '', id, children }) => {
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     if (e.preventDefault) e.preventDefault();
 
@@ -17,28 +20,29 @@ export const Form: React.FC<Props> = ({ onSubmit, className = '', id, children }
   };
 
   return (
-    <form className={`ebs-form ${className}`} onSubmit={onSubmitHandler} id={id}>
+    <form className={`ebs-form ebs-form-${type} ${className}`} onSubmit={onSubmitHandler} id={id}>
       {children}
     </form>
   );
 };
 
 interface ItemProps {
-  label?: React.ReactNode;
-  className?: string;
   itemClass?: string;
-  style?: any;
+  className?: string;
+  labelWidth?: React.ReactNode;
+  label?: React.ReactNode;
   required?: true;
+  style?: any;
   extraStatus?: ExtraStatus;
   extra?: string | string[];
   error?: string[] | { [key: string]: string[] };
-  column?: boolean;
 }
 
 export const FormItem: React.FC<ItemProps> = ({
-  label,
   itemClass = '',
   className = '',
+  labelWidth,
+  label,
   required,
   style,
   extraStatus: $extraStatus = 'danger',
@@ -53,6 +57,7 @@ export const FormItem: React.FC<ItemProps> = ({
     <div className={`ebs-form-item ${itemClass}`} style={style}>
       {label && (
         <Label
+          style={{ maxWidth: labelWidth }}
           text={
             <>
               {label} {required && <span>*</span>}

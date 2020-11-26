@@ -14,6 +14,7 @@ interface Props {
   submit?: boolean;
   disabled?: boolean;
   className?: string;
+  buttonClass?: string;
   form?: string;
   icon?: string;
   block?: boolean;
@@ -24,6 +25,7 @@ export const Button: React.FC<Props> = ({
   onClick,
   prefix,
   className = '',
+  buttonClass = '',
   size = 'large',
   type = 'ghost',
   loading,
@@ -48,7 +50,7 @@ export const Button: React.FC<Props> = ({
 
       <button
         type={submit ? 'submit' : 'button'}
-        className="ebs-button"
+        className={`ebs-button ${buttonClass}`}
         disabled={props.disabled || loading}
         {...props}
       />

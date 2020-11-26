@@ -1,3 +1,4 @@
+import { $Object } from 'libs/object/object.types';
 import * as React from 'react';
 
 export type LabelType = 'regular' | 'circle';
@@ -8,6 +9,7 @@ export interface Props {
   className?: string;
   type?: LabelType;
   status?: LabelStatus;
+  style?: $Object;
   onClick?: () => void;
   prefix?: React.ReactNode;
   onClickPrefix?: () => void;
@@ -21,6 +23,7 @@ export const Label: React.FC<Props> = ({
   className = '',
   type = 'regular',
   status = 'text',
+  style,
   onClick,
   prefix,
   onClickPrefix,
@@ -38,6 +41,7 @@ export const Label: React.FC<Props> = ({
       className={`ebs-label ebs-label-${type} ebs-label-status-${status}${disabled ? ' disabled' : ''}${
         prefix ? ' has-prefix' : ''
       }${suffix ? ' has-suffix' : ''} ${className}`}
+      style={style}
       onClick={onClick}
     >
       {prefix && (

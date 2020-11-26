@@ -54,6 +54,12 @@
     }
   }
 
+  &.ebs-input-style {
+    &-grey {
+      background-color: $grey-50;
+    }
+  }
+
   .ebs-input-prefix,
   .ebs-input-suffix {
     position: absolute;

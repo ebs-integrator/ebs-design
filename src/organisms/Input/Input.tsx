@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Extra, Label, LoaderSpinner } from 'atoms';
 
+export type InputStyleType = 'white' | 'grey';
 export type InputType = 'text' | 'email' | 'password';
 
 export interface InputProps {
+  styleType?: InputStyleType;
   type?: InputType;
   onClick?: (e: any) => void;
   onChange?: (value: string) => void;
@@ -28,6 +30,7 @@ export interface InputProps {
 export const Input = React.forwardRef<any, InputProps>(
   (
     {
+      styleType = 'white',
       type = 'text',
       onClick,
       onChange,
@@ -73,7 +76,7 @@ export const Input = React.forwardRef<any, InputProps>(
         <div
           className={`ebs-input-wrapper ${value === '' ? 'ebs-input-empty' : ''} ebs-input-wrapper-${
             value ? 'active' : 'unactive'
-          } ebs-input-type-${type}${prefix !== undefined ? ' has-prefix' : ''} ${
+          } ebs-input-type-${type} ebs-input-style-${styleType}${prefix !== undefined ? ' has-prefix' : ''} ${
             suffix !== undefined ? ' has-suffix' : ''
           }${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''} ${className}`}
         >
