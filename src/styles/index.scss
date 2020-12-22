@@ -1,15 +1,18 @@
 @import './global-styles';
 
-// atoms
-@import '../atoms/LoaderSpinner/LoaderSpinner', '../atoms/Icon/Icon', '../atoms/Label/Label', '../atoms/Extra/Extra',
-  '../atoms/Switch/Switch', '../atoms/Chips/Chips', '../atoms/Radio/Radio', '../atoms/Tooltip/Tooltip',
-  '../atoms/Card/Card';
+// components/atoms
+@import '../components/atoms/LoaderSpinner/LoaderSpinner', '../components/atoms/Icon/Icon',
+  '../components/atoms/Label/Label', '../components/atoms/Extra/Extra', '../components/atoms/Switch/Switch',
+  '../components/atoms/Chips/Chips', '../components/atoms/Radio/Radio', '../components/atoms/Tooltip/Tooltip',
+  '../components/atoms/Card/Card';
 
 // organisms
-@import '../organisms/Button/Button', '../organisms/Input/Input', '../organisms/Stepper/Stepper',
-  '../organisms/Textarea/Textarea', '../organisms/Loader/Loader', '../organisms/Calendar/Calendar',
-  '../organisms/InputPhone/InputPhone', '../organisms/Checkbox/Checkbox', '../organisms/InputSearch/InputSearch',
-  '../organisms/Form/Form', '../organisms/Table/Table';
+@import '../components/organisms/Button/Button', '../components/organisms/Input/Input',
+  '../components/organisms/Stepper/Stepper', '../components/organisms/Textarea/Textarea',
+  '../components/organisms/Loader/Loader', '../components/organisms/Calendar/Calendar',
+  '../components/organisms/InputPhone/InputPhone', '../components/organisms/Checkbox/Checkbox',
+  '../components/organisms/InputSearch/InputSearch', '../components/organisms/Form/Form',
+  '../components/organisms/Table/Table';
 
 // features
 @import '../features/layout/atoms/Optionsbar/Optionsbar', '../features/layout/atoms/OptionsbarItem/OptionsbarItem',

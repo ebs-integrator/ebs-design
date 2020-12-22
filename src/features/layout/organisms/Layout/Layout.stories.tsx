@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon } from 'atoms';
+import { Icon } from 'components/atoms';
 
 import { SidebarItem } from '../';
 import { OptionsbarItem } from '../../atoms';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEventListener } from 'hooks';
-import { Input } from 'organisms';
-import { Animated, Icon } from 'atoms';
+import { Input } from 'components/organisms';
+import { Animated, Icon } from 'components/atoms';
 
 import { SelectDropdownItem } from '..';
 import { InputSelectMode, Option } from '../InputSelect/InputSelect';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from 'organisms';
+import { Checkbox } from 'components/organisms';
 
 import { InputSelectMode } from '../InputSelect/InputSelect';
 

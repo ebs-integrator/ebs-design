@@ -1,7 +1,7 @@
 import './styles/index.scss';
 
 // Atoms
-export { LoaderSpinner, Label, Extra, Icon, Switch, Chips, Radio } from './atoms';
+export { LoaderSpinner, Label, Extra, Icon, Switch, Chips, Radio } from './components/atoms';
 
 // Organisms
 export {
@@ -17,7 +17,7 @@ export {
   Form,
   FormItem,
   FormItems,
-} from './organisms';
+} from './components/organisms';
 
 // Features
 export { Optionsbar, OptionsbarItem } from './features/layout/atoms';

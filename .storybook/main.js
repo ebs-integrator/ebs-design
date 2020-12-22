@@ -3,8 +3,8 @@ const { override, useEslintRc } = require('customize-cra');
 
 module.exports = {
   stories: [
-    '../src/atoms/**/*.stories.tsx',
-    '../src/organisms/**/*.stories.tsx',
+    '../src/components/atoms/**/*.stories.tsx',
+    '../src/components/organisms/**/*.stories.tsx',
     '../src/features/**/**/*.stories.tsx',
   ],
   presets: [
