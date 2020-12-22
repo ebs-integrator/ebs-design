@@ -41,8 +41,8 @@ export default {
     }),
     copy(
       [
-        { files: 'src/atoms/**/*.scss', dest: 'dist/atoms' },
-        { files: 'src/organisms/**/*.scss', dest: 'dist/organisms' },
+        { files: 'src/components/atoms/**/*.scss', dest: 'dist/components/atoms' },
+        { files: 'src/components/organisms/**/*.scss', dest: 'dist/components/organisms' },
         { files: 'src/features/**/*.scss', dest: 'dist/features' },
       ],
       { verbose: true, watch: true },
