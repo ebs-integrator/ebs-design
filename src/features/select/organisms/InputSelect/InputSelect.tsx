@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Extra, Label, Icon, Mask } from 'atoms';
+import { Extra, Label, Icon, Mask } from 'components/atoms';
 
 import { SelectDropdown } from '..';
 

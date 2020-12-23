@@ -1,6 +1,6 @@
 import * as React from 'react';
 import AnimateHeight from 'react-animate-height';
-import { Icon, Label } from 'atoms';
+import { Icon, Label } from 'components/atoms';
 
 interface TabProps {
   className?: string;
