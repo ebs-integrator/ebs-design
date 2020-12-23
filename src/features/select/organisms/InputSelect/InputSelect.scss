@@ -1,0 +1,99 @@
+.ebs-select-input-wrapper {
+  &.disabled .ebs-select-input-dropdown-wrapper .ebs-select-input {
+    cursor: not-allowed;
+    border-color: $grey-500;
+
+    .ebs-select-input-value {
+      color: $grey-500;
+    }
+  }
+
+  &.has-error .ebs-select-input-dropdown-wrapper .ebs-select-input {
+    border-color: $semantic-danger-500;
+    background-color: $simple-white;
+  }
+
+  &.active .ebs-select-input-dropdown-wrapper .ebs-select-input {
+    border-color: $primary-500;
+    background-color: $simple-white !important;
+
+    .ebs-select-input-value {
+      color: $font-text-1;
+    }
+  }
+
+  &.active.ebs-select-input-mode-multiple .ebs-select-input-value {
+    padding-right: rem(75px);
+  }
+
+  .ebs-select-input-dropdown-wrapper {
+    position: relative;
+
+    .ebs-select-input {
+      cursor: pointer;
+      padding: rem(11px 10px);
+      border: 1px solid $grey-200;
+      border-radius: rem(4px);
+      font-size: rem(14px);
+
+      .ebs-select-input-value {
+        color: $font-text-3;
+        overflow: auto hidden;
+        white-space: nowrap;
+        @include hiddenScroll;
+
+        .ebs-select-input-label {
+          position: relative;
+          top: rem(-1px);
+          padding-top: rem(4px);
+          padding-bottom: rem(4px);
+          font-size: rem(12px);
+          margin-bottom: 0;
+
+          &:not(:last-child) {
+            margin-right: rem(4px);
+          }
+        }
+      }
+
+      .ebs-select-input-transition {
+        width: rem(90px);
+        height: calc(100% - 2px);
+        margin: 1px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-top-right-radius: rem(4px);
+        border-bottom-right-radius: rem(4px);
+        box-shadow: inset -90px 0px 15px -12px rgba($simple-white, 1);
+      }
+
+      .ebs-select-input-count {
+        position: absolute;
+        right: (35px);
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: $primary-500;
+        color: $simple-white;
+        font-size: rem(12px);
+        border-radius: rem(4px);
+        padding: rem(5px 8px);
+      }
+
+      .ebs-select-input-suffix {
+        position: absolute;
+        right: rem(14px);
+        top: 50%;
+        transform: translateY(-50%);
+
+        .ebs-icon {
+          font-size: rem(10px);
+
+          path {
+            stroke: $font-text-2;
+          }
+        }
+      }
+    }
+  }
+}

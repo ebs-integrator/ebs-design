@@ -1,11 +1,8 @@
-import path from 'path';
 import copy from 'rollup-plugin-copy-glob';
 import typescript from 'rollup-plugin-typescript2';
 import commonjs from 'rollup-plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
-// import postcss from 'rollup-plugin-postcss-modules'
-import alias from 'rollup-plugin-alias';
-import postcss from 'rollup-plugin-postcss';
+import bundleScss from 'rollup-plugin-bundle-scss';
 import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
 import svgr from '@svgr/rollup';
@@ -30,26 +27,32 @@ export default {
   ],
   plugins: [
     external(),
-    postcss({
-      modules: true,
+    bundleScss({
+      output: './styles/index.scss',
     }),
     url(),
     svgr(),
     resolve(),
     typescript({
+      typescript: require('typescript'),
+      objectHashIgnoreUnknownHack: true,
       rollupCommonJSResolveHack: true,
       clean: true,
     }),
-    alias({
-      resolve: ['.ts'],
-      types: path.resolve(__dirname, './src/types.ts'),
-    }),
-    copy([{ files: 'src/index.js.flow', dest: 'dist' }], { verbose: true }),
+    copy(
+      [
+        { files: 'src/components/atoms/**/*.scss', dest: 'dist/components/atoms' },
+        { files: 'src/components/organisms/**/*.scss', dest: 'dist/components/organisms' },
+        { files: 'src/features/**/*.scss', dest: 'dist/features' },
+      ],
+      { verbose: true, watch: true },
+    ),
     commonjs({
       include: 'node_modules/**',
       namedExports: {
-        'node_modules/react-is/index.js': ['isValidElementType'],
+        'node_modules/react-is/index.js': ['isValidElementType', 'isMemo', 'isFragment'],
       },
+      'node_modules/react-dom/index.js': ['render'],
     }),
   ],
 };

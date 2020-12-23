@@ -1,4 +1,5 @@
 import '../src/styles/index.scss';
+import './storybook.scss';
 
 const modalRoot = document.createElement('div');
 modalRoot.setAttribute('id', 'portal');

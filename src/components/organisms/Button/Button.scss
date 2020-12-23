@@ -1,0 +1,235 @@
+// fade
+@include fadeBackground('regularFade', #000);
+
+.ebs-button-wrapper {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  border-radius: rem(4px);
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+
+  // button size
+  &.ebs-button-size {
+    &-large {
+      .ebs-button {
+        padding: rem(10px 20px);
+        font-weight: 700;
+        font-size: rem(14px);
+      }
+    }
+
+    &-medium {
+      .ebs-button {
+        padding: rem(6px 12px);
+        font-weight: 500;
+        font-size: rem(14px);
+      }
+    }
+
+    &-small {
+      .ebs-button {
+        padding: rem(4px 8px);
+        font-weight: 500;
+        font-size: rem(12px);
+      }
+    }
+  }
+
+  // button type (Color)
+  &.ebs-button-type {
+    &-primary {
+      border-color: $primary-500;
+      background: $primary-500;
+
+      .ebs-button {
+        color: $simple-white;
+
+        &:hover {
+          color: $simple-white;
+        }
+      }
+
+      &:hover,
+      &.hover {
+        border-color: $primary-600;
+        background: $primary-600;
+      }
+
+      &:active,
+      &.active {
+        border-color: $primary-700;
+        background: $primary-700;
+      }
+    }
+
+    &-fill {
+      border-color: $primary-100;
+      background: $primary-100;
+
+      .ebs-button {
+        color: $primary-500;
+      }
+
+      &:hover,
+      &.hover {
+        border-color: $primary-500;
+        background: $primary-500;
+
+        & .ebs-button {
+          color: $simple-white;
+        }
+      }
+
+      &:active,
+      &.active {
+        border-color: $primary-600;
+        background: $primary-600;
+
+        & .ebs-button {
+          color: $simple-white;
+        }
+      }
+    }
+
+    &-ghost {
+      background: transparent;
+      border-color: $primary-500;
+
+      .ebs-button {
+        color: $primary-500;
+      }
+
+      &:hover,
+      &.hover {
+        border-color: $primary-500;
+        background: $primary-500;
+
+        & .ebs-button {
+          color: $simple-white;
+        }
+      }
+
+      &:active,
+      &.active {
+        border-color: $primary-600;
+        background: $primary-600;
+
+        & .ebs-button {
+          color: $simple-white;
+        }
+      }
+    }
+
+    &-text {
+      background: transparent;
+
+      .ebs-button {
+        color: $primary-500;
+      }
+
+      &:hover,
+      &.hover {
+        background: transparent;
+
+        & .ebs-button {
+          color: $primary-600;
+        }
+      }
+
+      &:active,
+      &.active {
+        background: transparent;
+
+        & .ebs-button {
+          color: $primary-700;
+        }
+      }
+    }
+
+    &-disabled {
+      background: $grey-200;
+
+      .ebs-button {
+        cursor: not-allowed;
+        color: $grey-500;
+      }
+    }
+  }
+
+  &.has-prefix {
+    .ebs-button {
+      padding-left: rem(30px);
+    }
+  }
+
+  &.block {
+    width: 100%;
+    display: block;
+  }
+
+  .ebs-button-loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: rem(4px);
+    pointer-events: none;
+
+    &.ebs-button-loading {
+      &-regular {
+        animation: regularFade 0.25s forwards;
+      }
+    }
+
+    .ebs-loader-spinner {
+      position: absolute;
+      left: calc(50% - 7.5px);
+      top: calc(50% - 7.5px);
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .ebs-button-prefix {
+    position: absolute;
+    left: rem(10px);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .ebs-button {
+    width: 100%;
+    cursor: pointer;
+    font-size: rem(13px);
+    border-color: transparent;
+    background: transparent;
+    padding: 0;
+    outline: none !important;
+    @include fontBold;
+  }
+}
+
+.ebs-button-group {
+  display: flex;
+  flex-wrap: wrap;
+
+  > .ebs-button-wrapper {
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

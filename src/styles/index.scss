@@ -1,97 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import './global-styles';
 
-@import './mixins/index';
-@import './palette';
+// components/atoms
+@import '../components/atoms/LoaderSpinner/LoaderSpinner', '../components/atoms/Icon/Icon',
+  '../components/atoms/Label/Label', '../components/atoms/Extra/Extra', '../components/atoms/Switch/Switch',
+  '../components/atoms/Chips/Chips', '../components/atoms/Radio/Radio', '../components/atoms/Tooltip/Tooltip',
+  '../components/atoms/Card/Card';
 
-// @include mq-show-breakpoints;
+// organisms
+@import '../components/organisms/Button/Button', '../components/organisms/Input/Input',
+  '../components/organisms/Stepper/Stepper', '../components/organisms/Textarea/Textarea',
+  '../components/organisms/Loader/Loader', '../components/organisms/Calendar/Calendar',
+  '../components/organisms/InputPhone/InputPhone', '../components/organisms/Checkbox/Checkbox',
+  '../components/organisms/InputSearch/InputSearch', '../components/organisms/Form/Form',
+  '../components/organisms/Table/Table';
 
-html,
-body {
-  display: block;
-  font-size: rem(14px);
-  @include fontMedium;
-  color: $font-text-1;
-  cursor: url('../resources/svg/cursor-default.svg'), auto;
+// features
+@import '../features/layout/atoms/Optionsbar/Optionsbar', '../features/layout/atoms/OptionsbarItem/OptionsbarItem',
+  '../features/layout/organisms/Layout/Layout', '../features/layout/organisms/Sidebar/Sidebar',
+  '../features/layout/organisms/SidebarItem/SidebarItem';
 
-  @include mq($until: desktop) {
-    font-size: rem(12px);
-  }
-
-  @include mq($until: small-desktop) {
-    font-size: rem(10px);
-  }
-}
-
-* {
-  box-sizing: border-box;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  padding: 0;
-  cursor: url('../resources/svg/cursor-text.svg'), auto;
-
-  &.size {
-    &-l {
-      font-size: rem(20px);
-    }
-
-    &-m {
-      font-size: rem(18px);
-    }
-
-    &-s {
-      font-size: rem(16px);
-    }
-  }
-}
-
-p,
-span {
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-  cursor: url('../resources/svg/cursor-text.svg'), auto;
-
-  &.size {
-    &-l {
-      font-size: rem(14px);
-    }
-
-    &-m {
-      font-size: rem(12px);
-    }
-
-    &-s {
-      font-size: rem(10px);
-    }
-  }
-}
-
-a {
-  text-decoration: none;
-  cursor: url('../resources/svg/cursor-pointer.svg'), auto;
-}
-
-.cursor {
-  &-default {
-    cursor: url('../resources/svg/cursor-default.svg'), auto;
-  }
-
-  &-pointer {
-    cursor: url('../resources/svg/cursor-pointer.svg'), auto;
-  }
-
-  &-text {
-    cursor: url('../resources/svg/cursor-text.svg'), auto;
-  }
-}
-
-.hide {
-  display: none;
-}
+@import '../features/select/organisms/SelectDropdownItem/SelectDropdownItem',
+  '../features/select/organisms/SelectDropdown/SelectDropdown', '../features/select/organisms/InputSelect/InputSelect';

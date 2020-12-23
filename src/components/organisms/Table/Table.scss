@@ -1,0 +1,267 @@
+@import '~rc-table/assets/index.css';
+
+.ebs-table {
+  @include mq($until: desktop) {
+    display: none;
+  }
+
+  &.ebs-table-size {
+    &-small {
+      td {
+        padding: rem(10px 17.5px);
+      }
+    }
+  }
+
+  .rc-table-content {
+    border: none;
+  }
+
+  .rc-table-expanded-row {
+    .rc-table-cell {
+      box-shadow: none;
+      padding: 0;
+
+      .flex-item {
+        border-bottom: none;
+      }
+    }
+  }
+
+  th,
+  td {
+    border-color: $grey-100;
+    border-right: none;
+    padding: rem(22px 16px);
+
+    &:first-child {
+      border-left: 1px solid $grey-100;
+    }
+
+    &:last-child {
+      border-right: 1px solid $grey-100;
+    }
+  }
+
+  td {
+    @include fontMedium;
+    color: $font-text-2;
+
+    a {
+      color: $primary-500;
+    }
+
+    &.ebs-time-period-cell > div {
+      > .ebs-info {
+        display: inline-block;
+
+        &:not(:first-child) {
+          padding-left: rem(10px);
+
+          .ebs-info-icon {
+            display: none;
+          }
+        }
+
+        &:not(:last-child) {
+          margin-right: rem(10px);
+        }
+      }
+    }
+
+    b,
+    strong {
+      @include fontBold;
+    }
+  }
+
+  .rc-table-thead {
+    tr {
+      th.rc-table-cell {
+        text-transform: uppercase;
+        border-top: 1px solid $grey-100;
+        border-bottom: 2px solid $primary-500;
+        word-wrap: break-word;
+        position: relative;
+        @include fontMedium;
+        text-align: left;
+        background-color: $simple-white;
+        white-space: nowrap;
+        font-size: rem(14px);
+        color: $font-text-1;
+
+        &.rc-table-row-expand-icon-cell + th.rc-table-cell {
+          padding-left: 0;
+        }
+
+        .ebs-table-th-filtered {
+          cursor: pointer;
+          transition: 0.2s;
+
+          .ebs-icon {
+            font-size: rem(10px);
+            margin-left: rem(6px);
+            position: relative;
+            top: 0;
+            transition: 0.2s;
+
+            path {
+              stroke: $font-text-2;
+            }
+          }
+
+          &.ebs-table-th-filtered {
+            &-asc,
+            &-desc {
+              @include fontMedium;
+              color: $font-text-3;
+
+              .ebs-icon path {
+                stroke: $font-text-3;
+              }
+            }
+
+            &-desc .ebs-icon {
+              transform: rotate(180deg);
+            }
+          }
+
+          &:hover {
+            color: $font-text-3;
+
+            .ebs-icon path {
+              stroke: $font-text-3;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .rc-table-tbody {
+    tr {
+      &.rc-table-row {
+        &:hover {
+          &:nth-child(odd) td.rc-table-cell,
+          &:nth-child(even) td.rc-table-cell {
+            background-color: $grey-100;
+          }
+        }
+
+        td.rc-table-cell {
+          transition: 0.2s;
+        }
+
+        &:nth-child(odd) td.rc-table-cell {
+          background-color: $grey-50;
+          font-size: rem(12px);
+        }
+      }
+    }
+  }
+}
+
+.ebs-table-mobile {
+  display: none;
+
+  @include mq($until: desktop) {
+    display: block;
+  }
+
+  .ebs-button-wrapper {
+    width: 100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .ebs-action-wrapper {
+    position: relative;
+  }
+
+  .ebs-table-mobile-item {
+    position: relative;
+    border: 1px solid $grey-100;
+    border-radius: rem(7px);
+    background-color: $simple-white;
+    display: flex;
+    flex-wrap: wrap;
+    @include elevation-2;
+
+    &:not(:last-child) {
+      margin-bottom: rem(15px);
+    }
+
+    .ebs-table-mobile-item-key {
+      font-size: rem(16px);
+      position: absolute;
+      top: rem(13px);
+      right: rem(15px);
+      color: $grey-400;
+    }
+
+    .ebs-table-mobile-item-title {
+      padding: rem(15px 15px 10px);
+      font-size: rem(14px);
+      width: 100%;
+    }
+
+    .ebs-table-mobile-item-desc {
+      padding: rem(0 15px 15px);
+      width: 100%;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $grey-100;
+      }
+    }
+
+    .ebs-table-mobile-item-child {
+      padding: rem(15px);
+      width: 50%;
+
+      &:nth-child(even) {
+        border-right: 1px solid $grey-100;
+      }
+
+      &:last-child {
+        border-right: unset;
+      }
+
+      .ebs-table-mobile-item-child-title {
+        display: block;
+        font-size: rem(10px);
+        margin-bottom: rem(5px);
+        color: $grey-400;
+      }
+    }
+
+    .ebs-table-mobile-item-action {
+      width: 100%;
+      border-top: 1px solid $primary-500;
+      border-bottom-left-radius: rem(7px);
+      border-bottom-right-radius: rem(7px);
+      color: $simple-white;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: rem(15px 5px);
+
+      > .flex {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+
+      > * {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    &-child {
+      &:last-child {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+.ebs-tooltip-wrapper {
+  background-color: $simple-white;
+  border-radius: rem(4px);
+  @include elevation-2;
+  margin: rem(0 10px);
+
+  &.ebs-tooltip {
+    &-top {
+      margin: rem(0 0 10px);
+    }
+
+    &-bottom {
+      margin: rem(10px 0 0);
+    }
+
+    &-left {
+      margin: rem(0 10px 0 0);
+    }
+
+    &-right {
+      margin: rem(0 0 0 10px);
+    }
+  }
+
+  .ebs-tooltip-body {
+    padding: rem(12px);
+    font-size: rem(12px);
+    color: $font-text-2;
+
+    .ebs-tooltip-body-title {
+      color: $font-text-1;
+      font-size: rem(14px);
+      margin-bottom: rem(4px);
+      @include fontMedium;
+    }
+  }
+}
+
+.ebs-tooltip-arrow {
+  position: absolute;
+
+  path {
+    stroke: transparent;
+    fill: $simple-white;
+  }
+}
+
+.ebs-tooltip-arrow[data-placement*='top'] {
+  bottom: rem(-12px);
+}
+
+.ebs-tooltip-arrow[data-placement*='right'] {
+  left: rem(-12px);
+}
+
+.ebs-tooltip-arrow[data-placement*='bottom'] {
+  top: rem(-12px);
+}
+
+.ebs-tooltip-arrow[data-placement*='left'] {
+  right: rem(-12px);
+}

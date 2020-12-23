@@ -1,0 +1,47 @@
+// animations
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ebs-loader-spinner {
+  width: rem(40px);
+  height: rem(40px);
+  border-radius: 50%;
+
+  transition-property: transform;
+  animation-name: rotate;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  &.ebs-loader-spinner-size {
+    &-small {
+      border: 2px solid $grey-500;
+      border-top: 2px solid $primary-500;
+      width: rem(15px);
+      height: rem(15px);
+      top: calc(50% - 5px);
+    }
+
+    &-middle {
+      border: 2px solid $grey-500;
+      border-top: 2px solid $primary-500;
+      width: rem(20px);
+      height: rem(20px);
+      top: calc(50% - 10px);
+    }
+
+    &-regular {
+      border: 6px solid $grey-500;
+      border-top: 6px solid $primary-500;
+      width: rem(60px);
+      height: rem(60px);
+      top: calc(50% - 20px);
+    }
+  }
+}

@@ -1,0 +1,139 @@
+.ebs-radio-group {
+  &.vertical {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &.ebs-radio-align {
+    &-left {
+      .ebs-radio {
+        right: inherit;
+        left: 0;
+      }
+
+      .ebs-radio-text {
+        padding-left: rem(26px);
+      }
+    }
+
+    &-right {
+      .ebs-radio {
+        left: inherit;
+        right: 0;
+      }
+
+      .ebs-radio-text {
+        padding-right: rem(26px);
+        width: rem(160px);
+      }
+    }
+  }
+
+  .ebs-radio-wrapper {
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: rem(5px);
+    }
+
+    &.disabled {
+      .ebs-radio-input {
+        cursor: not-allowed;
+      }
+
+      .ebs-radio-text {
+        color: $grey-500;
+      }
+
+      .ebs-radio,
+      .ebs-radio-input:hover ~ .ebs-radio {
+        background-color: transparent;
+
+        .ebs-radio-dot {
+          border: 1px solid $grey-200;
+          box-shadow: none;
+          background-color: transparent;
+        }
+      }
+
+      .ebs-radio-input:checked ~ .ebs-radio,
+      .ebs-radio-input:checked:hover ~ .ebs-radio {
+        background-color: transparent;
+
+        .ebs-radio-dot {
+          border: 1px solid $grey-500;
+          box-shadow: 0px 0px 0px 3px $simple-white inset;
+          background-color: $grey-500;
+        }
+      }
+    }
+
+    &.has-text .ebs-radio {
+      position: absolute;
+      top: rem(-2px);
+    }
+
+    .ebs-radio-input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      cursor: pointer;
+
+      &:hover ~ .ebs-radio {
+        background-color: $primary-100;
+
+        .ebs-radio-dot {
+          border-color: $primary-500;
+          background-color: $primary-100;
+        }
+      }
+    }
+
+    .ebs-radio-input:checked {
+      &:hover ~ .ebs-radio {
+        background-color: $primary-100;
+
+        .ebs-radio-dot {
+          border-color: $primary-500;
+          background-color: $primary-500;
+          box-shadow: 0px 0px 0px 3px $primary-100 inset;
+        }
+      }
+
+      ~ .ebs-radio .ebs-radio-dot {
+        border-color: $primary-500;
+        background-color: $primary-500;
+        box-shadow: 0px 0px 0px 3px $simple-white inset;
+      }
+    }
+
+    .ebs-radio {
+      transition: all 0.2s;
+      width: rem(20px);
+      height: rem(20px);
+      background-color: transparent;
+      pointer-events: none;
+      border-radius: 50%;
+
+      .ebs-radio-dot {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: rem(16px);
+        height: rem(16px);
+        border: 1px solid $grey-200;
+        border-radius: 50%;
+        background-color: transparent;
+      }
+    }
+
+    .ebs-radio-text {
+      color: $font-text-2;
+      font-size: rem(14px);
+    }
+  }
+}

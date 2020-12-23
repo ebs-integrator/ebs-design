@@ -1,0 +1,59 @@
+.ebs-textarea-wrapper {
+  .ebs-textarea {
+    width: 100%;
+    border: 1px solid $grey-200;
+    min-height: rem(80px);
+    outline: none;
+    border-radius: rem(4px);
+    background-color: $simple-white;
+    color: $font-text-1;
+
+    @include fontRegular;
+    font-size: rem(14px);
+    padding: rem(10px);
+
+    @include placeholder {
+      color: $font-text-3;
+    }
+
+    &.has-value {
+      border-color: $primary-500;
+    }
+
+    &.has-error {
+      border-color: $semantic-danger-500;
+    }
+
+    &.disabled {
+      border-color: $grey-500;
+    }
+  }
+
+  // Label
+  .ebs-textarea-label {
+    margin-bottom: rem(5px);
+    color: $font-text-2;
+    @include fontRegular;
+    font-size: rem(12px);
+
+    &.disabled {
+      color: $grey-500;
+    }
+  }
+
+  // Extra
+  .ebs-textarea-extra {
+    margin-top: rem(2.5px);
+    color: $font-text-3;
+    @include fontRegular;
+    font-size: rem(10px);
+
+    &.has-error {
+      color: $semantic-danger-500;
+    }
+
+    &.disabled {
+      color: $grey-500;
+    }
+  }
+}

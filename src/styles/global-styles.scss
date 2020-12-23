@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+@import './mixins/index';
+@import './palette';
+
+// @include mq-show-breakpoints;
+
+html,
+body {
+  display: block;
+  font-size: rem(14px);
+  @include fontMedium;
+  color: $font-text-1;
+
+  @include mq($until: desktop) {
+    font-size: rem(13px);
+  }
+
+  @include mq($until: small-desktop) {
+    font-size: rem(12px);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+
+  &.size {
+    &-l {
+      font-size: rem(20px);
+    }
+
+    &-m {
+      font-size: rem(18px);
+    }
+
+    &-s {
+      font-size: rem(16px);
+    }
+  }
+}
+
+p,
+span {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+
+  &.size {
+    &-l {
+      font-size: rem(14px);
+    }
+
+    &-m {
+      font-size: rem(12px);
+    }
+
+    &-s {
+      font-size: rem(10px);
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+b,
+strong {
+  @include fontBold;
+}
+
+.hide {
+  display: none;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.p {
+  &-0 {
+    padding: 0;
+  }
+}
+
+.m {
+  &-15 {
+    margin: rem(15px);
+  }
+}
+
+.mr {
+  &-15 {
+    margin-right: rem(15px);
+  }
+}
+
+.mb {
+  &-30 {
+    margin-bottom: rem(30px);
+  }
+}

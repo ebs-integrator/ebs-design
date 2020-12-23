@@ -1,0 +1,86 @@
+@import '../src/styles/mixins/index';
+@import '../src/styles/palette';
+
+.sb-show-main {
+  .ebs-layout {
+    margin: -1rem;
+  }
+}
+
+.storybook-rows {
+  display: flex;
+
+  .storybook-row {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-right: rem(25px);
+      padding-right: rem(25px);
+      border-right: 1px solid $grey-200;
+    }
+
+    .storybook-row-item {
+      &.inline {
+        display: flex;
+        align-items: center;
+
+        > *:first-child {
+          min-width: rem(125px);
+          margin-bottom: 0;
+        }
+
+        > *:not(:last-child) {
+          margin-right: rem(50px);
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: rem(15px);
+      }
+    }
+  }
+}
+
+.storybook-label {
+  @include fontMedium;
+  margin-bottom: rem(10px);
+}
+
+.storybook-header {
+  @include fontBold;
+  margin-bottom: rem(15px);
+  font-size: rem(20px);
+}
+
+.storybook-flex {
+  display: flex;
+
+  > *:not(:last-child) {
+    margin-right: rem(25px);
+  }
+}
+
+.storybook-icon-items {
+  display: flex;
+  flex-wrap: wrap;
+
+  .storybook-icon-item {
+    width: 18.486%;
+    margin: rem(12.5px);
+    padding: rem(22.5px 12.5px);
+    border-radius: rem(8px);
+    border: 1px solid $primary-100;
+    text-align: center;
+
+    .storybook-icon svg {
+      font-size: rem(20px);
+    }
+
+    .storybook-icon-name {
+      font-size: rem(12px);
+      color: $font-text-3;
+      @include fontMedium;
+      margin-top: rem(25px);
+    }
+  }
+}

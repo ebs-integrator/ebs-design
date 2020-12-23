@@ -1,0 +1,21 @@
+.ebs-icon {
+  font-size: rem(16px);
+
+  &.ebs-icon-arrow {
+    &-right {
+      transform: rotate(90deg);
+    }
+
+    &-bottom {
+      transform: rotate(180deg);
+    }
+
+    &-left {
+      transform: rotate(270deg);
+    }
+  }
+
+  path {
+    stroke: $font-text-2;
+  }
+}

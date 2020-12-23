@@ -1,0 +1,72 @@
+.ebs-form {
+  &.ebs-form-inline {
+    .ebs-form-item {
+      display: flex;
+      align-items: center;
+
+      &:not(:last-child) {
+        margin-bottom: rem(25px);
+      }
+
+      .ebs-label {
+        text-align: right;
+        max-width: rem(125px);
+        width: 100%;
+        margin: rem(0 10px 0 0);
+      }
+
+      .ebs-form-children {
+        width: 100%;
+      }
+
+      .ebs-extra {
+        text-align: right;
+        position: absolute;
+        bottom: rem(-12.5px);
+        width: 100%;
+      }
+    }
+  }
+
+  .ebs-form-items {
+    display: flex;
+    justify-content: space-between;
+
+    @include mq($until: small-desktop) {
+      display: block;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: rem(20px);
+    }
+
+    &.ebs-form-items-three {
+      .ebs-form-item {
+        width: calc(33% - 7.5px);
+      }
+    }
+
+    .ebs-form-item {
+      @include mq($from: small-desktop) {
+        margin-bottom: 0 !important;
+
+        &:not(:first-child) {
+          margin-left: rem(12.5px);
+        }
+      }
+
+      @include mq($until: small-desktop) {
+        width: 100% !important;
+      }
+    }
+  }
+
+  .ebs-form-item {
+    position: relative;
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: rem(20px);
+    }
+  }
+}
