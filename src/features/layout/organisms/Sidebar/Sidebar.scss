@@ -12,7 +12,7 @@
   @include mq($until: small-desktop) {
     padding-top: rem(80px);
 
-    &.ebs-sidebar-mobile {
+    &.ebs-sidebar__mobile {
       &-closed,
       &-opened {
         transition: 0.2s;
@@ -31,7 +31,7 @@
   }
 
   &.ebs-sidebar {
-    &-untoggled .ebs-sidebar-options {
+    &-untoggled .ebs-sidebar__options {
       left: rem(192px);
     }
 
@@ -39,23 +39,23 @@
       overflow: hidden;
       width: rem(57px);
 
-      .ebs-sidebar-label {
+      .ebs-sidebar__label {
         animation: fadeOut 0.1s forwards;
         white-space: nowrap;
       }
 
-      .ebs-sidebar-item .ebs-sidebar-text {
+      .ebs-sidebar__item .ebs-sidebar__text {
         animation: fadeOut 0.1s forwards;
         white-space: nowrap;
       }
 
-      .ebs-sidebar-options {
+      .ebs-sidebar__options {
         left: rem(57px);
       }
     }
   }
 
-  .ebs-sidebar-bottom {
+  .ebs-sidebar__bottom {
     background-color: $simple-white;
     width: 100%;
     position: absolute;
@@ -70,7 +70,7 @@
   }
 }
 
-.ebs-sidebar-mask {
+.ebs-sidebar__mask {
   position: fixed;
   left: 0;
   top: 0;

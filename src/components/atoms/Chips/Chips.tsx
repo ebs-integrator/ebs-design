@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 
 interface Props {
   className?: string;
@@ -10,21 +11,26 @@ interface Props {
   text?: React.ReactNode;
 }
 
-export const Chips: React.FC<Props> = ({ className = '', prefix, suffix, disabled, checked, onChange, text }) => {
+export const Chips: React.FC<Props> = ({ className, prefix, suffix, disabled, checked, onChange, text }) => {
   const onClickHandler = (): void => (!disabled && onChange !== undefined ? onChange(!checked) : undefined);
 
   return (
     <div
-      className={`ebs-chips ebs-chips-${checked ? 'checked' : 'unchecked'}${prefix ? ' has-prefix' : ''}${
-        suffix ? ' has-suffix' : ''
-      }${disabled ? ' disabled' : ''} ${className}`}
+      className={cn(
+        `ebs-chips`,
+        `ebs-chips-${checked ? 'checked' : 'unchecked'}`,
+        className,
+        prefix && 'has-prefix',
+        suffix && `has-suffix`,
+        disabled && `disabled`,
+      )}
       onClick={onClickHandler}
     >
-      {prefix && <div className="ebs-chips-prefix">{prefix}</div>}
+      {prefix && <div className="ebs-chips__prefix">{prefix}</div>}
 
       {text}
 
-      {suffix && <div className="ebs-chips-suffix">{suffix}</div>}
+      {suffix && <div className="ebs-chips__suffix">{suffix}</div>}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { Icon } from 'components/atoms';
 import { Button, ButtonSize, ButtonGroup } from './Button';
 
 export default {
@@ -122,6 +122,68 @@ export const text = (): React.ReactNode => (
         <Button className="mr-15" type="text" disabled size={size}>
           Disabled
         </Button>
+      </>
+    )}
+  </SizeSwitcher>
+);
+
+export const icon = (): React.ReactNode => (
+  <SizeSwitcher>
+    {(size) => (
+      <>
+        <div className="row my-3">
+          <div className="col">
+            <Button type="primary" size={size} icon="home">
+              Primary
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="fill" size={size} icon="home">
+              Fill
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="text" size={size} icon="home">
+              Text
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="ghost" size={size} icon="home">
+              Ghost
+            </Button>
+          </div>
+        </div>
+      </>
+    )}
+  </SizeSwitcher>
+);
+
+export const withIcon = (): React.ReactNode => (
+  <SizeSwitcher>
+    {(size) => (
+      <>
+        <div className="row my-3">
+          <div className="col">
+            <Button type="primary" size={size} prefix={<Icon type="home" />}>
+              Primary
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="fill" size={size} prefix={<Icon type="home" />}>
+              Fill
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="text" size={size} prefix={<Icon type="home" />}>
+              Text
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="ghost" size={size} prefix={<Icon type="home" />}>
+              Ghost
+            </Button>
+          </div>
+        </div>
       </>
     )}
   </SizeSwitcher>

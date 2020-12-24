@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import InputNumber from 'rc-input-number';
 import { Extra, Label, Icon } from 'components/atoms';
 
@@ -27,7 +28,7 @@ interface Props {
 }
 
 export const Stepper: React.FC<Props> = ({
-  className = '',
+  className,
   align = 'right',
   hasError,
   label,
@@ -37,9 +38,14 @@ export const Stepper: React.FC<Props> = ({
   ...props
 }) => (
   <div
-    className={`ebs-stepper-wrapper${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''}${
-      value ? ' active' : ''
-    } ${align} ${className}`}
+    className={cn(
+      `ebs-stepper__wrapper`,
+      align,
+      className,
+      value && `active`,
+      hasError && `has-error`,
+      disabled && `disabled`,
+    )}
   >
     <Label text={label} disabled={disabled} />
 

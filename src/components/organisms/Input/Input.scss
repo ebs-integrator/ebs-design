@@ -1,9 +1,9 @@
 // Input
-.ebs-input-wrapper {
+.ebs-input__wrapper {
   position: relative;
   border: 1px solid $grey-200;
   background-color: $simple-white;
-  border-radius: rem(4px);
+  border-radius: rem($radius);
 
   &.has-prefix .ebs-input {
     padding-left: rem(37.5px);
@@ -13,7 +13,7 @@
     padding-right: rem(37.5px);
   }
 
-  &.ebs-input-wrapper {
+  &.ebs-input__wrapper {
     &-active,
     &.focus {
       border-color: $primary-500;
@@ -48,20 +48,20 @@
       }
     }
 
-    .ebs-input-prefix .ebs-icon path,
-    .ebs-input-suffix .ebs-icon path {
+    .ebs-input__prefix .ebs-icon path,
+    .ebs-input__suffix .ebs-icon path {
       stroke: $grey-500;
     }
   }
 
-  &.ebs-input-style {
+  &.ebs-input__style {
     &-grey {
       background-color: $grey-50;
     }
   }
 
-  .ebs-input-prefix,
-  .ebs-input-suffix {
+  .ebs-input__prefix,
+  .ebs-input__suffix {
     position: absolute;
     left: rem(10px);
     top: 50%;
@@ -83,7 +83,7 @@
     }
   }
 
-  .ebs-input-suffix {
+  .ebs-input__suffix {
     left: inherit;
     right: rem(10px);
   }

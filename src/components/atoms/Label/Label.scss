@@ -20,13 +20,13 @@
     }
   }
 
-  &.ebs-label-status {
+  &.ebs-label__status {
     &-success {
       color: $semantic-success-500;
       border-color: $semantic-success-500;
 
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
+      .ebs-label__prefix svg path,
+      .ebs-label__suffix svg path {
         stroke: $semantic-success-500;
       }
     }
@@ -35,8 +35,8 @@
       color: $semantic-warning-500;
       border-color: $semantic-warning-500;
 
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
+      .ebs-label__prefix svg path,
+      .ebs-label__suffix svg path {
         stroke: $semantic-warning-500;
       }
     }
@@ -45,8 +45,8 @@
       color: $semantic-danger-500;
       border-color: $semantic-danger-500;
 
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
+      .ebs-label__prefix svg path,
+      .ebs-label__suffix svg path {
         stroke: $semantic-danger-500;
       }
     }
@@ -55,8 +55,8 @@
       color: $semantic-info-500;
       border-color: $semantic-info-500;
 
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
+      .ebs-label__prefix svg path,
+      .ebs-label__suffix svg path {
         stroke: $semantic-info-500;
       }
     }
@@ -65,8 +65,8 @@
       color: $font-text-2;
       border-color: $font-text-2;
 
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
+      .ebs-label__prefix svg path,
+      .ebs-label__suffix svg path {
         stroke: $font-text-2;
       }
     }
@@ -76,8 +76,8 @@
       color: $primary-500;
       border-color: $primary-500;
 
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
+      .ebs-label__prefix svg path,
+      .ebs-label__suffix svg path {
         stroke: $primary-500;
       }
     }
@@ -88,29 +88,29 @@
     color: $grey-500;
     border-color: $grey-500;
 
-    .ebs-label-prefix svg path,
-    .ebs-label-suffix svg path {
+    .ebs-label__prefix svg path,
+    .ebs-label__suffix svg path {
       stroke: $grey-500;
     }
   }
 
   &.has-prefix,
-  &.has-prefix.ebs-label-circle {
+  &.has-prefix.ebs-label__circle {
     padding-left: rem(22.5px);
   }
 
   &.has-suffix,
-  &.has-suffix.ebs-label-circle {
+  &.has-suffix.ebs-label__circle {
     padding-right: rem(27.5px);
   }
 
-  .ebs-label-prefix,
-  .ebs-label-suffix {
+  .ebs-label__prefix,
+  .ebs-label__suffix {
     position: absolute;
     top: calc(50% + 1px);
     transform: translateY(-50%);
 
-    .ebs-icon-close:hover svg {
+    .ebs-icon__close:hover svg {
       opacity: 0.5;
     }
 
@@ -119,11 +119,11 @@
     }
   }
 
-  .ebs-label-prefix {
+  .ebs-label__prefix {
     left: rem(7.5px);
   }
 
-  .ebs-label-suffix {
+  .ebs-label__suffix {
     right: rem(7.5px);
   }
 }

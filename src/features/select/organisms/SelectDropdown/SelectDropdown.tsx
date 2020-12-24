@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { Input } from 'components/organisms';
 import { Animated, Icon } from 'components/atoms';
@@ -18,7 +19,7 @@ export interface Props {
   value?: any;
 }
 
-export const SelectDropdown: React.FC<Props> = ({ className = '', mode, onClose, onChange, options = [], value }) => {
+export const SelectDropdown: React.FC<Props> = ({ className, mode, onClose, onChange, options = [], value }) => {
   const [search, setSearch] = React.useState('');
   const [activeItem, setActiveItem] = React.useState(0);
 
@@ -69,7 +70,7 @@ export const SelectDropdown: React.FC<Props> = ({ className = '', mode, onClose,
   const hasOptions = React.useMemo(() => $options && $options.length > 0, [$options]);
 
   return (
-    <div className={`ebs-select-dropdown ${className}`}>
+    <div className={cn(`ebs-select__dropdown`, className)}>
       <Input
         suffix={<Icon type="search" className="cursor" />}
         disabled={!options || (options && options.length === 0)}
@@ -77,10 +78,10 @@ export const SelectDropdown: React.FC<Props> = ({ className = '', mode, onClose,
         placeholder="Search"
         value={search}
         onChange={onSearch}
-        className="ebs-select-dropdown-search"
+        className="ebs-select__dropdown-search"
       />
 
-      <Animated className="ebs-select-dropdown-items" duration={100}>
+      <Animated className="ebs-select__dropdown-items" duration={100}>
         {hasOptions ? (
           $options.map((option, key) => (
             <SelectDropdownItem
@@ -94,7 +95,7 @@ export const SelectDropdown: React.FC<Props> = ({ className = '', mode, onClose,
             />
           ))
         ) : (
-          <div className="ebs-select-dropdown-empty">No found</div>
+          <div className="ebs-select__dropdown-empty">No found</div>
         )}
       </Animated>
     </div>

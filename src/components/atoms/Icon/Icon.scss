@@ -1,7 +1,7 @@
 .ebs-icon {
   font-size: rem(16px);
 
-  &.ebs-icon-arrow {
+  &.ebs-icon__arrow {
     &-right {
       transform: rotate(90deg);
     }
@@ -13,9 +13,5 @@
     &-left {
       transform: rotate(270deg);
     }
-  }
-
-  path {
-    stroke: $font-text-2;
   }
 }

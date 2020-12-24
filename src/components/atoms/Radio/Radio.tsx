@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { makeid } from 'libs/string';
 
 export type RadioAlign = 'left' | 'right';
@@ -22,7 +23,7 @@ export interface Props {
 // name attribute makes it grouped ones
 
 export const Radio: React.FC<Props> = ({
-  className = '',
+  className,
   radioAlign = 'left',
   textClass = '',
   textStyle,
@@ -49,12 +50,12 @@ export const Radio: React.FC<Props> = ({
   }
 
   return (
-    <div className={`ebs-radio-group ebs-radio-align-${radioAlign} ${className}`}>
+    <div className={cn(`ebs-radio__group`, `ebs-radio__align-${radioAlign}`, className)}>
       {options.map((option) => (
-        <div className={`ebs-radio-wrapper ${option.text ? ' has-text' : ''}${option.disabled ? ' disabled' : ''}`}>
+        <div className={cn(`ebs-radio__wrapper`, option.text && 'has-text', option.disabled && 'disabled')}>
           <input
             type="radio"
-            className="ebs-radio-input"
+            className="ebs-radio__input"
             name={name}
             onClick={() => onClickHandler(option.value)}
             value={option.value}
@@ -66,11 +67,11 @@ export const Radio: React.FC<Props> = ({
           />
 
           <div className="ebs-radio">
-            <div className="ebs-radio-dot" />
+            <div className="ebs-radio__dot" />
           </div>
 
           {option.text && (
-            <div className={`ebs-radio-text ${textClass}`} style={textStyle}>
+            <div className={cn(`ebs-radio__text`, textClass)} style={textStyle}>
               {option.text}
             </div>
           )}

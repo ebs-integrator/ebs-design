@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { Icon } from 'components/atoms';
 
 import { Sidebar } from '../';
@@ -16,8 +17,8 @@ interface Props {
 }
 
 export const Layout: React.FC<Props> = ({
-  contentClass = '',
-  className = '',
+  contentClass,
+  className,
   title,
   leftSide,
   rightSide,
@@ -41,24 +42,27 @@ export const Layout: React.FC<Props> = ({
 
   return (
     <div
-      className={`ebs-layout ebs-layout-sidebar-${toggled ? 'toggled' : 'untoggled'} ${
-        optionsTop || optionsBottom ? ' has-options' : ''
-      } ${className}`}
+      className={cn(
+        `ebs-layout`,
+        `ebs-layout-sidebar-${toggled ? `toggled` : `untoggled`}`,
+        className,
+        (optionsTop || optionsBottom) && 'has-options',
+      )}
     >
-      <div className="ebs-layout-top-bar">
+      <div className="ebs-layout__top-bar">
         {/* mobile part */}
-        <div className="ebs-layout-top-bar-mobile">
-          <div className="ebs-layout-top-bar-mobile-toggler" onClick={onToggleMobile}>
+        <div className="ebs-layout__top-bar-mobile">
+          <div className="ebs-layout__top-bar-mobile-toggler" onClick={onToggleMobile}>
             <Icon type="menu-fold" />
           </div>
         </div>
         {/* mobile part */}
 
-        {title && <div className="ebs-layout-top-bar-title">{title}</div>}
+        {title && <div className="ebs-layout__top-bar-title">{title}</div>}
 
-        {leftSide && <div className="ebs-layout-top-bar-left">{leftSide}</div>}
+        {leftSide && <div className="ebs-layout__top-bar-left">{leftSide}</div>}
 
-        <div className="ebs-layout-top-bar-right">{rightSide}</div>
+        <div className="ebs-layout__top-bar-right">{rightSide}</div>
       </div>
 
       <Sidebar
@@ -72,11 +76,11 @@ export const Layout: React.FC<Props> = ({
         optionsBottom={optionsBottom}
       />
 
-      <div className="ebs-layout-content-wrapper">
-        <div className={`ebs-layout-content ${contentClass}`}>{children}</div>
+      <div className="ebs-layout__content-wrapper">
+        <div className={cn(`ebs-layout__content`, contentClass)}>{children}</div>
       </div>
 
-      <div className="ebs-layout-footer">
+      <div className="ebs-layout__footer">
         <span>
           Designed by <b>EBS Integrator</b>
         </span>
