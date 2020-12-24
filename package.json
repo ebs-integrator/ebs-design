@@ -16,7 +16,7 @@
     "ebs-ui"
   ],
   "license": "MIT",
-  "repository": "git+ssh://git@github.com/ebs-integrator/react__ebs-ui.git",
+  "repository": "git+ssh://git@github.com/ebs-integrator/react-ebs-ui.git",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
