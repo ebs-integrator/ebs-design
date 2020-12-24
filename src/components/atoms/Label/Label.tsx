@@ -1,5 +1,6 @@
-import { $Object } from 'libs/object/object.types';
 import * as React from 'react';
+import cn from 'classnames';
+import { $Object } from 'libs/object/object.types';
 
 export type LabelType = 'regular' | 'circle';
 
@@ -20,7 +21,7 @@ export interface Props {
 }
 
 export const Label: React.FC<Props> = ({
-  className = '',
+  className,
   type = 'regular',
   status = 'text',
   style,
@@ -38,14 +39,20 @@ export const Label: React.FC<Props> = ({
 
   return (
     <div
-      className={`ebs-label ebs-label-${type} ebs-label-status-${status}${disabled ? ' disabled' : ''}${
-        prefix ? ' has-prefix' : ''
-      }${suffix ? ' has-suffix' : ''} ${className}`}
+      className={cn(
+        `ebs-label`,
+        `ebs-label-${type}`,
+        `ebs-label__status-${status}`,
+        className,
+        prefix && 'has-prefix',
+        suffix && 'has-suffix',
+        disabled && 'disabled',
+      )}
       style={style}
       onClick={onClick}
     >
       {prefix && (
-        <div className="ebs-label-prefix" onClick={onClickPrefix}>
+        <div className="ebs-label__prefix" onClick={onClickPrefix}>
           {prefix}
         </div>
       )}
@@ -53,7 +60,7 @@ export const Label: React.FC<Props> = ({
       {text}
 
       {suffix && (
-        <div className="ebs-label-suffix" onClick={onClickSuffix}>
+        <div className="ebs-label__suffix" onClick={onClickSuffix}>
           {suffix}
         </div>
       )}

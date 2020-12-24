@@ -1,16 +1,16 @@
 // fade
 @include fadeBackground('regularFade', #000);
 
-.ebs-button-wrapper {
+.ebs-button__wrapper {
   position: relative;
   display: inline-block;
   text-align: center;
-  border-radius: rem(4px);
+  border-radius: rem($radius);
   transition: 0.3s ease;
   border: 1px solid transparent;
 
   // button size
-  &.ebs-button-size {
+  &.ebs-button__size {
     &-large {
       .ebs-button {
         padding: rem(10px 20px);
@@ -37,10 +37,11 @@
   }
 
   // button type (Color)
-  &.ebs-button-type {
+  &.ebs-button__type {
     &-primary {
       border-color: $primary-500;
       background: $primary-500;
+      color: $simple-white;
 
       .ebs-button {
         color: $simple-white;
@@ -66,6 +67,7 @@
     &-fill {
       border-color: $primary-100;
       background: $primary-100;
+      color: $primary-500;
 
       .ebs-button {
         color: $primary-500;
@@ -75,6 +77,7 @@
       &.hover {
         border-color: $primary-500;
         background: $primary-500;
+        color: $simple-white;
 
         & .ebs-button {
           color: $simple-white;
@@ -85,6 +88,7 @@
       &.active {
         border-color: $primary-600;
         background: $primary-600;
+        color: $simple-white;
 
         & .ebs-button {
           color: $simple-white;
@@ -95,6 +99,7 @@
     &-ghost {
       background: transparent;
       border-color: $primary-500;
+      color: $primary-500;
 
       .ebs-button {
         color: $primary-500;
@@ -104,6 +109,7 @@
       &.hover {
         border-color: $primary-500;
         background: $primary-500;
+        color: $simple-white;
 
         & .ebs-button {
           color: $simple-white;
@@ -114,6 +120,7 @@
       &.active {
         border-color: $primary-600;
         background: $primary-600;
+        color: $simple-white;
 
         & .ebs-button {
           color: $simple-white;
@@ -123,6 +130,7 @@
 
     &-text {
       background: transparent;
+      color: $primary-500;
 
       .ebs-button {
         color: $primary-500;
@@ -168,22 +176,22 @@
     display: block;
   }
 
-  .ebs-button-loading {
+  .ebs-button__loading {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    border-radius: rem(4px);
+    border-radius: rem($radius);
     pointer-events: none;
 
-    &.ebs-button-loading {
+    &.ebs-button__loading {
       &-regular {
         animation: regularFade 0.25s forwards;
       }
     }
 
-    .ebs-loader-spinner {
+    .ebs-loader__spinner {
       position: absolute;
       left: calc(50% - 7.5px);
       top: calc(50% - 7.5px);
@@ -191,7 +199,7 @@
     }
   }
 
-  .ebs-button-prefix {
+  .ebs-button__prefix {
     position: absolute;
     left: rem(10px);
     top: 50%;
@@ -210,14 +218,18 @@
     padding: 0;
     outline: none !important;
     @include fontBold;
+
+    &-icon {
+      line-height: 0;
+    }
   }
 }
 
-.ebs-button-group {
+.ebs-button__group {
   display: flex;
   flex-wrap: wrap;
 
-  > .ebs-button-wrapper {
+  > .ebs-button__wrapper {
     &:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;

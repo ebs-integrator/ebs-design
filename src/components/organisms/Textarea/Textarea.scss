@@ -1,10 +1,10 @@
-.ebs-textarea-wrapper {
+.ebs-textarea__wrapper {
   .ebs-textarea {
     width: 100%;
     border: 1px solid $grey-200;
     min-height: rem(80px);
     outline: none;
-    border-radius: rem(4px);
+    border-radius: rem($radius);
     background-color: $simple-white;
     color: $font-text-1;
 
@@ -30,7 +30,7 @@
   }
 
   // Label
-  .ebs-textarea-label {
+  .ebs-textarea__label {
     margin-bottom: rem(5px);
     color: $font-text-2;
     @include fontRegular;
@@ -42,7 +42,7 @@
   }
 
   // Extra
-  .ebs-textarea-extra {
+  .ebs-textarea__extra {
     margin-top: rem(2.5px);
     color: $font-text-3;
     @include fontRegular;

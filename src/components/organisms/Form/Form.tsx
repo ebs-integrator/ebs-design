@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { validate } from 'libs/object/object';
 import { Extra, Label } from 'components/atoms';
 import { ExtraStatus } from 'components/atoms/Extra/Extra';
@@ -12,7 +13,7 @@ interface Props {
   id?: string;
 }
 
-export const Form: React.FC<Props> = ({ onSubmit, type = 'regular', className = '', id, children }) => {
+export const Form: React.FC<Props> = ({ onSubmit, type = 'regular', className, id, children }) => {
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
     if (e.preventDefault) e.preventDefault();
 
@@ -20,7 +21,7 @@ export const Form: React.FC<Props> = ({ onSubmit, type = 'regular', className = 
   };
 
   return (
-    <form className={`ebs-form ebs-form-${type} ${className}`} onSubmit={onSubmitHandler} id={id}>
+    <form className={cn(`ebs-form`, `ebs-form-${type}`, className)} onSubmit={onSubmitHandler} id={id}>
       {children}
     </form>
   );
@@ -39,8 +40,8 @@ interface ItemProps {
 }
 
 export const FormItem: React.FC<ItemProps> = ({
-  itemClass = '',
-  className = '',
+  itemClass,
+  className,
   labelWidth,
   label,
   required,
@@ -54,7 +55,7 @@ export const FormItem: React.FC<ItemProps> = ({
   const extra = error ? validate(error) : $extra;
 
   return (
-    <div className={`ebs-form-item ${itemClass}`} style={style}>
+    <div className={cn(`ebs-form__item`, itemClass)} style={style}>
       {label && (
         <Label
           style={{ maxWidth: labelWidth }}
@@ -66,7 +67,7 @@ export const FormItem: React.FC<ItemProps> = ({
         />
       )}
 
-      <div className={`ebs-form-children${extra && extraStatus === 'danger' ? ' has-error' : ''} ${className}`}>
+      <div className={cn(`ebs-form__children`, className, extra && extraStatus === 'danger' && 'has-error')}>
         {children}
       </div>
 
@@ -75,6 +76,6 @@ export const FormItem: React.FC<ItemProps> = ({
   );
 };
 
-export const FormItems: React.FC<{ className?: string; three?: boolean }> = ({ className = '', three, children }) => (
-  <div className={`ebs-form-items ${three ? 'ebs-form-items-three' : ''} ${className}`}>{children}</div>
+export const FormItems: React.FC<{ className?: string; three?: boolean }> = ({ className, three, children }) => (
+  <div className={cn(`ebs-form__items`, three && `ebs-form__items-three`, className)}>{children}</div>
 );

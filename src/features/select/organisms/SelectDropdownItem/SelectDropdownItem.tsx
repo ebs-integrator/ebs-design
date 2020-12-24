@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { Checkbox } from 'components/organisms';
 
 import { InputSelectMode } from '../InputSelect/InputSelect';
@@ -19,7 +20,7 @@ export interface Props {
 }
 
 export const SelectDropdownItem: React.FC<Props> = ({
-  className = '',
+  className,
   mode,
   onClick,
   prefix,
@@ -39,17 +40,22 @@ export const SelectDropdownItem: React.FC<Props> = ({
 
   return (
     <div
-      className={`ebs-select-dropdown-item${prefix ? ' has-prefix' : ''}${suffix ? ' has-suffix' : ''}${
-        active ? ' active' : ''
-      }${selected ? ' selected' : ''} ${className}`}
+      className={cn(
+        `ebs-select__dropdown-item`,
+        className,
+        active && `active`,
+        selected && `selected`,
+        prefix && `has-prefix`,
+        suffix && `has-suffix`,
+      )}
       onClick={onClickHandler}
     >
-      {prefix && <div className="ebs-select-dropdown-item-prefix">{prefix}</div>}
+      {prefix && <div className="ebs-select__dropdown-item-prefix">{prefix}</div>}
 
-      <div className="ebs-select-dropdown-item-text">{text}</div>
+      <div className="ebs-select__dropdown-item-text">{text}</div>
 
       {suffix || isMultiple ? (
-        <div className="ebs-select-dropdown-item-suffix">{isMultiple ? <Checkbox checked={active} /> : suffix}</div>
+        <div className="ebs-select__dropdown-item-suffix">{isMultiple ? <Checkbox checked={active} /> : suffix}</div>
       ) : null}
     </div>
   );

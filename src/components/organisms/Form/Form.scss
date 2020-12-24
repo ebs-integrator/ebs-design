@@ -1,6 +1,6 @@
 .ebs-form {
-  &.ebs-form-inline {
-    .ebs-form-item {
+  &.ebs-form__inline {
+    .ebs-form__item {
       display: flex;
       align-items: center;
 
@@ -15,7 +15,7 @@
         margin: rem(0 10px 0 0);
       }
 
-      .ebs-form-children {
+      .ebs-form__children {
         width: 100%;
       }
 
@@ -28,7 +28,7 @@
     }
   }
 
-  .ebs-form-items {
+  .ebs-form__items {
     display: flex;
     justify-content: space-between;
 
@@ -40,13 +40,13 @@
       margin-bottom: rem(20px);
     }
 
-    &.ebs-form-items-three {
-      .ebs-form-item {
+    &.ebs-form__items-three {
+      .ebs-form__item {
         width: calc(33% - 7.5px);
       }
     }
 
-    .ebs-form-item {
+    .ebs-form__item {
       @include mq($from: small-desktop) {
         margin-bottom: 0 !important;
 
@@ -61,7 +61,7 @@
     }
   }
 
-  .ebs-form-item {
+  .ebs-form__item {
     position: relative;
     width: 100%;
 

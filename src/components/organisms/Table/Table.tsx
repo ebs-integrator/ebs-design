@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import OldTable from 'rc-table';
 import { Icon } from 'components/atoms';
 
@@ -30,9 +31,9 @@ export const Table = <T extends object>({
   page,
   columns: $columns,
   data: $data = [],
-  className = '',
   size = 'regular',
-  rowClassName = '',
+  className,
+  rowClassName,
 }: Props<T>): React.ReactElement => {
   const [filters, setFilters] = React.useState<{ [key: number]: 'desc' | 'asc' }>({});
 
@@ -77,7 +78,7 @@ export const Table = <T extends object>({
         key,
         title: onFilter ? (
           <span
-            className={`ebs-table-th-filtered ebs-table-th-filtered-${filters[key] || 'none'}`}
+            className={cn(`ebs-table__th-filtered`, `ebs-table__th-filtered-${filters[key] || 'none'}`)}
             onClick={(): void => onFilterHandler(key)}
           >
             {title} <Icon type="arrow-outlined-bottom" />
@@ -90,24 +91,22 @@ export const Table = <T extends object>({
   );
 
   return (
-    <div className={`ebs-table-wrapper ${className}`}>
+    <div className={cn(`ebs-table__wrapper`, className)}>
       <OldTable
         rowClassName={({ status, is_deleted }) =>
-          `${rowClassName} ${
-            status || is_deleted ? ` ebs-table-row-status-${status || (is_deleted && 'deleted')}` : ``
-          }`
+          cn(rowClassName, (status || is_deleted) && ` ebs-table__row-status-${status || (is_deleted && 'deleted')}`)
         }
-        className={`ebs-table ebs-table-size-${size}`}
+        className={cn(`ebs-table`, `ebs-table-size-${size}`)}
         data={data}
         columns={columns}
       />
 
-      <div className="ebs-table-mobile">
-        {!data.length && <div className="ebs-empty-list">No data</div>}
+      <div className="ebs-table__mobile">
+        {!data.length && <div className="ebs-empty__list">No data</div>}
 
         {data.map((item: any) => (
-          <div key={item.key} className="ebs-table-mobile-item">
-            <div className="ebs-table-mobile-item-key">{item.key}</div>
+          <div key={item.key} className="ebs-table__mobile-item">
+            <div className="ebs-table__mobile-item-key">{item.key}</div>
             {columns.map((column) => {
               const render =
                 column.mobileRender !== undefined
@@ -124,20 +123,20 @@ export const Table = <T extends object>({
                     <div
                       className={
                         column.key > 1
-                          ? 'ebs-table-mobile-item-child'
+                          ? 'ebs-table__mobile-item-child'
                           : !column.key
-                          ? 'ebs-table-mobile-item-title'
-                          : 'ebs-table-mobile-item-desc'
+                          ? 'ebs-table__mobile-item-title'
+                          : 'ebs-table__mobile-item-desc'
                       }
                       key={column.key}
                     >
-                      {column.key > 1 && <span className="ebs-table-mobile-item-child-title">{column.title}:</span>}
+                      {column.key > 1 && <span className="ebs-table__mobile-item-child-title">{column.title}:</span>}
 
                       {render}
                     </div>
                   ) : (
                     render && (
-                      <div className="ebs-table-mobile-item-action" key={column.key}>
+                      <div className="ebs-table__mobile-item-action" key={column.key}>
                         {render}
                       </div>
                     )

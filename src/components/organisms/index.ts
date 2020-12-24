@@ -9,3 +9,4 @@ export { CheckboxGroup } from './Checkbox/CheckboxGroup';
 export { InputSearch } from './InputSearch/InputSearch';
 export { Table } from './Table/Table';
 export { Form, FormItem, FormItems } from './Form/Form';
+export { Modal, ModalContent, ModalFooterButton } from './Modal/Modal';

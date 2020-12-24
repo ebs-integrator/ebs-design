@@ -8,7 +8,7 @@
   }
 }
 
-.ebs-loader-spinner {
+.ebs-loader__spinner {
   width: rem(40px);
   height: rem(40px);
   border-radius: 50%;
@@ -19,7 +19,7 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 
-  &.ebs-loader-spinner-size {
+  &.ebs-loader__spinner-size {
     &-small {
       border: 2px solid $grey-500;
       border-top: 2px solid $primary-500;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { Extra, Label, Icon, Mask } from 'components/atoms';
 
 import { SelectDropdown } from '..';
@@ -29,7 +30,7 @@ export interface Props {
 
 export const InputSelect: React.FC<Props> = ({
   mode = 'single',
-  className = '',
+  className,
   hasError,
   label,
   extra,
@@ -53,7 +54,7 @@ export const InputSelect: React.FC<Props> = ({
   const textValue = React.useMemo(() => {
     if (options) {
       if (typeof $value === 'string') {
-        return (options.find((option) => option.value === $value) || {}).text;
+        return (options.find((option) => option.value === $value) || { text: '' }).text;
       }
 
       if (Array.isArray($value)) {
@@ -112,22 +113,27 @@ export const InputSelect: React.FC<Props> = ({
       {openDropdown && <Mask onClick={onToggleOpenDropdown} />}
 
       <div
-        className={`ebs-select-input-wrapper ebs-select-input-mode-${mode}${hasValue ? ' active' : ''}${
-          hasError ? ' has-error' : ''
-        }${disabled ? ' disabled' : ''} ${className}`}
+        className={cn(
+          `ebs-select__input-wrapper`,
+          `ebs-select__input-mode-${mode}`,
+          className,
+          hasValue && `active`,
+          hasError && `has-error`,
+          disabled && `disabled`,
+        )}
       >
         <Label text={label} disabled={disabled} />
 
-        <div className="ebs-select-input-dropdown-wrapper">
-          <div className="ebs-select-input" onClick={onToggleOpenDropdown}>
-            <div className="ebs-select-input-value">
+        <div className="ebs-select__input-dropdown-wrapper">
+          <div className="ebs-select__input" onClick={onToggleOpenDropdown}>
+            <div className="ebs-select__input-value">
               {textValue
                 ? Array.isArray(textValue)
                   ? textValue.length > 0
                     ? textValue.map((item, key) => (
                         <Label
                           key={item}
-                          className="ebs-select-input-label"
+                          className="ebs-select__input-label"
                           type="circle"
                           status="primary"
                           text={item}
@@ -143,13 +149,13 @@ export const InputSelect: React.FC<Props> = ({
 
             {hasValue && textValue && mode === 'multiple' && (
               <>
-                <div className="ebs-select-input-transition" />
+                <div className="ebs-select__input-transition" />
 
-                <div className="ebs-select-input-count">{textValue.length}</div>
+                <div className="ebs-select__input-count">{textValue.length}</div>
               </>
             )}
 
-            <div className="ebs-select-input-suffix">
+            <div className="ebs-select__input-suffix">
               <Icon type={`arrow-${openDropdown ? 'top' : 'bottom'}`} />
             </div>
           </div>

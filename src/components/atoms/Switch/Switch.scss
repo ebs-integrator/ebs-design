@@ -9,12 +9,12 @@
     &-unchecked {
       background: $grey-200;
 
-      &:hover .ebs-switch-dot {
+      &:hover .ebs-switch__dot {
         border-color: $primary-200;
         box-shadow: 0px 0px 0px 2px $primary-500 inset;
       }
 
-      .ebs-switch-dot {
+      .ebs-switch__dot {
         border-color: $grey-200;
         background-color: $simple-white;
         box-shadow: 0px 0px 0px 2px $grey-500 inset;
@@ -24,8 +24,8 @@
         cursor: not-allowed;
         background-color: $grey-200;
 
-        .ebs-switch-dot,
-        .ebs-switch-dot:hover {
+        .ebs-switch__dot,
+        .ebs-switch__dot:hover {
           background: $simple-white;
           border-color: $grey-200;
         }
@@ -35,12 +35,12 @@
     &-checked {
       background-color: $primary-200;
 
-      &:hover .ebs-switch-dot {
+      &:hover .ebs-switch__dot {
         border-color: $primary-300;
         box-shadow: 0px 0px 0px 2px $primary-500 inset;
       }
 
-      .ebs-switch-dot {
+      .ebs-switch__dot {
         transform: translate(16px, -50%);
         background: $primary-400;
         border-color: $primary-200;
@@ -50,8 +50,8 @@
         cursor: not-allowed;
         background-color: $primary-100;
 
-        .ebs-switch-dot,
-        .ebs-switch-dot:hover {
+        .ebs-switch__dot,
+        .ebs-switch__dot:hover {
           box-shadow: 0px 0px 0px 2px $primary-400 inset;
           background: $primary-300;
           border-color: $primary-100;
@@ -60,7 +60,7 @@
     }
   }
 
-  .ebs-switch-dot {
+  .ebs-switch__dot {
     position: absolute;
     left: 0;
     top: 50%;
@@ -74,7 +74,7 @@
     transition: all 0.2s;
   }
 
-  .ebs-switch-checked-sheet {
+  .ebs-switch__checked-sheet {
     border-radius: rem(25px);
     position: absolute;
     left: 0;
