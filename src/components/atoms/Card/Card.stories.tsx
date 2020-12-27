@@ -36,7 +36,7 @@ const columns: Column<{ title: string; desc: string; created: string }>[] = [
   },
 ];
 
-export const regular = (): React.ReactElement => (
+export const Regular = (): React.ReactElement => (
   <Card>
     <CardHeader
       title="Title"

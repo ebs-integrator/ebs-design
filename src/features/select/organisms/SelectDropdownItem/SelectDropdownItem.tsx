@@ -40,14 +40,12 @@ export const SelectDropdownItem: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(
-        `ebs-select__dropdown-item`,
-        className,
-        active && `active`,
-        selected && `selected`,
-        prefix && `has-prefix`,
-        suffix && `has-suffix`,
-      )}
+      className={cn(`ebs-select__dropdown-item`, className, {
+        active: active,
+        selected: selected,
+        'has-prefix': prefix,
+        'has-suffix': suffix,
+      })}
       onClick={onClickHandler}
     >
       {prefix && <div className="ebs-select__dropdown-item-prefix">{prefix}</div>}

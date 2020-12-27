@@ -142,7 +142,7 @@
     margin: rem(3px);
     background-color: transparent;
     border: 1px solid $grey-200;
-    border-radius: rem($radius);
+    border-radius: rem($border-radius);
     transition: all 0.2s;
     pointer-events: none;
 
@@ -156,7 +156,7 @@
       top: 50%;
       background-color: transparent;
       transform: translate(-50%, -50%);
-      border-radius: rem($radius);
+      border-radius: rem($border-radius);
       z-index: -1;
     }
 

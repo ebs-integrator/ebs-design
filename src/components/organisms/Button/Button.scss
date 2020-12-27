@@ -5,7 +5,7 @@
   position: relative;
   display: inline-block;
   text-align: center;
-  border-radius: rem($radius);
+  border-radius: rem($border-radius);
   transition: 0.3s ease;
   border: 1px solid transparent;
 
@@ -182,7 +182,7 @@
     top: 0;
     height: 100%;
     width: 100%;
-    border-radius: rem($radius);
+    border-radius: rem($border-radius);
     pointer-events: none;
 
     &.ebs-button__loading {

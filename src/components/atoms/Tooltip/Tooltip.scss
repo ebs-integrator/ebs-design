@@ -1,23 +1,23 @@
 .ebs-tooltip__wrapper {
   background-color: $simple-white;
-  border-radius: rem($radius);
+  border-radius: rem($border-radius);
   @include elevation-2;
   margin: rem(0 10px);
 
   &.ebs-tooltip {
-    &-top {
+    &--top {
       margin: rem(0 0 10px);
     }
 
-    &-bottom {
+    &--bottom {
       margin: rem(10px 0 0);
     }
 
-    &-left {
+    &--left {
       margin: rem(0 10px 0 0);
     }
 
-    &-right {
+    &--right {
       margin: rem(0 0 0 10px);
     }
   }

@@ -16,14 +16,11 @@ export const Chips: React.FC<Props> = ({ className, prefix, suffix, disabled, ch
 
   return (
     <div
-      className={cn(
-        `ebs-chips`,
-        `ebs-chips-${checked ? 'checked' : 'unchecked'}`,
-        className,
-        prefix && 'has-prefix',
-        suffix && `has-suffix`,
-        disabled && `disabled`,
-      )}
+      className={cn(`ebs-chips`, `ebs-chips-${checked ? 'checked' : 'unchecked'}`, className, {
+        'has-prefix': prefix,
+        'has-suffix': suffix,
+        disabled: disabled,
+      })}
       onClick={onClickHandler}
     >
       {prefix && <div className="ebs-chips__prefix">{prefix}</div>}

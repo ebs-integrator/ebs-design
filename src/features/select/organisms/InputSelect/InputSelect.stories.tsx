@@ -14,14 +14,14 @@ const options = [
   { value: 5, text: 'Item 5' },
 ];
 
-export const regular = (): React.ReactNode => <InputSelect options={options} placeholder="Select" />;
+export const Regular = (): React.ReactNode => <InputSelect options={options} placeholder="Select" />;
 
-export const hasValue = (): React.ReactNode => (
+export const HasValue = (): React.ReactNode => (
   <InputSelect options={options} value="Selected value" placeholder="Select" />
 );
 
-export const multiple = (): React.ReactNode => <InputSelect mode="multiple" options={options} placeholder="Select" />;
+export const Multiple = (): React.ReactNode => <InputSelect mode="multiple" options={options} placeholder="Select" />;
 
-export const multipleHasValue = (): React.ReactNode => (
+export const MultipleHasValue = (): React.ReactNode => (
   <InputSelect mode="multiple" options={options} value="Selected value" placeholder="Select" />
 );

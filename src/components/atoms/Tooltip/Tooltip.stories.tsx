@@ -8,7 +8,7 @@ export default {
   component: Tooltip,
 };
 
-export const regular = (): React.ReactElement => (
+export const Regular = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Tooltip Standart</div>
@@ -88,7 +88,7 @@ export const regular = (): React.ReactElement => (
   </div>
 );
 
-export const titled = (): React.ReactElement => (
+export const Titled = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Tooltip Standart & Title</div>

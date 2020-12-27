@@ -5,7 +5,7 @@ interface Props {
   className?: string;
 }
 
-export const Card: React.FC<Props> = ({ children, className = '' }) => (
+export const Card: React.FC<Props> = ({ children, className }) => (
   <div className={cn(`ebs-card`, className)}>{children}</div>
 );
 
@@ -19,7 +19,7 @@ interface HeaderProps {
 
 export const CardHeader: React.FC<HeaderProps> = ({ className, count = 0, title, leftSide, rightSide }) => (
   <div className={cn(`ebs-card__header`, className)}>
-    <div className="ebs-card__header-side-left">
+    <div className="ebs-card__header-side--left">
       {title && (
         <div className="ebs-card__header-title">
           {title}
@@ -31,7 +31,7 @@ export const CardHeader: React.FC<HeaderProps> = ({ className, count = 0, title,
       {leftSide}
     </div>
 
-    {rightSide && <div className="ebs-card__header-side-right">{rightSide}</div>}
+    {rightSide && <div className="ebs-card__header-side--right">{rightSide}</div>}
   </div>
 );
 
@@ -44,8 +44,8 @@ interface FooterProps {
 
 export const CardFooter: React.FC<FooterProps> = ({ className, leftSide, rightSide }) => (
   <div className={cn(`ebs-card__footer`, className)}>
-    {leftSide && <div className="ebs-card__footer-side-left">{leftSide}</div>}
+    {leftSide && <div className="ebs-card__footer-side--left">{leftSide}</div>}
 
-    {rightSide ? <div className="ebs-card__footer-side-right">{rightSide}</div> : null}
+    {rightSide ? <div className="ebs-card__footer-side--right">{rightSide}</div> : null}
   </div>
 );

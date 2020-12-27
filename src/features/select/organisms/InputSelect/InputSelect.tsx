@@ -108,6 +108,29 @@ export const InputSelect: React.FC<Props> = ({
 
   const onToggleOpenDropdown = (): void => setOpenDropdown((s) => !s);
 
+  const renderValue = React.useMemo(
+    () =>
+      textValue
+        ? Array.isArray(textValue)
+          ? textValue.length > 0
+            ? textValue.map((item, key) => (
+                <Label
+                  key={item}
+                  className="ebs-select__input-label"
+                  type="circle"
+                  status="primary"
+                  text={item}
+                  prefix={<Icon type="check" />}
+                  suffix={<Icon type="close" />}
+                  onClickSuffix={() => onDeleteSelect(key)}
+                />
+              ))
+            : placeholder
+          : textValue
+        : placeholder,
+    [textValue, placeholder],
+  );
+
   return (
     <>
       {openDropdown && <Mask onClick={onToggleOpenDropdown} />}
@@ -126,26 +149,7 @@ export const InputSelect: React.FC<Props> = ({
 
         <div className="ebs-select__input-dropdown-wrapper">
           <div className="ebs-select__input" onClick={onToggleOpenDropdown}>
-            <div className="ebs-select__input-value">
-              {textValue
-                ? Array.isArray(textValue)
-                  ? textValue.length > 0
-                    ? textValue.map((item, key) => (
-                        <Label
-                          key={item}
-                          className="ebs-select__input-label"
-                          type="circle"
-                          status="primary"
-                          text={item}
-                          prefix={<Icon type="check" />}
-                          suffix={<Icon type="close" />}
-                          onClickSuffix={() => onDeleteSelect(key)}
-                        />
-                      ))
-                    : placeholder
-                  : textValue
-                : placeholder}
-            </div>
+            <div className="ebs-select__input-value">{renderValue}</div>
 
             {hasValue && textValue && mode === 'multiple' && (
               <>

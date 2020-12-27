@@ -124,14 +124,11 @@ export const Calendar: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(
-        `ebs-calendar__wrapper`,
-        `ebs-calendar__type-${type}`,
-        className,
-        disabled && `disabled`,
-        hasError && 'has-error',
-        (from || to || date) && `active`,
-      )}
+      className={cn(`ebs-calendar__wrapper`, `ebs-calendar__type-${type}`, className, {
+        disabled: disabled,
+        'has-error': hasError,
+        active: from || to || date,
+      })}
     >
       <Label text={label} disabled={disabled} />
 

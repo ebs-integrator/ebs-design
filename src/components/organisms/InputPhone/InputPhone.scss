@@ -28,7 +28,7 @@
     }
 
     .form-control {
-      border-radius: rem($radius);
+      border-radius: rem($border-radius);
       height: rem(40px);
 
       @include placeholder {
@@ -48,7 +48,7 @@
   padding: rem(4px);
   @include hiddenScroll;
   @include elevation-2;
-  border-radius: rem($radius);
+  border-radius: rem($border-radius);
 
   .country {
     font-size: rem(14px);
@@ -60,7 +60,7 @@
     &:hover,
     &[aria-selected='true'] {
       background-color: $primary-000;
-      border-radius: rem($radius);
+      border-radius: rem($border-radius);
     }
 
     &[aria-selected='true'] {

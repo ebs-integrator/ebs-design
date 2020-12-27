@@ -33,22 +33,22 @@
     position: relative;
     margin: rem(150px auto $space);
     border: 1px solid #e9e8e5;
-    border-radius: rem($radius);
+    border-radius: rem($border-radius);
     background-color: $background-content;
     animation: 250ms cubic-bezier(0.25, 0.1, 0.25, 1) 0s 1 normal forwards running fadeModal;
 
     &.ebs-modal__size {
-      &-small {
+      &--small {
         width: 100%;
         max-width: rem(550px);
       }
 
-      &-regular {
+      &--regular {
         width: 100%;
         max-width: rem(760px);
       }
 
-      &-large {
+      &--large {
         width: 100%;
         max-width: rem(960px);
       }
@@ -68,19 +68,19 @@
       border-bottom: 1px solid #e9e8e5;
       background-color: $simple-white;
 
-      &__close {
+      &--close {
         position: absolute;
         top: 50%;
         right: rem($space);
         transform: translate3d(0, -50%, 0);
-        border-radius: rem($radius);
+        border-radius: rem($border-radius);
         color: $simple-black;
 
-        &-center {
+        &--center {
           @include flex-center;
         }
 
-        &-space-between {
+        &--space-between {
           @include flex-center-between;
         }
       }
@@ -113,7 +113,7 @@
         }
 
         &.ebs-modal__footer__button {
-          &-flex {
+          &--flex {
             display: flex;
             align-items: center;
 
@@ -135,7 +135,7 @@
             }
           }
 
-          &-center {
+          &--center {
             text-align: center;
 
             .ebs-button__wrapper:last__child {

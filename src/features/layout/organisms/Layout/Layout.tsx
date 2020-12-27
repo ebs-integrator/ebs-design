@@ -28,8 +28,9 @@ export const Layout: React.FC<Props> = ({
   optionsTop,
   optionsBottom,
 }) => {
-  const [toggled, setToggled] = React.useState(localStorage.getItem('toggled') === 'true');
+  const storeToggled = localStorage.getItem('toggled');
   const [mobileOpened, setMobileOpened] = React.useState(false);
+  const [toggled, setToggled] = React.useState(storeToggled ? storeToggled === 'true' : false);
 
   const onToggle = (): void =>
     setToggled((s) => {

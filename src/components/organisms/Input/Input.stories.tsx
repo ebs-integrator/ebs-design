@@ -8,7 +8,7 @@ export default {
   component: Input,
 };
 
-export const simple = (): React.ReactElement => (
+export const Simple = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Text Input</div>
@@ -108,7 +108,7 @@ export const simple = (): React.ReactElement => (
   </div>
 );
 
-export const iconRight = (): React.ReactElement => (
+export const IconRight = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Text Input</div>
@@ -208,7 +208,7 @@ export const iconRight = (): React.ReactElement => (
   </div>
 );
 
-export const iconLeft = (): React.ReactElement => (
+export const IconLeft = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Text Input</div>

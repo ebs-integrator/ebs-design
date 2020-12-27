@@ -3,7 +3,7 @@
   position: relative;
   border: 1px solid $grey-200;
   background-color: $simple-white;
-  border-radius: rem($radius);
+  border-radius: rem($border-radius);
 
   &.has-prefix .ebs-input {
     padding-left: rem(37.5px);

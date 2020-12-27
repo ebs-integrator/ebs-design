@@ -41,8 +41,10 @@ export const Button: React.FC<Props> = ({
         `ebs-button__size-${size}`,
         `ebs-button__type-${props.disabled ? 'disabled' : type}`,
         className,
-        block && 'block',
-        prefix && 'has-prefix',
+        {
+          block: block,
+          'has-prefix': prefix,
+        },
       )}
       onClick={onClick}
       role="presentation"

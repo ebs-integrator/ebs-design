@@ -49,14 +49,12 @@ export const SidebarItem: React.FC<TabProps> = ({
       {label && <Label className={cn(`ebs-sidebar__label`, labelClass)} text={label} />}
 
       <div
-        className={cn(
-          `ebs-sidebar__item`,
-          className,
-          invert && `invert`,
-          options && `has-options`,
-          (active || collapsed) && `active`,
-          disabled && `disabled`,
-        )}
+        className={cn(`ebs-sidebar__item`, className, {
+          invert: invert,
+          active: active || collapsed,
+          disabled: disabled,
+          'has-options': options,
+        })}
         onClick={onClickHandler}
       >
         {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}

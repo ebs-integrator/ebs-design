@@ -24,62 +24,32 @@
     &-success {
       color: $semantic-success-500;
       border-color: $semantic-success-500;
-
-      .ebs-label__prefix svg path,
-      .ebs-label__suffix svg path {
-        stroke: $semantic-success-500;
-      }
     }
 
     &-warning {
       color: $semantic-warning-500;
       border-color: $semantic-warning-500;
-
-      .ebs-label__prefix svg path,
-      .ebs-label__suffix svg path {
-        stroke: $semantic-warning-500;
-      }
     }
 
     &-danger {
       color: $semantic-danger-500;
       border-color: $semantic-danger-500;
-
-      .ebs-label__prefix svg path,
-      .ebs-label__suffix svg path {
-        stroke: $semantic-danger-500;
-      }
     }
 
     &-info {
       color: $semantic-info-500;
       border-color: $semantic-info-500;
-
-      .ebs-label__prefix svg path,
-      .ebs-label__suffix svg path {
-        stroke: $semantic-info-500;
-      }
     }
 
     &-text {
       color: $font-text-2;
       border-color: $font-text-2;
-
-      .ebs-label__prefix svg path,
-      .ebs-label__suffix svg path {
-        stroke: $font-text-2;
-      }
     }
 
     &-primary {
       background-color: $primary-000;
       color: $primary-500;
       border-color: $primary-500;
-
-      .ebs-label__prefix svg path,
-      .ebs-label__suffix svg path {
-        stroke: $primary-500;
-      }
     }
   }
 
@@ -87,11 +57,6 @@
     cursor: not-allowed;
     color: $grey-500;
     border-color: $grey-500;
-
-    .ebs-label__prefix svg path,
-    .ebs-label__suffix svg path {
-      stroke: $grey-500;
-    }
   }
 
   &.has-prefix,

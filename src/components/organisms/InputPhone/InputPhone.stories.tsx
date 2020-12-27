@@ -7,7 +7,7 @@ export default {
   component: InputPhone,
 };
 
-export const regular: React.FC = () => (
+export const Regular: React.FC = () => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Input Phone</div>

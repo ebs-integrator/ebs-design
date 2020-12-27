@@ -39,15 +39,11 @@ export const Label: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(
-        `ebs-label`,
-        `ebs-label-${type}`,
-        `ebs-label__status-${status}`,
-        className,
-        prefix && 'has-prefix',
-        suffix && 'has-suffix',
-        disabled && 'disabled',
-      )}
+      className={cn(`ebs-label`, `ebs-label-${type}`, `ebs-label__status-${status}`, className, {
+        'has-prefix': prefix,
+        'has-suffix': suffix,
+        disabled: disabled,
+      })}
       style={style}
       onClick={onClick}
     >

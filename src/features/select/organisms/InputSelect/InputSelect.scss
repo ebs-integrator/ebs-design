@@ -33,7 +33,7 @@
       cursor: pointer;
       padding: rem(11px 10px);
       border: 1px solid $grey-200;
-      border-radius: rem($radius);
+      border-radius: rem($border-radius);
       font-size: rem(14px);
 
       .ebs-select__input-value {
@@ -76,7 +76,7 @@
         background-color: $primary-500;
         color: $simple-white;
         font-size: rem(12px);
-        border-radius: rem($radius);
+        border-radius: rem($border-radius);
         padding: rem(5px 8px);
       }
 

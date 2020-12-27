@@ -9,7 +9,7 @@ export default {
   component: Sidebar,
 };
 
-export const regular = (): React.ReactNode => (
+export const Regular = (): React.ReactNode => (
   <Sidebar
     top={
       <>

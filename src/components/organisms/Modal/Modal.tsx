@@ -59,13 +59,13 @@ export const Modal: React.FC<Props> = ({
       <Mask />
 
       <div className={cn(`ebs-modal__wrapper`, className)} {...(mask ? { onClick: onClickOutside } : {})}>
-        <div className={cn(`ebs-modal`, `ebs-modal__size-${size}`, !showHeader && `hide-header`)}>
+        <div className={cn(`ebs-modal`, `ebs-modal__size--${size}`, { 'hide-header': !showHeader })}>
           {showHeader ? (
             <div className="ebs-modal__header">
               {title && <h2 className="ebs-modal__title">{title}</h2>}
 
-              <div className="ebs-modal__header__tool">{header}</div>
-              <Button icon="close" size="small" className="ebs-modal__header__close" type="text" />
+              <div className="ebs-modal__header--tool">{header}</div>
+              <Button icon="close" size="small" className="ebs-modal__header--close" type="text" />
             </div>
           ) : null}
 
@@ -87,4 +87,4 @@ export const ModalContent: React.FC<{ className?: string }> = ({ className, chil
 export const ModalFooterButton: React.FC<{ justify?: 'space-between' | 'center' }> = ({
   justify = 'space-between',
   children,
-}) => <div className={cn(`ebs-modal__footer__button`, `ebs-modal__footer__button-${justify}`)}>{children}</div>;
+}) => <div className={cn(`ebs-modal__footer__button`, `ebs-modal__footer__button--${justify}`)}>{children}</div>;

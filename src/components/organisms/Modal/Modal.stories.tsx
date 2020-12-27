@@ -8,11 +8,11 @@ export default {
   component: Modal,
 };
 
-export const withNothing = (): React.ReactElement => <Modal>Example</Modal>;
+export const WithNothing = (): React.ReactElement => <Modal>Example</Modal>;
 
-export const withTitle = (): React.ReactElement => <Modal title="Confirmă acceptare">Example</Modal>;
+export const WithTitle = (): React.ReactElement => <Modal title="Confirmă acceptare">Example</Modal>;
 
-export const withFooter = (): React.ReactElement => (
+export const WithFooter = (): React.ReactElement => (
   <Modal
     footer={
       <ModalFooterButton>
@@ -27,7 +27,7 @@ export const withFooter = (): React.ReactElement => (
     Example
   </Modal>
 );
-export const withHeaderAndFooter = (): React.ReactElement => (
+export const WithHeaderAndFooter = (): React.ReactElement => (
   <Modal
     title="Confirmă acceptare"
     footer={
@@ -44,7 +44,7 @@ export const withHeaderAndFooter = (): React.ReactElement => (
   </Modal>
 );
 
-export const cancelWithEscape: React.FC = () => {
+export const CancelWithEscape: React.FC = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [open, setOpen] = useState(true);
 

@@ -17,7 +17,7 @@ export const Tooltip: React.FC<any> = ({ bodyClass, children, title, tooltip, hi
       <div
         {...getTooltipProps({
           ref: tooltipRef,
-          className: `ebs-tooltip__wrapper ebs-tooltip__${placement}`,
+          className: `ebs-tooltip__wrapper ebs-tooltip--${placement}`,
         })}
       >
         {!hideArrow && (

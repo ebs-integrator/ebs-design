@@ -38,14 +38,11 @@ export const Stepper: React.FC<Props> = ({
   ...props
 }) => (
   <div
-    className={cn(
-      `ebs-stepper__wrapper`,
-      align,
-      className,
-      value && `active`,
-      hasError && `has-error`,
-      disabled && `disabled`,
-    )}
+    className={cn(`ebs-stepper__wrapper`, align, className, {
+      'has-error': hasError,
+      active: value,
+      disabled: disabled,
+    })}
   >
     <Label text={label} disabled={disabled} />
 

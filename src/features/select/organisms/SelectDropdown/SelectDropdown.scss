@@ -6,7 +6,7 @@
   padding: rem(4px);
   background-color: $simple-white;
   border: 1px solid $simple-white;
-  border-radius: rem($radius);
+  border-radius: rem($border-radius);
   @include elevation-2;
 
   z-index: 999;

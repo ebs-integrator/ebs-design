@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Loader, LoaderInline } from './Loader';
+import { Loader, LoaderInline as UILoaderInline } from './Loader';
 
 export default {
   title: 'Loader',
@@ -22,4 +22,4 @@ export const DefaultLoader: React.FC = () => {
   );
 };
 
-export const loaderInline = (): React.ReactElement => <LoaderInline />;
+export const LoaderInline = (): React.ReactElement => <UILoaderInline />;
