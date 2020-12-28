@@ -1,0 +1,28 @@
+import { Grid, ColSizeType } from './interface';
+
+export const getClassName = ({ offset, g, gx, gy }: Grid): { [key: string]: boolean } => ({
+  [`offset-${offset}`]: !!offset,
+  [`offset-sm-${offset && (offset as ColSizeType).sm}`]: !!(offset && (offset as ColSizeType).sm),
+  [`offset-md-${offset && (offset as ColSizeType).md}`]: !!(offset && (offset as ColSizeType).md),
+  [`offset-lg-${offset && (offset as ColSizeType).lg}`]: !!(offset && (offset as ColSizeType).lg),
+  [`offset-xl-${offset && (offset as ColSizeType).xl}`]: !!(offset && (offset as ColSizeType).xl),
+  [`offset-xxl-${offset && (offset as ColSizeType).xxl}`]: !!(offset && (offset as ColSizeType).xxl),
+  [`g-${g}`]: !!g,
+  [`gx-${gx}`]: !!gx,
+  [`gy-${gy}`]: !!gy,
+  [`g-sm-${g && (g as ColSizeType).sm}`]: !!(g && (g as ColSizeType).sm),
+  [`gx-sm-${gx && (gx as ColSizeType).sm}`]: !!(gx && (gx as ColSizeType).sm),
+  [`gy-sm-${gy && (gy as ColSizeType).sm}`]: !!(gy && (gy as ColSizeType).sm),
+  [`g-md-${g && (g as ColSizeType).md}`]: !!(g && (g as ColSizeType).md),
+  [`gx-md-${gx && (gx as ColSizeType).md}`]: !!(gx && (gx as ColSizeType).md),
+  [`gy-md-${gy && (gy as ColSizeType).md}`]: !!(gy && (gy as ColSizeType).md),
+  [`g-lg-${g && (g as ColSizeType).lg}`]: !!(g && (g as ColSizeType).lg),
+  [`gx-lg-${gx && (gx as ColSizeType).lg}`]: !!(gx && (gx as ColSizeType).lg),
+  [`gy-lg-${gy && (gy as ColSizeType).lg}`]: !!(gy && (gy as ColSizeType).lg),
+  [`g-xl-${g && (g as ColSizeType).xl}`]: !!(g && (g as ColSizeType).xl),
+  [`gx-xl-${gx && (gx as ColSizeType).xl}`]: !!(gx && (gx as ColSizeType).xl),
+  [`gy-xl-${gy && (gy as ColSizeType).xl}`]: !!(gy && (gy as ColSizeType).xl),
+  [`g-xxl-${g && (g as ColSizeType).xxl}`]: !!(g && (g as ColSizeType).xxl),
+  [`gx-xxl-${gx && (gx as ColSizeType).xxl}`]: !!(gx && (gx as ColSizeType).xxl),
+  [`gy-xxl-${gy && (gy as ColSizeType).xxl}`]: !!(gy && (gy as ColSizeType).xxl),
+});

@@ -3,6 +3,7 @@
 @import './mixins/index';
 @import './palette';
 @import './variables';
+@import './grid';
 
 :root {
   --bs-gutter-x: $space * 2;
