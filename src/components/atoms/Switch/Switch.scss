@@ -6,7 +6,7 @@
   cursor: pointer;
 
   &.ebs-switch {
-    &-unchecked {
+    &--unchecked {
       background: $grey-200;
 
       &:hover .ebs-switch__dot {
@@ -32,7 +32,7 @@
       }
     }
 
-    &-checked {
+    &--checked {
       background-color: $primary-200;
 
       &:hover .ebs-switch__dot {

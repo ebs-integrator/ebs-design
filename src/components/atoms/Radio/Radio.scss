@@ -5,7 +5,7 @@
   }
 
   &.ebs-radio__align {
-    &-left {
+    &--left {
       .ebs-radio {
         right: inherit;
         left: 0;
@@ -16,7 +16,7 @@
       }
     }
 
-    &-right {
+    &--right {
       .ebs-radio {
         left: inherit;
         right: 0;

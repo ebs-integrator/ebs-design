@@ -13,7 +13,9 @@ export const Switch: React.FC<Props> = ({ className, disabled, checked, onChange
 
   return (
     <div
-      className={cn(`ebs-switch`, `ebs-switch-${checked ? `checked` : `unchecked`}`, className, disabled && `disabled`)}
+      className={cn(`ebs-switch`, `ebs-switch--${checked ? `checked` : `unchecked`}`, className, {
+        disabled: disabled,
+      })}
       onClick={onClickHandler}
     >
       {checked && <div className="ebs-switch__checked-sheet" />}

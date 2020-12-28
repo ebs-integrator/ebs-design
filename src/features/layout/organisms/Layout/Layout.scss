@@ -1,6 +1,6 @@
 .ebs-layout {
   &.ebs-layout__sidebar {
-    &-untoggled {
+    &--untoggled {
       &.has-options {
         .ebs-layout__content-wrapper,
         .ebs-layout__footer {
@@ -9,7 +9,7 @@
       }
     }
 
-    &-toggled {
+    &--toggled {
       &.has-options {
         .ebs-layout__content-wrapper,
         .ebs-layout__footer {
@@ -39,7 +39,7 @@
         align-items: center;
         width: 100%;
 
-        .ebs-layout__top-bar-mobile-toggler {
+        .ebs-layout__top-bar-mobile--toggler {
           position: relative;
           height: rem(58px);
           width: rem(58px);
@@ -76,6 +76,10 @@
   }
 
   .ebs-layout__top-bar {
+    background-color: $background-topbar;
+  }
+
+  .ebs-layout__top-bar {
     right: 0;
     top: 0;
     position: fixed;
@@ -96,6 +100,10 @@
       font-size: rem(14px);
       @include fontBold;
       width: 100%;
+
+      img {
+        max-width: rem(144px);
+      }
     }
 
     .ebs-layout__top-bar-left {

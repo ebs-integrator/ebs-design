@@ -31,7 +31,7 @@ export const Textarea: React.FC<Props> = ({
       <Label text={label} disabled={disabled} />
 
       <textarea
-        className={cn(`ebs-textarea`, value && `has__value`, hasError && `has-error`, disabled && `disabled`)}
+        className={cn(`ebs-textarea`, { has__value: value, 'has-error': hasError, disabled: disabled })}
         placeholder={placeholder}
         onChange={onChangeHandler}
         value={value || ''}

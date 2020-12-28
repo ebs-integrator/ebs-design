@@ -29,13 +29,11 @@ export const InputPhone: React.FC<Props> = ({
     <PhoneInput
       value={value}
       onChange={onChange}
-      containerClass={cn(
-        `ebs-input__phone`,
-        className,
-        value && `active`,
-        hasError && `has-error`,
-        disabled && `disabled`,
-      )}
+      containerClass={cn(`ebs-input__phone`, className, {
+        'has-error': hasError,
+        active: value,
+        disabled: disabled,
+      })}
       dropdownClass={cn(`ebs-input__phone-dropdown`, dropdownClass)}
       disabled={disabled}
       {...props}

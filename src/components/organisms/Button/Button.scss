@@ -11,7 +11,7 @@
 
   // button size
   &.ebs-button__size {
-    &-large {
+    &--large {
       .ebs-button {
         padding: rem(10px 20px);
         font-weight: 700;
@@ -19,7 +19,7 @@
       }
     }
 
-    &-medium {
+    &--medium {
       .ebs-button {
         padding: rem(6px 12px);
         font-weight: 500;
@@ -27,7 +27,7 @@
       }
     }
 
-    &-small {
+    &--small {
       .ebs-button {
         padding: rem(4px 8px);
         font-weight: 500;
@@ -38,7 +38,7 @@
 
   // button type (Color)
   &.ebs-button__type {
-    &-primary {
+    &--primary {
       border-color: $primary-500;
       background: $primary-500;
       color: $simple-white;
@@ -64,7 +64,7 @@
       }
     }
 
-    &-fill {
+    &--fill {
       border-color: $primary-100;
       background: $primary-100;
       color: $primary-500;
@@ -96,7 +96,7 @@
       }
     }
 
-    &-ghost {
+    &--ghost {
       background: transparent;
       border-color: $primary-500;
       color: $primary-500;
@@ -128,7 +128,7 @@
       }
     }
 
-    &-text {
+    &--text {
       background: transparent;
       color: $primary-500;
 
@@ -155,7 +155,7 @@
       }
     }
 
-    &-disabled {
+    &--disabled {
       background: $grey-200;
 
       .ebs-button {

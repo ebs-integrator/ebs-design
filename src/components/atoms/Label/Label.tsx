@@ -39,7 +39,7 @@ export const Label: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(`ebs-label`, `ebs-label-${type}`, `ebs-label__status-${status}`, className, {
+      className={cn(`ebs-label`, `ebs-label-${type}`, `ebs-label__status--${status}`, className, {
         'has-prefix': prefix,
         'has-suffix': suffix,
         disabled: disabled,

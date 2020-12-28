@@ -38,8 +38,8 @@ export const Button: React.FC<Props> = ({
     <div
       className={cn(
         `ebs-button__wrapper`,
-        `ebs-button__size-${size}`,
-        `ebs-button__type-${props.disabled ? 'disabled' : type}`,
+        `ebs-button__size--${size}`,
+        `ebs-button__type--${props.disabled ? 'disabled' : type}`,
         className,
         {
           block: block,
@@ -59,7 +59,7 @@ export const Button: React.FC<Props> = ({
 
       <button
         type={submit ? 'submit' : 'button'}
-        className={cn(`ebs-button`, buttonClass, icon && `ebs-button-icon`)}
+        className={cn(`ebs-button`, buttonClass, { 'ebs-button-icon': icon })}
         disabled={props.disabled || loading}
         {...props}
       >

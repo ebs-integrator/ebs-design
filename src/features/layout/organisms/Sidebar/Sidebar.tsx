@@ -36,8 +36,8 @@ export const Sidebar: React.FC<Props> = ({
     <div
       className={cn(
         `ebs-sidebar`,
-        `ebs-sidebar-${toggled ? `toggled` : `untoggled`}`,
-        `ebs-sidebar__mobile-${opened ? `opened` : `closed`}`,
+        `ebs-sidebar--${toggled ? `toggled` : `untoggled`}`,
+        `ebs-sidebar__mobile--${opened ? `opened` : `closed`}`,
         className,
       )}
     >

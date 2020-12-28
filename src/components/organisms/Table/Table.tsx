@@ -94,7 +94,7 @@ export const Table = <T extends object>({
     <div className={cn(`ebs-table__wrapper`, className)}>
       <OldTable
         rowClassName={({ status, is_deleted }) =>
-          cn(rowClassName, (status || is_deleted) && ` ebs-table__row-status-${status || (is_deleted && 'deleted')}`)
+          cn(rowClassName, { [`ebs-table__row-status-${is_deleted ? 'deleted' : status}`]: status || is_deleted })
         }
         className={cn(`ebs-table`, `ebs-table-size-${size}`)}
         data={data}

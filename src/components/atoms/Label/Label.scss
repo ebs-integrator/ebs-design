@@ -21,32 +21,32 @@
   }
 
   &.ebs-label__status {
-    &-success {
+    &--success {
       color: $semantic-success-500;
       border-color: $semantic-success-500;
     }
 
-    &-warning {
+    &--warning {
       color: $semantic-warning-500;
       border-color: $semantic-warning-500;
     }
 
-    &-danger {
+    &--danger {
       color: $semantic-danger-500;
       border-color: $semantic-danger-500;
     }
 
-    &-info {
+    &--info {
       color: $semantic-info-500;
       border-color: $semantic-info-500;
     }
 
-    &-text {
+    &--text {
       color: $font-text-2;
       border-color: $font-text-2;
     }
 
-    &-primary {
+    &--primary {
       background-color: $primary-000;
       color: $primary-500;
       border-color: $primary-500;

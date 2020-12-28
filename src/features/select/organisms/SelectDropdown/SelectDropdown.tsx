@@ -95,7 +95,7 @@ export const SelectDropdown: React.FC<Props> = ({ className, mode, onClose, onCh
             />
           ))
         ) : (
-          <div className="ebs-select__dropdown-empty">No found</div>
+          <div className="ebs-select__dropdown--empty">No found</div>
         )}
       </Animated>
     </div>

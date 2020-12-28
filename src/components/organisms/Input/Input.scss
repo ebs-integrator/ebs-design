@@ -14,7 +14,7 @@
   }
 
   &.ebs-input__wrapper {
-    &-active,
+    &--active,
     &.focus {
       border-color: $primary-500;
       background-color: $simple-white !important;
@@ -24,7 +24,7 @@
       }
     }
 
-    &-unactive {
+    &--unactive {
       border-color: $grey-200;
       background-color: $simple-white;
     }
@@ -46,11 +46,6 @@
       @include placeholder {
         color: $grey-500 !important;
       }
-    }
-
-    .ebs-input__prefix .ebs-icon path,
-    .ebs-input__suffix .ebs-icon path {
-      stroke: $grey-500;
     }
   }
 

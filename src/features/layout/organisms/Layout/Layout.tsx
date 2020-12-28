@@ -43,17 +43,14 @@ export const Layout: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(
-        `ebs-layout`,
-        `ebs-layout-sidebar-${toggled ? `toggled` : `untoggled`}`,
-        className,
-        (optionsTop || optionsBottom) && 'has-options',
-      )}
+      className={cn(`ebs-layout`, `ebs-layout-sidebar--${toggled ? `toggled` : `untoggled`}`, className, {
+        'has-options': optionsTop || optionsBottom,
+      })}
     >
       <div className="ebs-layout__top-bar">
         {/* mobile part */}
         <div className="ebs-layout__top-bar-mobile">
-          <div className="ebs-layout__top-bar-mobile-toggler" onClick={onToggleMobile}>
+          <div className="ebs-layout__top-bar-mobile--toggler" onClick={onToggleMobile}>
             <Icon type="menu-fold" />
           </div>
         </div>

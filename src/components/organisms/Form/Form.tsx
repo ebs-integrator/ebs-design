@@ -67,7 +67,7 @@ export const FormItem: React.FC<ItemProps> = ({
         />
       )}
 
-      <div className={cn(`ebs-form__children`, className, extra && extraStatus === 'danger' && 'has-error')}>
+      <div className={cn(`ebs-form__children`, className, { 'has-error': extra && extraStatus === 'danger' })}>
         {children}
       </div>
 
@@ -77,5 +77,5 @@ export const FormItem: React.FC<ItemProps> = ({
 };
 
 export const FormItems: React.FC<{ className?: string; three?: boolean }> = ({ className, three, children }) => (
-  <div className={cn(`ebs-form__items`, three && `ebs-form__items-three`, className)}>{children}</div>
+  <div className={cn(`ebs-form__items`, className, { 'ebs-form__items-three': three })}>{children}</div>
 );

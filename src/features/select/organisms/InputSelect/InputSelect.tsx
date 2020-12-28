@@ -108,27 +108,24 @@ export const InputSelect: React.FC<Props> = ({
 
   const onToggleOpenDropdown = (): void => setOpenDropdown((s) => !s);
 
+  const isArrayValue = React.useMemo(() => textValue && Array.isArray(textValue) && textValue.length > 0, [textValue]);
   const renderValue = React.useMemo(
     () =>
-      textValue
-        ? Array.isArray(textValue)
-          ? textValue.length > 0
-            ? textValue.map((item, key) => (
-                <Label
-                  key={item}
-                  className="ebs-select__input-label"
-                  type="circle"
-                  status="primary"
-                  text={item}
-                  prefix={<Icon type="check" />}
-                  suffix={<Icon type="close" />}
-                  onClickSuffix={() => onDeleteSelect(key)}
-                />
-              ))
-            : placeholder
-          : textValue
-        : placeholder,
-    [textValue, placeholder],
+      isArrayValue
+        ? (textValue as string[]).map((item, key) => (
+            <Label
+              key={item}
+              className="ebs-select__input-label"
+              type="circle"
+              status="primary"
+              text={item}
+              prefix={<Icon type="check" />}
+              suffix={<Icon type="close" />}
+              onClickSuffix={() => onDeleteSelect(key)}
+            />
+          ))
+        : textValue || placeholder,
+    [isArrayValue, textValue, placeholder],
   );
 
   return (
@@ -136,14 +133,11 @@ export const InputSelect: React.FC<Props> = ({
       {openDropdown && <Mask onClick={onToggleOpenDropdown} />}
 
       <div
-        className={cn(
-          `ebs-select__input-wrapper`,
-          `ebs-select__input-mode-${mode}`,
-          className,
-          hasValue && `active`,
-          hasError && `has-error`,
-          disabled && `disabled`,
-        )}
+        className={cn(`ebs-select__input-wrapper`, `ebs-select__input-mode-${mode}`, className, {
+          active: hasValue,
+          'has-error': hasError,
+          disabled: disabled,
+        })}
       >
         <Label text={label} disabled={disabled} />
 

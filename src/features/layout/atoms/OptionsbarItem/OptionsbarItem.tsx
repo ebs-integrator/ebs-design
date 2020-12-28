@@ -18,7 +18,7 @@ export const OptionsbarItem: React.FC<Props> = ({ className, onClick, active, di
 
   return (
     <div
-      className={cn(`ebs-optionsbar__item`, className, active && `active`, disabled && ` disabled`)}
+      className={cn(`ebs-optionsbar__item`, className, { active: active, disabled: disabled })}
       onClick={onClickHandler}
     >
       {text}

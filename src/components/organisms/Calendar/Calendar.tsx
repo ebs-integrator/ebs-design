@@ -144,7 +144,7 @@ export const Calendar: React.FC<Props> = ({
               minTime={withTime ? limitTime.min : undefined}
               maxTime={withTime ? limitTime.max : undefined}
               placeholderText={startPlaceholder || withTime ? `yyyy-mm-dd hh:mm` : `yyyy-mm-dd`}
-              className={cn(`ebs-calendar`, from && `active`)}
+              className={cn(`ebs-calendar`, { active: from })}
               selected={from}
               onChange={onChangeFrom}
               selectsStart
@@ -164,7 +164,7 @@ export const Calendar: React.FC<Props> = ({
               minTime={limitTime.min}
               maxTime={limitTime.max}
               placeholderText={endPlaceholder || withTime ? `yyyy-mm-dd hh:mm` : `yyyy-mm-dd`}
-              className={cn(`ebs-calendar`, to && `active`)}
+              className={cn(`ebs-calendar`, { active: to })}
               selected={to}
               onChange={onChangeTo}
               selectsEnd
@@ -183,7 +183,7 @@ export const Calendar: React.FC<Props> = ({
             showYearDropdown
             scrollableYearDropdown
             minDate={minDate}
-            className={cn(`ebs-calendar`, date && `active`)}
+            className={cn(`ebs-calendar`, { active: date })}
             dateFormat="yyyy-MM-dd"
             placeholderText={placeholder || 'yyyy-mm-dd'}
             selected={date}
@@ -203,7 +203,7 @@ export const Calendar: React.FC<Props> = ({
             maxTime={limitTime.max}
             dateFormat="yyyy-MM-dd HH:mm"
             placeholderText={placeholder || 'yyyy-mm-dd hh:mm'}
-            className={cn(`ebs-calendar`, date && `active`)}
+            className={cn(`ebs-calendar`, { active: date })}
             selected={date}
             onChange={onChangeDate}
             timeIntervals={5}

@@ -50,9 +50,9 @@ export const Radio: React.FC<Props> = ({
   }
 
   return (
-    <div className={cn(`ebs-radio__group`, `ebs-radio__align-${radioAlign}`, className)}>
+    <div className={cn(`ebs-radio__group`, `ebs-radio__align--${radioAlign}`, className)}>
       {options.map((option) => (
-        <div className={cn(`ebs-radio__wrapper`, option.text && 'has-text', option.disabled && 'disabled')}>
+        <div className={cn(`ebs-radio__wrapper`, { 'has-text': option.text, disabled: option.disabled })}>
           <input
             type="radio"
             className="ebs-radio__input"

@@ -77,15 +77,17 @@ export const Input = React.forwardRef<any, InputProps>(
         <div
           className={cn(
             `ebs-input__wrapper`,
-            value === '' && `ebs-input__empty`,
-            `ebs-input__wrapper-${value ? `active` : `unactive`}`,
-            `ebs-input__type-${type}`,
+            `ebs-input__wrapper--${value ? `active` : `unactive`}`,
+            `ebs-input__type--${type}`,
             `ebs-input-style-${styleType}`,
             className,
-            prefix && `has-prefix`,
-            suffix && `has-suffix`,
-            hasError && `has-error`,
-            disabled && `disabled`,
+            {
+              'ebs-input__empty': value === '',
+              'has-prefix': prefix,
+              'has-suffix': suffix,
+              'has-error': hasError,
+              disabled: disabled,
+            },
           )}
         >
           {loading || prefix ? (

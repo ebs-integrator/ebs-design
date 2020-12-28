@@ -6,24 +6,24 @@
   height: 100vh;
   border-right: 1px solid $grey-200;
   transition: width 0.2s;
-  background: $simple-white;
+  background: $background-sidebar;
   z-index: 5;
 
   @include mq($until: small-desktop) {
     padding-top: rem(80px);
 
     &.ebs-sidebar__mobile {
-      &-closed,
-      &-opened {
+      &--closed,
+      &--opened {
         transition: 0.2s;
         padding-top: 0;
       }
 
-      &-closed {
+      &--closed {
         transform: translateX(-100%);
       }
 
-      &-opened {
+      &--opened {
         width: rem(192px) !important;
         transform: translateX(0);
       }
@@ -31,11 +31,11 @@
   }
 
   &.ebs-sidebar {
-    &-untoggled .ebs-sidebar__options {
+    &--untoggled .ebs-sidebar__options {
       left: rem(192px);
     }
 
-    &-toggled {
+    &--toggled {
       overflow: hidden;
       width: rem(57px);
 
