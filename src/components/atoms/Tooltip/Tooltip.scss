@@ -1,33 +1,33 @@
-.ebs-tooltip-wrapper {
+.ebs-tooltip__wrapper {
   background-color: $simple-white;
-  border-radius: rem(4px);
+  border-radius: rem($border-radius);
   @include elevation-2;
   margin: rem(0 10px);
 
   &.ebs-tooltip {
-    &-top {
+    &--top {
       margin: rem(0 0 10px);
     }
 
-    &-bottom {
+    &--bottom {
       margin: rem(10px 0 0);
     }
 
-    &-left {
+    &--left {
       margin: rem(0 10px 0 0);
     }
 
-    &-right {
+    &--right {
       margin: rem(0 0 0 10px);
     }
   }
 
-  .ebs-tooltip-body {
+  .ebs-tooltip__body {
     padding: rem(12px);
     font-size: rem(12px);
     color: $font-text-2;
 
-    .ebs-tooltip-body-title {
+    .ebs-tooltip__body-title {
       color: $font-text-1;
       font-size: rem(14px);
       margin-bottom: rem(4px);
@@ -36,7 +36,7 @@
   }
 }
 
-.ebs-tooltip-arrow {
+.ebs-tooltip__arrow {
   position: absolute;
 
   path {
@@ -45,18 +45,18 @@
   }
 }
 
-.ebs-tooltip-arrow[data-placement*='top'] {
+.ebs-tooltip__arrow[data-placement*='top'] {
   bottom: rem(-12px);
 }
 
-.ebs-tooltip-arrow[data-placement*='right'] {
+.ebs-tooltip__arrow[data-placement*='right'] {
   left: rem(-12px);
 }
 
-.ebs-tooltip-arrow[data-placement*='bottom'] {
+.ebs-tooltip__arrow[data-placement*='bottom'] {
   top: rem(-12px);
 }
 
-.ebs-tooltip-arrow[data-placement*='left'] {
+.ebs-tooltip__arrow[data-placement*='left'] {
   right: rem(-12px);
 }

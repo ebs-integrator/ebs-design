@@ -30,7 +30,7 @@ const columns = [
   },
 ];
 
-export const regular = (): React.ReactElement => (
+export const Regular = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Table</div>

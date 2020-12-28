@@ -1,35 +1,35 @@
-.ebs-radio-group {
+.ebs-radio__group {
   &.vertical {
     display: flex;
     flex-wrap: wrap;
   }
 
-  &.ebs-radio-align {
-    &-left {
+  &.ebs-radio__align {
+    &--left {
       .ebs-radio {
         right: inherit;
         left: 0;
       }
 
-      .ebs-radio-text {
+      .ebs-radio__text {
         padding-left: rem(26px);
       }
     }
 
-    &-right {
+    &--right {
       .ebs-radio {
         left: inherit;
         right: 0;
       }
 
-      .ebs-radio-text {
+      .ebs-radio__text {
         padding-right: rem(26px);
         width: rem(160px);
       }
     }
   }
 
-  .ebs-radio-wrapper {
+  .ebs-radio__wrapper {
     position: relative;
 
     &:not(:last-child) {
@@ -37,30 +37,30 @@
     }
 
     &.disabled {
-      .ebs-radio-input {
+      .ebs-radio__input {
         cursor: not-allowed;
       }
 
-      .ebs-radio-text {
+      .ebs-radio__text {
         color: $grey-500;
       }
 
       .ebs-radio,
-      .ebs-radio-input:hover ~ .ebs-radio {
+      .ebs-radio__input:hover ~ .ebs-radio {
         background-color: transparent;
 
-        .ebs-radio-dot {
+        .ebs-radio__dot {
           border: 1px solid $grey-200;
           box-shadow: none;
           background-color: transparent;
         }
       }
 
-      .ebs-radio-input:checked ~ .ebs-radio,
-      .ebs-radio-input:checked:hover ~ .ebs-radio {
+      .ebs-radio__input:checked ~ .ebs-radio,
+      .ebs-radio__input:checked:hover ~ .ebs-radio {
         background-color: transparent;
 
-        .ebs-radio-dot {
+        .ebs-radio__dot {
           border: 1px solid $grey-500;
           box-shadow: 0px 0px 0px 3px $simple-white inset;
           background-color: $grey-500;
@@ -73,7 +73,7 @@
       top: rem(-2px);
     }
 
-    .ebs-radio-input {
+    .ebs-radio__input {
       position: absolute;
       left: 0;
       top: 0;
@@ -85,25 +85,25 @@
       &:hover ~ .ebs-radio {
         background-color: $primary-100;
 
-        .ebs-radio-dot {
+        .ebs-radio__dot {
           border-color: $primary-500;
           background-color: $primary-100;
         }
       }
     }
 
-    .ebs-radio-input:checked {
+    .ebs-radio__input:checked {
       &:hover ~ .ebs-radio {
         background-color: $primary-100;
 
-        .ebs-radio-dot {
+        .ebs-radio__dot {
           border-color: $primary-500;
           background-color: $primary-500;
           box-shadow: 0px 0px 0px 3px $primary-100 inset;
         }
       }
 
-      ~ .ebs-radio .ebs-radio-dot {
+      ~ .ebs-radio .ebs-radio__dot {
         border-color: $primary-500;
         background-color: $primary-500;
         box-shadow: 0px 0px 0px 3px $simple-white inset;
@@ -118,7 +118,7 @@
       pointer-events: none;
       border-radius: 50%;
 
-      .ebs-radio-dot {
+      .ebs-radio__dot {
         position: absolute;
         left: 50%;
         top: 50%;
@@ -131,7 +131,7 @@
       }
     }
 
-    .ebs-radio-text {
+    .ebs-radio__text {
       color: $font-text-2;
       font-size: rem(14px);
     }

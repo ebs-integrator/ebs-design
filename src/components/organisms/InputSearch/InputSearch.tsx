@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { capitalize } from 'libs/string';
 import { Input } from 'components/organisms';
 import { Icon } from 'components/atoms';
@@ -21,7 +22,7 @@ interface Props {
 }
 
 export const InputSearch: React.FC<Props> = ({
-  className = '',
+  className,
   styleType = 'stroke',
   iconAlign = 'suffix',
   autoFocus,
@@ -65,13 +66,13 @@ export const InputSearch: React.FC<Props> = ({
 
   return (
     <form
-      className={`ebs-input-search-wrapper ebs-input-search-type-${styleType}${
-        disabled ? ' disabled' : ''
-      } ${className}`}
+      className={cn(`ebs-input__search-wrapper`, `ebs-input__search-type-${styleType}`, className, {
+        disabled: disabled,
+      })}
       onSubmit={onSearchHandler}
     >
       <Input
-        className="ebs-input-search"
+        className="ebs-input__search"
         autoFocus={autoFocus}
         {...{
           [`onClick${capitalize(iconAlign)}`]: onSearchHandler,

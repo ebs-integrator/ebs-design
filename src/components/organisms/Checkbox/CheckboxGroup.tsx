@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { makeid } from 'libs/string';
 import { Checkbox } from 'components/organisms';
 
@@ -23,8 +24,8 @@ export interface Props {
 }
 
 export const CheckboxGroup: React.FC<Props> = ({
-  className = '',
-  checkboxClass = '',
+  className,
+  checkboxClass,
   checkAlign = 'left',
   options,
   values,
@@ -44,11 +45,11 @@ export const CheckboxGroup: React.FC<Props> = ({
   }
 
   return (
-    <div className={`ebs-checkbox-group ${className}`}>
+    <div className={cn(`ebs-checkbox__group`, className)}>
       {options.map((option) => (
         <Checkbox
           key={option.value}
-          className={checkboxClass}
+          className={cn(checkboxClass)}
           checkAlign={checkAlign}
           name={name}
           text={option.text}

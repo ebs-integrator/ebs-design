@@ -7,7 +7,7 @@ export default {
   component: Label,
 };
 
-export const circled = (): React.ReactElement => (
+export const Circled = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Label & Text Status</div>
@@ -81,7 +81,7 @@ export const circled = (): React.ReactElement => (
   </div>
 );
 
-export const regular = (): React.ReactElement => (
+export const Regular = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Label & Text Status</div>

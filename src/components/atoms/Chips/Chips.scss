@@ -18,16 +18,6 @@
         background-color: $primary-500;
         border-color: $primary-500;
         color: $simple-white;
-
-        .ebs-chips-prefix .ebs-icon path,
-        .ebs-chips-suffix .ebs-icon path {
-          stroke: $simple-white;
-        }
-      }
-
-      .ebs-chips-prefix .ebs-icon path,
-      .ebs-chips-suffix .ebs-icon path {
-        stroke: $primary-500;
       }
     }
 
@@ -40,16 +30,6 @@
         background-color: transparent;
         border-color: $primary-400;
         color: $primary-400;
-
-        .ebs-chips-prefix .ebs-icon path,
-        .ebs-chips-suffix .ebs-icon path {
-          stroke: $primary-400;
-        }
-      }
-
-      .ebs-chips-prefix .ebs-icon path,
-      .ebs-chips-suffix .ebs-icon path {
-        stroke: $font-text-3;
       }
     }
   }
@@ -71,11 +51,6 @@
         background-color: $grey-200;
         border-color: $grey-200;
         color: $grey-500;
-
-        .ebs-chips-prefix .ebs-icon path,
-        .ebs-chips-suffix .ebs-icon path {
-          stroke: $grey-500;
-        }
       }
 
       &-unchecked,
@@ -83,16 +58,11 @@
         background-color: transparent;
         border-color: $grey-200;
         color: $grey-200;
-
-        .ebs-chips-prefix .ebs-icon path,
-        .ebs-chips-suffix .ebs-icon path {
-          stroke: $grey-200;
-        }
       }
     }
   }
 
-  .ebs-chips-prefix {
+  .ebs-chips__prefix {
     position: absolute;
     left: rem(9px);
     top: calc(50% + 1px);
@@ -103,7 +73,7 @@
     }
   }
 
-  .ebs-chips-suffix {
+  .ebs-chips__suffix {
     position: absolute;
     right: rem(9px);
     top: calc(50% + 1px);

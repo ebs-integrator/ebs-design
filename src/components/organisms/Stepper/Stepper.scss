@@ -1,14 +1,14 @@
 @import '~rc-input-number/assets/index.css';
 
-.ebs-stepper-wrapper {
-  &.left .ebs-stepper .rc-input-number-handler-wrap {
+.ebs-stepper__wrapper {
+  &.left .ebs-stepper .rc__input-number-handler-wrap {
     float: left;
     border-left-width: 0px;
     border-right-width: 1px;
     border-right-style: solid;
   }
 
-  &.right .ebs-stepper .rc-input-number-handler-wrap {
+  &.right .ebs-stepper .rc__input-number-handler-wrap {
     float: right;
     border-right-width: 0px;
     border-left-width: 1px;
@@ -37,14 +37,14 @@
       border-color: $semantic-danger-500 !important;
     }
 
-    .ebs-stepper-extra {
+    .ebs-stepper__extra {
       color: $semantic-danger-500;
     }
   }
 
   &.disabled {
-    .ebs-stepper-label,
-    .ebs-stepper-label {
+    .ebs-stepper__label,
+    .ebs-stepper__label {
       color: $grey-500;
     }
 
@@ -76,7 +76,7 @@
     height: rem(40px);
     border: 1px solid $grey-200;
     background-color: $simple-white;
-    border-radius: rem(4px);
+    border-radius: rem($border-radius);
 
     &:focus,
     &:hover,
@@ -165,7 +165,7 @@
   }
 
   // Label
-  .ebs-stepper-label {
+  .ebs-stepper__label {
     margin-bottom: rem(5px);
     color: $font-text-2;
     @include fontRegular;
@@ -173,7 +173,7 @@
   }
 
   // Extra
-  .ebs-stepper-extra {
+  .ebs-stepper__extra {
     margin-top: rem(2.5px);
     color: $font-text-3;
     @include fontRegular;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 
 export interface Props {
   className?: string;
@@ -8,7 +9,7 @@ export interface Props {
   text?: React.ReactNode;
 }
 
-export const OptionsbarItem: React.FC<Props> = ({ className = '', onClick, active, disabled, text }) => {
+export const OptionsbarItem: React.FC<Props> = ({ className, onClick, active, disabled, text }) => {
   const onClickHandler = (): void => {
     if (onClick !== undefined && !disabled) {
       onClick();
@@ -17,7 +18,7 @@ export const OptionsbarItem: React.FC<Props> = ({ className = '', onClick, activ
 
   return (
     <div
-      className={`ebs-optionsbar-item${active ? ' active' : ''}${disabled ? ' disabled' : ''} ${className}`}
+      className={cn(`ebs-optionsbar__item`, className, { active: active, disabled: disabled })}
       onClick={onClickHandler}
     >
       {text}

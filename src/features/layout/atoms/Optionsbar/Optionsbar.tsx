@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 
 export interface Props {
   className?: string;
@@ -6,12 +7,12 @@ export interface Props {
   bottom?: React.ReactNode;
 }
 
-export const Optionsbar: React.FC<Props> = ({ className = '', top, bottom }) => {
+export const Optionsbar: React.FC<Props> = ({ className, top, bottom }) => {
   return (
-    <div className={`ebs-optionsbar ${className}`}>
-      <div className="ebs-optionsbar-top">{top}</div>
+    <div className={cn(`ebs-optionsbar`, className)}>
+      <div className="ebs-optionsbar__top">{top}</div>
 
-      <div className="ebs-optionsbar-bottom">{bottom}</div>
+      <div className="ebs-optionsbar__bottom">{bottom}</div>
     </div>
   );
 };

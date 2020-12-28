@@ -7,7 +7,7 @@ export default {
   component: Stepper,
 };
 
-export const stepperRight = (): React.ReactElement => (
+export const StepperRight = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Stepper</div>
@@ -107,7 +107,7 @@ export const stepperRight = (): React.ReactElement => (
   </div>
 );
 
-export const stepperLeft = (): React.ReactElement => (
+export const StepperLeft = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Stepper</div>

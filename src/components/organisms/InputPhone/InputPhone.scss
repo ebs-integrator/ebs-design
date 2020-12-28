@@ -1,7 +1,7 @@
 @import '~react-phone-input-2/lib/style.css';
 
-.ebs-input-phone-wrapper {
-  .ebs-input-phone {
+.ebs-input__phone-wrapper {
+  .ebs-input__phone {
     &.active .form-control,
     &.active .flag-dropdown {
       border-color: $primary-500;
@@ -28,7 +28,7 @@
     }
 
     .form-control {
-      border-radius: rem(4px);
+      border-radius: rem($border-radius);
       height: rem(40px);
 
       @include placeholder {
@@ -44,11 +44,11 @@
   }
 }
 
-.ebs-input-phone-dropdown.country-list {
+.ebs-input__phone-dropdown.country-list {
   padding: rem(4px);
   @include hiddenScroll;
   @include elevation-2;
-  border-radius: rem(4px);
+  border-radius: rem($border-radius);
 
   .country {
     font-size: rem(14px);
@@ -60,7 +60,7 @@
     &:hover,
     &[aria-selected='true'] {
       background-color: $primary-000;
-      border-radius: rem(4px);
+      border-radius: rem($border-radius);
     }
 
     &[aria-selected='true'] {

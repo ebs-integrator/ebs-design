@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 
 interface Props {
   className?: string;
@@ -7,19 +8,19 @@ interface Props {
   onChange?: (value: boolean) => void;
 }
 
-export const Switch: React.FC<Props> = ({ className = '', disabled, checked, onChange }) => {
+export const Switch: React.FC<Props> = ({ className, disabled, checked, onChange }) => {
   const onClickHandler = (): void => (!disabled && onChange !== undefined ? onChange(!checked) : undefined);
 
   return (
     <div
-      className={`ebs-switch ebs-switch-${checked ? 'checked' : 'unchecked'}${
-        disabled ? ' disabled' : ''
-      } ${className}`}
+      className={cn(`ebs-switch`, `ebs-switch--${checked ? `checked` : `unchecked`}`, className, {
+        disabled: disabled,
+      })}
       onClick={onClickHandler}
     >
-      {checked && <div className="ebs-switch-checked-sheet" />}
+      {checked && <div className="ebs-switch__checked-sheet" />}
 
-      <div className="ebs-switch-dot" />
+      <div className="ebs-switch__dot" />
     </div>
   );
 };

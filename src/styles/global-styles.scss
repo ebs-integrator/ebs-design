@@ -2,6 +2,11 @@
 
 @import './mixins/index';
 @import './palette';
+@import './variables';
+
+:root {
+  --bs-gutter-x: $space * 2;
+}
 
 // @include mq-show-breakpoints;
 

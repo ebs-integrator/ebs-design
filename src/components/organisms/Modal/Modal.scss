@@ -1,0 +1,149 @@
+.ebs-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeModal {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ebs-modal__wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  outline: 0;
+  z-index: 9998;
+
+  .ebs-modal {
+    @include elevation-4;
+    position: relative;
+    margin: rem(150px auto $space);
+    border: 1px solid #e9e8e5;
+    border-radius: rem($border-radius);
+    background-color: $background-content;
+    animation: 250ms cubic-bezier(0.25, 0.1, 0.25, 1) 0s 1 normal forwards running fadeModal;
+
+    &.ebs-modal__size {
+      &--small {
+        width: 100%;
+        max-width: rem(550px);
+      }
+
+      &--regular {
+        width: 100%;
+        max-width: rem(760px);
+      }
+
+      &--large {
+        width: 100%;
+        max-width: rem(960px);
+      }
+    }
+
+    .ebs-modal__content {
+      padding: rem($space);
+    }
+
+    &.hide-header .ebs-modal__content {
+      padding: rem($space * 2);
+    }
+
+    .ebs-modal__header {
+      position: relative;
+      padding: rem($space);
+      border-bottom: 1px solid #e9e8e5;
+      background-color: $simple-white;
+
+      &--close {
+        position: absolute;
+        top: 50%;
+        right: rem($space);
+        transform: translate3d(0, -50%, 0);
+        border-radius: rem($border-radius);
+        color: $simple-black;
+
+        &--center {
+          @include flex-center;
+        }
+
+        &--space-between {
+          @include flex-center-between;
+        }
+      }
+
+      .ebs-modal__title {
+        font-size: rem(14px);
+        @include fontMedium;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    .ebs-modal__footer {
+      padding: rem($space);
+      border-top: 1px solid #e9e8e5;
+      background-color: $simple-white;
+
+      &__button {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .ebs-modal__footer__button {
+        > div:not(:first-child) {
+          margin-left: rem($space);
+
+          > div:not(:first-child) {
+            margin-left: rem($space);
+          }
+        }
+
+        &.ebs-modal__footer__button {
+          &--flex {
+            display: flex;
+            align-items: center;
+
+            > * {
+              display: block;
+              white-space: nowrap;
+
+              > *:not(:first-child) {
+                margin-left: rem($space);
+              }
+
+              &:first-child {
+                width: 100%;
+              }
+
+              &:last-child {
+                width: auto;
+              }
+            }
+          }
+
+          &--center {
+            text-align: center;
+
+            .ebs-button__wrapper:last__child {
+              margin-left: rem($space);
+            }
+          }
+        }
+      }
+    }
+  }
+}
