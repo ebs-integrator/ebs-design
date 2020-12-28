@@ -9,8 +9,8 @@ export type ColSizeType = { [key: string]: ColType };
 
 export interface Grid {
   className?: string;
-  offset: Offset | ColSizeType;
-  g: Gutter | ColSizeType;
-  gx: Gutter | ColSizeType;
-  gy: Gutter | ColSizeType;
+  offset?: Offset | ColSizeType;
+  g?: Gutter | ColSizeType;
+  gx?: Gutter | ColSizeType;
+  gy?: Gutter | ColSizeType;
 }

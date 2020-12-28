@@ -1,11 +1,13 @@
 import * as React from 'react';
 
-import { Container as UIContainer, Row as UIRow, Col as UICol } from './Grid';
+import { Container as UIContainer } from './Container/Container';
+import { Row as UIRow } from './Row/Row';
+import { Col as UICol } from './Col/Col';
 import './ExampleGrid.scss';
 
 export default {
-  title: 'Container',
-  component: UIContainer,
+  title: 'Grid',
+  component: UICol,
 };
 
 export const Container = (): React.ReactElement => <UIContainer className="example-block">Container</UIContainer>;
@@ -17,13 +19,13 @@ export const Row = (): React.ReactElement => (
 );
 
 export const Col = (): React.ReactElement => (
-  <UIContainer className="ebs-table__mobile">
+  <UIContainer>
     <>
       <UIRow className="mb-30">
-        <UICol type={4}>
+        <UICol size={4}>
           <div className="example-block">Col 4</div>
         </UICol>
-        <UICol type={8}>
+        <UICol size={8}>
           <div className="example-block">Col 8</div>
         </UICol>
       </UIRow>
