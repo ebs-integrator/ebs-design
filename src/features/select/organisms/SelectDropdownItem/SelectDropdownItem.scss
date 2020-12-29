@@ -13,12 +13,12 @@
 
   &.active {
     .ebs-select__dropdown-item-text {
-      color: $primary-500;
+      color: $primary-color;
     }
 
     .ebs-select__dropdown-item-prefix path,
     .ebs-select__dropdown-item-suffix path {
-      stroke: $primary-500;
+      stroke: $primary-color;
     }
   }
 
@@ -35,13 +35,13 @@
     background-color: $primary-000;
 
     .ebs-select__dropdown-item-text {
-      color: $primary-500;
+      color: $primary-color;
     }
 
     .ebs-select__dropdown-item-suffix,
     .ebs-select__dropdown-item-prefix {
       path {
-        stroke: $primary-500;
+        stroke: $primary-color;
       }
 
       .ebs-checkbox__wrapper .ebs-checkbox,
@@ -57,7 +57,7 @@
   }
 
   .ebs-select__dropdown-item-text {
-    color: $font-text-2;
+    color: $text-color;
     font-size: rem(14px);
     line-height: 140%;
   }
@@ -69,7 +69,7 @@
     transform: translateY(-50%);
 
     path {
-      stroke: $font-text-2;
+      stroke: $text-color;
     }
   }
 

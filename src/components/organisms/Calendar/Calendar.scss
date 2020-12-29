@@ -15,7 +15,7 @@
 .picker-container {
   position: absolute;
   flex-direction: column-reverse;
-  background: $simple-white;
+  background: $white;
   border: inherit;
   transform: translate3d(-50%, rem(55px, 0));
   max-width: rem(600px);
@@ -30,7 +30,7 @@
 .ebs-calendar__wrapper {
   &.disabled .ebs-calendar__input-wrapper .ebs-calendar {
     border-color: $grey-500;
-    background-color: $simple-white;
+    background-color: $white;
     color: $grey-500;
     cursor: not-allowed;
 
@@ -40,13 +40,13 @@
   }
 
   &.active .ebs-calendar__input-wrapper .ebs-calendar {
-    border-color: $primary-500;
-    background-color: $simple-white;
+    border-color: $primary-color;
+    background-color: $white;
   }
 
   &.has-error .ebs-calendar__input-wrapper .ebs-calendar {
-    border-color: $semantic-danger-500;
-    background-color: $simple-white;
+    border-color: $danger-color;
+    background-color: $white;
   }
 
   &.ebs-calendar__type {
@@ -109,10 +109,10 @@
       font-size: rem(14px);
       padding: rem(10px);
       padding-right: rem(35px);
-      color: $font-text-1;
+      color: $heading-color;
 
       @include placeholder {
-        color: $font-text-3;
+        color: $text-color-secondary;
       }
     }
   }
@@ -138,7 +138,7 @@
     &__time-list-item {
       &:hover {
         background-color: $primary-100 !important;
-        color: $font-text-2;
+        color: $text-color;
       }
 
       &--disabled {
@@ -147,8 +147,8 @@
 
       &--selected,
       &--selected:hover {
-        background: $primary-500 !important;
-        color: $simple-white;
+        background: $primary-color !important;
+        color: $white;
       }
     }
 
@@ -259,7 +259,7 @@
       justify-content: center;
       align-items: center;
       border-radius: 0;
-      color: $font-text-2;
+      color: $text-color;
 
       &:hover {
         background-color: $primary-100;
@@ -279,8 +279,8 @@
     &__day--keyboard-selected,
     &__day--keyboard-selected:hover {
       border-radius: rem($border-radius);
-      background-color: $primary-500;
-      color: $simple-white;
+      background-color: $primary-color;
+      color: $white;
     }
   }
 }

@@ -4,15 +4,15 @@
   .ebs-input__phone {
     &.active .form-control,
     &.active .flag-dropdown {
-      border-color: $primary-500;
-      background-color: $simple-white !important;
-      color: $font-text-1;
+      border-color: $primary-color;
+      background-color: $white !important;
+      color: $heading-color;
     }
 
     &.disabled .form-control,
     &.disabled .flag-dropdown {
       border-color: $grey-500;
-      background-color: $simple-white;
+      background-color: $white;
       color: $grey-500;
       cursor: not-allowed;
 
@@ -23,8 +23,8 @@
 
     &.has-error .form-control,
     &.has-error .flag-dropdown {
-      border-color: $semantic-danger-500;
-      background-color: $simple-white;
+      border-color: $danger-color;
+      background-color: $white;
     }
 
     .form-control {
@@ -32,14 +32,14 @@
       height: rem(40px);
 
       @include placeholder {
-        color: $font-text-3 !important;
+        color: $text-color-secondary !important;
       }
     }
 
     .form-control,
     .flag-dropdown {
       border: 1px solid $grey-200;
-      background-color: $simple-white;
+      background-color: $white;
     }
   }
 }
@@ -52,7 +52,7 @@
 
   .country {
     font-size: rem(14px);
-    color: $font-text-2;
+    color: $text-color;
     padding: rem(6px);
     @include fontRegular;
 
@@ -64,7 +64,7 @@
     }
 
     &[aria-selected='true'] {
-      color: $primary-500;
+      color: $primary-color;
 
       .dial-code {
         color: $primary-400;
@@ -72,7 +72,7 @@
     }
 
     .dial-code {
-      color: $font-text-3;
+      color: $text-color-secondary;
     }
   }
 }
