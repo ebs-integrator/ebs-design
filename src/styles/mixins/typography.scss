@@ -1,33 +1,24 @@
-$typography-font-family: 'Roboto';
-
-$typography-light-weight: 300;
-$typography-regular-weight: 400;
-$typography-medium-weight: 500;
-$typography-semibold-weight: 600;
-$typography-bold-weight: 700;
-$typography-black-weight: 900;
-
 @mixin fontLight {
-  font-family: $typography-font-family, sans-serif;
-  font-weight: $typography-light-weight;
+  font-family: $font-family;
+  font-weight: $font-weight-light;
 }
 
 @mixin fontRegular {
-  font-family: $typography-font-family, sans-serif;
-  font-weight: $typography-regular-weight;
+  font-family: $font-family;
+  font-weight: $font-weight-normal;
 }
 
 @mixin fontMedium {
-  font-family: $typography-font-family, sans-serif;
-  font-weight: $typography-medium-weight;
+  font-family: $font-family;
+  font-weight: $font-weight-medium;
 }
 
 @mixin fontSemiBold {
-  font-family: $typography-font-family, sans-serif;
-  font-weight: $typography-semibold-weight;
+  font-family: $font-family;
+  font-weight: $font-weight-semibold;
 }
 
 @mixin fontBold {
-  font-family: $typography-font-family, sans-serif;
-  font-weight: $typography-bold-weight;
+  font-family: $font-family;
+  font-weight: $font-weight-bold;
 }

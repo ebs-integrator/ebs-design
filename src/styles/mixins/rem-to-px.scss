@@ -1,12 +1,11 @@
 // rems to pixels
-$base-font-size: 14.957px !default;
-$rem-baseline: $base-font-size !default;
+$rem-baseline: $font-size-base !default;
 $rem-fallback: true !default;
 $rem-px-only: false !default;
 
 // A mixin that converts from px to rem
 @function rem-separator($list) {
-  @if function-exists('list-separator') ==true {
+  @if function-exists('list-separator') == true {
     @return list-separator($list);
   }
   $test-list: ();

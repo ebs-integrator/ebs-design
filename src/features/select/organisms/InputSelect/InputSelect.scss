@@ -9,16 +9,16 @@
   }
 
   &.has-error .ebs-select__input-dropdown-wrapper .ebs-select__input {
-    border-color: $semantic-danger-500;
-    background-color: $simple-white;
+    border-color: $danger-color;
+    background-color: $white;
   }
 
   &.active .ebs-select__input-dropdown-wrapper .ebs-select__input {
-    border-color: $primary-500;
-    background-color: $simple-white !important;
+    border-color: $primary-color;
+    background-color: $white !important;
 
     .ebs-select__input-value {
-      color: $font-text-1;
+      color: $heading-color;
     }
   }
 
@@ -37,7 +37,7 @@
       font-size: rem(14px);
 
       .ebs-select__input-value {
-        color: $font-text-3;
+        color: $text-color-secondary;
         overflow: auto hidden;
         white-space: nowrap;
         @include hiddenScroll;
@@ -65,7 +65,7 @@
         top: 0;
         border-top-right-radius: rem(4px);
         border-bottom-right-radius: rem(4px);
-        box-shadow: inset -90px 0px 15px -12px rgba($simple-white, 1);
+        box-shadow: inset -90px 0px 15px -12px rgba($white, 1);
       }
 
       .ebs-select__input-count {
@@ -73,8 +73,8 @@
         right: (35px);
         top: 50%;
         transform: translateY(-50%);
-        background-color: $primary-500;
-        color: $simple-white;
+        background-color: $primary-color;
+        color: $white;
         font-size: rem(12px);
         border-radius: rem($border-radius);
         padding: rem(5px 8px);
@@ -90,7 +90,7 @@
           font-size: rem(10px);
 
           path {
-            stroke: $font-text-2;
+            stroke: $text-color;
           }
         }
       }

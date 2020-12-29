@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Icon } from 'components/atoms';
 import TooltipTrigger from 'react-popper-tooltip';
+import { Icon } from 'components/atoms';
 
 const placements: { [key: string]: string } = {
   right: 'left',

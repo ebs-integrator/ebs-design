@@ -1,5 +1,6 @@
-@import '../src/styles/mixins/index';
-@import '../src/styles/palette';
+@import '../src/styles/palette.scss';
+@import '../src/styles/variables.scss';
+@import '../src/styles/mixins/index.scss';
 
 .sb-show-main {
   .ebs-layout {
@@ -78,7 +79,7 @@
 
     .storybook-icon-name {
       font-size: rem(12px);
-      color: $font-text-3;
+      color: $text-color-secondary;
       @include fontMedium;
       margin-top: rem(25px);
     }

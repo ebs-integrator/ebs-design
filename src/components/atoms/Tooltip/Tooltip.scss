@@ -1,5 +1,5 @@
 .ebs-tooltip__wrapper {
-  background-color: $simple-white;
+  background-color: $white;
   border-radius: rem($border-radius);
   @include elevation-2;
   margin: rem(0 10px);
@@ -25,10 +25,10 @@
   .ebs-tooltip__body {
     padding: rem(12px);
     font-size: rem(12px);
-    color: $font-text-2;
+    color: $text-color;
 
     .ebs-tooltip__body-title {
-      color: $font-text-1;
+      color: $heading-color;
       font-size: rem(14px);
       margin-bottom: rem(4px);
       @include fontMedium;
@@ -41,7 +41,7 @@
 
   path {
     stroke: transparent;
-    fill: $simple-white;
+    fill: $white;
   }
 }
 
