@@ -105,10 +105,7 @@
 
         .ebs-checkbox__check {
           font-size: rem(10px);
-
-          path {
-            stroke: $simple-white;
-          }
+          color: $simple-white;
         }
       }
 
@@ -167,10 +164,7 @@
       top: 50%;
       transform: translate(-50%, -50%);
       font-size: 0;
-
-      path {
-        stroke: $simple-white;
-      }
+      color: $simple-white;
     }
 
     .ebs-checkbox__indeterminate rect {

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-@import './mixins/index';
 @import './palette';
 @import './variables';
-@import './grid';
+@import './mixins/index';
+@import './helpers/index';
 
 :root {
   --bs-gutter-x: $space * 2;
@@ -95,28 +95,4 @@ strong {
 
 .no-wrap {
   white-space: nowrap;
-}
-
-.p {
-  &-0 {
-    padding: 0;
-  }
-}
-
-.m {
-  &-15 {
-    margin: rem(15px);
-  }
-}
-
-.mr {
-  &-15 {
-    margin-right: rem(15px);
-  }
-}
-
-.mb {
-  &-30 {
-    margin-bottom: rem(30px);
-  }
 }

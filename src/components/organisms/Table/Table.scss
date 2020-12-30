@@ -104,10 +104,7 @@
             position: relative;
             top: 0;
             transition: 0.2s;
-
-            path {
-              stroke: $font-text-2;
-            }
+            color: $font-text-2;
           }
 
           &.ebs-table__th-filtered {
@@ -116,8 +113,8 @@
               @include fontMedium;
               color: $font-text-3;
 
-              .ebs-icon path {
-                stroke: $font-text-3;
+              .ebs-icon {
+                color: $font-text-3;
               }
             }
 
@@ -129,8 +126,8 @@
           &:hover {
             color: $font-text-3;
 
-            .ebs-icon path {
-              stroke: $font-text-3;
+            .ebs-icon {
+              color: $font-text-3;
             }
           }
         }

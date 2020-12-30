@@ -85,13 +85,10 @@
         right: rem(14px);
         top: 50%;
         transform: translateY(-50%);
+        color: $font-text-2;
 
         .ebs-icon {
           font-size: rem(10px);
-
-          path {
-            stroke: $font-text-2;
-          }
         }
       }
     }

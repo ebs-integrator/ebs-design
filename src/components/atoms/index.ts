@@ -1,3 +1,5 @@
+export { Alert } from './Alert/Alert';
+export { Avatar, AvatarCard, AvatarInline } from './Avatar/Avatar';
 export { LoaderSpinner } from './LoaderSpinner/LoaderSpinner';
 export { Icon } from './Icon/Icon';
 export { Label } from './Label/Label';

@@ -101,8 +101,12 @@
       @include fontBold;
       width: 100%;
 
+      svg {
+        font-size: rem(140px);
+      }
+
       img {
-        max-width: rem(144px);
+        max-width: rem(140px);
       }
     }
 
@@ -164,7 +168,7 @@
     padding-top: rem(58px);
 
     // 117.5px
-    min-height: calc(100vh - 4.02158rem);
+    min-height: calc(100vh - 4.93158rem);
 
     .ebs-layout__content {
       max-width: rem(1510px);

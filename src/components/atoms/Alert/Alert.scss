@@ -1,0 +1,42 @@
+.ebs-alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid $semantic-success-500;
+  padding: rem(20px 16px);
+  border-radius: $border-radius;
+
+  &__type {
+    &--info {
+      border: 1px dashed $semantic-info-500;
+
+      & svg {
+        color: $semantic-info-500 !important;
+      }
+    }
+
+    &--warning {
+      border: 1px dashed $semantic-warning-500;
+
+      & svg {
+        color: $semantic-warning-500 !important;
+      }
+    }
+
+    &--error {
+      border: 1px solid $semantic-danger-500;
+
+      & svg {
+        color: $semantic-danger-500 !important;
+      }
+    }
+  }
+
+  & svg {
+    width: rem(20px);
+    height: rem(20px);
+    border-radius: 100px;
+    margin-right: rem(10px);
+    color: $semantic-success-500;
+  }
+}

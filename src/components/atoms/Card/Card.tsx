@@ -1,12 +1,14 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export const Card: React.FC<Props> = ({ children, className }) => (
-  <div className={cn(`ebs-card`, className)}>{children}</div>
+export const Card: React.FC<Props> = ({ children, className, ...props }) => (
+  <div className={cn(`ebs-card`, className)} {...props}>
+    {children}
+  </div>
 );
 
 interface HeaderProps {

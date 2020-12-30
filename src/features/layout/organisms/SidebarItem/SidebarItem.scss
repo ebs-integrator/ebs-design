@@ -5,7 +5,7 @@
   padding: rem(15px 27.5px 15px 57.5px);
   display: flex;
   align-items: center;
-  color: $font-text-2;
+  color: $font-sidebar-item;
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: rem(44px);
@@ -22,34 +22,20 @@
   &.invert:not(.has-options):hover,
   &.invert.active:not(.has-options) {
     background-color: $primary-000;
+    color: $primary-500;
 
     .ebs-sidebar__text {
       color: $primary-500;
-    }
-
-    .ebs-sidebar__prefix svg,
-    .ebs-sidebar__suffix .ebs-icon {
-      rect,
-      path {
-        stroke: $primary-500;
-      }
     }
   }
 
   &:hover:not(.has-options),
   &.active:not(.has-options) {
     background: $primary-500;
+    color: $simple-white;
 
     .ebs-sidebar__text {
       color: $simple-white;
-    }
-
-    .ebs-sidebar__prefix svg,
-    .ebs-sidebar__suffix .ebs-icon {
-      rect,
-      path {
-        stroke: $simple-white;
-      }
     }
   }
 
@@ -57,34 +43,20 @@
   &.invert.has-options:hover,
   &.invert.has-options.active {
     background-color: $primary-000;
+    color: $primary-500;
 
     .ebs-sidebar__text {
       color: $primary-500;
-    }
-
-    .ebs-sidebar__prefix svg,
-    .ebs-sidebar__suffix .ebs-icon {
-      rect,
-      path {
-        stroke: $primary-500;
-      }
     }
   }
 
   &.has-options:hover,
   &.has-options.active {
     background: $primary-000;
+    color: $primary-500;
 
     .ebs-sidebar__text {
       color: $primary-500;
-    }
-
-    .ebs-sidebar__prefix svg,
-    .ebs-sidebar__suffix .ebs-icon {
-      rect,
-      path {
-        stroke: $primary-500;
-      }
     }
   }
 
@@ -98,12 +70,11 @@
     rect,
     path {
       transition: 0.3s;
-      stroke: $font-text-2;
     }
   }
 
   .ebs-sidebar__text {
-    color: $font-text-2;
+    color: $font-sidebar-item;
     font-size: rem(14px);
     transition: 0.3s;
   }
@@ -114,6 +85,7 @@
     top: calc(50% - 4px);
     font-size: rem(10px);
     transition: 0.2s;
+    color: $font-sidebar-item;
 
     &.ebs-icon__left {
       transform: rotate(270deg) translateY(-50%);
@@ -125,8 +97,6 @@
 
     path {
       transition: 0.3s;
-      stroke: transparent !important;
-      fill: $font-text-2;
     }
   }
 }
@@ -150,7 +120,7 @@
       background-color: rgba($primary-000, 0.7);
 
       .ebs-sidebar__text {
-        color: $font-text-2;
+        color: $font-sidebar-item;
       }
     }
 

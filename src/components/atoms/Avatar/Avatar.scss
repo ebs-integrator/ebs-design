@@ -1,0 +1,134 @@
+.ebs-avatar {
+  position: relative;
+  border-radius: $border-radius;
+  background-color: $primary-500;
+
+  &.circle {
+    border-radius: 50%;
+
+    .ebs-avatar-img {
+      border-radius: 50%;
+    }
+  }
+
+  &.ebs-avatar-size {
+    &-small {
+      min-width: rem(30px);
+      width: rem(30px);
+      height: rem(30px);
+
+      .ebs-avatar-short-alt {
+        font-size: rem(9px);
+      }
+    }
+
+    &-big {
+      min-width: rem(60px);
+      width: rem(60px);
+      height: rem(60px);
+
+      .ebs-avatar-short-alt {
+        font-size: rem(13px);
+      }
+    }
+  }
+
+  .ebs-avatar-short-alt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    @include fontBold;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  .ebs-avatar-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: $border-radius;
+    object-fit: cover;
+  }
+
+  .ebs-avatar-status {
+    position: absolute;
+    bottom: rem(-2.5px);
+    right: rem(-2.5px);
+    width: rem(10px);
+    height: rem(10px);
+    border: 2px solid #fff;
+    border-radius: 50%;
+
+    &.ebs-avatar-status {
+      // REF: STATUS.SCSS
+
+      &-active {
+        background: #469c9b;
+      }
+
+      &-regular {
+        background: $primary-500;
+      }
+
+      &-uanctive {
+        background: #767676;
+      }
+    }
+  }
+}
+
+.ebs-avatar-card {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #dfddd6;
+  border-radius: $border-radius;
+
+  .ebs-avatar {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: rem(23px);
+    width: rem(23px);
+
+    img {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .ebs-avatar-card-alt {
+    color: #333;
+    padding: rem(0 7.5px);
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    @include fontMedium;
+    font-size: rem(9px);
+  }
+}
+
+.ebs-avatar-inline {
+  display: flex;
+  align-items: center;
+
+  .ebs-avatar-inline-alt {
+    margin-left: $space;
+    @include fontSemiBold;
+    font-size: rem(12px);
+    color: $simple-black;
+  }
+
+  .ebs-avatar-inline-role {
+    font-size: rem(10px);
+    color: $font-text-2;
+    text-transform: capitalize;
+  }
+
+  &.is-reversed {
+    .ebs-avatar-inline-alt {
+      margin-left: 0;
+      margin-right: $space;
+    }
+  }
+}

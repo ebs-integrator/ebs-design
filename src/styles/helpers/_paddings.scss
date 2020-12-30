@@ -1,0 +1,14 @@
+@for $i from $spacingsFrom through $spacingsTo {
+  .pa-#{$i} {
+    padding: #{$i}px !important;
+  }
+
+  .pr-#{$i} {
+    padding-right: #{$i}px !important;
+  }
+
+  .px-#{$i} {
+    padding-left: #{$i}px !important;
+    padding-right: #{$i}px !important;
+  }
+}

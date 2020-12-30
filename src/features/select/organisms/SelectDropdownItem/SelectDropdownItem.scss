@@ -12,13 +12,10 @@
   }
 
   &.active {
+    color: $primary-500;
+
     .ebs-select__dropdown-item-text {
       color: $primary-500;
-    }
-
-    .ebs-select__dropdown-item-prefix path,
-    .ebs-select__dropdown-item-suffix path {
-      stroke: $primary-500;
     }
   }
 
@@ -40,10 +37,6 @@
 
     .ebs-select__dropdown-item-suffix,
     .ebs-select__dropdown-item-prefix {
-      path {
-        stroke: $primary-500;
-      }
-
       .ebs-checkbox__wrapper .ebs-checkbox,
       .ebs-checkbox__wrapper .ebs-checkbox {
         @include checkbox-hover;
@@ -67,10 +60,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-
-    path {
-      stroke: $font-text-2;
-    }
+    color: $font-text-2;
   }
 
   .ebs-select__dropdown-item-prefix {

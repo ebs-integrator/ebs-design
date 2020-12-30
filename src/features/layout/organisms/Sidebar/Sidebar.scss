@@ -9,6 +9,10 @@
   background: $background-sidebar;
   z-index: 5;
 
+  &__top {
+    margin-top: rem(5px);
+  }
+
   @include mq($until: small-desktop) {
     padding-top: rem(80px);
 

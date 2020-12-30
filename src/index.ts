@@ -1,7 +1,25 @@
 import './styles/index.scss';
 
 // Atoms
-export { LoaderSpinner, Label, Extra, Icon, Switch, Chips, Radio } from './components/atoms';
+export {
+  Alert,
+  Avatar,
+  AvatarCard,
+  AvatarInline,
+  LoaderSpinner,
+  Label,
+  Extra,
+  Icon,
+  Switch,
+  Chips,
+  Radio,
+  Card,
+  CardFooter,
+  CardHeader,
+  Container,
+  Row,
+  Col,
+} from './components/atoms';
 
 // Organisms
 export {
