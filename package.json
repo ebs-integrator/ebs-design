@@ -89,7 +89,7 @@
   ],
   "jest": {
     "moduleNameMapper": {
-      "atoms/(.*)": "<rootDir>/src/atoms/$1"
+      "atoms/(.*)": "<rootDir>/src/components/atoms/$1"
     }
   },
   "dependencies": {

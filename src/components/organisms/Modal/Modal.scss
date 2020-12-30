@@ -31,7 +31,7 @@
   .ebs-modal {
     @include elevation-4;
     position: relative;
-    margin: rem(150px auto $space);
+    margin: rem(150px auto $gutter-size);
     border: 1px solid #e9e8e5;
     border-radius: rem($border-radius);
     background-color: $background-content;
@@ -55,26 +55,26 @@
     }
 
     .ebs-modal__content {
-      padding: rem($space);
+      padding: rem($gutter-size);
     }
 
     &.hide-header .ebs-modal__content {
-      padding: rem($space * 2);
+      padding: rem($gutter-size * 2);
     }
 
     .ebs-modal__header {
       position: relative;
-      padding: rem($space);
+      padding: rem($gutter-size);
       border-bottom: 1px solid #e9e8e5;
-      background-color: $simple-white;
+      background-color: $white;
 
       &--close {
         position: absolute;
         top: 50%;
-        right: rem($space);
+        right: rem($gutter-size);
         transform: translate3d(0, -50%, 0);
         border-radius: rem($border-radius);
-        color: $simple-black;
+        color: $black;
 
         &--center {
           @include flex-center;
@@ -94,9 +94,9 @@
     }
 
     .ebs-modal__footer {
-      padding: rem($space);
+      padding: rem($gutter-size);
       border-top: 1px solid #e9e8e5;
-      background-color: $simple-white;
+      background-color: $white;
 
       &__button {
         display: flex;
@@ -105,10 +105,10 @@
 
       .ebs-modal__footer__button {
         > div:not(:first-child) {
-          margin-left: rem($space);
+          margin-left: rem($gutter-size);
 
           > div:not(:first-child) {
-            margin-left: rem($space);
+            margin-left: rem($gutter-size);
           }
         }
 
@@ -122,7 +122,7 @@
               white-space: nowrap;
 
               > *:not(:first-child) {
-                margin-left: rem($space);
+                margin-left: rem($gutter-size);
               }
 
               &:first-child {
@@ -139,7 +139,7 @@
             text-align: center;
 
             .ebs-button__wrapper:last__child {
-              margin-left: rem($space);
+              margin-left: rem($gutter-size);
             }
           }
         }

@@ -7,49 +7,49 @@
     &-regular {
       font-size: rem(12px);
       margin-bottom: rem(5px);
-      color: $font-text-2;
+      color: $text-color;
     }
 
     &-circle {
       display: inline;
       font-size: rem(10px);
       padding: rem(5px 12px);
-      color: $font-text-2;
-      border: 1px solid $font-text-2;
+      color: $text-color;
+      border: 1px solid $text-color;
       border-radius: rem(12px);
     }
   }
 
   &.ebs-label__status {
     &--success {
-      color: $semantic-success-500;
-      border-color: $semantic-success-500;
+      color: $success-color;
+      border-color: $success-color;
     }
 
     &--warning {
-      color: $semantic-warning-500;
-      border-color: $semantic-warning-500;
+      color: $warning-color;
+      border-color: $warning-color;
     }
 
     &--danger {
-      color: $semantic-danger-500;
-      border-color: $semantic-danger-500;
+      color: $danger-color;
+      border-color: $danger-color;
     }
 
     &--info {
-      color: $semantic-info-500;
-      border-color: $semantic-info-500;
+      color: $info-color;
+      border-color: $info-color;
     }
 
     &--text {
-      color: $font-text-2;
-      border-color: $font-text-2;
+      color: $text-color;
+      border-color: $text-color;
     }
 
     &--primary {
       background-color: $primary-000;
-      color: $primary-500;
-      border-color: $primary-500;
+      color: $primary-color;
+      border-color: $primary-color;
     }
   }
 

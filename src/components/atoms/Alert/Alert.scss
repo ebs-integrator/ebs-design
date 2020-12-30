@@ -2,32 +2,32 @@
   position: relative;
   display: flex;
   align-items: center;
-  border: 1px solid $semantic-success-500;
+  border: 1px solid $success-500;
   padding: rem(20px 16px);
   border-radius: $border-radius;
 
   &__type {
     &--info {
-      border: 1px dashed $semantic-info-500;
+      border: 1px dashed $info-500;
 
       & svg {
-        color: $semantic-info-500 !important;
+        color: $info-500 !important;
       }
     }
 
     &--warning {
-      border: 1px dashed $semantic-warning-500;
+      border: 1px dashed $warning-500;
 
       & svg {
-        color: $semantic-warning-500 !important;
+        color: $warning-500 !important;
       }
     }
 
     &--error {
-      border: 1px solid $semantic-danger-500;
+      border: 1px solid $danger-500;
 
       & svg {
-        color: $semantic-danger-500 !important;
+        color: $danger-500 !important;
       }
     }
   }
@@ -37,6 +37,6 @@
     height: rem(20px);
     border-radius: 100px;
     margin-right: rem(10px);
-    color: $semantic-success-500;
+    color: $success-500;
   }
 }

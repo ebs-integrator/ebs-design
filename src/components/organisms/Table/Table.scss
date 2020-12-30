@@ -45,10 +45,10 @@
 
   td {
     @include fontMedium;
-    color: $font-text-2;
+    color: $text-color;
 
     a {
-      color: $primary-500;
+      color: $primary-color;
     }
 
     &.ebs-time__period-cell > div {
@@ -80,15 +80,15 @@
       th.rc-table-cell {
         text-transform: uppercase;
         border-top: 1px solid $grey-100;
-        border-bottom: 2px solid $primary-500;
+        border-bottom: 2px solid $primary-color;
         word-wrap: break-word;
         position: relative;
         @include fontMedium;
         text-align: left;
-        background-color: $simple-white;
+        background-color: $white;
         white-space: nowrap;
         font-size: rem(14px);
-        color: $font-text-1;
+        color: $heading-color;
 
         &.rc-table-row-expand-icon-cell + th.rc-table-cell {
           padding-left: 0;
@@ -104,17 +104,17 @@
             position: relative;
             top: 0;
             transition: 0.2s;
-            color: $font-text-2;
+            color: $text-color;
           }
 
           &.ebs-table__th-filtered {
             &-asc,
             &-desc {
               @include fontMedium;
-              color: $font-text-3;
+              color: $text-color-secondary;
 
               .ebs-icon {
-                color: $font-text-3;
+                color: $text-color-secondary;
               }
             }
 
@@ -124,10 +124,10 @@
           }
 
           &:hover {
-            color: $font-text-3;
+            color: $text-color-secondary;
 
             .ebs-icon {
-              color: $font-text-3;
+              color: $text-color-secondary;
             }
           }
         }
@@ -179,7 +179,7 @@
     position: relative;
     border: 1px solid $grey-100;
     border-radius: rem(7px);
-    background-color: $simple-white;
+    background-color: $white;
     display: flex;
     flex-wrap: wrap;
     @include elevation-2;
@@ -233,10 +233,10 @@
 
     .ebs-table__mobile-item-action {
       width: 100%;
-      border-top: 1px solid $primary-500;
+      border-top: 1px solid $primary-color;
       border-bottom-left-radius: rem(7px);
       border-bottom-right-radius: rem(7px);
-      color: $simple-white;
+      color: $white;
       display: flex;
       align-items: center;
       text-align: center;

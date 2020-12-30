@@ -22,11 +22,11 @@ $mq-media-type: all !default;
     @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";
 
     // base-font-size comes from rem-to-px
-    @return mq-px2em($px * 1px, $base-font-size);
-  } @else if unit($px) ==em {
+    @return mq-px2em($px * 1px, $font-size-base);
+  } @else if unit($px) == em {
     @return $px;
   }
-  @return ($px / $base-font-size) * 1em;
+  @return ($px / $font-size-base) * 1em;
 }
 
 @function mq-get-breakpoint-width($name, $breakpoints: $mq-breakpoints) {

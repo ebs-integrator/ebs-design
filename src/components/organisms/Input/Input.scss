@@ -2,7 +2,7 @@
 .ebs-input__wrapper {
   position: relative;
   border: 1px solid $grey-200;
-  background-color: $simple-white;
+  background-color: $white;
   border-radius: rem($border-radius);
 
   &.has-prefix .ebs-input {
@@ -16,28 +16,28 @@
   &.ebs-input__wrapper {
     &--active,
     &.focus {
-      border-color: $primary-500;
-      background-color: $simple-white !important;
+      border-color: $primary-color;
+      background-color: $white !important;
 
       .ebs-input {
-        color: $font-text-1;
+        color: $heading-color;
       }
     }
 
     &--unactive {
       border-color: $grey-200;
-      background-color: $simple-white;
+      background-color: $white;
     }
   }
 
   &.has-error {
-    border-color: $semantic-danger-500;
-    background-color: $simple-white;
+    border-color: $danger-color;
+    background-color: $white;
   }
 
   &.disabled {
     border-color: $grey-500;
-    background-color: $simple-white;
+    background-color: $white;
 
     .ebs-input {
       color: $grey-500;
@@ -94,7 +94,7 @@
   height: rem(40px);
   font-size: rem(14px);
   padding: rem(0 10px);
-  color: $font-text-1;
+  color: $heading-color;
 
   &-container {
     position: relative;
@@ -102,7 +102,7 @@
   }
 
   @include placeholder {
-    color: $font-text-3 !important;
+    color: $text-color-secondary !important;
   }
 
   &:focus {

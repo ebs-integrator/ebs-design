@@ -60,7 +60,7 @@
   }
 
   .ebs-sidebar__bottom {
-    background-color: $simple-white;
+    background-color: $white;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -80,7 +80,7 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba($simple-black, 0.5);
+  background-color: rgba($black, 0.5);
   z-index: 4;
   animation: fadeIn 0.3s forwards;
 }

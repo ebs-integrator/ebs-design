@@ -11,20 +11,20 @@
   &.ebs-chips {
     &-checked {
       background-color: $primary-000;
-      border-color: $primary-500;
-      color: $primary-500;
+      border-color: $primary-color;
+      color: $primary-color;
 
       &:hover {
-        background-color: $primary-500;
-        border-color: $primary-500;
-        color: $simple-white;
+        background-color: $primary-color;
+        border-color: $primary-color;
+        color: $white;
       }
     }
 
     &-unchecked {
       background-color: transparent;
-      border-color: $font-text-4;
-      color: $font-text-3;
+      border-color: $text-color-light;
+      color: $text-color-secondary;
 
       &:hover {
         background-color: transparent;

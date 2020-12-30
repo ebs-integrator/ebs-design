@@ -30,13 +30,15 @@ export const Avatar: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(`ebs-avatar`, `ebs-avatar-size-${size}`, `ebs-avatar-type-${type}`, className, { circle: circle })}
+      className={cn(`ebs-avatar`, `ebs-avatar__size--${size}`, `ebs-avatar__type--${type}`, className, {
+        circle: circle,
+      })}
     >
-      {img && <img className="ebs-avatar-img" src={img} alt="" />}
+      {img && <img className="ebs-avatar__img" src={img} alt="" />}
 
-      <div className="ebs-avatar-short-alt">{shortAlt}</div>
+      <div className="ebs-avatar__short-alt">{shortAlt}</div>
 
-      {status ? <div className={`ebs-avatar-status ebs-avatar-status-${status}`} /> : null}
+      {status ? <div className={`ebs-avatar__status ebs-avatar__status--${status}`} /> : null}
     </div>
   );
 };
@@ -56,10 +58,10 @@ interface CardProps {
 }
 
 export const AvatarCard: React.FC<CardProps> = ({ className = '', img, shortAlt, alt, status }) => (
-  <div className={`ebs-avatar-card ${className}`}>
+  <div className={`ebs-avatar__card ${className}`}>
     <Avatar size="small" img={img} shortAlt={shortAlt} alt={alt} status={status} />
 
-    <div className="ebs-avatar-card-alt">{alt}</div>
+    <div className="ebs-avatar__card-alt">{alt}</div>
   </div>
 );
 
@@ -74,13 +76,13 @@ export const AvatarInline: React.FC<CardProps> = ({
   roleLowerCase,
   reversed = false,
 }) => (
-  <div className={cn(`ebs-avatar-inline`, className, { 'is-reversed': reversed })}>
+  <div className={cn(`ebs-avatar__inline`, className, { 'is-reversed': reversed })}>
     {!reversed && <Avatar size="small" shortAlt={shortAlt} img={img} alt={alt} status={status} circle={circle} />}
 
-    <div className="ebs-avatar-inline-alt">
+    <div className="ebs-avatar__inline-alt">
       {alt}
       {role && (
-        <div className="ebs-avatar-inline-role" style={roleLowerCase ? { textTransform: 'lowercase' } : undefined}>
+        <div className="ebs-avatar__inline-role" style={roleLowerCase ? { textTransform: 'lowercase' } : undefined}>
           {role}
         </div>
       )}

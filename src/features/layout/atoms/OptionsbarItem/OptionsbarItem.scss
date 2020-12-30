@@ -1,6 +1,6 @@
 .ebs-optionsbar__item {
   padding: rem(14px 16px);
-  color: $font-text-2;
+  color: $text-color;
   font-size: rem(14px);
   cursor: pointer;
   transition: all 0.2s;
@@ -15,6 +15,6 @@
   &:hover,
   &.active {
     background-color: $primary-000;
-    color: $primary-500;
+    color: $primary-color;
   }
 }

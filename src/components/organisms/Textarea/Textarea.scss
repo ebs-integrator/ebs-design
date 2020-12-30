@@ -5,23 +5,23 @@
     min-height: rem(80px);
     outline: none;
     border-radius: rem($border-radius);
-    background-color: $simple-white;
-    color: $font-text-1;
+    background-color: $white;
+    color: $heading-color;
 
     @include fontRegular;
     font-size: rem(14px);
     padding: rem(10px);
 
     @include placeholder {
-      color: $font-text-3;
+      color: $text-color-secondary;
     }
 
     &.has-value {
-      border-color: $primary-500;
+      border-color: $primary-color;
     }
 
     &.has-error {
-      border-color: $semantic-danger-500;
+      border-color: $danger-color;
     }
 
     &.disabled {
@@ -32,7 +32,7 @@
   // Label
   .ebs-textarea__label {
     margin-bottom: rem(5px);
-    color: $font-text-2;
+    color: $text-color;
     @include fontRegular;
     font-size: rem(12px);
 
@@ -44,12 +44,12 @@
   // Extra
   .ebs-textarea__extra {
     margin-top: rem(2.5px);
-    color: $font-text-3;
+    color: $text-color-secondary;
     @include fontRegular;
     font-size: rem(10px);
 
     &.has-error {
-      color: $semantic-danger-500;
+      color: $danger-color;
     }
 
     &.disabled {

@@ -18,15 +18,15 @@
   &.active {
     .ebs-stepper,
     .ebs-stepper:hover {
-      border-color: $primary-500;
-      background-color: $simple-white;
+      border-color: $primary-color;
+      background-color: $white;
 
       .rc-input-number-handler-wrap {
-        border-color: $primary-500;
+        border-color: $primary-color;
       }
 
       .rc-input-number-input {
-        color: $font-text-1;
+        color: $heading-color;
       }
     }
   }
@@ -34,11 +34,11 @@
   &.has-error {
     .ebs-stepper,
     .rc-input-number-handler-wrap {
-      border-color: $semantic-danger-500 !important;
+      border-color: $danger-color !important;
     }
 
     .ebs-stepper__extra {
-      color: $semantic-danger-500;
+      color: $danger-color;
     }
   }
 
@@ -53,7 +53,7 @@
       border-color: $grey-500;
 
       &.rc-input-number-disabled .rc-input-number-input {
-        background-color: $simple-white;
+        background-color: $white;
 
         @include placeholder {
           color: $grey-500;
@@ -72,7 +72,7 @@
     width: 100%;
     height: rem(40px);
     border: 1px solid $grey-200;
-    background-color: $simple-white;
+    background-color: $white;
     border-radius: rem($border-radius);
 
     &:focus,
@@ -91,15 +91,15 @@
     }
 
     &.rc-input-number-focused {
-      border-color: $primary-500;
-      background-color: $simple-white;
+      border-color: $primary-color;
+      background-color: $white;
 
       .rc-input-number-handler-wrap {
-        border-color: $primary-500;
+        border-color: $primary-color;
       }
 
       .rc-input-number-input {
-        color: $font-text-1;
+        color: $heading-color;
       }
     }
 
@@ -124,7 +124,7 @@
           position: absolute;
           left: 50%;
           transform: translateX(-50%);
-          color: $font-text-2;
+          color: $text-color;
         }
       }
 
@@ -149,11 +149,11 @@
     .rc-input-number-input-wrap .rc-input-number-input {
       padding: rem(10px);
       text-align: left;
-      color: $font-text-1;
+      color: $heading-color;
       font-size: rem(14px);
 
       @include placeholder {
-        color: $font-text-3 !important;
+        color: $text-color-secondary !important;
       }
     }
   }
@@ -161,7 +161,7 @@
   // Label
   .ebs-stepper__label {
     margin-bottom: rem(5px);
-    color: $font-text-2;
+    color: $text-color;
     @include fontRegular;
     font-size: rem(12px);
   }
@@ -169,7 +169,7 @@
   // Extra
   .ebs-stepper__extra {
     margin-top: rem(2.5px);
-    color: $font-text-3;
+    color: $text-color-secondary;
     @include fontRegular;
     font-size: rem(10px);
   }

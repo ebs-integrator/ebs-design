@@ -15,7 +15,7 @@
     color: $primary-500;
 
     .ebs-select__dropdown-item-text {
-      color: $primary-500;
+      color: $primary-color;
     }
   }
 
@@ -32,7 +32,7 @@
     background-color: $primary-000;
 
     .ebs-select__dropdown-item-text {
-      color: $primary-500;
+      color: $primary-color;
     }
 
     .ebs-select__dropdown-item-suffix,
@@ -50,7 +50,7 @@
   }
 
   .ebs-select__dropdown-item-text {
-    color: $font-text-2;
+    color: $text-color;
     font-size: rem(14px);
     line-height: 140%;
   }
@@ -60,7 +60,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color: $font-text-2;
+    color: $text-color;
   }
 
   .ebs-select__dropdown-item-prefix {
