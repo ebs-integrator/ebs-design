@@ -14,14 +14,14 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
     onClick,
     width: '1em',
     height: '1em',
-    fill: 'currentColor',
+    fill: 'none',
     className: cn(`ebs-icon`, `ebs-icon-type`, className),
   };
 
   switch (type) {
     case 'eye':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M7.99996 9.33335C8.73634 9.33335 9.33329 8.7364 9.33329 8.00002C9.33329 7.26364 8.73634 6.66669 7.99996 6.66669C7.26358 6.66669 6.66663 7.26364 6.66663 8.00002C6.66663 8.7364 7.26358 9.33335 7.99996 9.33335Z"
             stroke="currentColor"
@@ -53,13 +53,16 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
     case 'arrow-left':
       return (
         <svg viewBox="0 0 10 5" {...defaultProps}>
-          <path d="M4.64645 0.353553C4.84171 0.158291 5.15829 0.158291 5.35355 0.353553L9.14645 4.14645C9.46143 4.46143 9.23835 5 8.79289 5L1.20711 5C0.761654 5 0.538571 4.46143 0.853553 4.14645L4.64645 0.353553Z" />
+          <path
+            d="M4.64645 0.353553C4.84171 0.158291 5.15829 0.158291 5.35355 0.353553L9.14645 4.14645C9.46143 4.46143 9.23835 5 8.79289 5L1.20711 5C0.761654 5 0.538571 4.46143 0.853553 4.14645L4.64645 0.353553Z"
+            fill="currentColor"
+          />
         </svg>
       );
     case 'arrow-outlined-top':
     case 'arrow-outlined-bottom':
       return (
-        <svg viewBox="0 0 10 6" {...defaultProps} fill="none">
+        <svg viewBox="0 0 10 6" {...defaultProps}>
           {type === 'arrow-outlined-top' && (
             <path
               d="M1 5L5 0.999999L9 5"
@@ -83,7 +86,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'check':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M3.33325 8.00008L6.66659 11.3334L13.3333 4.66675"
             stroke="currentColor"
@@ -95,7 +98,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'check-2':
       return (
-        <svg viewBox="0 0 9 6" {...defaultProps} fill="none">
+        <svg viewBox="0 0 9 6" {...defaultProps}>
           <path
             d="M1.08325 3.00001L3.16659 5.08334L7.33325 0.916672"
             stroke="currentColor"
@@ -107,13 +110,13 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'indeterminate':
       return (
-        <svg viewBox="0 0 10 2" {...defaultProps}>
+        <svg viewBox="0 0 10 2" {...defaultProps} fill="currentColor">
           <rect width="10" height="2" rx="1" />
         </svg>
       );
     case 'search':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M6.66667 11.3333C9.244 11.3333 11.3333 9.244 11.3333 6.66667C11.3333 4.08934 9.244 2 6.66667 2C4.08934 2 2 4.08934 2 6.66667C2 9.244 4.08934 11.3333 6.66667 11.3333Z"
             stroke="currentColor"
@@ -127,7 +130,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'menu-fold':
       return (
-        <svg viewBox="0 0 24 24" {...defaultProps} fill="none">
+        <svg viewBox="0 0 24 24" {...defaultProps}>
           <path d="M4 6H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M4 12H14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           <path
@@ -141,14 +144,14 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'close':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path d="M12 4L4 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M4 4L12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       );
     case 'chart':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M2.66667 12.6667H13.3333"
             stroke="currentColor"
@@ -167,7 +170,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'box':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M8 2L13.3333 5V11L8 14L2.66667 11V5L8 2Z"
             stroke="currentColor"
@@ -194,7 +197,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'users':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M6 7.33333C7.47275 7.33333 8.66666 6.13943 8.66666 4.66667C8.66666 3.19391 7.47275 2 6 2C4.52724 2 3.33333 3.19391 3.33333 4.66667C3.33333 6.13943 4.52724 7.33333 6 7.33333Z"
             stroke="currentColor"
@@ -227,7 +230,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'archive':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M12.6667 2.66669H3.33333C2.59695 2.66669 2 3.26364 2 4.00002C2 4.7364 2.59695 5.33335 3.33333 5.33335H12.6667C13.403 5.33335 14 4.7364 14 4.00002C14 3.26364 13.403 2.66669 12.6667 2.66669Z"
             stroke="currentColor"
@@ -247,7 +250,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'create':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z"
             stroke="currentColor"
@@ -261,7 +264,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'apps':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M6 2.66669H3.33334C2.96515 2.66669 2.66667 2.96516 2.66667 3.33335V6.00002C2.66667 6.36821 2.96515 6.66669 3.33334 6.66669H6C6.36819 6.66669 6.66667 6.36821 6.66667 6.00002V3.33335C6.66667 2.96516 6.36819 2.66669 6 2.66669Z"
             stroke="currentColor"
@@ -301,7 +304,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'home':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M3.33333 8H2L8 2L14 8H12.6667"
             stroke="currentColor"
@@ -327,7 +330,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'close-sidebar':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M2.66667 4H13.3333"
             stroke="currentColor"
@@ -353,7 +356,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'open-sidebar':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M2.66667 4H13.3333"
             stroke="currentColor"
@@ -379,7 +382,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'edit':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M6 4.66666H4C3.64638 4.66666 3.30724 4.80713 3.05719 5.05718C2.80714 5.30723 2.66667 5.64637 2.66667 5.99999V12C2.66667 12.3536 2.80714 12.6928 3.05719 12.9428C3.30724 13.1928 3.64638 13.3333 4 13.3333H10C10.3536 13.3333 10.6928 13.1928 10.9428 12.9428C11.1929 12.6928 11.3333 12.3536 11.3333 12V9.99999"
             stroke="currentColor"
@@ -405,7 +408,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'bell':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M6.66667 3.33333C6.66667 2.97971 6.80714 2.64057 7.05719 2.39052C7.30724 2.14048 7.64638 2 8 2C8.35362 2 8.69276 2.14048 8.94281 2.39052C9.19286 2.64057 9.33334 2.97971 9.33334 3.33333C10.0989 3.69535 10.7516 4.25888 11.2214 4.96353C11.6911 5.66818 11.9603 6.48738 12 7.33333V9.33333C12.0502 9.7478 12.197 10.1447 12.4285 10.4921C12.6601 10.8395 12.97 11.1276 13.3333 11.3333H2.66667C3.02996 11.1276 3.33987 10.8395 3.57146 10.4921C3.80304 10.1447 3.94983 9.7478 4 9.33333V7.33333C4.03971 6.48738 4.30887 5.66818 4.77863 4.96353C5.2484 4.25888 5.90106 3.69535 6.66667 3.33333"
             stroke="currentColor"
@@ -424,7 +427,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'message':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M2.66666 14V5.33334C2.66666 4.80291 2.87738 4.2942 3.25245 3.91913C3.62752 3.54406 4.13623 3.33334 4.66666 3.33334H11.3333C11.8638 3.33334 12.3725 3.54406 12.7475 3.91913C13.1226 4.2942 13.3333 4.80291 13.3333 5.33334V9.33334C13.3333 9.86378 13.1226 10.3725 12.7475 10.7476C12.3725 11.1226 11.8638 11.3333 11.3333 11.3333H5.33333L2.66666 14Z"
             stroke="currentColor"
@@ -450,7 +453,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'calendar':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M12 3.33333H4C3.26362 3.33333 2.66667 3.93028 2.66667 4.66666V12.6667C2.66667 13.403 3.26362 14 4 14H12C12.7364 14 13.3333 13.403 13.3333 12.6667V4.66666C13.3333 3.93028 12.7364 3.33333 12 3.33333Z"
             stroke="currentColor"
@@ -491,7 +494,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'euro':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M11.4667 4.66666C10.9041 4.02355 10.1912 3.58854 9.41756 3.41617C8.64389 3.2438 7.84383 3.34174 7.11768 3.69773C6.39153 4.05371 5.77163 4.65189 5.33571 5.41724C4.89979 6.1826 4.66725 7.08107 4.66725 8C4.66725 8.91892 4.89979 9.81739 5.33571 10.5828C5.77163 11.3481 6.39153 11.9463 7.11768 12.3023C7.84383 12.6583 8.64389 12.7562 9.41756 12.5838C10.1912 12.4115 10.9041 11.9764 11.4667 11.3333"
             stroke="currentColor"
@@ -510,7 +513,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'refresh':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M13.3333 7.33333C13.1703 6.16015 12.626 5.07311 11.7844 4.23966C10.9428 3.40622 9.8505 2.87261 8.67578 2.72103C7.50106 2.56946 6.30908 2.80832 5.28347 3.40083C4.25785 3.99334 3.4555 4.90662 3 6M2.66667 2.66667V6H6"
             stroke="currentColor"
@@ -529,7 +532,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
       );
     case 'star':
       return (
-        <svg viewBox="0 0 16 16" {...defaultProps} fill="none">
+        <svg viewBox="0 0 16 16" {...defaultProps}>
           <path
             d="M8.00001 11.8333L3.88534 13.9967L4.67134 9.41467L1.34267 6.17L5.94267 5.502L8.00001 1.33333L10.0573 5.502L14.6573 6.17L11.3287 9.41467L12.1147 13.9967L8.00001 11.8333Z"
             stroke="currentColor"
@@ -544,6 +547,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
         <svg viewBox="0 0 18 18" {...defaultProps}>
           <path
             fillRule="evenodd"
+            fill="currentColor"
             d="M15.364,2.636 C13.664,0.936 11.404,-0.000 9.000,-0.000 C6.596,-0.000 4.336,0.936 2.636,2.636 C0.936,4.336 -0.000,6.596 -0.000,9.000 C-0.000,11.404 0.936,13.664 2.636,15.364 C4.336,17.064 6.596,18.000 9.000,18.000 C11.404,18.000 13.664,17.064 15.364,15.364 C17.064,13.664 18.000,11.404 18.000,9.000 C18.000,6.596 17.064,4.336 15.364,2.636 ZM16.561,8.297 L14.153,8.297 C14.063,6.229 13.583,4.299 12.776,2.800 C12.669,2.600 12.556,2.411 12.440,2.231 C14.705,3.387 16.316,5.647 16.561,8.297 ZM8.297,1.554 L8.297,8.297 L5.255,8.297 C5.341,6.463 5.762,4.768 6.462,3.466 C6.985,2.495 7.628,1.832 8.297,1.554 ZM8.297,9.703 L8.297,16.446 C7.628,16.168 6.985,15.505 6.462,14.534 C5.762,13.232 5.341,11.537 5.255,9.703 L8.297,9.703 ZM9.703,16.446 L9.703,9.703 L12.745,9.703 C12.659,11.537 12.238,13.232 11.538,14.534 C11.015,15.505 10.371,16.168 9.703,16.446 ZM9.703,8.297 L9.703,1.554 C10.371,1.832 11.015,2.495 11.538,3.466 C12.238,4.768 12.659,6.463 12.745,8.297 L9.703,8.297 ZM5.560,2.231 C5.443,2.411 5.331,2.600 5.224,2.800 C4.417,4.299 3.936,6.229 3.847,8.297 L1.439,8.297 C1.684,5.647 3.295,3.387 5.560,2.231 ZM1.439,9.703 L3.847,9.703 C3.936,11.771 4.417,13.701 5.224,15.200 C5.331,15.400 5.443,15.589 5.560,15.769 C3.295,14.613 1.684,12.353 1.439,9.703 ZM12.440,15.769 C12.556,15.589 12.669,15.400 12.776,15.200 C13.583,13.701 14.063,11.771 14.153,9.703 L16.561,9.703 C16.316,12.353 14.705,14.613 12.440,15.769 Z"
           />
         </svg>
@@ -553,6 +557,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
         <svg viewBox="0 0 16 18" {...defaultProps}>
           <path
             fillRule="evenodd"
+            fill="currentColor"
             d="M14.218,18.000 L1.782,18.000 C0.799,18.000 -0.000,17.247 -0.000,16.321 L-0.000,8.268 C-0.000,7.342 0.799,6.589 1.782,6.589 L3.109,6.589 L3.109,3.875 C3.109,1.738 4.954,0.000 7.223,0.000 L8.777,0.000 C11.046,0.000 12.891,1.738 12.891,3.875 L12.891,6.589 L14.218,6.589 C15.201,6.589 16.000,7.342 16.000,8.268 L16.000,16.321 C16.000,17.247 15.201,18.000 14.218,18.000 ZM10.881,3.875 C10.881,2.782 9.937,1.893 8.777,1.893 L7.223,1.893 C6.063,1.893 5.119,2.782 5.119,3.875 L5.119,6.589 L10.881,6.589 L10.881,3.875 ZM13.990,8.482 L2.010,8.482 L2.010,16.107 L13.990,16.107 L13.990,8.482 ZM8.000,9.518 C8.983,9.518 9.782,10.271 9.782,11.196 C9.782,11.747 9.487,12.264 9.005,12.576 L9.005,15.072 L6.995,15.072 L6.995,12.576 C6.512,12.264 6.218,11.747 6.218,11.196 C6.218,10.271 7.017,9.518 8.000,9.518 Z"
           />
         </svg>
@@ -562,7 +567,10 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
         <svg viewBox="0 0 16 16" {...defaultProps}>
           <g>
             <g>
-              <path d="M16 8c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8 8 3.58 8 8zm-7.2-.8H7.2V12h1.6zm0-3.2H7.2v1.6h1.6z" />
+              <path
+                d="M16 8c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8 8 3.58 8 8zm-7.2-.8H7.2V12h1.6zm0-3.2H7.2v1.6h1.6z"
+                fill="currentColor"
+              />
             </g>
           </g>
         </svg>
@@ -572,6 +580,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
         <svg viewBox="0 0 49 45" {...defaultProps}>
           <path
             fillRule="evenodd"
+            fill="currentColor"
             d="M47.611,37.273 L28.118,2.407 C26.456,-0.638 21.922,-0.638 20.260,2.407 L0.767,37.273 C-0.895,40.319 1.220,44.125 4.696,44.125 L43.532,44.125 C47.158,43.973 49.274,40.319 47.611,37.273 Z"
           />
 
@@ -579,6 +588,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
 
           <path
             fillRule="evenodd"
+            fill="currentColor"
             d="M26.540,19.228 L25.408,26.987 C25.267,27.866 24.418,28.598 23.569,28.598 C22.578,28.598 21.871,27.866 21.729,26.987 L20.597,19.228 C20.455,17.324 21.729,15.714 23.569,15.714 C25.408,15.714 26.823,17.324 26.540,19.228 ZM23.569,30.208 C24.506,30.208 25.267,30.994 25.267,31.965 C25.267,32.935 24.506,33.722 23.569,33.722 C22.631,33.722 21.870,32.935 21.870,31.965 C21.870,30.994 22.631,30.208 23.569,30.208 Z"
           />
         </svg>
@@ -588,6 +598,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
         <svg viewBox="0 0 16 14" {...defaultProps}>
           <path
             fillRule="evenodd"
+            fill="currentColor"
             d="M15.385,12.602 L8.821,0.491 C8.655,0.184 8.347,0.000 8.000,0.000 C7.653,0.000 7.345,0.184 7.179,0.491 L0.615,12.602 C0.456,12.897 0.461,13.245 0.630,13.534 C0.800,13.826 1.102,14.000 1.437,14.000 L14.563,14.000 C14.898,14.000 15.200,13.826 15.370,13.534 C15.539,13.245 15.544,12.897 15.385,12.602 ZM7.852,4.882 C7.902,4.874 7.952,4.870 8.001,4.870 C8.433,4.870 8.814,5.183 8.887,5.624 C8.905,5.725 8.903,5.827 8.887,5.922 L8.296,9.487 C8.271,9.634 8.144,9.739 8.001,9.739 C7.984,9.739 7.967,9.738 7.951,9.735 C7.821,9.713 7.725,9.611 7.704,9.487 L7.113,5.922 C7.030,5.430 7.362,4.964 7.852,4.882 ZM8.000,12.174 C7.504,12.174 7.100,11.764 7.100,11.261 C7.100,10.757 7.504,10.348 8.000,10.348 C8.496,10.348 8.900,10.757 8.900,11.261 C8.900,11.764 8.496,12.174 8.000,12.174 Z"
           />
         </svg>

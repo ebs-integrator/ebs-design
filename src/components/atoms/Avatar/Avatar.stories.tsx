@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarCard, AvatarInline } from './Avatar';
+import { Avatar, AvatarCard, AvatarInline } from './';
 
 export default {
   title: 'Avatar',

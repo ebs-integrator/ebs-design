@@ -13,9 +13,4 @@
 @import '../components/organisms/styles';
 
 // features
-@import '../features/layout/atoms/Optionsbar/Optionsbar', '../features/layout/atoms/OptionsbarItem/OptionsbarItem',
-  '../features/layout/organisms/Layout/Layout', '../features/layout/organisms/Sidebar/Sidebar',
-  '../features/layout/organisms/SidebarItem/SidebarItem';
-
-@import '../features/select/organisms/SelectDropdownItem/SelectDropdownItem',
-  '../features/select/organisms/SelectDropdown/SelectDropdown', '../features/select/organisms/InputSelect/InputSelect';
+@import '../features/styles';

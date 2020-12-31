@@ -3,6 +3,15 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
+// Gutters
+$gutter-size: 16px !default;
+
+//Spacings
+//
+// Generate margin & padding mixins
+$spacing-from: 0 !default;
+$spacing-to: 30 !default;
+
 // Colors
 //
 // Text, heading, backgrounds color
@@ -59,6 +68,24 @@ $border-radius-lg: $border-radius !default;
 
 $transition-base: all 0.3s ease-in-out !default;
 
+// Alerts
+//
+// Font, padding, width, height
+$alert-padding: 20px 16px !default;
+$alert-icon-size: 20px !default;
+$alert-icon-margin: 10px !default;
+
+//Avatars
+//
+// Font, status, width, height
+$avatar-size-small: 30px !default;
+$avatar-size-big: 60px !default;
+$avatar-font-small: 9px !default;
+$avatar-font-big: 13px !default;
+$avatar-status-active: $success-color;
+$avatar-status-regular: $primary-color;
+$avatar-status-uanctive: $success-color;
+
 // Links
 //
 // Style anchor elements.
@@ -105,7 +132,8 @@ $btn-border-radius: $border-radius !default;
 $btn-border-radius-sm: $border-radius-sm !default;
 $btn-border-radius-lg: $border-radius-lg !default;
 
-$gutter-size: 16px;
-
-$spacingsFrom: 0;
-$spacingsTo: 30;
+// Sidebar
+//
+// width
+$sidebar-width: 192px !default;
+$sidebar-logo: $sidebar-width - $gutter-size * 3;

@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  width: rem(192px);
+  width: $sidebar-width;
   height: 100vh;
   border-right: 1px solid $grey-200;
   transition: width 0.2s;

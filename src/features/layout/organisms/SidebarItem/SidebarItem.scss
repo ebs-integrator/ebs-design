@@ -2,7 +2,7 @@
   position: relative;
   cursor: pointer;
   transition: 0.2s;
-  padding: rem(15px 27.5px 15px 57.5px);
+  padding: rem($gutter-size 27.5px $gutter-size 57.5px);
   display: flex;
   align-items: center;
   color: $text-sidebar;

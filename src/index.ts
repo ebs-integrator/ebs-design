@@ -3,6 +3,7 @@ import './styles/index.scss';
 // Atoms
 export {
   Alert,
+  AlertType,
   Avatar,
   AvatarCard,
   AvatarInline,

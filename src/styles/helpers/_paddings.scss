@@ -1,4 +1,4 @@
-@for $i from $spacingsFrom through $spacingsTo {
+@for $i from $spacing-from through $spacing-to {
   .pa-#{$i} {
     padding: #{$i}px !important;
   }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Container, Row, Col } from '../';
+import { Alert, AlertType, Container, Row, Col } from '../';
 
 export default {
   title: 'Alert',
@@ -13,13 +13,13 @@ export const regular = (): React.ReactElement => (
         <Alert message="Success" />
       </Col>
       <Col size={12}>
-        <Alert message="Info" type="info" />
+        <Alert message="Info" type={AlertType.INFO} />
       </Col>
       <Col size={12}>
-        <Alert message="Warning" type="warning" />
+        <Alert message="Warning" type={AlertType.WARNING} />
       </Col>
       <Col size={12}>
-        <Alert message="Error" type="error" />
+        <Alert message="Error" type={AlertType.ERROR} />
       </Col>
     </Row>
   </Container>

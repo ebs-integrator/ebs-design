@@ -87,7 +87,7 @@
     height: rem(58px);
     display: flex;
     align-items: center;
-    padding: rem(12.5px 24px);
+    padding: rem($gutter-size 24px);
     transition: width 0.2s;
     z-index: 3;
     width: 100%;
@@ -101,12 +101,12 @@
       @include fontBold;
       width: 100%;
 
-      svg {
-        font-size: rem(140px);
+      > svg:first-child {
+        font-size: $sidebar-logo;
       }
 
       img {
-        max-width: rem(140px);
+        max-width: $sidebar-logo;
       }
     }
 
@@ -120,7 +120,7 @@
 
     .ebs-layout__top-bar-left,
     .ebs-layout__top-bar-right {
-      margin-left: rem(15px);
+      margin-left: $gutter-size;
       display: flex;
       align-items: center;
       white-space: nowrap;
@@ -133,10 +133,10 @@
     .ebs-layout__top-bar-right-item {
       display: flex;
       align-items: center;
-      margin-left: rem(15px);
+      margin-left: $gutter-size;
 
       > *:not(:first-child) {
-        margin-left: rem(15px);
+        margin-left: $gutter-size;
       }
     }
   }

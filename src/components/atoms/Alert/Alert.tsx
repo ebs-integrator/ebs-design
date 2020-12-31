@@ -1,15 +1,32 @@
 import * as React from 'react';
 import { Icon } from '../';
 
+export enum AlertType {
+  SUCCESS = 'success',
+  INFO = 'info',
+  WARNING = 'warning',
+  ERROR = 'error',
+}
+
 interface Props {
-  type?: 'success' | 'info' | 'warning' | 'error';
+  type?: AlertType;
   className?: string;
   message?: string;
 }
 
-export const Alert: React.FC<Props> = ({ type = 'success', message = '', className }) => {
+export const Alert: React.FC<Props> = ({ type = AlertType.SUCCESS, message = '', className }) => {
   const ref = React.useRef<null | HTMLDivElement>(null);
   const getHeader = document.getElementsByClassName('ebs-layout__top-bar');
+
+  const renderByType = React.useMemo(
+    () => ({
+      [AlertType.SUCCESS]: <Icon type="check" />,
+      [AlertType.INFO]: <Icon type="info" />,
+      [AlertType.WARNING]: <Icon type="warning" />,
+      [AlertType.ERROR]: <Icon type="alert" />,
+    }),
+    [],
+  );
 
   React.useEffect(() => {
     if (message.length && ref.current && getHeader.length) {
@@ -19,11 +36,7 @@ export const Alert: React.FC<Props> = ({ type = 'success', message = '', classNa
 
   return message.length ? (
     <div ref={ref} className={`ebs-alert ebs-alert__type--${type} ${className}`}>
-      {type === 'success' && <Icon type="check" />}
-      {type === 'info' && <Icon type="info" />}
-      {type === 'warning' && <Icon type="warning" />}
-      {type === 'error' && <Icon type="alert" />}
-
+      {renderByType[type]}
       {message}
     </div>
   ) : null;

@@ -13,22 +13,22 @@
 
   &.ebs-avatar__size {
     &--small {
-      min-width: rem(30px);
-      width: rem(30px);
-      height: rem(30px);
+      min-width: $avatar-size-small;
+      width: $avatar-size-small;
+      height: $avatar-size-small;
 
       .ebs-avatar-short-alt {
-        font-size: rem(9px);
+        font-size: $avatar-font-small;
       }
     }
 
     &--big {
-      min-width: rem(60px);
-      width: rem(60px);
-      height: rem(60px);
+      min-width: $avatar-size-big;
+      width: $avatar-size-big;
+      height: $avatar-size-big;
 
       .ebs-avatar-short-alt {
-        font-size: rem(13px);
+        font-size: $avatar-font-big;
       }
     }
   }
@@ -38,7 +38,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    @include fontBold;
+    @include fontMedium;
     color: #fff;
     white-space: nowrap;
   }
@@ -62,15 +62,15 @@
     border-radius: 50%;
 
     &--active {
-      background: #469c9b;
+      background: $avatar-status-active;
     }
 
     &--regular {
-      background: $primary-500;
+      background: $primary-color;
     }
 
     &--uanctive {
-      background: #767676;
+      background: $avatar-status-uanctive;
     }
   }
 }
