@@ -84,3 +84,7 @@
   z-index: 4;
   animation: fadeIn 0.3s forwards;
 }
+
+.ebs-sidebar--toggled + .ebs-layout__content-wrapper {
+  width: calc(100% - 4.38462rem) !important;
+}

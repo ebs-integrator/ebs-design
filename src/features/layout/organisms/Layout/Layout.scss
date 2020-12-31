@@ -160,7 +160,7 @@
     margin-left: auto;
 
     // 191px
-    width: calc(100% - 12.8368rem);
+    width: calc(100% - #{$sidebar-width});
   }
 
   .ebs-layout__content-wrapper {

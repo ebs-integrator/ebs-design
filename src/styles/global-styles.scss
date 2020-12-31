@@ -12,6 +12,7 @@ body {
   font-size: $font-size-base;
   color: $text-color;
   @include fontMedium;
+  margin: 0;
 
   // TODO: Move to font-size to variables as responsive
   // @include mq($until: desktop) {
