@@ -21,7 +21,7 @@
 }
 
 @mixin greyScroll {
-  scrollbar-color: transparent $grey-200;
+  scrollbar-color: transparent $border-color;
   scrollbar-width: thin;
 
   &::-webkit-scrollbar {
@@ -32,7 +32,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $grey-200;
+    background-color: $border-color;
     border-radius: 50%;
   }
 

@@ -4,9 +4,9 @@
   top: 0;
   width: $sidebar-width;
   height: 100vh;
-  border-right: 1px solid $grey-200;
-  transition: width 0.2s;
-  background: $background-sidebar;
+  border-right: 1px solid $border-color;
+  transition: width $transition-time;
+  background: $sidebar-background;
   z-index: 5;
 
   &__top {
@@ -19,7 +19,7 @@
     &.ebs-sidebar__mobile {
       &--closed,
       &--opened {
-        transition: 0.2s;
+        transition: $transition-time;
         padding-top: 0;
       }
 
@@ -28,7 +28,7 @@
       }
 
       &--opened {
-        width: rem(192px) !important;
+        width: $sidebar-width !important;
         transform: translateX(0);
       }
     }
@@ -36,7 +36,7 @@
 
   &.ebs-sidebar {
     &--untoggled .ebs-sidebar__options {
-      left: rem(192px);
+      left: $sidebar-width;
     }
 
     &--toggled {
@@ -60,7 +60,7 @@
   }
 
   .ebs-sidebar__bottom {
-    background-color: $white;
+    background-color: $sidebar-bottom;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -71,6 +71,16 @@
     @include mq($until: small-desktop) {
       padding-bottom: rem(120px);
     }
+  }
+
+  &::after {
+    content: '';
+    width: 1px;
+    height: $layout-top-bar-height + 2;
+    border-right: 1px solid $layout-top-bar-toggler-border-color;
+    position: absolute;
+    top: -$layout-top-bar-height - 2;
+    left: $sidebar-width - 2px;
   }
 }
 

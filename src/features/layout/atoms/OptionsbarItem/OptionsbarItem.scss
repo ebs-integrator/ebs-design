@@ -3,7 +3,7 @@
   color: $text-color;
   font-size: rem(14px);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all $transition-time;
 
   &.disabled,
   &.disabled:hover {

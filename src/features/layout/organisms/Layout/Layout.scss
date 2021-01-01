@@ -1,4 +1,25 @@
 .ebs-layout {
+  .ebs-avatar {
+    background-color: $layout-top-bar-avatar-background;
+
+    &__inline-alt {
+      color: $layout-top-bar-avatar-alt-color;
+    }
+
+    &__short-alt {
+      color: $layout-top-bar-avatar-color;
+    }
+  }
+
+  .ebs-button__wrapper {
+    .ebs-button-icon {
+      color: $layout-top-bar-avatar-icon-btn-color;
+      width: $layout-top-bar-avatar-icon-btn-size;
+      height: $layout-top-bar-avatar-icon-btn-size;
+      padding: $layout-top-bar-avatar-icon-btn-padding;
+    }
+  }
+
   &.ebs-layout__sidebar {
     &--untoggled {
       &.has-options {
@@ -43,7 +64,7 @@
           position: relative;
           height: rem(58px);
           width: rem(58px);
-          border-right: 1px solid $grey-200;
+          border-right: 1px solid $layout-top-bar-toggler-border-color;
           cursor: pointer;
 
           &:hover {
@@ -76,21 +97,21 @@
   }
 
   .ebs-layout__top-bar {
-    background-color: $background-topbar;
+    background-color: $layout-top-bar-background;
   }
 
   .ebs-layout__top-bar {
     right: 0;
     top: 0;
     position: fixed;
-    border-bottom: 1px solid $grey-200;
-    height: rem(58px);
+    height: $layout-top-bar-height;
     display: flex;
     align-items: center;
-    padding: rem($gutter-size 24px);
-    transition: width 0.2s;
+    transition: width $transition-time;
     z-index: 3;
     width: 100%;
+    padding: rem($gutter-size 24px);
+    border-bottom: $layout-top-bar-border-color;
 
     .ebs-layout__top-bar-mobile {
       display: none;
@@ -102,11 +123,11 @@
       width: 100%;
 
       > svg:first-child {
-        font-size: $sidebar-logo;
+        font-size: $sidebar-logo-width;
       }
 
       img {
-        max-width: $sidebar-logo;
+        max-width: $sidebar-logo-width;
       }
     }
 
@@ -127,7 +148,7 @@
     }
 
     .ebs-layout__top-bar-right > *:not(:first-child) {
-      margin-left: rem(20px);
+      margin-left: $gutter-size;
     }
 
     .ebs-layout__top-bar-right-item {
@@ -156,7 +177,7 @@
 
   .ebs-layout__content-wrapper,
   .ebs-layout__footer {
-    transition: width 0.2s;
+    transition: width $transition-time;
     margin-left: auto;
 
     // 191px

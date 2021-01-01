@@ -138,9 +138,9 @@
     height: rem(14px);
     margin: rem(3px);
     background-color: transparent;
-    border: 1px solid $grey-200;
+    border: 1px solid $border-color;
     border-radius: rem($border-radius);
-    transition: all 0.2s;
+    transition: all $transition-time;
     pointer-events: none;
 
     &:before {

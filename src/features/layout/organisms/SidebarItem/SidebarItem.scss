@@ -1,11 +1,11 @@
 .ebs-sidebar__item {
   position: relative;
   cursor: pointer;
-  transition: 0.2s;
+  transition: $transition-time;
   padding: rem($gutter-size 27.5px $gutter-size 57.5px);
   display: flex;
   align-items: center;
-  color: $text-sidebar;
+  color: $sidebar-item-text;
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: rem(44px);
@@ -21,42 +21,42 @@
   // item has no options
   &.invert:not(.has-options):hover,
   &.invert.active:not(.has-options) {
-    background-color: $primary-000;
-    color: $primary-500;
+    background-color: $sidebar-item-hover-background;
+    color: $sidebar-item-hover-color;
 
     .ebs-sidebar__text {
-      color: $primary-color;
+      color: $sidebar-item-hover-color;
     }
   }
 
   &:hover:not(.has-options),
   &.active:not(.has-options) {
-    background: $primary-500;
-    color: $white;
+    background: $sidebar-item-hover-background;
+    color: $sidebar-item-hover-color;
 
     .ebs-sidebar__text {
-      color: $white;
+      color: $sidebar-item-hover-color;
     }
   }
 
   // item has options
   &.invert.has-options:hover,
   &.invert.has-options.active {
-    background-color: $primary-000;
-    color: $primary-500;
+    background-color: $sidebar-item-hover-background;
+    color: $sidebar-item-hover-color;
 
     .ebs-sidebar__text {
-      color: $primary-color;
+      color: $sidebar-item-hover-color;
     }
   }
 
   &.has-options:hover,
   &.has-options.active {
-    background: $primary-000;
-    color: $primary-500;
+    background: $sidebar-item-hover-background;
+    color: $sidebar-item-hover-color;
 
     .ebs-sidebar__text {
-      color: $primary-color;
+      color: $sidebar-item-hover-color;
     }
   }
 
@@ -69,9 +69,9 @@
   }
 
   .ebs-sidebar__text {
-    color: $text-sidebar;
+    color: $sidebar-item-text;
     font-size: rem(14px);
-    transition: 0.2s;
+    transition: $transition-time;
   }
 
   .ebs-sidebar__suffix .ebs-icon {
@@ -79,8 +79,7 @@
     right: rem(12px);
     top: calc(50% - 4px);
     font-size: rem(10px);
-    transition: 0.2s;
-    color: $text-sidebar;
+    transition: $transition-time;
 
     &.ebs-icon__left {
       transform: rotate(270deg) translateY(-50%);
@@ -91,7 +90,7 @@
     }
 
     path {
-      transition: 0.2s;
+      transition: $transition-time;
     }
   }
 }
@@ -99,7 +98,7 @@
 .ebs-sidebar__label.ebs-label__status-text {
   padding: rem(12px 16px 6px);
   margin: 0;
-  color: $text-color-secondary;
+  color: $sidebar-item-text;
 }
 
 .ebs-sidebar__options {
@@ -112,10 +111,10 @@
     &.active,
     &.invert:hover,
     &.invert.active:hover {
-      background-color: rgba($primary-000, 0.7);
+      background-color: rgba($sidebar-item-hover-background, 0.7);
 
       .ebs-sidebar__text {
-        color: $text-sidebar;
+        color: $sidebar-item-hover-color;
       }
     }
 
@@ -125,7 +124,7 @@
 
     .ebs-sidebar__text {
       font-size: rem(12px);
-      color: $text-color-secondary;
+      color: $sidebar-item-text;
     }
   }
 }

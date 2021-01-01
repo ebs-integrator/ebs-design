@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Icon } from 'components/atoms';
+import { Icon, AvatarInline } from 'components/atoms';
+import { Button } from 'components/organisms';
 
 import { SidebarItem } from '../';
 import { OptionsbarItem } from '../../atoms';
@@ -41,6 +42,12 @@ export const Regular = (): React.ReactNode => (
         <OptionsbarItem text="Organizations" />
 
         <OptionsbarItem text="Company profile" disabled />
+      </>
+    }
+    rightSide={
+      <>
+        <Button size="medium" icon="bell" />
+        <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
       </>
     }
   >
