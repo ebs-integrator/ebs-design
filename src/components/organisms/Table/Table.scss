@@ -5,7 +5,7 @@
     display: none;
   }
 
-  &.ebs-table-size {
+  &.ebs-table__size {
     &-small {
       td {
         padding: rem(10px 17.5px);
@@ -45,20 +45,20 @@
 
   td {
     @include fontMedium;
-    color: $font-text-2;
+    color: $text-color;
 
     a {
-      color: $primary-500;
+      color: $primary-color;
     }
 
-    &.ebs-time-period-cell > div {
+    &.ebs-time__period-cell > div {
       > .ebs-info {
         display: inline-block;
 
         &:not(:first-child) {
           padding-left: rem(10px);
 
-          .ebs-info-icon {
+          .ebs-info__icon {
             display: none;
           }
         }
@@ -80,21 +80,21 @@
       th.rc-table-cell {
         text-transform: uppercase;
         border-top: 1px solid $grey-100;
-        border-bottom: 2px solid $primary-500;
+        border-bottom: 2px solid $primary-color;
         word-wrap: break-word;
         position: relative;
         @include fontMedium;
         text-align: left;
-        background-color: $simple-white;
+        background-color: $white;
         white-space: nowrap;
         font-size: rem(14px);
-        color: $font-text-1;
+        color: $heading-color;
 
         &.rc-table-row-expand-icon-cell + th.rc-table-cell {
           padding-left: 0;
         }
 
-        .ebs-table-th-filtered {
+        .ebs-table__th-filtered {
           cursor: pointer;
           transition: 0.2s;
 
@@ -106,18 +106,18 @@
             transition: 0.2s;
 
             path {
-              stroke: $font-text-2;
+              stroke: $text-color;
             }
           }
 
-          &.ebs-table-th-filtered {
+          &.ebs-table__th-filtered {
             &-asc,
             &-desc {
               @include fontMedium;
-              color: $font-text-3;
+              color: $text-color-secondary;
 
               .ebs-icon path {
-                stroke: $font-text-3;
+                stroke: $text-color-secondary;
               }
             }
 
@@ -127,10 +127,10 @@
           }
 
           &:hover {
-            color: $font-text-3;
+            color: $text-color-secondary;
 
             .ebs-icon path {
-              stroke: $font-text-3;
+              stroke: $text-color-secondary;
             }
           }
         }
@@ -161,28 +161,28 @@
   }
 }
 
-.ebs-table-mobile {
+.ebs-table__mobile {
   display: none;
 
   @include mq($until: desktop) {
     display: block;
   }
 
-  .ebs-button-wrapper {
+  .ebs-button__wrapper {
     width: 100%;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
 
-  .ebs-action-wrapper {
+  .ebs-action__wrapper {
     position: relative;
   }
 
-  .ebs-table-mobile-item {
+  .ebs-table__mobile-item {
     position: relative;
     border: 1px solid $grey-100;
     border-radius: rem(7px);
-    background-color: $simple-white;
+    background-color: $white;
     display: flex;
     flex-wrap: wrap;
     @include elevation-2;
@@ -191,7 +191,7 @@
       margin-bottom: rem(15px);
     }
 
-    .ebs-table-mobile-item-key {
+    .ebs-table__mobile-item-key {
       font-size: rem(16px);
       position: absolute;
       top: rem(13px);
@@ -199,13 +199,13 @@
       color: $grey-400;
     }
 
-    .ebs-table-mobile-item-title {
+    .ebs-table__mobile-item-title {
       padding: rem(15px 15px 10px);
       font-size: rem(14px);
       width: 100%;
     }
 
-    .ebs-table-mobile-item-desc {
+    .ebs-table__mobile-item-desc {
       padding: rem(0 15px 15px);
       width: 100%;
 
@@ -214,7 +214,7 @@
       }
     }
 
-    .ebs-table-mobile-item-child {
+    .ebs-table__mobile-item-child {
       padding: rem(15px);
       width: 50%;
 
@@ -226,7 +226,7 @@
         border-right: unset;
       }
 
-      .ebs-table-mobile-item-child-title {
+      .ebs-table__mobile-item-child-title {
         display: block;
         font-size: rem(10px);
         margin-bottom: rem(5px);
@@ -234,12 +234,12 @@
       }
     }
 
-    .ebs-table-mobile-item-action {
+    .ebs-table__mobile-item-action {
       width: 100%;
-      border-top: 1px solid $primary-500;
+      border-top: 1px solid $primary-color;
       border-bottom-left-radius: rem(7px);
       border-bottom-right-radius: rem(7px);
-      color: $simple-white;
+      color: $white;
       display: flex;
       align-items: center;
       text-align: center;

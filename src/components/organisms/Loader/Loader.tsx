@@ -29,7 +29,7 @@ export const Loader: React.FC<Props> = ({ fade = true, fixed, size = 'regular', 
 
 export const LoaderInline: React.FC = () => {
   return (
-    <span className="ebs-loader-inline">
+    <span className="ebs-loader__inline">
       <LoaderSpinner size="small" />
       Loading ...
     </span>

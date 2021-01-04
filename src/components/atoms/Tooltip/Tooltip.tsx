@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Icon } from 'components/atoms';
+import cn from 'classnames';
 import TooltipTrigger from 'react-popper-tooltip';
+import { Icon } from 'components/atoms';
 
 const placements: { [key: string]: string } = {
   right: 'left',
@@ -9,14 +10,14 @@ const placements: { [key: string]: string } = {
   top: 'bottom',
 };
 
-export const Tooltip: React.FC<any> = ({ bodyClass = '', children, title, tooltip, hideArrow, ...props }) => (
+export const Tooltip: React.FC<any> = ({ bodyClass, children, title, tooltip, hideArrow, ...props }) => (
   <TooltipTrigger
     {...props}
     tooltip={({ arrowRef, tooltipRef, getArrowProps, getTooltipProps, placement }) => (
       <div
         {...getTooltipProps({
           ref: tooltipRef,
-          className: `ebs-tooltip-wrapper ebs-tooltip-${placement}`,
+          className: `ebs-tooltip__wrapper ebs-tooltip--${placement}`,
         })}
       >
         {!hideArrow && (
@@ -24,14 +25,14 @@ export const Tooltip: React.FC<any> = ({ bodyClass = '', children, title, toolti
             type={`arrow-${placements[placement]}`}
             {...getArrowProps({
               ref: arrowRef,
-              className: 'ebs-tooltip-arrow',
+              className: 'ebs-tooltip__arrow',
               'data-placement': placement,
             })}
           />
         )}
 
-        <div className={`ebs-tooltip-body ${bodyClass}`}>
-          {title && <div className="ebs-tooltip-body-title">{title}</div>}
+        <div className={cn(`ebs-tooltip__body`, bodyClass)}>
+          {title && <div className="ebs-tooltip__body-title">{title}</div>}
 
           {tooltip}
         </div>
@@ -42,7 +43,7 @@ export const Tooltip: React.FC<any> = ({ bodyClass = '', children, title, toolti
       <div
         {...getTriggerProps({
           ref: triggerRef,
-          className: 'ebs-tooltip-trigger',
+          className: 'ebs-tooltip__trigger',
         })}
       >
         {children}

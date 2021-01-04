@@ -6,24 +6,24 @@
   height: 100vh;
   border-right: 1px solid $grey-200;
   transition: width 0.2s;
-  background: $simple-white;
+  background: $background-sidebar;
   z-index: 5;
 
   @include mq($until: small-desktop) {
     padding-top: rem(80px);
 
-    &.ebs-sidebar-mobile {
-      &-closed,
-      &-opened {
+    &.ebs-sidebar__mobile {
+      &--closed,
+      &--opened {
         transition: 0.2s;
         padding-top: 0;
       }
 
-      &-closed {
+      &--closed {
         transform: translateX(-100%);
       }
 
-      &-opened {
+      &--opened {
         width: rem(192px) !important;
         transform: translateX(0);
       }
@@ -31,32 +31,32 @@
   }
 
   &.ebs-sidebar {
-    &-untoggled .ebs-sidebar-options {
+    &--untoggled .ebs-sidebar__options {
       left: rem(192px);
     }
 
-    &-toggled {
+    &--toggled {
       overflow: hidden;
       width: rem(57px);
 
-      .ebs-sidebar-label {
+      .ebs-sidebar__label {
         animation: fadeOut 0.1s forwards;
         white-space: nowrap;
       }
 
-      .ebs-sidebar-item .ebs-sidebar-text {
+      .ebs-sidebar__item .ebs-sidebar__text {
         animation: fadeOut 0.1s forwards;
         white-space: nowrap;
       }
 
-      .ebs-sidebar-options {
+      .ebs-sidebar__options {
         left: rem(57px);
       }
     }
   }
 
-  .ebs-sidebar-bottom {
-    background-color: $simple-white;
+  .ebs-sidebar__bottom {
+    background-color: $white;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -70,13 +70,13 @@
   }
 }
 
-.ebs-sidebar-mask {
+.ebs-sidebar__mask {
   position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba($simple-black, 0.5);
+  background-color: rgba($black, 0.5);
   z-index: 4;
   animation: fadeIn 0.3s forwards;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { Icon as SVGIcon } from 'components/atoms';
 import { Button, ButtonSize, ButtonGroup } from './Button';
 
 export default {
@@ -31,7 +31,7 @@ const SizeSwitcher: React.FC<{ children: (size: ButtonSize) => React.ReactNode }
   );
 };
 
-export const primary = (): React.ReactNode => (
+export const Primary = (): React.ReactNode => (
   <SizeSwitcher>
     {(size) => (
       <>
@@ -55,7 +55,7 @@ export const primary = (): React.ReactNode => (
   </SizeSwitcher>
 );
 
-export const fill = (): React.ReactNode => (
+export const Fill = (): React.ReactNode => (
   <SizeSwitcher>
     {(size) => (
       <>
@@ -79,7 +79,7 @@ export const fill = (): React.ReactNode => (
   </SizeSwitcher>
 );
 
-export const ghost = (): React.ReactNode => (
+export const Ghost = (): React.ReactNode => (
   <SizeSwitcher>
     {(size) => (
       <>
@@ -103,7 +103,7 @@ export const ghost = (): React.ReactNode => (
   </SizeSwitcher>
 );
 
-export const text = (): React.ReactNode => (
+export const Text = (): React.ReactNode => (
   <SizeSwitcher>
     {(size) => (
       <>
@@ -122,6 +122,68 @@ export const text = (): React.ReactNode => (
         <Button className="mr-15" type="text" disabled size={size}>
           Disabled
         </Button>
+      </>
+    )}
+  </SizeSwitcher>
+);
+
+export const Icon = (): React.ReactNode => (
+  <SizeSwitcher>
+    {(size) => (
+      <>
+        <div className="row my-3">
+          <div className="col">
+            <Button type="primary" size={size} icon="home">
+              Primary
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="fill" size={size} icon="home">
+              Fill
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="text" size={size} icon="home">
+              Text
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="ghost" size={size} icon="home">
+              Ghost
+            </Button>
+          </div>
+        </div>
+      </>
+    )}
+  </SizeSwitcher>
+);
+
+export const WithIcon = (): React.ReactNode => (
+  <SizeSwitcher>
+    {(size) => (
+      <>
+        <div className="row my-3">
+          <div className="col">
+            <Button type="primary" size={size} prefix={<SVGIcon type="home" />}>
+              Primary
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="fill" size={size} prefix={<SVGIcon type="home" />}>
+              Fill
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="text" size={size} prefix={<SVGIcon type="home" />}>
+              Text
+            </Button>
+          </div>
+          <div className="col">
+            <Button type="ghost" size={size} prefix={<SVGIcon type="home" />}>
+              Ghost
+            </Button>
+          </div>
+        </div>
       </>
     )}
   </SizeSwitcher>

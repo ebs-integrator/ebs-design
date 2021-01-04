@@ -1,52 +1,77 @@
 // fade
 @include fadeBackground('regularFade', #000);
 
-.ebs-button-wrapper {
+.ebs-button__wrapper {
   position: relative;
   display: inline-block;
   text-align: center;
-  border-radius: rem(4px);
-  transition: 0.3s ease;
+  border-radius: rem($border-radius);
+  transition: $transition-base;
   border: 1px solid transparent;
 
+  // button
+  .ebs-button {
+    width: 100%;
+    cursor: pointer;
+    font-size: rem(13px);
+    line-height: $btn-line-height;
+    border-color: transparent;
+    background: transparent;
+    padding: 0;
+    outline: none !important;
+    @include fontMedium;
+
+    &-icon {
+      line-height: 0;
+    }
+  }
+
   // button size
-  &.ebs-button-size {
-    &-large {
+  &.ebs-button__size {
+    &--large {
+      border-radius: $btn-border-radius-lg;
+
       .ebs-button {
-        padding: rem(10px 20px);
-        font-weight: 700;
-        font-size: rem(14px);
+        padding: rem($btn-padding-y-lg $btn-padding-x-lg);
+        font-weight: $btn-font-weight-lg;
+        font-size: rem($btn-font-size-lg);
       }
     }
 
-    &-medium {
+    &--medium {
+      border-radius: $btn-border-radius;
+
       .ebs-button {
-        padding: rem(6px 12px);
-        font-weight: 500;
-        font-size: rem(14px);
+        padding: rem($btn-padding-y $btn-padding-x);
+        font-weight: $btn-font-weight;
+        font-size: rem($btn-font-size);
       }
     }
 
-    &-small {
+    &--small {
+      border-radius: $btn-border-radius-sm;
+
       .ebs-button {
-        padding: rem(4px 8px);
-        font-weight: 500;
-        font-size: rem(12px);
+        padding: rem($btn-padding-y-sm $btn-padding-x-sm);
+        font-weight: $btn-font-weight-sm;
+        font-size: rem($btn-font-size-sm);
+        line-height: $btn-line-height-sm;
       }
     }
   }
 
   // button type (Color)
-  &.ebs-button-type {
-    &-primary {
-      border-color: $primary-500;
-      background: $primary-500;
+  &.ebs-button__type {
+    &--primary {
+      border-color: $primary-color;
+      background: $primary-color;
+      color: $white;
 
       .ebs-button {
-        color: $simple-white;
+        color: $white;
 
         &:hover {
-          color: $simple-white;
+          color: $white;
         }
       }
 
@@ -63,21 +88,23 @@
       }
     }
 
-    &-fill {
+    &--fill {
       border-color: $primary-100;
       background: $primary-100;
+      color: $primary-color;
 
       .ebs-button {
-        color: $primary-500;
+        color: $primary-color;
       }
 
       &:hover,
       &.hover {
-        border-color: $primary-500;
-        background: $primary-500;
+        border-color: $primary-color;
+        background: $primary-color;
+        color: $white;
 
         & .ebs-button {
-          color: $simple-white;
+          color: $white;
         }
       }
 
@@ -85,28 +112,31 @@
       &.active {
         border-color: $primary-600;
         background: $primary-600;
+        color: $white;
 
         & .ebs-button {
-          color: $simple-white;
+          color: $white;
         }
       }
     }
 
-    &-ghost {
+    &--ghost {
       background: transparent;
-      border-color: $primary-500;
+      border-color: $primary-color;
+      color: $primary-color;
 
       .ebs-button {
-        color: $primary-500;
+        color: $primary-color;
       }
 
       &:hover,
       &.hover {
-        border-color: $primary-500;
-        background: $primary-500;
+        border-color: $primary-color;
+        background: $primary-color;
+        color: $white;
 
         & .ebs-button {
-          color: $simple-white;
+          color: $white;
         }
       }
 
@@ -114,18 +144,20 @@
       &.active {
         border-color: $primary-600;
         background: $primary-600;
+        color: $white;
 
         & .ebs-button {
-          color: $simple-white;
+          color: $white;
         }
       }
     }
 
-    &-text {
+    &--text {
       background: transparent;
+      color: $primary-color;
 
       .ebs-button {
-        color: $primary-500;
+        color: $primary-color;
       }
 
       &:hover,
@@ -147,7 +179,7 @@
       }
     }
 
-    &-disabled {
+    &--disabled {
       background: $grey-200;
 
       .ebs-button {
@@ -168,22 +200,22 @@
     display: block;
   }
 
-  .ebs-button-loading {
+  .ebs-button__loading {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    border-radius: rem(4px);
+    border-radius: rem($border-radius);
     pointer-events: none;
 
-    &.ebs-button-loading {
+    &.ebs-button__loading {
       &-regular {
         animation: regularFade 0.25s forwards;
       }
     }
 
-    .ebs-loader-spinner {
+    .ebs-loader__spinner {
       position: absolute;
       left: calc(50% - 7.5px);
       top: calc(50% - 7.5px);
@@ -191,7 +223,7 @@
     }
   }
 
-  .ebs-button-prefix {
+  .ebs-button__prefix {
     position: absolute;
     left: rem(10px);
     top: 50%;
@@ -200,24 +232,13 @@
     display: flex;
     align-items: center;
   }
-
-  .ebs-button {
-    width: 100%;
-    cursor: pointer;
-    font-size: rem(13px);
-    border-color: transparent;
-    background: transparent;
-    padding: 0;
-    outline: none !important;
-    @include fontBold;
-  }
 }
 
-.ebs-button-group {
+.ebs-button__group {
   display: flex;
   flex-wrap: wrap;
 
-  > .ebs-button-wrapper {
+  > .ebs-button__wrapper {
     &:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;

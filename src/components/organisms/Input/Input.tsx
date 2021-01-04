@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { Extra, Label, LoaderSpinner } from 'components/atoms';
 
 export type InputStyleType = 'white' | 'grey';
@@ -45,8 +46,8 @@ export const Input = React.forwardRef<any, InputProps>(
       disabled,
       width,
       autoFocus,
-      className = '',
-      containerClass = '',
+      className,
+      containerClass,
       ...props
     },
     ref,
@@ -70,21 +71,28 @@ export const Input = React.forwardRef<any, InputProps>(
     };
 
     return (
-      <div className={`ebs-input-container ${containerClass}`}>
+      <div className={cn(`ebs-input__container`, containerClass)}>
         <Label text={label} disabled={disabled} />
 
         <div
-          className={`ebs-input-wrapper ${value === '' ? 'ebs-input-empty' : ''} ebs-input-wrapper-${
-            value ? 'active' : 'unactive'
-          } ebs-input-type-${type} ebs-input-style-${styleType}${prefix !== undefined ? ' has-prefix' : ''} ${
-            suffix !== undefined ? ' has-suffix' : ''
-          }${disabled ? ' disabled' : ''}${hasError ? ' has-error' : ''} ${className}`}
+          className={cn(
+            `ebs-input__wrapper`,
+            `ebs-input__wrapper--${value ? `active` : `unactive`}`,
+            `ebs-input__type--${type}`,
+            `ebs-input-style-${styleType}`,
+            className,
+            {
+              'ebs-input__empty': value === '',
+              'has-prefix': prefix,
+              'has-suffix': suffix,
+              'has-error': hasError,
+              disabled: disabled,
+            },
+          )}
         >
           {loading || prefix ? (
             <div
-              className={`ebs-input-prefix ${
-                !loading && props.onClickPrefix !== undefined ? 'clickable' : 'not-clickable'
-              }`}
+              className={cn(`ebs-input__prefix`, !loading && props.onClickPrefix ? `clickable` : `not-clickable`)}
               onClick={onClickPrefixHandler}
             >
               {loading ? <LoaderSpinner size="small" /> : prefix}
@@ -93,16 +101,14 @@ export const Input = React.forwardRef<any, InputProps>(
 
           {suffix ? (
             <div
-              className={`ebs-input-suffix ${
-                !loading && props.onClickSuffix !== undefined ? 'clickable' : 'not-clickable'
-              }`}
+              className={cn(`ebs-input__suffix`, !loading && props.onClickSuffix ? `clickable` : `not-clickable`)}
               onClick={onClickSuffixHandler}
             >
               {loading && !prefix ? <LoaderSpinner size="small" /> : suffix}
             </div>
           ) : null}
 
-          <div className="ebs-input-container">
+          <div className="ebs-input__container">
             <input
               name={name}
               ref={ref}

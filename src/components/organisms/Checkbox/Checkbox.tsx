@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { Icon } from 'components/atoms';
 
 export type CheckAlign = 'left' | 'right';
@@ -24,7 +25,7 @@ export interface Props {
 }
 
 export const Checkbox: React.FC<Props> = ({
-  className = '',
+  className,
   checkAlign = 'left',
   name,
   value,
@@ -42,14 +43,16 @@ export const Checkbox: React.FC<Props> = ({
 
   return (
     <div
-      className={`ebs-checkbox-wrapper ebs-checkbox-align-${checkAlign}${text ? ' has-text' : ''}${
-        disabled ? ' disabled' : ''
-      }${indeterminate ? ' indeterminate' : ''} ${className}`}
+      className={cn(`ebs-checkbox__wrapper`, `ebs-checkbox__align-${checkAlign}`, className, {
+        'has-text': text,
+        indeterminate: indeterminate,
+        disabled: disabled,
+      })}
     >
       <input
         name={name}
         type="checkbox"
-        className="ebs-checkbox-input"
+        className="ebs-checkbox__input"
         value={value}
         onChange={onChangeHandler}
         {...(checked !== undefined ? { checked } : {})}
@@ -57,12 +60,12 @@ export const Checkbox: React.FC<Props> = ({
       />
 
       <div className="ebs-checkbox">
-        <Icon type="indeterminate" className="ebs-checkbox-indeterminate" />
+        <Icon type="indeterminate" className="ebs-checkbox__indeterminate" />
 
-        <Icon type="check-2" className="ebs-checkbox-check" />
+        <Icon type="check-2" className="ebs-checkbox__check" />
       </div>
 
-      {text && <div className="ebs-checkbox-text">{text}</div>}
+      {text && <div className="ebs-checkbox__text">{text}</div>}
     </div>
   );
 };

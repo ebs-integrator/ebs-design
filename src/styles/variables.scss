@@ -1,0 +1,107 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Colors
+//
+// Text, heading, backgrounds color
+$white: #fff !default;
+$black: #000 !default;
+
+// Text colors
+$heading-color: #121634 !default;
+$text-color: #494f7d !default;
+$text-color-secondary: #aaadc9 !default;
+$text-color-light: #cfd1e1;
+
+// Background colors
+$background-content: #f8f8f8 !default;
+$background-sidebar: $white !default;
+$background-topbar: $white !default;
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+$font-family: 'Roboto', sans-serif !default;
+$font-size-base: 14px !default;
+$font-size-sm: $font-size-base * 0.875 !default;
+$font-size-lg: $font-size-base * 1.25 !default;
+
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+
+$font-weight-base: $font-weight-normal !default;
+
+$line-height-base: 1.414 !default; // augmented fourth
+$line-height-sm: 1.25 !default; // major third
+$line-height-lg: 1.618 !default; // golden ratio
+
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.75 !default;
+$h4-font-size: $font-size-base * 1.5 !default;
+$h5-font-size: $font-size-base * 1.25 !default;
+$h6-font-size: $font-size-base !default;
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+$border-width: 1px !default;
+$border-color: #e5e5e5 !default;
+$border-radius: 4px !default;
+$border-radius-sm: $border-radius !default;
+$border-radius-lg: $border-radius !default;
+
+$transition-base: all 0.3s ease-in-out !default;
+
+// Links
+//
+// Style anchor elements.
+$link-color: $primary-color !default;
+$link-decoration: none !default;
+$link-shade-percentage: 20% !default;
+$link-hover-color: $primary-600 !default;
+$link-hover-decoration: none !default;
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+// button medium height = 32px
+$btn-padding-y: 5px !default;
+$btn-padding-x: 11px !default;
+
+$btn-font-family: $font-family !default;
+$btn-font-weight: $font-weight-medium !default;
+$btn-font-size: $font-size-base !default;
+$btn-line-height: $line-height-base !default;
+
+// button small height = 24px
+$btn-padding-y-sm: 3px !default;
+$btn-padding-x-sm: 7px !default;
+$btn-font-size-sm: $font-size-sm !default;
+$btn-font-weight-sm: $font-weight-medium !default;
+$btn-line-height-sm: $line-height-sm !default;
+
+// button large height = 40px
+$btn-padding-y-lg: 9px !default;
+$btn-padding-x-lg: 19px !default;
+$btn-font-size-lg: $font-size-base !default;
+$btn-font-weight-lg: $font-weight-bold !default;
+$btn-line-height-lg: $line-height-base !default;
+
+$btn-border-width: $border-width !default;
+
+$btn-link-color: $link-color !default;
+$btn-link-hover-color: $link-hover-color !default;
+$btn-link-disabled-color: $grey-500 !default;
+
+// Allows for customizing button radius independently from global border radius
+$btn-border-radius: $border-radius !default;
+$btn-border-radius-sm: $border-radius-sm !default;
+$btn-border-radius-lg: $border-radius-lg !default;
+
+$gutter-size: 16px;

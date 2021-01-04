@@ -11,7 +11,7 @@ export default {
   component: Layout,
 };
 
-export const regular = (): React.ReactNode => (
+export const Regular = (): React.ReactNode => (
   <Layout
     title="Page Title"
     sidebarTop={

@@ -7,7 +7,7 @@ export default {
   component: InputSearch,
 };
 
-export const simple = (): React.ReactElement => (
+export const Simple = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Input Search & Stroke</div>
@@ -49,7 +49,7 @@ export const simple = (): React.ReactElement => (
   </div>
 );
 
-export const iconAlignment = (): React.ReactElement => (
+export const IconAlignment = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Input Search & Left Alignment & Stroke</div>

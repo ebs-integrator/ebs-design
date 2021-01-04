@@ -1,18 +1,16 @@
+// Utilities
+@import './palette';
+@import './variables';
+@import './mixins/index';
+
+@import './grid';
 @import './global-styles';
 
-// components/atoms
-@import '../components/atoms/LoaderSpinner/LoaderSpinner', '../components/atoms/Icon/Icon',
-  '../components/atoms/Label/Label', '../components/atoms/Extra/Extra', '../components/atoms/Switch/Switch',
-  '../components/atoms/Chips/Chips', '../components/atoms/Radio/Radio', '../components/atoms/Tooltip/Tooltip',
-  '../components/atoms/Card/Card';
+// atoms
+@import '../components/atoms/styles';
 
 // organisms
-@import '../components/organisms/Button/Button', '../components/organisms/Input/Input',
-  '../components/organisms/Stepper/Stepper', '../components/organisms/Textarea/Textarea',
-  '../components/organisms/Loader/Loader', '../components/organisms/Calendar/Calendar',
-  '../components/organisms/InputPhone/InputPhone', '../components/organisms/Checkbox/Checkbox',
-  '../components/organisms/InputSearch/InputSearch', '../components/organisms/Form/Form',
-  '../components/organisms/Table/Table';
+@import '../components/organisms/styles';
 
 // features
 @import '../features/layout/atoms/Optionsbar/Optionsbar', '../features/layout/atoms/OptionsbarItem/OptionsbarItem',

@@ -7,7 +7,7 @@ export default {
   component: Textarea,
 };
 
-export const simple = (): React.ReactElement => (
+export const Simple = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Text Input</div>

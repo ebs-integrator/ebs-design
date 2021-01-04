@@ -7,7 +7,7 @@ export default {
   component: Calendar,
 };
 
-export const period = (): React.ReactElement => (
+export const Period = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Calendar</div>
@@ -107,7 +107,7 @@ export const period = (): React.ReactElement => (
   </div>
 );
 
-export const date = (): React.ReactElement => (
+export const Date = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Calendar</div>
@@ -207,7 +207,7 @@ export const date = (): React.ReactElement => (
   </div>
 );
 
-export const dateTime = (): React.ReactElement => (
+export const DateTime = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Calendar</div>

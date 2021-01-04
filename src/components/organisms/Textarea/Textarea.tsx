@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { Extra, Label } from 'components/atoms';
 
 interface Props {
@@ -13,7 +14,7 @@ interface Props {
 }
 
 export const Textarea: React.FC<Props> = ({
-  className = '',
+  className,
   onChange,
   value,
   placeholder,
@@ -26,13 +27,11 @@ export const Textarea: React.FC<Props> = ({
     onChange !== undefined ? onChange(ev.target.value) : undefined;
 
   return (
-    <div className={`ebs-textarea-wrapper ${className}`}>
+    <div className={cn(`ebs-textarea__wrapper`, className)}>
       <Label text={label} disabled={disabled} />
 
       <textarea
-        className={`ebs-textarea${value ? ' has-value' : ''}${hasError ? ' has-error' : ''}${
-          disabled ? ' disabled' : ''
-        }`}
+        className={cn(`ebs-textarea`, { has__value: value, 'has-error': hasError, disabled: disabled })}
         placeholder={placeholder}
         onChange={onChangeHandler}
         value={value || ''}

@@ -7,7 +7,7 @@ export default {
   component: Form,
 };
 
-export const regular = (): React.ReactNode => (
+export const Regular = (): React.ReactNode => (
   <Form>
     <FormItem label="Text">
       <Input />
@@ -29,7 +29,7 @@ export const regular = (): React.ReactNode => (
   </Form>
 );
 
-export const inline = (): React.ReactNode => (
+export const Inline = (): React.ReactNode => (
   <Form type="inline">
     <FormItem label="Text">
       <Input />

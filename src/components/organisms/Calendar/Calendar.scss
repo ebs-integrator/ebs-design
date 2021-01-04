@@ -6,8 +6,8 @@
 
   & > div:last-child,
   & > div:first-child:not(:last-child),
-  & .ebs-calendar-wrapper > div:last-child,
-  & .ebs-calendar-wrapper > div:first-child:not(:last-child) {
+  & .ebs-calendar__wrapper > div:last-child,
+  & .ebs-calendar__wrapper > div:first-child:not(:last-child) {
     margin-right: rem(10px);
   }
 }
@@ -15,7 +15,7 @@
 .picker-container {
   position: absolute;
   flex-direction: column-reverse;
-  background: $simple-white;
+  background: $white;
   border: inherit;
   transform: translate3d(-50%, rem(55px, 0));
   max-width: rem(600px);
@@ -27,10 +27,10 @@
   }
 }
 
-.ebs-calendar-wrapper {
-  &.disabled .ebs-calendar-input-wrapper .ebs-calendar {
+.ebs-calendar__wrapper {
+  &.disabled .ebs-calendar__input-wrapper .ebs-calendar {
     border-color: $grey-500;
-    background-color: $simple-white;
+    background-color: $white;
     color: $grey-500;
     cursor: not-allowed;
 
@@ -39,19 +39,19 @@
     }
   }
 
-  &.active .ebs-calendar-input-wrapper .ebs-calendar {
-    border-color: $primary-500;
-    background-color: $simple-white;
+  &.active .ebs-calendar__input-wrapper .ebs-calendar {
+    border-color: $primary-color;
+    background-color: $white;
   }
 
-  &.has-error .ebs-calendar-input-wrapper .ebs-calendar {
-    border-color: $semantic-danger-500;
-    background-color: $simple-white;
+  &.has-error .ebs-calendar__input-wrapper .ebs-calendar {
+    border-color: $danger-color;
+    background-color: $white;
   }
 
-  &.ebs-calendar-type {
+  &.ebs-calendar__type {
     &-period {
-      .ebs-calendar-input-wrapper .react-datepicker-wrapper {
+      .ebs-calendar__input-wrapper .react-datepicker-wrapper {
         &:not(:first-child) {
           .ebs-calendar {
             border-left: inherit;
@@ -76,7 +76,7 @@
     }
   }
 
-  .ebs-calendar-input-wrapper {
+  .ebs-calendar__input-wrapper {
     display: flex;
     width: 100%;
     margin: 0;
@@ -104,15 +104,15 @@
       width: 100%;
       height: rem(40px);
       border: 1px solid $grey-200;
-      border-radius: rem(4px);
+      border-radius: rem($border-radius);
       outline: none;
       font-size: rem(14px);
       padding: rem(10px);
       padding-right: rem(35px);
-      color: $font-text-1;
+      color: $heading-color;
 
       @include placeholder {
-        color: $font-text-3;
+        color: $text-color-secondary;
       }
     }
   }
@@ -138,7 +138,7 @@
     &__time-list-item {
       &:hover {
         background-color: $primary-100 !important;
-        color: $font-text-2;
+        color: $text-color;
       }
 
       &--disabled {
@@ -147,15 +147,15 @@
 
       &--selected,
       &--selected:hover {
-        background: $primary-500 !important;
-        color: $simple-white;
+        background: $primary-color !important;
+        color: $white;
       }
     }
 
     &__navigation {
       content: '';
 
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='rgb(16 77 67)' class='ebs-icon ebs-icon-size-small ebs-icon-arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='rgb(16 77 67)' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
 
       background-size: 80%;
       background-repeat: no-repeat;
@@ -214,7 +214,7 @@
 
       &:before {
         border: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='rgb(16 77 67)' class='ebs-icon ebs-icon-size-small ebs-icon-arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='rgb(16 77 67)' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
         background-size: 50%;
         background-repeat: no-repeat;
         background-position: center;
@@ -259,7 +259,7 @@
       justify-content: center;
       align-items: center;
       border-radius: 0;
-      color: $font-text-2;
+      color: $text-color;
 
       &:hover {
         background-color: $primary-100;
@@ -278,9 +278,9 @@
     &__day--selected:hover,
     &__day--keyboard-selected,
     &__day--keyboard-selected:hover {
-      border-radius: rem(4px);
-      background-color: $primary-500;
-      color: $simple-white;
+      border-radius: rem($border-radius);
+      background-color: $primary-color;
+      color: $white;
     }
   }
 }

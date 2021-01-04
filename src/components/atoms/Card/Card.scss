@@ -1,20 +1,20 @@
 // HEADER
-.ebs-card-header {
+.ebs-card__header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding-top: rem(20px);
 
-  .ebs-card-header-title {
+  .ebs-card__header-title {
     font-size: rem(14px);
     @include fontBold;
     margin-right: rem(20px);
     white-space: nowrap;
   }
 
-  .ebs-card-header-side {
-    &-right {
+  .ebs-card__header-side {
+    &--right {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -37,8 +37,8 @@
       }
     }
 
-    &-left,
-    &-right {
+    &--left,
+    &--right {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -51,29 +51,29 @@
 }
 
 // FOOTER
-.ebs-card-footer {
+.ebs-card__footer {
   padding: rem(20px);
   align-items: center;
   display: flex;
   border: 1px solid $grey-100;
   border-top: unset;
 
-  .ebs-card-footer-side {
-    &-left {
+  .ebs-card__footer-side {
+    &--left {
       position: relative;
     }
 
-    &-right {
+    &--right {
       width: 100%;
       text-align: right;
 
-      .ebs-button-wrapper:not(:last-child) {
+      .ebs-button__wrapper:not(:last__child) {
         margin-right: rem(10px);
       }
     }
   }
 
-  .ebs-button-wrapper {
+  .ebs-button__wrapper {
     @include elevation-1;
 
     &:not(:last-child) {
@@ -83,7 +83,7 @@
 }
 
 .ebs-card .ebs-table-mobile {
-  .ebs-table-mobile-item :last-child {
+  .ebs-table__mobile-item:last-child {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     box-shadow: unset;

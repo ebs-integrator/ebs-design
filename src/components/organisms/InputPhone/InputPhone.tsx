@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import PhoneInput, { PhoneInputProps } from 'react-phone-input-2';
 import { Extra, Label } from 'components/atoms';
 
@@ -12,8 +13,8 @@ export interface Props extends PhoneInputProps {
 }
 
 export const InputPhone: React.FC<Props> = ({
-  className = '',
-  dropdownClass = '',
+  className,
+  dropdownClass,
   disabled,
   hasError,
   value,
@@ -22,16 +23,18 @@ export const InputPhone: React.FC<Props> = ({
   extra,
   ...props
 }) => (
-  <div className="ebs-input-phone-wrapper">
+  <div className="ebs-input__phone-wrapper">
     <Label text={label} disabled={disabled} />
 
     <PhoneInput
       value={value}
       onChange={onChange}
-      containerClass={`ebs-input-phone${disabled ? ' disabled' : ''}${value ? ' active' : ''}${
-        hasError ? ' has-error' : ''
-      } ${className}`}
-      dropdownClass={`ebs-input-phone-dropdown ${dropdownClass}`}
+      containerClass={cn(`ebs-input__phone`, className, {
+        'has-error': hasError,
+        active: value,
+        disabled: disabled,
+      })}
+      dropdownClass={cn(`ebs-input__phone-dropdown`, dropdownClass)}
       disabled={disabled}
       {...props}
     />

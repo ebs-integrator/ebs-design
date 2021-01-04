@@ -1,5 +1,6 @@
 import * as React from 'react';
 import AnimateHeight from 'react-animate-height';
+import cn from 'classnames';
 import { Icon, Label } from 'components/atoms';
 
 interface TabProps {
@@ -17,9 +18,9 @@ interface TabProps {
 }
 
 export const SidebarItem: React.FC<TabProps> = ({
-  className = '',
-  labelClass = '',
-  optionsClass = '',
+  className,
+  labelClass,
+  optionsClass,
   label,
   active,
   prefix,
@@ -30,14 +31,6 @@ export const SidebarItem: React.FC<TabProps> = ({
   options,
 }) => {
   const [collapsed, setCollapsed] = React.useState(false);
-
-  const classNames = React.useMemo(
-    () =>
-      `ebs-sidebar-item${options !== undefined ? ' has-options' : ''}${invert ? ' invert' : ''}${
-        disabled ? ' disabled' : ''
-      }${active || collapsed ? ' active' : ''} ${className}`,
-    [disabled, collapsed, invert, options],
-  );
 
   const onClickHandler = (): void => {
     if (!disabled) {
@@ -53,22 +46,30 @@ export const SidebarItem: React.FC<TabProps> = ({
 
   return (
     <>
-      {label && <Label className={`ebs-sidebar-label ${labelClass}`} text={label} />}
+      {label && <Label className={cn(`ebs-sidebar__label`, labelClass)} text={label} />}
 
-      <div className={classNames} onClick={onClickHandler}>
-        {prefix && <div className="ebs-sidebar-prefix">{prefix}</div>}
+      <div
+        className={cn(`ebs-sidebar__item`, className, {
+          invert: invert,
+          active: active || collapsed,
+          disabled: disabled,
+          'has-options': options,
+        })}
+        onClick={onClickHandler}
+      >
+        {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}
 
-        <span className="ebs-sidebar-text">{text}</span>
+        <span className="ebs-sidebar__text">{text}</span>
 
         {options !== undefined && (
-          <div className="ebs-sidebar-suffix">
+          <div className="ebs-sidebar__suffix">
             <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}`} />
           </div>
         )}
       </div>
 
       <AnimateHeight duration={150} height={collapsed ? 'auto' : 0}>
-        <div className={`ebs-sidebar-options ${optionsClass}`}>{options}</div>
+        <div className={cn(`ebs-sidebar__options`, optionsClass)}>{options}</div>
       </AnimateHeight>
     </>
   );

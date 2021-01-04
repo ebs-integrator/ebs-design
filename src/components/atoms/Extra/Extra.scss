@@ -1,41 +1,41 @@
 .ebs-extra {
   margin-top: rem(2.5px);
-  color: $font-text-3;
+  color: $text-color-secondary;
   @include fontRegular;
   font-size: rem(10px);
 
   &.has-error {
-    color: $semantic-danger-500;
+    color: $danger-color;
   }
 
   &.disabled {
     color: $grey-500;
   }
 
-  &.ebs-extra-status {
+  &.ebs-extra__status {
     &-success {
-      color: $semantic-success-500;
-      border-color: $semantic-success-500;
+      color: $success-color;
+      border-color: $success-color;
     }
 
     &-warning {
-      color: $semantic-warning-500;
-      border-color: $semantic-warning-500;
+      color: $warning-color;
+      border-color: $warning-color;
     }
 
     &-danger {
-      color: $semantic-danger-500;
-      border-color: $semantic-danger-500;
+      color: $danger-color;
+      border-color: $danger-color;
     }
 
     &-info {
-      color: $semantic-info-500;
-      border-color: $semantic-info-500;
+      color: $info-color;
+      border-color: $info-color;
     }
 
     &-text {
-      color: $font-text-2;
-      border-color: $font-text-2;
+      color: $text-color;
+      border-color: $text-color;
     }
   }
 }

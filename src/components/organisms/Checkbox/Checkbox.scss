@@ -1,34 +1,34 @@
-.ebs-checkbox-wrapper {
+.ebs-checkbox__wrapper {
   position: relative;
   cursor: pointer;
 
   &.indeterminate {
-    .ebs-checkbox-input:checked ~ .ebs-checkbox {
-      .ebs-checkbox-check {
+    .ebs-checkbox__input:checked ~ .ebs-checkbox {
+      .ebs-checkbox__check {
         font-size: rem(10px);
       }
 
-      .ebs-checkbox-indeterminate {
+      .ebs-checkbox__indeterminate {
         font-size: 0;
       }
     }
 
     .ebs-checkbox {
-      border-color: $primary-500;
-      background-color: $primary-500;
+      border-color: $primary-color;
+      background-color: $primary-color;
 
-      .ebs-checkbox-check {
+      .ebs-checkbox__check {
         font-size: 0;
       }
 
-      .ebs-checkbox-indeterminate {
+      .ebs-checkbox__indeterminate {
         font-size: rem(10px);
       }
     }
   }
 
   &.disabled {
-    .ebs-checkbox-input {
+    .ebs-checkbox__input {
       cursor: not-allowed;
 
       &:checked,
@@ -45,7 +45,7 @@
     }
 
     .ebs-checkbox,
-    .ebs-checkbox-input:hover ~ .ebs-checkbox {
+    .ebs-checkbox__input:hover ~ .ebs-checkbox {
       border-color: $grey-500;
       background-color: transparent;
 
@@ -54,7 +54,7 @@
       }
     }
 
-    .ebs-checkbox-text {
+    .ebs-checkbox__text {
       color: $grey-500;
     }
   }
@@ -64,14 +64,14 @@
     top: rem(-2px);
   }
 
-  &.ebs-checkbox-align {
+  &.ebs-checkbox__align {
     &-left {
       .ebs-checkbox {
         right: inherit;
         left: 0;
       }
 
-      .ebs-checkbox-text {
+      .ebs-checkbox__text {
         padding-left: rem(26px);
       }
     }
@@ -82,14 +82,14 @@
         right: 0;
       }
 
-      .ebs-checkbox-text {
+      .ebs-checkbox__text {
         padding-right: rem(26px);
         width: rem(160px);
       }
     }
   }
 
-  .ebs-checkbox-input {
+  .ebs-checkbox__input {
     opacity: 0;
     position: absolute;
     left: 0;
@@ -100,22 +100,22 @@
 
     &:checked {
       ~ .ebs-checkbox {
-        border-color: $primary-500;
-        background-color: $primary-500;
+        border-color: $primary-color;
+        background-color: $primary-color;
 
-        .ebs-checkbox-check {
+        .ebs-checkbox__check {
           font-size: rem(10px);
 
           path {
-            stroke: $simple-white;
+            stroke: $white;
           }
         }
       }
 
       &:hover {
         ~ .ebs-checkbox {
-          border-color: $primary-500;
-          background-color: $primary-500;
+          border-color: $primary-color;
+          background-color: $primary-color;
 
           &:before {
             background-color: $primary-100;
@@ -126,7 +126,7 @@
 
     &:hover {
       ~ .ebs-checkbox {
-        border-color: $primary-500;
+        border-color: $primary-color;
 
         &:before {
           background-color: $primary-100;
@@ -142,7 +142,7 @@
     margin: rem(3px);
     background-color: transparent;
     border: 1px solid $grey-200;
-    border-radius: rem(4px);
+    border-radius: rem($border-radius);
     transition: all 0.2s;
     pointer-events: none;
 
@@ -156,12 +156,12 @@
       top: 50%;
       background-color: transparent;
       transform: translate(-50%, -50%);
-      border-radius: rem(4px);
+      border-radius: rem($border-radius);
       z-index: -1;
     }
 
-    .ebs-checkbox-check,
-    .ebs-checkbox-indeterminate {
+    .ebs-checkbox__check,
+    .ebs-checkbox__indeterminate {
       position: absolute;
       left: 50%;
       top: 50%;
@@ -169,23 +169,23 @@
       font-size: 0;
 
       path {
-        stroke: $simple-white;
+        stroke: $white;
       }
     }
 
-    .ebs-checkbox-indeterminate rect {
-      fill: $simple-white;
+    .ebs-checkbox__indeterminate rect {
+      fill: $white;
     }
   }
 
-  .ebs-checkbox-text {
-    color: $font-text-2;
+  .ebs-checkbox__text {
+    color: $text-color;
     font-size: rem(14px);
   }
 }
 
-.ebs-checkbox-group {
-  .ebs-checkbox-wrapper:not(:last-child) {
+.ebs-checkbox__group {
+  .ebs-checkbox__wrapper:not(:last-child) {
     margin-bottom: rem(5px);
   }
 }

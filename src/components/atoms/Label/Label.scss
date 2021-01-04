@@ -7,79 +7,49 @@
     &-regular {
       font-size: rem(12px);
       margin-bottom: rem(5px);
-      color: $font-text-2;
+      color: $text-color;
     }
 
     &-circle {
       display: inline;
       font-size: rem(10px);
       padding: rem(5px 12px);
-      color: $font-text-2;
-      border: 1px solid $font-text-2;
+      color: $text-color;
+      border: 1px solid $text-color;
       border-radius: rem(12px);
     }
   }
 
-  &.ebs-label-status {
-    &-success {
-      color: $semantic-success-500;
-      border-color: $semantic-success-500;
-
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
-        stroke: $semantic-success-500;
-      }
+  &.ebs-label__status {
+    &--success {
+      color: $success-color;
+      border-color: $success-color;
     }
 
-    &-warning {
-      color: $semantic-warning-500;
-      border-color: $semantic-warning-500;
-
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
-        stroke: $semantic-warning-500;
-      }
+    &--warning {
+      color: $warning-color;
+      border-color: $warning-color;
     }
 
-    &-danger {
-      color: $semantic-danger-500;
-      border-color: $semantic-danger-500;
-
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
-        stroke: $semantic-danger-500;
-      }
+    &--danger {
+      color: $danger-color;
+      border-color: $danger-color;
     }
 
-    &-info {
-      color: $semantic-info-500;
-      border-color: $semantic-info-500;
-
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
-        stroke: $semantic-info-500;
-      }
+    &--info {
+      color: $info-color;
+      border-color: $info-color;
     }
 
-    &-text {
-      color: $font-text-2;
-      border-color: $font-text-2;
-
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
-        stroke: $font-text-2;
-      }
+    &--text {
+      color: $text-color;
+      border-color: $text-color;
     }
 
-    &-primary {
+    &--primary {
       background-color: $primary-000;
-      color: $primary-500;
-      border-color: $primary-500;
-
-      .ebs-label-prefix svg path,
-      .ebs-label-suffix svg path {
-        stroke: $primary-500;
-      }
+      color: $primary-color;
+      border-color: $primary-color;
     }
   }
 
@@ -87,30 +57,25 @@
     cursor: not-allowed;
     color: $grey-500;
     border-color: $grey-500;
-
-    .ebs-label-prefix svg path,
-    .ebs-label-suffix svg path {
-      stroke: $grey-500;
-    }
   }
 
   &.has-prefix,
-  &.has-prefix.ebs-label-circle {
+  &.has-prefix.ebs-label__circle {
     padding-left: rem(22.5px);
   }
 
   &.has-suffix,
-  &.has-suffix.ebs-label-circle {
+  &.has-suffix.ebs-label__circle {
     padding-right: rem(27.5px);
   }
 
-  .ebs-label-prefix,
-  .ebs-label-suffix {
+  .ebs-label__prefix,
+  .ebs-label__suffix {
     position: absolute;
     top: calc(50% + 1px);
     transform: translateY(-50%);
 
-    .ebs-icon-close:hover svg {
+    .ebs-icon__close:hover svg {
       opacity: 0.5;
     }
 
@@ -119,11 +84,11 @@
     }
   }
 
-  .ebs-label-prefix {
+  .ebs-label__prefix {
     left: rem(7.5px);
   }
 
-  .ebs-label-suffix {
+  .ebs-label__suffix {
     right: rem(7.5px);
   }
 }
