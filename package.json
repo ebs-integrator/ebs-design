@@ -1,6 +1,6 @@
 {
-  "name": "react-ebs-ui",
-  "version": "0.0.1-beta.0",
+  "name": "@ebs-integrator/react-ebs-ui",
+  "version": "0.0.1-beta.3",
   "description": "Basic React UI elements.",
   "author": "EBS Integrator",
   "maintainers": [
@@ -27,7 +27,7 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
     "test:watch": "react-scripts-ts test --env=jsdom",
-    "build": "rollup -c",
+    "build": "rm -rf dist && rollup -c rollup.config.js",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
     "storybook": "start-storybook -p 9009 -s public",

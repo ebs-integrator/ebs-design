@@ -45,7 +45,7 @@ export default {
         { files: 'src/components/organisms/**/*.scss', dest: 'dist/components/organisms' },
         { files: 'src/features/**/*.scss', dest: 'dist/features' },
       ],
-      { verbose: true, watch: true },
+      { verbose: true, watch: false },
     ),
     commonjs({
       include: 'node_modules/**',
