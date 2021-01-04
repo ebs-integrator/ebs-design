@@ -87,6 +87,22 @@ $avatar-status-active: $success-color;
 $avatar-status-regular: $primary-color;
 $avatar-status-uanctive: $success-color;
 
+// Badges
+//
+// Customize size, padding & colors of badge
+$badge-size: 20px !default;
+$badge-min-size: 30px !default;
+$badge-border-radius: 100% !default;
+$badge-font: 14px !default;
+$badge-padding: 0 !default;
+$badge-padding-text: 0 5px !default;
+$badge-transform: translate3d(50%, -50%, 0) !default;
+$badge-regular: $white !default;
+$badge-success: $success-color !default;
+$badge-info: $info-color !default;
+$badge-warning: $warning-color !default;
+$badge-danger: $danger-color !default;
+
 // Links
 //
 // Style anchor elements.

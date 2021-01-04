@@ -10,6 +10,7 @@ export { Radio } from './Radio/Radio';
 export { Tooltip } from './Tooltip/Tooltip';
 export { Card, CardHeader, CardFooter } from './Card/Card';
 export { Mask } from './Mask/Mask';
+export { Badge, BadgeType } from './Badge/Badge';
 export { Container, Row, Col } from './Grid';
 
 export { Animated } from './Animated';

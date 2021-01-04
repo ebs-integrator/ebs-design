@@ -7,6 +7,8 @@ export {
   Avatar,
   AvatarCard,
   AvatarInline,
+  Badge,
+  BadgeType,
   LoaderSpinner,
   Label,
   Extra,

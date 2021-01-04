@@ -141,7 +141,7 @@
     }
 
     .ebs-layout__top-bar-right > *:not(:first-child) {
-      margin-left: $gutter-size;
+      margin-left: $gutter-size * 2;
     }
 
     .ebs-layout__top-bar-right-item {

@@ -1,0 +1,90 @@
+.ebs-badge {
+  @include flex-center-vert;
+
+  min-width: $badge-min-size;
+  min-height: $badge-min-size;
+
+  &__container {
+    @include flex-center;
+
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    background: $badge-regular;
+    width: $badge-size;
+    height: $badge-size;
+    color: $black;
+    border-radius: $badge-border-radius;
+    padding: $badge-padding;
+    transform: $badge-transform;
+    font-size: $badge-font;
+    font-weight: 500;
+
+    &.is-text {
+      width: auto;
+      padding: $badge-padding-text;
+      border-radius: $border-radius;
+    }
+
+    + * {
+      margin: 0 5px;
+    }
+  }
+
+  span {
+    @include flex-center;
+
+    position: relative;
+
+    > .ebs-icon {
+      font-size: $badge-size;
+    }
+  }
+
+  &__type {
+    &--success {
+      .ebs-badge__container {
+        background: $badge-success;
+        color: $white;
+      }
+    }
+
+    &--info {
+      .ebs-badge__container {
+        background: $badge-info;
+        color: $white;
+      }
+    }
+
+    &--warning {
+      .ebs-badge__container {
+        background: $badge-warning;
+        color: $white;
+      }
+    }
+
+    &--danger {
+      .ebs-badge__container {
+        background: $badge-danger;
+        color: $white;
+      }
+    }
+  }
+
+  .ebs-sidebar__prefix > & {
+    position: absolute;
+    left: rem(20px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: rem(18px);
+
+    .ebs-icon {
+      position: unset;
+      left: unset;
+      top: unset;
+      transform: unset;
+      margin-left: 0;
+    }
+  }
+}
