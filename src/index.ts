@@ -36,8 +36,6 @@ export {
   Form,
   FormItem,
   FormItems,
+  Layout,
+  Sidebar,
 } from './components/organisms';
-
-// Features
-export { Optionsbar, OptionsbarItem } from './features/layout/atoms';
-export { Layout, Sidebar, SidebarItem } from './features/layout/organisms';

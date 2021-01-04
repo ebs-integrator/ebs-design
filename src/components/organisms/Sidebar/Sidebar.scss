@@ -1,0 +1,104 @@
+@import './Item/Item';
+@import './Options/Options';
+@import './Options/Item/Item';
+
+.ebs-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: $sidebar-width;
+  height: 100vh;
+  border-right: 1px solid $border-color;
+  transition: width $transition-time;
+  background: $sidebar-background;
+  z-index: 5;
+
+  &__top {
+    margin-top: rem(5px);
+  }
+
+  @include mq($until: small-desktop) {
+    padding-top: rem(80px);
+
+    &.ebs-sidebar__mobile {
+      &--closed,
+      &--opened {
+        transition: $transition-time;
+        padding-top: 0;
+      }
+
+      &--closed {
+        transform: translateX(-100%);
+      }
+
+      &--opened {
+        width: $sidebar-width !important;
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &.ebs-sidebar {
+    &--untoggled .ebs-sidebar__options {
+      left: $sidebar-width;
+    }
+
+    &--toggled {
+      overflow: hidden;
+      width: rem(57px);
+
+      .ebs-sidebar__label {
+        animation: fadeOut 0.1s forwards;
+        white-space: nowrap;
+      }
+
+      .ebs-sidebar__item .ebs-sidebar__text {
+        animation: fadeOut 0.1s forwards;
+        white-space: nowrap;
+      }
+
+      .ebs-sidebar__options {
+        left: rem(57px);
+      }
+    }
+  }
+
+  .ebs-sidebar__bottom {
+    background-color: $sidebar-bottom-background;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-top: rem(20px);
+    padding-bottom: rem(20px);
+
+    @include mq($until: small-desktop) {
+      padding-bottom: rem(120px);
+    }
+  }
+
+  &::after {
+    content: '';
+    width: 1px;
+    height: $layout-top-bar-height + 2;
+    border-right: 1px solid $layout-top-bar-toggler-border-color;
+    position: absolute;
+    top: -$layout-top-bar-height - 2;
+    left: $sidebar-width - 2px;
+  }
+}
+
+.ebs-sidebar__mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($black, 0.5);
+  z-index: 4;
+  animation: fadeIn 0.3s forwards;
+}
+
+.ebs-sidebar--toggled + .ebs-layout__content-wrapper {
+  width: calc(100% - 4.38462rem) !important;
+}
