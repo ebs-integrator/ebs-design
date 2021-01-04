@@ -128,3 +128,15 @@
     }
   }
 }
+
+.ebs-layout .ebs-avatar {
+  background-color: $layout-top-bar-avatar-background;
+
+  &__inline-alt {
+    color: $layout-top-bar-avatar-alt-color;
+  }
+
+  &__short-alt {
+    color: $layout-top-bar-avatar-color;
+  }
+}

@@ -137,7 +137,7 @@ $btn-border-radius-lg: $border-radius-lg !default;
 //
 // Customize layout top bar & toggler & avatar
 $layout-top-bar-height: 58px !default;
-$layout-top-bar-border-color: 1px solid $grey-200 !default;
+$layout-top-bar-border-color: 1px solid $border-color !default;
 $layout-top-bar-background: $white !default;
 
 $layout-top-bar-avatar-background: $primary-color !default;
@@ -154,9 +154,9 @@ $layout-top-bar-toggler-border-color: $border-color !default;
 // Define logo & sidebar width, background, sidebar item
 $sidebar-width: 192px !default;
 $sidebar-background: $white !default;
-$sidebar-bottom: $white !default;
+$sidebar-bottom-background: $white !default;
 
-$sidebar-item-text: $text-color !default;
+$sidebar-item-text-color: $text-color !default;
 $sidebar-item-hover-background: $primary-color !default;
 $sidebar-item-hover-color: $white !default;
 $sidebar-logo-width: $sidebar-width - $gutter-size * 3 !default;

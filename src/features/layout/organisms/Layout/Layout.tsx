@@ -8,25 +8,25 @@ interface Props {
   contentClass?: string;
   className?: string;
   title?: React.ReactNode;
-  leftSide?: React.ReactNode;
-  rightSide?: React.ReactNode;
-  sidebarTop?: React.ReactNode;
-  sidebarBottom?: React.ReactNode;
-  optionsTop?: React.ReactNode;
-  optionsBottom?: React.ReactNode;
+  topbarLeftSide?: React.ReactNode;
+  topbarRightSide?: React.ReactNode;
+  sidebarTopSide?: React.ReactNode;
+  sidebarBottomSide?: React.ReactNode;
+  optionsTopSide?: React.ReactNode;
+  optionsBottomSide?: React.ReactNode;
 }
 
 export const Layout: React.FC<Props> = ({
   contentClass,
   className,
   title,
-  leftSide,
-  rightSide,
+  topbarLeftSide,
+  topbarRightSide,
   children,
-  sidebarTop,
-  sidebarBottom,
-  optionsTop,
-  optionsBottom,
+  sidebarTopSide,
+  sidebarBottomSide,
+  optionsTopSide,
+  optionsBottomSide,
 }) => {
   const storeToggled = localStorage.getItem('toggled');
   const [mobileOpened, setMobileOpened] = React.useState(false);
@@ -44,7 +44,7 @@ export const Layout: React.FC<Props> = ({
   return (
     <div
       className={cn(`ebs-layout`, `ebs-layout-sidebar--${toggled ? `toggled` : `untoggled`}`, className, {
-        'has-options': optionsTop || optionsBottom,
+        'has-options': optionsTopSide || optionsBottomSide,
       })}
     >
       <div className="ebs-layout__top-bar">
@@ -58,9 +58,9 @@ export const Layout: React.FC<Props> = ({
 
         {title && <div className="ebs-layout__top-bar-title">{title}</div>}
 
-        {leftSide && <div className="ebs-layout__top-bar-left">{leftSide}</div>}
+        {topbarLeftSide && <div className="ebs-layout__top-bar-left">{topbarLeftSide}</div>}
 
-        <div className="ebs-layout__top-bar-right">{rightSide}</div>
+        <div className="ebs-layout__top-bar-right">{topbarRightSide}</div>
       </div>
 
       <Sidebar
@@ -68,10 +68,10 @@ export const Layout: React.FC<Props> = ({
         opened={mobileOpened}
         onCloseMenu={onToggleMobile}
         onToggleMenu={onToggle}
-        top={sidebarTop}
-        bottom={sidebarBottom}
-        optionsTop={optionsTop}
-        optionsBottom={optionsBottom}
+        top={sidebarTopSide}
+        bottom={sidebarBottomSide}
+        optionsTop={optionsTopSide}
+        optionsBottom={optionsBottomSide}
       />
 
       <div className="ebs-layout__content-wrapper">

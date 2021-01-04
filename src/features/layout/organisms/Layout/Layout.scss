@@ -1,16 +1,4 @@
 .ebs-layout {
-  .ebs-avatar {
-    background-color: $layout-top-bar-avatar-background;
-
-    &__inline-alt {
-      color: $layout-top-bar-avatar-alt-color;
-    }
-
-    &__short-alt {
-      color: $layout-top-bar-avatar-color;
-    }
-  }
-
   .ebs-button__wrapper {
     .ebs-button-icon {
       color: $layout-top-bar-avatar-icon-btn-color;
