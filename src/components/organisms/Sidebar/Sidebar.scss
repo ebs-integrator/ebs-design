@@ -133,6 +133,14 @@
       border-top: 1px solid $border-color;
       border-right: 1px solid $border-color;
 
+      &.disabled {
+        background: $border-color;
+
+        span {
+          color: $grey-500;
+        }
+      }
+
       &:nth-last-child(2) {
         border-bottom: 1px solid $border-color;
       }
@@ -155,6 +163,8 @@
   animation: fadeIn 0.3s forwards;
 }
 
-.ebs-sidebar--toggled + .ebs-layout__content-wrapper {
-  width: calc(100% - 4.38462rem) !important;
+@media (min-width: 54.84714em) {
+  .ebs-sidebar--toggled + .ebs-layout__content-wrapper {
+    width: calc(100% - 4.38462rem) !important;
+  }
 }
