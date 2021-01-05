@@ -11,7 +11,6 @@
   border-right: 1px solid $border-color;
   transition: width $transition-time;
   background: $sidebar-background;
-  overflow: hidden;
   z-index: 5;
 
   &__top {
@@ -45,7 +44,6 @@
     }
 
     &--toggled {
-      overflow: hidden;
       width: rem(57px);
 
       .ebs-sidebar__label {
@@ -54,14 +52,26 @@
       }
 
       .ebs-sidebar__item {
+        padding-right: 0;
         .ebs-sidebar__text {
           animation: fadeOut 0.1s;
           white-space: nowrap;
+        }
+
+        .ebs-sidebar__suffix .ebs-icon {
+          right: $gutter-size / 2;
         }
       }
 
       .ebs-sidebar__options {
         left: rem(57px);
+      }
+
+      .ebs-sidebar__options .ebs-sidebar__item:hover,
+      .ebs-sidebar__options .ebs-sidebar__item.active,
+      .ebs-sidebar__options .ebs-sidebar__item.invert:hover,
+      .ebs-sidebar__options .ebs-sidebar__item.invert.active:hover {
+        background: $primary-color;
       }
     }
   }
@@ -74,6 +84,7 @@
     left: 0;
     margin-top: rem(20px);
     padding-bottom: rem(20px);
+    overflow: hidden;
 
     @include mq($until: small-desktop) {
       padding-bottom: rem(120px);
@@ -91,11 +102,45 @@
   }
 }
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__options > .ebs-sidebar__item {
-  padding: $gutter-size / 3;
+.ebs-sidebar.ebs-sidebar--toggled {
+  .ebs-sidebar__item {
+    z-index: 3;
 
-  span {
-    @include text-ellipsis;
+    &.has-options {
+      padding-right: 0;
+    }
+
+    &.active + .rah-static {
+      .ebs-sidebar__options {
+        .ebs-sidebar__item {
+          opacity: 1;
+          left: 58px;
+          transition: all $transition-time;
+        }
+      }
+    }
+  }
+
+  .ebs-sidebar__options {
+    .ebs-sidebar__item {
+      background: $sidebar-background;
+      padding: $gutter-size / 3 $gutter-size;
+      z-index: 2;
+      left: -$sidebar-width;
+      opacity: 0;
+      height: 58px;
+      width: 13.62529rem;
+      border-top: 1px solid $border-color;
+      border-right: 1px solid $border-color;
+
+      &:nth-last-child(2) {
+        border-bottom: 1px solid $border-color;
+      }
+
+      span {
+        @include text-ellipsis;
+      }
+    }
   }
 }
 
