@@ -6,7 +6,7 @@
   border-radius: rem(16px);
   background-color: transparent;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all $transition-time;
 
   &.ebs-chips {
     &-checked {
@@ -48,16 +48,16 @@
     &.ebs-chips {
       &-checked,
       &-checked:hover {
-        background-color: $grey-200;
-        border-color: $grey-200;
+        background-color: $border-color;
+        border-color: $border-color;
         color: $grey-500;
       }
 
       &-unchecked,
       &-unchecked:hover {
         background-color: transparent;
-        border-color: $grey-200;
-        color: $grey-200;
+        border-color: $border-color;
+        color: $border-color;
       }
     }
   }

@@ -3,6 +3,15 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
+// Gutters
+$gutter-size: 16px !default;
+
+//Spacings
+//
+// Generate margin & padding mixins
+$spacing-from: 0 !default;
+$spacing-to: 30 !default;
+
 // Colors
 //
 // Text, heading, backgrounds color
@@ -13,12 +22,10 @@ $black: #000 !default;
 $heading-color: #121634 !default;
 $text-color: #494f7d !default;
 $text-color-secondary: #aaadc9 !default;
-$text-color-light: #cfd1e1;
+$text-color-light: #cfd1e1 !default;
 
 // Background colors
 $background-content: #f8f8f8 !default;
-$background-sidebar: $white !default;
-$background-topbar: $white !default;
 
 // Typography
 //
@@ -51,12 +58,52 @@ $h6-font-size: $font-size-base !default;
 //
 // Define common padding and border radius sizes and more.
 $border-width: 1px !default;
-$border-color: #e5e5e5 !default;
+$border-color: $grey-200 !default;
 $border-radius: 4px !default;
 $border-radius-sm: $border-radius !default;
 $border-radius-lg: $border-radius !default;
 
+// Transitions
+//
+// Set base time & default base transition
 $transition-base: all 0.3s ease-in-out !default;
+$transition-time: 0.2s !default;
+
+// Alerts
+//
+// Define alert padding & icon size
+$alert-padding: 20px 16px !default;
+$alert-icon-size: 20px !default;
+$alert-icon-margin: 10px !default;
+
+//Avatars
+//
+// Define avatar sizes & statuses background
+$avatar-size-small: 30px !default;
+$avatar-size-big: 60px !default;
+$avatar-font-small: 9px !default;
+$avatar-font-big: 13px !default;
+$avatar-status-active: $success-color;
+$avatar-status-regular: $primary-color;
+$avatar-status-uanctive: $success-color;
+
+// Badges
+//
+// Customize size, padding & colors of badge
+$badge-size: 20px !default;
+$badge-min-size: 30px !default;
+$badge-border-radius: 100% !default;
+$badge-font-size: 14px !default;
+$badge-font-weight: 500 !default;
+$badge-padding: 0 !default;
+$badge-padding-text: 0 5px !default;
+$badge-transform: translate3d(50%, -50%, 0) !default;
+
+$badge-regular-bg-color: $white !default;
+$badge-success-bg-color: $success-color !default;
+$badge-info-bg-color: $info-color !default;
+$badge-warning-bg-color: $warning-color !default;
+$badge-danger-bg-color: $danger-color !default;
 
 // Links
 //
@@ -104,4 +151,30 @@ $btn-border-radius: $border-radius !default;
 $btn-border-radius-sm: $border-radius-sm !default;
 $btn-border-radius-lg: $border-radius-lg !default;
 
-$gutter-size: 16px;
+// Layout
+//
+// Customize layout top bar & toggler & avatar
+$layout-top-bar-height: 58px !default;
+$layout-top-bar-border-color: 1px solid $border-color !default;
+$layout-top-bar-background: $white !default;
+
+$layout-top-bar-avatar-background: $primary-color !default;
+$layout-top-bar-avatar-color: $white !default;
+$layout-top-bar-avatar-alt-color: $text-color !default;
+$layout-top-bar-avatar-icon-btn-color: $primary-color !default;
+$layout-top-bar-avatar-icon-btn-size: 32px !default;
+$layout-top-bar-avatar-icon-btn-padding: 0 !default;
+
+$layout-top-bar-toggler-border-color: $border-color !default;
+
+// Sidebar
+//
+// Define logo & sidebar width, background, sidebar item
+$sidebar-width: 192px !default;
+$sidebar-background: $white !default;
+$sidebar-bottom-background: $white !default;
+
+$sidebar-item-text-color: $text-color !default;
+$sidebar-item-hover-background: $primary-color !default;
+$sidebar-item-hover-color: $white !default;
+$sidebar-logo-width: $sidebar-width - $gutter-size * 3 !default;

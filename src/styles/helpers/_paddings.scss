@@ -1,0 +1,14 @@
+@for $i from $spacing-from through $spacing-to {
+  .pa-#{$i} {
+    padding: #{$i}px !important;
+  }
+
+  .pr-#{$i} {
+    padding-right: #{$i}px !important;
+  }
+
+  .px-#{$i} {
+    padding-left: #{$i}px !important;
+    padding-right: #{$i}px !important;
+  }
+}

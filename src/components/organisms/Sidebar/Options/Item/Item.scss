@@ -1,0 +1,20 @@
+.ebs-optionsbar__item {
+  padding: rem(14px 16px);
+  color: $text-color;
+  font-size: rem(14px);
+  cursor: pointer;
+  transition: all $transition-time;
+
+  &.disabled,
+  &.disabled:hover {
+    cursor: not-allowed;
+    color: $grey-300;
+    background-color: transparent;
+  }
+
+  &:hover,
+  &.active {
+    background-color: $primary-000;
+    color: $primary-color;
+  }
+}

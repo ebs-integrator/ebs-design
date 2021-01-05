@@ -1,0 +1,14 @@
+@for $i from $spacing-from through $spacing-to {
+  .mt-#{$i} {
+    margin-top: #{$i}px !important;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: #{$i}px !important;
+  }
+
+  .my-#{$i} {
+    margin-left: #{$i}px !important;
+    margin-right: #{$i}px !important;
+  }
+}

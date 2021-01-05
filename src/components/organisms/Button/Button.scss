@@ -180,7 +180,7 @@
     }
 
     &--disabled {
-      background: $grey-200;
+      background: $border-color;
 
       .ebs-button {
         cursor: not-allowed;

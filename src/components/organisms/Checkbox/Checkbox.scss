@@ -105,10 +105,7 @@
 
         .ebs-checkbox__check {
           font-size: rem(10px);
-
-          path {
-            stroke: $white;
-          }
+          color: $white;
         }
       }
 
@@ -141,9 +138,9 @@
     height: rem(14px);
     margin: rem(3px);
     background-color: transparent;
-    border: 1px solid $grey-200;
+    border: 1px solid $border-color;
     border-radius: rem($border-radius);
-    transition: all 0.2s;
+    transition: all $transition-time;
     pointer-events: none;
 
     &:before {
@@ -167,10 +164,7 @@
       top: 50%;
       transform: translate(-50%, -50%);
       font-size: 0;
-
-      path {
-        stroke: $white;
-      }
+      color: $white;
     }
 
     .ebs-checkbox__indeterminate rect {

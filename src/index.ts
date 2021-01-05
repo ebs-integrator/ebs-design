@@ -1,7 +1,28 @@
 import './styles/index.scss';
 
 // Atoms
-export { LoaderSpinner, Label, Extra, Icon, Switch, Chips, Radio } from './components/atoms';
+export {
+  Alert,
+  AlertType,
+  Avatar,
+  AvatarCard,
+  AvatarInline,
+  Badge,
+  BadgeType,
+  LoaderSpinner,
+  Label,
+  Extra,
+  Icon,
+  Switch,
+  Chips,
+  Radio,
+  Card,
+  CardFooter,
+  CardHeader,
+  Container,
+  Row,
+  Col,
+} from './components/atoms';
 
 // Organisms
 export {
@@ -17,8 +38,6 @@ export {
   Form,
   FormItem,
   FormItems,
+  Layout,
+  Sidebar,
 } from './components/organisms';
-
-// Features
-export { Optionsbar, OptionsbarItem } from './features/layout/atoms';
-export { Layout, Sidebar, SidebarItem } from './features/layout/organisms';

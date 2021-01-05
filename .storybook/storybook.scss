@@ -17,7 +17,7 @@
     &:not(:last-child) {
       margin-right: rem(25px);
       padding-right: rem(25px);
-      border-right: 1px solid $grey-200;
+      border-right: 1px solid $border-color;
     }
 
     .storybook-row-item {

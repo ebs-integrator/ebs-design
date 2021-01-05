@@ -65,7 +65,15 @@ export const Modal: React.FC<Props> = ({
               {title && <h2 className="ebs-modal__title">{title}</h2>}
 
               <div className="ebs-modal__header--tool">{header}</div>
-              <Button icon="close" size="small" className="ebs-modal__header--close" type="text" />
+              {props.onClose && (
+                <Button
+                  icon="close"
+                  size="small"
+                  className="ebs-modal__header--close"
+                  type="text"
+                  onClick={props.onClose}
+                />
+              )}
             </div>
           ) : null}
 
