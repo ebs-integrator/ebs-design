@@ -14,6 +14,7 @@ export const reducer = (state: ReducerLayoutState = initialState, action: Reduce
       return {
         ...state,
         opened: action.payload,
+        toggled: false,
       };
     }
 

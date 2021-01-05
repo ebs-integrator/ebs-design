@@ -11,6 +11,7 @@
   border-right: 1px solid $border-color;
   transition: width $transition-time;
   background: $sidebar-background;
+  overflow: hidden;
   z-index: 5;
 
   &__top {
@@ -48,13 +49,15 @@
       width: rem(57px);
 
       .ebs-sidebar__label {
-        animation: fadeOut 0.1s forwards;
+        animation: fadeOut 0.1s;
         white-space: nowrap;
       }
 
-      .ebs-sidebar__item .ebs-sidebar__text {
-        animation: fadeOut 0.1s forwards;
-        white-space: nowrap;
+      .ebs-sidebar__item {
+        .ebs-sidebar__text {
+          animation: fadeOut 0.1s;
+          white-space: nowrap;
+        }
       }
 
       .ebs-sidebar__options {
@@ -85,6 +88,14 @@
     position: absolute;
     top: -$layout-top-bar-height - 2;
     left: $sidebar-width - 2px;
+  }
+}
+
+.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__options > .ebs-sidebar__item {
+  padding: $gutter-size / 3;
+
+  span {
+    @include text-ellipsis;
   }
 }
 

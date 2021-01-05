@@ -22,8 +22,16 @@ const LayoutProvider: React.FC = ({ children }) => {
     [dispatch],
   );
 
+  const setHasOptions = useCallback(
+    (value: boolean) => {
+      dispatch({ type: ReducerLayoutActionType.SET_OPTIONS, payload: value });
+    },
+    [dispatch],
+  );
+
   const onSetToggled = useCallback(() => setToggled(!state.toggled), [setToggled, state.toggled]);
   const onSetOpened = useCallback(() => setOpened(!state.opened), [setOpened, state.opened]);
+  const onSetHasOptions = useCallback(() => setHasOptions(!state.hasOptions), [setHasOptions, state.hasOptions]);
 
   useEffect(() => {
     const storeToggled = localStorage.getItem('toggled');
@@ -34,7 +42,7 @@ const LayoutProvider: React.FC = ({ children }) => {
   }, [setToggled]);
 
   return (
-    <LayoutContext.Provider value={{ ...state, onSetToggled, onSetOpened } as ReducerLayoutState}>
+    <LayoutContext.Provider value={{ ...state, onSetToggled, onSetOpened, onSetHasOptions } as ReducerLayoutState}>
       <LayoutDispatchContext.Provider value={dispatch}>{children}</LayoutDispatchContext.Provider>
     </LayoutContext.Provider>
   );

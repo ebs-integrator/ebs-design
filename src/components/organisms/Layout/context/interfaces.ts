@@ -6,7 +6,7 @@ export interface ReducerLayoutState {
   hasOptions: boolean;
   onSetToggled?: () => void;
   onSetOpened?: () => void;
-  onSetOptions?: () => void;
+  onSetHasOptions?: () => void;
 }
 
 export enum ReducerLayoutActionType {

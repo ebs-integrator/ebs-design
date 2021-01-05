@@ -8,7 +8,7 @@ export const Container: React.FC<{ className?: string }> = ({ className, childre
 
   return (
     <div
-      className={cn(`ebs-layout`, `ebs-layout-sidebar--${toggled ? `toggled` : `untoggled`}`, className, {
+      className={cn(`ebs-layout`, `ebs-layout__sidebar--${toggled ? `toggled` : `untoggled`}`, className, {
         'has-options': hasOptions,
       })}
     >
