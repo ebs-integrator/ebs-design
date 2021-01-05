@@ -20,21 +20,46 @@ export const Row = (): React.ReactElement => (
 
 export const Col = (): React.ReactElement => (
   <UIContainer>
-    <>
-      <UIRow className="mb-30">
-        <UICol size={4}>
-          <div className="example-block">Col 4</div>
-        </UICol>
-        <UICol size={8}>
-          <div className="example-block">Col 8</div>
-        </UICol>
-      </UIRow>
+    <UIRow className="mb-16">
+      <UICol>
+        <div className="example-block">Col</div>
+      </UICol>
+      <UICol>
+        <div className="example-block">Col</div>
+      </UICol>
+      <UICol>
+        <div className="example-block">Col</div>
+      </UICol>
+    </UIRow>
 
-      <UIRow>
-        <UICol className="example-block">Col</UICol>
-        <UICol className="example-block">Col</UICol>
-        <UICol className="example-block">Col</UICol>
-      </UIRow>
-    </>
+    <UIRow className="mb-16">
+      <UICol size={4}>
+        <div className="example-block">Col 4</div>
+      </UICol>
+      <UICol size={8}>
+        <div className="example-block">Col 8</div>
+      </UICol>
+    </UIRow>
+
+    <UIRow className="mb-16">
+      <UICol>
+        <div className="example-block">Col</div>
+      </UICol>
+      <UICol>
+        <div className="example-block">Col</div>
+      </UICol>
+      <UICol>
+        <div className="example-block">Col</div>
+      </UICol>
+      <UICol>
+        <div className="example-block">Col</div>
+      </UICol>
+    </UIRow>
+
+    <UIRow>
+      <UICol size={12}>
+        <div className="example-block">Col 12</div>
+      </UICol>
+    </UIRow>
   </UIContainer>
 );

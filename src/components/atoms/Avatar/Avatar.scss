@@ -1,0 +1,142 @@
+.ebs-avatar {
+  position: relative;
+  border-radius: $border-radius;
+  background-color: $primary-color;
+
+  &.circle {
+    border-radius: 50%;
+
+    .ebs-avatar__img {
+      border-radius: 50%;
+    }
+  }
+
+  &.ebs-avatar__size {
+    &--small {
+      min-width: $avatar-size-small;
+      width: $avatar-size-small;
+      height: $avatar-size-small;
+
+      .ebs-avatar-short-alt {
+        font-size: $avatar-font-small;
+      }
+    }
+
+    &--big {
+      min-width: $avatar-size-big;
+      width: $avatar-size-big;
+      height: $avatar-size-big;
+
+      .ebs-avatar-short-alt {
+        font-size: $avatar-font-big;
+      }
+    }
+  }
+
+  .ebs-avatar__short-alt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    @include fontMedium;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  .ebs-avatar__img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: $border-radius;
+    object-fit: cover;
+  }
+
+  .ebs-avatar__status {
+    position: absolute;
+    bottom: rem(-2.5px);
+    right: rem(-2.5px);
+    width: rem(10px);
+    height: rem(10px);
+    border: 2px solid #fff;
+    border-radius: 50%;
+
+    &--active {
+      background: $avatar-status-active;
+    }
+
+    &--regular {
+      background: $primary-color;
+    }
+
+    &--uanctive {
+      background: $avatar-status-uanctive;
+    }
+  }
+}
+
+.ebs-avatar__card {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #dfddd6;
+  border-radius: $border-radius;
+
+  .ebs-avatar {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: rem(23px);
+    width: rem(23px);
+
+    img {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .ebs-avatar__card-alt {
+    color: #333;
+    padding: rem(0 7.5px);
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    @include fontMedium;
+    font-size: rem(9px);
+  }
+}
+
+.ebs-avatar__inline {
+  display: flex;
+  align-items: center;
+
+  .ebs-avatar__inline-alt {
+    margin-left: $gutter-size;
+    @include fontSemiBold;
+    font-size: rem(12px);
+    color: $black;
+  }
+
+  .ebs-avatar__inline-role {
+    font-size: rem(10px);
+    color: $text-color;
+    text-transform: capitalize;
+  }
+
+  &.is-reversed {
+    .ebs-avatar__inline-alt {
+      margin-left: 0;
+      margin-right: $gutter-size;
+    }
+  }
+}
+
+.ebs-layout .ebs-avatar {
+  background-color: $layout-top-bar-avatar-background;
+
+  &__inline-alt {
+    color: $layout-top-bar-avatar-alt-color;
+  }
+
+  &__short-alt {
+    color: $layout-top-bar-avatar-color;
+  }
+}

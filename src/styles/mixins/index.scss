@@ -6,3 +6,8 @@
 @import './elevations';
 @import './placeholder';
 @import './scrolls';
+
+@mixin text-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

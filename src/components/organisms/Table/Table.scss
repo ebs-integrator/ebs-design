@@ -96,18 +96,15 @@
 
         .ebs-table__th-filtered {
           cursor: pointer;
-          transition: 0.2s;
+          transition: $transition-time;
 
           .ebs-icon {
             font-size: rem(10px);
             margin-left: rem(6px);
             position: relative;
             top: 0;
-            transition: 0.2s;
-
-            path {
-              stroke: $text-color;
-            }
+            transition: $transition-time;
+            color: $text-color;
           }
 
           &.ebs-table__th-filtered {
@@ -116,8 +113,8 @@
               @include fontMedium;
               color: $text-color-secondary;
 
-              .ebs-icon path {
-                stroke: $text-color-secondary;
+              .ebs-icon {
+                color: $text-color-secondary;
               }
             }
 
@@ -129,8 +126,8 @@
           &:hover {
             color: $text-color-secondary;
 
-            .ebs-icon path {
-              stroke: $text-color-secondary;
+            .ebs-icon {
+              color: $text-color-secondary;
             }
           }
         }
@@ -149,7 +146,7 @@
         }
 
         td.rc-table-cell {
-          transition: 0.2s;
+          transition: $transition-time;
         }
 
         &:nth-child(odd) td.rc-table-cell {

@@ -32,7 +32,7 @@
     @include elevation-4;
     position: relative;
     margin: rem(150px auto $gutter-size);
-    border: 1px solid #e9e8e5;
+    border: 1px solid $border-color;
     border-radius: rem($border-radius);
     background-color: $background-content;
     animation: 250ms cubic-bezier(0.25, 0.1, 0.25, 1) 0s 1 normal forwards running fadeModal;
@@ -65,7 +65,7 @@
     .ebs-modal__header {
       position: relative;
       padding: rem($gutter-size);
-      border-bottom: 1px solid #e9e8e5;
+      border-bottom: 1px solid $border-color;
       background-color: $white;
 
       &--close {
@@ -95,7 +95,7 @@
 
     .ebs-modal__footer {
       padding: rem($gutter-size);
-      border-top: 1px solid #e9e8e5;
+      border-top: 1px solid $border-color;
       background-color: $white;
 
       &__button {

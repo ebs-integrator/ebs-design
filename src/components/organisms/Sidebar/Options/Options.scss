@@ -1,0 +1,9 @@
+.ebs-optionsbar {
+  background-color: $grey-50;
+  border-right: 1px solid $border-color;
+  position: fixed;
+  top: 0;
+  width: rem(192px);
+  height: 100vh;
+  transition: $transition-time;
+}

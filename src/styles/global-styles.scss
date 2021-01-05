@@ -12,6 +12,7 @@ body {
   font-size: $font-size-base;
   color: $text-color;
   @include fontMedium;
+  margin: 0;
 
   // TODO: Move to font-size to variables as responsive
   // @include mq($until: desktop) {
@@ -91,28 +92,4 @@ strong {
 
 .no-wrap {
   white-space: nowrap;
-}
-
-.p {
-  &-0 {
-    padding: 0;
-  }
-}
-
-.m {
-  &-15 {
-    margin: rem(15px);
-  }
-}
-
-.mr {
-  &-15 {
-    margin-right: rem(15px);
-  }
-}
-
-.mb {
-  &-30 {
-    margin-bottom: rem(30px);
-  }
 }

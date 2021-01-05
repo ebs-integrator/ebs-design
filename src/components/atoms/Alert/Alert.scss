@@ -1,0 +1,42 @@
+.ebs-alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid $success-color;
+  padding: $alert-padding;
+  border-radius: $border-radius;
+
+  svg {
+    width: $alert-icon-size;
+    height: $alert-icon-size;
+    border-radius: 100px;
+    margin-right: $alert-icon-margin;
+    color: $success-color;
+  }
+
+  &__type {
+    &--info {
+      border: 1px dashed $info-color;
+
+      svg {
+        color: $info-color;
+      }
+    }
+
+    &--warning {
+      border: 1px dashed $warning-color;
+
+      svg {
+        color: $warning-color;
+      }
+    }
+
+    &--error {
+      border: 1px solid $danger-color;
+
+      svg {
+        color: $danger-color;
+      }
+    }
+  }
+}

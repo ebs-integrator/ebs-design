@@ -103,7 +103,7 @@
     .ebs-calendar {
       width: 100%;
       height: rem(40px);
-      border: 1px solid $grey-200;
+      border: 1px solid $border-color;
       border-radius: rem($border-radius);
       outline: none;
       font-size: rem(14px);
@@ -175,7 +175,7 @@
     }
 
     &__time-container {
-      border-color: $grey-200;
+      border-color: $border-color;
     }
 
     &__time ul li {

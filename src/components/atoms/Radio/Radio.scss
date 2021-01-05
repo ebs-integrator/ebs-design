@@ -50,7 +50,7 @@
         background-color: transparent;
 
         .ebs-radio__dot {
-          border: 1px solid $grey-200;
+          border: 1px solid $border-color;
           box-shadow: none;
           background-color: transparent;
         }
@@ -111,7 +111,7 @@
     }
 
     .ebs-radio {
-      transition: all 0.2s;
+      transition: all $transition-time;
       width: rem(20px);
       height: rem(20px);
       background-color: transparent;
@@ -125,7 +125,7 @@
         transform: translate(-50%, -50%);
         width: rem(16px);
         height: rem(16px);
-        border: 1px solid $grey-200;
+        border: 1px solid $border-color;
         border-radius: 50%;
         background-color: transparent;
       }

@@ -7,7 +7,7 @@
 
   &.ebs-switch {
     &--unchecked {
-      background: $grey-200;
+      background: $border-color;
 
       &:hover .ebs-switch__dot {
         border-color: $primary-200;
@@ -15,19 +15,19 @@
       }
 
       .ebs-switch__dot {
-        border-color: $grey-200;
+        border-color: $border-color;
         background-color: $white;
         box-shadow: 0px 0px 0px 2px $grey-500 inset;
       }
 
       &.disabled {
         cursor: not-allowed;
-        background-color: $grey-200;
+        background-color: $border-color;
 
         .ebs-switch__dot,
         .ebs-switch__dot:hover {
           background: $white;
-          border-color: $grey-200;
+          border-color: $border-color;
         }
       }
     }
@@ -71,7 +71,7 @@
     box-shadow: 0px 0px 0px 2px $primary-color inset;
     border-radius: 50%;
     overflow: hidden;
-    transition: all 0.2s;
+    transition: all $transition-time;
   }
 
   .ebs-switch__checked-sheet {

@@ -63,10 +63,7 @@
       .rc-input-number-handler-wrap,
       .rc-input-number-handler-wrap:hover {
         border-color: $grey-500;
-
-        .rc-input-number-handler .ebs-icon path {
-          fill: $grey-500;
-        }
+        color: $grey-500;
       }
     }
   }
@@ -74,7 +71,7 @@
   .ebs-stepper {
     width: 100%;
     height: rem(40px);
-    border: 1px solid $grey-200;
+    border: 1px solid $border-color;
     background-color: $white;
     border-radius: rem($border-radius);
 
@@ -86,10 +83,10 @@
     }
 
     &:hover {
-      border-color: $grey-200;
+      border-color: $border-color;
 
       .rc-input-number-handler-wrap {
-        border-color: $grey-200;
+        border-color: $border-color;
       }
     }
 
@@ -107,7 +104,7 @@
     }
 
     .rc-input-number-handler-wrap {
-      border-color: $grey-200;
+      border-color: $border-color;
       width: rem(30px);
     }
 
@@ -127,10 +124,7 @@
           position: absolute;
           left: 50%;
           transform: translateX(-50%);
-
-          path {
-            fill: $text-color;
-          }
+          color: $text-color;
         }
       }
 
