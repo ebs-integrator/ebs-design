@@ -11,15 +11,15 @@
     right: 0;
     top: 0;
     z-index: 2;
-    background: $badge-regular;
+    background-color: $badge-regular-bg-color;
     width: $badge-size;
     height: $badge-size;
     color: $black;
     border-radius: $badge-border-radius;
     padding: $badge-padding;
     transform: $badge-transform;
-    font-size: $badge-font;
-    font-weight: 500;
+    font-size: $badge-font-size;
+    font-weight: $badge-font-weight;
 
     &.is-text {
       width: auto;
@@ -45,28 +45,28 @@
   &__type {
     &--success {
       .ebs-badge__container {
-        background: $badge-success;
+        background-color: $badge-success-bg-color;
         color: $white;
       }
     }
 
     &--info {
       .ebs-badge__container {
-        background: $badge-info;
+        background-color: $badge-info-bg-color;
         color: $white;
       }
     }
 
     &--warning {
       .ebs-badge__container {
-        background: $badge-warning;
+        background-color: $badge-warning-bg-color;
         color: $white;
       }
     }
 
     &--danger {
       .ebs-badge__container {
-        background: $badge-danger;
+        background-color: $badge-danger-bg-color;
         color: $white;
       }
     }

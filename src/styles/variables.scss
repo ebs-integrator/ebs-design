@@ -93,15 +93,17 @@ $avatar-status-uanctive: $success-color;
 $badge-size: 20px !default;
 $badge-min-size: 30px !default;
 $badge-border-radius: 100% !default;
-$badge-font: 14px !default;
+$badge-font-size: 14px !default;
+$badge-font-weight: 500 !default;
 $badge-padding: 0 !default;
 $badge-padding-text: 0 5px !default;
 $badge-transform: translate3d(50%, -50%, 0) !default;
-$badge-regular: $white !default;
-$badge-success: $success-color !default;
-$badge-info: $info-color !default;
-$badge-warning: $warning-color !default;
-$badge-danger: $danger-color !default;
+
+$badge-regular-bg-color: $white !default;
+$badge-success-bg-color: $success-color !default;
+$badge-info-bg-color: $info-color !default;
+$badge-warning-bg-color: $warning-color !default;
+$badge-danger-bg-color: $danger-color !default;
 
 // Links
 //
