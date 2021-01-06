@@ -96,7 +96,8 @@ $badge-border-radius: 100% !default;
 $badge-font-size: 14px !default;
 $badge-font-weight: 500 !default;
 $badge-padding: 0 !default;
-$badge-padding-text: 0 5px !default;
+$badge-text-padding: 0 5px !default;
+$badge-text-border-radius: $border-radius !default;
 $badge-transform: translate3d(50%, -50%, 0) !default;
 
 $badge-regular-bg-color: $white !default;

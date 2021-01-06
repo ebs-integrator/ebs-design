@@ -114,7 +114,7 @@
       .ebs-sidebar__options {
         .ebs-sidebar__item {
           opacity: 1;
-          left: 58px;
+          left: $layout-top-bar-height - 1;
           transition: all $transition-time;
         }
       }
@@ -128,7 +128,7 @@
       z-index: 2;
       left: -$sidebar-width;
       opacity: 0;
-      height: 58px;
+      height: $layout-top-bar-height;
       width: 13.62529rem;
       border-top: 1px solid $border-color;
       border-right: 1px solid $border-color;
