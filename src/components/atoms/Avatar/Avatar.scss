@@ -62,15 +62,15 @@
     border-radius: 50%;
 
     &--active {
-      background: $avatar-status-active;
+      background-color: $avatar-status-active;
     }
 
     &--regular {
-      background: $primary-color;
+      background-color: $primary-color;
     }
 
     &--uanctive {
-      background: $avatar-status-uanctive;
+      background-color: $avatar-status-uanctive;
     }
   }
 }

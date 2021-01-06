@@ -10,7 +10,7 @@
   height: 100vh;
   border-right: 1px solid $border-color;
   transition: width $transition-time;
-  background: $sidebar-background;
+  background-color: $sidebar-background;
   z-index: 5;
 
   &__top {
@@ -71,7 +71,7 @@
       .ebs-sidebar__options .ebs-sidebar__item.active,
       .ebs-sidebar__options .ebs-sidebar__item.invert:hover,
       .ebs-sidebar__options .ebs-sidebar__item.invert.active:hover {
-        background: $primary-color;
+        background-color: $primary-color;
       }
     }
   }
@@ -123,7 +123,7 @@
 
   .ebs-sidebar__options {
     .ebs-sidebar__item {
-      background: $sidebar-background;
+      background-color: $sidebar-background;
       padding: $gutter-size / 3 $gutter-size;
       z-index: 2;
       left: -$sidebar-width;
@@ -134,7 +134,7 @@
       border-right: 1px solid $border-color;
 
       &.disabled {
-        background: $border-color;
+        background-color: $border-color;
 
         span {
           color: $grey-500;

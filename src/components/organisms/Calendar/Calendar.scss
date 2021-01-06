@@ -15,7 +15,7 @@
 .picker-container {
   position: absolute;
   flex-direction: column-reverse;
-  background: $white;
+  background-color: $white;
   border: inherit;
   transform: translate3d(-50%, rem(55px, 0));
   max-width: rem(600px);
@@ -147,7 +147,7 @@
 
       &--selected,
       &--selected:hover {
-        background: $primary-color !important;
+        background-color: $primary-color !important;
         color: $white;
       }
     }

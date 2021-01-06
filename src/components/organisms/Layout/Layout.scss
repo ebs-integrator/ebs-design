@@ -148,6 +148,28 @@
       ~ .ebs-layout__top-bar-title {
         width: auto;
       }
+
+      .ebs-input__search-wrapper {
+        .ebs-input__container {
+          .ebs-input__wrapper {
+            transition: all $transition-time;
+
+            &--unactive {
+              background: transparent;
+              border-color: transparent;
+
+              .ebs-input,
+              .ebs-icon {
+                color: $white;
+              }
+
+              .ebs-input::placeholder {
+                color: $white !important;
+              }
+            }
+          }
+        }
+      }
     }
 
     .ebs-layout__top-bar-left,
@@ -174,14 +196,6 @@
 
       > *:not(:first-child) {
         margin-left: $gutter-size;
-      }
-    }
-  }
-
-  &-sidebar--toggled {
-    .ebs-layout__top-bar {
-      .ebs-layout__top-bar-title {
-        min-width: fit-content;
       }
     }
   }

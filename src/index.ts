@@ -33,6 +33,8 @@ export {
   Stepper,
   Calendar,
   InputPhone,
+  InputSearch,
+  InputSelect,
   Checkbox,
   CheckboxGroup,
   Form,

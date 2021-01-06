@@ -11,20 +11,20 @@
     right: 0;
     top: 0;
     z-index: 2;
-    background: $badge-regular;
+    background-color: $badge-bg-color-regular;
     width: $badge-size;
     height: $badge-size;
     color: $black;
     border-radius: $badge-border-radius;
-    padding: $badge-padding;
+    padding: $badge-container-padding;
     transform: $badge-transform;
-    font-size: $badge-font;
-    font-weight: 500;
+    font-size: $badge-font-size;
+    font-weight: $badge-font-weight;
 
     &.is-text {
       width: auto;
-      padding: $badge-padding-text;
-      border-radius: $border-radius;
+      padding: $badge-text-padding;
+      border-radius: $badge-text-border-radius;
     }
 
     + * {
@@ -45,28 +45,28 @@
   &__type {
     &--success {
       .ebs-badge__container {
-        background: $badge-success;
+        background-color: $badge-bg-color-success;
         color: $white;
       }
     }
 
     &--info {
       .ebs-badge__container {
-        background: $badge-info;
+        background-color: $badge-bg-color-info;
         color: $white;
       }
     }
 
     &--warning {
       .ebs-badge__container {
-        background: $badge-warning;
+        background-color: $badge-bg-color-warning;
         color: $white;
       }
     }
 
     &--danger {
       .ebs-badge__container {
-        background: $badge-danger;
+        background-color: $badge-bg-color-danger;
         color: $white;
       }
     }
