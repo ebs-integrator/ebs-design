@@ -11,7 +11,7 @@
     right: 0;
     top: 0;
     z-index: 2;
-    background-color: $badge-bg-color-regular;
+    background-color: $badge-regular-bg-color;
     width: $badge-size;
     height: $badge-size;
     color: $black;
@@ -45,28 +45,28 @@
   &__type {
     &--success {
       .ebs-badge__container {
-        background-color: $badge-bg-color-success;
+        background-color: $badge-success-bg-color;
         color: $white;
       }
     }
 
     &--info {
       .ebs-badge__container {
-        background-color: $badge-bg-color-info;
+        background-color: $badge-info-bg-color;
         color: $white;
       }
     }
 
     &--warning {
       .ebs-badge__container {
-        background-color: $badge-bg-color-warning;
+        background-color: $badge-warning-bg-color;
         color: $white;
       }
     }
 
     &--danger {
       .ebs-badge__container {
-        background-color: $badge-bg-color-danger;
+        background-color: $badge-danger-bg-color;
         color: $white;
       }
     }
