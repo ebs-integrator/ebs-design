@@ -3,13 +3,21 @@
 @import '../src/styles/mixins/index.scss';
 
 .sb-show-main {
+  #root {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+  }
+
   .ebs-layout {
+    position: relative;
     margin: -1rem;
   }
 }
 
 .storybook-rows {
   display: flex;
+  width: 100%;
 
   .storybook-row {
     width: 100%;

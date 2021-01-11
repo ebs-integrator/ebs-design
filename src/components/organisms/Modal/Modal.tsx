@@ -2,8 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { createPortal } from 'react-dom';
 import { useScrollToggler } from 'hooks';
-import { Mask } from 'components/atoms';
-import { Button } from 'components/organisms';
+import { Mask, Button } from 'components/atoms';
 
 export type ModalSize = 'small' | 'regular' | 'large';
 

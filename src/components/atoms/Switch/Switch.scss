@@ -7,7 +7,7 @@
 
   &.ebs-switch {
     &--unchecked {
-      background: $border-color;
+      background-color: $border-color;
 
       &:hover .ebs-switch__dot {
         border-color: $primary-200;
@@ -26,7 +26,7 @@
 
         .ebs-switch__dot,
         .ebs-switch__dot:hover {
-          background: $white;
+          background-color: $white;
           border-color: $border-color;
         }
       }
@@ -42,7 +42,7 @@
 
       .ebs-switch__dot {
         transform: translate(16px, -50%);
-        background: $primary-400;
+        background-color: $primary-400;
         border-color: $primary-200;
       }
 
@@ -53,7 +53,7 @@
         .ebs-switch__dot,
         .ebs-switch__dot:hover {
           box-shadow: 0px 0px 0px 2px $primary-400 inset;
-          background: $primary-300;
+          background-color: $primary-300;
           border-color: $primary-100;
         }
       }

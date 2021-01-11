@@ -6,8 +6,11 @@
 
 @import './global-styles';
 
-// atoms
+// Atoms
 @import '../components/atoms/styles';
 
-// organisms
+// Molecules
+@import '../components/molecules/styles';
+
+// Organisms
 @import '../components/organisms/styles';

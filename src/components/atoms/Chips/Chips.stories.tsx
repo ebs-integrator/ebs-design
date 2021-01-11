@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Icon } from 'components/atoms';
+
 import { Chips } from './Chips';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Chips',
+  title: exportStory('Chips', 'atoms'),
   component: Chips,
 };
 

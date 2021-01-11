@@ -1,10 +1,12 @@
 import * as React from 'react';
+
 import { iconsList } from './iconsList';
 import { Icon } from './Icon';
 import { ReactComponent as IconSvg } from './icon-example.svg';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Icon',
+  title: exportStory('Icon', 'atoms'),
   component: Icon,
 };
 

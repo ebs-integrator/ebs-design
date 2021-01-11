@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Icon, Switch } from 'components/atoms';
-import { Button } from 'components/organisms';
+import { Icon, Switch, Button } from 'components/atoms';
 import { Modal, ModalFooterButton } from './Modal';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Modal',
+  title: exportStory('Modal', 'organisms'),
   component: Modal,
 };
 

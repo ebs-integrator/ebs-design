@@ -42,6 +42,7 @@ export default {
     copy(
       [
         { files: 'src/components/atoms/**/*.scss', dest: 'dist/components/atoms' },
+        { files: 'src/components/molecules/**/*.scss', dest: 'dist/components/molecules' },
         { files: 'src/components/organisms/**/*.scss', dest: 'dist/components/organisms' },
         { files: 'src/features/**/*.scss', dest: 'dist/features' },
       ],

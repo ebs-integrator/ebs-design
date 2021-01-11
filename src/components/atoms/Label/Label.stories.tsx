@@ -1,9 +1,10 @@
 import * as React from 'react';
 
 import { Label } from './Label';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Label',
+  title: exportStory('Label', 'atoms'),
   component: Label,
 };
 

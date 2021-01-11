@@ -1,0 +1,204 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { exportStory } from '../libs';
+import logo from '../resources/logo.png';
+
+<Meta title={exportStory('Variables', 'introduction')} />
+
+# Palette
+
+```css
+// Main colors
+
+$primary-color: #3366ff;
+$success-color: #2ac952;
+$info-color: #3bc0f9;
+$warning-color: #ffd83d;
+$danger-color: #ff3a30;
+$normal-color: #a5a5a5;
+
+// Accent colors
+$accent-color-1: #9b1dd9;
+$accent-color-2: #fdce14;
+$accent-color-3: #24a677;
+```
+
+# Variables
+
+```css
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+// Gutters
+$gutter-size: 16px;
+
+//Spacings
+//
+// Generate margin & padding mixins
+$spacing-from: 0;
+$spacing-to: 30;
+
+// Text colors
+$heading-color: #121634;
+$text-color: #494f7d;
+$text-color-secondary: #aaadc9;
+$text-color-light: #cfd1e1;
+
+// Background colors
+$background-content: #f8f8f8;
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+$font-family: 'Roboto', sans-serif;
+$font-size-base: 14px;
+$font-size-sm: $font-size-base * 0.875;
+$font-size-lg: $font-size-base * 1.25;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$font-weight-base: $font-weight-normal;
+
+$line-height-base: 1.414; // augmented fourth
+$line-height-sm: 1.25; // major third
+$line-height-lg: 1.618; // golden ratio
+
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+$border-width: 1px;
+$border-color: $grey-200;
+$border-radius: 4px;
+$border-radius-sm: $border-radius;
+$border-radius-lg: $border-radius;
+
+// Transitions
+//
+// Set base time & default base transition
+$transition-base: all 0.3s ease-in-out;
+$transition-time: 0.2s;
+
+// Alerts
+//
+// Define alert padding & icon size
+$alert-padding: 20px 16px;
+$alert-icon-size: 20px;
+$alert-icon-margin: 10px;
+
+//Avatars
+//
+// Define avatar sizes & statuses background
+$avatar-size-small: 30px;
+$avatar-size-big: 60px;
+$avatar-font-small: 9px;
+$avatar-font-big: 13px;
+$avatar-status-active: $success-color;
+$avatar-status-regular: $primary-color;
+$avatar-status-uanctive: $success-color;
+
+// Badges
+//
+// Customize size, padding & colors of badge
+$badge-size: 20px;
+$badge-min-size: 30px;
+$badge-border-radius: 100%;
+$badge-font-size: 14px;
+$badge-font-weight: 500;
+$badge-padding: 0;
+$badge-text-padding: 0 5px;
+$badge-text-border-radius: $border-radius;
+$badge-transform: translate3d(50%, -50%, 0);
+
+$badge-regular-bg-color: $white;
+$badge-success-bg-color: $success-color;
+$badge-info-bg-color: $info-color;
+$badge-warning-bg-color: $warning-color;
+$badge-danger-bg-color: $danger-color;
+
+// Links
+//
+// Style anchor elements.
+$link-color: $primary-color;
+$link-decoration: none;
+$link-shade-percentage: 20%;
+$link-hover-color: $primary-600;
+$link-hover-decoration: none;
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+// button medium height = 32px
+$btn-padding-y: 5px;
+$btn-padding-x: 11px;
+
+$btn-font-family: $font-family;
+$btn-font-weight: $font-weight-medium;
+$btn-font-size: $font-size-base;
+$btn-line-height: $line-height-base;
+
+// button small height = 24px
+$btn-padding-y-sm: 3px;
+$btn-padding-x-sm: 7px;
+$btn-font-size-sm: $font-size-sm;
+$btn-font-weight-sm: $font-weight-medium;
+$btn-line-height-sm: $line-height-sm;
+
+// button large height = 40px
+$btn-padding-y-lg: 9px;
+$btn-padding-x-lg: 19px;
+$btn-font-size-lg: $font-size-base;
+$btn-font-weight-lg: $font-weight-bold;
+$btn-line-height-lg: $line-height-base;
+
+$btn-border-width: $border-width;
+
+$btn-link-color: $link-color;
+$btn-link-hover-color: $link-hover-color;
+$btn-link-disabled-color: $grey-500;
+
+// Allows for customizing button radius independently from global border radius
+$btn-border-radius: $border-radius;
+$btn-border-radius-sm: $border-radius-sm;
+$btn-border-radius-lg: $border-radius-lg;
+
+// Layout
+//
+// Customize layout top bar & toggler & avatar
+$layout-top-bar-height: 58px;
+$layout-top-bar-border-color: 1px solid $border-color;
+$layout-top-bar-background: $white;
+
+$layout-top-bar-avatar-background: $primary-color;
+$layout-top-bar-avatar-color: $white;
+$layout-top-bar-avatar-alt-color: $text-color;
+$layout-top-bar-avatar-icon-btn-color: $primary-color;
+$layout-top-bar-avatar-icon-btn-size: 32px;
+$layout-top-bar-avatar-icon-btn-padding: 0;
+
+$layout-top-bar-toggler-border-color: $border-color;
+
+$layout-footer-background: transparent;
+$layout-footer-height: $layout-top-bar-height;
+
+// Sidebar
+//
+// Define logo & sidebar width, background, sidebar item
+$sidebar-width: 192px;
+$sidebar-background: $white;
+$sidebar-bottom-background: $white;
+
+$sidebar-item-text-color: $text-color;
+$sidebar-item-hover-background: $primary-color;
+$sidebar-item-hover-color: $white;
+$sidebar-logo-width: $sidebar-width - $gutter-size * 3;
+```

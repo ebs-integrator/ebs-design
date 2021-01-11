@@ -22,21 +22,30 @@ npm install react-ebs-ui
 import { Button } from 'react-ebs-ui';
 
 // Create and import your scss to customize
-import './ui.scss';
+import './variables.scss';
 ```
 
-## `ui.scss`
+## `variables.scss`
 
 ```scss
-$primary-100: #fff1d6 !default;
-$primary-200: #ffdead !default;
-$primary-300: #ffc784 !default;
-$primary-400: #ffb166 !default;
-$primary-500: #ff8c33 !default;
-$primary-600: #db6a25 !default;
-$primary-700: #b74d19 !default;
-$primary-800: #933310 !default;
-$primary-900: #7a2109 !default;
+// Main colors
+$primary-color: #3366ff;
+$success-color: #2ac952;
+$info-color: #3bc0f9;
+$warning-color: #ffd83d;
+$danger-color: #ff3a30;
+$normal-color: #a5a5a5;
+
+// Primary colors
+$primary-000: #eef5ff;
+$primary-100: #d6e4ff;
+$primary-200: #adc8ff;
+$primary-300: #85a9ff;
+$primary-400: #6690ff;
+$primary-600: #254eda;
+$primary-700: #1a39b6;
+$primary-800: #102693;
+$primary-900: #0a1a7a;
 
 @import 'react-ebs-ui/dist/styles/index.scss';
 ```
