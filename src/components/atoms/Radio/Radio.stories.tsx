@@ -1,8 +1,10 @@
 import * as React from 'react';
+
 import { Radio } from './Radio';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Radio',
+  title: exportStory('Radio', 'atoms'),
   component: Radio,
 };
 

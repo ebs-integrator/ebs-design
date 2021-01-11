@@ -1,8 +1,10 @@
 import * as React from 'react';
+
 import { Avatar, AvatarCard, AvatarInline } from './';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Avatar',
+  title: exportStory('Avatar', 'atoms'),
   component: Avatar,
 };
 

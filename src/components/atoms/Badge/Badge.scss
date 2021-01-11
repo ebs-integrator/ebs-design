@@ -23,8 +23,8 @@
 
     &.is-text {
       width: auto;
-      padding: $badge-padding-text;
-      border-radius: $border-radius;
+      padding: $badge-text-padding;
+      border-radius: $badge-text-border-radius;
     }
 
     + * {

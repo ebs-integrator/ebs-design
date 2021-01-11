@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button } from 'components/organisms';
+import { Button } from 'components/atoms';
 
 import { Tooltip } from './Tooltip';
 
 export default {
-  title: 'Tooltip',
+  title: exportStory('Tooltip', 'atoms'),
   component: Tooltip,
 };
 

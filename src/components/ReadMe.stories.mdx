@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { exportStory } from '../libs';
+import logo from '../resources/logo.png';
+
+<Meta title={exportStory('Read Me', 'introduction')} />
+
+<img src={logo} height={50} style={{ float: 'right' }} />
+
+# Get started
+
+EBS UI is a reusable component library that helps build UIs faster. The goal is to make building strong UI more simple and productive.
+
+## Install
+
+EBS UI components are written in React, and its stories are written in [Component Story Format]
+
+Add EBS UI to your project.
+
+```bash
+npm install @ebs-integrator/react-ebs-ui
+```
+
+or
+
+```bash
+yarn add @ebs-integrator/react-ebs-u
+```
+
+### **Use**
+
+Import components you want into your UI
+
+```javascript
+import { Button, Badge, Icon } from '@ebs-integrator/react-ebs-ui';
+```
+
+and use them like so
+
+```javascript
+const Example: React.FC = () => (
+  <>
+    <Button type="primary" size="large">
+      Do something
+    </Button>
+
+    <Badge count={1}>
+      <Icon component={IconSVG} />
+    </Badge>
+  </>
+);
+```
+
+[View <Button /\> docs](/?path=/docs/react-ebs-ui-atoms-button--primary)
+
+### **Run and develop EBS UI locally**
+
+Clone the [EBS UI GitHub project](https://github.com/ebs-integrator/react-ebs-ui) then start Storybook.
+
+```bash
+  yarn && yarn run storybook
+```
+
+### **Resources**
+
+- [Introducing React EBS UI](https://github.com/ebs-integrator/react-ebs-ui/blob/master/README.md)
+- [GitHub repository](https://github.com/ebs-integrator/react-ebs-ui)
+- [Atomic Design Pattern](https://atomicdesign.bradfrost.com/chapter-2/)
