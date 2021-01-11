@@ -3,10 +3,12 @@ import * as React from 'react';
 import { Container as UIContainer } from './Container/Container';
 import { Row as UIRow } from './Row/Row';
 import { Col as UICol } from './Col/Col';
+import { exportStory } from '../../../libs';
+
 import './ExampleGrid.scss';
 
 export default {
-  title: 'Grid',
+  title: exportStory('Grid', 'atoms'),
   component: UICol,
 };
 

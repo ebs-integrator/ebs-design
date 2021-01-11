@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { Button, Table } from 'components/organisms';
+import { Button } from 'components/atoms';
+import { Table } from 'components/organisms';
 import { Column } from 'organisms/Table/Table';
+
 import { Card, CardHeader, CardFooter } from './Card';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Card',
+  title: exportStory('Card', 'atoms'),
   component: Card,
 };
 

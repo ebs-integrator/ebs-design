@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Badge, BadgeType } from './Badge';
+import { Button } from 'components/atoms';
+
+import { Badge } from './Badge';
 import { Container, Row, Col, Icon } from '..';
-import { Button } from '../../organisms';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Badge',
+  title: exportStory('Badge', 'atoms'),
   component: Badge,
 };
 
@@ -20,26 +22,26 @@ export const regular = (): React.ReactElement => (
         </Badge>
       </Col>
       <Col>
-        <Badge count={2} type={BadgeType.DANGER}>
+        <Badge count={2} type="danger">
           <Icon type="bell" />
         </Badge>
       </Col>
       <Col>
-        <Badge count={3} type={BadgeType.SUCCESS}>
+        <Badge count={3} type="success">
           <Button type="primary" size="medium" icon="message">
             Primary
           </Button>
         </Badge>
       </Col>
       <Col>
-        <Badge text="Info" type={BadgeType.INFO}>
+        <Badge text="Info" type="info">
           <Button type="ghost" size="medium">
             Example
           </Button>
         </Badge>
       </Col>
       <Col>
-        <Badge text="New" type={BadgeType.WARNING}>
+        <Badge text="New" type="warning">
           <Button type="text" size="medium">
             Example
           </Button>

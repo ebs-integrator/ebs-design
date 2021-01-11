@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { Input } from 'components/organisms';
+import { Input } from 'components/atoms';
+
 import { Form, FormItem, FormItems } from './Form';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Form',
+  title: exportStory('Form', 'organisms'),
   component: Form,
 };
 

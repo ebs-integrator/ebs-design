@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Icon, AvatarInline } from 'components/atoms';
-import { Button } from 'components/organisms';
+import { Icon, AvatarInline, Button } from 'components/atoms';
 
 import { Layout, Sidebar } from '..';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Layout',
+  title: exportStory('Layout', 'organisms'),
   component: Layout,
 };
 

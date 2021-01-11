@@ -2,9 +2,10 @@ import * as React from 'react';
 import { Icon } from 'components/atoms';
 
 import { Sidebar } from '..';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Sidebar',
+  title: exportStory('Sidebar', 'organisms'),
   component: Sidebar,
 };
 

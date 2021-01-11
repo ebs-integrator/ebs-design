@@ -1,13 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-export enum BadgeType {
-  REGULAR = 'regular',
-  SUCCESS = 'success',
-  INFO = 'info',
-  WARNING = 'warning',
-  DANGER = 'danger',
-}
+export type BadgeType = 'regular' | 'success' | 'info' | 'warning' | 'danger';
 
 interface Props {
   count?: number;
@@ -16,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-export const Badge: React.FC<Props> = ({ count, text, type = BadgeType.REGULAR, className, children }) => {
+export const Badge: React.FC<Props> = ({ count, text, type = 'regular', className, children }) => {
   return (
     <div className="ebs-badge">
       <span className={cn(`ebs-badge__type--${type}`, className)}>

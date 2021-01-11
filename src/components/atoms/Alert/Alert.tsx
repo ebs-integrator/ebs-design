@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { Icon } from '../';
 
-export enum AlertType {
-  SUCCESS = 'success',
-  INFO = 'info',
-  WARNING = 'warning',
-  ERROR = 'error',
-}
+export type AlertType = 'success' | 'info' | 'warning' | 'error';
 
 interface Props {
   type?: AlertType;
@@ -14,16 +9,16 @@ interface Props {
   message?: string;
 }
 
-export const Alert: React.FC<Props> = ({ type = AlertType.SUCCESS, message = '', className }) => {
+export const Alert: React.FC<Props> = ({ type = 'success', message = '', className }) => {
   const ref = React.useRef<null | HTMLDivElement>(null);
   const getHeader = document.getElementsByClassName('ebs-layout__top-bar');
 
   const renderByType = React.useMemo(
     () => ({
-      [AlertType.SUCCESS]: <Icon type="check" />,
-      [AlertType.INFO]: <Icon type="info" />,
-      [AlertType.WARNING]: <Icon type="warning" />,
-      [AlertType.ERROR]: <Icon type="alert" />,
+      success: <Icon type="check" />,
+      info: <Icon type="info" />,
+      warning: <Icon type="warning" />,
+      error: <Icon type="alert" />,
     }),
     [],
   );

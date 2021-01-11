@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Alert, AlertType, Container, Row, Col } from '../';
+
+import { Alert, Container, Row, Col } from '../';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Alert',
+  title: exportStory('Alert', 'atoms'),
   component: Alert,
 };
 
@@ -13,13 +15,13 @@ export const regular = (): React.ReactElement => (
         <Alert message="Success" />
       </Col>
       <Col size={12}>
-        <Alert message="Info" type={AlertType.INFO} />
+        <Alert message="Info" type="info" />
       </Col>
       <Col size={12}>
-        <Alert message="Warning" type={AlertType.WARNING} />
+        <Alert message="Warning" type="warning" />
       </Col>
       <Col size={12}>
-        <Alert message="Error" type={AlertType.ERROR} />
+        <Alert message="Error" type="error" />
       </Col>
     </Row>
   </Container>

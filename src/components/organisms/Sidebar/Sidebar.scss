@@ -3,7 +3,7 @@
 @import './Options/Item/Item';
 
 .ebs-sidebar {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   width: $sidebar-width;
@@ -129,7 +129,7 @@
       left: -$sidebar-width;
       opacity: 0;
       height: $layout-top-bar-height;
-      width: 13.62529rem;
+      width: $sidebar-width - 1;
       border-top: 1px solid $border-color;
       border-right: 1px solid $border-color;
 
@@ -153,7 +153,7 @@
 }
 
 .ebs-sidebar__mask {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   width: 100vw;

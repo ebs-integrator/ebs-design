@@ -72,8 +72,8 @@
 
         .ebs-layout__top-bar-mobile--toggler {
           position: relative;
-          height: rem(58px);
-          width: rem(58px);
+          height: $layout-top-bar-height;
+          width: $layout-top-bar-height;
           border-right: 1px solid $layout-top-bar-toggler-border-color;
           cursor: pointer;
 
@@ -98,7 +98,7 @@
 
   .ebs-layout__top-bar,
   .ebs-layout__footer {
-    background-color: $white;
+    background-color: $layout-footer-background;
 
     &-top,
     &-bottom {
@@ -107,21 +107,25 @@
   }
 
   .ebs-layout__top-bar {
-    background-color: $layout-top-bar-background;
-  }
-
-  .ebs-layout__top-bar {
-    right: 0;
-    top: 0;
-    position: fixed;
     height: $layout-top-bar-height;
     display: flex;
     align-items: center;
     transition: width $transition-time;
-    z-index: 3;
     width: 100%;
     padding: rem($gutter-size 24px);
     border-bottom: $layout-top-bar-border-color;
+    background-color: $layout-top-bar-background;
+
+    &.fixed {
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 3;
+
+      &.fixed + .ebs-sidebar + .ebs-layout__content-wrapper {
+        padding-top: $layout-top-bar-height;
+      }
+    }
 
     .ebs-layout__top-bar-mobile {
       display: none;
@@ -200,12 +204,9 @@
     }
   }
 
-  .ebs-sidebar,
-  .ebs-optionsbar {
-    margin-top: rem(58px);
-
-    // 58px
-    height: calc(100vh - 3.87778rem);
+  .ebs-sidebar {
+    margin-top: $layout-top-bar-height;
+    height: calc(100vh - #{$layout-top-bar-height});
 
     @include mq($until: small-desktop) {
       margin-top: 0;
@@ -223,10 +224,11 @@
   }
 
   .ebs-layout__content-wrapper {
-    // 4.02158rem
-    padding-top: rem(58px);
-
+    position: relative;
+    overflow: hidden auto;
+    height: 100%;
     // 117.5px
+    max-height: calc(100vh - 4.93158rem);
     min-height: calc(100vh - 4.93158rem);
 
     .ebs-layout__content {
@@ -248,7 +250,8 @@
   }
 
   .ebs-layout__footer {
-    height: rem(58px);
+    margin-top: calc(6px + #{-$layout-footer-height});
+    height: $layout-footer-height;
     display: flex;
     align-items: center;
     color: $grey-300;

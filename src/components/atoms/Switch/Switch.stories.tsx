@@ -1,8 +1,10 @@
 import * as React from 'react';
+
 import { Switch } from './Switch';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Switch',
+  title: exportStory('Switch', 'atoms'),
   component: Switch,
 };
 

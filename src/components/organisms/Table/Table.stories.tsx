@@ -1,8 +1,10 @@
 import * as React from 'react';
+
 import { Table } from './Table';
+import { exportStory } from '../../../libs';
 
 export default {
-  title: 'Table',
+  title: exportStory('Table', 'organisms'),
   component: Table,
 };
 

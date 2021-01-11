@@ -12,12 +12,6 @@ $gutter-size: 16px !default;
 $spacing-from: 0 !default;
 $spacing-to: 30 !default;
 
-// Colors
-//
-// Text, heading, backgrounds color
-$white: #fff !default;
-$black: #000 !default;
-
 // Text colors
 $heading-color: #121634 !default;
 $text-color: #494f7d !default;
@@ -167,6 +161,9 @@ $layout-top-bar-avatar-icon-btn-size: 32px !default;
 $layout-top-bar-avatar-icon-btn-padding: 0 !default;
 
 $layout-top-bar-toggler-border-color: $border-color !default;
+
+$layout-footer-background: transparent !default;
+$layout-footer-height: $layout-top-bar-height !default;
 
 // Sidebar
 //
