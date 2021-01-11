@@ -225,15 +225,11 @@
 
   .ebs-layout__content-wrapper {
     position: relative;
-    overflow: hidden auto;
-    height: 100%;
-    // 117.5px
-    max-height: calc(100vh - 4.93158rem);
-    min-height: calc(100vh - 4.93158rem);
 
     .ebs-layout__content {
-      max-width: rem(1510px);
       width: 100%;
+      height: calc(100vh - 4.93158rem);
+      overflow: hidden auto;
       margin: 0 auto;
       padding: rem(15px 25px);
 

@@ -40,4 +40,4 @@ export {
 } from './components/molecules';
 
 // Organisms
-export { Form, FormItem, FormItems, Layout, Sidebar } from './components/organisms';
+export { Form, FormItem, FormItems, Layout, Sidebar, Table } from './components/organisms';

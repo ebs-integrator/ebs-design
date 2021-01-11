@@ -4,15 +4,15 @@ import { Icon, AvatarInline, Button } from 'components/atoms';
 import { Layout, Sidebar } from '..';
 import { exportStory } from '../../../libs';
 
-export default {
-  title: exportStory('Layout', 'organisms'),
-  component: Layout,
-};
-
 const { Topbar, Content, Footer } = Layout;
 const { Title, Toggler, LeftSide, RightSide } = Topbar;
 const { TopMenu, BottomMenu, Item, Options } = Sidebar;
 const { TopSide, Item: OptionItem } = Options;
+
+export default {
+  title: exportStory('Layout', 'organisms'),
+  component: Layout,
+};
 
 export const Regular = (): React.ReactNode => (
   <Layout>

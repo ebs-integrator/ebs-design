@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Table } from './Table';
+import { default as Table } from './Table';
 import { exportStory } from '../../../libs';
 
 export default {
@@ -17,18 +17,34 @@ const data = [
 
 const columns = [
   {
+    key: 'title',
     title: 'Title',
-    dataIndex: 'title',
-    filters: ['desc', 'asc'],
-    onFilter: console.log,
+    dataKey: 'title',
+    resizable: true,
+    sortable: true,
+    width: 0,
+    flexGrow: 1,
+    flexShrink: 0,
   },
   {
+    key: 'desc',
     title: 'Description',
-    dataIndex: 'desc',
+    dataKey: 'desc',
+    resizable: true,
+    sortable: true,
+    width: 0,
+    flexGrow: 1,
+    flexShrink: 0,
   },
   {
+    key: 'date',
     title: 'Time',
-    dataIndex: 'date',
+    dataKey: 'date',
+    resizable: true,
+    sortable: true,
+    width: 0,
+    flexGrow: 1,
+    flexShrink: 0,
   },
 ];
 
@@ -40,7 +56,7 @@ export const Regular = (): React.ReactElement => (
       <div className="storybook-row-item">
         <div className="storybook-label">Regular</div>
 
-        <Table page={1} data={data} columns={columns} />
+        <Table columns={columns} data={data} />
       </div>
     </div>
   </div>

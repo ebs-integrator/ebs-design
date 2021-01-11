@@ -28,7 +28,8 @@
     ".storybook",
     "*/throw.ts",
     "*/setupTests.ts",
-    "*/**/*.stories.tsx",
+    "*/**/*.stories.@(tsx|mdx)",
+    "*/*.stories.@(tsx|mdx)",
     "*/**/*.types.ts"
   ]
 }

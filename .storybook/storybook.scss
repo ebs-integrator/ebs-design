@@ -18,6 +18,7 @@
 .storybook-rows {
   display: flex;
   width: 100%;
+  min-width: 50vw;
 
   .storybook-row {
     width: 100%;
