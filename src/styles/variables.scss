@@ -176,3 +176,10 @@ $sidebar-item-text-color: $text-color !default;
 $sidebar-item-hover-background: $primary-color !default;
 $sidebar-item-hover-color: $white !default;
 $sidebar-logo-width: $sidebar-width - $gutter-size * 3 !default;
+
+// Collapse
+$collapse-border: 1px solid;
+$collapse-border-color: $border-color;
+$collapse-border-radius: $border-radius;
+$collapse-header-border-bottom: 1px solid;
+$collapse-header-border-bottom-color: $primary-color;
