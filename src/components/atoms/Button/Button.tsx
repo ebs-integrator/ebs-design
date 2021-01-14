@@ -6,7 +6,7 @@ export type ButtonSize = 'small' | 'medium' | 'large';
 
 export type ButtonType = 'text' | 'primary' | 'fill' | 'ghost';
 
-interface Props {
+export interface ButtonProps {
   onClick?: () => void;
   prefix?: React.ReactNode;
   size?: ButtonSize;
@@ -21,7 +21,7 @@ interface Props {
   block?: boolean;
 }
 
-export const Button: React.FC<Props> = ({
+export const Button: React.FC<ButtonProps> = ({
   submit = false,
   onClick,
   prefix,
