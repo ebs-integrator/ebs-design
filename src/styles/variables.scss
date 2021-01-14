@@ -6,6 +6,13 @@
 // Gutters
 $gutter-size: 16px !default;
 
+// Grid
+$grid-xxl-size: 1320px !default;
+$grid-xl-size: 1200px !default;
+$grid-lg-size: 992px !default;
+$grid-md-size: 768px !default;
+$grid-sm-size: 576px !default;
+
 //Spacings
 //
 // Generate margin & padding mixins
@@ -77,9 +84,10 @@ $avatar-size-small: 30px !default;
 $avatar-size-big: 60px !default;
 $avatar-font-small: 9px !default;
 $avatar-font-big: 13px !default;
-$avatar-status-active: $success-color;
-$avatar-status-regular: $primary-color;
-$avatar-status-uanctive: $success-color;
+$avatar-description-color: $primary-color !default;
+$avatar-status-active: $success-color !default;
+$avatar-status-regular: $primary-color !default;
+$avatar-status-uanctive: $success-color !default;
 
 // Badges
 //
@@ -146,6 +154,16 @@ $btn-border-radius: $border-radius !default;
 $btn-border-radius-sm: $border-radius-sm !default;
 $btn-border-radius-lg: $border-radius-lg !default;
 
+$btn-type-ghost-border-color: $primary-color !default;
+$btn-type-ghost-background: transparent !default;
+$btn-type-ghost-color: $primary-color !default;
+$btn-type-ghost-hover-color: $white !default;
+$btn-type-ghost-hover-background: $primary-color !default;
+$btn-type-ghost-hover-border-color: $primary-color !default;
+$btn-type-ghost-active-color: $white !default;
+$btn-type-ghost-active-background: $primary-600 !default;
+$btn-type-ghost-active-border-color: $primary-600 !default;
+
 // Layout
 //
 // Customize layout top bar & toggler & avatar
@@ -162,6 +180,13 @@ $layout-top-bar-avatar-icon-btn-padding: 0 !default;
 
 $layout-top-bar-toggler-border-color: $border-color !default;
 
+$layout-top-bar-search-background: transparent !default;
+$layout-top-bar-search-border-color: $border-color !default;
+$layout-top-bar-search-input-margin-left: 0 !default;
+$layout-top-bar-search-input-color: $text-color !default;
+$layout-top-bar-search-input-placeholder-color: $text-color !default;
+$layout-top-bar-search-icon-color: $text-color !default;
+
 $layout-footer-background: transparent !default;
 $layout-footer-height: $layout-top-bar-height !default;
 
@@ -176,3 +201,44 @@ $sidebar-item-text-color: $text-color !default;
 $sidebar-item-hover-background: $primary-color !default;
 $sidebar-item-hover-color: $white !default;
 $sidebar-logo-width: $sidebar-width - $gutter-size * 3 !default;
+
+// Table
+//
+// Customize thead, tbody of table
+$table-border: 1px solid $border-color !default;
+$table-border-radius: $border-radius !default;
+$table-box-shadow: none !default;
+$table-body-cell-border: $table-border !default;
+$table-body-cell-odd-background: $background-content !default;
+$table-body-cell-hover-background: $grey-100 !default;
+$table-body-mobile-cell-border: $table-border !default;
+$table-head-font-weight: 500 !default;
+$table-body-font-size: 10px !default;
+$table-head-font-size: 13px !default;
+$table-head-background: $white !default;
+$table-head-cell-border: $table-border !default;
+$table-head-cell-bottom-border: 1px solid $primary-color !default;
+$table-sub-cell-border: $table-border !default;
+$table-font-size: $font-size-base !default;
+
+// SortBy
+//
+// Customize height & icon of sortBy
+$sort-by-height: 36px !default;
+$sort-by-icon-color: $primary-color !default;
+$sort-by-icon-hover-color: $white !default;
+
+// Actions
+//
+// Customize tooltip, height & icon of actions
+$actions-tooltip-min-width: 140px !default;
+$actions-tooltip-padding: 0 !default;
+$actions-tooltip-title-font-size: 11px !default;
+$actions-tooltip-title-padding: 12.5px !default;
+$actions-tooltip-title-color: $text-color !default;
+$actions-tooltip-item-font-size: 12px !default;
+$actions-tooltip-item-padding: $actions-tooltip-title-padding !default;
+$actions-border: 1px solid $border-color !default;
+$actions-height: 36px !default;
+$actions-icon-color: $primary-color !default;
+$actions-icon-hover-color: $white !default;
