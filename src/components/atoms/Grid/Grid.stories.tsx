@@ -9,7 +9,8 @@ import './ExampleGrid.scss';
 
 export default {
   title: exportStory('Grid', 'atoms'),
-  component: Col,
+  component: Container,
+  subcomponents: { Row, Col },
 };
 
 export const _Container = (): React.ReactElement => <Container className="example-block">Container</Container>;

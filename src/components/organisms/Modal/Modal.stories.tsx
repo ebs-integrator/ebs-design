@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs/blocks';
 import { Icon, Switch, Button } from 'components/atoms';
 import { Modal, ModalFooterButton } from './Modal';
 import { exportStory } from '../../../libs';
@@ -6,6 +7,12 @@ import { exportStory } from '../../../libs';
 export default {
   title: exportStory('Modal', 'organisms'),
   component: Modal,
+  subcomponents: { Modal, ModalFooterButton },
+  parameters: {
+    docs: {
+      page: () => <ArgsTable story={PRIMARY_STORY} />,
+    },
+  },
 };
 
 export const WithNothing = (): React.ReactElement => <Modal>Example</Modal>;

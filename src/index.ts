@@ -33,11 +33,11 @@ export {
   InputPhone,
   InputSearch,
   InputSelect,
-  InputSelectMode,
+  SelectDropdown,
+  SelectDropdownItem,
   Checkbox,
   CheckboxGroup,
-  Option,
 } from './components/molecules';
 
 // Organisms
-export { Form, FormItem, FormItems, Layout, Sidebar, Table } from './components/organisms';
+export { Actions, Form, FormItem, FormItems, Layout, Sidebar, SortBy, Table } from './components/organisms';

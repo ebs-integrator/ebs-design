@@ -7,6 +7,7 @@ import { exportStory } from '../../../libs';
 export default {
   title: exportStory('Checkbox', 'molecules'),
   component: Checkbox,
+  subcomponents: { CheckboxGroup },
 };
 
 export const Regular = (): React.ReactElement => {

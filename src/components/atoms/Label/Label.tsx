@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { $Object } from 'libs/object/object.types';
 
-export type LabelType = 'regular' | 'circle';
+export type LabelType = 'regular' | 'circle' | 'fill';
 
 export type LabelStatus = 'success' | 'warning' | 'danger' | 'info' | 'text' | 'primary';
 

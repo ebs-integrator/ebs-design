@@ -7,6 +7,11 @@
     width: 100%;
     display: grid;
     justify-content: center;
+
+    .row,
+    .container {
+      min-width: 500px;
+    }
   }
 
   .ebs-layout {
@@ -92,5 +97,11 @@
       @include fontMedium;
       margin-top: rem(25px);
     }
+  }
+}
+
+.docs-story {
+  #story--react-ebs-ui-organisms-sidebar--regular {
+    min-height: 90vh;
   }
 }

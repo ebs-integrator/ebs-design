@@ -5,6 +5,7 @@ import { exportStory } from '../../../libs';
 export default {
   title: exportStory('Loader', 'molecules'),
   component: Loader,
+  subcomponents: { LoaderInline },
 };
 
 export const DefaultLoader: React.FC = () => {

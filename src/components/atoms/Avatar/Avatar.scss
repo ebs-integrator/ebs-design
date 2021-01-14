@@ -1,7 +1,19 @@
 .ebs-avatar {
   position: relative;
   border-radius: $border-radius;
-  background-color: $primary-color;
+  @include flex-center;
+
+  &__type {
+    &--regular {
+      color: $primary-color;
+      background-color: $grey-100;
+    }
+
+    &--primary {
+      color: $white;
+      background-color: $primary-color;
+    }
+  }
 
   &.circle {
     border-radius: 50%;
@@ -38,8 +50,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    @include fontMedium;
-    color: #fff;
+    @include fontBold;
     white-space: nowrap;
   }
 
@@ -96,7 +107,7 @@
 
   .ebs-avatar__card-alt {
     color: #333;
-    padding: rem(0 7.5px);
+    padding: rem(0 $gutter-size / 2);
     border-top-right-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
     @include fontMedium;
@@ -115,10 +126,9 @@
     color: $black;
   }
 
-  .ebs-avatar__inline-role {
+  .ebs-avatar__inline-description {
     font-size: rem(10px);
-    color: $text-color;
-    text-transform: capitalize;
+    color: $avatar-description-color;
   }
 
   &.is-reversed {
@@ -129,7 +139,7 @@
   }
 }
 
-.ebs-layout .ebs-avatar {
+.ebs-layout .ebs-layout__top-bar .ebs-avatar {
   background-color: $layout-top-bar-avatar-background;
 
   &__inline-alt {

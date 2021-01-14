@@ -121,33 +121,33 @@
     }
 
     &--ghost {
-      background-color: transparent;
-      border-color: $primary-color;
-      color: $primary-color;
+      background-color: $btn-type-ghost-background;
+      border-color: $btn-type-ghost-border-color;
+      color: $btn-type-ghost-color;
 
       .ebs-button {
-        color: $primary-color;
+        color: $btn-type-ghost-color;
       }
 
       &:hover,
       &.hover {
-        border-color: $primary-color;
-        background-color: $primary-color;
-        color: $white;
+        border-color: $btn-type-ghost-hover-border-color;
+        background-color: $btn-type-ghost-hover-background;
+        color: $btn-type-ghost-hover-color;
 
         & .ebs-button {
-          color: $white;
+          color: $btn-type-ghost-hover-color;
         }
       }
 
       &:active,
       &.active {
-        border-color: $primary-600;
-        background-color: $primary-600;
-        color: $white;
+        border-color: $btn-type-ghost-active-border-color;
+        background-color: $btn-type-ghost-active-background;
+        color: $btn-type-ghost-active-color;
 
         & .ebs-button {
-          color: $white;
+          color: $btn-type-ghost-active-color;
         }
       }
     }
@@ -193,6 +193,11 @@
     .ebs-button {
       padding-left: rem(30px);
     }
+  }
+
+  &.has-icon {
+    display: flex;
+    align-items: center;
   }
 
   &.block {
@@ -246,6 +251,10 @@
 
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
+    }
+
+    &:not(:last-child) {
+      border-right: none;
     }
 
     &:last-child {

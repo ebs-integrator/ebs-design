@@ -44,6 +44,7 @@ export const Button: React.FC<Props> = ({
         {
           block: block,
           'has-prefix': prefix,
+          'has-icon': icon,
         },
       )}
       onClick={onClick}
