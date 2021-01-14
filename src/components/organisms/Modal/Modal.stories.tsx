@@ -23,9 +23,9 @@ export const WithFooter = (): React.ReactElement => (
   <Modal
     footer={
       <ModalFooterButton>
-        <Button size="medium">Refuză</Button>
+        <Button>Refuză</Button>
 
-        <Button size="medium" type="primary" prefix={<Icon type="check" />}>
+        <Button type="primary" prefix={<Icon type="check" />}>
           Confirmă
         </Button>
       </ModalFooterButton>
@@ -39,9 +39,9 @@ export const WithHeaderAndFooter = (): React.ReactElement => (
     title="Confirmă acceptare"
     footer={
       <ModalFooterButton>
-        <Button size="medium">Refuză</Button>
+        <Button>Refuză</Button>
 
-        <Button size="medium" type="primary" prefix={<Icon type="check" />}>
+        <Button type="primary" prefix={<Icon type="check" />}>
           Confirmă
         </Button>
       </ModalFooterButton>
@@ -69,16 +69,14 @@ export const CancelWithEscape: React.FC = () => {
           title="Confirmă acceptare"
           footer={
             <ModalFooterButton>
-              <Button size="medium" onClick={onToggleHandler}>
-                Refuză
-              </Button>
+              <Button onClick={onToggleHandler}>Refuză</Button>
 
               <div>
-                <Button size="medium" type="ghost" prefix={<Icon type="check" />}>
+                <Button type="ghost" prefix={<Icon type="check" />}>
                   Confirmă
                 </Button>
 
-                <Button size="medium" type="primary" prefix={<Icon type="edit" />}>
+                <Button type="primary" prefix={<Icon type="edit" />}>
                   Save
                 </Button>
               </div>

@@ -44,7 +44,7 @@ export const Regular = (): React.ReactNode => (
       </LeftSide>
 
       <RightSide>
-        <Button size="medium" icon="bell" />
+        <Button icon="bell" />
         <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
       </RightSide>
     </Topbar>

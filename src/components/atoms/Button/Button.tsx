@@ -27,7 +27,7 @@ export const Button: React.FC<Props> = ({
   prefix,
   className,
   buttonClass,
-  size = 'large',
+  size = 'medium',
   type = 'ghost',
   icon,
   loading,
