@@ -42,9 +42,8 @@
     "build": "rm -rf dist && rollup -c rollup.config.js",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build:storybook": "build-storybook -s public",
-    "build-storybook": "build-storybook -o docs-build"
+    "storybook": "start-storybook -p 9009",
+    "build:storybook": "build-storybook -o docs-build"
   },
   "peerDependencies": {
     "react": ">= 16.8",
@@ -96,7 +95,7 @@
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
-    "typescript": "^2.8.3"
+    "typescript": "^3.9.7"
   },
   "files": [
     "dist"
