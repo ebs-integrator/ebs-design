@@ -21,6 +21,7 @@ export {
   CardFooter,
   CardHeader,
   Container,
+  Mask,
   Row,
   Col,
 } from './components/atoms';
@@ -37,6 +38,7 @@ export {
   SelectDropdownItem,
   Checkbox,
   CheckboxGroup,
+  Textarea,
 } from './components/molecules';
 
 // Organisms
