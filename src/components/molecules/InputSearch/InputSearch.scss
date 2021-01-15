@@ -14,9 +14,12 @@
         border-color: transparent;
         color: $white;
 
-        .ebs-input,
-        .ebs-input::placeholder {
-          color: $white !important;
+        .ebs-input {
+          color: $white;
+
+          @include placeholder {
+            color: $white;
+          }
         }
       }
     }

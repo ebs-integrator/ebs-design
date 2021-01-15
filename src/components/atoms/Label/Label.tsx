@@ -38,7 +38,7 @@ export const Label: React.FC<Props> = ({
   if (!text && !icon) {
     return null;
   }
-  console.log('icon', icon && icon.props);
+
   return (
     <div
       className={cn(`ebs-label`, `ebs-label-${type}`, `ebs-label__status--${status}`, className, {
