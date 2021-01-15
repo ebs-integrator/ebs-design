@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs/blocks';
 import { Icon, Switch, Button } from 'components/atoms';
 import { Modal, ModalFooterButton } from './Modal';
 import { exportStory } from '../../../libs';
@@ -6,6 +7,12 @@ import { exportStory } from '../../../libs';
 export default {
   title: exportStory('Modal', 'organisms'),
   component: Modal,
+  subcomponents: { Modal, ModalFooterButton },
+  parameters: {
+    docs: {
+      page: () => <ArgsTable story={PRIMARY_STORY} />,
+    },
+  },
 };
 
 export const WithNothing = (): React.ReactElement => <Modal>Example</Modal>;
@@ -16,9 +23,9 @@ export const WithFooter = (): React.ReactElement => (
   <Modal
     footer={
       <ModalFooterButton>
-        <Button size="medium">Refuză</Button>
+        <Button>Refuză</Button>
 
-        <Button size="medium" type="primary" prefix={<Icon type="check" />}>
+        <Button type="primary" prefix={<Icon type="check" />}>
           Confirmă
         </Button>
       </ModalFooterButton>
@@ -32,9 +39,9 @@ export const WithHeaderAndFooter = (): React.ReactElement => (
     title="Confirmă acceptare"
     footer={
       <ModalFooterButton>
-        <Button size="medium">Refuză</Button>
+        <Button>Refuză</Button>
 
-        <Button size="medium" type="primary" prefix={<Icon type="check" />}>
+        <Button type="primary" prefix={<Icon type="check" />}>
           Confirmă
         </Button>
       </ModalFooterButton>
@@ -62,16 +69,14 @@ export const CancelWithEscape: React.FC = () => {
           title="Confirmă acceptare"
           footer={
             <ModalFooterButton>
-              <Button size="medium" onClick={onToggleHandler}>
-                Refuză
-              </Button>
+              <Button onClick={onToggleHandler}>Refuză</Button>
 
               <div>
-                <Button size="medium" type="ghost" prefix={<Icon type="check" />}>
+                <Button type="ghost" prefix={<Icon type="check" />}>
                   Confirmă
                 </Button>
 
-                <Button size="medium" type="primary" prefix={<Icon type="edit" />}>
+                <Button type="primary" prefix={<Icon type="edit" />}>
                   Save
                 </Button>
               </div>

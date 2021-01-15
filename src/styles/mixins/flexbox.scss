@@ -46,3 +46,8 @@
   @include flex;
   align-self: center;
 }
+
+@mixin flex-items-end {
+  @include flex;
+  align-items: flex-end;
+}

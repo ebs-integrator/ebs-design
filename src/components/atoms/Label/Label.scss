@@ -1,6 +1,7 @@
 // Label
 .ebs-label {
   position: relative;
+  white-space: nowrap;
   @include fontRegular;
 
   &.ebs-label {
@@ -10,13 +11,51 @@
       color: $text-color;
     }
 
-    &-circle {
+    &-circle,
+    &-fill {
       display: inline;
       font-size: rem(10px);
       padding: rem(5px 12px);
-      color: $text-color;
       border: 1px solid $text-color;
       border-radius: rem(12px);
+    }
+
+    &-circle {
+      color: $text-color;
+    }
+
+    &-fill {
+      color: $white !important;
+      background: $text-color;
+      border-radius: rem(12px);
+
+      &.ebs-label__status {
+        &--success {
+          background-color: $success-color;
+        }
+
+        &--warning {
+          background-color: $warning-color;
+        }
+
+        &--danger {
+          background-color: $danger-color;
+        }
+
+        &--info {
+          background-color: $info-color;
+        }
+
+        &--text {
+          background-color: $text-color;
+        }
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+        color: $grey-500 !important;
+        background: $grey-100;
+      }
     }
   }
 
@@ -34,6 +73,14 @@
     &--danger {
       color: $danger-color;
       border-color: $danger-color;
+
+      &.is-icon-info {
+        background: $white;
+        border-color: $white;
+        .ebs-icon {
+          color: $danger-color;
+        }
+      }
     }
 
     &--info {
@@ -67,6 +114,15 @@
   &.has-suffix,
   &.has-suffix.ebs-label__circle {
     padding-right: rem(27.5px);
+  }
+
+  &.is-icon {
+    @include flex-center;
+    width: $gutter-size;
+    height: $gutter-size;
+    float: left;
+    padding: 0;
+    margin-right: $gutter-size / 2;
   }
 
   .ebs-label__prefix,

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Checkbox, InputSelectMode } from 'components/molecules';
+import { Checkbox } from 'components/molecules';
+import { InputSelectMode } from 'components/molecules/InputSelect/InputSelect';
 export interface Props {
   className?: string;
-  mode: InputSelectMode;
+  mode?: InputSelectMode;
   prefix?: React.ReactElement;
   suffix?: React.ReactElement;
   text?: React.ReactNode;

@@ -14,12 +14,12 @@ export const makeid = (length = 10): string => {
 export const capitalize = (str: string): string =>
   str && typeof str === 'string' ? str.charAt(0).toUpperCase() + str.slice(1) : '';
 
-export const firstLetters = (target: string): string =>
+export const firstLetters = (target: string, count = 1): string =>
   target
     ? target
         .split(' ')
         .map((n) => n[0])
         .join('')
         .toUpperCase()
-        .substr(0, 2)
+        .substr(0, count)
     : '';

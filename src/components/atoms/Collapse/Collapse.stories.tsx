@@ -10,9 +10,12 @@ export default {
 };
 
 export const Regular = (): React.ReactElement => (
-  <Collapse defaultActive={true} title="Collapse element" rightSide={
-    <Button size="small">History</Button>
-  } leftSide={<span>3 items</span>}>
+  <Collapse
+    defaultActive={true}
+    title="Collapse element"
+    rightSide={<Button size="small">History</Button>}
+    leftSide={<span>3 items</span>}
+  >
     <div>
       test collapse
       <Button>Go to</Button>

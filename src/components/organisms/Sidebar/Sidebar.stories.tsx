@@ -4,12 +4,14 @@ import { Icon } from 'components/atoms';
 import { Sidebar } from '..';
 import { exportStory } from '../../../libs';
 
+const { TopMenu, BottomMenu, Options, Item } = Sidebar;
+const { TopSide, BottomSide, Item: OptionItem } = Options;
+
 export default {
   title: exportStory('Sidebar', 'organisms'),
   component: Sidebar,
+  subcomponents: { TopMenu, BottomMenu, Options, Item, TopSide, BottomSide, OptionItem },
 };
-
-const { TopMenu, BottomMenu, Options, Item } = Sidebar;
 
 export const Regular = (): React.ReactNode => (
   <Sidebar>
@@ -29,10 +31,10 @@ export const Regular = (): React.ReactNode => (
     </TopMenu>
 
     <Options>
-      <Options.TopSide>
-        <Options.Item text="Organizations" />
-        <Options.Item text="Company profile" disabled />
-      </Options.TopSide>
+      <TopSide>
+        <Item text="Organizations" />
+        <Item text="Company profile" disabled />
+      </TopSide>
     </Options>
 
     <BottomMenu>

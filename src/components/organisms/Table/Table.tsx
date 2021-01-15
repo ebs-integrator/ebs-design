@@ -13,10 +13,11 @@ export interface Column<T> {
   onFilter?: (type: 'asc' | 'desc') => void;
   render?: (value: T) => React.ReactNode;
   mobileRender?: (data: T) => React.ReactNode;
+  children?: Column<T>[];
   action?: boolean;
 }
 
-interface Props<T extends object> {
+interface TableProps<T extends object> {
   className?: string;
   page?: number;
   data: T[];
@@ -34,7 +35,7 @@ export const Table = <T extends object>({
   size = 'regular',
   className,
   rowClassName,
-}: Props<T>): React.ReactElement => {
+}: TableProps<T>): React.ReactElement => {
   const [filters, setFilters] = React.useState<{ [key: number]: 'desc' | 'asc' }>({});
 
   const onFilterHandler = React.useCallback(
@@ -76,6 +77,9 @@ export const Table = <T extends object>({
       $columns.map(({ title, onFilter, ...column }, key) => ({
         ...column,
         key,
+        className: cn({
+          'has-children': column.children !== undefined,
+        }),
         title: onFilter ? (
           <span
             className={cn(`ebs-table__th-filtered`, `ebs-table__th-filtered-${filters[key] || 'none'}`)}

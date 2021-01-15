@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button } from 'components/atoms';
 
 import { Tooltip } from './Tooltip';
+import { exportStory } from '../../../libs';
 
 export default {
   title: exportStory('Tooltip', 'atoms'),

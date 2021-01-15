@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { iconsList } from './iconsList';
 import { Icon } from './Icon';
-import { ReactComponent as IconSvg } from './icon-example.svg';
+import IconSvg from 'resources/svg/example.svg';
 import { exportStory } from '../../../libs';
 
 export default {

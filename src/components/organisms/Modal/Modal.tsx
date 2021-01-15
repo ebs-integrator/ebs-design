@@ -6,7 +6,7 @@ import { Mask, Button } from 'components/atoms';
 
 export type ModalSize = 'small' | 'regular' | 'large';
 
-interface Props {
+export interface ModalProps {
   mask?: boolean;
   size?: ModalSize;
   header?: React.ReactNode;
@@ -17,7 +17,7 @@ interface Props {
   onClose?: () => void;
 }
 
-export const Modal: React.FC<Props> = ({
+export const Modal: React.FC<ModalProps> = ({
   mask = true,
   size = 'regular',
   header,

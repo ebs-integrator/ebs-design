@@ -9,15 +9,18 @@ import './ExampleGrid.scss';
 
 export default {
   title: exportStory('Grid', 'atoms'),
-  component: Col,
+  component: Container,
+  subcomponents: { Row, Col },
 };
 
 export const _Container = (): React.ReactElement => <Container className="example-block">Container</Container>;
 
 export const _Row = (): React.ReactElement => (
-  <Container>
-    <Row className="example-block">Row</Row>
-  </Container>
+  <div className="storybook-rows">
+    <Container>
+      <Row className="example-block">Row</Row>
+    </Container>
+  </div>
 );
 
 export const _Col = (): React.ReactElement => (

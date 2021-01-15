@@ -6,6 +6,23 @@
         background-color: $grey-100 !important;
       }
     }
+
+    &-transparent {
+      .ebs-input__search,
+      .ebs-input__wrapper-active {
+        background-color: transparent !important;
+        border-color: transparent;
+        color: $white;
+
+        .ebs-input {
+          color: $white;
+
+          @include placeholder {
+            color: $white;
+          }
+        }
+      }
+    }
   }
 
   &.disabled .cursor {

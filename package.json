@@ -7,6 +7,18 @@
     {
       "name": "Vladimir Josan",
       "email": "iaskivsky@gmail.com"
+    },
+    {
+      "name": "Marcel Lefter",
+      "email": "leftermarcel@gmail.com"
+    },
+    {
+      "name": "Dima Danu",
+      "email": "dima.danu@gmail.com"
+    },
+    {
+      "name": "Nicolae Tataru",
+      "email": "devdfan@gmail.com"
     }
   ],
   "keywords": [
@@ -38,13 +50,13 @@
     "react-dom": ">= 16.8"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.0.26",
-    "@storybook/addon-docs": "^6.1.11",
-    "@storybook/addon-essentials": "^6.0.26",
-    "@storybook/addon-links": "^6.0.26",
-    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/addon-actions": "^6.1.14",
+    "@storybook/addon-docs": "^6.1.14",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/addon-links": "^6.1.14",
+    "@storybook/preset-create-react-app": "^3.1.5",
     "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^6.0.26",
+    "@storybook/react": "^6.1.14",
     "@svgr/rollup": "^2.4.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -97,7 +109,7 @@
     "classnames": "^2.2.6",
     "dayjs": "^1.9.4",
     "rc-input-number": "^6.1.1",
-    "rc-table": "^7.11.1",
+    "rc-table": "^7.12.3",
     "react-animate-height": "^2.0.23",
     "react-datepicker": "^3.3.0",
     "react-phone-input-2": "^2.13.8",

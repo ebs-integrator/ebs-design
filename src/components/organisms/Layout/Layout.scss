@@ -1,13 +1,4 @@
 .ebs-layout {
-  .ebs-button__wrapper {
-    .ebs-button-icon {
-      color: $layout-top-bar-avatar-icon-btn-color;
-      width: $layout-top-bar-avatar-icon-btn-size;
-      height: $layout-top-bar-avatar-icon-btn-size;
-      padding: $layout-top-bar-avatar-icon-btn-padding;
-    }
-  }
-
   &.ebs-layout__sidebar {
     &--untoggled {
       &.has-options {
@@ -152,39 +143,21 @@
       ~ .ebs-layout__top-bar-title {
         width: auto;
       }
-
-      .ebs-input__search-wrapper {
-        .ebs-input__container {
-          .ebs-input__wrapper {
-            transition: all $transition-time;
-
-            &--unactive {
-              background: transparent;
-              border-color: transparent;
-
-              .ebs-input,
-              .ebs-icon {
-                color: $white;
-              }
-
-              .ebs-input::placeholder {
-                color: $white !important;
-              }
-            }
-          }
-        }
-      }
     }
 
     .ebs-layout__top-bar-left,
     .ebs-layout__top-bar-right {
-      margin-left: $gutter-size;
       display: flex;
       align-items: center;
       white-space: nowrap;
     }
 
+    .ebs-layout__top-bar-left {
+      margin-left: $layout-top-bar-side-left-magin-left;
+    }
+
     .ebs-layout__top-bar-right {
+      margin-left: $layout-top-bar-side-right-magin-left;
       width: 100%;
       justify-content: flex-end;
     }
@@ -225,15 +198,11 @@
 
   .ebs-layout__content-wrapper {
     position: relative;
-    overflow: hidden auto;
-    height: 100%;
-    // 117.5px
-    max-height: calc(100vh - 4.93158rem);
-    min-height: calc(100vh - 4.93158rem);
 
     .ebs-layout__content {
-      max-width: rem(1510px);
       width: 100%;
+      height: calc(100vh - #{$layout-top-bar-height} - #{$layout-footer-height});
+      overflow: hidden auto;
       margin: 0 auto;
       padding: rem(15px 25px);
 
@@ -250,7 +219,6 @@
   }
 
   .ebs-layout__footer {
-    margin-top: calc(6px + #{-$layout-footer-height});
     height: $layout-footer-height;
     display: flex;
     align-items: center;
@@ -261,10 +229,6 @@
       display: block;
       margin: 0 auto;
     }
-  }
-
-  .ebs-label {
-    padding: 0 $gutter-size;
   }
 
   .ebs-sidebar.ebs-sidebar--toggled .ebs-label {

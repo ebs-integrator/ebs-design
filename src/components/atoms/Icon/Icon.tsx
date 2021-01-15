@@ -593,6 +593,19 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
           />
         </svg>
       );
+    case 'sort':
+      return (
+        <svg viewBox="0 0 16 12" {...defaultProps}>
+          <g>
+            <g>
+              <path
+                fill="currentColor"
+                d="M2 9.705V0h1.333v9.705l1.058-1.056.942.942-2.195 2.19a.668.668 0 0 1-.943 0L0 9.592l.943-.94zM6.667 1.33H16v1.33H6.667zm0 2.66H14v1.332H6.667zm0 2.662H12v1.331H6.667zm0 2.662H10v1.33H6.667z"
+              />
+            </g>
+          </g>
+        </svg>
+      );
     case 'warning':
       return (
         <svg viewBox="0 0 16 14" {...defaultProps}>
@@ -603,10 +616,23 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
           />
         </svg>
       );
+    case 'dots':
+      return (
+        <svg viewBox="0 0 14 4" {...defaultProps}>
+          <g>
+            <g>
+              <path
+                fill="currentColor"
+                d="M10.267 2c0-1.103.837-2 1.866-2C13.163 0 14 .897 14 2s-.837 2-1.867 2c-1.029 0-1.866-.897-1.866-2zM0 2C0 .897.837 0 1.867 0c1.029 0 1.866.897 1.866 2s-.837 2-1.866 2C.837 4 0 3.103 0 2zm5.133 0c0-1.103.838-2 1.867-2 1.03 0 1.867.897 1.867 2S8.029 4 7 4c-1.03 0-1.867-.897-1.867-2z"
+              />
+            </g>
+          </g>
+        </svg>
+      );
   }
 
   if (Component) {
-    return Component.render(defaultProps);
+    return Component.render({ ...defaultProps, fill: 'currentColor' });
   } else {
     console.warn(`<Icon /> couldn't find ${type} icon.`);
   }

@@ -11,19 +11,28 @@ interface CollapseProps {
   rightSide?: React.ReactNode;
 }
 
-export const Collapse: React.FC<CollapseProps> = ({ defaultActive = true, title, className, leftSide, rightSide, children }) => {
+export const Collapse: React.FC<CollapseProps> = ({
+  defaultActive = true,
+  title,
+  className,
+  leftSide,
+  rightSide,
+  children,
+}) => {
   const [active, setActive] = useState(defaultActive);
 
-  const handleToggleCollapse = () => {
+  const handleToggleCollapse = (): void => {
     setActive((s) => !s);
   };
   return (
     <div className={cn(`ebs-collapse`, className, { collapsed: !active })}>
       <div className="ebs-collapse__header">
         <div className="ebs-collapse__header__side-left">
-          {title && <div className="ebs-collapse__title" onClick={handleToggleCollapse}>
-            {title}
-          </div>}
+          {title && (
+            <div className="ebs-collapse__title" onClick={handleToggleCollapse}>
+              {title}
+            </div>
+          )}
           {leftSide}
         </div>
         <div className="ebs-collapse__header__side-right">
@@ -33,9 +42,7 @@ export const Collapse: React.FC<CollapseProps> = ({ defaultActive = true, title,
           </div>
         </div>
       </div>
-      {active && <div className="ebs-collapse__content">
-        {children}
-      </div>}
+      {active && <div className="ebs-collapse__content">{children}</div>}
     </div>
   );
 };

@@ -1,6 +1,8 @@
 @import '~rc-table/assets/index.css';
 
 .ebs-table {
+  box-shadow: $table-box-shadow;
+
   @include mq($until: desktop) {
     display: none;
   }
@@ -8,7 +10,7 @@
   &.ebs-table__size {
     &-small {
       td {
-        padding: rem(10px 17.5px);
+        padding: rem($gutter-size / 2 $gutter-size);
       }
     }
   }
@@ -30,16 +32,16 @@
 
   th,
   td {
-    border-color: $grey-100;
+    border-color: $border-color;
     border-right: none;
     padding: rem(22px 16px);
 
     &:first-child {
-      border-left: 1px solid $grey-100;
+      border-left: $table-border !important;
     }
 
     &:last-child {
-      border-right: 1px solid $grey-100;
+      border-right: $table-border !important;
     }
   }
 
@@ -56,7 +58,7 @@
         display: inline-block;
 
         &:not(:first-child) {
-          padding-left: rem(10px);
+          padding-left: $table-body-font-size;
 
           .ebs-info__icon {
             display: none;
@@ -64,7 +66,7 @@
         }
 
         &:not(:last-child) {
-          margin-right: rem(10px);
+          margin-right: $table-body-font-size;
         }
       }
     }
@@ -79,16 +81,33 @@
     tr {
       th.rc-table-cell {
         text-transform: uppercase;
-        border-top: 1px solid $grey-100;
-        border-bottom: 2px solid $primary-color;
-        word-wrap: break-word;
+        border: $table-head-cell-border;
+        border-top: $table-border;
+        border-bottom: $table-head-cell-bottom-border;
         position: relative;
-        @include fontMedium;
+        font-weight: $table-head-font-weight;
         text-align: left;
-        background-color: $white;
-        white-space: nowrap;
-        font-size: rem(14px);
+        background-color: $table-head-background;
+        font-size: $table-head-font-size;
         color: $heading-color;
+        word-break: normal;
+
+        &.has-children {
+          border: $table-border;
+          border-right: none;
+
+          & + *:not(.has-children) {
+            border-left: $table-border;
+          }
+        }
+
+        &:not(:last-child) {
+          border-right: none;
+        }
+
+        &:not(:last-child) {
+          border-right: none;
+        }
 
         &.rc-table-row-expand-icon-cell + th.rc-table-cell {
           padding-left: 0;
@@ -99,7 +118,7 @@
           transition: $transition-time;
 
           .ebs-icon {
-            font-size: rem(10px);
+            font-size: $table-body-font-size;
             margin-left: rem(6px);
             position: relative;
             top: 0;
@@ -132,6 +151,15 @@
           }
         }
       }
+
+      &:not(:first-child) {
+        th {
+          border: $table-border;
+          border-top: none;
+          border-right: none !important;
+          border-bottom: $table-head-cell-bottom-border;
+        }
+      }
     }
   }
 
@@ -141,17 +169,27 @@
         &:hover {
           &:nth-child(odd) td.rc-table-cell,
           &:nth-child(even) td.rc-table-cell {
-            background-color: $grey-100;
+            background-color: $table-body-cell-hover-background;
           }
         }
 
         td.rc-table-cell {
+          word-break: normal;
+          border: $table-body-cell-border;
           transition: $transition-time;
+
+          &:not(:last-child) {
+            border-right: none;
+          }
         }
 
         &:nth-child(odd) td.rc-table-cell {
-          background-color: $grey-50;
-          font-size: rem(12px);
+          background-color: $table-body-cell-odd-background;
+          font-size: $table-body-font-size;
+        }
+
+        &:last-child td {
+          border-bottom: $table-border;
         }
       }
     }
@@ -177,46 +215,46 @@
 
   .ebs-table__mobile-item {
     position: relative;
-    border: 1px solid $grey-100;
-    border-radius: rem(7px);
-    background-color: $white;
+    border: $table-body-mobile-cell-border;
+    border-radius: $border-radius;
+    background-color: $table-head-background;
     display: flex;
     flex-wrap: wrap;
     @include elevation-2;
 
     &:not(:last-child) {
-      margin-bottom: rem(15px);
+      margin-bottom: rem($gutter-size);
     }
 
     .ebs-table__mobile-item-key {
-      font-size: rem(16px);
+      font-size: rem($gutter-size);
       position: absolute;
-      top: rem(13px);
-      right: rem(15px);
+      top: rem($gutter-size);
+      right: rem($gutter-size);
       color: $grey-400;
     }
 
     .ebs-table__mobile-item-title {
-      padding: rem(15px 15px 10px);
-      font-size: rem(14px);
+      padding: rem($gutter-size $gutter-size $gutter-size / 2);
+      font-size: rem($table-body-font-size);
       width: 100%;
     }
 
     .ebs-table__mobile-item-desc {
-      padding: rem(0 15px 15px);
+      padding: rem(0 $gutter-size $gutter-size);
       width: 100%;
 
       &:not(:last-child) {
-        border-bottom: 1px solid $grey-100;
+        border-bottom: $table-body-mobile-cell-border;
       }
     }
 
     .ebs-table__mobile-item-child {
-      padding: rem(15px);
+      padding: rem($gutter-size);
       width: 50%;
 
       &:nth-child(even) {
-        border-right: 1px solid $grey-100;
+        border-right: $table-body-mobile-cell-border;
       }
 
       &:last-child {
@@ -225,7 +263,7 @@
 
       .ebs-table__mobile-item-child-title {
         display: block;
-        font-size: rem(10px);
+        font-size: rem($table-body-font-size);
         margin-bottom: rem(5px);
         color: $grey-400;
       }
@@ -233,14 +271,14 @@
 
     .ebs-table__mobile-item-action {
       width: 100%;
-      border-top: 1px solid $primary-color;
-      border-bottom-left-radius: rem(7px);
-      border-bottom-right-radius: rem(7px);
+      border-top: $table-body-mobile-cell-border;
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
       color: $white;
       display: flex;
       align-items: center;
       text-align: center;
-      padding: rem(15px 5px);
+      padding: rem($gutter-size 5px);
 
       > .flex {
         display: flex;
