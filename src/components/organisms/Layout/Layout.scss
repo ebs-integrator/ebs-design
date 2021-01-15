@@ -147,13 +147,17 @@
 
     .ebs-layout__top-bar-left,
     .ebs-layout__top-bar-right {
-      margin-left: $gutter-size;
       display: flex;
       align-items: center;
       white-space: nowrap;
     }
 
+    .ebs-layout__top-bar-left {
+      margin-left: $layout-top-bar-side-left-magin-left;
+    }
+
     .ebs-layout__top-bar-right {
+      margin-left: $layout-top-bar-side-right-magin-left;
       width: 100%;
       justify-content: flex-end;
     }
@@ -169,15 +173,6 @@
 
       > *:not(:first-child) {
         margin-left: $gutter-size;
-      }
-    }
-
-    .ebs-button__wrapper {
-      .ebs-button-icon {
-        color: $layout-top-bar-avatar-icon-btn-color;
-        width: $layout-top-bar-avatar-icon-btn-size;
-        height: $layout-top-bar-avatar-icon-btn-size;
-        padding: $layout-top-bar-avatar-icon-btn-padding;
       }
     }
   }

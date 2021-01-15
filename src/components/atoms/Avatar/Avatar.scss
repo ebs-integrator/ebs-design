@@ -13,6 +13,11 @@
       color: $white;
       background-color: $primary-color;
     }
+
+    &--white {
+      color: $text-color;
+      background-color: $white;
+    }
   }
 
   &.circle {
@@ -126,6 +131,10 @@
     color: $black;
   }
 
+  &.is-white .ebs-avatar__inline-alt {
+    color: $white;
+  }
+
   .ebs-avatar__inline-description {
     font-size: rem(10px);
     color: $avatar-description-color;
@@ -136,17 +145,5 @@
       margin-left: 0;
       margin-right: $gutter-size;
     }
-  }
-}
-
-.ebs-layout .ebs-layout__top-bar .ebs-avatar {
-  background-color: $layout-top-bar-avatar-background;
-
-  &__inline-alt {
-    color: $layout-top-bar-avatar-alt-color;
-  }
-
-  &__short-alt {
-    color: $layout-top-bar-avatar-color;
   }
 }

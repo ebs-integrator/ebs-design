@@ -171,6 +171,9 @@ $layout-top-bar-height: 58px !default;
 $layout-top-bar-border-color: 1px solid $border-color !default;
 $layout-top-bar-background: $white !default;
 
+$layout-top-bar-side-left-magin-left: $gutter-size !default;
+$layout-top-bar-side-right-magin-left: $gutter-size !default;
+
 $layout-top-bar-avatar-background: $primary-color !default;
 $layout-top-bar-avatar-color: $white !default;
 $layout-top-bar-avatar-alt-color: $text-color !default;
@@ -179,13 +182,6 @@ $layout-top-bar-avatar-icon-btn-size: 32px !default;
 $layout-top-bar-avatar-icon-btn-padding: 0 !default;
 
 $layout-top-bar-toggler-border-color: $border-color !default;
-
-$layout-top-bar-search-background: transparent !default;
-$layout-top-bar-search-border-color: $border-color !default;
-$layout-top-bar-search-input-margin-left: 0 !default;
-$layout-top-bar-search-input-color: $text-color !default;
-$layout-top-bar-search-input-placeholder-color: $text-color !default;
-$layout-top-bar-search-icon-color: $text-color !default;
 
 $layout-footer-background: transparent !default;
 $layout-footer-height: $layout-top-bar-height !default;

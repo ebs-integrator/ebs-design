@@ -17,6 +17,7 @@ export interface Props {
   suffix?: React.ReactNode;
   onClickSuffix?: () => void;
   disabled?: boolean;
+  icon?: React.ReactElement;
   text?: React.ReactNode;
 }
 
@@ -24,24 +25,27 @@ export const Label: React.FC<Props> = ({
   className,
   type = 'regular',
   status = 'text',
+  icon,
+  text,
   style,
-  onClick,
   prefix,
-  onClickPrefix,
   suffix,
+  onClick,
+  onClickPrefix,
   onClickSuffix,
   disabled,
-  text,
 }) => {
-  if (!text) {
+  if (!text && !icon) {
     return null;
   }
-
+  console.log('icon', icon && icon.props);
   return (
     <div
       className={cn(`ebs-label`, `ebs-label-${type}`, `ebs-label__status--${status}`, className, {
         'has-prefix': prefix,
         'has-suffix': suffix,
+        'is-icon': icon,
+        'is-icon-info': icon && icon.props && icon.props.type === 'info',
         disabled: disabled,
       })}
       style={style}
@@ -53,7 +57,7 @@ export const Label: React.FC<Props> = ({
         </div>
       )}
 
-      {text}
+      {text || icon}
 
       {suffix && (
         <div className="ebs-label__suffix" onClick={onClickSuffix}>

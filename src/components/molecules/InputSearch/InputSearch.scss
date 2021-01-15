@@ -6,36 +6,23 @@
         background-color: $grey-100 !important;
       }
     }
+
+    &-transparent {
+      .ebs-input__search,
+      .ebs-input__wrapper-active {
+        background-color: transparent !important;
+        border-color: transparent;
+        color: $white;
+
+        .ebs-input,
+        .ebs-input::placeholder {
+          color: $white !important;
+        }
+      }
+    }
   }
 
   &.disabled .cursor {
     cursor: not-allowed;
-  }
-
-  .ebs-layout__top-bar-left & {
-    margin-left: $layout-top-bar-search-input-margin-left;
-
-    .ebs-input__container {
-      .ebs-input__wrapper {
-        transition: all $transition-time;
-
-        &--unactive {
-          background: $layout-top-bar-search-background;
-          border-color: $layout-top-bar-search-border-color;
-
-          .ebs-input {
-            color: $layout-top-bar-search-input-color;
-          }
-
-          .ebs-icon {
-            color: $layout-top-bar-search-icon-color;
-          }
-
-          .ebs-input::placeholder {
-            color: $layout-top-bar-search-input-placeholder-color !important;
-          }
-        }
-      }
-    }
   }
 }

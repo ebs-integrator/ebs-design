@@ -7,7 +7,7 @@ export interface CardProps {
   size?: 'small' | 'big';
   className?: string;
   shortAlt?: string;
-  alt: React.ReactNode;
+  alt?: string;
   icon?: React.ReactNode;
   circle?: boolean;
   img?: string;
@@ -18,11 +18,11 @@ export interface CardProps {
 
 export const AvatarCard: React.FC<CardProps> = ({
   className = '',
-  type = 'regular',
+  type = 'primary',
   icon,
   img,
   shortAlt,
-  alt,
+  alt = '',
   status,
 }) => (
   <div className={cn('ebs-avatar__card', className)}>

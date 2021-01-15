@@ -73,6 +73,14 @@
     &--danger {
       color: $danger-color;
       border-color: $danger-color;
+
+      &.is-icon-info {
+        background: $white;
+        border-color: $white;
+        .ebs-icon {
+          color: $danger-color;
+        }
+      }
     }
 
     &--info {
@@ -106,6 +114,15 @@
   &.has-suffix,
   &.has-suffix.ebs-label__circle {
     padding-right: rem(27.5px);
+  }
+
+  &.is-icon {
+    @include flex-center;
+    width: $gutter-size;
+    height: $gutter-size;
+    float: left;
+    padding: 0;
+    margin-right: $gutter-size / 2;
   }
 
   .ebs-label__prefix,

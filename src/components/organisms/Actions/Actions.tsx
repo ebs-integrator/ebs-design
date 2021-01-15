@@ -9,7 +9,13 @@ const Item: React.FC<{ onClick: () => void }> = ({ children, onClick }) => {
   );
 };
 
-const Actions: React.FC<{ placement?: 'right' | 'left' | 'top' | 'bottom' }> = ({ placement = 'left', children }) => {
+export interface ActionsProps {
+  title?: string;
+  showTitle?: boolean;
+  placement?: 'right' | 'left' | 'top' | 'bottom';
+}
+
+const Actions: React.FC<ActionsProps> = ({ title = 'Actions', showTitle = true, placement = 'left', children }) => {
   return (
     <div className="ebs-action__wrapper">
       <Tooltip
@@ -18,7 +24,7 @@ const Actions: React.FC<{ placement?: 'right' | 'left' | 'top' | 'bottom' }> = (
         placement={placement}
         tooltip={
           <>
-            <div className="ebs-action__tooltip-title">Actions</div>
+            {showTitle && <div className="ebs-action__tooltip-title">{title}</div>}
 
             <div className="ebs-action__tooltip-items">{children}</div>
           </>

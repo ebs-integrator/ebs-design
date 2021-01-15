@@ -41,3 +41,6 @@ export {
 
 // Organisms
 export { Actions, Form, FormItem, FormItems, Layout, Sidebar, SortBy, Table } from './components/organisms';
+
+// Libs
+export { firstLetters } from './libs/string';
