@@ -7,6 +7,7 @@ import { exportStory } from '../../../libs';
 export default {
   title: exportStory('Form', 'organisms'),
   component: Form,
+  subcomponents: { FormItem, FormItems },
 };
 
 export const Regular = (): React.ReactNode => (

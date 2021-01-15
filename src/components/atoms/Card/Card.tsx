@@ -1,17 +1,17 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-interface Props extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export const Card: React.FC<Props> = ({ children, className, ...props }) => (
+export const Card: React.FC<CardProps> = ({ children, className, ...props }) => (
   <div className={cn(`ebs-card`, className)} {...props}>
     {children}
   </div>
 );
 
-interface HeaderProps {
+export interface HeaderProps {
   className?: string;
   title?: React.ReactNode;
   leftSide?: React.ReactNode;
@@ -37,7 +37,7 @@ export const CardHeader: React.FC<HeaderProps> = ({ className, count = 0, title,
   </div>
 );
 
-interface FooterProps {
+export interface FooterProps {
   className?: string;
   leftSide?: React.ReactNode;
   rightSide?: React.ReactNode;

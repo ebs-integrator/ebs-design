@@ -5,7 +5,7 @@ import { Icon, Input } from 'components/atoms';
 
 export type InputSearchIconAlign = 'prefix' | 'suffix';
 
-export type InputSearchStyleType = 'stroke' | 'fill';
+export type InputSearchStyleType = 'stroke' | 'fill' | 'transparent';
 
 interface Props {
   className?: string;

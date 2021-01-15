@@ -6,6 +6,7 @@ import { exportStory } from '../../../libs';
 export default {
   title: exportStory('Avatar', 'atoms'),
   component: Avatar,
+  subcomponents: { AvatarCard, AvatarInline },
 };
 
 export const regularWithPhoto = (): React.ReactElement => (

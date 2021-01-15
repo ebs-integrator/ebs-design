@@ -7,6 +7,7 @@ import { exportStory } from '../../../libs';
 export default {
   title: exportStory('Button', 'atoms'),
   component: Button,
+  subcomponents: { ButtonGroup },
 };
 
 const SizeSwitcher: React.FC<{ children: (size: ButtonSize) => React.ReactNode }> = ({ children }) => {

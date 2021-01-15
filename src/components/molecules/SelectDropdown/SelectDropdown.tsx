@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { Animated, Icon, Input } from 'components/atoms';
-import { InputSelectMode, Option } from 'components/molecules';
+import { InputSelectMode, Option } from 'components/molecules/InputSelect/InputSelect';
 
 import { SelectDropdownItem } from './SelectDropdownItem/SelectDropdownItem';
 

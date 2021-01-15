@@ -4,12 +4,12 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding-top: rem(20px);
+  padding-top: rem($gutter-size);
 
   .ebs-card__header-title {
     font-size: rem(14px);
     @include fontBold;
-    margin-right: rem(20px);
+    margin-right: rem($gutter-size);
     white-space: nowrap;
   }
 
@@ -24,16 +24,18 @@
         text-align: left;
       }
 
-      > * {
-        white-space: nowrap;
-
-        &:not(:first-child) {
-          margin-left: rem(15px);
-        }
+      > *:not(:first-child) {
+        margin-left: rem(15px);
       }
 
       .picker-label {
         margin-right: 0;
+      }
+    }
+
+    &--left {
+      > *:not(:last-child) {
+        margin-right: rem(15px);
       }
     }
 
@@ -44,7 +46,7 @@
       align-items: center;
 
       > * {
-        margin-bottom: rem(22.5px);
+        margin-bottom: rem($gutter-size);
       }
     }
   }
@@ -52,10 +54,10 @@
 
 // FOOTER
 .ebs-card__footer {
-  padding: rem(20px);
+  padding: rem($gutter-size);
   align-items: center;
   display: flex;
-  border: 1px solid $grey-100;
+  border: 1px solid $border-color;
   border-top: unset;
 
   .ebs-card__footer-side {
@@ -79,13 +81,5 @@
     &:not(:last-child) {
       margin-right: rem(10px);
     }
-  }
-}
-
-.ebs-card .ebs-table-mobile {
-  .ebs-table__mobile-item:last-child {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    box-shadow: unset;
   }
 }

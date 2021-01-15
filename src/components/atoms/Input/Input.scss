@@ -44,7 +44,7 @@
       cursor: not-allowed;
 
       @include placeholder {
-        color: $grey-500 !important;
+        color: $grey-500;
       }
     }
   }
@@ -102,7 +102,7 @@
   }
 
   @include placeholder {
-    color: $text-color-secondary !important;
+    color: $text-color-secondary;
   }
 
   &:focus {

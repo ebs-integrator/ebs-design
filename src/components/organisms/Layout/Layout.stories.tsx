@@ -1,18 +1,36 @@
 import * as React from 'react';
 import { Icon, AvatarInline, Button } from 'components/atoms';
+import { InputSearch } from 'components/molecules';
 
 import { Layout, Sidebar } from '..';
 import { exportStory } from '../../../libs';
 
-export default {
-  title: exportStory('Layout', 'organisms'),
-  component: Layout,
-};
-
 const { Topbar, Content, Footer } = Layout;
 const { Title, Toggler, LeftSide, RightSide } = Topbar;
 const { TopMenu, BottomMenu, Item, Options } = Sidebar;
-const { TopSide, Item: OptionItem } = Options;
+const { TopSide, BottomSide, Item: OptionItem } = Options;
+
+export default {
+  title: exportStory('Layout', 'organisms'),
+  component: Layout,
+  subcomponents: {
+    Topbar,
+    Title,
+    Toggler,
+    LeftSide,
+    RightSide,
+    Sidebar,
+    TopMenu,
+    BottomMenu,
+    Item,
+    Options,
+    TopSide,
+    BottomSide,
+    OptionItem,
+    Content,
+    Footer,
+  },
+};
 
 export const Regular = (): React.ReactNode => (
   <Layout>
@@ -21,10 +39,12 @@ export const Regular = (): React.ReactNode => (
 
       <Title>Page Title</Title>
 
-      <LeftSide>LeftSide</LeftSide>
+      <LeftSide>
+        <InputSearch />
+      </LeftSide>
 
       <RightSide>
-        <Button size="medium" icon="bell" />
+        <Button icon="bell" />
         <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
       </RightSide>
     </Topbar>
