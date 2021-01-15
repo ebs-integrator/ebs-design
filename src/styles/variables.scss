@@ -89,6 +89,21 @@ $avatar-status-active: $success-color !default;
 $avatar-status-regular: $primary-color !default;
 $avatar-status-uanctive: $success-color !default;
 
+// Actions
+//
+// Customize tooltip, height & icon of actions
+$actions-tooltip-min-width: 140px !default;
+$actions-tooltip-padding: 0 !default;
+$actions-tooltip-title-font-size: 11px !default;
+$actions-tooltip-title-padding: 12.5px !default;
+$actions-tooltip-title-color: $text-color !default;
+$actions-tooltip-item-font-size: 12px !default;
+$actions-tooltip-item-padding: $actions-tooltip-title-padding !default;
+$actions-border: 1px solid $border-color !default;
+$actions-height: 36px !default;
+$actions-icon-color: $primary-color !default;
+$actions-icon-hover-color: $white !default;
+
 // Badges
 //
 // Customize size, padding & colors of badge
@@ -107,6 +122,13 @@ $badge-success-bg-color: $success-color !default;
 $badge-info-bg-color: $info-color !default;
 $badge-warning-bg-color: $warning-color !default;
 $badge-danger-bg-color: $danger-color !default;
+
+// Collapse
+$collapse-border: 1px solid;
+$collapse-border-color: $border-color;
+$collapse-border-radius: $border-radius;
+$collapse-header-border-bottom: 1px solid;
+$collapse-header-border-bottom-color: $primary-color;
 
 // Links
 //
@@ -223,18 +245,3 @@ $table-font-size: $font-size-base !default;
 $sort-by-height: 36px !default;
 $sort-by-icon-color: $primary-color !default;
 $sort-by-icon-hover-color: $white !default;
-
-// Actions
-//
-// Customize tooltip, height & icon of actions
-$actions-tooltip-min-width: 140px !default;
-$actions-tooltip-padding: 0 !default;
-$actions-tooltip-title-font-size: 11px !default;
-$actions-tooltip-title-padding: 12.5px !default;
-$actions-tooltip-title-color: $text-color !default;
-$actions-tooltip-item-font-size: 12px !default;
-$actions-tooltip-item-padding: $actions-tooltip-title-padding !default;
-$actions-border: 1px solid $border-color !default;
-$actions-height: 36px !default;
-$actions-icon-color: $primary-color !default;
-$actions-icon-hover-color: $white !default;

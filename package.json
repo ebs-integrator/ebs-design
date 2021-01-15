@@ -1,6 +1,6 @@
 {
   "name": "@ebs-integrator/react-ebs-ui",
-  "version": "0.0.1-beta.4",
+  "version": "0.0.1-beta.5",
   "description": "Basic React UI elements.",
   "author": "EBS Integrator",
   "maintainers": [
@@ -11,6 +11,10 @@
     {
       "name": "Marcel Lefter",
       "email": "leftermarcel@gmail.com"
+    },
+    {
+      "name": "Dima Danu",
+      "email": "dima.danu@gmail.com"
     },
     {
       "name": "Nicolae Tataru",

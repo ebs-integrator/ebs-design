@@ -24,6 +24,7 @@ export {
   Mask,
   Row,
   Col,
+  Collapse,
 } from './components/atoms';
 
 // Molecules
