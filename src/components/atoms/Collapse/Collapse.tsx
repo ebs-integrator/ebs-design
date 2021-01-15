@@ -18,17 +18,17 @@ export const Collapse: React.FC<CollapseProps> = ({ defaultActive = true, title,
     setActive((s) => !s);
   };
   return (
-    <div className={cn(`ebs-collapse`, className, !active && 'collapsed')}>
+    <div className={cn(`ebs-collapse`, className, { collapsed: !active })}>
       <div className="ebs-collapse__header">
-        <div className="ebs-collapse__header--side-left">
+        <div className="ebs-collapse__header__side-left">
           {title && <div className="ebs-collapse__title" onClick={handleToggleCollapse}>
             {title}
           </div>}
           {leftSide}
         </div>
-        <div className="ebs-collapse__header--side-right">
+        <div className="ebs-collapse__header__side-right">
           {rightSide}
-          <div className="ebs-collapse__header--action">
+          <div className="ebs-collapse__header-action">
             <Icon onClick={handleToggleCollapse} type={active ? 'arrow-bottom' : 'arrow-left'} />
           </div>
         </div>
