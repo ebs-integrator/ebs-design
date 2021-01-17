@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import RCForm, { FormProps } from 'rc-field-form';
+import RCForm, { FormProps, Field } from 'rc-field-form';
 import { validate } from 'libs/object/object';
 import { Extra, Label } from 'components/atoms';
 import { ExtraStatus } from 'components/atoms/Extra/Extra';
@@ -21,6 +21,8 @@ export const Form: React.FC<Props> = ({ type = 'regular', className, children, .
 };
 
 interface ItemProps {
+  name: string;
+  children?: any;
   itemClass?: string;
   className?: string;
   labelWidth?: React.ReactNode;
@@ -33,6 +35,7 @@ interface ItemProps {
 }
 
 export const FormItem: React.FC<ItemProps> = ({
+  name,
   itemClass,
   className,
   labelWidth,
@@ -61,7 +64,7 @@ export const FormItem: React.FC<ItemProps> = ({
       )}
 
       <div className={cn(`ebs-form__children`, className, { 'has-error': extra && extraStatus === 'danger' })}>
-        {children}
+        <Field name={name}>{children}</Field>
       </div>
 
       {extra && <Extra status={extraStatus} text={Array.isArray(extra) ? extra.join(',') : extra} />}
