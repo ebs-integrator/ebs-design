@@ -1,29 +1,22 @@
 import * as React from 'react';
 import cn from 'classnames';
+import RCForm, { FormProps } from 'rc-field-form';
 import { validate } from 'libs/object/object';
 import { Extra, Label } from 'components/atoms';
 import { ExtraStatus } from 'components/atoms/Extra/Extra';
 
 export type FormType = 'regular' | 'inline';
 
-interface Props {
+interface Props extends FormProps {
   type?: FormType;
-  onSubmit?: () => void;
   className?: string;
-  id?: string;
 }
 
-export const Form: React.FC<Props> = ({ onSubmit, type = 'regular', className, id, children }) => {
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
-    if (e.preventDefault) e.preventDefault();
-
-    return onSubmit && onSubmit();
-  };
-
+export const Form: React.FC<Props> = ({ type = 'regular', className, children, ...props }) => {
   return (
-    <form className={cn(`ebs-form`, `ebs-form-${type}`, className)} onSubmit={onSubmitHandler} id={id}>
+    <RCForm className={cn(`ebs-form`, `ebs-form__${type}`, className)} {...props}>
       {children}
-    </form>
+    </RCForm>
   );
 };
 
