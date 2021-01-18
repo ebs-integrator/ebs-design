@@ -11,8 +11,8 @@
   color: $text-color;
 }
 
-.ebs-label-circle,
-.ebs-label-fill {
+.ebs-label.ebs-label-circle,
+.ebs-label.ebs-label-fill {
   display: inline;
   font-size: rem(10px);
   padding: rem(5px 12px);
@@ -20,37 +20,37 @@
   border-radius: rem(12px);
 }
 
-.ebs-label--circle {
+.ebs-label.ebs-label--circle {
   color: $text-color;
 }
 
-.ebs-label--fill {
+.ebs-label.ebs-label-fill {
   color: $white !important;
   background: $text-color;
   border-radius: rem(12px);
 }
 
-.ebs-label--fill.ebs-label__status--success {
+.ebs-label.ebs-label-fill.ebs-label__status--success {
   background-color: $success-color;
 }
 
-.ebs-label--fill.ebs-label__status--warning {
+.ebs-label.ebs-label-fill.ebs-label__status--warning {
   background-color: $warning-color;
 }
 
-.ebs-label--fill.ebs-label__status--danger {
+.ebs-label.ebs-label-fill.ebs-label__status--danger {
   background-color: $danger-color;
 }
 
-.ebs-label--fill.ebs-label__status--info {
+.ebs-label.ebs-label-fill.ebs-label__status--info {
   background-color: $info-color;
 }
 
-.ebs-label--fill.ebs-label__status--text {
+.ebs-label.ebs-label-fill.ebs-label__status--text {
   background-color: $text-color;
 }
 
-.ebs-label--fill.disabled {
+.ebs-label.ebs-label-fill.disabled {
   cursor: not-allowed;
   color: $grey-500 !important;
   background: $grey-100;
