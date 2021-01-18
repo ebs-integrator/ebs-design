@@ -7,80 +7,76 @@
   background-color: transparent;
   cursor: pointer;
   transition: all $transition-time;
+}
 
-  &.ebs-chips {
-    &-checked {
-      background-color: $primary-000;
-      border-color: $primary-color;
-      color: $primary-color;
+.ebs-chips.ebs-chips-checked {
+  background-color: $primary-000;
+  border-color: $primary-color;
+  color: $primary-color;
+}
 
-      &:hover {
-        background-color: $primary-color;
-        border-color: $primary-color;
-        color: $white;
-      }
-    }
+.ebs-chips.ebs-chips-checked:hover {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  color: $white;
+}
 
-    &-unchecked {
-      background-color: transparent;
-      border-color: $text-color-light;
-      color: $text-color-secondary;
+.ebs-chips.ebs-chips-unchecked {
+  background-color: transparent;
+  border-color: $text-color-light;
+  color: $text-color-secondary;
+}
 
-      &:hover {
-        background-color: transparent;
-        border-color: $primary-400;
-        color: $primary-400;
-      }
-    }
-  }
+.ebs-chips.ebs-chips-unchecked:hover {
+  background-color: transparent;
+  border-color: $primary-400;
+  color: $primary-400;
+}
 
-  &.has-prefix {
-    padding-left: rem(28px);
-  }
+.ebs-chips.has-prefix {
+  padding-left: rem(28px);
+}
 
-  &.has-suffix {
-    padding-right: rem(28px);
-  }
+.ebs-chips.has-suffix {
+  padding-right: rem(28px);
+}
 
-  &.disabled {
-    cursor: not-allowed;
+.ebs-chips.disabled {
+  cursor: not-allowed;
+}
 
-    &.ebs-chips {
-      &-checked,
-      &-checked:hover {
-        background-color: $border-color;
-        border-color: $border-color;
-        color: $grey-500;
-      }
+.ebs-chips.disabled.ebs-chips-checked,
+.ebs-chips.disabled.ebs-chips-checked:hover {
+  background-color: $border-color;
+  border-color: $border-color;
+  color: $grey-500;
+}
 
-      &-unchecked,
-      &-unchecked:hover {
-        background-color: transparent;
-        border-color: $border-color;
-        color: $border-color;
-      }
-    }
-  }
+.ebs-chips.disabled.ebs-chips-unchecked,
+.ebs-chips.disabled.ebs-chips-unchecked:hover {
+  background-color: transparent;
+  border-color: $border-color;
+  color: $border-color;
+}
 
-  .ebs-chips__prefix {
-    position: absolute;
-    left: rem(9px);
-    top: calc(50% + 1px);
-    transform: translateY(-50%);
+.ebs-chips__prefix {
+  position: absolute;
+  left: rem(9px);
+  top: calc(50% + 1px);
+  transform: translateY(-50%);
+}
 
-    .ebs-icon {
-      font-size: rem(12px);
-    }
-  }
+.ebs-chips__prefix .ebs-icon {
+  font-size: rem(12px);
+}
 
-  .ebs-chips__suffix {
-    position: absolute;
-    right: rem(9px);
-    top: calc(50% + 1px);
-    transform: translateY(-50%);
+.ebs-chips__suffix {
+  position: absolute;
+  right: rem(9px);
+  top: calc(50% + 1px);
+  transform: translateY(-50%);
+}
 
-    .ebs-icon {
-      font-size: rem(12px);
-    }
-  }
+.ebs-chips__suffix .ebs-icon {
+  font-size: rem(12px);
 }

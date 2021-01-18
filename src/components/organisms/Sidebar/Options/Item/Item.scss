@@ -4,17 +4,17 @@
   font-size: rem(14px);
   cursor: pointer;
   transition: all $transition-time;
+}
 
-  &.disabled,
-  &.disabled:hover {
-    cursor: not-allowed;
-    color: $grey-300;
-    background-color: transparent;
-  }
+.ebs-optionsbar__item.disabled,
+.ebs-optionsbar__item.disabled:hover {
+  cursor: not-allowed;
+  color: $grey-300;
+  background-color: transparent;
+}
 
-  &:hover,
-  &.active {
-    background-color: $primary-000;
-    color: $primary-color;
-  }
+.ebs-optionsbar__item:hover,
+.ebs-optionsbar__item.active {
+  background-color: $primary-000;
+  color: $primary-color;
 }

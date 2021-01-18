@@ -4,48 +4,46 @@
   @include elevation-2;
   margin: rem(0 $gutter-size / 2);
   z-index: 2;
+}
 
-  &.ebs-tooltip {
-    &--top {
-      margin: rem(0 0 $gutter-size / 2);
-    }
+.ebs-tooltip__wrapper.ebs-tooltip--top {
+  margin: rem(0 0 $gutter-size / 2);
+}
 
-    &--bottom {
-      margin: rem($gutter-size / 2 0 0);
-    }
+.ebs-tooltip__wrapper.ebs-tooltip--bottom {
+  margin: rem($gutter-size / 2 0 0);
+}
 
-    &--left {
-      margin: rem(0 $gutter-size / 2 0 0);
-    }
+.ebs-tooltip__wrapper.ebs-tooltip--left {
+  margin: rem(0 $gutter-size / 2 0 0);
+}
 
-    &--right {
-      margin: rem(0 0 0 $gutter-size / 2);
-    }
-  }
+.ebs-tooltip__wrapper.ebs-tooltip--right {
+  margin: rem(0 0 0 $gutter-size / 2);
+}
 
-  .ebs-tooltip__body {
-    padding: rem($gutter-size);
-    font-size: rem($gutter-size);
-    color: $text-color;
+.ebs-tooltip__body {
+  padding: rem($gutter-size);
+  font-size: rem($gutter-size);
+  color: $text-color;
+}
 
-    .ebs-tooltip__body-title {
-      color: $heading-color;
-      font-size: $font-size-base;
-      margin-bottom: $border-radius;
-      @include fontMedium;
-    }
-  }
+.ebs-tooltip__body-title {
+  color: $heading-color;
+  font-size: $font-size-base;
+  margin-bottom: $border-radius;
+  @include fontMedium;
 }
 
 .ebs-tooltip__arrow {
   position: absolute;
   font-size: $gutter-size;
   transform: translate3d(-50%, 0, 0) rotate(180deg);
+}
 
-  path {
-    stroke: transparent;
-    fill: $white;
-  }
+.ebs-tooltip__arrow path {
+  stroke: transparent;
+  fill: $white;
 }
 
 .ebs-tooltip__arrow[data-placement*='top'] {

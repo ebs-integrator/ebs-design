@@ -2,93 +2,98 @@
   position: relative;
   border-radius: $border-radius;
   @include flex-center;
+}
 
-  &__type {
-    &--regular {
-      color: $primary-color;
-      background-color: $grey-100;
-    }
+.ebs-avatar.circle {
+  border-radius: 50%;
+}
 
-    &--primary {
-      color: $white;
-      background-color: $primary-color;
-    }
+.ebs-avatar.circle .ebs-avatar__img {
+  border-radius: 50%;
+}
 
-    &--white {
-      color: $text-color;
-      background-color: $white;
-    }
-  }
+.ebs-avatar__type--regular {
+  color: $primary-color;
+  background-color: $grey-100;
+}
 
-  &.circle {
-    border-radius: 50%;
+.ebs-avatar__type--primary {
+  color: $white;
+  background-color: $primary-color;
+}
 
-    .ebs-avatar__img {
-      border-radius: 50%;
-    }
-  }
+.ebs-avatar__type--white {
+  color: $text-color;
+  background-color: $white;
+}
 
-  &.ebs-avatar__size {
-    &--small {
-      min-width: $avatar-size-small;
-      width: $avatar-size-small;
-      height: $avatar-size-small;
+.ebs-avatar.ebs-avatar__size--small {
+  min-width: $avatar-size-small;
+  width: $avatar-size-small;
+  height: $avatar-size-small;
+}
 
-      .ebs-avatar-short-alt {
-        font-size: $avatar-font-small;
-      }
-    }
+.ebs-avatar.ebs-avatar__size--small .ebs-avatar-short-alt {
+  font-size: $avatar-font-small;
+}
 
-    &--big {
-      min-width: $avatar-size-big;
-      width: $avatar-size-big;
-      height: $avatar-size-big;
+.ebs-avatar.ebs-avatar__size--big {
+  min-width: $avatar-size-big;
+  width: $avatar-size-big;
+  height: $avatar-size-big;
+}
 
-      .ebs-avatar-short-alt {
-        font-size: $avatar-font-big;
-      }
-    }
-  }
+.ebs-avatar.ebs-avatar__size--big .ebs-avatar-short-alt {
+  font-size: $avatar-font-big;
+}
 
-  .ebs-avatar__short-alt {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    @include fontBold;
-    white-space: nowrap;
-  }
+.ebs-avatar .ebs-avatar__short-alt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  @include fontBold;
+  white-space: nowrap;
+}
 
-  .ebs-avatar__img {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    border-radius: $border-radius;
-    object-fit: cover;
-  }
+.ebs-avatar .ebs-avatar__short-alt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  @include fontBold;
+  white-space: nowrap;
+}
 
-  .ebs-avatar__status {
-    position: absolute;
-    bottom: rem(-2.5px);
-    right: rem(-2.5px);
-    width: rem(10px);
-    height: rem(10px);
-    border: 2px solid #fff;
-    border-radius: 50%;
+.ebs-avatar .ebs-avatar__img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: $border-radius;
+  object-fit: cover;
+}
 
-    &--active {
-      background-color: $avatar-status-active;
-    }
+.ebs-avatar .ebs-avatar__status {
+  position: absolute;
+  bottom: rem(-2.5px);
+  right: rem(-2.5px);
+  width: rem(10px);
+  height: rem(10px);
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
 
-    &--regular {
-      background-color: $primary-color;
-    }
+.ebs-avatar .ebs-avatar__status--active {
+  background-color: $avatar-status-active;
+}
 
-    &--uanctive {
-      background-color: $avatar-status-uanctive;
-    }
-  }
+.ebs-avatar .ebs-avatar__status--regular {
+  background-color: $primary-color;
+}
+
+.ebs-avatar .ebs-avatar__status--reuanctivegular {
+  background-color: $avatar-status-uanctive;
 }
 
 .ebs-avatar__card {
@@ -97,53 +102,51 @@
   background-color: #f9f9f9;
   border: 1px solid #dfddd6;
   border-radius: $border-radius;
+}
 
-  .ebs-avatar {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    height: rem(23px);
-    width: rem(23px);
+.ebs-avatar__card .ebs-avatar {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  height: rem(23px);
+  width: rem(23px);
+}
 
-    img {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
+.ebs-avatar__card .ebs-avatar img {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
-  .ebs-avatar__card-alt {
-    color: #333;
-    padding: rem(0 $gutter-size / 2);
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-    @include fontMedium;
-    font-size: rem(9px);
-  }
+.ebs-avatar__card .ebs-avatar__card-alt {
+  color: #333;
+  padding: rem(0 $gutter-size / 2);
+  border-top-right-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+  @include fontMedium;
+  font-size: rem(9px);
 }
 
 .ebs-avatar__inline {
   display: flex;
   align-items: center;
+}
 
-  .ebs-avatar__inline-alt {
-    margin-left: $gutter-size;
-    @include fontSemiBold;
-    font-size: rem(12px);
-    color: $black;
-  }
+.ebs-avatar__inline .ebs-avatar__inline-alt {
+  margin-left: $gutter-size;
+  @include fontSemiBold;
+  font-size: rem(12px);
+  color: $black;
+}
 
-  &.is-white .ebs-avatar__inline-alt {
-    color: $white;
-  }
+.ebs-avatar__inline.is-white .ebs-avatar__inline-alt {
+  color: $white;
+}
 
-  .ebs-avatar__inline-description {
-    font-size: rem(10px);
-    color: $avatar-description-color;
-  }
+.ebs-avatar__inline .ebs-avatar__inline-description {
+  font-size: rem(10px);
+  color: $avatar-description-color;
+}
 
-  &.is-reversed {
-    .ebs-avatar__inline-alt {
-      margin-left: 0;
-      margin-right: $gutter-size;
-    }
-  }
+.ebs-avatar__inline.is-reversed .ebs-avatar__inline-alt {
+  margin-left: 0;
+  margin-right: $gutter-size;
 }

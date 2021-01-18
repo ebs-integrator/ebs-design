@@ -1,176 +1,167 @@
 @import '~rc-input-number/assets/index.css';
 
-.ebs-stepper__wrapper {
-  &.left .ebs-stepper .rc__input-number-handler-wrap {
-    float: left;
-    border-left-width: 0px;
-    border-right-width: 1px;
-    border-right-style: solid;
+.ebs-stepper__wrapper.left .ebs-stepper .rc__input-number-handler-wrap {
+  float: left;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+.ebs-stepper__wrapper.right .ebs-stepper .rc__input-number-handler-wrap {
+  float: right;
+  border-right-width: 0px;
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+
+.ebs-stepper__wrapper.active .ebs-stepper,
+.ebs-stepper__wrapper.active .ebs-stepper:hover {
+  border-color: $primary-color;
+  background-color: $white;
+
+  .rc-input-number-handler-wrap {
+    border-color: $primary-color;
   }
 
-  &.right .ebs-stepper .rc__input-number-handler-wrap {
-    float: right;
-    border-right-width: 0px;
-    border-left-width: 1px;
-    border-left-style: solid;
+  .rc-input-number-input {
+    color: $heading-color;
   }
+}
 
-  &.active {
-    .ebs-stepper,
-    .ebs-stepper:hover {
-      border-color: $primary-color;
-      background-color: $white;
+.ebs-stepper__wrapper.has-error .ebs-stepper,
+.ebs-stepper__wrapper.has-error .rc-input-number-handler-wrap {
+  border-color: $danger-color !important;
+}
 
-      .rc-input-number-handler-wrap {
-        border-color: $primary-color;
-      }
+.ebs-stepper__wrapper.has-error .ebs-stepper__extra {
+  color: $danger-color;
+}
 
-      .rc-input-number-input {
-        color: $heading-color;
-      }
-    }
-  }
+.ebs-stepper__wrapper.disabled .ebs-stepper__label {
+  color: $grey-500;
+}
 
-  &.has-error {
-    .ebs-stepper,
-    .rc-input-number-handler-wrap {
-      border-color: $danger-color !important;
-    }
+.ebs-stepper__wrapper.disabled .ebs-stepper,
+.ebs-stepper__wrapper.disabled .ebs-stepper:hover {
+  border-color: $grey-500;
 
-    .ebs-stepper__extra {
-      color: $danger-color;
-    }
-  }
+  &.rc-input-number-disabled .rc-input-number-input {
+    background-color: $white;
 
-  &.disabled {
-    .ebs-stepper__label,
-    .ebs-stepper__label {
+    @include placeholder {
       color: $grey-500;
     }
-
-    .ebs-stepper,
-    .ebs-stepper:hover {
-      border-color: $grey-500;
-
-      &.rc-input-number-disabled .rc-input-number-input {
-        background-color: $white;
-
-        @include placeholder {
-          color: $grey-500;
-        }
-      }
-
-      .rc-input-number-handler-wrap,
-      .rc-input-number-handler-wrap:hover {
-        border-color: $grey-500;
-        color: $grey-500;
-      }
-    }
   }
 
-  .ebs-stepper {
-    width: 100%;
-    height: rem(40px);
-    border: 1px solid $border-color;
-    background-color: $white;
-    border-radius: rem($border-radius);
+  .rc-input-number-handler-wrap,
+  .rc-input-number-handler-wrap:hover {
+    border-color: $grey-500;
+    color: $grey-500;
+  }
+}
 
-    &:focus,
-    &:hover,
-    &.rc-input-number-focused {
-      box-shadow: inherit;
-      outline: none !important;
-    }
+.ebs-stepper__wrapper .ebs-stepper {
+  width: 100%;
+  height: rem(40px);
+  border: 1px solid $border-color;
+  background-color: $white;
+  border-radius: rem($border-radius);
+}
 
-    &:hover {
-      border-color: $border-color;
+.ebs-stepper__wrapper .ebs-stepper:focus,
+.ebs-stepper__wrapper .ebs-stepper:hover,
+.ebs-stepper__wrapper .ebs-stepper.rc-input-number-focused {
+  box-shadow: inherit;
+  outline: none !important;
+}
 
-      .rc-input-number-handler-wrap {
-        border-color: $border-color;
-      }
-    }
+.ebs-stepper__wrapper .ebs-stepper:hover {
+  border-color: $border-color;
 
-    &.rc-input-number-focused {
-      border-color: $primary-color;
-      background-color: $white;
+  .rc-input-number-handler-wrap {
+    border-color: $border-color;
+  }
+}
 
-      .rc-input-number-handler-wrap {
-        border-color: $primary-color;
-      }
+.ebs-stepper__wrapper .ebs-stepper.rc-input-number-focused {
+  border-color: $primary-color;
+  background-color: $white;
 
-      .rc-input-number-input {
-        color: $heading-color;
-      }
-    }
-
-    .rc-input-number-handler-wrap {
-      border-color: $border-color;
-      width: rem(30px);
-    }
-
-    .rc-input-number-handler {
-      height: 50%;
-      width: 100%;
-
-      > * {
-        font-size: rem(8px);
-      }
-
-      &.rc-input-number-handler-up,
-      &.rc-input-number-handler-down {
-        position: relative;
-
-        .ebs-icon {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          color: $text-color;
-        }
-      }
-
-      &.rc-input-number-handler-up {
-        border-bottom-color: transparent;
-
-        .ebs-icon {
-          bottom: rem(2px);
-        }
-      }
-
-      &.rc-input-number-handler-down {
-        border-bottom-color: transparent;
-
-        .ebs-icon {
-          top: rem(2px);
-          transform: translateX(-50%) rotate(180deg);
-        }
-      }
-    }
-
-    .rc-input-number-input-wrap .rc-input-number-input {
-      padding: rem(10px);
-      text-align: left;
-      color: $heading-color;
-      font-size: rem(14px);
-
-      @include placeholder {
-        color: $text-color-secondary !important;
-      }
-    }
+  .rc-input-number-handler-wrap {
+    border-color: $primary-color;
   }
 
-  // Label
-  .ebs-stepper__label {
-    margin-bottom: rem(5px);
+  .rc-input-number-input {
+    color: $heading-color;
+  }
+}
+
+.ebs-stepper__wrapper .ebs-stepper .rc-input-number-handler-wrap {
+  border-color: $border-color;
+  width: rem(30px);
+}
+
+.ebs-stepper__wrapper .ebs-stepper .rc-input-number-handler {
+  height: 50%;
+  width: 100%;
+}
+
+.ebs-stepper__wrapper .ebs-stepper .rc-input-number-handler > * {
+  font-size: rem(8px);
+}
+
+.ebs-stepper__wrapper .ebs-stepper .rc-input-number-handler.rc-input-number-handler-up,
+.ebs-stepper__wrapper .ebs-stepper .rc-input-number-handler.rc-input-number-handler-down {
+  position: relative;
+
+  .ebs-icon {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     color: $text-color;
-    @include fontRegular;
-    font-size: rem(12px);
   }
+}
 
-  // Extra
-  .ebs-stepper__extra {
-    margin-top: rem(2.5px);
-    color: $text-color-secondary;
-    @include fontRegular;
-    font-size: rem(10px);
+.ebs-stepper__wrapper .ebs-stepper .rc-input-number-handler.rc-input-number-handler-up {
+  border-bottom-color: transparent;
+
+  .ebs-icon {
+    bottom: rem(2px);
   }
+}
+
+.ebs-stepper__wrapper .ebs-stepper .rc-input-number-handler.rc-input-number-handler-down {
+  border-bottom-color: transparent;
+
+  .ebs-icon {
+    top: rem(2px);
+    transform: translateX(-50%) rotate(180deg);
+  }
+}
+
+.ebs-stepper__wrapper .ebs-stepper .rc-input-number-input-wrap .rc-input-number-input {
+  padding: rem(10px);
+  text-align: left;
+  color: $heading-color;
+  font-size: rem(14px);
+
+  @include placeholder {
+    color: $text-color-secondary !important;
+  }
+}
+
+// Label
+.ebs-stepper__wrapper .ebs-stepper__label {
+  margin-bottom: rem(5px);
+  color: $text-color;
+  @include fontRegular;
+  font-size: rem(12px);
+}
+
+// Extra
+.ebs-stepper__wrapper .ebs-stepper__extra {
+  margin-top: rem(2.5px);
+  color: $text-color-secondary;
+  @include fontRegular;
+  font-size: rem(10px);
 }

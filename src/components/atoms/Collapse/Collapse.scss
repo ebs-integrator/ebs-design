@@ -4,12 +4,10 @@
   border-color: $collapse-border-color;
   border-radius: $collapse-border-radius;
   transition: height 600ms ease-out;
+}
 
-  &.collapsed {
-    .ebs-collapse__header {
-      border-bottom: none;
-    }
-  }
+.ebs-collapse.collapsed .ebs-collapse__header {
+  border-bottom: none;
 }
 
 .ebs-collapse__header {
@@ -34,10 +32,10 @@
 
 .ebs-collapse__header-action {
   margin-left: rem(10px);
+}
 
-  svg {
-    width: rem(12px);
-  }
+.ebs-collapse__header-action svg {
+  width: rem(12px);
 }
 
 .ebs-collapse__title {

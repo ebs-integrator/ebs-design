@@ -1,31 +1,27 @@
-.ebs-input__search-wrapper {
-  &.ebs-input__search-type {
-    &-fill {
-      .ebs-input__search,
-      .ebs-input__wrapper-active {
-        background-color: $grey-100 !important;
-      }
-    }
+.ebs-input__search-wrapper.ebs-input__search-type-fill {
+  .ebs-input__search,
+  .ebs-input__wrapper-active {
+    background-color: $grey-100 !important;
+  }
+}
 
-    &-transparent {
-      .ebs-input__search,
-      .ebs-input__wrapper-active {
-        background-color: transparent !important;
-        border-color: transparent;
+.ebs-input__search-wrapper.ebs-input__search-type-transparent {
+  .ebs-input__search,
+  .ebs-input__wrapper-active {
+    background-color: transparent !important;
+    border-color: transparent;
+    color: $white;
+
+    .ebs-input {
+      color: $white;
+
+      @include placeholder {
         color: $white;
-
-        .ebs-input {
-          color: $white;
-
-          @include placeholder {
-            color: $white;
-          }
-        }
       }
     }
   }
+}
 
-  &.disabled .cursor {
-    cursor: not-allowed;
-  }
+.ebs-input__search-wrapper.disabled .cursor {
+  cursor: not-allowed;
 }

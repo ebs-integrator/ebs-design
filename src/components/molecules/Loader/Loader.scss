@@ -21,27 +21,27 @@
   color: $text-color-secondary;
   @include fontRegular;
   font-size: rem(14px);
+}
 
-  .ebs-loader__spinner {
-    position: relative;
-    top: rem(2px);
-    display: inline-block;
-    margin-right: rem(7.5px);
-  }
+.ebs-loader__inline .ebs-loader__spinner {
+  position: relative;
+  top: rem(2px);
+  display: inline-block;
+  margin-right: rem(7.5px);
 }
 
 .ebs-loader {
   position: relative;
   animation: loaderFade 0.5s forwards;
   z-index: 2;
+}
 
-  .ebs-loader__spinner {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.ebs-loader .ebs-loader__spinner {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-    &.fixed {
-      position: fixed;
-    }
-  }
+.ebs-loader .ebs-loader__spinner.fixed {
+  position: fixed;
 }

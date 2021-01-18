@@ -1,59 +1,59 @@
-.ebs-textarea__wrapper {
-  .ebs-textarea {
-    width: 100%;
-    border: 1px solid $border-color;
-    min-height: rem(80px);
-    outline: none;
-    border-radius: rem($border-radius);
-    background-color: $white;
-    color: $heading-color;
+.ebs-textarea {
+  width: 100%;
+  border: 1px solid $border-color;
+  min-height: rem(80px);
+  outline: none;
+  border-radius: rem($border-radius);
+  background-color: $white;
+  color: $heading-color;
 
-    @include fontRegular;
-    font-size: rem(14px);
-    padding: rem(10px);
+  @include fontRegular;
+  font-size: rem(14px);
+  padding: rem(10px);
 
-    @include placeholder {
-      color: $text-color-secondary;
-    }
-
-    &.has-value {
-      border-color: $primary-color;
-    }
-
-    &.has-error {
-      border-color: $danger-color;
-    }
-
-    &.disabled {
-      border-color: $grey-500;
-    }
-  }
-
-  // Label
-  .ebs-textarea__label {
-    margin-bottom: rem(5px);
-    color: $text-color;
-    @include fontRegular;
-    font-size: rem(12px);
-
-    &.disabled {
-      color: $grey-500;
-    }
-  }
-
-  // Extra
-  .ebs-textarea__extra {
-    margin-top: rem(2.5px);
+  @include placeholder {
     color: $text-color-secondary;
-    @include fontRegular;
-    font-size: rem(10px);
-
-    &.has-error {
-      color: $danger-color;
-    }
-
-    &.disabled {
-      color: $grey-500;
-    }
   }
+}
+
+.ebs-textarea.has-value {
+  border-color: $primary-color;
+}
+
+.ebs-textarea.has-error {
+  border-color: $danger-color;
+}
+
+.ebs-textarea.disabled {
+  border-color: $grey-500;
+}
+
+// Label
+.ebs-textarea__label {
+  @include fontRegular;
+
+  color: $text-color;
+  margin-bottom: rem(5px);
+  font-size: rem(12px);
+}
+
+.ebs-textarea__label.disabled {
+  color: $grey-500;
+}
+
+// Extra
+.ebs-textarea__extra {
+  @include fontRegular;
+
+  color: $text-color-secondary;
+  margin-top: rem(2.5px);
+  font-size: rem(10px);
+}
+
+.ebs-textarea__extra.has-error {
+  color: $danger-color;
+}
+
+.ebs-textarea__extra.disabled {
+  color: $grey-500;
 }

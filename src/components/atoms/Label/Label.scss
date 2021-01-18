@@ -3,148 +3,142 @@
   position: relative;
   white-space: nowrap;
   @include fontRegular;
+}
 
-  &.ebs-label {
-    &-regular {
-      font-size: rem(12px);
-      margin-bottom: rem(5px);
-      color: $text-color;
-    }
+.ebs-label-regular {
+  font-size: rem(12px);
+  margin-bottom: rem(5px);
+  color: $text-color;
+}
 
-    &-circle,
-    &-fill {
-      display: inline;
-      font-size: rem(10px);
-      padding: rem(5px 12px);
-      border: 1px solid $text-color;
-      border-radius: rem(12px);
-    }
+.ebs-label-circle,
+.ebs-label-fill {
+  display: inline;
+  font-size: rem(10px);
+  padding: rem(5px 12px);
+  border: 1px solid $text-color;
+  border-radius: rem(12px);
+}
 
-    &-circle {
-      color: $text-color;
-    }
+.ebs-label--circle {
+  color: $text-color;
+}
 
-    &-fill {
-      color: $white !important;
-      background: $text-color;
-      border-radius: rem(12px);
+.ebs-label--fill {
+  color: $white !important;
+  background: $text-color;
+  border-radius: rem(12px);
+}
 
-      &.ebs-label__status {
-        &--success {
-          background-color: $success-color;
-        }
+.ebs-label--fill.ebs-label__status--success {
+  background-color: $success-color;
+}
 
-        &--warning {
-          background-color: $warning-color;
-        }
+.ebs-label--fill.ebs-label__status--warning {
+  background-color: $warning-color;
+}
 
-        &--danger {
-          background-color: $danger-color;
-        }
+.ebs-label--fill.ebs-label__status--danger {
+  background-color: $danger-color;
+}
 
-        &--info {
-          background-color: $info-color;
-        }
+.ebs-label--fill.ebs-label__status--info {
+  background-color: $info-color;
+}
 
-        &--text {
-          background-color: $text-color;
-        }
-      }
+.ebs-label--fill.ebs-label__status--text {
+  background-color: $text-color;
+}
 
-      &.disabled {
-        cursor: not-allowed;
-        color: $grey-500 !important;
-        background: $grey-100;
-      }
-    }
-  }
+.ebs-label--fill.disabled {
+  cursor: not-allowed;
+  color: $grey-500 !important;
+  background: $grey-100;
+}
 
-  &.ebs-label__status {
-    &--success {
-      color: $success-color;
-      border-color: $success-color;
-    }
+.ebs-label.ebs-label__status--success {
+  color: $success-color;
+  border-color: $success-color;
+}
 
-    &--warning {
-      color: $warning-color;
-      border-color: $warning-color;
-    }
+.ebs-label.ebs-label__status--warning {
+  color: $warning-color;
+  border-color: $warning-color;
+}
 
-    &--danger {
+.ebs-label.ebs-label__status--danger {
+  color: $danger-color;
+  border-color: $danger-color;
+
+  &.is-icon-info {
+    background: $white;
+    border-color: $white;
+    .ebs-icon {
       color: $danger-color;
-      border-color: $danger-color;
-
-      &.is-icon-info {
-        background: $white;
-        border-color: $white;
-        .ebs-icon {
-          color: $danger-color;
-        }
-      }
-    }
-
-    &--info {
-      color: $info-color;
-      border-color: $info-color;
-    }
-
-    &--text {
-      color: $text-color;
-      border-color: $text-color;
-    }
-
-    &--primary {
-      background-color: $primary-000;
-      color: $primary-color;
-      border-color: $primary-color;
     }
   }
+}
 
-  &.disabled {
-    cursor: not-allowed;
-    color: $grey-500;
-    border-color: $grey-500;
+.ebs-label.ebs-label__status--info {
+  color: $info-color;
+  border-color: $info-color;
+}
+
+.ebs-label.ebs-label__status--text {
+  color: $text-color;
+  border-color: $text-color;
+}
+
+.ebs-label.ebs-label__status--primary {
+  background-color: $primary-000;
+  color: $primary-color;
+  border-color: $primary-color;
+}
+
+.ebs-label.disabled {
+  cursor: not-allowed;
+  color: $grey-500;
+  border-color: $grey-500;
+}
+
+.ebs-label.has-prefix,
+.ebs-label.has-prefix.ebs-label__circle {
+  padding-left: rem(22.5px);
+}
+
+.ebs-label.has-suffix,
+.ebs-label.has-suffix.ebs-label__circle {
+  padding-right: rem(27.5px);
+}
+
+.ebs-label.is-icon {
+  @include flex-center;
+  width: $gutter-size;
+  height: $gutter-size;
+  float: left;
+  padding: 0;
+  margin-right: $gutter-size / 2;
+}
+
+.ebs-label__prefix,
+.ebs-label__suffix {
+  position: absolute;
+  top: calc(50% + 1px);
+  transform: translateY(-50%);
+
+  .ebs-icon__close:hover svg {
+    opacity: 0.5;
   }
 
-  &.has-prefix,
-  &.has-prefix.ebs-label__circle {
-    padding-left: rem(22.5px);
+  svg {
+    font-size: rem(12px);
   }
+}
 
-  &.has-suffix,
-  &.has-suffix.ebs-label__circle {
-    padding-right: rem(27.5px);
-  }
+.ebs-label__prefix {
+  left: rem(7.5px);
+}
 
-  &.is-icon {
-    @include flex-center;
-    width: $gutter-size;
-    height: $gutter-size;
-    float: left;
-    padding: 0;
-    margin-right: $gutter-size / 2;
-  }
-
-  .ebs-label__prefix,
-  .ebs-label__suffix {
-    position: absolute;
-    top: calc(50% + 1px);
-    transform: translateY(-50%);
-
-    .ebs-icon__close:hover svg {
-      opacity: 0.5;
-    }
-
-    svg {
-      font-size: rem(12px);
-    }
-  }
-
-  .ebs-label__prefix {
-    left: rem(7.5px);
-  }
-
-  .ebs-label__suffix {
-    right: rem(7.5px);
-  }
+.ebs-label__suffix {
+  right: rem(7.5px);
 }

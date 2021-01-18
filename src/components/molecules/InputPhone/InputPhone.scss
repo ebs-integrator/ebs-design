@@ -1,47 +1,43 @@
 @import '~react-phone-input-2/lib/style.css';
 
-.ebs-input__phone-wrapper {
-  .ebs-input__phone {
-    &.active .form-control,
-    &.active .flag-dropdown {
-      border-color: $primary-color;
-      background-color: $white !important;
-      color: $heading-color;
-    }
+.ebs-input__phone.active .form-control,
+.ebs-input__phone.active .flag-dropdown {
+  border-color: $primary-color;
+  background-color: $white !important;
+  color: $heading-color;
+}
 
-    &.disabled .form-control,
-    &.disabled .flag-dropdown {
-      border-color: $grey-500;
-      background-color: $white;
-      color: $grey-500;
-      cursor: not-allowed;
+.ebs-input__phone.disabled .form-control,
+.ebs-input__phone.disabled .flag-dropdown {
+  border-color: $grey-500;
+  background-color: $white;
+  color: $grey-500;
+  cursor: not-allowed;
 
-      @include placeholder {
-        color: $grey-500 !important;
-      }
-    }
-
-    &.has-error .form-control,
-    &.has-error .flag-dropdown {
-      border-color: $danger-color;
-      background-color: $white;
-    }
-
-    .form-control {
-      border-radius: rem($border-radius);
-      height: rem(40px);
-
-      @include placeholder {
-        color: $text-color-secondary !important;
-      }
-    }
-
-    .form-control,
-    .flag-dropdown {
-      border: 1px solid $border-color;
-      background-color: $white;
-    }
+  @include placeholder {
+    color: $grey-500 !important;
   }
+}
+
+.ebs-input__phone.has-error .form-control,
+.ebs-input__phone.has-error .flag-dropdown {
+  border-color: $danger-color;
+  background-color: $white;
+}
+
+.ebs-input__phone .form-control {
+  border-radius: rem($border-radius);
+  height: rem(40px);
+
+  @include placeholder {
+    color: $text-color-secondary !important;
+  }
+}
+
+.ebs-input__phone .form-control,
+.ebs-input__phone .flag-dropdown {
+  border: 1px solid $border-color;
+  background-color: $white;
 }
 
 .ebs-input__phone-dropdown.country-list {
@@ -49,30 +45,30 @@
   @include hiddenScroll;
   @include elevation-2;
   border-radius: rem($border-radius);
+}
 
-  .country {
-    font-size: rem(14px);
-    color: $text-color;
-    padding: rem(6px);
-    @include fontRegular;
+.ebs-input__phone-dropdown.country-list .country {
+  font-size: rem(14px);
+  color: $text-color;
+  padding: rem(6px);
+  @include fontRegular;
+}
 
-    &.highlight,
-    &:hover,
-    &[aria-selected='true'] {
-      background-color: $primary-000;
-      border-radius: rem($border-radius);
-    }
+.ebs-input__phone-dropdown.country-list .country.highlight,
+.ebs-input__phone-dropdown.country-list .country:hover,
+.ebs-input__phone-dropdown.country-list .country[aria-selected='true'] {
+  background-color: $primary-000;
+  border-radius: rem($border-radius);
+}
 
-    &[aria-selected='true'] {
-      color: $primary-color;
+.ebs-input__phone-dropdown.country-list .country[aria-selected='true'] {
+  color: $primary-color;
 
-      .dial-code {
-        color: $primary-400;
-      }
-    }
-
-    .dial-code {
-      color: $text-color-secondary;
-    }
+  .dial-code {
+    color: $primary-400;
   }
+}
+
+.ebs-input__phone-dropdown.country-list .country .dial-code {
+  color: $text-color-secondary;
 }

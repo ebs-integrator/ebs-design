@@ -3,39 +3,37 @@
   color: $text-color-secondary;
   @include fontRegular;
   font-size: rem(10px);
+}
 
-  &.has-error {
-    color: $danger-color;
-  }
+.ebs-extra.has-error {
+  color: $danger-color;
+}
 
-  &.disabled {
-    color: $grey-500;
-  }
+.ebs-extra.disabled {
+  color: $grey-500;
+}
 
-  &.ebs-extra__status {
-    &-success {
-      color: $success-color;
-      border-color: $success-color;
-    }
+.ebs-extra.ebs-extra__status--success {
+  color: $success-color;
+  border-color: $success-color;
+}
 
-    &-warning {
-      color: $warning-color;
-      border-color: $warning-color;
-    }
+.ebs-extra.ebs-extra__status--warning {
+  color: $warning-color;
+  border-color: $warning-color;
+}
 
-    &-danger {
-      color: $danger-color;
-      border-color: $danger-color;
-    }
+.ebs-extra.ebs-extra__status--danger {
+  color: $danger-color;
+  border-color: $danger-color;
+}
 
-    &-info {
-      color: $info-color;
-      border-color: $info-color;
-    }
+.ebs-extra.ebs-extra__status--info {
+  color: $info-color;
+  border-color: $info-color;
+}
 
-    &-text {
-      color: $text-color;
-      border-color: $text-color;
-    }
-  }
+.ebs-extra.ebs-extra__status--text {
+  color: $text-color;
+  border-color: $text-color;
 }
