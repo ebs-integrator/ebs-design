@@ -12,16 +12,16 @@ interface Props extends FormProps {
   className?: string;
 }
 
-export const Form: React.FC<Props> = ({ type = 'regular', className, children, ...props }) => {
+export const Form: React.FC<FormProps> = ({ className, children, ...props }) => {
   return (
-    <RCForm className={cn(`ebs-form`, `ebs-form__${type}`, className)} {...props}>
+    <RCForm className={cn(`ebs-form`, className)} {...props}>
       {children}
     </RCForm>
   );
 };
 
 interface ItemProps {
-  name: string;
+  name?: string | number | (string | number)[];
   children?: any;
   itemClass?: string;
   className?: string;
