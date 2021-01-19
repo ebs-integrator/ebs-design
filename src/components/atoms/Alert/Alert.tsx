@@ -32,7 +32,7 @@ export const Alert: React.FC<Props> = ({ type = 'success', message = '', classNa
   }, [message, getHeader]);
 
   return message.length ? (
-    <div ref={ref} className={cn(`ebs-alert`, `ebs-alert__type--${type}`, className)}>
+    <div ref={ref} className={cn(`ebs-alert`, `ebs-alert--${type}`, className)}>
       {renderByType[type]}
       {message}
     </div>

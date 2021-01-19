@@ -41,9 +41,9 @@ export const Label: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(`ebs-label`, `ebs-label--type-${type}`, `ebs-label--status-${status}`, className, {
-        'ebs-label--type-icon': icon,
-        'ebs-label--type-icon-info': icon && icon.props && icon.props.type === 'info',
+      className={cn(`ebs-label`, `ebs-label--${type}`, `ebs-label--status-${status}`, className, {
+        'ebs-label--icon': icon,
+        'ebs-label--icon-info': icon && icon.props && icon.props.type === 'info',
         'has-prefix': prefix,
         'has-suffix': suffix,
         disabled: disabled,

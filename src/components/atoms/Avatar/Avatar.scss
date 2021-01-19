@@ -8,42 +8,38 @@
     border-radius: 50%;
   }
 
-  &--color-white &__inline-alt {
-    color: $white;
-  }
-
-  &__type--regular {
+  &--regular {
     color: $primary-color;
     background-color: $grey-100;
   }
 
-  &__type--primary {
+  &--primary {
     color: $white;
     background-color: $primary-color;
   }
 
-  &__type--white {
+  &--white {
     color: $text-color;
     background-color: $white;
   }
 
-  &__size--small {
+  &--small {
     min-width: $avatar-size-small;
     width: $avatar-size-small;
     height: $avatar-size-small;
   }
 
-  &__size--small &-short-alt {
+  &--small &-short-alt {
     font-size: $avatar-font-small;
   }
 
-  &__size--big {
+  &--big {
     min-width: $avatar-size-big;
     width: $avatar-size-big;
     height: $avatar-size-big;
   }
 
-  &__size--big &-short-alt {
+  &--big &-short-alt {
     font-size: $avatar-font-big;
   }
 
@@ -82,7 +78,7 @@
       background-color: $primary-color;
     }
 
-    &--reuanctivegular {
+    &--inactive {
       background-color: $avatar-status-uanctive;
     }
   }
@@ -121,7 +117,7 @@
     align-items: center;
     text-align: left;
 
-    &--type-reversed &-alt {
+    &--reversed &-alt {
       margin-left: 0;
       margin-right: $gutter-size;
     }
@@ -131,6 +127,10 @@
       @include fontSemiBold;
       font-size: rem(12px);
       color: $black;
+    }
+
+    &--white &-alt {
+      color: $white;
     }
 
     &-description {

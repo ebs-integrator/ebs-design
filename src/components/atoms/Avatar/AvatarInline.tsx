@@ -19,8 +19,8 @@ export const AvatarInline: React.FC<CardProps> = ({
     className={cn(
       `ebs-avatar__inline`,
       {
-        'ebs-avatar__inline--type-reversed': reversed,
-        [`ebs-avatar--color-${type}`]: type === 'white',
+        'ebs-avatar__inline--reversed': reversed,
+        'ebs-avatar__inline--white': type === 'white',
       },
       className,
     )}

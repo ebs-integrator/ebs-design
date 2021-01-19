@@ -14,7 +14,7 @@
     color: $success-color;
   }
 
-  &__type--info {
+  &--info {
     border: 1px dashed $info-color;
 
     .ebs-icon {
@@ -22,7 +22,7 @@
     }
   }
 
-  &__type--warning {
+  &--warning {
     border: 1px dashed $warning-color;
 
     .ebs-icon {
@@ -30,7 +30,7 @@
     }
   }
 
-  &__type--error {
+  &--error {
     border: 1px dashed $danger-color;
 
     .ebs-icon {

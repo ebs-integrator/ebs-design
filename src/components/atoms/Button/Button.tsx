@@ -38,13 +38,13 @@ export const Button: React.FC<ButtonProps> = ({
     <div
       className={cn(
         `ebs-button__wrapper`,
-        `ebs-button--size-${size}`,
-        `ebs-button--type-${props.disabled ? 'disabled' : type}`,
+        `ebs-button--${size}`,
+        `ebs-button--${props.disabled ? 'disabled' : type}`,
         className,
         {
-          'ebs-button--type-block': block,
-          'ebs-button--type-prefix': prefix,
-          'ebs-button--type-icon': icon,
+          'ebs-button--block': block,
+          'ebs-button--prefix': prefix,
+          'ebs-button--icon': icon,
         },
       )}
       onClick={onClick}

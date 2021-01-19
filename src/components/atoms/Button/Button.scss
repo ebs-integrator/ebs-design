@@ -18,22 +18,22 @@
     height: 100%;
   }
 
-  &--type-prefix button.ebs-button {
+  &--prefix button.ebs-button {
     padding-left: rem(30px);
   }
 
-  &--type-icon {
+  &--icon {
     display: flex;
     align-items: center;
   }
 
-  &--type-block {
+  &--block {
     width: 100%;
     display: block;
   }
 
   // button type (Color)
-  &--type-primary {
+  &--primary {
     border-color: $primary-color;
     background-color: $primary-color;
     color: $white;
@@ -51,7 +51,7 @@
     }
   }
 
-  &--type-primary & {
+  &--primary & {
     color: $white;
 
     :hover {
@@ -59,7 +59,7 @@
     }
   }
 
-  &--type-fill {
+  &--fill {
     border-color: $primary-100;
     background-color: $primary-100;
     color: $primary-color;
@@ -87,11 +87,11 @@
     }
   }
 
-  &--type-fill & {
+  &--fill & {
     color: $primary-color;
   }
 
-  &--type-ghost.ebs-button__wrapper {
+  &--ghost.ebs-button__wrapper {
     background-color: $btn-type-ghost-background;
     border-color: $btn-type-ghost-border-color;
     color: $btn-type-ghost-color;
@@ -119,11 +119,11 @@
     }
   }
 
-  &--type-ghost & {
+  &--ghost & {
     color: $btn-type-ghost-color;
   }
 
-  &--type-text {
+  &--text {
     background-color: transparent;
     color: $primary-color;
 
@@ -146,11 +146,11 @@
     }
   }
 
-  &--type-text & {
+  &--text & {
     color: $primary-color;
   }
 
-  &--type-disabled {
+  &--disabled {
     background-color: $border-color;
 
     .ebs-button {
@@ -160,31 +160,31 @@
   }
 
   // button size
-  &--size-large {
+  &--large {
     border-radius: $btn-border-radius-lg;
   }
 
-  &--size-large & {
+  &--large & {
     padding: rem($btn-padding-y-lg $btn-padding-x-lg);
     font-weight: $btn-font-weight-lg;
     font-size: rem($btn-font-size-lg);
   }
 
-  &--size-medium {
+  &--medium {
     border-radius: $btn-border-radius;
   }
 
-  &--size-medium & {
+  &--medium & {
     padding: rem($btn-padding-y $btn-padding-x);
     font-weight: $btn-font-weight;
     font-size: rem($btn-font-size);
   }
 
-  &--size-small {
+  &--small {
     border-radius: $btn-border-radius-sm;
   }
 
-  &--size-small & {
+  &--small & {
     padding: rem($btn-padding-y-sm $btn-padding-x-sm);
     font-weight: $btn-font-weight-sm;
     font-size: rem($btn-font-size-sm);

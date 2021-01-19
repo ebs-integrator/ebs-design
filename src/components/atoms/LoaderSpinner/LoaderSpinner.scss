@@ -19,7 +19,7 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 
-  &--size-small {
+  &--small {
     border: 2px solid $grey-500;
     border-top: 2px solid $primary-color;
     width: rem(15px);
@@ -27,7 +27,7 @@
     top: calc(50% - 5px);
   }
 
-  &--size-middle {
+  &--middle {
     border: 2px solid $grey-500;
     border-top: 2px solid $primary-color;
     width: rem(20px);
@@ -35,7 +35,7 @@
     top: calc(50% - 10px);
   }
 
-  &--size-regular {
+  &--regular {
     border: 6px solid $grey-500;
     border-top: 6px solid $primary-color;
     width: rem(60px);

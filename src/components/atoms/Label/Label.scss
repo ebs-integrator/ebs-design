@@ -4,14 +4,14 @@
   white-space: nowrap;
   @include fontRegular;
 
-  &--type-regular {
+  &--regular {
     font-size: rem(12px);
     margin-bottom: rem(5px);
     color: $text-color;
   }
 
-  &--type-circle,
-  &--type-fill {
+  &--circle,
+  &--fill {
     display: inline;
     font-size: rem(10px);
     padding: rem(5px 12px);
@@ -19,11 +19,11 @@
     border-radius: rem(12px);
   }
 
-  &--type-circle {
+  &--circle {
     color: $text-color;
   }
 
-  &--type-fill {
+  &--fill {
     color: $white !important;
     background: $text-color;
     border-radius: rem(12px);
@@ -70,7 +70,7 @@
     border-color: $danger-color;
   }
 
-  &--status-danger.ebs-label--type-icon {
+  &--status-danger.ebs-label--icon {
     background: $white;
     border-color: $white;
 
@@ -102,16 +102,16 @@
   }
 
   &.has-prefix,
-  &.has-prefix.ebs-label--type-circle {
+  &.has-prefix.ebs-label--circle {
     padding-left: rem(22.5px);
   }
 
   &.has-suffix,
-  &.has-suffix.ebs-label--type-circle {
+  &.has-suffix.ebs-label--circle {
     padding-right: rem(27.5px);
   }
 
-  &--type-icon {
+  &--icon {
     @include flex-center;
     width: $gutter-size;
     height: $gutter-size;
