@@ -21,20 +21,19 @@
     font-size: $badge-font-size;
     font-weight: $badge-font-weight;
 
-    &.is-text {
+    &--text {
       width: auto;
       padding: $badge-text-padding;
       border-radius: $badge-text-border-radius;
     }
-
-    + * {
-      margin: 0 5px;
-    }
   }
 
-  span {
-    @include flex-center;
+  &__container + * {
+    margin: 0 5px;
+  }
 
+  & span {
+    @include flex-center;
     position: relative;
 
     > .ebs-icon {
@@ -42,34 +41,24 @@
     }
   }
 
-  &__type {
-    &--success {
-      .ebs-badge__container {
-        background-color: $badge-success-bg-color;
-        color: $white;
-      }
-    }
+  &__type--success &__container {
+    background-color: $badge-success-bg-color;
+    color: $white;
+  }
 
-    &--info {
-      .ebs-badge__container {
-        background-color: $badge-info-bg-color;
-        color: $white;
-      }
-    }
+  &__type--info &__container {
+    background-color: $badge-info-bg-color;
+    color: $white;
+  }
 
-    &--warning {
-      .ebs-badge__container {
-        background-color: $badge-warning-bg-color;
-        color: $white;
-      }
-    }
+  &__type--warning &__container {
+    background-color: $badge-warning-bg-color;
+    color: $white;
+  }
 
-    &--danger {
-      .ebs-badge__container {
-        background-color: $badge-danger-bg-color;
-        color: $white;
-      }
-    }
+  &__type--danger &__container {
+    background-color: $badge-danger-bg-color;
+    color: $white;
   }
 
   .ebs-sidebar__prefix > & {

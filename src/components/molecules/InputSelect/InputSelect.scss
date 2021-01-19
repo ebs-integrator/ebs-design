@@ -13,84 +13,86 @@
     background-color: $white;
   }
 
-  &.active .ebs-select__input-dropdown-wrapper .ebs-select__input {
-    border-color: $primary-color;
-    background-color: $white !important;
-
-    .ebs-select__input-value {
-      color: $heading-color;
+  &.active {
+    &.ebs-select__input-mode-multiple .ebs-select__input-value {
+      padding-right: rem(75px);
     }
-  }
 
-  &.active.ebs-select__input-mode-multiple .ebs-select__input-value {
-    padding-right: rem(75px);
-  }
-
-  .ebs-select__input-dropdown-wrapper {
-    position: relative;
-
-    .ebs-select__input {
-      cursor: pointer;
-      padding: rem(11px 10px);
-      border: 1px solid $border-color;
-      border-radius: rem($border-radius);
-      font-size: rem(14px);
+    .ebs-select__input-dropdown-wrapper .ebs-select__input {
+      border-color: $primary-color;
+      background-color: $white !important;
 
       .ebs-select__input-value {
-        color: $text-color-secondary;
-        overflow: auto hidden;
-        white-space: nowrap;
-        @include hiddenScroll;
-
-        .ebs-select__input-label {
-          position: relative;
-          top: rem(-1px);
-          padding-top: rem(4px);
-          padding-bottom: rem(4px);
-          font-size: rem(12px);
-          margin-bottom: 0;
-
-          &:not(:last-child) {
-            margin-right: rem(4px);
-          }
-        }
+        color: $heading-color;
       }
+    }
+  }
+}
 
-      .ebs-select__input-transition {
-        width: rem(90px);
-        height: calc(100% - 2px);
-        margin: 1px;
-        position: absolute;
-        right: 0;
-        top: 0;
-        border-top-right-radius: rem(4px);
-        border-bottom-right-radius: rem(4px);
-        box-shadow: inset -90px 0px 15px -12px rgba($white, 1);
+.ebs-select__input-dropdown-wrapper {
+  position: relative;
+
+  .ebs-select__input {
+    cursor: pointer;
+    padding: rem(11px 10px);
+    border: 1px solid $border-color;
+    border-radius: rem($border-radius);
+    font-size: rem(14px);
+
+    &-transition {
+      width: rem(90px);
+      height: calc(100% - 2px);
+      margin: 1px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-top-right-radius: rem(4px);
+      border-bottom-right-radius: rem(4px);
+      box-shadow: inset -90px 0px 15px -12px rgba($white, 1);
+    }
+
+    &-count {
+      position: absolute;
+      right: (35px);
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: $primary-color;
+      color: $white;
+      font-size: rem(12px);
+      border-radius: rem($border-radius);
+      padding: rem(5px 8px);
+    }
+
+    &-suffix {
+      position: absolute;
+      right: rem(14px);
+      top: 50%;
+      transform: translateY(-50%);
+      color: $text-color;
+
+      .ebs-icon {
+        font-size: rem(10px);
       }
+    }
 
-      .ebs-select__input-count {
-        position: absolute;
-        right: (35px);
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: $primary-color;
-        color: $white;
-        font-size: rem(12px);
-        border-radius: rem($border-radius);
-        padding: rem(5px 8px);
-      }
+    &-value {
+      color: $text-color-secondary;
+      overflow: auto hidden;
+      white-space: nowrap;
+      @include hiddenScroll;
+    }
 
-      .ebs-select__input-suffix {
-        position: absolute;
-        right: rem(14px);
-        top: 50%;
-        transform: translateY(-50%);
-        color: $text-color;
+    &-label {
+      position: relative;
+      top: rem(-1px);
+      padding-top: rem(4px);
+      padding-bottom: rem(4px);
+      font-size: rem(12px);
+      margin-bottom: 0;
+    }
 
-        .ebs-icon {
-          font-size: rem(10px);
-        }
-      }
+    &-label:not(:last-child) {
+      margin-right: rem(4px);
     }
   }
 }

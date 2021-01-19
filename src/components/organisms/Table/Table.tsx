@@ -20,7 +20,7 @@ export interface Column<T> {
 interface TableProps<T extends object> {
   className?: string;
   page?: number;
-  data: T[];
+  data?: T[];
   columns: Column<T>[];
   size?: 'small' | 'big' | 'regular';
   expandable?: any;

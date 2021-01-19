@@ -6,7 +6,7 @@
   padding: $alert-padding;
   border-radius: $border-radius;
 
-  svg {
+  .ebs-icon {
     width: $alert-icon-size;
     height: $alert-icon-size;
     border-radius: 100px;
@@ -14,28 +14,30 @@
     color: $success-color;
   }
 
-  &__type {
-    &--info {
-      border: 1px dashed $info-color;
+  &--info {
+    border: 1px dashed $info-color;
 
-      svg {
-        color: $info-color;
-      }
+    .ebs-icon {
+      color: $info-color;
     }
+  }
 
-    &--warning {
-      border: 1px dashed $warning-color;
+  &--warning {
+    border: 1px dashed $warning-color;
 
-      svg {
-        color: $warning-color;
-      }
+    .ebs-icon {
+      color: $warning-color;
     }
+  }
 
-    &--error {
-      border: 1px solid $danger-color;
+  &--error {
+    border: 1px dashed $danger-color;
 
-      svg {
-        color: $danger-color;
+    .ebs-icon {
+      color: $danger-color;
+
+      path:last-child {
+        fill: $white;
       }
     }
   }

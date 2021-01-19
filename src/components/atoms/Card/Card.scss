@@ -6,49 +6,45 @@
   align-items: center;
   padding-top: rem($gutter-size);
 
-  .ebs-card__header-title {
+  &-title {
     font-size: rem(14px);
     @include fontBold;
     margin-right: rem($gutter-size);
     white-space: nowrap;
   }
 
-  .ebs-card__header-side {
-    &--right {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      text-align: right;
+  &-side--right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: right;
 
-      @include mq($until: tablet) {
-        text-align: left;
-      }
-
-      > *:not(:first-child) {
-        margin-left: rem(15px);
-      }
-
-      .picker-label {
-        margin-right: 0;
-      }
+    @include mq($until: tablet) {
+      text-align: left;
     }
+  }
 
-    &--left {
-      > *:not(:last-child) {
-        margin-right: rem(15px);
-      }
+  &-side--left,
+  &-side--right {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    > * {
+      margin-bottom: rem($gutter-size);
     }
+  }
 
-    &--left,
-    &--right {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
+  &-side--right > *:not(:first-child) {
+    margin-left: rem(15px);
+  }
 
-      > * {
-        margin-bottom: rem($gutter-size);
-      }
-    }
+  &-side--right .picker-label {
+    margin-right: 0;
+  }
+
+  &-side--left > *:not(:last-child) {
+    margin-right: rem(15px);
   }
 }
 
@@ -60,18 +56,16 @@
   border: 1px solid $border-color;
   border-top: unset;
 
-  .ebs-card__footer-side {
-    &--left {
-      position: relative;
-    }
+  &-side--left {
+    position: relative;
+  }
 
-    &--right {
-      width: 100%;
-      text-align: right;
+  &-side--right {
+    width: 100%;
+    text-align: right;
 
-      .ebs-button__wrapper:not(:last__child) {
-        margin-right: rem(10px);
-      }
+    .ebs-button__wrapper:not(:last__child) {
+      margin-right: rem(10px);
     }
   }
 

@@ -12,30 +12,28 @@
     color: $grey-500;
   }
 
-  &.ebs-extra__status {
-    &-success {
-      color: $success-color;
-      border-color: $success-color;
-    }
+  &__status--success {
+    color: $success-color;
+    border-color: $success-color;
+  }
 
-    &-warning {
-      color: $warning-color;
-      border-color: $warning-color;
-    }
+  &__status--warning {
+    color: $warning-color;
+    border-color: $warning-color;
+  }
 
-    &-danger {
-      color: $danger-color;
-      border-color: $danger-color;
-    }
+  &__status--danger {
+    color: $danger-color;
+    border-color: $danger-color;
+  }
 
-    &-info {
-      color: $info-color;
-      border-color: $info-color;
-    }
+  &__status--info {
+    color: $info-color;
+    border-color: $info-color;
+  }
 
-    &-text {
-      color: $text-color;
-      border-color: $text-color;
-    }
+  &__status--text {
+    color: $text-color;
+    border-color: $text-color;
   }
 }

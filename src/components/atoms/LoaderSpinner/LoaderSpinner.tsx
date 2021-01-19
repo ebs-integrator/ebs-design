@@ -10,5 +10,5 @@ export interface Props {
 }
 
 export const LoaderSpinner: React.FC<Props> = ({ fixed, size = 'regular', className }) => (
-  <div className={cn(`ebs-loader__spinner`, `ebs-loader__spinner-size--${size}`, className, { fixed: fixed })} />
+  <div className={cn(`ebs-loader__spinner`, `ebs-loader__spinner--${size}`, className, { fixed: fixed })} />
 );

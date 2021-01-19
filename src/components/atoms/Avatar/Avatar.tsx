@@ -33,8 +33,8 @@ export const Avatar: React.FC<AvatarProps> = ({
 
   return (
     <div
-      className={cn(`ebs-avatar`, `ebs-avatar__size--${size}`, `ebs-avatar__type--${type}`, className, {
-        circle: circle,
+      className={cn(`ebs-avatar`, `ebs-avatar--${size}`, `ebs-avatar--${type}`, className, {
+        'ebs-avatar--circle': circle,
       })}
     >
       {img ? (

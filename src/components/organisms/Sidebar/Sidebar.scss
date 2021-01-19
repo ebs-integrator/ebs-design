@@ -13,70 +13,130 @@
   background-color: $sidebar-background;
   z-index: 5;
 
+  @include mq($until: small-desktop) {
+    padding-top: rem(80px);
+
+    &__mobile--closed,
+    &__mobile--opened {
+      transition: $transition-time;
+      padding-top: 0;
+    }
+
+    &__mobile--closed {
+      transform: translateX(-100%);
+    }
+
+    &__mobile--opened {
+      width: $sidebar-width !important;
+      transform: translateX(0);
+    }
+  }
+
   &__top {
     margin-top: rem(5px);
   }
 
-  @include mq($until: small-desktop) {
-    padding-top: rem(80px);
-
-    &.ebs-sidebar__mobile {
-      &--closed,
-      &--opened {
-        transition: $transition-time;
-        padding-top: 0;
-      }
-
-      &--closed {
-        transform: translateX(-100%);
-      }
-
-      &--opened {
-        width: $sidebar-width !important;
-        transform: translateX(0);
-      }
-    }
+  &--untoggled &__options {
+    left: $sidebar-width;
   }
 
-  &.ebs-sidebar {
-    &--untoggled .ebs-sidebar__options {
-      left: $sidebar-width;
+  &--toggled {
+    width: rem(57px);
+
+    @media (min-width: 54.84714em) {
+      + .ebs-layout__content-wrapper {
+        width: calc(100% - 4.38462rem) !important;
+      }
     }
 
-    &--toggled {
-      width: rem(57px);
+    .ebs-sidebar__label {
+      animation: fadeOut 0.1s;
+      white-space: nowrap;
+    }
 
-      .ebs-sidebar__label {
+    .ebs-sidebar__item {
+      padding-right: 0;
+
+      .ebs-sidebar__text {
         animation: fadeOut 0.1s;
         white-space: nowrap;
       }
 
-      .ebs-sidebar__item {
-        padding-right: 0;
-        .ebs-sidebar__text {
-          animation: fadeOut 0.1s;
-          white-space: nowrap;
-        }
-
-        .ebs-sidebar__suffix .ebs-icon {
-          right: $gutter-size / 2;
-        }
+      .ebs-sidebar__suffix .ebs-icon {
+        right: $gutter-size / 2;
       }
+    }
 
-      .ebs-sidebar__options {
-        left: rem(57px);
-      }
+    .ebs-sidebar__options {
+      left: rem(57px);
+    }
 
-      .ebs-sidebar__options .ebs-sidebar__item:hover,
-      .ebs-sidebar__options .ebs-sidebar__item.active,
-      .ebs-sidebar__options .ebs-sidebar__item.invert:hover,
-      .ebs-sidebar__options .ebs-sidebar__item.invert.active:hover {
-        background-color: $primary-color;
-      }
+    .ebs-sidebar__options .ebs-sidebar__item:hover,
+    .ebs-sidebar__options .ebs-sidebar__item.active,
+    .ebs-sidebar__options .ebs-sidebar__item.invert:hover,
+    .ebs-sidebar__options .ebs-sidebar__item.invert.active:hover {
+      background-color: $primary-color;
     }
   }
 
-  .ebs-sidebar__bottom {
+  &--toggled &__item {
+    z-index: 3;
+  }
+
+  &--toggled &__item.has-options {
+    padding-right: 0;
+  }
+
+  &--toggled &__item.active + .rah-static &__options &__item {
+    opacity: 1;
+    left: $layout-top-bar-height - 1;
+    transition: all $transition-time;
+  }
+
+  &--toggled &__options &__item {
+    background-color: $sidebar-background;
+    padding: $gutter-size / 3 $gutter-size;
+    z-index: 2;
+    left: -$sidebar-width;
+    opacity: 0;
+    height: $layout-top-bar-height;
+    width: $sidebar-width - 1;
+    border-top: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+
+    &.disabled {
+      background-color: $border-color;
+
+      span {
+        color: $grey-500;
+      }
+    }
+
+    &:nth-last-child(2) {
+      border-bottom: 1px solid $border-color;
+    }
+
+    span {
+      @include text-ellipsis;
+    }
+  }
+
+  &--toggled &__options &__item span {
+    @include text-ellipsis;
+  }
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($black, 0.5);
+    z-index: 4;
+    animation: fadeIn 0.3s forwards;
+  }
+
+  &__bottom {
     background-color: $sidebar-bottom-background;
     width: 100%;
     position: absolute;
@@ -99,72 +159,5 @@
     position: absolute;
     top: -$layout-top-bar-height - 2;
     left: $sidebar-width - 2px;
-  }
-}
-
-.ebs-sidebar.ebs-sidebar--toggled {
-  .ebs-sidebar__item {
-    z-index: 3;
-
-    &.has-options {
-      padding-right: 0;
-    }
-
-    &.active + .rah-static {
-      .ebs-sidebar__options {
-        .ebs-sidebar__item {
-          opacity: 1;
-          left: $layout-top-bar-height - 1;
-          transition: all $transition-time;
-        }
-      }
-    }
-  }
-
-  .ebs-sidebar__options {
-    .ebs-sidebar__item {
-      background-color: $sidebar-background;
-      padding: $gutter-size / 3 $gutter-size;
-      z-index: 2;
-      left: -$sidebar-width;
-      opacity: 0;
-      height: $layout-top-bar-height;
-      width: $sidebar-width - 1;
-      border-top: 1px solid $border-color;
-      border-right: 1px solid $border-color;
-
-      &.disabled {
-        background-color: $border-color;
-
-        span {
-          color: $grey-500;
-        }
-      }
-
-      &:nth-last-child(2) {
-        border-bottom: 1px solid $border-color;
-      }
-
-      span {
-        @include text-ellipsis;
-      }
-    }
-  }
-}
-
-.ebs-sidebar__mask {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba($black, 0.5);
-  z-index: 4;
-  animation: fadeIn 0.3s forwards;
-}
-
-@media (min-width: 54.84714em) {
-  .ebs-sidebar--toggled + .ebs-layout__content-wrapper {
-    width: calc(100% - 4.38462rem) !important;
   }
 }
