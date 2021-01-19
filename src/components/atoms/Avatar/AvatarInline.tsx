@@ -15,7 +15,16 @@ export const AvatarInline: React.FC<CardProps> = ({
   description,
   reversed = false,
 }) => (
-  <div className={cn(`ebs-avatar__inline`, className, { 'is-reversed': reversed, 'is-white': type === 'white' })}>
+  <div
+    className={cn(
+      `ebs-avatar__inline`,
+      {
+        'ebs-avatar__inline--type-reversed': reversed,
+        [`ebs-avatar--color-${type}`]: type === 'white',
+      },
+      className,
+    )}
+  >
     {!reversed && (
       <Avatar
         size="small"

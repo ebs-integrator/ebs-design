@@ -95,7 +95,7 @@ strong {
 }
 
 .no-wrap {
-  white-space: nowrap;
+  white-space: nowrap !important;
 }
 
 ::-webkit-scrollbar {

@@ -1,86 +1,82 @@
 .ebs-checkbox__wrapper {
   position: relative;
   cursor: pointer;
-}
 
-.ebs-checkbox__wrapper.indeterminate {
-  .ebs-checkbox__input:checked ~ .ebs-checkbox {
-    .ebs-checkbox__check {
-      font-size: rem(10px);
+  &.indeterminate {
+    .ebs-checkbox__input:checked ~ .ebs-checkbox {
+      .ebs-checkbox__check {
+        font-size: rem(10px);
+      }
+
+      .ebs-checkbox__indeterminate {
+        font-size: 0;
+      }
     }
 
-    .ebs-checkbox__indeterminate {
-      font-size: 0;
+    .ebs-checkbox {
+      border-color: $primary-color;
+      background-color: $primary-color;
+
+      .ebs-checkbox__check {
+        font-size: 0;
+      }
+
+      .ebs-checkbox__indeterminate {
+        font-size: rem(10px);
+      }
     }
   }
 
-  .ebs-checkbox {
-    border-color: $primary-color;
-    background-color: $primary-color;
+  &.disabled .ebs-checkbox__input {
+    cursor: not-allowed;
+  }
 
-    .ebs-checkbox__check {
-      font-size: 0;
-    }
+  &.disabled .ebs-checkbox__input:checked ~ .ebs-checkbox,
+  &.disabled .ebs-checkbox__input:checked:hover ~ .ebs-checkbox {
+    border-color: $grey-500;
+    background-color: $grey-500;
 
-    .ebs-checkbox__indeterminate {
-      font-size: rem(10px);
+    &:before {
+      background-color: transparent;
     }
   }
-}
 
-.ebs-checkbox__wrapper.disabled .ebs-checkbox__input {
-  cursor: not-allowed;
-}
+  &.disabled .ebs-checkbox,
+  &.disabled .ebs-checkbox__input:hover ~ .ebs-checkbox {
+    border-color: $grey-500;
+    background-color: transparent;
 
-.ebs-checkbox__wrapper.disabled .ebs-checkbox__input:checked ~ .ebs-checkbox,
-.ebs-checkbox__wrapper.disabled .ebs-checkbox__input:checked:hover ~ .ebs-checkbox {
-  border-color: $grey-500;
-  background-color: $grey-500;
-}
+    &:before {
+      background-color: transparent;
+    }
+  }
 
-.ebs-checkbox__wrapper.disabled .ebs-checkbox__input:checked ~ .ebs-checkbox:before,
-.ebs-checkbox__wrapper.disabled .ebs-checkbox__input:checked:hover ~ .ebs-checkbox:before {
-  background-color: transparent;
-}
+  &.disabled .ebs-checkbox__text {
+    color: $grey-500;
+  }
 
-.ebs-checkbox__wrapper.disabled .ebs-checkbox,
-.ebs-checkbox__wrapper.disabled .ebs-checkbox__input:hover ~ .ebs-checkbox {
-  border-color: $grey-500;
-  background-color: transparent;
-}
+  &.has-text .ebs-checkbox {
+    position: absolute;
+    top: rem(-2px);
+  }
 
-.ebs-checkbox__wrapper.disabled .ebs-checkbox:before,
-.ebs-checkbox__wrapper.disabled .ebs-checkbox__input:hover ~ .ebs-checkbox:before {
-  background-color: transparent;
-}
+  &.ebs-checkbox__align-left .ebs-checkbox {
+    right: inherit;
+    left: 0;
 
-.ebs-checkbox__wrapper.disabled .ebs-checkbox__text {
-  color: $grey-500;
-}
+    &__text {
+      padding-left: rem(26px);
+    }
+  }
 
-.ebs-checkbox__wrapper.has-text .ebs-checkbox {
-  position: absolute;
-  top: rem(-2px);
-}
-
-.ebs-checkbox__wrapper.ebs-checkbox__align-left .ebs-checkbox {
-  right: inherit;
-  left: 0;
-}
-
-.ebs-checkbox__wrapper.ebs-checkbox__align-left .ebs-checkbox__text {
-  padding-left: rem(26px);
-}
-
-.ebs-checkbox__wrapper.ebs-checkbox__align-right {
-  .ebs-checkbox {
+  &.ebs-checkbox__align-right .ebs-checkbox {
     left: inherit;
     right: 0;
-  }
 
-  .ebs-checkbox__text {
-    padding-right: rem(26px);
-    width: rem(160px);
+    &__text {
+      padding-right: rem(26px);
+      width: rem(160px);
+    }
   }
 }
 
@@ -92,33 +88,35 @@
   height: 100%;
   width: 100%;
   cursor: pointer;
-}
 
-.ebs-checkbox__input:checked ~ .ebs-checkbox {
-  border-color: $primary-color;
-  background-color: $primary-color;
-}
+  &:checked {
+    ~ .ebs-checkbox {
+      border-color: $primary-color;
+      background-color: $primary-color;
+    }
 
-.ebs-checkbox__input:checked ~ .ebs-checkbox .ebs-checkbox__check {
-  font-size: rem(10px);
-  color: $white;
-}
+    ~ .ebs-checkbox .ebs-checkbox__check {
+      font-size: rem(10px);
+      color: $white;
+    }
 
-.ebs-checkbox__input:checked .ebs-checkbox__input:hover ~ .ebs-checkbox {
-  border-color: $primary-color;
-  background-color: $primary-color;
-}
+    &:hover ~ .ebs-checkbox {
+      border-color: $primary-color;
+      background-color: $primary-color;
 
-.ebs-checkbox__input:checked .ebs-checkbox__input:hover ~ .ebs-checkbox:before {
-  background-color: $primary-100;
-}
+      &:before {
+        background-color: $primary-100;
+      }
+    }
+  }
 
-.ebs-checkbox__input:hover ~ .ebs-checkbox {
-  border-color: $primary-color;
-}
+  &:hover ~ .ebs-checkbox {
+    border-color: $primary-color;
 
-.ebs-checkbox__input:hover ~ .ebs-checkbox:before {
-  background-color: $primary-100;
+    &:before {
+      background-color: $primary-100;
+    }
+  }
 }
 
 .ebs-checkbox {
@@ -131,43 +129,41 @@
   border-radius: rem($border-radius);
   transition: all $transition-time;
   pointer-events: none;
-}
 
-.ebs-checkbox:before {
-  content: ' ';
-  display: block;
-  position: absolute;
-  width: rem(20px);
-  height: rem(20px);
-  left: 50%;
-  top: 50%;
-  background-color: transparent;
-  transform: translate(-50%, -50%);
-  border-radius: rem($border-radius);
-  z-index: -1;
-}
+  &:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: rem(20px);
+    height: rem(20px);
+    left: 50%;
+    top: 50%;
+    background-color: transparent;
+    transform: translate(-50%, -50%);
+    border-radius: rem($border-radius);
+    z-index: -1;
+  }
 
-.ebs-checkbox__check,
-.ebs-checkbox__indeterminate {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0;
-  color: $white;
-}
+  &__check,
+  &__indeterminate {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0;
+    color: $white;
+  }
 
-.ebs-checkbox__indeterminate rect {
-  fill: $white;
-}
+  &__indeterminate rect {
+    fill: $white;
+  }
 
-.ebs-checkbox__text {
-  color: $text-color;
-  font-size: rem(14px);
-}
+  &__text {
+    color: $text-color;
+    font-size: rem(14px);
+  }
 
-.ebs-checkbox__group {
-  .ebs-checkbox__wrapper:not(:last-child) {
+  &__group &__wrapper:not(:last-child) {
     margin-bottom: rem(5px);
   }
 }

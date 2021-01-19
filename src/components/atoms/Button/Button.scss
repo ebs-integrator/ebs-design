@@ -1,255 +1,256 @@
 // fade
 @include fadeBackground('regularFade', #000);
 
-.ebs-button__wrapper {
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  border-radius: rem($border-radius);
-  transition: $transition-base;
-  border: 1px solid transparent;
-}
-
 // button
 .ebs-button {
-  width: 100%;
+  @include fontMedium;
   cursor: pointer;
+  width: 100%;
   font-size: rem(13px);
   line-height: $btn-line-height;
   border-color: transparent;
   background: transparent;
   padding: 0;
   outline: none !important;
-  @include fontMedium;
-}
 
-.ebs-button-icon {
-  line-height: 0;
-}
+  &--is-icon {
+    @include flex-center;
+    height: 100%;
+  }
 
-// button size
-.ebs-button__wrapper.ebs-button__size--large {
-  border-radius: $btn-border-radius-lg;
-}
+  &--type-prefix button.ebs-button {
+    padding-left: rem(30px);
+  }
 
-.ebs-button__wrapper.ebs-button__size--large .ebs-button {
-  padding: rem($btn-padding-y-lg $btn-padding-x-lg);
-  font-weight: $btn-font-weight-lg;
-  font-size: rem($btn-font-size-lg);
-}
+  &--type-icon {
+    display: flex;
+    align-items: center;
+  }
 
-.ebs-button__wrapper.ebs-button__size--medium {
-  border-radius: $btn-border-radius;
-}
+  &--type-block {
+    width: 100%;
+    display: block;
+  }
 
-.ebs-button__wrapper.ebs-button__size--medium .ebs-button {
-  padding: rem($btn-padding-y $btn-padding-x);
-  font-weight: $btn-font-weight;
-  font-size: rem($btn-font-size);
-}
-
-.ebs-button__wrapper.ebs-button__size--small {
-  border-radius: $btn-border-radius-sm;
-}
-
-.ebs-button__wrapper.ebs-button__size--small .ebs-button {
-  padding: rem($btn-padding-y-sm $btn-padding-x-sm);
-  font-weight: $btn-font-weight-sm;
-  font-size: rem($btn-font-size-sm);
-  line-height: $btn-line-height-sm;
-}
-
-// button type (Color)
-.ebs-button__wrapper.ebs-button__type--primary {
-  border-color: $primary-color;
-  background-color: $primary-color;
-  color: $white;
-}
-
-.ebs-button__wrapper.ebs-button__type--primary:hover,
-.ebs-button__wrapper.ebs-button__type--primary.hover {
-  border-color: $primary-600;
-  background-color: $primary-600;
-}
-
-.ebs-button__wrapper.ebs-button__type--primary:active,
-.ebs-button__wrapper.ebs-button__type--primary.active {
-  border-color: $primary-700;
-  background-color: $primary-700;
-}
-
-.ebs-button__wrapper.ebs-button__type--primary .ebs-button {
-  color: $white;
-
-  &:hover {
+  // button type (Color)
+  &--type-primary {
+    border-color: $primary-color;
+    background-color: $primary-color;
     color: $white;
+
+    &:hover,
+    &.hover {
+      border-color: $primary-600;
+      background-color: $primary-600;
+    }
+
+    &:active,
+    &.active {
+      border-color: $primary-700;
+      background-color: $primary-700;
+    }
   }
-}
 
-.ebs-button__wrapper.ebs-button__type--fill {
-  border-color: $primary-100;
-  background-color: $primary-100;
-  color: $primary-color;
-}
-
-.ebs-button__wrapper.ebs-button__type--fill .ebs-button {
-  color: $primary-color;
-}
-
-.ebs-button__wrapper.ebs-button__type--fill:hover,
-.ebs-button__wrapper.ebs-button__type--fill.hover {
-  border-color: $primary-color;
-  background-color: $primary-color;
-  color: $white;
-
-  .ebs-button {
+  &--type-primary & {
     color: $white;
+
+    :hover {
+      color: $white;
+    }
   }
-}
 
-.ebs-button__wrapper.ebs-button__type--fill:active,
-.ebs-button__wrapper.ebs-button__type--fill.active {
-  border-color: $primary-600;
-  background-color: $primary-600;
-  color: $white;
+  &--type-fill {
+    border-color: $primary-100;
+    background-color: $primary-100;
+    color: $primary-color;
 
-  .ebs-button {
-    color: $white;
+    &:hover,
+    &.hover {
+      border-color: $primary-color;
+      background-color: $primary-color;
+      color: $white;
+
+      .ebs-button {
+        color: $white;
+      }
+    }
+
+    &:active,
+    &.active {
+      border-color: $primary-600;
+      background-color: $primary-600;
+      color: $white;
+
+      .ebs-button {
+        color: $white;
+      }
+    }
   }
-}
 
-.ebs-button__wrapper.ebs-button__type--ghost {
-  background-color: $btn-type-ghost-background;
-  border-color: $btn-type-ghost-border-color;
-  color: $btn-type-ghost-color;
-}
-
-.ebs-button__wrapper.ebs-button__type--ghost .ebs-button {
-  color: $btn-type-ghost-color;
-}
-
-.ebs-button__wrapper.ebs-button__type--ghost:hover,
-.ebs-button__wrapper.ebs-button__type--ghost.hover {
-  border-color: $btn-type-ghost-hover-border-color;
-  background-color: $btn-type-ghost-hover-background;
-  color: $btn-type-ghost-hover-color;
-
-  .ebs-button {
-    color: $btn-type-ghost-hover-color;
+  &--type-fill & {
+    color: $primary-color;
   }
-}
 
-.ebs-button__wrapper.ebs-button__type--ghost:active,
-.ebs-button__wrapper.ebs-button__type--ghost.active {
-  border-color: $btn-type-ghost-active-border-color;
-  background-color: $btn-type-ghost-active-background;
-  color: $btn-type-ghost-active-color;
+  &--type-ghost {
+    background-color: $btn-type-ghost-background;
+    border-color: $btn-type-ghost-border-color;
+    color: $btn-type-ghost-color;
 
-  .ebs-button {
-    color: $btn-type-ghost-active-color;
+    &:hover,
+    &.hover {
+      border-color: $btn-type-ghost-hover-border-color;
+      background-color: $btn-type-ghost-hover-background;
+      color: $btn-type-ghost-hover-color;
+
+      .ebs-button {
+        color: $btn-type-ghost-hover-color;
+      }
+    }
+
+    &:active,
+    &.active {
+      border-color: $btn-type-ghost-active-border-color;
+      background-color: $btn-type-ghost-active-background;
+      color: $btn-type-ghost-active-color;
+
+      .ebs-button {
+        color: $btn-type-ghost-active-color;
+      }
+    }
   }
-}
 
-.ebs-button__wrapper.ebs-button__type--text {
-  background-color: transparent;
-  color: $primary-color;
-}
-
-.ebs-button__wrapper.ebs-button__type--text .ebs-button {
-  color: $primary-color;
-}
-
-.ebs-button__wrapper.ebs-button__type--text:hover,
-.ebs-button__wrapper.ebs-button__type--text.hover {
-  background-color: transparent;
-
-  .ebs-button {
-    color: $primary-600;
+  &--type-ghost & {
+    color: $btn-type-ghost-color;
   }
-}
 
-.ebs-button__wrapper.ebs-button__type--text:active,
-.ebs-button__wrapper.ebs-button__type--text.active {
-  background-color: transparent;
+  &--type-text {
+    background-color: transparent;
+    color: $primary-color;
 
-  .ebs-button {
-    color: $primary-700;
+    &:hover,
+    &.hover {
+      background-color: transparent;
+
+      .ebs-button {
+        color: $primary-600;
+      }
+    }
+
+    &:active,
+    &.active {
+      background-color: transparent;
+
+      .ebs-button {
+        color: $primary-700;
+      }
+    }
   }
-}
 
-.ebs-button__wrapper.ebs-button__type--disabled {
-  background-color: $border-color;
-
-  .ebs-button {
-    cursor: not-allowed;
-    color: $grey-500;
+  &--type-text & {
+    color: $primary-color;
   }
-}
 
-.ebs-button__wrapper.has-prefix .ebs-button {
-  padding-left: rem(30px);
-}
+  &--type-disabled {
+    background-color: $border-color;
 
-.ebs-button__wrapper.has-icon {
-  display: flex;
-  align-items: center;
-}
+    .ebs-button {
+      cursor: not-allowed;
+      color: $grey-500;
+    }
+  }
 
-.ebs-button__wrapper.block {
-  width: 100%;
-  display: block;
-}
+  // button size
+  &--size-large {
+    border-radius: $btn-border-radius-lg;
+  }
 
-.ebs-button__loading {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  border-radius: rem($border-radius);
-  pointer-events: none;
-}
+  &--size-large & {
+    padding: rem($btn-padding-y-lg $btn-padding-x-lg);
+    font-weight: $btn-font-weight-lg;
+    font-size: rem($btn-font-size-lg);
+  }
 
-.ebs-button__loading-regular {
-  animation: regularFade 0.25s forwards;
-}
+  &--size-medium {
+    border-radius: $btn-border-radius;
+  }
 
-.ebs-button__loading .ebs-loader__spinner {
-  position: absolute;
-  left: calc(50% - 7.5px);
-  top: calc(50% - 7.5px);
-  transform: translate(-50%, -50%);
-}
+  &--size-medium & {
+    padding: rem($btn-padding-y $btn-padding-x);
+    font-weight: $btn-font-weight;
+    font-size: rem($btn-font-size);
+  }
 
-.ebs-button__prefix {
-  position: absolute;
-  left: rem(10px);
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-}
+  &--size-small {
+    border-radius: $btn-border-radius-sm;
+  }
 
-.ebs-button__group {
-  display: flex;
-  flex-wrap: wrap;
-}
+  &--size-small & {
+    padding: rem($btn-padding-y-sm $btn-padding-x-sm);
+    font-weight: $btn-font-weight-sm;
+    font-size: rem($btn-font-size-sm);
+    line-height: $btn-line-height-sm;
+  }
 
-.ebs-button__group > .ebs-button__wrapper:first-child {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
+  &__wrapper {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    border-radius: rem($border-radius);
+    transition: $transition-base;
+    border: 1px solid transparent;
+  }
 
-.ebs-button__group > .ebs-button__wrapper:not(:first-child):not(:last-child) {
-  border-radius: 0;
-}
+  &__loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: rem($border-radius);
+    pointer-events: none;
 
-.ebs-button__group > .ebs-button__wrapper:not(:last-child) {
-  border-right: none;
-}
+    &-regular {
+      animation: regularFade 0.25s forwards;
+    }
 
-.ebs-button__group > .ebs-button__wrapper:last-child {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+    .ebs-loader__spinner {
+      position: absolute;
+      left: calc(50% - 7.5px);
+      top: calc(50% - 7.5px);
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__prefix {
+    position: absolute;
+    left: rem(10px);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+  }
+
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
+
+    .ebs-button__wrapper:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .ebs-button__wrapper:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+
+    .ebs-button__wrapper:not(:last-child) {
+      border-right: none;
+    }
+
+    .ebs-button__wrapper:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
 }

@@ -1,82 +1,82 @@
 .ebs-chips {
+  cursor: pointer;
   position: relative;
   padding: rem(4px 8px);
   font-size: rem(12px);
   border: 1px solid transparent;
   border-radius: rem(16px);
   background-color: transparent;
-  cursor: pointer;
   transition: all $transition-time;
-}
 
-.ebs-chips.ebs-chips-checked {
-  background-color: $primary-000;
-  border-color: $primary-color;
-  color: $primary-color;
-}
+  &-checked {
+    background-color: $primary-000;
+    border-color: $primary-color;
+    color: $primary-color;
 
-.ebs-chips.ebs-chips-checked:hover {
-  background-color: $primary-color;
-  border-color: $primary-color;
-  color: $white;
-}
+    &:hover {
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: $white;
+    }
+  }
 
-.ebs-chips.ebs-chips-unchecked {
-  background-color: transparent;
-  border-color: $text-color-light;
-  color: $text-color-secondary;
-}
+  &-unchecked {
+    background-color: transparent;
+    border-color: $text-color-light;
+    color: $text-color-secondary;
 
-.ebs-chips.ebs-chips-unchecked:hover {
-  background-color: transparent;
-  border-color: $primary-400;
-  color: $primary-400;
-}
+    &:hover {
+      background-color: transparent;
+      border-color: $primary-400;
+      color: $primary-400;
+    }
+  }
 
-.ebs-chips.has-prefix {
-  padding-left: rem(28px);
-}
+  &__prefix {
+    position: absolute;
+    left: rem(9px);
+    top: calc(50% + 1px);
+    transform: translateY(-50%);
+  }
 
-.ebs-chips.has-suffix {
-  padding-right: rem(28px);
-}
+  &__prefix .ebs-icon {
+    font-size: rem(12px);
+  }
 
-.ebs-chips.disabled {
-  cursor: not-allowed;
-}
+  &__suffix {
+    position: absolute;
+    right: rem(9px);
+    top: calc(50% + 1px);
+    transform: translateY(-50%);
+  }
 
-.ebs-chips.disabled.ebs-chips-checked,
-.ebs-chips.disabled.ebs-chips-checked:hover {
-  background-color: $border-color;
-  border-color: $border-color;
-  color: $grey-500;
-}
+  &__suffix .ebs-icon {
+    font-size: rem(12px);
+  }
 
-.ebs-chips.disabled.ebs-chips-unchecked,
-.ebs-chips.disabled.ebs-chips-unchecked:hover {
-  background-color: transparent;
-  border-color: $border-color;
-  color: $border-color;
-}
+  &.has-prefix {
+    padding-left: rem(28px);
+  }
 
-.ebs-chips__prefix {
-  position: absolute;
-  left: rem(9px);
-  top: calc(50% + 1px);
-  transform: translateY(-50%);
-}
+  &.has-suffix {
+    padding-right: rem(28px);
+  }
 
-.ebs-chips__prefix .ebs-icon {
-  font-size: rem(12px);
-}
+  &.disabled {
+    cursor: not-allowed;
+  }
 
-.ebs-chips__suffix {
-  position: absolute;
-  right: rem(9px);
-  top: calc(50% + 1px);
-  transform: translateY(-50%);
-}
+  &.disabled,
+  &.disabled:hover {
+    background-color: $border-color;
+    border-color: $border-color;
+    color: $grey-500;
+  }
 
-.ebs-chips__suffix .ebs-icon {
-  font-size: rem(12px);
+  &.disabled,
+  &.disabled:hover {
+    background-color: transparent;
+    border-color: $border-color;
+    color: $border-color;
+  }
 }

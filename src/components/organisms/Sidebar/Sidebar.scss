@@ -15,147 +15,149 @@
 
   @include mq($until: small-desktop) {
     padding-top: rem(80px);
-  }
-}
 
-@include mq($until: small-desktop) {
-  .ebs-sidebar.ebs-sidebar__mobile--closed,
-  .ebs-sidebar.ebs-sidebar__mobile--opened {
-    transition: $transition-time;
-    padding-top: 0;
-  }
+    &__mobile--closed,
+    &__mobile--opened {
+      transition: $transition-time;
+      padding-top: 0;
+    }
 
-  .ebs-sidebar.ebs-sidebar__mobile--closed {
-    transform: translateX(-100%);
-  }
+    &__mobile--closed {
+      transform: translateX(-100%);
+    }
 
-  .ebs-sidebar.ebs-sidebar__mobile--opened {
-    width: $sidebar-width !important;
-    transform: translateX(0);
-  }
-}
-
-.ebs-sidebar__top {
-  margin-top: rem(5px);
-}
-
-.ebs-sidebar.ebs-sidebar--untoggled .ebs-sidebar__options {
-  left: $sidebar-width;
-}
-
-.ebs-sidebar.ebs-sidebar--toggled {
-  width: rem(57px);
-
-  .ebs-sidebar__options .ebs-sidebar__item:hover,
-  .ebs-sidebar__options .ebs-sidebar__item.active,
-  .ebs-sidebar__options .ebs-sidebar__item.invert:hover,
-  .ebs-sidebar__options .ebs-sidebar__item.invert.active:hover {
-    background-color: $primary-color;
-  }
-
-  @media (min-width: 54.84714em) {
-    + .ebs-layout__content-wrapper {
-      width: calc(100% - 4.38462rem) !important;
+    &__mobile--opened {
+      width: $sidebar-width !important;
+      transform: translateX(0);
     }
   }
-}
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__label {
-  animation: fadeOut 0.1s;
-  white-space: nowrap;
-}
-
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__item {
-  padding-right: 0;
-}
-
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__item .ebs-sidebar__text {
-  animation: fadeOut 0.1s;
-  white-space: nowrap;
-}
-
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__item .ebs-sidebar__suffix .ebs-icon {
-  right: $gutter-size / 2;
-}
-
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__options {
-  left: rem(57px);
-}
-
-.ebs-sidebar__bottom {
-  background-color: $sidebar-bottom-background;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin-top: rem(20px);
-  padding-bottom: rem(20px);
-  overflow: hidden;
-
-  @include mq($until: small-desktop) {
-    padding-bottom: rem(120px);
+  &__top {
+    margin-top: rem(5px);
   }
-}
 
-.ebs-sidebar::after {
-  content: '';
-  width: 1px;
-  height: $layout-top-bar-height + 2;
-  border-right: 1px solid $layout-top-bar-toggler-border-color;
-  position: absolute;
-  top: -$layout-top-bar-height - 2;
-  left: $sidebar-width - 2px;
-}
+  &--untoggled &__options {
+    left: $sidebar-width;
+  }
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__item {
-  z-index: 3;
-}
+  &--toggled {
+    width: rem(57px);
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__item.has-options {
-  padding-right: 0;
-}
+    @media (min-width: 54.84714em) {
+      + .ebs-layout__content-wrapper {
+        width: calc(100% - 4.38462rem) !important;
+      }
+    }
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__item.active + .rah-static .ebs-sidebar__options .ebs-sidebar__item {
-  opacity: 1;
-  left: $layout-top-bar-height - 1;
-  transition: all $transition-time;
-}
+    .ebs-sidebar__label {
+      animation: fadeOut 0.1s;
+      white-space: nowrap;
+    }
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__options .ebs-sidebar__item {
-  background-color: $sidebar-background;
-  padding: $gutter-size / 3 $gutter-size;
-  z-index: 2;
-  left: -$sidebar-width;
-  opacity: 0;
-  height: $layout-top-bar-height;
-  width: $sidebar-width - 1;
-  border-top: 1px solid $border-color;
-  border-right: 1px solid $border-color;
-}
+    .ebs-sidebar__item {
+      padding-right: 0;
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__options .ebs-sidebar__item.disabled {
-  background-color: $border-color;
-}
+      .ebs-sidebar__text {
+        animation: fadeOut 0.1s;
+        white-space: nowrap;
+      }
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__options .ebs-sidebar__item.disabled span {
-  color: $grey-500;
-}
+      .ebs-sidebar__suffix .ebs-icon {
+        right: $gutter-size / 2;
+      }
+    }
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__options .ebs-sidebar__item:nth-last-child(2) {
-  border-bottom: 1px solid $border-color;
-}
+    .ebs-sidebar__options {
+      left: rem(57px);
+    }
 
-.ebs-sidebar.ebs-sidebar--toggled .ebs-sidebar__options .ebs-sidebar__item span {
-  @include text-ellipsis;
-}
+    .ebs-sidebar__options .ebs-sidebar__item:hover,
+    .ebs-sidebar__options .ebs-sidebar__item.active,
+    .ebs-sidebar__options .ebs-sidebar__item.invert:hover,
+    .ebs-sidebar__options .ebs-sidebar__item.invert.active:hover {
+      background-color: $primary-color;
+    }
+  }
 
-.ebs-sidebar__mask {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba($black, 0.5);
-  z-index: 4;
-  animation: fadeIn 0.3s forwards;
+  &--toggled &__item {
+    z-index: 3;
+  }
+
+  &--toggled &__item.has-options {
+    padding-right: 0;
+  }
+
+  &--toggled &__item.active + .rah-static &__options &__item {
+    opacity: 1;
+    left: $layout-top-bar-height - 1;
+    transition: all $transition-time;
+  }
+
+  &--toggled &__options &__item {
+    background-color: $sidebar-background;
+    padding: $gutter-size / 3 $gutter-size;
+    z-index: 2;
+    left: -$sidebar-width;
+    opacity: 0;
+    height: $layout-top-bar-height;
+    width: $sidebar-width - 1;
+    border-top: 1px solid $border-color;
+    border-right: 1px solid $border-color;
+
+    &.disabled {
+      background-color: $border-color;
+
+      span {
+        color: $grey-500;
+      }
+    }
+
+    &:nth-last-child(2) {
+      border-bottom: 1px solid $border-color;
+    }
+
+    span {
+      @include text-ellipsis;
+    }
+  }
+
+  &--toggled &__options &__item span {
+    @include text-ellipsis;
+  }
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($black, 0.5);
+    z-index: 4;
+    animation: fadeIn 0.3s forwards;
+  }
+
+  &__bottom {
+    background-color: $sidebar-bottom-background;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-top: rem(20px);
+    padding-bottom: rem(20px);
+    overflow: hidden;
+
+    @include mq($until: small-desktop) {
+      padding-bottom: rem(120px);
+    }
+  }
+
+  &::after {
+    content: '';
+    width: 1px;
+    height: $layout-top-bar-height + 2;
+    border-right: 1px solid $layout-top-bar-toggler-border-color;
+    position: absolute;
+    top: -$layout-top-bar-height - 2;
+    left: $sidebar-width - 2px;
+  }
 }

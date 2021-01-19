@@ -19,29 +19,27 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 
-  &.ebs-loader__spinner-size {
-    &--small {
-      border: 2px solid $grey-500;
-      border-top: 2px solid $primary-color;
-      width: rem(15px);
-      height: rem(15px);
-      top: calc(50% - 5px);
-    }
+  &--size-small {
+    border: 2px solid $grey-500;
+    border-top: 2px solid $primary-color;
+    width: rem(15px);
+    height: rem(15px);
+    top: calc(50% - 5px);
+  }
 
-    &--middle {
-      border: 2px solid $grey-500;
-      border-top: 2px solid $primary-color;
-      width: rem(20px);
-      height: rem(20px);
-      top: calc(50% - 10px);
-    }
+  &--size-middle {
+    border: 2px solid $grey-500;
+    border-top: 2px solid $primary-color;
+    width: rem(20px);
+    height: rem(20px);
+    top: calc(50% - 10px);
+  }
 
-    &--regular {
-      border: 6px solid $grey-500;
-      border-top: 6px solid $primary-color;
-      width: rem(60px);
-      height: rem(60px);
-      top: calc(50% - 20px);
-    }
+  &--size-regular {
+    border: 6px solid $grey-500;
+    border-top: 6px solid $primary-color;
+    width: rem(60px);
+    height: rem(60px);
+    top: calc(50% - 20px);
   }
 }

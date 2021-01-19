@@ -3,77 +3,77 @@
 
   min-width: $badge-min-size;
   min-height: $badge-min-size;
-}
 
-.ebs-badge__container {
-  @include flex-center;
+  &__container {
+    @include flex-center;
 
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 2;
-  background-color: $badge-regular-bg-color;
-  width: $badge-size;
-  height: $badge-size;
-  color: $black;
-  border-radius: $badge-border-radius;
-  padding: $badge-padding;
-  transform: $badge-transform;
-  font-size: $badge-font-size;
-  font-weight: $badge-font-weight;
-}
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    background-color: $badge-regular-bg-color;
+    width: $badge-size;
+    height: $badge-size;
+    color: $black;
+    border-radius: $badge-border-radius;
+    padding: $badge-padding;
+    transform: $badge-transform;
+    font-size: $badge-font-size;
+    font-weight: $badge-font-weight;
 
-.ebs-badge__container.is-text {
-  width: auto;
-  padding: $badge-text-padding;
-  border-radius: $badge-text-border-radius;
-}
+    &--text {
+      width: auto;
+      padding: $badge-text-padding;
+      border-radius: $badge-text-border-radius;
+    }
+  }
 
-.ebs-badge__container + * {
-  margin: 0 5px;
-}
+  &__container + * {
+    margin: 0 5px;
+  }
 
-.ebs-badge span {
-  @include flex-center;
-  position: relative;
-}
+  & span {
+    @include flex-center;
+    position: relative;
 
-.ebs-badge span > .ebs-icon {
-  font-size: $badge-size;
-}
+    > .ebs-icon {
+      font-size: $badge-size;
+    }
+  }
 
-.ebs-badge__type--success .ebs-badge__container {
-  background-color: $badge-success-bg-color;
-  color: $white;
-}
+  &__type--success &__container {
+    background-color: $badge-success-bg-color;
+    color: $white;
+  }
 
-.ebs-badge__type--info .ebs-badge__container {
-  background-color: $badge-info-bg-color;
-  color: $white;
-}
+  &__type--info &__container {
+    background-color: $badge-info-bg-color;
+    color: $white;
+  }
 
-.ebs-badge__type--warning .ebs-badge__container {
-  background-color: $badge-warning-bg-color;
-  color: $white;
-}
+  &__type--warning &__container {
+    background-color: $badge-warning-bg-color;
+    color: $white;
+  }
 
-.ebs-badge__type--danger .ebs-badge__container {
-  background-color: $badge-danger-bg-color;
-  color: $white;
-}
+  &__type--danger &__container {
+    background-color: $badge-danger-bg-color;
+    color: $white;
+  }
 
-.ebs-sidebar__prefix > .ebs-badge {
-  position: absolute;
-  left: rem(20px);
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: rem(18px);
-}
+  .ebs-sidebar__prefix > & {
+    position: absolute;
+    left: rem(20px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: rem(18px);
 
-.ebs-sidebar__prefix > .ebs-badge .ebs-icon {
-  position: unset;
-  left: unset;
-  top: unset;
-  transform: unset;
-  margin-left: 0;
+    .ebs-icon {
+      position: unset;
+      left: unset;
+      top: unset;
+      transform: unset;
+      margin-left: 0;
+    }
+  }
 }

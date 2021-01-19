@@ -5,43 +5,42 @@
 .ebs-action__tooltip {
   min-width: rem($actions-tooltip-min-width);
   padding: rem($actions-tooltip-padding) !important;
-}
 
-.ebs-action__tooltip-title {
-  @include fontMedium;
-  font-size: rem($actions-tooltip-title-font-size);
-  padding: rem($actions-tooltip-title-padding);
-  border-bottom: $actions-border;
-  color: $actions-tooltip-title-color;
-}
+  &-title {
+    @include fontMedium;
+    font-size: rem($actions-tooltip-title-font-size);
+    padding: rem($actions-tooltip-title-padding);
+    border-bottom: $actions-border;
+    color: $actions-tooltip-title-color;
+  }
 
-.ebs-action__tooltip-item {
-  position: relative;
-  // display: inline-block;
-  padding: rem($actions-tooltip-item-padding);
-  font-size: rem($actions-tooltip-item-font-size);
-  @include fontMedium;
-  cursor: pointer;
-  transition: $transition-time;
-}
+  &-item {
+    @include fontMedium;
+    cursor: pointer;
+    position: relative;
+    padding: rem($actions-tooltip-item-padding);
+    font-size: rem($actions-tooltip-item-font-size);
+    transition: $transition-time;
 
-.ebs-action__tooltip-item .loader-display {
-  display: inline-block;
-  margin-right: rem($gutter-size / 2);
-  vertical-align: middle;
-}
+    &:hover {
+      background-color: $background-content;
+      color: $link-hover-color;
+    }
+  }
 
-.ebs-action__tooltip-item:hover {
-  background-color: $background-content;
-  color: $link-hover-color;
-}
+  &-item .loader-display {
+    display: inline-block;
+    margin-right: rem($gutter-size / 2);
+    vertical-align: middle;
+  }
 
-.ebs-action__tooltip-icon {
-  cursor: pointer;
-  display: block;
-  color: $text-color;
-}
+  &-icon {
+    cursor: pointer;
+    display: block;
+    color: $text-color;
 
-.ebs-action__tooltip-icon:hover {
-  color: $primary-color;
+    &:hover {
+      color: $primary-color;
+    }
+  }
 }

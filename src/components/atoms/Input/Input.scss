@@ -4,83 +4,52 @@
   border: 1px solid $border-color;
   background-color: $white;
   border-radius: rem($border-radius);
-}
 
-.ebs-input__wrapper.has-prefix .ebs-input {
-  padding-left: rem(37.5px);
-}
-
-.ebs-input__wrapper.has-suffix .ebs-input {
-  padding-right: rem(37.5px);
-}
-
-.ebs-input__wrapper--active,
-.ebs-input__wrapper.focus {
-  border-color: $primary-color;
-  background-color: $white !important;
-
-  .ebs-input {
-    color: $heading-color;
+  &.has-prefix .ebs-input {
+    padding-left: rem(37.5px);
   }
-}
 
-.ebs-input__wrapper--unactive {
-  border-color: $border-color;
-  background-color: $white;
-}
+  &.has-suffix .ebs-input {
+    padding-right: rem(37.5px);
+  }
 
-.ebs-input__wrapper.has-error {
-  border-color: $danger-color;
-  background-color: $white;
-}
+  &--active,
+  &.focus {
+    border-color: $primary-color;
+    background-color: $white !important;
 
-.ebs-input__wrapper.disabled {
-  border-color: $grey-500;
-  background-color: $white;
-
-  .ebs-input {
-    color: $grey-500;
-    cursor: not-allowed;
-
-    @include placeholder {
-      color: $grey-500;
+    .ebs-input {
+      color: $heading-color;
     }
   }
-}
 
-.ebs-input__wrapper.ebs-input__style-grey {
-  background-color: $grey-50;
-}
-
-.ebs-input__prefix,
-.ebs-input__suffix {
-  position: absolute;
-  left: rem(10px);
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-
-  .ebs-icon {
-    font-size: rem(16px);
+  &--unactive {
+    border-color: $border-color;
+    background-color: $white;
   }
-}
 
-.ebs-input__prefix.clickable,
-.ebs-input__suffix.clickable {
-  cursor: pointer;
-  z-index: 2;
-}
+  &.has-error {
+    border-color: $danger-color;
+    background-color: $white;
+  }
 
-.ebs-input__prefix.not-clickable,
-.ebs-input__suffix.not-clickable {
-  cursor: pointer;
-  z-index: 2;
-}
+  &.disabled {
+    border-color: $grey-500;
+    background-color: $white;
 
-.ebs-input__suffix {
-  left: inherit;
-  right: rem(10px);
+    .ebs-input {
+      color: $grey-500;
+      cursor: not-allowed;
+
+      @include placeholder {
+        color: $grey-500;
+      }
+    }
+  }
+
+  &.ebs-input__style-grey {
+    background-color: $grey-50;
+  }
 }
 
 // input html element
@@ -98,13 +67,44 @@
   @include placeholder {
     color: $text-color-secondary;
   }
-}
 
-.ebs-input:focus {
-  outline: none !important;
-}
+  &:focus {
+    outline: none !important;
+  }
 
-.ebs-input-container {
-  position: relative;
-  width: 100%;
+  &-container {
+    position: relative;
+    width: 100%;
+  }
+
+  &__prefix,
+  &__suffix {
+    position: absolute;
+    left: rem(10px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+
+    .ebs-icon {
+      font-size: rem(16px);
+    }
+  }
+
+  &__prefix.clickable,
+  &__suffix.clickable {
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &__prefix.not-clickable,
+  &__suffix.not-clickable {
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &__suffix {
+    left: inherit;
+    right: rem(10px);
+  }
 }

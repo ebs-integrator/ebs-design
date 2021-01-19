@@ -1,15 +1,15 @@
 .ebs-icon {
   font-size: rem(16px);
-}
 
-.ebs-icon__type-arrow-right {
-  transform: rotate(90deg);
-}
+  &__type-arrow-right {
+    transform: rotate(90deg);
+  }
 
-.ebs-icon__type-arrow--bottom {
-  transform: rotate(180deg);
-}
+  &__type-arrow--bottom {
+    transform: rotate(180deg);
+  }
 
-.ebs-icon__type-arrow--left {
-  transform: rotate(270deg);
+  &__type-arrow--left {
+    transform: rotate(270deg);
+  }
 }

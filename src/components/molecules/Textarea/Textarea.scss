@@ -1,59 +1,58 @@
 .ebs-textarea {
-  width: 100%;
-  border: 1px solid $border-color;
+  @include fontRegular;
+  font-size: rem(14px);
+  padding: rem(10px);
   min-height: rem(80px);
+  width: 100%;
   outline: none;
+  border: 1px solid $border-color;
   border-radius: rem($border-radius);
   background-color: $white;
   color: $heading-color;
 
-  @include fontRegular;
-  font-size: rem(14px);
-  padding: rem(10px);
-
   @include placeholder {
     color: $text-color-secondary;
   }
-}
 
-.ebs-textarea.has-value {
-  border-color: $primary-color;
-}
+  &.has-value {
+    border-color: $primary-color;
+  }
 
-.ebs-textarea.has-error {
-  border-color: $danger-color;
-}
+  &.has-error {
+    border-color: $danger-color;
+  }
 
-.ebs-textarea.disabled {
-  border-color: $grey-500;
-}
+  &.disabled {
+    border-color: $grey-500;
+  }
 
-// Label
-.ebs-textarea__label {
-  @include fontRegular;
+  // Label
+  &__label {
+    @include fontRegular;
 
-  color: $text-color;
-  margin-bottom: rem(5px);
-  font-size: rem(12px);
-}
+    color: $text-color;
+    margin-bottom: rem(5px);
+    font-size: rem(12px);
+  }
 
-.ebs-textarea__label.disabled {
-  color: $grey-500;
-}
+  &__label.disabled {
+    color: $grey-500;
+  }
 
-// Extra
-.ebs-textarea__extra {
-  @include fontRegular;
+  // Extra
+  &__extra {
+    @include fontRegular;
 
-  color: $text-color-secondary;
-  margin-top: rem(2.5px);
-  font-size: rem(10px);
-}
+    color: $text-color-secondary;
+    margin-top: rem(2.5px);
+    font-size: rem(10px);
+  }
 
-.ebs-textarea__extra.has-error {
-  color: $danger-color;
-}
+  &__extra.has-error {
+    color: $danger-color;
+  }
 
-.ebs-textarea__extra.disabled {
-  color: $grey-500;
+  &__extra.disabled {
+    color: $grey-500;
+  }
 }
