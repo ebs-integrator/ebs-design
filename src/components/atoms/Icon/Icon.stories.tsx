@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { iconsList } from './iconsList';
 import { Icon } from './Icon';
-import IconSvg from 'resources/svg/example.svg';
 import { exportStory } from '../../../libs';
+// import IconSvg from 'resources/svg/example.svg';
 
 export default {
   title: exportStory('Icon', 'atoms'),
@@ -24,6 +24,7 @@ export const Regular = (): React.ReactElement => (
   </div>
 );
 
-export const Custom = (): React.ReactElement => {
-  return <Icon type="star" component={IconSvg} />;
-};
+// FIXME: Storybook build fail on importing svg
+// export const Custom = (): React.ReactElement => {
+//   return <Icon type="star" component={IconSvg} />;
+// };

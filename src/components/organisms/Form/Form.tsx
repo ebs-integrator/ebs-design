@@ -1,33 +1,28 @@
 import * as React from 'react';
 import cn from 'classnames';
+import RCForm, { FormProps, Field } from 'rc-field-form';
 import { validate } from 'libs/object/object';
 import { Extra, Label } from 'components/atoms';
 import { ExtraStatus } from 'components/atoms/Extra/Extra';
 
 export type FormType = 'regular' | 'inline';
 
-interface Props {
+interface Props extends FormProps {
   type?: FormType;
-  onSubmit?: () => void;
   className?: string;
-  id?: string;
 }
 
-export const Form: React.FC<Props> = ({ onSubmit, type = 'regular', className, id, children }) => {
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>): void => {
-    if (e.preventDefault) e.preventDefault();
-
-    return onSubmit && onSubmit();
-  };
-
+export const Form: React.FC<FormProps> = ({ className, children, ...props }) => {
   return (
-    <form className={cn(`ebs-form`, `ebs-form-${type}`, className)} onSubmit={onSubmitHandler} id={id}>
+    <RCForm className={cn(`ebs-form`, className)} {...props}>
       {children}
-    </form>
+    </RCForm>
   );
 };
 
 interface ItemProps {
+  name?: string | number | (string | number)[];
+  children?: any;
   itemClass?: string;
   className?: string;
   labelWidth?: React.ReactNode;
@@ -40,6 +35,7 @@ interface ItemProps {
 }
 
 export const FormItem: React.FC<ItemProps> = ({
+  name,
   itemClass,
   className,
   labelWidth,
@@ -68,7 +64,7 @@ export const FormItem: React.FC<ItemProps> = ({
       )}
 
       <div className={cn(`ebs-form__children`, className, { 'has-error': extra && extraStatus === 'danger' })}>
-        {children}
+        <Field name={name}>{children}</Field>
       </div>
 
       {extra && <Extra status={extraStatus} text={Array.isArray(extra) ? extra.join(',') : extra} />}
