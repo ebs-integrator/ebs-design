@@ -14,7 +14,9 @@ export const Badge: React.FC<Props> = ({ count, text, type = 'regular', classNam
   return (
     <div className="ebs-badge">
       <span className={cn(`ebs-badge__type--${type}`, className)}>
-        {(count || text) && <div className={cn('ebs-badge__container', { 'is-text': text })}>{count || text}</div>}
+        {(count || text) && (
+          <div className={cn('ebs-badge__container', { 'ebs-badge__container--text': text })}>{count || text}</div>
+        )}
         {children}
       </span>
     </div>

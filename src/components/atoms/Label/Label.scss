@@ -4,100 +4,95 @@
   white-space: nowrap;
   @include fontRegular;
 
-  &.ebs-label {
-    &-regular {
-      font-size: rem(12px);
-      margin-bottom: rem(5px);
-      color: $text-color;
+  &--regular {
+    font-size: rem(12px);
+    margin-bottom: rem(5px);
+    color: $text-color;
+  }
+
+  &--circle,
+  &--fill {
+    display: inline;
+    font-size: rem(10px);
+    padding: rem(5px 12px);
+    border: 1px solid $text-color;
+    border-radius: rem(12px);
+  }
+
+  &--circle {
+    color: $text-color;
+  }
+
+  &--fill {
+    color: $white !important;
+    background: $text-color;
+    border-radius: rem(12px);
+
+    &.ebs-label--status-success {
+      background-color: $success-color;
     }
 
-    &-circle,
-    &-fill {
-      display: inline;
-      font-size: rem(10px);
-      padding: rem(5px 12px);
-      border: 1px solid $text-color;
-      border-radius: rem(12px);
+    &.ebs-label--status-warning {
+      background-color: $warning-color;
     }
 
-    &-circle {
-      color: $text-color;
+    &.ebs-label--status-danger {
+      background-color: $danger-color;
     }
 
-    &-fill {
-      color: $white !important;
-      background: $text-color;
-      border-radius: rem(12px);
+    &.ebs-label--status-info {
+      background-color: $info-color;
+    }
 
-      &.ebs-label__status {
-        &--success {
-          background-color: $success-color;
-        }
+    &.ebs-label--status-text {
+      background-color: $text-color;
+    }
 
-        &--warning {
-          background-color: $warning-color;
-        }
-
-        &--danger {
-          background-color: $danger-color;
-        }
-
-        &--info {
-          background-color: $info-color;
-        }
-
-        &--text {
-          background-color: $text-color;
-        }
-      }
-
-      &.disabled {
-        cursor: not-allowed;
-        color: $grey-500 !important;
-        background: $grey-100;
-      }
+    &.disabled {
+      cursor: not-allowed;
+      color: $grey-500 !important;
+      background: $grey-100;
     }
   }
 
-  &.ebs-label__status {
-    &--success {
-      color: $success-color;
-      border-color: $success-color;
-    }
+  &--status-success {
+    color: $success-color;
+    border-color: $success-color;
+  }
 
-    &--warning {
-      color: $warning-color;
-      border-color: $warning-color;
-    }
+  &--status-warning {
+    color: $warning-color;
+    border-color: $warning-color;
+  }
 
-    &--danger {
+  &--status-danger {
+    color: $danger-color;
+    border-color: $danger-color;
+  }
+
+  &--status-danger.ebs-label--icon {
+    background: $white;
+    border-color: $white;
+
+    .ebs-icon {
       color: $danger-color;
-      border-color: $danger-color;
-
-      &.is-icon-info {
-        background: $white;
-        border-color: $white;
-        .ebs-icon {
-          color: $danger-color;
-        }
-      }
     }
+  }
 
-    &--info {
-      color: $info-color;
-      border-color: $info-color;
-    }
+  &--status-info {
+    color: $info-color;
+    border-color: $info-color;
+  }
 
-    &--text {
-      color: $text-color;
-      border-color: $text-color;
-    }
+  &--status-text {
+    color: $text-color;
+    border-color: $text-color;
+  }
 
-    &--primary {
-      background-color: $primary-000;
-      color: $primary-color;
-      border-color: $primary-color;
-    }
+  &--status-primary {
+    background-color: $primary-000;
+    color: $primary-color;
+    border-color: $primary-color;
   }
 
   &.disabled {
@@ -107,16 +102,16 @@
   }
 
   &.has-prefix,
-  &.has-prefix.ebs-label__circle {
+  &.has-prefix.ebs-label--circle {
     padding-left: rem(22.5px);
   }
 
   &.has-suffix,
-  &.has-suffix.ebs-label__circle {
+  &.has-suffix.ebs-label--circle {
     padding-right: rem(27.5px);
   }
 
-  &.is-icon {
+  &--icon {
     @include flex-center;
     width: $gutter-size;
     height: $gutter-size;
@@ -125,8 +120,8 @@
     margin-right: $gutter-size / 2;
   }
 
-  .ebs-label__prefix,
-  .ebs-label__suffix {
+  &__prefix,
+  &__suffix {
     position: absolute;
     top: calc(50% + 1px);
     transform: translateY(-50%);
@@ -140,11 +135,11 @@
     }
   }
 
-  .ebs-label__prefix {
+  &__prefix {
     left: rem(7.5px);
   }
 
-  .ebs-label__suffix {
+  &__suffix {
     right: rem(7.5px);
   }
 }

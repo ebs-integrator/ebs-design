@@ -1,56 +1,49 @@
 .ebs-avatar {
+  @include flex-center;
   position: relative;
   border-radius: $border-radius;
-  @include flex-center;
 
-  &__type {
-    &--regular {
-      color: $primary-color;
-      background-color: $grey-100;
-    }
-
-    &--primary {
-      color: $white;
-      background-color: $primary-color;
-    }
-
-    &--white {
-      color: $text-color;
-      background-color: $white;
-    }
-  }
-
-  &.circle {
+  &--circle,
+  &--circle &__img {
     border-radius: 50%;
-
-    .ebs-avatar__img {
-      border-radius: 50%;
-    }
   }
 
-  &.ebs-avatar__size {
-    &--small {
-      min-width: $avatar-size-small;
-      width: $avatar-size-small;
-      height: $avatar-size-small;
-
-      .ebs-avatar-short-alt {
-        font-size: $avatar-font-small;
-      }
-    }
-
-    &--big {
-      min-width: $avatar-size-big;
-      width: $avatar-size-big;
-      height: $avatar-size-big;
-
-      .ebs-avatar-short-alt {
-        font-size: $avatar-font-big;
-      }
-    }
+  &--regular {
+    color: $primary-color;
+    background-color: $grey-100;
   }
 
-  .ebs-avatar__short-alt {
+  &--primary {
+    color: $white;
+    background-color: $primary-color;
+  }
+
+  &--white {
+    color: $text-color;
+    background-color: $white;
+  }
+
+  &--small {
+    min-width: $avatar-size-small;
+    width: $avatar-size-small;
+    height: $avatar-size-small;
+  }
+
+  &--small &-short-alt {
+    font-size: $avatar-font-small;
+  }
+
+  &--big {
+    min-width: $avatar-size-big;
+    width: $avatar-size-big;
+    height: $avatar-size-big;
+  }
+
+  &--big &-short-alt {
+    font-size: $avatar-font-big;
+  }
+
+  &__short-alt {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -59,7 +52,7 @@
     white-space: nowrap;
   }
 
-  .ebs-avatar__img {
+  &__img {
     position: relative;
     width: 100%;
     height: 100%;
@@ -68,7 +61,7 @@
     object-fit: cover;
   }
 
-  .ebs-avatar__status {
+  &__status {
     position: absolute;
     bottom: rem(-2.5px);
     right: rem(-2.5px);
@@ -85,65 +78,64 @@
       background-color: $primary-color;
     }
 
-    &--uanctive {
+    &--inactive {
       background-color: $avatar-status-uanctive;
     }
   }
-}
 
-.ebs-avatar__card {
-  display: inline-flex;
-  align-items: center;
-  background-color: #f9f9f9;
-  border: 1px solid #dfddd6;
-  border-radius: $border-radius;
+  &__card {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #dfddd6;
+    border-radius: $border-radius;
 
-  .ebs-avatar {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    height: rem(23px);
-    width: rem(23px);
+    &-alt {
+      color: #333;
+      padding: rem(0 $gutter-size / 2);
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      @include fontMedium;
+      font-size: rem(9px);
+    }
 
     img {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
+
+    .ebs-avatar {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      height: rem(23px);
+      width: rem(23px);
+    }
   }
 
-  .ebs-avatar__card-alt {
-    color: #333;
-    padding: rem(0 $gutter-size / 2);
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-    @include fontMedium;
-    font-size: rem(9px);
-  }
-}
+  &__inline {
+    display: flex;
+    align-items: center;
+    text-align: left;
 
-.ebs-avatar__inline {
-  display: flex;
-  align-items: center;
-
-  .ebs-avatar__inline-alt {
-    margin-left: $gutter-size;
-    @include fontSemiBold;
-    font-size: rem(12px);
-    color: $black;
-  }
-
-  &.is-white .ebs-avatar__inline-alt {
-    color: $white;
-  }
-
-  .ebs-avatar__inline-description {
-    font-size: rem(10px);
-    color: $avatar-description-color;
-  }
-
-  &.is-reversed {
-    .ebs-avatar__inline-alt {
+    &--reversed &-alt {
       margin-left: 0;
       margin-right: $gutter-size;
+    }
+
+    &-alt {
+      margin-left: $gutter-size;
+      @include fontSemiBold;
+      font-size: rem(12px);
+      color: $black;
+    }
+
+    &--white &-alt {
+      color: $white;
+    }
+
+    &-description {
+      font-size: rem(10px);
+      color: $avatar-description-color;
     }
   }
 }

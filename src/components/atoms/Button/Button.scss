@@ -1,211 +1,206 @@
 // fade
 @include fadeBackground('regularFade', #000);
 
-.ebs-button__wrapper {
-  position: relative;
-  display: inline-block;
-  text-align: center;
-  border-radius: rem($border-radius);
-  transition: $transition-base;
-  border: 1px solid transparent;
+// button
+.ebs-button {
+  @include fontMedium;
+  cursor: pointer;
+  width: 100%;
+  font-size: rem(13px);
+  line-height: $btn-line-height;
+  border-color: transparent;
+  background: transparent;
+  padding: 0;
+  outline: none !important;
 
-  // button
-  .ebs-button {
-    width: 100%;
-    cursor: pointer;
-    font-size: rem(13px);
-    line-height: $btn-line-height;
-    border-color: transparent;
-    background: transparent;
-    padding: 0;
-    outline: none !important;
-    @include fontMedium;
-
-    &-icon {
-      line-height: 0;
-    }
+  &--is-icon {
+    @include flex-center;
+    height: 100%;
   }
 
-  // button size
-  &.ebs-button__size {
-    &--large {
-      border-radius: $btn-border-radius-lg;
+  &--prefix button.ebs-button {
+    padding-left: rem(30px);
+  }
 
-      .ebs-button {
-        padding: rem($btn-padding-y-lg $btn-padding-x-lg);
-        font-weight: $btn-font-weight-lg;
-        font-size: rem($btn-font-size-lg);
-      }
-    }
+  &--icon {
+    display: flex;
+    align-items: center;
+  }
 
-    &--medium {
-      border-radius: $btn-border-radius;
-
-      .ebs-button {
-        padding: rem($btn-padding-y $btn-padding-x);
-        font-weight: $btn-font-weight;
-        font-size: rem($btn-font-size);
-      }
-    }
-
-    &--small {
-      border-radius: $btn-border-radius-sm;
-
-      .ebs-button {
-        padding: rem($btn-padding-y-sm $btn-padding-x-sm);
-        font-weight: $btn-font-weight-sm;
-        font-size: rem($btn-font-size-sm);
-        line-height: $btn-line-height-sm;
-      }
-    }
+  &--block {
+    width: 100%;
+    display: block;
   }
 
   // button type (Color)
-  &.ebs-button__type {
-    &--primary {
+  &--primary {
+    border-color: $primary-color;
+    background-color: $primary-color;
+    color: $white;
+
+    &:hover,
+    &.hover {
+      border-color: $primary-600;
+      background-color: $primary-600;
+    }
+
+    &:active,
+    &.active {
+      border-color: $primary-700;
+      background-color: $primary-700;
+    }
+  }
+
+  &--primary & {
+    color: $white;
+
+    :hover {
+      color: $white;
+    }
+  }
+
+  &--fill {
+    border-color: $primary-100;
+    background-color: $primary-100;
+    color: $primary-color;
+
+    &:hover,
+    &.hover {
       border-color: $primary-color;
       background-color: $primary-color;
       color: $white;
 
       .ebs-button {
         color: $white;
-
-        &:hover {
-          color: $white;
-        }
-      }
-
-      &:hover,
-      &.hover {
-        border-color: $primary-600;
-        background-color: $primary-600;
-      }
-
-      &:active,
-      &.active {
-        border-color: $primary-700;
-        background-color: $primary-700;
       }
     }
 
-    &--fill {
-      border-color: $primary-100;
-      background-color: $primary-100;
-      color: $primary-color;
+    &:active,
+    &.active {
+      border-color: $primary-600;
+      background-color: $primary-600;
+      color: $white;
 
       .ebs-button {
-        color: $primary-color;
-      }
-
-      &:hover,
-      &.hover {
-        border-color: $primary-color;
-        background-color: $primary-color;
         color: $white;
-
-        & .ebs-button {
-          color: $white;
-        }
-      }
-
-      &:active,
-      &.active {
-        border-color: $primary-600;
-        background-color: $primary-600;
-        color: $white;
-
-        & .ebs-button {
-          color: $white;
-        }
       }
     }
+  }
 
-    &--ghost {
-      background-color: $btn-type-ghost-background;
-      border-color: $btn-type-ghost-border-color;
-      color: $btn-type-ghost-color;
+  &--fill & {
+    color: $primary-color;
+  }
+
+  &--ghost.ebs-button__wrapper {
+    background-color: $btn-type-ghost-background;
+    border-color: $btn-type-ghost-border-color;
+    color: $btn-type-ghost-color;
+
+    &:hover,
+    &.hover {
+      border-color: $btn-type-ghost-hover-border-color;
+      background-color: $btn-type-ghost-hover-background;
+      color: $btn-type-ghost-hover-color;
 
       .ebs-button {
-        color: $btn-type-ghost-color;
-      }
-
-      &:hover,
-      &.hover {
-        border-color: $btn-type-ghost-hover-border-color;
-        background-color: $btn-type-ghost-hover-background;
         color: $btn-type-ghost-hover-color;
-
-        & .ebs-button {
-          color: $btn-type-ghost-hover-color;
-        }
       }
+    }
 
-      &:active,
-      &.active {
-        border-color: $btn-type-ghost-active-border-color;
-        background-color: $btn-type-ghost-active-background;
+    &:active,
+    &.active {
+      border-color: $btn-type-ghost-active-border-color;
+      background-color: $btn-type-ghost-active-background;
+      color: $btn-type-ghost-active-color;
+
+      .ebs-button {
         color: $btn-type-ghost-active-color;
-
-        & .ebs-button {
-          color: $btn-type-ghost-active-color;
-        }
       }
     }
+  }
 
-    &--text {
+  &--ghost & {
+    color: $btn-type-ghost-color;
+  }
+
+  &--text {
+    background-color: transparent;
+    color: $primary-color;
+
+    &:hover,
+    &.hover {
       background-color: transparent;
-      color: $primary-color;
 
       .ebs-button {
-        color: $primary-color;
-      }
-
-      &:hover,
-      &.hover {
-        background-color: transparent;
-
-        & .ebs-button {
-          color: $primary-600;
-        }
-      }
-
-      &:active,
-      &.active {
-        background-color: transparent;
-
-        & .ebs-button {
-          color: $primary-700;
-        }
+        color: $primary-600;
       }
     }
 
-    &--disabled {
-      background-color: $border-color;
+    &:active,
+    &.active {
+      background-color: transparent;
 
       .ebs-button {
-        cursor: not-allowed;
-        color: $grey-500;
+        color: $primary-700;
       }
     }
   }
 
-  &.has-prefix {
+  &--text & {
+    color: $primary-color;
+  }
+
+  &--disabled {
+    background-color: $border-color;
+
     .ebs-button {
-      padding-left: rem(30px);
+      cursor: not-allowed;
+      color: $grey-500;
     }
   }
 
-  &.has-icon {
-    display: flex;
-    align-items: center;
+  // button size
+  &--large {
+    border-radius: $btn-border-radius-lg;
   }
 
-  &.block {
-    width: 100%;
-    display: block;
+  &--large & {
+    padding: rem($btn-padding-y-lg $btn-padding-x-lg);
+    font-weight: $btn-font-weight-lg;
+    font-size: rem($btn-font-size-lg);
   }
 
-  .ebs-button__loading {
+  &--medium {
+    border-radius: $btn-border-radius;
+  }
+
+  &--medium & {
+    padding: rem($btn-padding-y $btn-padding-x);
+    font-weight: $btn-font-weight;
+    font-size: rem($btn-font-size);
+  }
+
+  &--small {
+    border-radius: $btn-border-radius-sm;
+  }
+
+  &--small & {
+    padding: rem($btn-padding-y-sm $btn-padding-x-sm);
+    font-weight: $btn-font-weight-sm;
+    font-size: rem($btn-font-size-sm);
+    line-height: $btn-line-height-sm;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    border-radius: rem($border-radius);
+    transition: $transition-base;
+    border: 1px solid transparent;
+  }
+
+  &__loading {
     position: absolute;
     left: 0;
     top: 0;
@@ -214,10 +209,8 @@
     border-radius: rem($border-radius);
     pointer-events: none;
 
-    &.ebs-button__loading {
-      &-regular {
-        animation: regularFade 0.25s forwards;
-      }
+    &-regular {
+      animation: regularFade 0.25s forwards;
     }
 
     .ebs-loader__spinner {
@@ -228,7 +221,7 @@
     }
   }
 
-  .ebs-button__prefix {
+  &__prefix {
     position: absolute;
     left: rem(10px);
     top: 50%;
@@ -237,27 +230,25 @@
     display: flex;
     align-items: center;
   }
-}
 
-.ebs-button__group {
-  display: flex;
-  flex-wrap: wrap;
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
 
-  > .ebs-button__wrapper {
-    &:first-child {
+    .ebs-button__wrapper:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
 
-    &:not(:first-child):not(:last-child) {
+    .ebs-button__wrapper:not(:first-child):not(:last-child) {
       border-radius: 0;
     }
 
-    &:not(:last-child) {
+    .ebs-button__wrapper:not(:last-child) {
       border-right: none;
     }
 
-    &:last-child {
+    .ebs-button__wrapper:last-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }

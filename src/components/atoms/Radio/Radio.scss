@@ -4,25 +4,23 @@
     flex-wrap: wrap;
   }
 
-  &.ebs-radio__align {
-    &--left {
-      .ebs-radio {
-        right: inherit;
-        left: 0;
-      }
+  &.ebs-radio__align--left {
+    .ebs-radio {
+      right: inherit;
+      left: 0;
 
-      .ebs-radio__text {
+      &__text {
         padding-left: rem(26px);
       }
     }
+  }
 
-    &--right {
-      .ebs-radio {
-        left: inherit;
-        right: 0;
-      }
+  &.ebs-radio__align--right {
+    .ebs-radio {
+      left: inherit;
+      right: 0;
 
-      .ebs-radio__text {
+      &__text {
         padding-right: rem(26px);
         width: rem(160px);
       }
@@ -34,6 +32,11 @@
 
     &:not(:last-child) {
       margin-bottom: rem(5px);
+    }
+
+    &.has-text .ebs-radio {
+      position: absolute;
+      top: rem(-2px);
     }
 
     &.disabled {
@@ -49,7 +52,7 @@
       .ebs-radio__input:hover ~ .ebs-radio {
         background-color: transparent;
 
-        .ebs-radio__dot {
+        &__dot {
           border: 1px solid $border-color;
           box-shadow: none;
           background-color: transparent;
@@ -60,78 +63,71 @@
       .ebs-radio__input:checked:hover ~ .ebs-radio {
         background-color: transparent;
 
-        .ebs-radio__dot {
+        &__dot {
           border: 1px solid $grey-500;
           box-shadow: 0px 0px 0px 3px $white inset;
           background-color: $grey-500;
         }
       }
     }
+  }
 
-    &.has-text .ebs-radio {
-      position: absolute;
-      top: rem(-2px);
-    }
+  .ebs-radio__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
 
-    .ebs-radio__input {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 100%;
-      opacity: 0;
-      cursor: pointer;
+    &:hover ~ .ebs-radio {
+      background-color: $primary-100;
 
-      &:hover ~ .ebs-radio {
+      &__dot {
+        border-color: $primary-color;
         background-color: $primary-100;
-
-        .ebs-radio__dot {
-          border-color: $primary-color;
-          background-color: $primary-100;
-        }
       }
     }
 
-    .ebs-radio__input:checked {
-      &:hover ~ .ebs-radio {
-        background-color: $primary-100;
+    &:checked:hover ~ .ebs-radio {
+      background-color: $primary-100;
 
-        .ebs-radio__dot {
-          border-color: $primary-color;
-          background-color: $primary-color;
-          box-shadow: 0px 0px 0px 3px $primary-100 inset;
-        }
-      }
-
-      ~ .ebs-radio .ebs-radio__dot {
+      &__dot {
         border-color: $primary-color;
         background-color: $primary-color;
-        box-shadow: 0px 0px 0px 3px $white inset;
+        box-shadow: 0px 0px 0px 3px $primary-100 inset;
       }
     }
 
-    .ebs-radio {
-      transition: all $transition-time;
-      width: rem(20px);
-      height: rem(20px);
-      background-color: transparent;
-      pointer-events: none;
+    &:checked ~ .ebs-radio .ebs-radio__dot {
+      border-color: $primary-color;
+      background-color: $primary-color;
+      box-shadow: 0px 0px 0px 3px $white inset;
+    }
+  }
+
+  .ebs-radio {
+    transition: all $transition-time;
+    width: rem(20px);
+    height: rem(20px);
+    background-color: transparent;
+    pointer-events: none;
+    border-radius: 50%;
+
+    &__dot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: rem(16px);
+      height: rem(16px);
+      border: 1px solid $border-color;
       border-radius: 50%;
-
-      .ebs-radio__dot {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: rem(16px);
-        height: rem(16px);
-        border: 1px solid $border-color;
-        border-radius: 50%;
-        background-color: transparent;
-      }
+      background-color: transparent;
     }
 
-    .ebs-radio__text {
+    &__text {
       color: $text-color;
       font-size: rem(14px);
     }

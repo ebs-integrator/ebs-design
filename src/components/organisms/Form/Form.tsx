@@ -10,9 +10,10 @@ export type FormType = 'regular' | 'inline';
 interface Props extends FormProps {
   type?: FormType;
   className?: string;
+  onSubmit?: () => void;
 }
 
-export const Form: React.FC<FormProps> = ({ className, children, ...props }) => {
+export const Form: React.FC<Props> = ({ className, children, ...props }) => {
   return (
     <RCForm className={cn(`ebs-form`, className)} {...props}>
       {children}

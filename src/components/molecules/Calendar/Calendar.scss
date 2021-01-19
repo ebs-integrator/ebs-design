@@ -4,10 +4,10 @@
   display: flex;
   align-items: center;
 
-  & > div:last-child,
-  & > div:first-child:not(:last-child),
-  & .ebs-calendar__wrapper > div:last-child,
-  & .ebs-calendar__wrapper > div:first-child:not(:last-child) {
+  > div:last-child,
+  > div:first-child:not(:last-child),
+  .ebs-calendar__wrapper > div:last-child,
+  .ebs-calendar__wrapper > div:first-child:not(:last-child) {
     margin-right: rem(10px);
   }
 }
@@ -49,71 +49,67 @@
     background-color: $white;
   }
 
-  &.ebs-calendar__type {
-    &-period {
-      .ebs-calendar__input-wrapper .react-datepicker-wrapper {
-        &:not(:first-child) {
-          .ebs-calendar {
-            border-left: inherit;
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-          }
-        }
+  &.ebs-calendar__type-period .ebs-calendar__input-wrapper .react-datepicker-wrapper {
+    &:not(:first-child) {
+      .ebs-calendar {
+        border-left: inherit;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
 
-        &:not(:last-child) {
-          .ebs-calendar {
-            padding-right: rem(10px);
-            border-right: inherit;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-          }
+    &:not(:last-child) {
+      .ebs-calendar {
+        padding-right: rem(10px);
+        border-right: inherit;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
 
-          .react-datepicker__input-container:before {
-            display: none;
-          }
-        }
+      .react-datepicker__input-container:before {
+        display: none;
       }
     }
   }
+}
 
-  .ebs-calendar__input-wrapper {
-    display: flex;
+.ebs-calendar__input-wrapper {
+  display: flex;
+  width: 100%;
+  margin: 0;
+
+  .react-datepicker-wrapper {
     width: 100%;
-    margin: 0;
+  }
 
-    .react-datepicker-wrapper {
-      width: 100%;
+  .react-datepicker__input-container {
+    position: relative;
+
+    &:before {
+      content: '';
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M12 3.33325H3.99996C3.26358 3.33325 2.66663 3.93021 2.66663 4.66659V12.6666C2.66663 13.403 3.26358 13.9999 3.99996 13.9999H12C12.7363 13.9999 13.3333 13.403 13.3333 12.6666V4.66659C13.3333 3.93021 12.7363 3.33325 12 3.33325Z' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6666 2V4.66667' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M5.33337 2V4.66667' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2.66663 7.33325H13.3333' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7.33337 10H8.00004' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 10V12' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      width: rem(35px);
+      height: 100%;
+      position: absolute;
+      background-repeat: no-repeat;
+      background-position: center;
+      right: 0;
     }
+  }
 
-    .react-datepicker__input-container {
-      position: relative;
+  .ebs-calendar {
+    width: 100%;
+    height: rem(40px);
+    border: 1px solid $border-color;
+    border-radius: rem($border-radius);
+    outline: none;
+    font-size: rem(14px);
+    padding: rem(10px);
+    padding-right: rem(35px);
+    color: $heading-color;
 
-      &:before {
-        content: '';
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M12 3.33325H3.99996C3.26358 3.33325 2.66663 3.93021 2.66663 4.66659V12.6666C2.66663 13.403 3.26358 13.9999 3.99996 13.9999H12C12.7363 13.9999 13.3333 13.403 13.3333 12.6666V4.66659C13.3333 3.93021 12.7363 3.33325 12 3.33325Z' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6666 2V4.66667' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M5.33337 2V4.66667' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2.66663 7.33325H13.3333' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7.33337 10H8.00004' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 10V12' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
-        width: rem(35px);
-        height: 100%;
-        position: absolute;
-        background-repeat: no-repeat;
-        background-position: center;
-        right: 0;
-      }
-    }
-
-    .ebs-calendar {
-      width: 100%;
-      height: rem(40px);
-      border: 1px solid $border-color;
-      border-radius: rem($border-radius);
-      outline: none;
-      font-size: rem(14px);
-      padding: rem(10px);
-      padding-right: rem(35px);
-      color: $heading-color;
-
-      @include placeholder {
-        color: $text-color-secondary;
-      }
+    @include placeholder {
+      color: $text-color-secondary;
     }
   }
 }
@@ -126,30 +122,28 @@
   }
 
   .react-datepicker {
+    @include elevation-2;
     border: none;
     display: flex;
-    @include elevation-2;
 
     &__time-list,
     &__year-dropdown {
       @include hiddenScroll;
     }
 
-    &__time-list-item {
-      &:hover {
-        background-color: $primary-100 !important;
-        color: $text-color;
-      }
+    &__time-list-item:hover {
+      background-color: $primary-100 !important;
+      color: $text-color;
+    }
 
-      &--disabled {
-        display: none !important;
-      }
+    &__time-list-item--disabled {
+      display: none !important;
+    }
 
-      &--selected,
-      &--selected:hover {
-        background-color: $primary-color !important;
-        color: $white;
-      }
+    &__time-list-item--selected,
+    &__time-list-item--selected:hover {
+      background-color: $primary-color !important;
+      color: $white;
     }
 
     &__navigation {
@@ -163,10 +157,10 @@
       width: rem(15px);
       height: rem(15px);
       border: none;
+    }
 
-      &--previous {
-        transform: rotate(180deg);
-      }
+    &__navigation--previous {
+      transform: rotate(180deg);
     }
 
     // arrow
@@ -192,14 +186,14 @@
 
     &__navigation--years {
       top: unset;
+    }
 
-      &-upcoming {
-        transform: rotate(-90deg);
-      }
+    &__navigation--years-upcoming {
+      transform: rotate(-90deg);
+    }
 
-      &-previous {
-        transform: rotate(90deg);
-      }
+    &__navigation--years-previous {
+      transform: rotate(90deg);
     }
 
     &__year-option--selected {
@@ -211,21 +205,21 @@
     &__year-read-view--down-arrow {
       border: none;
       top: rem(7px);
+    }
 
-      &:before {
-        border: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='rgb(16 77 67)' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
-        background-size: 50%;
-        background-repeat: no-repeat;
-        background-position: center;
-        width: rem(15px);
-        height: rem(15px);
-        left: auto;
-        top: auto;
-        bottom: auto;
-        z-index: unset;
-        transform: rotate(90deg) translate3d(-50%, 50%, 0);
-      }
+    &__year-read-view--down-arrow:before {
+      border: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='rgb(16 77 67)' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: rem(15px);
+      height: rem(15px);
+      left: auto;
+      top: auto;
+      bottom: auto;
+      z-index: unset;
+      transform: rotate(90deg) translate3d(-50%, 50%, 0);
     }
 
     &__header {
@@ -260,10 +254,10 @@
       align-items: center;
       border-radius: 0;
       color: $text-color;
+    }
 
-      &:hover {
-        background-color: $primary-100;
-      }
+    &__day:hover {
+      background-color: $primary-100;
     }
 
     &__day--in-range {

@@ -13,21 +13,19 @@
     padding-right: rem(37.5px);
   }
 
-  &.ebs-input__wrapper {
-    &--active,
-    &.focus {
-      border-color: $primary-color;
-      background-color: $white !important;
+  &--active,
+  &.focus {
+    border-color: $primary-color;
+    background-color: $white !important;
 
-      .ebs-input {
-        color: $heading-color;
-      }
+    .ebs-input {
+      color: $heading-color;
     }
+  }
 
-    &--unactive {
-      border-color: $border-color;
-      background-color: $white;
-    }
+  &--unactive {
+    border-color: $border-color;
+    background-color: $white;
   }
 
   &.has-error {
@@ -49,38 +47,8 @@
     }
   }
 
-  &.ebs-input__style {
-    &-grey {
-      background-color: $grey-50;
-    }
-  }
-
-  .ebs-input__prefix,
-  .ebs-input__suffix {
-    position: absolute;
-    left: rem(10px);
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-
-    &.not-clickable {
-      pointer-events: none;
-    }
-
-    &.clickable {
-      cursor: pointer;
-      z-index: 2;
-    }
-
-    .ebs-icon {
-      font-size: rem(16px);
-    }
-  }
-
-  .ebs-input__suffix {
-    left: inherit;
-    right: rem(10px);
+  &.ebs-input__style-grey {
+    background-color: $grey-50;
   }
 }
 
@@ -96,16 +64,47 @@
   padding: rem(0 10px);
   color: $heading-color;
 
-  &-container {
-    position: relative;
-    width: 100%;
-  }
-
   @include placeholder {
     color: $text-color-secondary;
   }
 
   &:focus {
     outline: none !important;
+  }
+
+  &-container {
+    position: relative;
+    width: 100%;
+  }
+
+  &__prefix,
+  &__suffix {
+    position: absolute;
+    left: rem(10px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+
+    .ebs-icon {
+      font-size: rem(16px);
+    }
+  }
+
+  &__prefix.clickable,
+  &__suffix.clickable {
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &__prefix.not-clickable,
+  &__suffix.not-clickable {
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &__suffix {
+    left: inherit;
+    right: rem(10px);
   }
 }

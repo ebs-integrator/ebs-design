@@ -1,37 +1,57 @@
 .ebs-chips {
+  cursor: pointer;
   position: relative;
   padding: rem(4px 8px);
   font-size: rem(12px);
   border: 1px solid transparent;
   border-radius: rem(16px);
   background-color: transparent;
-  cursor: pointer;
   transition: all $transition-time;
 
-  &.ebs-chips {
-    &-checked {
-      background-color: $primary-000;
+  &-checked {
+    background-color: $primary-000;
+    border-color: $primary-color;
+    color: $primary-color;
+
+    &:hover {
+      background-color: $primary-color;
       border-color: $primary-color;
-      color: $primary-color;
-
-      &:hover {
-        background-color: $primary-color;
-        border-color: $primary-color;
-        color: $white;
-      }
+      color: $white;
     }
+  }
 
-    &-unchecked {
+  &-unchecked {
+    background-color: transparent;
+    border-color: $text-color-light;
+    color: $text-color-secondary;
+
+    &:hover {
       background-color: transparent;
-      border-color: $text-color-light;
-      color: $text-color-secondary;
-
-      &:hover {
-        background-color: transparent;
-        border-color: $primary-400;
-        color: $primary-400;
-      }
+      border-color: $primary-400;
+      color: $primary-400;
     }
+  }
+
+  &__prefix {
+    position: absolute;
+    left: rem(9px);
+    top: calc(50% + 1px);
+    transform: translateY(-50%);
+  }
+
+  &__prefix .ebs-icon {
+    font-size: rem(12px);
+  }
+
+  &__suffix {
+    position: absolute;
+    right: rem(9px);
+    top: calc(50% + 1px);
+    transform: translateY(-50%);
+  }
+
+  &__suffix .ebs-icon {
+    font-size: rem(12px);
   }
 
   &.has-prefix {
@@ -44,43 +64,19 @@
 
   &.disabled {
     cursor: not-allowed;
-
-    &.ebs-chips {
-      &-checked,
-      &-checked:hover {
-        background-color: $border-color;
-        border-color: $border-color;
-        color: $grey-500;
-      }
-
-      &-unchecked,
-      &-unchecked:hover {
-        background-color: transparent;
-        border-color: $border-color;
-        color: $border-color;
-      }
-    }
   }
 
-  .ebs-chips__prefix {
-    position: absolute;
-    left: rem(9px);
-    top: calc(50% + 1px);
-    transform: translateY(-50%);
-
-    .ebs-icon {
-      font-size: rem(12px);
-    }
+  &.disabled,
+  &.disabled:hover {
+    background-color: $border-color;
+    border-color: $border-color;
+    color: $grey-500;
   }
 
-  .ebs-chips__suffix {
-    position: absolute;
-    right: rem(9px);
-    top: calc(50% + 1px);
-    transform: translateY(-50%);
-
-    .ebs-icon {
-      font-size: rem(12px);
-    }
+  &.disabled,
+  &.disabled:hover {
+    background-color: transparent;
+    border-color: $border-color;
+    color: $border-color;
   }
 }
