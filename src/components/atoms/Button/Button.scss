@@ -91,7 +91,7 @@
     color: $primary-color;
   }
 
-  &--type-ghost {
+  &--type-ghost.ebs-button__wrapper {
     background-color: $btn-type-ghost-background;
     border-color: $btn-type-ghost-border-color;
     color: $btn-type-ghost-color;
