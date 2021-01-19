@@ -28,7 +28,7 @@ export interface InputProps {
   containerClass?: string;
 }
 
-export const Input = React.forwardRef<any, InputProps>(
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       styleType = 'white',
@@ -110,8 +110,8 @@ export const Input = React.forwardRef<any, InputProps>(
 
           <div className="ebs-input__container">
             <input
-              name={name}
               ref={ref}
+              name={name}
               type={type}
               autoFocus={autoFocus}
               className="ebs-input"

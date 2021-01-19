@@ -1,6 +1,6 @@
 # React EBS UI
 
-EBS UI is a complete library of styling components
+EBS UI is a complete library of styling components. Link to [Storybook](https://ebs-integrator.github.io/react-ebs-ui/)
 
 ## Installation
 
