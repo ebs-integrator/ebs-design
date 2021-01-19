@@ -33,7 +33,7 @@ export const Regular = (): React.ReactNode => (
 );
 
 export const Inline = (): React.ReactNode => (
-  <Form type="inline">
+  <Form>
     <FormItem name="field" label="Text">
       <Input />
     </FormItem>
