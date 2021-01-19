@@ -12,20 +12,20 @@ export default {
 
 export const Regular = (): React.ReactNode => (
   <Form>
-    <FormItem label="Text">
+    <FormItem name="field" label="Text">
       <Input />
     </FormItem>
 
-    <FormItem label="Text" extra="This field is required">
+    <FormItem name="field" label="Text" extra="This field is required">
       <Input />
     </FormItem>
 
     <FormItems>
-      <FormItem label="Text">
+      <FormItem name="field" label="Text">
         <Input />
       </FormItem>
 
-      <FormItem label="Text" extra="This field is required">
+      <FormItem name="field" label="Text" extra="This field is required">
         <Input />
       </FormItem>
     </FormItems>
@@ -34,20 +34,20 @@ export const Regular = (): React.ReactNode => (
 
 export const Inline = (): React.ReactNode => (
   <Form type="inline">
-    <FormItem label="Text">
+    <FormItem name="field" label="Text">
       <Input />
     </FormItem>
 
-    <FormItem label="Text" extra="This field is required">
+    <FormItem name="field" label="Text" extra="This field is required">
       <Input />
     </FormItem>
 
     <FormItems>
-      <FormItem label="Text">
+      <FormItem name="field" label="Text">
         <Input />
       </FormItem>
 
-      <FormItem label="Text" extra="This field is required">
+      <FormItem name="field" label="Text" extra="This field is required">
         <Input />
       </FormItem>
     </FormItems>
