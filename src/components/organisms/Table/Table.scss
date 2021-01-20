@@ -11,15 +11,9 @@
     padding: rem($base-size $gutter-size);
   }
 
-  &__th-filtered {
+  &__th--filtered {
     cursor: pointer;
     transition: $transition-time;
-
-    @include mq($from: desktop) {
-      @include flex-center;
-      text-align: right;
-      justify-content: $table-body-cell-justify-content;
-    }
 
     &:hover {
       color: $text-color-secondary;
@@ -50,6 +44,14 @@
       top: 0;
       transition: $transition-time;
       color: $text-color;
+    }
+  }
+
+  .is-action {
+    width: rem(80px);
+
+    .ebs-action__wrapper {
+      float: right;
     }
   }
 

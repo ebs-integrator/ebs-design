@@ -79,10 +79,11 @@ export const Table = <T extends object>({
         key,
         className: cn({
           'has-children': column.children !== undefined,
+          'is-action': column.action,
         }),
         title: onFilter ? (
           <span
-            className={cn(`ebs-table__th-filtered`, `ebs-table__th-filtered-${filters[key] || 'none'}`)}
+            className={cn(`ebs-table__th--filtered`, `ebs-table__th--filtered-${filters[key] || 'none'}`)}
             onClick={(): void => onFilterHandler(key)}
           >
             {title} <Icon type="arrow-outlined-bottom" />

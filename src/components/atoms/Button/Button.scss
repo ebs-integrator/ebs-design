@@ -59,6 +59,32 @@
     }
   }
 
+  &--dark {
+    border-color: $black;
+    background-color: $black;
+    color: $white;
+
+    &:hover,
+    &.hover {
+      border-color: $primary-color;
+      background-color: $primary-color;
+    }
+
+    &:active,
+    &.active {
+      border-color: $primary-600;
+      background-color: $primary-600;
+    }
+  }
+
+  &--dark & {
+    color: $white;
+
+    :hover {
+      color: $white;
+    }
+  }
+
   &--fill {
     border-color: $primary-100;
     background-color: $primary-100;
