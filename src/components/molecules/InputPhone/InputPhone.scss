@@ -61,7 +61,7 @@
 
   .form-control {
     border-radius: rem($border-radius);
-    height: rem(40px);
+    height: rem($base-size);
 
     @include placeholder {
       color: $text-color-secondary !important;

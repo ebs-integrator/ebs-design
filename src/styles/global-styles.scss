@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
-  --bs-gutter-x: $gutter-size * 2;
+  --bs-gutter-x: $base-size;
 }
 
 // @include mq-show-breakpoints;
@@ -99,20 +99,21 @@ strong {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: $scrollbar-size;
+  height: $scrollbar-size;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: $scrollbar-track-background-color;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: $scrollbar-thumb-background-color;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: $scrollbar-thumb-hover-background-color;
 }

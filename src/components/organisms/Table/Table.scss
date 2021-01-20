@@ -8,12 +8,18 @@
   }
 
   &__size-small td {
-    padding: rem($gutter-size / 2 $gutter-size);
+    padding: rem($base-size $gutter-size);
   }
 
   &__th-filtered {
     cursor: pointer;
     transition: $transition-time;
+
+    @include mq($from: desktop) {
+      @include flex-center;
+      text-align: right;
+      justify-content: $table-body-cell-justify-content;
+    }
 
     &:hover {
       color: $text-color-secondary;
@@ -184,6 +190,7 @@
 
   .rc-table-content {
     border: none;
+    overflow: auto hidden;
   }
 
   .rc-table-expanded-row {
