@@ -72,6 +72,12 @@
       background-color: $primary-600;
     }
 
+    .ebs-button,
+    .ebs-icon {
+      color: $white;
+    }
+
+    .ebs-button,
     .ebs-icon {
       color: $white;
     }
@@ -81,25 +87,6 @@
     color: $white;
 
     :hover {
-      color: $white;
-    }
-  }
-
-  &--light {
-    border-color: transparent;
-    background-color: transparent;
-    color: $white;
-
-    @include hover-state {
-      border-color: transparent;
-      background-color: transparent;
-
-      .ebs-icon {
-        color: rgba($white, 0.5);
-      }
-    }
-
-    .ebs-icon {
       color: $white;
     }
   }
