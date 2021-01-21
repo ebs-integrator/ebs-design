@@ -41,6 +41,7 @@ export {
   Checkbox,
   CheckboxGroup,
   Textarea,
+  Upload,
 } from './components/molecules';
 
 // Organisms
