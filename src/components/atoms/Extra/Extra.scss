@@ -12,27 +12,27 @@
     color: $grey-500;
   }
 
-  &__status--success {
+  &--success {
     color: $success-color;
     border-color: $success-color;
   }
 
-  &__status--warning {
+  &--warning {
     color: $warning-color;
     border-color: $warning-color;
   }
 
-  &__status--danger {
+  &--danger {
     color: $danger-color;
     border-color: $danger-color;
   }
 
-  &__status--info {
+  &--info {
     color: $info-color;
     border-color: $info-color;
   }
 
-  &__status--text {
+  &--text {
     color: $text-color;
     border-color: $text-color;
   }

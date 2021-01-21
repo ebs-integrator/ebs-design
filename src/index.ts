@@ -25,6 +25,7 @@ export {
   Row,
   Col,
   Collapse,
+  Tooltip,
 } from './components/atoms';
 
 // Molecules
@@ -40,6 +41,7 @@ export {
   Checkbox,
   CheckboxGroup,
   Textarea,
+  Upload,
 } from './components/molecules';
 
 // Organisms

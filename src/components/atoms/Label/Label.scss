@@ -8,6 +8,10 @@
     font-size: rem(12px);
     margin-bottom: rem(5px);
     color: $text-color;
+
+    .ebs-icon {
+      color: $text-color;
+    }
   }
 
   &--circle,
@@ -21,6 +25,10 @@
 
   &--circle {
     color: $text-color;
+
+    .ebs-icon {
+      color: $text-color;
+    }
   }
 
   &--fill {
@@ -52,6 +60,10 @@
       cursor: not-allowed;
       color: $grey-500 !important;
       background: $grey-100;
+    }
+
+    .ebs-icon {
+      color: $white;
     }
   }
 

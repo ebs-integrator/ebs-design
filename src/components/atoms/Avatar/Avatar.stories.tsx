@@ -53,4 +53,6 @@ export const cardWithOutPhoto = (): React.ReactElement => <AvatarCard alt="Wladi
 
 export const cardWithStatus = (): React.ReactElement => <AvatarCard alt="Wladimir Zhosan" status="active" />;
 
-export const avatarInline = (): React.ReactElement => <AvatarInline alt="Wladimir Zhosan" status="active" />;
+export const avatarInline = (): React.ReactElement => (
+  <AvatarInline alt="Wladimir Zhosan" status="active" description="Administrator" />
+);

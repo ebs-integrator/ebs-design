@@ -1,15 +1,17 @@
 .ebs-icon {
   font-size: rem(16px);
+  color: $icon-svg-color;
+  transition: transform $transition-time;
 
-  &__type-arrow-right {
+  &--arrow-right {
     transform: rotate(90deg);
   }
 
-  &__type-arrow--bottom {
+  &--arrow-bottom {
     transform: rotate(180deg);
   }
 
-  &__type-arrow--left {
+  &--arrow-left {
     transform: rotate(270deg);
   }
 }

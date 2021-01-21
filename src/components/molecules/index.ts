@@ -9,3 +9,4 @@ export { SelectDropdown } from './SelectDropdown/SelectDropdown';
 export { SelectDropdownItem } from './SelectDropdown/SelectDropdownItem/SelectDropdownItem';
 export { Stepper } from './Stepper/Stepper';
 export { Textarea } from './Textarea/Textarea';
+export { Upload } from './Upload/Upload';
