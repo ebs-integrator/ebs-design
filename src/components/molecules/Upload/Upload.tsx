@@ -1,120 +1,77 @@
 import * as React from 'react';
-import { Icon, Button } from 'components/atoms';
+import { Icon } from 'components/atoms';
+import RCUpload, { UploadProps } from 'rc-upload';
 
-interface Props {
-  file?: File | string;
-  onChange?: (newValue: File | null) => void;
-}
-
-interface FileTarget {
-  files: [File];
+interface Props extends UploadProps {
+  file?: any;
 }
 
 const bytesToMegaBytes = (bytes: number): string => (bytes / (1024 * 1024)).toFixed(2);
 
-export const Upload: React.FC<Props> = ({ file, onChange }) => {
-  const ref = React.useRef<HTMLInputElement | null>(null);
-  const [status, setStatus] = React.useState<'error' | 'empty' | 'pending' | 'success'>('empty');
-  const [name, setName] = React.useState('');
-  const [size, setSize] = React.useState('');
+export const Upload = React.forwardRef<any, Props>((props, ref) => {
+  const [internalFile, setFile] = React.useState<any>(null);
+  const [internalError, setError] = React.useState<Error>();
+  const [progress, setProgress] = React.useState(0);
 
-  React.useEffect(() => {
-    if (typeof file === 'string' && !file.length) {
-      setName('');
-      setSize('');
-      setStatus('empty');
-    }
-  }, [file]);
+  // Handlers
+  const onError = (error, ret, file): void => {
+    setError(error);
 
-  const onUploadFile = (event: any): void => {
-    setStatus('pending');
-
-    const target = event.target as FileTarget;
-
-    const file = target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      if (file.name) {
-        setName(file.name);
-      }
-
-      if (file.size) {
-        setSize(bytesToMegaBytes(file.size));
-      }
-
-      reader.readAsDataURL(file);
-
-      reader.onload = ({ target: $target }) => {
-        setStatus($target !== null && $target.result !== null ? 'success' : 'error');
-      };
-
-      reader.onloadend = async () => {
-        if (onChange !== undefined) {
-          onChange(file);
-        }
-      };
+    if (props.onError) {
+      props.onError(error, ret, file);
     }
   };
 
-  const onAddFile = (): void => {
-    if (ref.current) {
-      ref.current.click();
+  const onSuccess = (response, file, xhr): void => {
+    setFile(file);
+
+    if (props.onSuccess) {
+      props.onSuccess(response, file, xhr);
     }
   };
 
-  const onClose = (): void => {
-    setStatus('empty');
+  const onProgress = (event, file): void => {
+    setProgress(Math.round(event.percent));
 
-    if (onChange !== undefined) {
-      onChange(null);
+    if (props.onProgress) {
+      props.onProgress(event, file);
     }
+  };
+
+  const uploadProps = {
+    ...props,
+    onSuccess,
+    onProgress,
+    onError,
   };
 
   return (
     <>
-      <div className="file-upload" style={status === 'empty' ? { display: 'none' } : undefined}>
-        {/* {['error', 'empty'].includes(status) ? (
-          <div className="file-upload-unactive">
-            <input ref={ref} type="file" className="file-upload-mask" onChange={onUploadFile} />
+      <RCUpload ref={ref} {...uploadProps}>
+        {props.children}
+      </RCUpload>
 
-            <Info primary label={t('addFile')} icon={<Icon type="file" />} />
+      {internalFile && (
+        <div className="upload__container">
+          <div className="upload__file__remove" onClick={() => setFile(null)}>
+            <Icon type="close" />
+          </div>
 
-            <div className="file-upload-data">
-              <span />
+          <div className="upload__file">
+            <div className="upload__file__name">{internalFile?.name}</div>
 
-              <Progressbar finished={false} />
+            <div className="upload__status">
+              <div className="upload__file__size">{bytesToMegaBytes(internalFile.size)} MB</div>
+              <div className="upload__progress">
+                <span className="upload__progress__text">{progress}%</span>
+                <span className="upload__progress__bar" style={{ width: `${progress}%`, flexBasis: `${progress}%` }} />
+              </div>
             </div>
           </div>
-        ) : (
-          <div className="file-upload-active">
-            <Info primary label={name} icon={<Icon type="file" />} />
-
-            <div className="file-upload-data">
-              {size && (
-                <span>
-                  {size} {t('mb')}
-                </span>
-              )}
-
-              <Progressbar finished={status === 'success'} />
-            </div>
-          </div>
-        )} */}
-
-        {status === 'success' && <Icon type="close" onClick={onClose} />}
-      </div>
-      {status !== 'success' && (
-        <Button
-          prefix={<Icon type="attach" />}
-          className={status !== 'empty' ? 'mt-20' : undefined}
-          onClick={status !== 'pending' ? onAddFile : undefined}
-          disabled={status === 'pending'}
-        >
-          Attach File
-        </Button>
+        </div>
       )}
+
+      {internalError && <div className="upload__error">{internalError.message}</div>}
     </>
   );
-};
+});
