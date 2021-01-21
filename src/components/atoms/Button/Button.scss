@@ -141,7 +141,7 @@
     color: $primary-color;
   }
 
-  &--ghost {
+  &--ghost.ebs-button__wrapper {
     background-color: $btn-type-ghost-background;
     border-color: $btn-type-ghost-border-color;
     color: $btn-type-ghost-color;
