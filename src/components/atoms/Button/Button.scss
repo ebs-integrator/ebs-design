@@ -69,11 +69,7 @@
     color: $white;
 
     &:hover,
-    &.hover {
-      border-color: $primary-color;
-      background-color: $primary-color;
-    }
-
+    &.hover,
     &:active,
     &.active {
       border-color: $primary-600;
@@ -89,6 +85,28 @@
     color: $white;
 
     :hover {
+      color: $white;
+    }
+  }
+
+  &--white {
+    border-color: transparent;
+    background-color: transparent;
+    color: $white;
+
+    &:hover,
+    &.hover,
+    &:active,
+    &.active {
+      border-color: transparent;
+      background-color: transparent;
+
+      .ebs-icon {
+        color: rgba($white, 0.5);
+      }
+    }
+
+    .ebs-icon {
       color: $white;
     }
   }

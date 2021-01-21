@@ -28,7 +28,7 @@
     }
   }
 
-  &__container + * {
+  &__container + *:not(.ebs-button__wrapper) {
     margin: 0 5px;
   }
 

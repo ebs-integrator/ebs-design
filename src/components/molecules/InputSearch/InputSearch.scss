@@ -6,14 +6,15 @@
     }
   }
 
-  &.ebs-input__search-type-transparent {
+  &.ebs-input__search--transparent {
     .ebs-input__search,
     .ebs-input__wrapper-active {
       background-color: transparent !important;
       border-color: transparent;
       color: $white;
 
-      .ebs-input {
+      .ebs-input,
+      .ebs-icon {
         color: $white;
 
         @include placeholder {
