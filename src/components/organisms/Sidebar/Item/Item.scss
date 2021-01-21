@@ -11,6 +11,10 @@
     text-overflow: ellipsis;
     max-height: rem(44px);
 
+    .ebs-icon {
+      color: $sidebar-item-text-color;
+    }
+
     &.ebs-sidebar__toggler {
       margin-bottom: rem(10px);
 
@@ -25,7 +29,8 @@
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
-      .ebs-sidebar__text {
+      .ebs-sidebar__text,
+      .ebs-icon {
         color: $sidebar-item-hover-color;
       }
     }
@@ -35,7 +40,8 @@
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
-      .ebs-sidebar__text {
+      .ebs-sidebar__text,
+      .ebs-icon {
         color: $sidebar-item-hover-color;
       }
     }
@@ -46,7 +52,8 @@
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
-      .ebs-sidebar__text {
+      .ebs-sidebar__text,
+      .ebs-icon {
         color: $sidebar-item-hover-color;
       }
     }
@@ -56,13 +63,14 @@
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
-      .ebs-sidebar__text {
+      .ebs-sidebar__text,
+      .ebs-icon {
         color: $sidebar-item-hover-color;
       }
     }
   }
 
-  &__prefix svg {
+  &__prefix .ebs-icon {
     position: absolute;
     left: rem(20px);
     top: 50%;

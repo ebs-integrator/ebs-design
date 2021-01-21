@@ -16,9 +16,11 @@ export const Regular = (): React.ReactElement => (
     rightSide={<Button size="small">History</Button>}
     leftSide={<span>3 items</span>}
   >
-    <div>
+    <div style={{ padding: 16, overflow: 'hidden', verticalAlign: 'center' }}>
       test collapse
-      <Button>Go to</Button>
+      <div style={{ float: 'right' }}>
+        <Button size="small">Go to</Button>
+      </div>
     </div>
   </Collapse>
 );

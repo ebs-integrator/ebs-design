@@ -65,7 +65,7 @@ export const InputSearch: React.FC<InputSearchProps> = ({
 
   return (
     <form
-      className={cn(`ebs-input__search-wrapper`, `ebs-input__search-type-${styleType}`, className, {
+      className={cn(`ebs-input__search-wrapper`, `ebs-input__search--${styleType}`, className, {
         disabled: disabled,
       })}
       onSubmit={onSearchHandler}

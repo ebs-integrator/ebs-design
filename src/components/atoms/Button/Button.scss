@@ -49,6 +49,10 @@
       border-color: $primary-700;
       background-color: $primary-700;
     }
+
+    .ebs-icon {
+      color: $white;
+    }
   }
 
   &--primary & {
@@ -75,6 +79,10 @@
       border-color: $primary-600;
       background-color: $primary-600;
     }
+
+    .ebs-icon {
+      color: $white;
+    }
   }
 
   &--dark & {
@@ -96,7 +104,8 @@
       background-color: $primary-color;
       color: $white;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $white;
       }
     }
@@ -107,9 +116,14 @@
       background-color: $primary-600;
       color: $white;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $white;
       }
+    }
+
+    .ebs-icon {
+      color: $primary-color;
     }
   }
 
@@ -128,7 +142,8 @@
       background-color: $btn-type-ghost-hover-background;
       color: $btn-type-ghost-hover-color;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $btn-type-ghost-hover-color;
       }
     }
@@ -139,9 +154,14 @@
       background-color: $btn-type-ghost-active-background;
       color: $btn-type-ghost-active-color;
 
-      .ebs-button {
+      .ebs-butto,
+      .ebs-icon {
         color: $btn-type-ghost-active-color;
       }
+    }
+
+    .ebs-icon {
+      color: $btn-type-ghost-color;
     }
   }
 
@@ -157,7 +177,8 @@
     &.hover {
       background-color: transparent;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $primary-600;
       }
     }
@@ -166,9 +187,14 @@
     &.active {
       background-color: transparent;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $primary-700;
       }
+    }
+
+    .ebs-icon {
+      color: $primary-color;
     }
   }
 
@@ -179,7 +205,8 @@
   &--disabled {
     background-color: $border-color;
 
-    .ebs-button {
+    .ebs-button,
+    .ebs-icon {
       cursor: not-allowed;
       color: $grey-500;
     }

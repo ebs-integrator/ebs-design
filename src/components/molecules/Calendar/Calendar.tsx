@@ -124,7 +124,7 @@ export const Calendar: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(`ebs-calendar__wrapper`, `ebs-calendar__type-${type}`, className, {
+      className={cn(`ebs-calendar__wrapper`, `ebs-calendar--${type}`, className, {
         disabled: disabled,
         'has-error': hasError,
         active: from || to || date,

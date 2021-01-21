@@ -8,7 +8,7 @@
   background-color: transparent;
   transition: all $transition-time;
 
-  &-checked {
+  &--checked {
     background-color: $primary-000;
     border-color: $primary-color;
     color: $primary-color;
@@ -20,7 +20,7 @@
     }
   }
 
-  &-unchecked {
+  &--unchecked {
     background-color: transparent;
     border-color: $text-color-light;
     color: $text-color-secondary;

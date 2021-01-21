@@ -50,6 +50,10 @@
   &.ebs-input__style-grey {
     background-color: $grey-50;
   }
+
+  .ebs-icon {
+    color: $heading-color;
+  }
 }
 
 // input html element

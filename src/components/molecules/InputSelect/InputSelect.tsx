@@ -128,7 +128,7 @@ export const InputSelect = React.forwardRef<any, Props>(
         {openDropdown && <Mask onClick={onToggleOpenDropdown} />}
 
         <div
-          className={cn(`ebs-select__input-wrapper`, `ebs-select__input-mode-${mode}`, className, {
+          className={cn(`ebs-select__input-wrapper`, `ebs-select__input--${mode}`, className, {
             active: hasValue,
             'has-error': hasError,
             disabled: disabled,

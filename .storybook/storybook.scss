@@ -5,7 +5,8 @@
 .sb-show-main {
   #root {
     width: 100%;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 
     .row,
@@ -17,6 +18,11 @@
   .ebs-layout {
     position: relative;
     margin: -1rem;
+    overflow: hidden;
+  }
+
+  > .ebs-select__input-wrapper {
+    min-width: 50%;
   }
 }
 

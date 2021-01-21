@@ -15,7 +15,5 @@ export const Extra: React.FC<Props> = ({ className, status = 'text', disabled, t
     return null;
   }
 
-  return (
-    <div className={cn(`ebs-extra`, `ebs-extra__status--${status}`, className, { disabled: disabled })}>{text}</div>
-  );
+  return <div className={cn(`ebs-extra`, `ebs-extra--${status}`, className, { disabled: disabled })}>{text}</div>;
 };
