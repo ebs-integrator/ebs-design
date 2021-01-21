@@ -16,7 +16,7 @@
   &--active,
   &.focus {
     border-color: $primary-color;
-    background-color: $white !important;
+    background-color: $white;
 
     .ebs-input {
       color: $heading-color;
@@ -73,7 +73,7 @@
   }
 
   &:focus {
-    outline: none !important;
+    outline: none;
   }
 
   &-container {

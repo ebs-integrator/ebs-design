@@ -11,7 +11,7 @@
   border-color: transparent;
   background: transparent;
   padding: 0;
-  outline: none !important;
+  outline: none;
 
   &--is-icon {
     @include flex-center;
@@ -67,9 +67,7 @@
     background-color: $black;
     color: $white;
 
-    &:hover,
-    &:active,
-    &.active {
+    @include hover-state {
       border-color: $primary-600;
       background-color: $primary-600;
     }
@@ -87,14 +85,12 @@
     }
   }
 
-  &--white {
+  &--light {
     border-color: transparent;
     background-color: transparent;
     color: $white;
 
-    &:hover,
-    &:active,
-    &.active {
+    @include hover-state {
       border-color: transparent;
       background-color: transparent;
 
@@ -145,7 +141,7 @@
     color: $primary-color;
   }
 
-  &--ghost.ebs-button__wrapper {
+  &--ghost {
     background-color: $btn-type-ghost-background;
     border-color: $btn-type-ghost-border-color;
     color: $btn-type-ghost-color;
@@ -167,7 +163,7 @@
       background-color: $btn-type-ghost-active-background;
       color: $btn-type-ghost-active-color;
 
-      .ebs-butto,
+      .ebs-button,
       .ebs-icon {
         color: $btn-type-ghost-active-color;
       }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { firstLetters } from 'libs/string';
 
-export type AvatarType = 'regular' | 'primary' | 'white';
+export type AvatarType = 'regular' | 'primary' | 'light';
 
 export interface AvatarProps {
   type?: AvatarType;
