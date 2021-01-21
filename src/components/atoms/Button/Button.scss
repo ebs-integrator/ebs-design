@@ -38,8 +38,7 @@
     background-color: $primary-color;
     color: $white;
 
-    &:hover,
-    &.hover {
+    &:hover {
       border-color: $primary-600;
       background-color: $primary-600;
     }
@@ -69,7 +68,6 @@
     color: $white;
 
     &:hover,
-    &.hover,
     &:active,
     &.active {
       border-color: $primary-600;
@@ -95,7 +93,6 @@
     color: $white;
 
     &:hover,
-    &.hover,
     &:active,
     &.active {
       border-color: transparent;
@@ -116,8 +113,7 @@
     background-color: $primary-100;
     color: $primary-color;
 
-    &:hover,
-    &.hover {
+    &:hover {
       border-color: $primary-color;
       background-color: $primary-color;
       color: $white;
@@ -154,8 +150,7 @@
     border-color: $btn-type-ghost-border-color;
     color: $btn-type-ghost-color;
 
-    &:hover,
-    &.hover {
+    &:hover {
       border-color: $btn-type-ghost-hover-border-color;
       background-color: $btn-type-ghost-hover-background;
       color: $btn-type-ghost-hover-color;
@@ -191,8 +186,7 @@
     background-color: transparent;
     color: $primary-color;
 
-    &:hover,
-    &.hover {
+    &:hover {
       background-color: transparent;
 
       .ebs-button,

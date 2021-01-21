@@ -60,15 +60,22 @@
 
     &:not(:last-child) {
       .ebs-calendar {
-        padding-right: rem(10px);
-        border-right: inherit;
+        border-right: 1px solid $border-color;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
+    }
+  }
 
-      .react-datepicker__input-container:before {
-        display: none;
-      }
+  &.ebs-calendar--left {
+    .ebs-calendar {
+      padding-right: rem(10px);
+      padding-left: rem($base-size);
+    }
+
+    .react-datepicker__input-container:before {
+      right: unset;
+      left: 0;
     }
   }
 }
@@ -105,7 +112,7 @@
     outline: none;
     font-size: rem(14px);
     padding: rem(10px);
-    padding-right: rem(35px);
+    padding-right: rem($base-size);
     color: $heading-color;
 
     @include placeholder {
@@ -149,7 +156,7 @@
     &__navigation {
       content: '';
 
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='rgb(16 77 67)' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='currentColor' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
 
       background-size: 80%;
       background-repeat: no-repeat;
@@ -209,7 +216,7 @@
 
     &__year-read-view--down-arrow:before {
       border: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='rgb(16 77 67)' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='currentColor' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
       background-size: 50%;
       background-repeat: no-repeat;
       background-position: center;

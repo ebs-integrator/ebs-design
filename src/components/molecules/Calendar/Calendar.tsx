@@ -24,6 +24,7 @@ interface Props {
   extra?: React.ReactNode;
   hasError?: boolean;
   disabled?: boolean;
+  iconAlign?: 'left' | 'right';
 
   from?: any;
   to?: any;
@@ -35,6 +36,7 @@ export const Calendar: React.FC<Props> = ({
   placeholder = '',
   startPlaceholder = '',
   endPlaceholder = '',
+  iconAlign = 'right',
   className,
   withTime,
   onChange,
@@ -125,6 +127,7 @@ export const Calendar: React.FC<Props> = ({
   return (
     <div
       className={cn(`ebs-calendar__wrapper`, `ebs-calendar--${type}`, className, {
+        'ebs-calendar--left': iconAlign === 'left',
         disabled: disabled,
         'has-error': hasError,
         active: from || to || date,
