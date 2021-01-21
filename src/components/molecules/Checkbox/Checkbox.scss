@@ -60,7 +60,7 @@
     top: rem(-2px);
   }
 
-  &.ebs-checkbox__align-left .ebs-checkbox {
+  &.ebs-checkbox--left .ebs-checkbox {
     right: inherit;
     left: 0;
 
@@ -69,7 +69,7 @@
     }
   }
 
-  &.ebs-checkbox__align-right .ebs-checkbox {
+  &.ebs-checkbox--right .ebs-checkbox {
     left: inherit;
     right: 0;
 

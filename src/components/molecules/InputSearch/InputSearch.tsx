@@ -7,7 +7,7 @@ export type InputSearchIconAlign = 'prefix' | 'suffix';
 
 export type InputSearchStyleType = 'stroke' | 'fill' | 'transparent';
 
-interface Props {
+export interface InputSearchProps {
   className?: string;
   styleType?: InputSearchStyleType;
   iconAlign?: InputSearchIconAlign;
@@ -20,7 +20,7 @@ interface Props {
   extra?: React.ReactNode;
 }
 
-export const InputSearch: React.FC<Props> = ({
+export const InputSearch: React.FC<InputSearchProps> = ({
   className,
   styleType = 'stroke',
   iconAlign = 'suffix',
@@ -65,7 +65,7 @@ export const InputSearch: React.FC<Props> = ({
 
   return (
     <form
-      className={cn(`ebs-input__search-wrapper`, `ebs-input__search-type-${styleType}`, className, {
+      className={cn(`ebs-input__search-wrapper`, `ebs-input__search--${styleType}`, className, {
         disabled: disabled,
       })}
       onSubmit={onSearchHandler}

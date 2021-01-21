@@ -9,7 +9,7 @@ export default {
   component: Input,
 };
 
-export const Simple = (): React.ReactElement => (
+export const Regular = (): React.ReactElement => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Text Input</div>

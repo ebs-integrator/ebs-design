@@ -9,8 +9,8 @@
 }
 
 .ebs-loader__spinner {
-  width: rem(40px);
-  height: rem(40px);
+  width: rem($base-size);
+  height: rem($base-size);
   border-radius: 50%;
 
   transition-property: transform;

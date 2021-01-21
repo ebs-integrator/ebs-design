@@ -4,7 +4,7 @@ import { Icon, LoaderSpinner } from 'components/atoms';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
-export type ButtonType = 'text' | 'primary' | 'fill' | 'ghost';
+export type ButtonType = 'text' | 'primary' | 'fill' | 'ghost' | 'dark' | 'light';
 
 export interface ButtonProps {
   onClick?: () => void;

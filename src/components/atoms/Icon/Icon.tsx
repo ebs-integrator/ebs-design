@@ -15,7 +15,7 @@ export const Icon: React.FC<Props> = ({ onClick, type = 'none', className, compo
     width: '1em',
     height: '1em',
     fill: 'none',
-    className: cn(`ebs-icon`, `ebs-icon__type-${type}`, className),
+    className: cn(`ebs-icon`, `ebs-icon--${type}`, className),
   };
 
   switch (type) {

@@ -20,7 +20,7 @@ export const AvatarInline: React.FC<CardProps> = ({
       `ebs-avatar__inline`,
       {
         'ebs-avatar__inline--reversed': reversed,
-        'ebs-avatar__inline--white': type === 'white',
+        'ebs-avatar__inline--light': type === 'light',
       },
       className,
     )}

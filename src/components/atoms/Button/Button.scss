@@ -11,7 +11,7 @@
   border-color: transparent;
   background: transparent;
   padding: 0;
-  outline: none !important;
+  outline: none;
 
   &--is-icon {
     @include flex-center;
@@ -38,8 +38,7 @@
     background-color: $primary-color;
     color: $white;
 
-    &:hover,
-    &.hover {
+    &:hover {
       border-color: $primary-600;
       background-color: $primary-600;
     }
@@ -49,9 +48,42 @@
       border-color: $primary-700;
       background-color: $primary-700;
     }
+
+    .ebs-icon {
+      color: $white;
+    }
   }
 
   &--primary & {
+    color: $white;
+
+    :hover {
+      color: $white;
+    }
+  }
+
+  &--dark {
+    border-color: $black;
+    background-color: $black;
+    color: $white;
+
+    @include hover-state {
+      border-color: $primary-600;
+      background-color: $primary-600;
+    }
+
+    .ebs-button,
+    .ebs-icon {
+      color: $white;
+    }
+
+    .ebs-button,
+    .ebs-icon {
+      color: $white;
+    }
+  }
+
+  &--dark & {
     color: $white;
 
     :hover {
@@ -64,13 +96,13 @@
     background-color: $primary-100;
     color: $primary-color;
 
-    &:hover,
-    &.hover {
+    &:hover {
       border-color: $primary-color;
       background-color: $primary-color;
       color: $white;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $white;
       }
     }
@@ -81,9 +113,14 @@
       background-color: $primary-600;
       color: $white;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $white;
       }
+    }
+
+    .ebs-icon {
+      color: $primary-color;
     }
   }
 
@@ -96,13 +133,13 @@
     border-color: $btn-type-ghost-border-color;
     color: $btn-type-ghost-color;
 
-    &:hover,
-    &.hover {
+    &:hover {
       border-color: $btn-type-ghost-hover-border-color;
       background-color: $btn-type-ghost-hover-background;
       color: $btn-type-ghost-hover-color;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $btn-type-ghost-hover-color;
       }
     }
@@ -113,9 +150,14 @@
       background-color: $btn-type-ghost-active-background;
       color: $btn-type-ghost-active-color;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $btn-type-ghost-active-color;
       }
+    }
+
+    .ebs-icon {
+      color: $btn-type-ghost-color;
     }
   }
 
@@ -127,11 +169,11 @@
     background-color: transparent;
     color: $primary-color;
 
-    &:hover,
-    &.hover {
+    &:hover {
       background-color: transparent;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $primary-600;
       }
     }
@@ -140,9 +182,14 @@
     &.active {
       background-color: transparent;
 
-      .ebs-button {
+      .ebs-button,
+      .ebs-icon {
         color: $primary-700;
       }
+    }
+
+    .ebs-icon {
+      color: $primary-color;
     }
   }
 
@@ -153,7 +200,8 @@
   &--disabled {
     background-color: $border-color;
 
-    .ebs-button {
+    .ebs-button,
+    .ebs-icon {
       cursor: not-allowed;
       color: $grey-500;
     }

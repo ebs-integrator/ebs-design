@@ -43,7 +43,7 @@ export const Checkbox: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(`ebs-checkbox__wrapper`, `ebs-checkbox__align-${checkAlign}`, className, {
+      className={cn(`ebs-checkbox__wrapper`, `ebs-checkbox--${checkAlign}`, className, {
         'has-text': text,
         indeterminate: indeterminate,
         disabled: disabled,

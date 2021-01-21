@@ -12,14 +12,10 @@
   z-index: 999;
 
   & > &-search,
-  &-search.ebs-input__wrapper-active {
+  &-search.ebs-input__wrapper--active {
     margin-bottom: rem(4px);
     border-color: $grey-100;
-    background-color: $grey-100 !important;
-
-    .ebs-input {
-      height: rem(32px);
-    }
+    background-color: $grey-100;
   }
 
   & > &-items {
@@ -38,5 +34,9 @@
     text-align: center;
     margin: rem(5px);
     font-size: rem(12px);
+  }
+
+  .ebs-input__container {
+    padding-bottom: rem(4px);
   }
 }

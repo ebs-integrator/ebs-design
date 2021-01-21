@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { useState } from 'react';
 import { Icon } from 'components/atoms';
 
-interface CollapseProps {
+export interface CollapseProps {
   defaultActive?: boolean;
   className?: string;
   title?: React.ReactNode;

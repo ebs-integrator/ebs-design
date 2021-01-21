@@ -12,8 +12,7 @@
     background-color: transparent;
   }
 
-  &:hover,
-  &.active {
+  @include hover-state {
     background-color: $primary-000;
     color: $primary-color;
   }

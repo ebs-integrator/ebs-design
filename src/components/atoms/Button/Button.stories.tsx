@@ -130,6 +130,38 @@ export const Ghost = (): React.ReactNode => (
   </SizeSwitcher>
 );
 
+export const Dark = (): React.ReactNode => (
+  <SizeSwitcher>
+    {(size) => (
+      <Row>
+        <Col>
+          <Button className="mr-15" type="dark" size={size}>
+            Normal
+          </Button>
+        </Col>
+
+        <Col>
+          <Button className="mr-15 hover" type="dark" size={size}>
+            Hover
+          </Button>
+        </Col>
+
+        <Col>
+          <Button className="mr-15 active" type="dark" size={size}>
+            Active
+          </Button>
+        </Col>
+
+        <Col>
+          <Button className="mr-15" type="dark" disabled size={size}>
+            Disabled
+          </Button>
+        </Col>
+      </Row>
+    )}
+  </SizeSwitcher>
+);
+
 export const Text = (): React.ReactNode => (
   <SizeSwitcher>
     {(size) => (

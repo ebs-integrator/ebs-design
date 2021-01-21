@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface DetailsCardProps {
+export interface DetailsCardProps {
   headLeft: React.ReactNode;
   headRight?: React.ReactNode;
   footer?: React.ReactNode;
@@ -17,7 +17,7 @@ export const DetailsCard: React.FC<DetailsCardProps> = ({ headLeft, headRight, f
   </div>
 );
 
-interface HeadLeftProps {
+export interface HeadLeftProps {
   icon?: React.ReactNode;
   title: React.ReactNode | string;
   subtitle?: React.ReactNode | string;
