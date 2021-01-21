@@ -18,7 +18,7 @@
     background-color: $primary-color;
   }
 
-  &--white {
+  &--light {
     color: $text-color;
     background-color: $white;
   }
@@ -129,7 +129,7 @@
       color: $black;
     }
 
-    &--white &-alt {
+    &--light &-alt {
       color: $white;
     }
 

@@ -16,7 +16,7 @@
   &--active,
   &.focus {
     border-color: $primary-color;
-    background-color: $white !important;
+    background-color: $white;
 
     .ebs-input {
       color: $heading-color;
@@ -50,6 +50,10 @@
   &.ebs-input__style-grey {
     background-color: $grey-50;
   }
+
+  .ebs-icon {
+    color: $heading-color;
+  }
 }
 
 // input html element
@@ -59,7 +63,7 @@
   border: none;
   width: 100%;
   display: block;
-  height: rem(40px);
+  height: rem($base-size);
   font-size: rem(14px);
   padding: rem(0 10px);
   color: $heading-color;
@@ -69,7 +73,7 @@
   }
 
   &:focus {
-    outline: none !important;
+    outline: none;
   }
 
   &-container {

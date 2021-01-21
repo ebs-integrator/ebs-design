@@ -215,7 +215,7 @@
     justify-content: flex-end;
 
     > *:not(:first-child) {
-      margin-left: $gutter-size * 2;
+      margin-left: $base-size;
     }
 
     &-item {

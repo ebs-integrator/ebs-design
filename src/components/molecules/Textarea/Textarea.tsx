@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Extra, Label } from 'components/atoms';
 
-interface Props {
+export interface TextareaProps {
   className?: string;
   placeholder?: string;
   onChange?: (value: string) => void;
@@ -13,7 +13,7 @@ interface Props {
   disabled?: boolean;
 }
 
-export const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
+export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, onChange, value, placeholder, hasError, label, extra, disabled, ...props }, ref) => {
     const onChangeHandler = (ev: React.ChangeEvent<HTMLTextAreaElement>): void =>
       onChange !== undefined ? onChange(ev.target.value) : undefined;

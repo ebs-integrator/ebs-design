@@ -18,6 +18,7 @@
     flex-wrap: wrap;
     align-items: center;
     text-align: right;
+    padding-left: $gutter-size;
 
     @include mq($until: tablet) {
       text-align: left;

@@ -123,12 +123,14 @@ export const InputSelect = React.forwardRef<any, Props>(
       [isArrayValue, textValue, placeholder],
     );
 
+    const iconType = React.useMemo(() => `arrow-${openDropdown ? 'top' : 'bottom'}`, [openDropdown]);
+
     return (
       <>
         {openDropdown && <Mask onClick={onToggleOpenDropdown} />}
 
         <div
-          className={cn(`ebs-select__input-wrapper`, `ebs-select__input-mode-${mode}`, className, {
+          className={cn(`ebs-select__input-wrapper`, `ebs-select__input--${mode}`, className, {
             active: hasValue,
             'has-error': hasError,
             disabled: disabled,
@@ -149,7 +151,7 @@ export const InputSelect = React.forwardRef<any, Props>(
               )}
 
               <div className="ebs-select__input-suffix">
-                <Icon type={`arrow-${openDropdown ? 'top' : 'bottom'}`} />
+                <Icon type={iconType} />
               </div>
             </div>
 

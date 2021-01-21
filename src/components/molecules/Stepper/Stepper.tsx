@@ -5,7 +5,7 @@ import { Extra, Label, Icon } from 'components/atoms';
 
 export type AlignType = 'left' | 'right';
 
-interface Props {
+export interface StepperProps {
   className?: string;
   align?: AlignType;
   hasError?: boolean;
@@ -27,7 +27,7 @@ interface Props {
   placeholder?: string;
 }
 
-export const Stepper: React.FC<Props> = ({
+export const Stepper: React.FC<StepperProps> = ({
   className,
   align = 'right',
   hasError,

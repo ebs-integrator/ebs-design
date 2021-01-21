@@ -49,7 +49,7 @@
 
   .ebs-stepper {
     width: 100%;
-    height: rem(40px);
+    height: rem($base-size);
     border: 1px solid $border-color;
     background-color: $white;
     border-radius: rem($border-radius);
