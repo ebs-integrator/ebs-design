@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row, Col } from 'components/atoms';
 
 export interface DetailsCardProps {
   headLeft: React.ReactNode;
@@ -24,9 +25,12 @@ export interface HeadLeftProps {
 }
 
 export const HeadLeft: React.FC<HeadLeftProps> = ({ icon, title, subtitle }) => (
-  <div>
-    {icon && <div className="ebs-details__header__icon">{icon}</div>}
-    <h2 className="ebs-details__header__title">{title}</h2>
-    {subtitle && <span className="ebs-details__header__subtitle">{subtitle}</span>}
-  </div>
+  <Row g={0}>
+    <Col>{icon && <div className="ebs-details__header__icon">{icon}</div>}</Col>
+
+    <Col>
+      <h2 className="ebs-details__header__title">{title}</h2>
+      {subtitle && <span className="ebs-details__header__subtitle">{subtitle}</span>}
+    </Col>
+  </Row>
 );

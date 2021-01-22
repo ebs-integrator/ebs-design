@@ -5,36 +5,37 @@
   @include fontRegular;
 
   &--regular {
-    font-size: rem(12px);
-    margin-bottom: rem(5px);
-    color: $text-color;
+    font-size: rem($label-regular-font-size);
+    margin-bottom: rem($label-regular-margin-bottom);
+    color: $label-regular-color;
 
     .ebs-icon {
-      color: $text-color;
+      color: $label-regular-color;
     }
   }
 
   &--circle,
   &--fill {
-    display: inline;
-    font-size: rem(10px);
-    padding: rem(5px 12px);
-    border: 1px solid $text-color;
-    border-radius: rem(12px);
+    @include flex-center;
+    display: inline-flex;
+    font-size: rem($label-font-size);
+    height: rem($label-height);
+    padding: rem($label-padding);
+    border: $label-border;
+    border-radius: rem($label-border-radius);
   }
 
   &--circle {
-    color: $text-color;
+    color: $label-color;
 
     .ebs-icon {
-      color: $text-color;
+      color: $label-color;
     }
   }
 
   &--fill {
     color: $white !important;
-    background: $text-color;
-    border-radius: rem(12px);
+    background-color: $label-color;
 
     &.ebs-label--status-success {
       background-color: $success-color;
@@ -50,10 +51,6 @@
 
     &.ebs-label--status-info {
       background-color: $info-color;
-    }
-
-    &.ebs-label--status-text {
-      background-color: $text-color;
     }
 
     &.disabled {
