@@ -8,6 +8,7 @@ import { DateState, LimitTimeState } from './Calendar.types';
 
 export { registerLocale } from 'react-datepicker';
 
+export type CalendarSize = 'small' | 'medium' | 'large';
 export type CalendarType = 'period' | 'date' | 'date-time';
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
   startPlaceholder?: string;
   endPlaceholder?: string;
   className?: string;
+  size?: CalendarSize;
   withTime?: boolean;
   onChange?: (state: { [key: string]: string | null }) => void;
   minDate?: Date;
@@ -37,6 +39,7 @@ export const Calendar: React.FC<Props> = ({
   startPlaceholder = '',
   endPlaceholder = '',
   iconAlign = 'right',
+  size = 'medium',
   className,
   withTime,
   onChange,
@@ -147,7 +150,7 @@ export const Calendar: React.FC<Props> = ({
               minTime={withTime ? limitTime.min : undefined}
               maxTime={withTime ? limitTime.max : undefined}
               placeholderText={startPlaceholder || withTime ? `yyyy-mm-dd hh:mm` : `yyyy-mm-dd`}
-              className={cn(`ebs-calendar`, { active: from })}
+              className={cn(`ebs-calendar ebs-calendar--${size}`, { active: from })}
               selected={from}
               onChange={onChangeFrom}
               selectsStart
@@ -167,7 +170,7 @@ export const Calendar: React.FC<Props> = ({
               minTime={limitTime.min}
               maxTime={limitTime.max}
               placeholderText={endPlaceholder || withTime ? `yyyy-mm-dd hh:mm` : `yyyy-mm-dd`}
-              className={cn(`ebs-calendar`, { active: to })}
+              className={cn(`ebs-calendar ebs-calendar--${size}`, { active: to })}
               selected={to}
               onChange={onChangeTo}
               selectsEnd
@@ -186,7 +189,7 @@ export const Calendar: React.FC<Props> = ({
             showYearDropdown
             scrollableYearDropdown
             minDate={minDate}
-            className={cn(`ebs-calendar`, { active: date })}
+            className={cn(`ebs-calendar ebs-calendar--${size}`, { active: date })}
             dateFormat="yyyy-MM-dd"
             placeholderText={placeholder || 'yyyy-mm-dd'}
             selected={date}
@@ -206,7 +209,7 @@ export const Calendar: React.FC<Props> = ({
             maxTime={limitTime.max}
             dateFormat="yyyy-MM-dd HH:mm"
             placeholderText={placeholder || 'yyyy-mm-dd hh:mm'}
-            className={cn(`ebs-calendar`, { active: date })}
+            className={cn(`ebs-calendar ebs-calendar--${size}`, { active: date })}
             selected={date}
             onChange={onChangeDate}
             timeIntervals={5}

@@ -1,3 +1,67 @@
+.ebs-select__input {
+  cursor: pointer;
+  border: 1px solid $border-color;
+  border-radius: rem($border-radius);
+  font-size: rem(14px);
+  line-height: $line-height-base;
+
+  &-transition {
+    width: rem(90px);
+    height: calc(100% - 2px);
+    margin: 1px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-top-right-radius: rem(4px);
+    border-bottom-right-radius: rem(4px);
+    box-shadow: inset -90px 0px 15px -12px rgba($white, 1);
+  }
+
+  &-count {
+    position: absolute;
+    right: (35px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $primary-color;
+    color: $white;
+    font-size: rem(12px);
+    border-radius: rem($border-radius);
+    padding: rem(5px 8px);
+  }
+
+  &-suffix {
+    position: absolute;
+    right: rem(14px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-color;
+
+    .ebs-icon {
+      font-size: rem(10px);
+    }
+  }
+
+  &-value {
+    color: $text-color-secondary;
+    overflow: auto hidden;
+    white-space: nowrap;
+    @include hiddenScroll;
+  }
+
+  &-label {
+    position: relative;
+    top: rem(-1px);
+    padding-top: rem(4px);
+    padding-bottom: rem(4px);
+    font-size: rem(12px);
+    margin-bottom: 0;
+  }
+
+  &-label:not(:last-child) {
+    margin-right: rem(4px);
+  }
+}
+
 .ebs-select__input-wrapper {
   &.disabled .ebs-select__input-dropdown-wrapper .ebs-select__input {
     cursor: not-allowed;
@@ -35,68 +99,18 @@
 
 .ebs-select__input-dropdown-wrapper {
   position: relative;
+}
 
-  .ebs-select__input {
-    cursor: pointer;
-    padding: rem(11px 10px);
-    border: 1px solid $border-color;
-    border-radius: rem($border-radius);
-    font-size: rem(14px);
-
-    &-transition {
-      width: rem(90px);
-      height: calc(100% - 2px);
-      margin: 1px;
-      position: absolute;
-      right: 0;
-      top: 0;
-      border-top-right-radius: rem(4px);
-      border-bottom-right-radius: rem(4px);
-      box-shadow: inset -90px 0px 15px -12px rgba($white, 1);
-    }
-
-    &-count {
-      position: absolute;
-      right: (35px);
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: $primary-color;
-      color: $white;
-      font-size: rem(12px);
-      border-radius: rem($border-radius);
-      padding: rem(5px 8px);
-    }
-
-    &-suffix {
-      position: absolute;
-      right: rem(14px);
-      top: 50%;
-      transform: translateY(-50%);
-      color: $text-color;
-
-      .ebs-icon {
-        font-size: rem(10px);
-      }
-    }
-
-    &-value {
-      color: $text-color-secondary;
-      overflow: auto hidden;
-      white-space: nowrap;
-      @include hiddenScroll;
-    }
-
-    &-label {
-      position: relative;
-      top: rem(-1px);
-      padding-top: rem(4px);
-      padding-bottom: rem(4px);
-      font-size: rem(12px);
-      margin-bottom: 0;
-    }
-
-    &-label:not(:last-child) {
-      margin-right: rem(4px);
-    }
+// Sizes
+.ebs-select__input {
+  &--small {
+    font-size: rem(12px);
+    padding: rem($select-padding-y-sm $select-padding-x-sm);
+  }
+  &--medium {
+    padding: rem($select-padding-y $select-padding-x);
+  }
+  &--large {
+    padding: rem($select-padding-y-lg $select-padding-x-lg);
   }
 }

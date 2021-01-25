@@ -106,17 +106,32 @@
 
   .ebs-calendar {
     width: 100%;
-    height: rem($base-size);
     border: 1px solid $border-color;
     border-radius: rem($border-radius);
     outline: none;
     font-size: rem(14px);
-    padding: rem(10px);
+    line-height: $line-height-base;
     padding-right: rem($base-size);
+    padding: rem($calendar-padding-y $calendar-padding-x);
     color: $heading-color;
 
     @include placeholder {
       color: $text-color-secondary;
+    }
+
+    // Sizes
+    &--small {
+      font-size: rem(12px);
+      padding: rem($calendar-padding-y-sm $calendar-padding-x-sm);
+      padding-right: rem($base-size-sm);
+    }
+    &--medium {
+      padding: rem($calendar-padding-y $calendar-padding-x);
+      padding-right: rem($base-size);
+    }
+    &--large {
+      padding: rem($calendar-padding-y-lg $calendar-padding-x-lg);
+      padding-right: rem($base-size-lg);
     }
   }
 }

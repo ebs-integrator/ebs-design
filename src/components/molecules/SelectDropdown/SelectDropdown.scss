@@ -3,7 +3,7 @@
 
   position: absolute;
   left: 0;
-  top: rem(44px);
+  top: calc(100% + 4px);
   width: 100%;
   padding: rem(4px);
   background-color: $white;
