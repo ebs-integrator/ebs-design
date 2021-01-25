@@ -15,71 +15,55 @@
   }
 
   &--circle,
-  &--fill {
+  &--fill,
+  &--ghost {
     @include flex-center;
     display: inline-flex;
-    font-size: rem($label-font-size);
     height: rem($label-height);
     padding: rem($label-padding);
-    border: $label-border;
+  }
+
+  &--circle {
+    font-size: rem($label-font-size);
     border-radius: rem($label-border-radius);
+  }
+
+  &--ghost {
+    border: $label-border;
   }
 
   &--circle {
     color: $label-color;
+
+    &.ebs-label--fill {
+      color: $white;
+
+      .ebs-icon {
+        color: $white;
+      }
+    }
 
     .ebs-icon {
       color: $label-color;
     }
   }
 
-  &--fill {
-    color: $white !important;
-    background-color: $label-color;
-
-    &.ebs-label--status-success {
-      background-color: $success-color;
-    }
-
-    &.ebs-label--status-warning {
-      background-color: $warning-color;
-    }
-
-    &.ebs-label--status-danger {
-      background-color: $danger-color;
-    }
-
-    &.ebs-label--status-info {
-      background-color: $info-color;
-    }
-
-    &.disabled {
-      cursor: not-allowed;
-      color: $grey-500 !important;
-      background: $grey-100;
-    }
-
-    .ebs-icon {
-      color: $white;
-    }
-  }
-
-  &--status-success {
+  &--success {
     color: $success-color;
     border-color: $success-color;
   }
 
-  &--status-warning {
+  &--warning {
     color: $warning-color;
     border-color: $warning-color;
   }
 
-  &--status-danger {
+  &--danger {
     color: $danger-color;
     border-color: $danger-color;
   }
 
-  &--status-danger.ebs-label--icon {
+  &--danger.ebs-label--icon {
     background: $white;
     border-color: $white;
 
@@ -88,17 +72,17 @@
     }
   }
 
-  &--status-info {
+  &--info {
     color: $info-color;
     border-color: $info-color;
   }
 
-  &--status-text {
+  &--text {
     color: $text-color;
     border-color: $text-color;
   }
 
-  &--status-primary {
+  &--primary {
     background-color: $primary-000;
     color: $primary-color;
     border-color: $primary-color;
@@ -108,6 +92,37 @@
     cursor: not-allowed;
     color: $grey-500;
     border-color: $grey-500;
+  }
+
+  &--fill {
+    color: $white;
+    background-color: $label-color;
+
+    &.ebs-label--success {
+      background-color: $success-color;
+    }
+
+    &.ebs-label--warning {
+      background-color: $warning-color;
+    }
+
+    &.ebs-label--danger:not(.ebs-label--icon):not(.disabled) {
+      background-color: $danger-color;
+    }
+
+    &.ebs-label--info {
+      background-color: $info-color;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      color: $grey-500;
+      background: $grey-100;
+    }
+
+    &.ebs-icon {
+      color: $white;
+    }
   }
 
   &.has-prefix,

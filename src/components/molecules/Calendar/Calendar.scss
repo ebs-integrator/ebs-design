@@ -35,7 +35,7 @@
     cursor: not-allowed;
 
     @include placeholder {
-      color: $grey-500 !important;
+      color: $grey-500;
     }
   }
 
@@ -139,17 +139,17 @@
     }
 
     &__time-list-item:hover {
-      background-color: $primary-100 !important;
+      background-color: $primary-100;
       color: $text-color;
     }
 
     &__time-list-item--disabled {
-      display: none !important;
+      display: none;
     }
 
     &__time-list-item--selected,
     &__time-list-item--selected:hover {
-      background-color: $primary-color !important;
+      background-color: $primary-color;
       color: $white;
     }
 

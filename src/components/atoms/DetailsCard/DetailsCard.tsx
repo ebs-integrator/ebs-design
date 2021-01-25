@@ -25,7 +25,7 @@ export interface HeadLeftProps {
 }
 
 export const HeadLeft: React.FC<HeadLeftProps> = ({ icon, title, subtitle }) => (
-  <Row g={0}>
+  <Row gx={0}>
     <Col>{icon && <div className="ebs-details__header__icon">{icon}</div>}</Col>
 
     <Col>
