@@ -1,9 +1,9 @@
 .ebs-select__input {
   cursor: pointer;
+  padding: rem(11px 10px);
   border: 1px solid $border-color;
   border-radius: rem($border-radius);
   font-size: rem(14px);
-  line-height: $line-height-base;
 
   &-transition {
     width: rem(90px);
@@ -45,6 +45,7 @@
     color: $text-color-secondary;
     overflow: auto hidden;
     white-space: nowrap;
+    padding-top: 1px;
     @include hiddenScroll;
   }
 
@@ -59,6 +60,18 @@
 
   &-label:not(:last-child) {
     margin-right: rem(4px);
+  }
+
+  // Sizes
+  &--small {
+    font-size: rem(12px);
+    padding: rem($select-padding-y-sm $select-padding-x-sm);
+  }
+  &--medium {
+    padding: rem($select-padding-y $select-padding-x);
+  }
+  &--large {
+    padding: rem($select-padding-y-lg $select-padding-x-lg);
   }
 }
 
@@ -84,7 +97,7 @@
 
     .ebs-select__input-dropdown-wrapper .ebs-select__input {
       border-color: $primary-color;
-      background-color: $white !important;
+      background-color: $white;
 
       .ebs-select__input-value {
         color: $heading-color;
@@ -99,18 +112,4 @@
 
 .ebs-select__input-dropdown-wrapper {
   position: relative;
-}
-
-// Sizes
-.ebs-select__input {
-  &--small {
-    font-size: rem(12px);
-    padding: rem($select-padding-y-sm $select-padding-x-sm);
-  }
-  &--medium {
-    padding: rem($select-padding-y $select-padding-x);
-  }
-  &--large {
-    padding: rem($select-padding-y-lg $select-padding-x-lg);
-  }
 }

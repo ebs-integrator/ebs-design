@@ -45,7 +45,7 @@
 
   .ebs-form__item {
     @include mq($from: small-desktop) {
-      margin-bottom: 0 !important;
+      margin-bottom: 0;
 
       &:not(:first-child) {
         margin-left: rem(12.5px);
@@ -53,7 +53,7 @@
     }
 
     @include mq($until: small-desktop) {
-      width: 100% !important;
+      width: 100%;
     }
   }
 }

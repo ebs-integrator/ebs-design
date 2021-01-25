@@ -2,13 +2,14 @@ import * as React from 'react';
 import cn from 'classnames';
 import { $Object } from 'libs/object/object.types';
 
-export type LabelType = 'regular' | 'circle' | 'fill';
+export type LabelType = 'regular' | 'fill' | 'ghost';
 
 export type LabelStatus = 'success' | 'warning' | 'danger' | 'info' | 'text' | 'primary';
 
 export interface Props {
   className?: string;
   type?: LabelType;
+  circle?: boolean;
   status?: LabelStatus;
   style?: $Object;
   onClick?: () => void;
@@ -25,6 +26,7 @@ export const Label: React.FC<Props> = ({
   className,
   type = 'regular',
   status = 'text',
+  circle,
   icon,
   text,
   style,
@@ -41,9 +43,10 @@ export const Label: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(`ebs-label`, `ebs-label--${type}`, `ebs-label--status-${status}`, className, {
+      className={cn(`ebs-label`, `ebs-label--${type}`, `ebs-label--${status}`, className, {
         'ebs-label--icon': icon,
         'ebs-label--icon-info': icon && icon.props && icon.props.type === 'info',
+        'ebs-label--circle': circle,
         'has-prefix': prefix,
         'has-suffix': suffix,
         disabled: disabled,

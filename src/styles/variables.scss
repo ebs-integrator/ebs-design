@@ -128,20 +128,24 @@ $badge-warning-bg-color: $warning-color !default;
 $badge-danger-bg-color: $danger-color !default;
 
 // Collapse
-$collapse-border: 1px solid;
-$collapse-border-color: $border-color;
-$collapse-border-radius: $border-radius;
-$collapse-header-border-bottom: 1px solid;
-$collapse-header-border-bottom-color: $primary-color;
+$collapse-border: 1px solid !default;
+$collapse-border-color: $border-color !default;
+$collapse-border-radius: $border-radius !default;
+$collapse-header-border-bottom: 1px solid !default;
+$collapse-header-border-bottom-color: $primary-color !default;
 
 // Details Card
-$details-card-border: 1px solid;
-$details-card-border-color: $border-color;
-$details-card-border-radius: $border-radius;
-$details-card-header-border-bottom: 1px solid;
-$details-card-header-border-bottom-color: $border-color;
-$details-card-footer-border-top: 1px solid;
-$details-card-footer-border-top-color: $border-color;
+$details-card-padding: $gutter-size !default;
+$details-card-border: 1px solid !default;
+$details-card-border-color: $border-color !default;
+$details-card-border-radius: $border-radius !default;
+$details-card-header-icon-size: $base-size * 2 !default;
+$details-card-header-icon-margin-right: $details-card-padding !default;
+$details-card-header-border-bottom: 1px solid !default;
+$details-card-header-border-bottom-color: $border-color !default;
+$details-card-footer-border-top: 1px solid !default;
+$details-card-footer-border-top-color: $border-color !default;
+
 // Links
 //
 // Style anchor elements.
@@ -215,10 +219,25 @@ $layout-top-bar-avatar-icon-btn-color: $primary-color !default;
 $layout-top-bar-avatar-icon-btn-size: 32px !default;
 $layout-top-bar-avatar-icon-btn-padding: 0 !default;
 
+$layout-top-bar-toggler-color: $primary-color !default;
 $layout-top-bar-toggler-border-color: $border-color !default;
 
 $layout-footer-background: transparent !default;
 $layout-footer-height: $layout-top-bar-height !default;
+
+// Label
+//
+// Define font size, color, border of labels
+$label-font-size: 10px !default;
+$label-height: 24px !default;
+$label-padding: 0 12px !default;
+$label-color: $text-color !default;
+$label-border: 1px solid $text-color !default;
+$label-border-radius: 12px !default;
+
+$label-regular-font-size: 12px !default;
+$label-regular-color: $text-color !default;
+$label-regular-margin-bottom: 5px !default;
 
 // Sidebar
 //
