@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Icon } from 'components/atoms';
+import { Button, Icon, Label } from 'components/atoms';
 
 import { DetailsCard, HeadLeft } from './DetailsCard';
 import { exportStory } from 'libs';
@@ -12,13 +12,7 @@ export default {
 
 export const Regular = (): React.ReactElement => (
   <DetailsCard
-    headLeft={
-      <HeadLeft
-        title="Petr SR"
-        subtitle={<span style={{ borderRadius: '50%' }}>Approved</span>}
-        icon={<Icon type="info" />}
-      />
-    }
+    headLeft={<HeadLeft title="Petr SR" subtitle={<Label type="fill" text="Approved" />} icon={<Icon type="info" />} />}
     headRight={<Button>Push Me</Button>}
     footer={<Button>Push Me</Button>}
   >

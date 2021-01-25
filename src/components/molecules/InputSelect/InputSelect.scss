@@ -20,7 +20,7 @@
 
     .ebs-select__input-dropdown-wrapper .ebs-select__input {
       border-color: $primary-color;
-      background-color: $white !important;
+      background-color: $white;
 
       .ebs-select__input-value {
         color: $heading-color;
@@ -83,6 +83,7 @@
       color: $text-color-secondary;
       overflow: auto hidden;
       white-space: nowrap;
+      padding-top: 1px;
       @include hiddenScroll;
     }
 

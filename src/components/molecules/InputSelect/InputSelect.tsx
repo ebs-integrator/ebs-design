@@ -111,7 +111,8 @@ export const InputSelect = React.forwardRef<any, Props>(
               <Label
                 key={item}
                 className="ebs-select__input-label"
-                type="circle"
+                type="ghost"
+                circle
                 status="primary"
                 text={item}
                 prefix={<Icon type="check" />}

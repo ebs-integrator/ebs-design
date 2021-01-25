@@ -4,7 +4,7 @@
   &.active .form-control,
   &.active .flag-dropdown {
     border-color: $primary-color;
-    background-color: $white !important;
+    background-color: $white;
     color: $heading-color;
   }
 
@@ -16,7 +16,7 @@
     cursor: not-allowed;
 
     @include placeholder {
-      color: $grey-500 !important;
+      color: $grey-500;
     }
   }
 
@@ -64,7 +64,7 @@
     height: rem($base-size);
 
     @include placeholder {
-      color: $text-color-secondary !important;
+      color: $text-color-secondary;
     }
   }
 

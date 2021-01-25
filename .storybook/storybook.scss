@@ -24,6 +24,12 @@
   > .ebs-select__input-wrapper {
     min-width: 50%;
   }
+
+  .ebs-details__header__side-left {
+    .row {
+      min-width: unset !important;
+    }
+  }
 }
 
 .storybook-rows {
