@@ -16,11 +16,7 @@ export const Regular = (): React.ReactElement => (
   <Collapse
     defaultActive={true}
     title="Collapse element"
-    rightSide={
-      <Button size="small" stopPropagation>
-        History
-      </Button>
-    }
+    rightSide={<Button size="small">History</Button>}
     leftSide={<span>3 items</span>}
   >
     <div style={style}>

@@ -32,7 +32,7 @@ export const Collapse: React.FC<CollapseProps> = ({
           {title && <div className="ebs-collapse__title">{title}</div>}
           {leftSide}
         </div>
-        <div className="ebs-collapse__header__side-right">
+        <div className="ebs-collapse__header__side-right" onClick={(e) => e.stopPropagation()}>
           {rightSide}
           {children && (
             <div className="ebs-collapse__header-action">
