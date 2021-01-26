@@ -34,6 +34,17 @@ export const Button: React.FC<ButtonProps> = ({
   block,
   ...props
 }) => {
+  const onClickHandler = React.useCallback(
+    (e) => {
+      e.stopPropagation();
+
+      if (onClick) {
+        onClick();
+      }
+    },
+    [onClick],
+  );
+
   return (
     <div
       className={cn(
@@ -47,7 +58,7 @@ export const Button: React.FC<ButtonProps> = ({
           'ebs-button--icon': icon,
         },
       )}
-      onClick={onClick}
+      onClick={onClickHandler}
       role="presentation"
     >
       {prefix ? (
