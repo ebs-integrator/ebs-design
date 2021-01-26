@@ -32,6 +32,11 @@
   justify-content: space-between;
 }
 
+@mixin flex-center-end {
+  @include flex-center-vert;
+  justify-content: flex-end;
+}
+
 @mixin flex-center {
   @include flex-center-horiz;
   align-items: center;
