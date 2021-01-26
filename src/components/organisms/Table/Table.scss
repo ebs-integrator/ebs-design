@@ -190,6 +190,7 @@
     }
 
     .ebs-action__wrapper {
+      @include flex-center;
       position: relative;
     }
   }
