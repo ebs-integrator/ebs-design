@@ -63,9 +63,9 @@
   border: none;
   width: 100%;
   display: block;
-  height: rem($base-size);
   font-size: rem(14px);
-  padding: rem(0 10px);
+  padding: rem($select-padding-y $select-padding-x);
+  line-height: $line-height-base;
   color: $heading-color;
 
   @include placeholder {
@@ -110,5 +110,17 @@
   &__suffix {
     left: inherit;
     right: rem(10px);
+  }
+
+  // Sizes
+  &--small {
+    font-size: rem(12px);
+    padding: rem($input-padding-y-sm $input-padding-x-sm);
+  }
+  &--medium {
+    padding: rem($input-padding-y $input-padding-x);
+  }
+  &--large {
+    padding: rem($input-padding-y-lg $input-padding-x-lg);
   }
 }

@@ -19,7 +19,9 @@ $grid-sm-size: 576px !default;
 $spacing-from: 0 !default;
 $spacing-to: 30 !default;
 
-$base-size: $gutter-size * 2 !default;
+$base-size: 32px !default;
+$base-size-sm: 24px !default;
+$base-size-lg: 40px !default;
 
 // Text colors
 $heading-color: #121634 !default;
@@ -293,5 +295,39 @@ $scrollbar-track-background-color: $background-content !default;
 $scrollbar-thumb-background-color: $border-color !default;
 $scrollbar-thumb-hover-background-color: $primary-color !default;
 
-//Icon
+// Icon
 $icon-svg-color: $primary-color !default;
+
+// Form inputs
+//
+// Define base size & colors of scrollbar
+//
+// Input
+$input-padding-y: 6px;
+$input-padding-x: 8px;
+
+$input-padding-y-sm: 4px;
+$input-padding-x-sm: 6px;
+
+$input-padding-y-lg: 10px;
+$input-padding-x-lg: 10px;
+
+// Select
+$select-padding-y: $input-padding-y;
+$select-padding-x: $input-padding-x;
+
+$select-padding-y-sm: $input-padding-y-sm;
+$select-padding-x-sm: $input-padding-x-sm;
+
+$select-padding-y-lg: $input-padding-y-lg;
+$select-padding-x-lg: $input-padding-x-lg;
+
+// Calendar
+$calendar-padding-y: $input-padding-y;
+$calendar-padding-x: $input-padding-x;
+
+$calendar-padding-y-sm: $input-padding-y-sm;
+$calendar-padding-x-sm: $input-padding-x-sm;
+
+$calendar-padding-y-lg: $input-padding-y-lg;
+$calendar-padding-x-lg: $input-padding-x-lg;

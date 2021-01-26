@@ -2,6 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { capitalize } from 'libs/string';
 import { Icon, Input } from 'components/atoms';
+import { InputSize } from 'components/atoms/Input/Input';
 
 export type InputSearchIconAlign = 'prefix' | 'suffix';
 
@@ -18,6 +19,7 @@ export interface InputSearchProps {
   disabled?: boolean;
   label?: React.ReactNode;
   extra?: React.ReactNode;
+  size?: InputSize;
 }
 
 export const InputSearch: React.FC<InputSearchProps> = ({
@@ -31,6 +33,7 @@ export const InputSearch: React.FC<InputSearchProps> = ({
   disabled,
   label,
   extra,
+  size,
 }) => {
   const [changedValue, setChangedValue] = React.useState(false);
   const [value, setValue] = React.useState('');
@@ -83,6 +86,7 @@ export const InputSearch: React.FC<InputSearchProps> = ({
         disabled={disabled}
         label={label}
         extra={extra}
+        size={size}
       />
     </form>
   );
