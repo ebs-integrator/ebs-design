@@ -49,6 +49,12 @@
   }
 }
 
+.ebs-card {
+  .ebs-loader {
+    border: 1px solid $border-color;
+  }
+}
+
 // FOOTER
 .ebs-card__footer {
   padding: rem($gutter-size);

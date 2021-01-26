@@ -24,25 +24,41 @@ export const Collapse: React.FC<CollapseProps> = ({
   const handleToggleCollapse = (): void => {
     setActive((s) => !s);
   };
+
   return (
     <div className={cn(`ebs-collapse`, className, { collapsed: !active })}>
-      <div className="ebs-collapse__header">
+      <div className="ebs-collapse__header" onClick={children ? handleToggleCollapse : undefined}>
         <div className="ebs-collapse__header__side-left">
-          {title && (
-            <div className="ebs-collapse__title" onClick={handleToggleCollapse}>
-              {title}
-            </div>
-          )}
+          {title && <div className="ebs-collapse__title">{title}</div>}
           {leftSide}
         </div>
-        <div className="ebs-collapse__header__side-right">
+        <div className="ebs-collapse__header__side-right" onClick={(e) => e.stopPropagation()}>
           {rightSide}
-          <div className="ebs-collapse__header-action">
-            <Icon onClick={handleToggleCollapse} type={active ? 'arrow-bottom' : 'arrow-left'} />
-          </div>
+          {children && (
+            <div className="ebs-collapse__header-action">
+              <Icon type={active ? 'arrow-bottom' : 'arrow-left'} />
+            </div>
+          )}
         </div>
       </div>
-      {active && <div className="ebs-collapse__content">{children}</div>}
+      {children && <div className="ebs-collapse__content">{children}</div>}
     </div>
   );
 };
+
+export const CollapseGroup: React.FC<CollapseProps> = ({ title, leftSide, rightSide, children, className }) => (
+  <div className={cn(`ebs-collapse`, `ebs-collapse__group`, className)}>
+    <div className="ebs-collapse__header">
+      <div className="ebs-collapse__header__side-left">
+        {title && (
+          <div className="ebs-collapse__title">
+            {title} ({React.Children.toArray(children).length})
+          </div>
+        )}
+        {leftSide}
+      </div>
+      <div className="ebs-collapse__header__side-right">{rightSide}</div>
+    </div>
+    {children}
+  </div>
+);

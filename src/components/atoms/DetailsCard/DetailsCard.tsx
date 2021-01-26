@@ -1,20 +1,28 @@
 import React from 'react';
+import cn from 'classnames';
 import { Row, Col } from 'components/atoms';
 
 export interface DetailsCardProps {
   headLeft: React.ReactNode;
   headRight?: React.ReactNode;
   footer?: React.ReactNode;
+  footerContentAlign?: 'left' | 'right' | 'center' | 'between';
 }
 
-export const DetailsCard: React.FC<DetailsCardProps> = ({ headLeft, headRight, footer, children }) => (
+export const DetailsCard: React.FC<DetailsCardProps> = ({
+  headLeft,
+  headRight,
+  footer,
+  footerContentAlign = 'left',
+  children,
+}) => (
   <div className="ebs-details">
     <div className="ebs-details__header">
       <div className="ebs-details__header__side-left">{headLeft}</div>
       {headRight && <div className="ebs-details__header__side-right">{headRight}</div>}
     </div>
     <div className="ebs-details__body">{children}</div>
-    {footer && <div className="ebs-details__footer">{footer}</div>}
+    {footer && <div className={cn('ebs-details__footer', `ebs-details__footer--${footerContentAlign}`)}>{footer}</div>}
   </div>
 );
 

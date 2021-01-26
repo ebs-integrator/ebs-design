@@ -3,26 +3,34 @@
   border: $collapse-border;
   border-color: $collapse-border-color;
   border-radius: $collapse-border-radius;
-  transition: height 600ms ease-out;
 
   &.collapsed &__header {
-    border-bottom: none;
+    border-bottom-color: transparent;
+  }
+
+  &.collapsed &__content {
+    max-height: 0px;
+    opacity: 0;
+
+    > div {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
   }
 
   &__header {
-    display: flex;
-    flex-wrap: wrap;
+    @include flex-center;
+    cursor: pointer;
     justify-content: space-between;
     border-bottom: $collapse-header-border-bottom;
     border-bottom-color: $collapse-header-border-bottom-color;
-    padding: rem(10px);
+    transition: border-bottom-color $transition-time;
   }
 
   &__header__side-left,
   &__header__side-right {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    @include flex-center;
+    padding: rem($collapse-space-size);
   }
 
   &__header__side-right {
@@ -30,15 +38,66 @@
   }
 
   &__header-action {
-    margin-left: rem(10px);
+    margin-left: rem($collapse-space-size);
 
-    svg {
-      width: rem(12px);
+    .ebs-icon {
+      color: $grey-600;
+      width: rem($collapse-header-action-icon-size);
     }
   }
 
   &__title {
-    margin-right: rem(10px);
-    cursor: pointer;
+    @include flex-center;
+    font-weight: $collapse-header-title-font-weight;
+    margin-right: rem($collapse-space-size);
+
+    .ebs-icon {
+      font-size: rem($collapse-header-title-icon-size);
+      margin-right: rem($collapse-space-size);
+    }
+  }
+
+  &__content {
+    max-height: 100%;
+    opacity: 1;
+    transition: $transition-base;
+
+    > div {
+      transition: $transition-base;
+    }
+  }
+
+  &__group > &__header {
+    cursor: default;
+  }
+
+  &__group > &__header > &__header__side-left,
+  &__group > &__header > &__header__side-right {
+    padding: rem($collapse-group-space-size $collapse-space-size);
+  }
+
+  &__group > & {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__group > & > &__header {
+    border-width: 1px;
+  }
+
+  &__group > &:not(.collapsed) > & {
+    &__header {
+      border-bottom-color: $collapse-border-color;
+    }
+
+    &__content {
+      border-left: 2px solid $collapse-header-border-bottom-color;
+      margin-left: -2px;
+    }
   }
 }

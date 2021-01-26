@@ -2,6 +2,7 @@
 import dayjs from 'dayjs';
 
 export const today = dayjs();
+export const timeFormat = 'HH:mm';
 export const dateFormat = 'YYYY-MM-DD';
 export const dateTimeFormat = 'YYYY-MM-DD HH:mm';
 

@@ -128,19 +128,25 @@ $badge-warning-bg-color: $warning-color !default;
 $badge-danger-bg-color: $danger-color !default;
 
 // Collapse
+$collapse-space-size: $gutter-size !default;
+$collapse-group-space-size: $gutter-size + $gutter-size / 2 !default;
+
 $collapse-border: 1px solid !default;
 $collapse-border-color: $border-color !default;
 $collapse-border-radius: $border-radius !default;
-$collapse-header-border-bottom: 1px solid !default;
+$collapse-header-border-bottom: 2px solid !default;
 $collapse-header-border-bottom-color: $primary-color !default;
+$collapse-header-title-font-weight: 500 !default;
+$collapse-header-title-icon-size: $collapse-group-space-size !default;
+$collapse-header-action-icon-size: 12px !default;
 
 // Details Card
-$details-card-padding: $gutter-size !default;
+$details-card-padding-size: $gutter-size !default;
 $details-card-border: 1px solid !default;
 $details-card-border-color: $border-color !default;
 $details-card-border-radius: $border-radius !default;
 $details-card-header-icon-size: $base-size * 2 !default;
-$details-card-header-icon-margin-right: $details-card-padding !default;
+$details-card-header-icon-margin-right: $details-card-padding-size !default;
 $details-card-header-border-bottom: 1px solid !default;
 $details-card-header-border-bottom-color: $border-color !default;
 $details-card-footer-border-top: 1px solid !default;
@@ -201,6 +207,7 @@ $btn-type-ghost-hover-border-color: $primary-color !default;
 $btn-type-ghost-active-color: $white !default;
 $btn-type-ghost-active-background: $primary-600 !default;
 $btn-type-ghost-active-border-color: $primary-600 !default;
+$btn-type-ghost-icon-color: $primary-color !default;
 
 // Layout
 //
@@ -220,6 +227,7 @@ $layout-top-bar-avatar-icon-btn-size: 32px !default;
 $layout-top-bar-avatar-icon-btn-padding: 0 !default;
 
 $layout-top-bar-toggler-color: $primary-color !default;
+$layout-top-bar-toggler-hover-color: $primary-color !default;
 $layout-top-bar-toggler-border-color: $border-color !default;
 
 $layout-footer-background: transparent !default;
@@ -228,16 +236,13 @@ $layout-footer-height: $layout-top-bar-height !default;
 // Label
 //
 // Define font size, color, border of labels
-$label-font-size: 10px !default;
+$label-font-size: 12px !default;
 $label-height: 24px !default;
 $label-padding: 0 12px !default;
 $label-color: $text-color !default;
-$label-border: 1px solid $text-color !default;
-$label-border-radius: 12px !default;
-
-$label-regular-font-size: 12px !default;
-$label-regular-color: $text-color !default;
-$label-regular-margin-bottom: 5px !default;
+$label-border: 1px solid !default;
+$label-border-radius: $border-radius !default;
+$label-circle-border-radius: $label-height / 2 !default;
 
 // Sidebar
 //

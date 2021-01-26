@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tooltip, Icon } from 'components/atoms';
 
-const Item: React.FC<{ onClick: () => void }> = ({ children, onClick }) => {
+const Item: React.FC<{ onClick?: () => void }> = ({ children, onClick }) => {
   return (
     <div className="ebs-action__tooltip-item" onClick={onClick}>
       {children}
