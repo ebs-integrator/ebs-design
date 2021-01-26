@@ -25,5 +25,5 @@ export const HasValue = (): React.ReactNode => (
 export const Multiple = (): React.ReactNode => <InputSelect mode="multiple" options={options} placeholder="Select" />;
 
 export const MultipleHasValue = (): React.ReactNode => (
-  <InputSelect mode="multiple" options={options} value="Selected value" placeholder="Select" />
+  <InputSelect mode="multiple" options={options} value={['Selected value']} placeholder="Select" />
 );

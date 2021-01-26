@@ -19,7 +19,9 @@ $grid-sm-size: 576px !default;
 $spacing-from: 0 !default;
 $spacing-to: 30 !default;
 
-$base-size: $gutter-size * 2 !default;
+$base-size: 32px !default;
+$base-size-sm: 24px !default;
+$base-size-lg: 40px !default;
 
 // Text colors
 $heading-color: #121634 !default;
@@ -126,20 +128,30 @@ $badge-warning-bg-color: $warning-color !default;
 $badge-danger-bg-color: $danger-color !default;
 
 // Collapse
-$collapse-border: 1px solid;
-$collapse-border-color: $border-color;
-$collapse-border-radius: $border-radius;
-$collapse-header-border-bottom: 1px solid;
-$collapse-header-border-bottom-color: $primary-color;
+$collapse-space-size: $gutter-size !default;
+$collapse-group-space-size: $gutter-size + $gutter-size / 2 !default;
+
+$collapse-border: 1px solid !default;
+$collapse-border-color: $border-color !default;
+$collapse-border-radius: $border-radius !default;
+$collapse-header-border-bottom: 2px solid !default;
+$collapse-header-border-bottom-color: $primary-color !default;
+$collapse-header-title-font-weight: 500 !default;
+$collapse-header-title-icon-size: $collapse-group-space-size !default;
+$collapse-header-action-icon-size: 12px !default;
 
 // Details Card
-$details-card-border: 1px solid;
-$details-card-border-color: $border-color;
-$details-card-border-radius: $border-radius;
-$details-card-header-border-bottom: 1px solid;
-$details-card-header-border-bottom-color: $border-color;
-$details-card-footer-border-top: 1px solid;
-$details-card-footer-border-top-color: $border-color;
+$details-card-padding-size: $gutter-size !default;
+$details-card-border: 1px solid !default;
+$details-card-border-color: $border-color !default;
+$details-card-border-radius: $border-radius !default;
+$details-card-header-icon-size: $base-size * 2 !default;
+$details-card-header-icon-margin-right: $details-card-padding-size !default;
+$details-card-header-border-bottom: 1px solid !default;
+$details-card-header-border-bottom-color: $border-color !default;
+$details-card-footer-border-top: 1px solid !default;
+$details-card-footer-border-top-color: $border-color !default;
+
 // Links
 //
 // Style anchor elements.
@@ -195,6 +207,7 @@ $btn-type-ghost-hover-border-color: $primary-color !default;
 $btn-type-ghost-active-color: $white !default;
 $btn-type-ghost-active-background: $primary-600 !default;
 $btn-type-ghost-active-border-color: $primary-600 !default;
+$btn-type-ghost-icon-color: $primary-color !default;
 
 // Layout
 //
@@ -213,10 +226,23 @@ $layout-top-bar-avatar-icon-btn-color: $primary-color !default;
 $layout-top-bar-avatar-icon-btn-size: 32px !default;
 $layout-top-bar-avatar-icon-btn-padding: 0 !default;
 
+$layout-top-bar-toggler-color: $primary-color !default;
+$layout-top-bar-toggler-hover-color: $primary-color !default;
 $layout-top-bar-toggler-border-color: $border-color !default;
 
 $layout-footer-background: transparent !default;
 $layout-footer-height: $layout-top-bar-height !default;
+
+// Label
+//
+// Define font size, color, border of labels
+$label-font-size: 12px !default;
+$label-height: 24px !default;
+$label-padding: 0 12px !default;
+$label-color: $text-color !default;
+$label-border: 1px solid !default;
+$label-border-radius: $border-radius !default;
+$label-circle-border-radius: $label-height / 2 !default;
 
 // Sidebar
 //
@@ -269,5 +295,39 @@ $scrollbar-track-background-color: $background-content !default;
 $scrollbar-thumb-background-color: $border-color !default;
 $scrollbar-thumb-hover-background-color: $primary-color !default;
 
-//Icon
+// Icon
 $icon-svg-color: $primary-color !default;
+
+// Form inputs
+//
+// Define base size & colors of scrollbar
+//
+// Input
+$input-padding-y: 6px;
+$input-padding-x: 8px;
+
+$input-padding-y-sm: 4px;
+$input-padding-x-sm: 6px;
+
+$input-padding-y-lg: 10px;
+$input-padding-x-lg: 10px;
+
+// Select
+$select-padding-y: $input-padding-y;
+$select-padding-x: $input-padding-x;
+
+$select-padding-y-sm: $input-padding-y-sm;
+$select-padding-x-sm: $input-padding-x-sm;
+
+$select-padding-y-lg: $input-padding-y-lg;
+$select-padding-x-lg: $input-padding-x-lg;
+
+// Calendar
+$calendar-padding-y: $input-padding-y;
+$calendar-padding-x: $input-padding-x;
+
+$calendar-padding-y-sm: $input-padding-y-sm;
+$calendar-padding-x-sm: $input-padding-x-sm;
+
+$calendar-padding-y-lg: $input-padding-y-lg;
+$calendar-padding-x-lg: $input-padding-x-lg;

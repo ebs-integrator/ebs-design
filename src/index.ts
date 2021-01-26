@@ -25,7 +25,10 @@ export {
   Row,
   Col,
   Collapse,
+  CollapseGroup,
   Tooltip,
+  DetailsCard,
+  HeadLeft,
 } from './components/atoms';
 
 // Molecules

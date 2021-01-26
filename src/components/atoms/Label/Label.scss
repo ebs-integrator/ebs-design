@@ -1,88 +1,34 @@
 // Label
 .ebs-label {
+  @include fontRegular;
   position: relative;
   white-space: nowrap;
-  @include fontRegular;
+  font-size: rem($label-font-size);
+  color: $label-color;
+  border-radius: $label-border-radius;
 
-  &--regular {
-    font-size: rem(12px);
-    margin-bottom: rem(5px);
-    color: $text-color;
-
-    .ebs-icon {
-      color: $text-color;
-    }
+  .ebs-icon {
+    color: $label-color;
   }
 
-  &--circle,
-  &--fill {
-    display: inline;
-    font-size: rem(10px);
-    padding: rem(5px 12px);
-    border: 1px solid $text-color;
-    border-radius: rem(12px);
-  }
+  // Statuses
 
-  &--circle {
-    color: $text-color;
-
-    .ebs-icon {
-      color: $text-color;
-    }
-  }
-
-  &--fill {
-    color: $white !important;
-    background: $text-color;
-    border-radius: rem(12px);
-
-    &.ebs-label--status-success {
-      background-color: $success-color;
-    }
-
-    &.ebs-label--status-warning {
-      background-color: $warning-color;
-    }
-
-    &.ebs-label--status-danger {
-      background-color: $danger-color;
-    }
-
-    &.ebs-label--status-info {
-      background-color: $info-color;
-    }
-
-    &.ebs-label--status-text {
-      background-color: $text-color;
-    }
-
-    &.disabled {
-      cursor: not-allowed;
-      color: $grey-500 !important;
-      background: $grey-100;
-    }
-
-    .ebs-icon {
-      color: $white;
-    }
-  }
-
-  &--status-success {
+  &--success {
     color: $success-color;
     border-color: $success-color;
   }
 
-  &--status-warning {
+  &--warning {
     color: $warning-color;
     border-color: $warning-color;
   }
 
-  &--status-danger {
+  &--danger {
     color: $danger-color;
     border-color: $danger-color;
   }
 
-  &--status-danger.ebs-label--icon {
+  &--danger.ebs-label--icon {
     background: $white;
     border-color: $white;
 
@@ -91,20 +37,87 @@
     }
   }
 
-  &--status-info {
+  &--info {
     color: $info-color;
     border-color: $info-color;
   }
 
-  &--status-text {
-    color: $text-color;
-    border-color: $text-color;
+  // Types
+
+  &--circle,
+  &--fill,
+  &--ghost {
+    @include flex-center;
+    display: inline-flex;
+    height: rem($label-height);
+    padding: rem($label-padding);
   }
 
-  &--status-primary {
+  &--icon {
+    @include flex-center;
+    width: $gutter-size;
+    height: $gutter-size;
+    float: left;
+    padding: 0;
+    margin-right: $gutter-size / 2;
+  }
+
+  &--circle {
+    font-size: rem($label-font-size);
+    border-radius: rem($label-circle-border-radius);
+
+    &.ebs-label--fill:not(.ebs-label--danger) {
+      color: $white;
+
+      .ebs-icon {
+        color: $white;
+      }
+    }
+
+    .ebs-icon {
+      color: $label-color;
+    }
+  }
+
+  &--ghost {
+    border: $label-border;
+  }
+
+  &--primary {
     background-color: $primary-000;
     color: $primary-color;
     border-color: $primary-color;
+  }
+
+  &--fill {
+    color: $white;
+    background-color: $label-color;
+
+    &.ebs-label--success {
+      background-color: $success-color;
+    }
+
+    &.ebs-label--warning {
+      background-color: $warning-color;
+    }
+
+    &.ebs-label--danger:not(.ebs-label--icon):not(.disabled) {
+      background-color: $danger-color;
+    }
+
+    &.ebs-label--info {
+      background-color: $info-color;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      color: $grey-500;
+      background: $grey-100;
+    }
+
+    &.ebs-icon {
+      color: $white;
+    }
   }
 
   &.disabled {
@@ -121,15 +134,6 @@
   &.has-suffix,
   &.has-suffix.ebs-label--circle {
     padding-right: rem(27.5px);
-  }
-
-  &--icon {
-    @include flex-center;
-    width: $gutter-size;
-    height: $gutter-size;
-    float: left;
-    padding: 0;
-    margin-right: $gutter-size / 2;
   }
 
   &__prefix,

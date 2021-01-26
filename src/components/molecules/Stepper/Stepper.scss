@@ -17,7 +17,7 @@
 
   &.has-error .ebs-stepper,
   &.has-error .rc-input-number-handler-wrap {
-    border-color: $danger-color !important;
+    border-color: $danger-color;
   }
 
   &.has-error .ebs-stepper__extra {
@@ -58,7 +58,7 @@
     &:hover,
     &.rc-input-number-focused {
       box-shadow: inherit;
-      outline: none !important;
+      outline: none;
     }
 
     &:hover {
@@ -148,7 +148,7 @@
       font-size: rem(14px);
 
       @include placeholder {
-        color: $text-color-secondary !important;
+        color: $text-color-secondary;
       }
     }
   }

@@ -2,29 +2,31 @@ import * as React from 'react';
 import cn from 'classnames';
 import { $Object } from 'libs/object/object.types';
 
-export type LabelType = 'regular' | 'circle' | 'fill';
+export type LabelType = 'regular' | 'fill' | 'ghost' | 'primary';
 
-export type LabelStatus = 'success' | 'warning' | 'danger' | 'info' | 'text' | 'primary';
+export type LabelStatus = 'success' | 'warning' | 'danger' | 'info';
 
 export interface Props {
   className?: string;
   type?: LabelType;
+  circle?: boolean;
   status?: LabelStatus;
   style?: $Object;
-  onClick?: () => void;
   prefix?: React.ReactNode;
-  onClickPrefix?: () => void;
   suffix?: React.ReactNode;
-  onClickSuffix?: () => void;
   disabled?: boolean;
   icon?: React.ReactElement;
   text?: React.ReactNode;
+  onClick?: () => void;
+  onClickPrefix?: () => void;
+  onClickSuffix?: () => void;
 }
 
 export const Label: React.FC<Props> = ({
   className,
   type = 'regular',
-  status = 'text',
+  status,
+  circle,
   icon,
   text,
   style,
@@ -41,9 +43,11 @@ export const Label: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(`ebs-label`, `ebs-label--${type}`, `ebs-label--status-${status}`, className, {
+      className={cn(`ebs-label`, `ebs-label--${type}`, className, {
         'ebs-label--icon': icon,
         'ebs-label--icon-info': icon && icon.props && icon.props.type === 'info',
+        [`ebs-label--${status}`]: status,
+        'ebs-label--circle': circle,
         'has-prefix': prefix,
         'has-suffix': suffix,
         disabled: disabled,

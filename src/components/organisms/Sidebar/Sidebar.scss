@@ -27,7 +27,7 @@
     }
 
     &__mobile--opened {
-      width: $sidebar-width !important;
+      width: $sidebar-width;
       transform: translateX(0);
     }
   }
@@ -45,7 +45,7 @@
 
     @media (min-width: 54.84714em) {
       + .ebs-layout__content-wrapper {
-        width: calc(100% - 4.38462rem) !important;
+        width: calc(100% - 4.38462rem);
       }
     }
 
