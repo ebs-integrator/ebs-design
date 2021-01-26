@@ -19,6 +19,7 @@ export interface ButtonProps {
   form?: string;
   icon?: string;
   block?: boolean;
+  stopPropagation?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -29,6 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
   buttonClass,
   size = 'medium',
   type = 'ghost',
+  stopPropagation = false,
   icon,
   loading,
   block,
@@ -36,7 +38,9 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const onClickHandler = React.useCallback(
     (e) => {
-      e.stopPropagation();
+      if (stopPropagation) {
+        e.stopPropagation();
+      }
 
       if (onClick) {
         onClick();

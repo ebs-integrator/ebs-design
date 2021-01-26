@@ -27,19 +27,21 @@ export const Collapse: React.FC<CollapseProps> = ({
 
   return (
     <div className={cn(`ebs-collapse`, className, { collapsed: !active })}>
-      <div className="ebs-collapse__header" onClick={handleToggleCollapse}>
+      <div className="ebs-collapse__header" onClick={children ? handleToggleCollapse : undefined}>
         <div className="ebs-collapse__header__side-left">
           {title && <div className="ebs-collapse__title">{title}</div>}
           {leftSide}
         </div>
         <div className="ebs-collapse__header__side-right">
           {rightSide}
-          <div className="ebs-collapse__header-action">
-            <Icon type={active ? 'arrow-bottom' : 'arrow-left'} />
-          </div>
+          {children && (
+            <div className="ebs-collapse__header-action">
+              <Icon type={active ? 'arrow-bottom' : 'arrow-left'} />
+            </div>
+          )}
         </div>
       </div>
-      <div className="ebs-collapse__content">{children}</div>
+      {children && <div className="ebs-collapse__content">{children}</div>}
     </div>
   );
 };
