@@ -16,11 +16,15 @@
       &:hover {
         cursor: pointer;
       }
+      .ebs-icon {
+        color: $text-color;
+      }
     }
     &__name {
       font-weight: 600;
       margin-bottom: 7px;
       font-size: rem(13px);
+      color: $text-color;
     }
     &__size {
       min-width: 80px;
