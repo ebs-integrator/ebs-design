@@ -290,3 +290,13 @@ $scrollbar-thumb-hover-background-color: $primary-color !default;
 
 //Icon
 $icon-svg-color: $primary-color !default;
+
+
+// Tabs
+$tab-item-margin: 0 30px 0 0;
+$tab-item-padding: 20px 0;
+$tab-border: none;
+$tab-border-bottom: 1px solid #111;
+$tab-item-border-bottom-active: 2px solid $primary-color;
+$tab-item-disabled-color: $normal-color;
+$tab-content-padding: 10px;

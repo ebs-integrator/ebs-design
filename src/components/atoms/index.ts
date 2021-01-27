@@ -16,5 +16,6 @@ export { DetailsCard, HeadLeft } from './DetailsCard/DetailsCard';
 export { Mask } from './Mask/Mask';
 export { Container, Row, Col } from './Grid';
 export { Collapse } from './Collapse/Collapse';
+export { Tabs } from './Tabs/Tabs';
 
 export { Animated } from './Animated';
