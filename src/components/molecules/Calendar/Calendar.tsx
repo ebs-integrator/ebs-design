@@ -8,6 +8,7 @@ import { DateState, LimitTimeState } from './Calendar.types';
 
 export { registerLocale } from 'react-datepicker';
 
+export type CalendarSize = 'small' | 'medium' | 'large';
 export type CalendarType = 'period' | 'date' | 'date-time';
 
 interface Props {
@@ -16,8 +17,9 @@ interface Props {
   startPlaceholder?: string;
   endPlaceholder?: string;
   className?: string;
+  size?: CalendarSize;
   withTime?: boolean;
-  onChange?: (state: { [key: string]: string | null }) => void;
+  onChange?: (values?: string | (string | undefined)[] | null) => void;
   minDate?: Date;
   locale?: string;
   label?: React.ReactNode;
@@ -31,193 +33,211 @@ interface Props {
   date?: any;
 }
 
-export const Calendar: React.FC<Props> = ({
-  type = 'period',
-  placeholder = '',
-  startPlaceholder = '',
-  endPlaceholder = '',
-  iconAlign = 'right',
-  className,
-  withTime,
-  onChange,
-  minDate,
-  locale,
-  label,
-  extra,
-  hasError,
-  disabled,
-  ...props
-}) => {
-  const [{ from, to, date }, setDate] = React.useState<DateState>({
-    from: null,
-    to: null,
-    date: null,
-  });
-
-  React.useEffect(() => {
-    if (onChange && from && (!props.from || (props.from && new Date(props.from).toString() !== from.toString()))) {
-      onChange({
-        start_date__gte: from ? format(from, withTime ? dateTimeFormat : undefined) : null,
-      });
-    }
-  }, [from]);
-
-  React.useEffect(() => {
-    if (onChange && to && (!props.to || (props.to && new Date(props.to).toString() !== to.toString()))) {
-      onChange({
-        end_date__lte: to ? format(to, withTime ? dateTimeFormat : undefined) : null,
-      });
-    }
-  }, [to]);
-
-  React.useEffect(() => {
-    if (onChange) {
-      onChange({ date__gte: date ? format(date, type === 'date-time' ? dateTimeFormat : undefined) : null });
-    }
-  }, [date]);
-
-  React.useEffect(() => {
-    setDate((prevState) => {
-      const newState: { [key: string]: any } = {};
-
-      if (typeof props.from === 'string' || typeof props.to === 'string') {
-        newState.from = props.from ? new Date(props.from) : props.from;
-        newState.to = props.to ? new Date(props.to) : props.to;
-      }
-
-      if (props.date) {
-        newState.date =
-          !prevState.date && props.date
-            ? new Date(format(props.date, type === 'date-time' ? dateTimeFormat : undefined))
-            : prevState.date;
-      }
-
-      if (['from', 'to', 'date'].filter((i) => i in newState).length) {
-        return { ...prevState, ...newState };
-      }
-
-      return prevState;
+export const Calendar = React.forwardRef<any, Props>(
+  (
+    {
+      type = 'period',
+      placeholder = '',
+      startPlaceholder = '',
+      endPlaceholder = '',
+      iconAlign = 'right',
+      size = 'medium',
+      className,
+      withTime,
+      onChange,
+      minDate,
+      locale,
+      label,
+      extra,
+      hasError,
+      disabled,
+      ...props
+    },
+    ref,
+  ) => {
+    const [{ from, to, date }, setDate] = React.useState<DateState>({
+      from: null,
+      to: null,
+      date: null,
     });
-  }, [props.from, props.to, props.date]);
 
-  const onChangeDate = (value: Date | [Date, Date] | null): boolean | void =>
-    !Array.isArray(value) &&
-    setDate((prevState) => ({
-      ...prevState,
-      date:
-        value && minDate && minDate > value
-          ? new Date(new Date(minDate.setHours(value.getHours())).setMinutes(value.getMinutes()))
-          : value,
-    }));
+    // Period type
+    React.useEffect(() => {
+      if (onChange && from && (!props.from || (props.from && new Date(props.from).toString() !== from.toString()))) {
+        const startDate = from ? format(from, withTime ? dateTimeFormat : undefined) : undefined;
 
-  const onChangeFrom = (value: Date | [Date, Date] | null): boolean | void =>
-    !Array.isArray(value) && setDate((prevState) => ({ ...prevState, from: value }));
+        onChange(startDate);
+      }
+    }, [from]);
 
-  const onChangeTo = (value: Date | [Date, Date] | null): boolean | void =>
-    !Array.isArray(value) && setDate((prevState) => ({ ...prevState, to: value }));
+    React.useEffect(() => {
+      if (onChange && to && (!props.to || (props.to && new Date(props.to).toString() !== to.toString()))) {
+        const endDate = to ? format(to, withTime ? dateTimeFormat : undefined) : undefined;
 
-  const limitTime = React.useMemo(
-    (): LimitTimeState => ({
-      min: new Date(new Date(new Date().setHours(6)).setMinutes(0)),
-      max: new Date(new Date(new Date().setHours(21)).setMinutes(0)),
-    }),
-    [],
-  );
+        onChange(endDate);
+      }
+    }, [to]);
 
-  return (
-    <div
-      className={cn(`ebs-calendar__wrapper`, `ebs-calendar--${type}`, className, {
-        'ebs-calendar--left': iconAlign === 'left',
-        disabled: disabled,
-        'has-error': hasError,
-        active: from || to || date,
-      })}
-    >
-      <Label text={label} disabled={disabled} />
+    React.useEffect(() => {
+      if (onChange) {
+        const startDate = from ? format(from, withTime ? dateTimeFormat : undefined) : undefined;
+        const endDate = to ? format(to, withTime ? dateTimeFormat : undefined) : undefined;
 
-      <div className="ebs-calendar__input-wrapper">
-        {type === 'period' && (
-          <>
+        onChange([startDate, endDate]);
+      }
+    }, [from, to]);
+
+    // DateTime type
+    React.useEffect(() => {
+      if (onChange) {
+        const dateTime = date ? format(date, type === 'date-time' ? dateTimeFormat : undefined) : undefined;
+
+        onChange(dateTime);
+      }
+    }, [date]);
+
+    React.useEffect(() => {
+      setDate((prevState) => {
+        const newState: { [key: string]: any } = {};
+
+        if (typeof props.from === 'string' || typeof props.to === 'string') {
+          newState.from = props.from ? new Date(props.from) : props.from;
+          newState.to = props.to ? new Date(props.to) : props.to;
+        }
+
+        if (props.date) {
+          newState.date =
+            !prevState.date && props.date
+              ? new Date(format(props.date, type === 'date-time' ? dateTimeFormat : undefined))
+              : prevState.date;
+        }
+
+        if (['from', 'to', 'date'].filter((i) => i in newState).length) {
+          return { ...prevState, ...newState };
+        }
+
+        return prevState;
+      });
+    }, [props.from, props.to, props.date]);
+
+    const onChangeDate = (value: Date | [Date, Date] | null): boolean | void =>
+      !Array.isArray(value) &&
+      setDate((prevState) => ({
+        ...prevState,
+        date:
+          value && minDate && minDate > value
+            ? new Date(new Date(minDate.setHours(value.getHours())).setMinutes(value.getMinutes()))
+            : value,
+      }));
+
+    const onChangeFrom = (value: Date | [Date, Date] | null): boolean | void =>
+      !Array.isArray(value) && setDate((prevState) => ({ ...prevState, from: value }));
+
+    const onChangeTo = (value: Date | [Date, Date] | null): boolean | void =>
+      !Array.isArray(value) && setDate((prevState) => ({ ...prevState, to: value }));
+
+    const limitTime = React.useMemo(
+      (): LimitTimeState => ({
+        min: new Date(new Date(new Date().setHours(6)).setMinutes(0)),
+        max: new Date(new Date(new Date().setHours(21)).setMinutes(0)),
+      }),
+      [],
+    );
+
+    return (
+      <div
+        className={cn(`ebs-calendar__wrapper`, `ebs-calendar--${type}`, className, {
+          'ebs-calendar--left': iconAlign === 'left',
+          disabled: disabled,
+          'has-error': hasError,
+          active: from || to || date,
+        })}
+      >
+        <Label text={label} disabled={disabled} />
+
+        <div className="ebs-calendar__input-wrapper">
+          {type === 'period' && (
+            <>
+              <DatePicker
+                ref={ref}
+                showTimeSelect={withTime}
+                showYearDropdown
+                scrollableYearDropdown
+                dateFormat={withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+                placeholderText={startPlaceholder || withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+                className={cn(`ebs-calendar ebs-calendar--${size}`, { active: from })}
+                selected={from}
+                onChange={onChangeFrom}
+                selectsStart
+                startDate={from}
+                endDate={to}
+                locale={locale}
+                timeIntervals={5}
+                disabled={disabled}
+              />
+
+              <DatePicker
+                ref={ref}
+                showTimeSelect={withTime}
+                showYearDropdown
+                scrollableYearDropdown
+                dateFormat={withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+                minDate={from || minDate}
+                minTime={limitTime.min}
+                maxTime={limitTime.max}
+                placeholderText={endPlaceholder || withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+                className={cn(`ebs-calendar ebs-calendar--${size}`, { active: to })}
+                selected={to}
+                onChange={onChangeTo}
+                selectsEnd
+                startDate={from}
+                endDate={to}
+                locale={locale}
+                timeIntervals={5}
+                showDisabledMonthNavigation={false}
+                disabled={disabled}
+              />
+            </>
+          )}
+
+          {type === 'date' && (
             <DatePicker
-              showTimeSelect={withTime}
+              ref={ref}
               showYearDropdown
               scrollableYearDropdown
-              dateFormat={withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
               minDate={minDate}
-              minTime={withTime ? limitTime.min : undefined}
-              maxTime={withTime ? limitTime.max : undefined}
-              placeholderText={startPlaceholder || withTime ? `yyyy-mm-dd hh:mm` : `yyyy-mm-dd`}
-              className={cn(`ebs-calendar`, { active: from })}
-              selected={from}
-              onChange={onChangeFrom}
-              selectsStart
-              startDate={from}
-              endDate={to}
+              className={cn(`ebs-calendar ebs-calendar--${size}`, { active: date })}
+              placeholderText={placeholder || withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+              selected={date}
+              onChange={onChangeDate}
               locale={locale}
-              timeIntervals={5}
               disabled={disabled}
             />
+          )}
 
+          {type === 'date-time' && (
             <DatePicker
-              showTimeSelect={withTime}
+              ref={ref}
+              showTimeSelect
               showYearDropdown
               scrollableYearDropdown
-              dateFormat={withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
-              minDate={from || minDate}
+              minDate={minDate}
               minTime={limitTime.min}
               maxTime={limitTime.max}
-              placeholderText={endPlaceholder || withTime ? `yyyy-mm-dd hh:mm` : `yyyy-mm-dd`}
-              className={cn(`ebs-calendar`, { active: to })}
-              selected={to}
-              onChange={onChangeTo}
-              selectsEnd
-              startDate={from}
-              endDate={to}
-              locale={locale}
+              placeholderText={placeholder || withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+              className={cn(`ebs-calendar ebs-calendar--${size}`, { active: date })}
+              selected={date}
+              onChange={onChangeDate}
               timeIntervals={5}
+              locale={locale}
               showDisabledMonthNavigation={false}
               disabled={disabled}
             />
-          </>
-        )}
+          )}
+        </div>
 
-        {type === 'date' && (
-          <DatePicker
-            showYearDropdown
-            scrollableYearDropdown
-            minDate={minDate}
-            className={cn(`ebs-calendar`, { active: date })}
-            dateFormat="yyyy-MM-dd"
-            placeholderText={placeholder || 'yyyy-mm-dd'}
-            selected={date}
-            onChange={onChangeDate}
-            locale={locale}
-            disabled={disabled}
-          />
-        )}
-
-        {type === 'date-time' && (
-          <DatePicker
-            showTimeSelect
-            showYearDropdown
-            scrollableYearDropdown
-            minDate={minDate}
-            minTime={limitTime.min}
-            maxTime={limitTime.max}
-            dateFormat="yyyy-MM-dd HH:mm"
-            placeholderText={placeholder || 'yyyy-mm-dd hh:mm'}
-            className={cn(`ebs-calendar`, { active: date })}
-            selected={date}
-            onChange={onChangeDate}
-            timeIntervals={5}
-            locale={locale}
-            showDisabledMonthNavigation={false}
-            disabled={disabled}
-          />
-        )}
+        <Extra text={extra} status={hasError ? 'danger' : 'text'} disabled={disabled} />
       </div>
-
-      <Extra text={extra} status={hasError ? 'danger' : 'text'} disabled={disabled} />
-    </div>
-  );
-};
+    );
+  },
+);

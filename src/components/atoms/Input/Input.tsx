@@ -2,6 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Extra, Label, LoaderSpinner } from 'components/atoms';
 
+export type InputSize = 'small' | 'medium' | 'large';
 export type InputStyleType = 'white' | 'grey';
 export type InputType = 'text' | 'email' | 'password';
 
@@ -26,6 +27,7 @@ export interface InputProps {
   autoFocus?: boolean;
   className?: string;
   containerClass?: string;
+  size?: InputSize;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -33,6 +35,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     {
       styleType = 'white',
       type = 'text',
+      size = 'medium',
       onClick,
       onChange,
       hasError,
@@ -114,7 +117,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               name={name}
               type={type}
               autoFocus={autoFocus}
-              className="ebs-input"
+              className={cn('ebs-input', `ebs-input--${size}`)}
               value={value || ''}
               onChange={onClickHandler}
               placeholder={props.placeholder}

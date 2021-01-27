@@ -1,7 +1,9 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Extra, Label, Icon, Mask } from 'components/atoms';
+import { Extra, Label, Icon } from 'components/atoms';
 import { SelectDropdown } from 'components/molecules';
+
+export type SelectSize = 'small' | 'medium' | 'large';
 
 export type InputSelectMode = 'single' | 'multiple';
 
@@ -14,6 +16,7 @@ export type Option = {
 export interface Props {
   mode?: InputSelectMode;
   className?: string;
+  size?: SelectSize;
   hasError?: boolean;
   label?: React.ReactNode;
   extra?: React.ReactNode;
@@ -25,14 +28,30 @@ export interface Props {
   value?: any;
   // TODO: decide the type
   onChange?: (value: any) => void;
+
+  // FIXME: Remove this prop and refactor with compound components
+  showSearch?: boolean;
 }
 
 export const InputSelect = React.forwardRef<any, Props>(
   (
-    { mode = 'single', className, hasError, label, extra, options, value, onChange, placeholder, disabled, ...props },
+    {
+      mode = 'single',
+      options = [],
+      size = 'medium',
+      className,
+      hasError,
+      label,
+      extra,
+      value,
+      onChange,
+      placeholder,
+      disabled,
+      ...props
+    },
     ref,
   ) => {
-    const [scopeValue, setScopeValue] = React.useState(undefined);
+    const [scopeValue, setScopeValue] = React.useState(value);
     const [hasExternalValue, setHasExternalValue] = React.useState(false);
     const [openDropdown, setOpenDropdown] = React.useState(false);
 
@@ -44,17 +63,11 @@ export const InputSelect = React.forwardRef<any, Props>(
     }, [$value]);
 
     const textValue = React.useMemo(() => {
-      if (options) {
-        if (typeof $value === 'string') {
-          return (options.find((option) => option.value === $value) || { text: '' }).text;
-        }
-
-        if (Array.isArray($value)) {
-          return options.filter((option) => $value.includes(option.value)).map((option) => option.text);
-        }
+      if (Array.isArray($value)) {
+        return options.filter((option) => $value.includes(option.value)).map((option) => option.text);
       }
 
-      return undefined;
+      return (options.find((option) => option.value === $value) || { text: $value }).text;
     }, [$value, options]);
 
     React.useEffect(() => {
@@ -75,7 +88,7 @@ export const InputSelect = React.forwardRef<any, Props>(
             : [...($value || []), $newValue]
           : $newValue;
 
-      if (onChange !== undefined) {
+      if (onChange) {
         onChange(newModeValue);
       }
 
@@ -104,6 +117,7 @@ export const InputSelect = React.forwardRef<any, Props>(
     const isArrayValue = React.useMemo(() => textValue && Array.isArray(textValue) && textValue.length > 0, [
       textValue,
     ]);
+
     const renderValue = React.useMemo(
       () =>
         isArrayValue
@@ -111,9 +125,8 @@ export const InputSelect = React.forwardRef<any, Props>(
               <Label
                 key={item}
                 className="ebs-select__input-label"
-                type="ghost"
+                type="primary"
                 circle
-                status="primary"
                 text={item}
                 prefix={<Icon type="check" />}
                 suffix={<Icon type="close" />}
@@ -127,49 +140,47 @@ export const InputSelect = React.forwardRef<any, Props>(
     const iconType = React.useMemo(() => `arrow-${openDropdown ? 'top' : 'bottom'}`, [openDropdown]);
 
     return (
-      <>
-        {openDropdown && <Mask onClick={onToggleOpenDropdown} />}
+      <div
+        ref={ref}
+        className={cn(`ebs-select__input-wrapper`, `ebs-select__input--${mode}`, className, {
+          active: hasValue,
+          'has-error': hasError,
+          disabled: disabled,
+        })}
+      >
+        <Label text={label} disabled={disabled} />
 
-        <div
-          className={cn(`ebs-select__input-wrapper`, `ebs-select__input--${mode}`, className, {
-            active: hasValue,
-            'has-error': hasError,
-            disabled: disabled,
-          })}
-        >
-          <Label text={label} disabled={disabled} />
+        <div className="ebs-select__input-dropdown-wrapper">
+          <div className={cn('ebs-select__input', `ebs-select__input--${size}`)} onClick={onToggleOpenDropdown}>
+            <div className="ebs-select__input-value">{renderValue}</div>
 
-          <div className="ebs-select__input-dropdown-wrapper">
-            <div className="ebs-select__input" onClick={onToggleOpenDropdown}>
-              <div className="ebs-select__input-value">{renderValue}</div>
+            {hasValue && textValue && mode === 'multiple' && (
+              <>
+                <div className="ebs-select__input-transition" />
 
-              {hasValue && textValue && mode === 'multiple' && (
-                <>
-                  <div className="ebs-select__input-transition" />
-
-                  <div className="ebs-select__input-count">{textValue.length}</div>
-                </>
-              )}
-
-              <div className="ebs-select__input-suffix">
-                <Icon type={iconType} />
-              </div>
-            </div>
-
-            {openDropdown && (
-              <SelectDropdown
-                mode={mode}
-                options={options}
-                value={$value}
-                onChange={onChangeHandler}
-                onClose={onToggleOpenDropdown}
-              />
+                <div className="ebs-select__input-count">{textValue.length}</div>
+              </>
             )}
+
+            <div className="ebs-select__input-suffix">
+              <Icon type={iconType} />
+            </div>
           </div>
 
-          <Extra text={extra} status={hasError ? 'danger' : 'text'} disabled={disabled} />
+          {openDropdown && (
+            <SelectDropdown
+              mode={mode}
+              options={options}
+              value={$value}
+              onChange={onChangeHandler}
+              onClose={onToggleOpenDropdown}
+              showSearch={props.showSearch}
+            />
+          )}
         </div>
-      </>
+
+        <Extra text={extra} status={hasError ? 'danger' : 'text'} disabled={disabled} />
+      </div>
     );
   },
 );

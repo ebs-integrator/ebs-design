@@ -1,52 +1,17 @@
 // Label
 .ebs-label {
+  @include fontRegular;
   position: relative;
   white-space: nowrap;
-  @include fontRegular;
+  font-size: rem($label-font-size);
+  color: $label-color;
+  border-radius: $label-border-radius;
 
-  &--regular {
-    font-size: rem($label-regular-font-size);
-    margin-bottom: rem($label-regular-margin-bottom);
-    color: $label-regular-color;
-
-    .ebs-icon {
-      color: $label-regular-color;
-    }
-  }
-
-  &--circle,
-  &--fill,
-  &--ghost {
-    @include flex-center;
-    display: inline-flex;
-    height: rem($label-height);
-    padding: rem($label-padding);
-  }
-
-  &--circle {
-    font-size: rem($label-font-size);
-    border-radius: rem($label-border-radius);
-  }
-
-  &--ghost {
-    border: $label-border;
-  }
-
-  &--circle {
+  .ebs-icon {
     color: $label-color;
-
-    &.ebs-label--fill {
-      color: $white;
-
-      .ebs-icon {
-        color: $white;
-      }
-    }
-
-    .ebs-icon {
-      color: $label-color;
-    }
   }
+
+  // Statuses
 
   &--success {
     color: $success-color;
@@ -77,21 +42,51 @@
     border-color: $info-color;
   }
 
-  &--text {
-    color: $text-color;
-    border-color: $text-color;
+  // Types
+
+  &--circle,
+  &--fill,
+  &--ghost {
+    @include flex-center;
+    display: inline-flex;
+    height: rem($label-height);
+    padding: rem($label-padding);
+  }
+
+  &--icon {
+    @include flex-center;
+    width: $gutter-size;
+    height: $gutter-size;
+    float: left;
+    padding: 0;
+    margin-right: $gutter-size / 2;
+  }
+
+  &--circle {
+    font-size: rem($label-font-size);
+    border-radius: rem($label-circle-border-radius);
+
+    &.ebs-label--fill:not(.ebs-label--danger) {
+      color: $white;
+
+      .ebs-icon {
+        color: $white;
+      }
+    }
+
+    .ebs-icon {
+      color: $label-color;
+    }
+  }
+
+  &--ghost {
+    border: $label-border;
   }
 
   &--primary {
     background-color: $primary-000;
     color: $primary-color;
     border-color: $primary-color;
-  }
-
-  &.disabled {
-    cursor: not-allowed;
-    color: $grey-500;
-    border-color: $grey-500;
   }
 
   &--fill {
@@ -125,6 +120,12 @@
     }
   }
 
+  &.disabled {
+    cursor: not-allowed;
+    color: $grey-500;
+    border-color: $grey-500;
+  }
+
   &.has-prefix,
   &.has-prefix.ebs-label--circle {
     padding-left: rem(22.5px);
@@ -133,15 +134,6 @@
   &.has-suffix,
   &.has-suffix.ebs-label--circle {
     padding-right: rem(27.5px);
-  }
-
-  &--icon {
-    @include flex-center;
-    width: $gutter-size;
-    height: $gutter-size;
-    float: left;
-    padding: 0;
-    margin-right: $gutter-size / 2;
   }
 
   &__prefix,
