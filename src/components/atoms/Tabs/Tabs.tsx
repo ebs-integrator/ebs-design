@@ -1,17 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
-
-export interface TabProps {
-  tabKey: string;
-  label: React.ReactNode;
-  disabled?: boolean;
-  className?: string;
-}
-
-export interface PanelProps {
-  tabKey: string;
-  className?: string;
-}
+import { Panel, PanelProps } from './Panel';
+import { Tab, TabProps } from './Tab';
 
 export interface TabsProps {
   Tab: React.FC<TabProps>;
@@ -52,7 +42,7 @@ const Tabs: React.FC<TabsMainProps> & TabsProps = (
       <div className={cn(`ebs-tabs`, className)}>
         {
           children && React.Children.map(children, (child) => {
-            if (child.type === Tab) {
+            if (child && child.type === Tab) {
               return child;
             }
           })
@@ -61,7 +51,7 @@ const Tabs: React.FC<TabsMainProps> & TabsProps = (
       <div className={`ebs-tabs__content`}>
         {
           children && React.Children.map(children, (child) => {
-            if (child.type === Panel) {
+            if (child && child.type === Panel) {
               return child;
             }
           })
@@ -71,42 +61,12 @@ const Tabs: React.FC<TabsMainProps> & TabsProps = (
   );
 };
 
-const useTabs = (): TabsContext => {
+export const useTabs = (): TabsContext => {
   const context = React.useContext(TabsContext);
   if (!context) {
     throw new Error('This component must be used within a <Tabs> component.');
   }
   return context;
-};
-
-
-/**
- * This component allows changing of the active Tab.
- */
-const Tab: React.FC<TabProps> = ({ tabKey, disabled, label, className }) => {
-  const { activeTab, setActiveTab } = useTabs();
-
-  const handleClick = () => {
-    if (setActiveTab && !disabled) {
-      setActiveTab(tabKey);
-    }
-  };
-
-  return (
-    <div
-      onClick={handleClick}
-      className={cn(`ebs-tabs__item`, className, { active: activeTab === tabKey, disabled: disabled })}>
-      {label}
-    </div>
-  );
-};
-
-/**
- * Individual panel component.
- */
-const Panel: React.FC<PanelProps> = ({ tabKey, className, children }) => {
-  const { activeTab } = useTabs();
-  return activeTab === tabKey ? <div className={cn(className)}>{children}</div> : null;
 };
 
 Tabs.Tab = Tab;
