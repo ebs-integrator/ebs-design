@@ -35,7 +35,7 @@ const Tabs: React.FC<TabsMainProps> & TabsProps = ({ activeTab, setActiveTab, cl
       <div className={cn(`ebs-tabs`, className)}>
         {children &&
           React.Children.map(children, (child) => {
-            if (child && child.type === Tab) {
+            if (child && (child as React.ReactElement).type === Tab) {
               return child;
             }
           })}
@@ -43,7 +43,7 @@ const Tabs: React.FC<TabsMainProps> & TabsProps = ({ activeTab, setActiveTab, cl
       <div className={`ebs-tabs__content`}>
         {children &&
           React.Children.map(children, (child) => {
-            if (child && child.type !== Tab) {
+            if (child && (child as React.ReactElement).type !== Tab) {
               return child;
             }
           })}
