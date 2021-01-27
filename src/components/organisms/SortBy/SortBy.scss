@@ -48,7 +48,6 @@
 
 .ebs-sort-by__wrapper {
   position: relative;
-  height: rem($sort-by-height);
   display: flex;
 
   > .ebs-button__wrapper {
@@ -67,8 +66,6 @@
   }
 
   .ebs-button__wrapper {
-    height: rem($sort-by-height);
-
     .ebs-icon {
       transition: 300ms transform;
     }

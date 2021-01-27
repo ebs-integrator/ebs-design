@@ -90,7 +90,7 @@ export const Upload = React.forwardRef<any, UploadProps>((props, ref) => {
           </div>
 
           <div className="upload__file">
-            <a href={internalFile?.url} className="upload__file__name">
+            <a href={internalFile?.url} target="_blank" rel="noopener noreferrer" className="upload__file__name">
               {internalFile?.name}
             </a>
 
@@ -105,7 +105,7 @@ export const Upload = React.forwardRef<any, UploadProps>((props, ref) => {
         </div>
       )}
 
-      {internalError && <div className="upload__error">{internalError.message}</div>}
+      {internalFile && internalError && <div className="upload__error">{internalError.message}</div>}
     </>
   );
 });
