@@ -21,14 +21,7 @@ export interface TabsContext {
 
 const TabsContext = React.createContext<TabsContext | undefined>(undefined);
 
-const Tabs: React.FC<TabsMainProps> & TabsProps = (
-  {
-    activeTab,
-    setActiveTab,
-    className,
-    children,
-  },
-) => {
+const Tabs: React.FC<TabsMainProps> & TabsProps = ({ activeTab, setActiveTab, className, children }) => {
   const memoizedContextValue = React.useMemo(
     () => ({
       activeTab,
@@ -40,22 +33,20 @@ const Tabs: React.FC<TabsMainProps> & TabsProps = (
   return (
     <TabsContext.Provider value={memoizedContextValue}>
       <div className={cn(`ebs-tabs`, className)}>
-        {
-          children && React.Children.map(children, (child) => {
+        {children &&
+          React.Children.map(children, (child) => {
             if (child && child.type === Tab) {
               return child;
             }
-          })
-        }
+          })}
       </div>
       <div className={`ebs-tabs__content`}>
-        {
-          children && React.Children.map(children, (child) => {
-            if (child && child.type === Panel) {
+        {children &&
+          React.Children.map(children, (child) => {
+            if (child && child.type !== Tab) {
               return child;
             }
-          })
-        }
+          })}
       </div>
     </TabsContext.Provider>
   );

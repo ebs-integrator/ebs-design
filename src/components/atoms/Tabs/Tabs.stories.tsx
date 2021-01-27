@@ -8,6 +8,7 @@ export default {
 };
 
 export const regular = (): React.ReactElement => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [active, setActive] = React.useState('first');
 
   const data = [
@@ -35,11 +36,19 @@ export const regular = (): React.ReactElement => {
       content: <span>Content Fourth tab</span>,
     },
   ];
+
   return (
     <div>
       <Tabs activeTab={active} setActiveTab={setActive}>
-        {data.map(item => (<Tabs.Tab key={item.key} tabKey={item.key} label={item.label} disabled={item.disabled} />))}
-        {data.map(item => (<Tabs.Panel key={item.key} tabKey={item.key}>{item.content}</Tabs.Panel>))}
+        {data.map((item) => (
+          <Tabs.Tab {...item} tabKey={item.key} />
+        ))}
+        <h2>Custom elements for all tabs</h2>
+        {data.map((item) => (
+          <Tabs.Panel key={item.key} tabKey={item.key}>
+            {item.content}
+          </Tabs.Panel>
+        ))}
       </Tabs>
     </div>
   );
