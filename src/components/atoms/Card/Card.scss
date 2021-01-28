@@ -1,86 +1,83 @@
-// HEADER
-.ebs-card__header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: rem($gutter-size);
-
-  &-title {
-    font-size: rem(14px);
-    @include fontBold;
-    margin-right: rem($gutter-size);
-    white-space: nowrap;
-  }
-
-  &-side--right {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    text-align: right;
-    padding-left: $gutter-size;
-
-    @include mq($until: tablet) {
-      text-align: left;
-    }
-  }
-
-  &-side--left,
-  &-side--right {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-
-    > * {
-      margin-bottom: rem($gutter-size);
-    }
-  }
-
-  &-side--right > *:not(:first-child) {
-    margin-left: rem(15px);
-  }
-
-  &-side--right .picker-label {
-    margin-right: 0;
-  }
-
-  &-side--left > *:not(:last-child) {
-    margin-right: rem(15px);
+// Add common style
+@mixin card-size {
+  .ebs-card__header,
+  .ebs-card__body,
+  .ebs-card__footer {
+    @content;
   }
 }
 
 .ebs-card {
-  .ebs-loader {
-    border: 1px solid $border-color;
-  }
-}
-
-// FOOTER
-.ebs-card__footer {
-  padding: rem($gutter-size);
-  align-items: center;
-  display: flex;
+  width: 100%;
   border: 1px solid $border-color;
-  border-top: unset;
+  border-radius: $border-radius;
+  background-color: #fff;
+  overflow: hidden;
 
-  &-side--left {
-    position: relative;
-  }
+  @include elevation-1;
 
-  &-side--right {
-    width: 100%;
-    text-align: right;
+  &__header {
+    border-bottom: 1px solid $border-color;
 
-    .ebs-button__wrapper:not(:last__child) {
-      margin-right: rem(10px);
+    &--bordered {
+      border-bottom: 2px solid $primary-color;
+    }
+
+    &__collapsible {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &__content {
+      flex: 1;
+    }
+
+    &__toggle {
+      padding-left: rem(12px);
+      @include flex-center;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      .ebs-icon {
+        font-size: rem(14px);
+        color: $grey-600;
+      }
     }
   }
 
-  .ebs-button__wrapper {
-    @include elevation-1;
+  &__body {
+    &--collapsed + .ebs-card__footer {
+      border-top: 0;
+    }
+  }
 
-    &:not(:last-child) {
-      margin-right: rem(10px);
+  &__footer {
+    border-top: 1px solid $border-color;
+
+    &--bordered {
+      border-top: 2px solid $primary-color;
+    }
+  }
+
+  // Size
+  &--small {
+    @include card-size {
+      padding: rem(10px 15px);
+    }
+  }
+
+  &--medium {
+    @include card-size {
+      padding: rem(15px 20px);
+    }
+  }
+
+  &--large {
+    @include card-size {
+      padding: rem(20px);
     }
   }
 }

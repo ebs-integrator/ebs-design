@@ -18,8 +18,6 @@ export {
   Chips,
   Radio,
   Card,
-  CardFooter,
-  CardHeader,
   Container,
   Mask,
   Row,
@@ -30,6 +28,7 @@ export {
   DetailsCard,
   HeadLeft,
   Tabs,
+  Space,
 } from './components/atoms';
 
 // Molecules

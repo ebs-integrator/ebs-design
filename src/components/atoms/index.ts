@@ -11,11 +11,12 @@ export { Switch } from './Switch/Switch';
 export { Chips } from './Chips/Chips';
 export { Radio } from './Radio/Radio';
 export { Tooltip } from './Tooltip/Tooltip';
-export { Card, CardHeader, CardFooter } from './Card/Card';
+export { Card } from './Card/Card';
 export { DetailsCard, HeadLeft } from './DetailsCard/DetailsCard';
 export { Mask } from './Mask/Mask';
 export { Container, Row, Col } from './Grid';
 export { Collapse, CollapseGroup } from './Collapse/Collapse';
 export { Tabs } from './Tabs/Tabs';
+export { Space } from './Space/Space';
 
 export { Animated } from './Animated';
