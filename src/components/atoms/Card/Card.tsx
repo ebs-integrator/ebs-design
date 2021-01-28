@@ -40,7 +40,7 @@ const Card: React.FC<CardProps> & CardComposition = ({
   const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
 
   return (
-    <div className={cn(`ebs-card ebs-card--${size}`, className)} {...props}>
+    <div className={cn(`ebs-card ebs-card--${size}`, className, { 'ebs-card--collapsed': height === 0 })} {...props}>
       <CardContext.Provider value={{ height, setHeight, collapsible }}>{children}</CardContext.Provider>
     </div>
   );

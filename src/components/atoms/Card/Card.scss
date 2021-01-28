@@ -16,6 +16,12 @@
 
   @include elevation-1;
 
+  &--collapsed {
+    .ebs-card__header {
+      border-bottom: 0;
+    }
+  }
+
   &__header {
     background-color: $card-header-bg-color;
     border-bottom: 1px solid $card-border-color;
@@ -51,10 +57,6 @@
 
   &__body {
     background-color: $card-body-bg-color;
-
-    &--collapsed + .ebs-card__footer {
-      border-top: 0;
-    }
   }
 
   &__footer {
