@@ -29,6 +29,7 @@ export {
   Tooltip,
   DetailsCard,
   HeadLeft,
+  Tabs,
 } from './components/atoms';
 
 // Molecules
