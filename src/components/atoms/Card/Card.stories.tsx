@@ -39,7 +39,7 @@ const columns = [
 ];
 
 export const Regular = (): React.ReactElement => (
-  <Card collapsible collapsed>
+  <Card collapsible>
     <Card.Header bordered>
       <Space align="center" justify="space-between">
         <Space align="center">

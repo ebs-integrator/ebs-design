@@ -140,7 +140,9 @@ $collapse-header-title-font-weight: 500 !default;
 $collapse-header-title-icon-size: $collapse-group-space-size !default;
 $collapse-header-action-icon-size: 12px !default;
 
-// Details Card
+// Card
+//
+// Style cards elements.
 $details-card-padding-size: $gutter-size !default;
 $details-card-border: 1px solid !default;
 $details-card-border-color: $border-color !default;
@@ -151,6 +153,20 @@ $details-card-header-border-bottom: 1px solid !default;
 $details-card-header-border-bottom-color: $border-color !default;
 $details-card-footer-border-top: 1px solid !default;
 $details-card-footer-border-top-color: $border-color !default;
+
+// Card
+$card-padding-x: 20px !default;
+$card-padding-y: 15px !default;
+$card-padding-x-sm: 15px !default;
+$card-padding-y-sm: 10px !default;
+$card-padding-x-lg: 20px !default;
+$card-padding-y-lg: 20px !default;
+$card-border-radius: $border-radius !default;
+$card-border-color: $border-color !default;
+$card-bordered-color: $primary-color !default;
+$card-header-bg-color: $white;
+$card-body-bg-color: $grey-100;
+$card-footer-bg-color: $white;
 
 // Links
 //

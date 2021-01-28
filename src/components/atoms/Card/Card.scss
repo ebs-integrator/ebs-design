@@ -9,18 +9,19 @@
 
 .ebs-card {
   width: 100%;
-  border: 1px solid $border-color;
-  border-radius: $border-radius;
+  border: 1px solid $card-border-color;
+  border-radius: $card-border-radius;
   background-color: #fff;
   overflow: hidden;
 
   @include elevation-1;
 
   &__header {
-    border-bottom: 1px solid $border-color;
+    background-color: $card-header-bg-color;
+    border-bottom: 1px solid $card-border-color;
 
     &--bordered {
-      border-bottom: 2px solid $primary-color;
+      border-bottom: 2px solid $card-bordered-color;
     }
 
     &__collapsible {
@@ -49,35 +50,38 @@
   }
 
   &__body {
+    background-color: $card-body-bg-color;
+
     &--collapsed + .ebs-card__footer {
       border-top: 0;
     }
   }
 
   &__footer {
-    border-top: 1px solid $border-color;
+    background-color: $card-footer-bg-color;
+    border-top: 1px solid $card-border-color;
 
     &--bordered {
-      border-top: 2px solid $primary-color;
+      border-top: 2px solid $card-bordered-color;
     }
   }
 
   // Size
   &--small {
     @include card-size {
-      padding: rem(10px 15px);
+      padding: rem($card-padding-y-sm $card-padding-x-sm);
     }
   }
 
   &--medium {
     @include card-size {
-      padding: rem(15px 20px);
+      padding: rem($card-padding-y $card-padding-x);
     }
   }
 
   &--large {
     @include card-size {
-      padding: rem(20px);
+      padding: rem($card-padding-y-lg $card-padding-x-lg);
     }
   }
 }
