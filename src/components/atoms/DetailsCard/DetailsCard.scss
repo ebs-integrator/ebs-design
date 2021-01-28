@@ -48,6 +48,10 @@
     }
   }
 
+  &__body {
+    background-color: $details-card-body-background;
+  }
+
   &__footer {
     border-top: $details-card-footer-border-top;
     border-top-color: $details-card-footer-border-top-color;

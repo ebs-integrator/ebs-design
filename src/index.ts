@@ -25,7 +25,8 @@ export {
   Row,
   Col,
   Collapse,
-  CollapseGroup,
+  Group,
+  Empty,
   Tooltip,
   DetailsCard,
   HeadLeft,
@@ -34,6 +35,7 @@ export {
 // Molecules
 export {
   Loader,
+  LoaderInline,
   Stepper,
   Calendar,
   InputPhone,

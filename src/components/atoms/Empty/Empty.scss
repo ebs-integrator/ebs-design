@@ -1,0 +1,11 @@
+.ebs-empty {
+  @include flex-center;
+  padding: rem($gutter-size);
+  background-color: $background-content;
+
+  .ebs-icon {
+    color: $text-color;
+    font-size: rem($base-size);
+    margin-right: rem($gutter-size / 2);
+  }
+}
