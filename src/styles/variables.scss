@@ -131,14 +131,15 @@ $badge-danger-bg-color: $danger-color !default;
 $collapse-space-size: $gutter-size !default;
 $collapse-group-space-size: $gutter-size + $gutter-size / 2 !default;
 
-$collapse-border: 1px solid !default;
-$collapse-border-color: $border-color !default;
-$collapse-border-radius: $border-radius !default;
 $collapse-header-border-bottom: 2px solid !default;
 $collapse-header-border-bottom-color: $primary-color !default;
 $collapse-header-title-font-weight: 500 !default;
 $collapse-header-title-icon-size: $collapse-group-space-size !default;
 $collapse-header-action-icon-size: 12px !default;
+$collapse-body-background: $background-content !default;
+$collapse-border: 1px solid !default;
+$collapse-border-color: $border-color !default;
+$collapse-border-radius: $border-radius !default;
 
 // Details Card
 $details-card-padding-size: $gutter-size !default;
@@ -149,6 +150,7 @@ $details-card-header-icon-size: $base-size * 2 !default;
 $details-card-header-icon-margin-right: $details-card-padding-size !default;
 $details-card-header-border-bottom: 1px solid !default;
 $details-card-header-border-bottom-color: $border-color !default;
+$details-card-body-background: $background-content !default;
 $details-card-footer-border-top: 1px solid !default;
 $details-card-footer-border-top-color: $border-color !default;
 

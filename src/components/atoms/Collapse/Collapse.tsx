@@ -45,20 +45,3 @@ export const Collapse: React.FC<CollapseProps> = ({
     </div>
   );
 };
-
-export const CollapseGroup: React.FC<CollapseProps> = ({ title, leftSide, rightSide, children, className }) => (
-  <div className={cn(`ebs-collapse`, `ebs-collapse__group`, className)}>
-    <div className="ebs-collapse__header">
-      <div className="ebs-collapse__header__side-left">
-        {title && (
-          <div className="ebs-collapse__title">
-            {title} ({React.Children.toArray(children).length})
-          </div>
-        )}
-        {leftSide}
-      </div>
-      <div className="ebs-collapse__header__side-right">{rightSide}</div>
-    </div>
-    {children}
-  </div>
-);
