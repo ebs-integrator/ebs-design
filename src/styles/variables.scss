@@ -19,7 +19,9 @@ $grid-sm-size: 576px !default;
 $spacing-from: 0 !default;
 $spacing-to: 30 !default;
 
-$base-size: $gutter-size * 2 !default;
+$base-size: 32px !default;
+$base-size-sm: 24px !default;
+$base-size-lg: 40px !default;
 
 // Text colors
 $heading-color: #121634 !default;
@@ -293,5 +295,48 @@ $scrollbar-track-background-color: $background-content !default;
 $scrollbar-thumb-background-color: $border-color !default;
 $scrollbar-thumb-hover-background-color: $primary-color !default;
 
-//Icon
+// Icon
 $icon-svg-color: $primary-color !default;
+
+// Tabs
+$tab-item-margin: 0 30px 0 0 !default;
+$tab-item-padding: 20px 0 !default;
+$tab-border: none !default;
+$tab-border-bottom: 1px solid #111 !default;
+$tab-item-border-bottom-active: 2px solid $primary-color !default;
+$tab-item-disabled-color: $normal-color !default;
+$tab-content-padding: 10px !default;
+
+// Form inputs
+//
+// Define base size & colors of scrollbar
+//
+// Input
+$input-padding-y: 6px !default;
+$input-padding-x: 8px !default;
+
+$input-padding-y-sm: 4px !default;
+$input-padding-x-sm: 6px !default;
+
+$input-padding-y-lg: 10px !default;
+$input-padding-x-lg: 10px !default;
+
+// Select
+$select-padding-y: $input-padding-y !default;
+$select-padding-x: $input-padding-x !default;
+
+$select-padding-y-sm: $input-padding-y-sm !default;
+$select-padding-x-sm: $input-padding-x-sm !default;
+
+$select-padding-y-lg: $input-padding-y-lg !default;
+$select-padding-x-lg: $input-padding-x-lg !default;
+
+// Calendar
+$calendar-padding-y: $input-padding-y !default;
+$calendar-padding-x: $input-padding-x !default;
+
+$calendar-padding-y-sm: $input-padding-y-sm !default;
+$calendar-padding-x-sm: $input-padding-x-sm !default;
+
+$calendar-padding-y-lg: $input-padding-y-lg !default;
+$calendar-padding-x-lg: $input-padding-x-lg !default;

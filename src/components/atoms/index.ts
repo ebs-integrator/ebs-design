@@ -18,5 +18,6 @@ export { Container, Row, Col } from './Grid';
 export { Group } from './Group/Group';
 export { Empty } from './Empty/Empty';
 export { Collapse } from './Collapse/Collapse';
+export { Tabs } from './Tabs/Tabs';
 
 export { Animated } from './Animated';

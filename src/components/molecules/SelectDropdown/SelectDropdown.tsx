@@ -16,9 +16,20 @@ export interface Props {
   onChange?: (value: any) => void;
   // TODO: decide the type
   value?: any;
+
+  // FIXME: Remove this prop and refactor with compound components
+  showSearch?: boolean;
 }
 
-export const SelectDropdown: React.FC<Props> = ({ className, mode, onClose, onChange, options = [], value }) => {
+export const SelectDropdown: React.FC<Props> = ({
+  className,
+  mode,
+  onClose,
+  onChange,
+  options = [],
+  value,
+  showSearch,
+}) => {
   const [search, setSearch] = React.useState('');
   const [activeItem, setActiveItem] = React.useState(0);
 
@@ -70,15 +81,17 @@ export const SelectDropdown: React.FC<Props> = ({ className, mode, onClose, onCh
 
   return (
     <div className={cn(`ebs-select__dropdown`, className)}>
-      <Input
-        suffix={<Icon type="search" className="cursor" />}
-        disabled={!options || (options && options.length === 0)}
-        autoFocus
-        placeholder="Search"
-        value={search}
-        onChange={onSearch}
-        className="ebs-select__dropdown-search"
-      />
+      {showSearch && (
+        <Input
+          suffix={<Icon type="search" className="cursor" />}
+          disabled={!options || (options && options.length === 0)}
+          autoFocus
+          placeholder="Search"
+          value={search}
+          onChange={onSearch}
+          className="ebs-select__dropdown-search"
+        />
+      )}
 
       <Animated className="ebs-select__dropdown-items" duration={100}>
         {hasOptions ? (
