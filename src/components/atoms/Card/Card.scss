@@ -13,8 +13,7 @@
   border-radius: $card-border-radius;
   background-color: #fff;
   overflow: hidden;
-
-  @include elevation-1;
+  box-shadow: $box-shadow;
 
   &--collapsed {
     .ebs-card__header {

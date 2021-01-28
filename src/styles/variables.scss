@@ -74,6 +74,11 @@ $border-radius-lg: $border-radius !default;
 $transition-base: all 0.3s ease-in-out !default;
 $transition-time: 0.2s !default;
 
+// Shadows
+//
+// Set box shadows
+$box-shadow: 0px 4px 8px rgba(18, 22, 52, 0.16) !default;
+
 // Alerts
 //
 // Define alert padding & icon size
