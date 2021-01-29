@@ -132,19 +132,6 @@ $badge-info-bg-color: $info-color !default;
 $badge-warning-bg-color: $warning-color !default;
 $badge-danger-bg-color: $danger-color !default;
 
-// Collapse
-$collapse-space-size: $gutter-size !default;
-$collapse-group-space-size: $gutter-size + $gutter-size / 2 !default;
-
-$collapse-border: 1px solid !default;
-$collapse-border-color: $border-color !default;
-$collapse-border-radius: $border-radius !default;
-$collapse-header-border-bottom: 2px solid !default;
-$collapse-header-border-bottom-color: $primary-color !default;
-$collapse-header-title-font-weight: 500 !default;
-$collapse-header-title-icon-size: $collapse-group-space-size !default;
-$collapse-header-action-icon-size: 12px !default;
-
 // Card
 //
 // Style cards elements.
@@ -166,12 +153,29 @@ $card-padding-x-sm: 15px !default;
 $card-padding-y-sm: 10px !default;
 $card-padding-x-lg: 20px !default;
 $card-padding-y-lg: 20px !default;
+
 $card-border-radius: $border-radius !default;
 $card-border-color: $border-color !default;
 $card-bordered-color: $primary-color !default;
 $card-header-bg-color: $white;
 $card-body-bg-color: $grey-100;
 $card-footer-bg-color: $white;
+$card-box-shadow: $box-shadow;
+
+// Collapse
+$collapse-padding-x: 20px !default;
+$collapse-padding-y: 15px !default;
+$collapse-padding-x-sm: 15px !default;
+$collapse-padding-y-sm: 10px !default;
+$collapse-padding-x-lg: 20px !default;
+$collapse-padding-y-lg: 20px !default;
+
+$collapse-border-radius: $border-radius !default;
+$collapse-border-color: $border-color !default;
+$collapse-bordered-color: $primary-color !default;
+$collapse-header-bg-color: $white;
+$collapse-body-bg-color: $grey-100;
+$collapse-group-box-shadow: $box-shadow;
 
 // Links
 //

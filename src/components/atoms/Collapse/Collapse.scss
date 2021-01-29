@@ -1,103 +1,95 @@
+// Add common style
+@mixin collapse-size {
+  .ebs-collapse__header,
+  .ebs-collapse__body {
+    @content;
+  }
+}
+
 .ebs-collapse {
   width: 100%;
-  border: $collapse-border;
-  border-color: $collapse-border-color;
+  border: 1px solid $collapse-border-color;
   border-radius: $collapse-border-radius;
-
-  &.collapsed &__header {
-    border-bottom-color: transparent;
-  }
-
-  &.collapsed &__content {
-    max-height: 0px;
-    opacity: 0;
-
-    > div {
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-    }
-  }
+  background-color: #fff;
+  overflow: hidden;
 
   &__header {
-    @include flex-center;
-    cursor: pointer;
+    background-color: $collapse-header-bg-color;
+    border-bottom: 1px solid $collapse-border-color;
+    width: 100%;
+    display: flex;
     justify-content: space-between;
-    border-bottom: $collapse-header-border-bottom;
-    border-bottom-color: $collapse-header-border-bottom-color;
-    transition: border-bottom-color $transition-time;
-  }
 
-  &__header__side-left,
-  &__header__side-right {
-    @include flex-center;
-    padding: rem($collapse-space-size);
-  }
+    &:hover {
+      cursor: pointer;
+    }
 
-  &__header__side-right {
-    text-align: right;
-  }
+    &--collapsed {
+      border-bottom: 0;
+    }
 
-  &__header-action {
-    margin-left: rem($collapse-space-size);
+    &--bordered:not(&.ebs-collapse__header--collapsed) {
+      border-bottom: 2px solid $collapse-bordered-color;
+    }
 
-    .ebs-icon {
-      color: $grey-600;
-      width: rem($collapse-header-action-icon-size);
+    // Content
+    &__title {
+      flex: 1;
+    }
+
+    &__toggle {
+      padding-left: rem(12px);
+      @include flex-center;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      .ebs-icon {
+        font-size: rem(14px);
+        color: $grey-600;
+      }
     }
   }
 
-  &__title {
-    @include flex-center;
-    font-weight: $collapse-header-title-font-weight;
-    margin-right: rem($collapse-space-size);
+  &__body {
+    background-color: $collapse-body-bg-color;
+  }
 
-    .ebs-icon {
-      font-size: rem($collapse-header-title-icon-size);
-      margin-right: rem($collapse-space-size);
+  // Group
+  &__group {
+    width: 100%;
+    border: 1px solid $collapse-border-color;
+    border-radius: $collapse-border-radius;
+    box-shadow: $collapse-group-box-shadow;
+    overflow: hidden;
+
+    .ebs-collapse {
+      border: 0;
+      border-radius: 0;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid $collapse-border-color;
+      }
     }
   }
 
-  &__content {
-    max-height: 100%;
-    opacity: 1;
-    transition: $transition-base;
-
-    > div {
-      transition: $transition-base;
+  // Size
+  &--small {
+    @include collapse-size {
+      padding: rem($collapse-padding-y-sm $collapse-padding-x-sm);
     }
   }
 
-  &__group > &__header {
-    cursor: default;
-  }
-
-  &__group > &__header > &__header__side-left,
-  &__group > &__header > &__header__side-right {
-    padding: rem($collapse-group-space-size $collapse-space-size);
-  }
-
-  &__group > & {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-
-    &:last-child {
-      border-bottom: none;
+  &--medium {
+    @include collapse-size {
+      padding: rem($collapse-padding-y $collapse-padding-x);
     }
   }
 
-  &__group > & > &__header {
-    border-width: 1px;
-  }
-
-  &__group > &:not(.collapsed) > & {
-    &__header {
-      border-bottom-color: $collapse-border-color;
-    }
-
-    &__content {
-      border-left: 2px solid $collapse-header-border-bottom-color;
-      margin-left: -2px;
+  &--large {
+    @include collapse-size {
+      padding: rem($collapse-padding-y-lg $collapse-padding-x-lg);
     }
   }
 }

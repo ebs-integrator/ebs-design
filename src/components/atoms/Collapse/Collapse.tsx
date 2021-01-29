@@ -1,64 +1,76 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { useState } from 'react';
+import AnimateHeight from 'react-animate-height';
+import { SizeType } from 'types';
 import { Icon } from 'components/atoms';
+import { CollapseGroup, CollapseGroupProps } from './CollapseGroup';
 
 export interface CollapseProps {
-  defaultActive?: boolean;
+  collapsed?: boolean;
   className?: string;
   title?: React.ReactNode;
-  leftSide?: React.ReactNode;
-  rightSide?: React.ReactNode;
+  size?: SizeType;
+  style?: React.CSSProperties;
+  bordered?: boolean;
+  onClick?: (collapsed?: boolean) => void;
 }
 
-export const Collapse: React.FC<CollapseProps> = ({
-  defaultActive = true,
+export interface CollapseComposition {
+  Group: React.FC<CollapseGroupProps>;
+}
+
+const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
+  size = 'medium',
+  collapsed = false,
+  bordered = false,
   title,
   className,
-  leftSide,
-  rightSide,
+  style,
+  onClick,
   children,
 }) => {
-  const [active, setActive] = useState(defaultActive);
+  const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
 
-  const handleToggleCollapse = (): void => {
-    setActive((s) => !s);
+  // Collapse card body
+  const toggle = (): void => setHeight(height === 0 ? 'auto' : 0);
+
+  const handleClick = (e: React.SyntheticEvent<HTMLElement>): void => {
+    e.stopPropagation();
+
+    toggle();
+
+    // Custom click
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
-    <div className={cn(`ebs-collapse`, className, { collapsed: !active })}>
-      <div className="ebs-collapse__header" onClick={children ? handleToggleCollapse : undefined}>
-        <div className="ebs-collapse__header__side-left">
-          {title && <div className="ebs-collapse__title">{title}</div>}
-          {leftSide}
+    <div className={cn(`ebs-collapse ebs-collapse--${size}`, className)} style={style}>
+      <header
+        className={cn('ebs-collapse__header', {
+          'ebs-collapse__header--collapsed': height === 0,
+          'ebs-collapse__header--bordered': bordered,
+        })}
+        onClick={handleClick}
+      >
+        <div className="ebs-collapse__header__title">{title}</div>
+        <div className="ebs-collapse__header__toggle" onClick={toggle}>
+          <Icon type={height === 0 ? 'arrow-right' : 'arrow-bottom'} />
         </div>
-        <div className="ebs-collapse__header__side-right" onClick={(e) => e.stopPropagation()}>
-          {rightSide}
-          {children && (
-            <div className="ebs-collapse__header-action">
-              <Icon type={active ? 'arrow-bottom' : 'arrow-left'} />
-            </div>
-          )}
-        </div>
+      </header>
+
+      <div className={cn(`ebs-collapse__body`, { 'py-0': height === 0 })}>
+        <AnimateHeight duration={400} height={height}>
+          {children}
+        </AnimateHeight>
       </div>
-      {children && <div className="ebs-collapse__content">{children}</div>}
     </div>
   );
 };
 
-export const CollapseGroup: React.FC<CollapseProps> = ({ title, leftSide, rightSide, children, className }) => (
-  <div className={cn(`ebs-collapse`, `ebs-collapse__group`, className)}>
-    <div className="ebs-collapse__header">
-      <div className="ebs-collapse__header__side-left">
-        {title && (
-          <div className="ebs-collapse__title">
-            {title} ({React.Children.toArray(children).length})
-          </div>
-        )}
-        {leftSide}
-      </div>
-      <div className="ebs-collapse__header__side-right">{rightSide}</div>
-    </div>
-    {children}
-  </div>
-);
+Collapse.displayName = 'Collapse';
+
+Collapse.Group = CollapseGroup;
+
+export { Collapse };
