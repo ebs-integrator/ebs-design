@@ -186,6 +186,14 @@ $link-shade-percentage: 20% !default;
 $link-hover-color: $primary-600 !default;
 $link-hover-decoration: none !default;
 
+// ListGroup
+//
+// Style list group items
+$list-group-background-color: $white !default;
+$list-group-border: 1px solid $border-color !default;
+$list-group-item-padding: $gutter-size !default;
+$list-group-item-border-bottom: 1px solid $border-color !default;
+
 // Buttons
 //
 // For each of Bootstrap's buttons, define text, background, and border color.

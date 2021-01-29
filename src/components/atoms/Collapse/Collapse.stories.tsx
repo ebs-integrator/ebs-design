@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Icon } from 'components/atoms';
+import { Button, Icon, Space } from 'components/atoms';
 
 import { Collapse } from './Collapse';
 import { exportStory } from 'libs';
@@ -25,14 +25,14 @@ export const Regular = (): React.ReactElement => (
 );
 
 export const Group = (): React.ReactElement => (
-  <Collapse.Group title="Conditions">
+  <Collapse.Group>
     <Collapse
       bordered
       title={
-        <>
+        <Space>
           <Icon type="star" />
           Condition 1
-        </>
+        </Space>
       }
     >
       <div style={style}>test collapse</div>
@@ -40,10 +40,10 @@ export const Group = (): React.ReactElement => (
     <Collapse
       collapsed
       title={
-        <>
+        <Space>
           <Icon type="star" />
           Condition 2
-        </>
+        </Space>
       }
     >
       <div style={style}>test collapse</div>
@@ -51,10 +51,10 @@ export const Group = (): React.ReactElement => (
     <Collapse
       collapsed
       title={
-        <>
+        <Space>
           <Icon type="star" />
           Condition 3
-        </>
+        </Space>
       }
     >
       <div style={style}>test collapse</div>
