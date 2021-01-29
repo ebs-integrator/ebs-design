@@ -23,7 +23,6 @@ export {
   Row,
   Col,
   Collapse,
-  CollapseGroup,
   Tooltip,
   DetailsCard,
   HeadLeft,

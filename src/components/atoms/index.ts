@@ -15,7 +15,7 @@ export { Card } from './Card/Card';
 export { DetailsCard, HeadLeft } from './DetailsCard/DetailsCard';
 export { Mask } from './Mask/Mask';
 export { Container, Row, Col } from './Grid';
-export { Collapse, CollapseGroup } from './Collapse/Collapse';
+export { Collapse } from './Collapse/Collapse';
 export { Tabs } from './Tabs/Tabs';
 export { Space } from './Space/Space';
 
