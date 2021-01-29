@@ -37,7 +37,7 @@ export const Space: React.FC<SpaceProps> = ({
   size = 'medium',
   direction = 'horizontal',
   wrap = false,
-  align,
+  align = 'center',
   justify,
   className,
   children,
