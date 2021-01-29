@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Button, Icon } from 'components/atoms';
 
-import { Collapse, CollapseGroup } from './Collapse';
+import { Collapse } from './Collapse';
 import { exportStory } from 'libs';
+
+const { Group: CollapseGroup } = Collapse;
 
 export default {
   title: exportStory('Collapse', 'atoms'),
@@ -13,25 +15,19 @@ export default {
 const style = { padding: 16, overflow: 'hidden', verticalAlign: 'center' };
 
 export const Regular = (): React.ReactElement => (
-  <Collapse
-    defaultActive={true}
-    title="Collapse element"
-    rightSide={<Button size="small">History</Button>}
-    leftSide={<span>3 items</span>}
-  >
-    <div style={style}>
-      test collapse
-      <div style={{ float: 'right' }}>
-        <Button size="small">Go to</Button>
-      </div>
-    </div>
+  <Collapse collapsed title="Collapse element">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sed unde, aut nobis tempora debitis explicabo
+      dicta qui nulla corrupti.
+    </p>
+    <Button>Click me</Button>
   </Collapse>
 );
 
 export const Group = (): React.ReactElement => (
-  <CollapseGroup title="Conditions">
+  <Collapse.Group title="Conditions">
     <Collapse
-      defaultActive={true}
+      bordered
       title={
         <>
           <Icon type="star" />
@@ -42,7 +38,7 @@ export const Group = (): React.ReactElement => (
       <div style={style}>test collapse</div>
     </Collapse>
     <Collapse
-      defaultActive={false}
+      collapsed
       title={
         <>
           <Icon type="star" />
@@ -53,7 +49,7 @@ export const Group = (): React.ReactElement => (
       <div style={style}>test collapse</div>
     </Collapse>
     <Collapse
-      defaultActive={false}
+      collapsed
       title={
         <>
           <Icon type="star" />
@@ -63,5 +59,5 @@ export const Group = (): React.ReactElement => (
     >
       <div style={style}>test collapse</div>
     </Collapse>
-  </CollapseGroup>
+  </Collapse.Group>
 );

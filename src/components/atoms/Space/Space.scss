@@ -1,0 +1,47 @@
+.ebs-space {
+  display: inline-flex;
+  width: 100%;
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &__align {
+    &--center {
+      align-items: center;
+    }
+    &--start {
+      align-items: flex-start;
+    }
+    &--end {
+      align-items: flex-end;
+    }
+    &--baseline {
+      align-items: baseline;
+    }
+  }
+
+  &__justify {
+    &--center {
+      justify-content: center;
+    }
+    &--start {
+      justify-content: flex-start;
+    }
+    &--end {
+      justify-content: flex-end;
+    }
+    &--space-between {
+      justify-content: space-between;
+    }
+    &--space-around {
+      justify-content: space-around;
+    }
+  }
+}
+
+.ebs-space__item {
+  &:empty {
+    display: none;
+  }
+}

@@ -1,53 +1,55 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { SizeType } from 'types';
+import { CardHeader, CardHeaderProps } from './CardHeader';
+import { CardBody, CardBodyProps } from './CardBody';
+import { CardFooter, CardFooterProps } from './CardFooter';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
+  size?: SizeType;
+  collapsible?: boolean;
+  collapsed?: boolean;
+}
+export interface CardComposition {
+  Header: React.FC<CardHeaderProps>;
+  Body: React.FC<CardBodyProps>;
+  Footer: React.FC<CardFooterProps>;
 }
 
-export const Card: React.FC<CardProps> = ({ children, className, ...props }) => (
-  <div className={cn(`ebs-card`, className)} {...props}>
-    {children}
-  </div>
-);
-
-export interface HeaderProps {
-  className?: string;
-  title?: React.ReactNode;
-  leftSide?: React.ReactNode;
-  rightSide?: React.ReactNode;
-  count?: number;
+interface ContextProps {
+  height: string | number;
+  setHeight: (height: string | number) => void;
+  collapsible?: boolean;
 }
 
-export const CardHeader: React.FC<HeaderProps> = ({ className, count = 0, title, leftSide, rightSide }) => (
-  <div className={cn(`ebs-card__header`, className)}>
-    <div className="ebs-card__header-side--left">
-      {title && (
-        <div className="ebs-card__header-title">
-          {title}
+const CardContext = React.createContext<ContextProps>({
+  height: 'auto', // Default card body height
+  setHeight: () => null,
+});
 
-          {count > 0 ? ` (${count})` : ''}
-        </div>
-      )}
+const Card: React.FC<CardProps> & CardComposition = ({
+  size = 'medium',
+  collapsible = false,
+  collapsed = false,
+  className,
+  children,
+  ...props
+}) => {
+  // Height is used for collapsible state
+  const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
 
-      {leftSide}
+  return (
+    <div className={cn(`ebs-card ebs-card--${size}`, className, { 'ebs-card--collapsed': height === 0 })} {...props}>
+      <CardContext.Provider value={{ height, setHeight, collapsible }}>{children}</CardContext.Provider>
     </div>
+  );
+};
 
-    {rightSide && <div className="ebs-card__header-side--right">{rightSide}</div>}
-  </div>
-);
+Card.displayName = 'Card';
 
-export interface FooterProps {
-  className?: string;
-  leftSide?: React.ReactNode;
-  rightSide?: React.ReactNode;
-  currentLabel?: string;
-}
+Card.Header = CardHeader;
+Card.Body = CardBody;
+Card.Footer = CardFooter;
 
-export const CardFooter: React.FC<FooterProps> = ({ className, leftSide, rightSide }) => (
-  <div className={cn(`ebs-card__footer`, className)}>
-    {leftSide && <div className="ebs-card__footer-side--left">{leftSide}</div>}
-
-    {rightSide ? <div className="ebs-card__footer-side--right">{rightSide}</div> : null}
-  </div>
-);
+export { Card, CardContext };
