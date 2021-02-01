@@ -6,6 +6,8 @@ export interface CollapseGroupProps {
   style?: React.CSSProperties;
 }
 
-export const CollapseGroup: React.FC<CollapseGroupProps> = ({ children, className }) => (
-  <div className={cn('ebs-collapse__group', className)}>{children}</div>
+export const CollapseGroup: React.FC<CollapseGroupProps> = ({ className, style, children }) => (
+  <div className={cn('ebs-collapse__group', className)} style={style}>
+    {children}
+  </div>
 );
