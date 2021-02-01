@@ -54,6 +54,7 @@
 
   &__body {
     background-color: $collapse-body-bg-color;
+    transition: padding 400ms;
   }
 
   // Group
