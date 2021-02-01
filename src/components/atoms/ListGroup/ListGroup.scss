@@ -1,0 +1,13 @@
+.ebs-list-group {
+  @include fontRegular;
+  background-color: $list-group-background-color;
+  border: $list-group-border;
+
+  &__item {
+    padding: rem($list-group-item-padding);
+
+    &:not(:last-child) {
+      border-bottom: $list-group-item-border-bottom;
+    }
+  }
+}

@@ -1,63 +1,57 @@
 import * as React from 'react';
-import { Button, Icon } from 'components/atoms';
+import { Icon, Space } from 'components/atoms';
 
 import { Collapse } from './Collapse';
 import { exportStory } from 'libs';
 
-const { Group: CollapseGroup } = Collapse;
+const { Group: CollapseGroup, Header: CollapseHeader, Body: CollapseBody } = Collapse;
 
 export default {
   title: exportStory('Collapse', 'atoms'),
   component: Collapse,
-  subcomponents: { CollapseGroup },
+  subcomponents: { CollapseGroup, CollapseHeader, CollapseBody },
 };
 
-const style = { padding: 16, overflow: 'hidden', verticalAlign: 'center' };
-
 export const Regular = (): React.ReactElement => (
-  <Collapse collapsed title="Collapse element">
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sed unde, aut nobis tempora debitis explicabo
-      dicta qui nulla corrupti.
-    </p>
-    <Button>Click me</Button>
+  <Collapse collapsed>
+    <Collapse.Header>Collapse element</Collapse.Header>
+    <Collapse.Body>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sed unde, aut nobis tempora debitis explicabo
+        dicta qui nulla corrupti.
+      </p>
+    </Collapse.Body>
   </Collapse>
 );
 
 export const Group = (): React.ReactElement => (
-  <Collapse.Group title="Conditions">
-    <Collapse
-      bordered
-      title={
-        <>
+  <Collapse.Group>
+    <Collapse bordered>
+      <Collapse.Header>
+        <Space>
           <Icon type="star" />
           Condition 1
-        </>
-      }
-    >
-      <div style={style}>test collapse</div>
+        </Space>
+      </Collapse.Header>
+      <Collapse.Body>Example collapse</Collapse.Body>
     </Collapse>
-    <Collapse
-      collapsed
-      title={
-        <>
+    <Collapse collapsed>
+      <Collapse.Header>
+        <Space>
           <Icon type="star" />
           Condition 2
-        </>
-      }
-    >
-      <div style={style}>test collapse</div>
+        </Space>
+      </Collapse.Header>
+      <Collapse.Body>Example collapse</Collapse.Body>
     </Collapse>
-    <Collapse
-      collapsed
-      title={
-        <>
+    <Collapse collapsed>
+      <Collapse.Header>
+        <Space>
           <Icon type="star" />
           Condition 3
-        </>
-      }
-    >
-      <div style={style}>test collapse</div>
+        </Space>
+      </Collapse.Header>
+      <Collapse.Body>Example collapse</Collapse.Body>
     </Collapse>
   </Collapse.Group>
 );
