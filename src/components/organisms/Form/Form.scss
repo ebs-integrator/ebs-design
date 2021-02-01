@@ -1,68 +1,131 @@
-.ebs-form__inline {
-  .ebs-form__item {
-    display: flex;
-    align-items: center;
+%input-extra {
+  font-size: rem(11px);
+  font-weight: 400;
+  margin-top: rem(2px);
+}
+
+.ebs-form {
+  &--vertical {
+    .ebs-form__field__label {
+      margin-bottom: rem(4px);
+    }
+  }
+
+  &--horizontal {
+    .ebs-form__field__label {
+      justify-content: flex-end;
+    }
+  }
+
+  &__field {
+    //
 
     &:not(:last-child) {
-      margin-bottom: rem(25px);
+      margin-bottom: rem(15px);
     }
 
-    .ebs-label {
-      text-align: right;
-      max-width: rem(125px);
-      width: 100%;
-      margin: rem(0 10px 0 0);
+    // Label
+    &__label {
+      display: flex;
+      font-size: rem(12px);
+      font-weight: 400;
+      color: $text-color;
+      height: 100%;
+      align-items: center;
     }
 
-    .ebs-form__children {
-      width: 100%;
+    // Extra
+    &__extra {
+      color: $text-color-secondary;
     }
 
-    .ebs-extra {
-      text-align: right;
-      position: absolute;
-      bottom: rem(-12.5px);
-      width: 100%;
+    // Errors
+    &__error {
+      color: $danger-color;
+
+      // Reset UL
+      list-style: none;
+      padding: 0;
+      margin: rem(2px) 0 0;
     }
+
+    // Common for extra and error
+    &__explain {
+      font-size: rem(12px);
+      font-weight: 400;
+      margin-top: rem(2px);
+    }
+  }
+
+  &__group {
+    //
   }
 }
+// .ebs-form__inline {
+//   .ebs-form__item {
+//     display: flex;
+//     align-items: center;
 
-.ebs-form__items {
-  display: flex;
-  justify-content: space-between;
+//     &:not(:last-child) {
+//       margin-bottom: rem(25px);
+//     }
 
-  @include mq($until: small-desktop) {
-    display: block;
-  }
+//     .ebs-label {
+//       text-align: right;
+//       max-width: rem(125px);
+//       width: 100%;
+//       margin: rem(0 10px 0 0);
+//     }
 
-  &:not(:last-child) {
-    margin-bottom: rem(20px);
-  }
+//     .ebs-form__children {
+//       width: 100%;
+//     }
 
-  &-three .ebs-form__item {
-    width: calc(33% - 7.5px);
-  }
+//     .ebs-extra {
+//       text-align: right;
+//       position: absolute;
+//       bottom: rem(-12.5px);
+//       width: 100%;
+//     }
+//   }
+// }
 
-  .ebs-form__item {
-    @include mq($from: small-desktop) {
-      margin-bottom: 0;
+// .ebs-form__items {
+//   display: flex;
+//   justify-content: space-between;
 
-      &:not(:first-child) {
-        margin-left: rem(12.5px);
-      }
-    }
+//   @include mq($until: small-desktop) {
+//     display: block;
+//   }
 
-    @include mq($until: small-desktop) {
-      width: 100%;
-    }
-  }
-}
+//   &:not(:last-child) {
+//     margin-bottom: rem(20px);
+//   }
 
-.ebs-form__item {
-  position: relative;
-  width: 100%;
+//   &-three .ebs-form__item {
+//     width: calc(33% - 7.5px);
+//   }
 
-  &:not(:last-child) {
-    margin-bottom: rem(20px);
-  }
-}
+//   .ebs-form__item {
+//     @include mq($from: small-desktop) {
+//       margin-bottom: 0;
+
+//       &:not(:first-child) {
+//         margin-left: rem(12.5px);
+//       }
+//     }
+
+//     @include mq($until: small-desktop) {
+//       width: 100%;
+//     }
+//   }
+// }
+
+// .ebs-form__item {
+//   position: relative;
+//   width: 100%;
+
+//   &:not(:last-child) {
+//     margin-bottom: rem(20px);
+//   }
+// }

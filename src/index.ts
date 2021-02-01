@@ -57,7 +57,7 @@ export {
   FormProvider,
   FormProps,
   FormItem,
-  FormItems,
+  FormGroup,
   Layout,
   Sidebar,
   SortBy,

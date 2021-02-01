@@ -1,78 +1,52 @@
 import * as React from 'react';
 import cn from 'classnames';
-import RCForm, { FormProps, Field } from 'rc-field-form';
-import { validate } from 'libs/object/object';
-import { Extra, Label } from 'components/atoms';
-import { ExtraStatus } from 'components/atoms/Extra/Extra';
+import RCForm, { FormProps as RCFormProps } from 'rc-field-form';
+import { ColProps } from 'components/atoms/Grid/Col/Col';
+import { RowProps } from 'components/atoms/Grid/Row/Row';
+import { FormField, FormFieldProps } from './FormField';
+import { FormGroup, FormGroupProps } from './FormGroup';
+import { getColumnSizes } from './utils';
 
-export type FormType = 'regular' | 'inline';
+// Form type
+export type FormType = 'vertical' | 'horizontal';
 
-interface Props extends FormProps {
+export interface FormProps extends RCFormProps {
   type?: FormType;
   className?: string;
-  onSubmit?: () => void;
+  labelCol?: ColProps; // The layout for input label
+  controlCol?: ColProps; // The layout for input controls
+  fieldRow?: RowProps; // The layout for field columns
 }
 
-export const Form: React.FC<Props> = ({ className, children, ...props }) => {
+export interface FormComposition {
+  Field: React.FC<FormFieldProps>;
+  Group: React.FC<FormGroupProps>;
+}
+
+const FormContext = React.createContext<FormProps>({});
+
+const Form: React.FC<FormProps> & FormComposition = ({
+  type = 'vertical',
+  labelCol,
+  controlCol,
+  fieldRow,
+  className,
+  children,
+  ...props
+}) => {
+  // Get column sizes by form type
+  const layout = getColumnSizes(type, labelCol, controlCol);
+
   return (
-    <RCForm className={cn(`ebs-form`, className)} {...props}>
-      {children}
+    <RCForm className={cn(`ebs-form ebs-form--${type}`, className)} {...props}>
+      <FormContext.Provider value={{ type, fieldRow, ...layout }}>{children}</FormContext.Provider>
     </RCForm>
   );
 };
 
-interface ItemProps {
-  name?: string | number | (string | number)[];
-  children?: any;
-  itemClass?: string;
-  className?: string;
-  labelWidth?: React.ReactNode;
-  label?: React.ReactNode;
-  required?: true;
-  style?: any;
-  extraStatus?: ExtraStatus;
-  extra?: string | string[];
-  error?: string[] | { [key: string]: string[] };
-}
+Form.displayName = 'Form';
 
-export const FormItem: React.FC<ItemProps> = ({
-  name,
-  itemClass,
-  className,
-  labelWidth,
-  label,
-  required,
-  style,
-  extraStatus: $extraStatus = 'danger',
-  extra: $extra,
-  error,
-  children,
-}) => {
-  const extraStatus = error ? 'danger' : $extraStatus;
-  const extra = error ? validate(error) : $extra;
+Form.Field = FormField;
+Form.Group = FormGroup;
 
-  return (
-    <div className={cn(`ebs-form__item`, itemClass)} style={style}>
-      {label && (
-        <Label
-          style={{ maxWidth: labelWidth }}
-          text={
-            <>
-              {label} {required && <span>*</span>}
-            </>
-          }
-        />
-      )}
-
-      <div className={cn(`ebs-form__children`, className, { 'has-error': extra && extraStatus === 'danger' })}>
-        <Field name={name}>{children}</Field>
-      </div>
-
-      {extra && <Extra status={extraStatus} text={Array.isArray(extra) ? extra.join(',') : extra} />}
-    </div>
-  );
-};
-
-export const FormItems: React.FC<{ className?: string; three?: boolean }> = ({ className, three, children }) => (
-  <div className={cn(`ebs-form__items`, className, { 'ebs-form__items-three': three })}>{children}</div>
-);
+export { Form, FormContext };
