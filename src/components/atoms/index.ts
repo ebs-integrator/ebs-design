@@ -6,6 +6,7 @@ export { LoaderSpinner } from './LoaderSpinner/LoaderSpinner';
 export { Input } from '../atoms/Input/Input';
 export { Icon } from './Icon/Icon';
 export { Label } from './Label/Label';
+export { ListGroup } from './ListGroup/ListGroup';
 export { Extra } from './Extra/Extra';
 export { Switch } from './Switch/Switch';
 export { Chips } from './Chips/Chips';

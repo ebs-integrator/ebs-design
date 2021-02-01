@@ -1,14 +1,13 @@
 import * as React from 'react';
 import cn from 'classnames';
-import AnimateHeight from 'react-animate-height';
 import { SizeType } from 'types';
-import { Icon } from 'components/atoms';
 import { CollapseGroup, CollapseGroupProps } from './CollapseGroup';
+import { CollapseHeader, CollapseHeaderProps } from './CollapseHeader';
+import { CollapseBody, CollapseBodyProps } from './CollapseBody';
 
 export interface CollapseProps {
   collapsed?: boolean;
   className?: string;
-  title?: React.ReactNode;
   size?: SizeType;
   style?: React.CSSProperties;
   bordered?: boolean;
@@ -17,54 +16,35 @@ export interface CollapseProps {
 
 export interface CollapseComposition {
   Group: React.FC<CollapseGroupProps>;
+  Header: React.FC<CollapseHeaderProps>;
+  Body: React.FC<CollapseBodyProps>;
 }
+
+interface ContextProps {
+  height: string | number;
+  setHeight: (height: string | number) => void;
+  bordered: boolean;
+}
+
+const CollapseContext = React.createContext<ContextProps>({
+  height: 'auto', // Default card body height
+  setHeight: () => null,
+  bordered: false,
+});
 
 const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
   size = 'medium',
   collapsed = false,
   bordered = false,
-  title,
   className,
   style,
-  onClick,
   children,
 }) => {
   const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
 
-  // Collapse card body
-  const toggle = (): void => setHeight(height === 0 ? 'auto' : 0);
-
-  const handleClick = (e: React.SyntheticEvent<HTMLElement>): void => {
-    e.stopPropagation();
-
-    toggle();
-
-    // Custom click
-    if (onClick) {
-      onClick();
-    }
-  };
-
   return (
     <div className={cn(`ebs-collapse ebs-collapse--${size}`, className)} style={style}>
-      <header
-        className={cn('ebs-collapse__header', {
-          'ebs-collapse__header--collapsed': height === 0,
-          'ebs-collapse__header--bordered': bordered,
-        })}
-        onClick={handleClick}
-      >
-        <div className="ebs-collapse__header__title">{title}</div>
-        <div className="ebs-collapse__header__toggle" onClick={toggle}>
-          <Icon type={height === 0 ? 'arrow-right' : 'arrow-bottom'} />
-        </div>
-      </header>
-
-      <div className={cn(`ebs-collapse__body`, { 'py-0': height === 0 })}>
-        <AnimateHeight duration={400} height={height}>
-          {children}
-        </AnimateHeight>
-      </div>
+      <CollapseContext.Provider value={{ height, setHeight, bordered }}>{children}</CollapseContext.Provider>
     </div>
   );
 };
@@ -72,5 +52,7 @@ const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
 Collapse.displayName = 'Collapse';
 
 Collapse.Group = CollapseGroup;
+Collapse.Header = CollapseHeader;
+Collapse.Body = CollapseBody;
 
-export { Collapse };
+export { Collapse, CollapseContext };
