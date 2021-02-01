@@ -8,6 +8,7 @@ import { CollapseGroup, CollapseGroupProps } from './CollapseGroup';
 export interface CollapseProps {
   collapsed?: boolean;
   className?: string;
+  classNameBody?: string;
   title?: React.ReactNode;
   size?: SizeType;
   style?: React.CSSProperties;
@@ -25,6 +26,7 @@ const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
   bordered = false,
   title,
   className,
+  classNameBody,
   style,
   onClick,
   children,
@@ -60,7 +62,7 @@ const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
         </div>
       </header>
 
-      <div className={cn(`ebs-collapse__body`, { 'py-0': height === 0 })}>
+      <div className={cn(`ebs-collapse__body`, classNameBody, { 'py-0': height === 0 })}>
         <AnimateHeight duration={400} height={height}>
           {children}
         </AnimateHeight>
