@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { Input, Radio } from 'components/atoms';
-import { Textarea, Checkbox, InputSelect, Calendar, InputSearch, InputPhone } from 'components/molecules';
+import { Textarea, Checkbox, InputSelect, Calendar, InputPhone } from 'components/molecules';
 
 import { Form } from './Form';
 import { useForm } from './index';
 import { exportStory } from '../../../libs';
-import { Field } from 'rc-field-form';
-import { Filled } from 'components/atoms/Label/Label.stories';
 
 const { Field: FormField, Group: FormGroup } = Form;
 
@@ -15,53 +13,13 @@ export default {
   subcomponents: { Form, FormField, FormGroup },
 };
 
-const tmpField = {
-  touched: false,
-  validating: false,
-  errors: ['This is my custom error', 'My second custom error', 'And third big custom error'],
-  name: 'firstName',
-  value: 'nothing',
-};
-
 export const Regular = (): React.ReactNode => {
   const [form] = useForm();
 
-  const handleFinish = (...params: any) => {
-    console.log('finish :>> ', params);
-    form.setFields([
-      tmpField,
-      {
-        errors: ['Aged is my custom error'],
-        name: 'age',
-      },
-    ]);
-    form.getFieldError('firstName');
-    console.log('object :>> ', form.getFieldValue('firstName'));
-  };
-
-  const handleFieldsChange = (errorInfo) => {
-    console.log('field change :>> ', errorInfo);
-  };
-
   return (
-    <Form
-      form={form}
-      type="horizontal"
-      onFinish={handleFinish}
-      onFinishFailed={handleFieldsChange}
-      fieldRow={{ gx: 1 }}
-    >
-      <Field>
-        <Field.Label>First Name</Field.Label>
-        <Field.Control name="firstName" initialValue="blue">
-          <Input />
-        </Field.Control>
-        <Field.Extra>This is my extra</Field.Extra>
-      </Field>
-
-
-      <Form.Field.Label name="firstName" label="First Name" initialValue={'blue'} rules={[{ required: true }]}>
-        <Input />
+    <Form form={form} type="horizontal" labelOptions={{ col: { size: 2 } }} controlOptions={{ col: { size: 6 } }}>
+      <Form.Field name="firstName" label="First Name" initialValue={'blue'} rules={[{ required: true }]}>
+        <Input size="small" />
       </Form.Field>
 
       <Form.Field name="lastName" label="Last Name" extra="This field is required">
@@ -72,16 +30,16 @@ export const Regular = (): React.ReactNode => {
         <Textarea />
       </Form.Field>
 
-      {/* <Form.Field name="age" label="Age" extra="This field is required">
+      <Form.Field name="age" label="Age" extra="This field is required">
         <InputSelect
           options={[
-            { value: 10, text: '10' },
-            { value: 15, text: '15' },
-            { value: 20, text: '20' },
+            { value: '2%', text: '0-60' },
+            { value: 3, text: '60-90' },
+            { value: 4, text: '90-120' },
             { value: 'normal', text: 'Normal age' },
           ]}
         />
-      </Form.Field> */}
+      </Form.Field>
 
       <Form.Field name="sex" label="Sex" extra="This field is required">
         <Radio
@@ -100,9 +58,9 @@ export const Regular = (): React.ReactNode => {
         <Calendar type="date" />
       </Form.Field>
 
-      {/* <Form.Field name="phone" label="Phone Nr:" extra="This field is required">
+      <Form.Field name="phone" label="Phone Nr:" extra="This field is required">
         <InputPhone />
-      </Form.Field> */}
+      </Form.Field>
 
       <button type="submit">Submit</button>
     </Form>

@@ -1,27 +1,47 @@
-// Default size for vertical form
-export const defaultCol = {
-  size: 12, // Full width column
-};
+import { LabelOptions, ControlOptions } from './interface';
 
-// Default sizes for horizontal form
-export const defaultLabelCol = {
-  size: 4,
-};
+export const combineProps = (...args): { [key: string]: any } => Object.assign({}, ...args);
 
-export const defaultControlCol = {
-  size: 8,
-};
-
-export const getColumnSizes = (type: string, labelCol, controlCol) => {
+export const getLabelOptions = (type: string, labelOptions?: LabelOptions): LabelOptions => {
   if (type === 'vertical') {
     return {
-      labelCol: labelCol ? labelCol : defaultCol,
-      controlCol: controlCol ? controlCol : defaultCol,
+      align: labelOptions?.align ? labelOptions.align : 'center',
+      justify: labelOptions?.justify ? labelOptions.justify : 'start',
+      col: labelOptions?.col
+        ? labelOptions.col
+        : {
+            size: 12,
+          },
     };
   }
 
   return {
-    labelCol: labelCol ? labelCol : defaultLabelCol,
-    controlCol: controlCol ? controlCol : defaultControlCol,
+    align: labelOptions?.align ? labelOptions.align : 'center',
+    justify: labelOptions?.justify ? labelOptions.justify : 'end',
+    col: labelOptions?.col
+      ? labelOptions.col
+      : {
+          size: 4,
+        },
+  };
+};
+
+export const getControlOptions = (type: string, controlOptions?: ControlOptions): ControlOptions => {
+  if (type === 'vertical') {
+    return {
+      col: controlOptions?.col
+        ? controlOptions.col
+        : {
+            size: 12,
+          },
+    };
+  }
+
+  return {
+    col: controlOptions?.col
+      ? controlOptions.col
+      : {
+          size: 8,
+        },
   };
 };

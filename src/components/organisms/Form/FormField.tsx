@@ -3,15 +3,17 @@ import cn from 'classnames';
 import { Field } from 'rc-field-form';
 import { FieldProps } from 'rc-field-form/es/Field';
 import { Row, RowProps } from 'components/atoms/Grid/Row/Row';
-import { Col, ColProps } from 'components/atoms/Grid/Col/Col';
+import { Col } from 'components/atoms/Grid/Col/Col';
+import { LabelOptions, ControlOptions } from './interface';
+import { combineProps } from './utils';
 import { FormContext } from './Form';
 import { FieldError } from './FieldError';
 import { FieldExtra } from './FieldExtra';
 
 export interface FormFieldProps extends FieldProps {
   label?: string;
-  labelCol?: ColProps; // The layout for input label
-  controlCol?: ColProps; // The layout for input controls
+  labelOptions?: LabelOptions;
+  controlOptions?: ControlOptions;
   fieldRow?: RowProps; // The layout for field columns
   extra?: React.ReactNode;
   className?: string;
@@ -20,20 +22,22 @@ export interface FormFieldProps extends FieldProps {
 
 export const FormField: React.FC<FormFieldProps> = ({
   label,
+  labelOptions,
   name,
   extra,
   className,
   style,
-  labelCol,
-  controlCol,
+  controlOptions,
   fieldRow,
   children,
   ...props
 }) => {
   const formCtx = React.useContext(FormContext);
-  const labelColSize = labelCol || formCtx.labelCol;
-  const controlColSize = controlCol || formCtx.controlCol;
-  const fieldRowSize = fieldRow || formCtx.fieldRow;
+
+  // Field's components props
+  const labelProps = combineProps(formCtx.labelOptions, labelOptions);
+  const controlProps = combineProps(formCtx.controlOptions, controlOptions);
+  const fieldRowProps = combineProps(formCtx.fieldRow, fieldRow);
 
   return (
     <div className={cn(`ebs-form__field`, className)} style={style}>
@@ -59,19 +63,26 @@ export const FormField: React.FC<FormFieldProps> = ({
 
           return (
             <>
-              <Row className="ebs-form__field__wrapper" {...fieldRowSize}>
-                <Col {...labelColSize}>
-                  <div className="ebs-form__field__label">{label || name}</div>
+              <Row className="ebs-form__field__wrapper" {...fieldRowProps}>
+                <Col {...labelProps.col}>
+                  <div
+                    className={cn('ebs-form__field__label', labelProps.className, {
+                      [`align-items--${labelProps.align}`]: labelProps.align,
+                      [`justify-content--${labelProps.justify}`]: labelProps.justify,
+                    })}
+                  >
+                    {label}
+                  </div>
                 </Col>
-                <Col {...controlColSize} className="ebs-form__field__control">
+                <Col {...controlProps.col} className={cn('ebs-form__field__control', controlProps.className)}>
                   {childNode}
                 </Col>
               </Row>
 
               {/* FIXME: Find a better way to display extra and errors below the input control  */}
-              <Row className="ebs-form__field__wrapper" {...fieldRowSize}>
-                <Col {...labelColSize} />
-                <Col {...controlColSize}>
+              <Row className="ebs-form__field__footer" {...fieldRowProps}>
+                <Col {...labelProps.col} />
+                <Col {...controlProps.col}>
                   {extra && <FieldExtra>{extra}</FieldExtra>}
                   {meta.errors.length > 0 && <FieldError>{meta.errors}</FieldError>}
                 </Col>
