@@ -5,11 +5,12 @@
     }
   }
 
-  &__field {
-    &:not(:last-child) {
-      margin-bottom: rem($field-margin-bottom);
-    }
+  // Commons for all items
+  &__item:not(:last-child) {
+    margin-bottom: rem($field-margin-bottom);
+  }
 
+  &__field {
     // Label
     &__label {
       display: flex;
