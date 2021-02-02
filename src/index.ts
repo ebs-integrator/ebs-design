@@ -57,8 +57,6 @@ export {
   useForm,
   FormProvider,
   FormProps,
-  FormItem,
-  FormItems,
   Layout,
   Sidebar,
   SortBy,

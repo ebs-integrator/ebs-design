@@ -344,6 +344,15 @@ $tab-content-padding: 10px !default;
 //
 // Define base size & colors of scrollbar
 //
+// Form fields
+$field-margin-bottom: 15px !default;
+
+$field-label-color: $text-color !default;
+$field-label-font-size: 12px !default;
+$field-label-font-weight: 400 !default;
+
+$field-extra-color: $text-color-secondary;
+
 // Input
 $input-padding-y: 6px !default;
 $input-padding-x: 8px !default;
