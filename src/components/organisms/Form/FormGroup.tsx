@@ -32,7 +32,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   const fieldRowProps = Object.assign({}, formCtx.fieldRow, fieldRow);
 
   return (
-    <Row className={cn(`ebs-form__group`, className)} {...fieldRowProps}>
+    <Row className={cn(`ebs-form__item ebs-form__group`, className)} {...fieldRowProps}>
       <Col {...labelProps.col}>
         <div
           className={cn('ebs-form__field__label', labelProps.className, {

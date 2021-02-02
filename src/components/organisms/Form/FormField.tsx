@@ -40,25 +40,14 @@ export const FormField: React.FC<FormFieldProps> = ({
   const fieldRowProps = combineProps(formCtx.fieldRow, fieldRow);
 
   return (
-    <div className={cn(`ebs-form__field`, className)} style={style}>
+    <div className={cn(`ebs-form__item ebs-form__field`, className)} style={style}>
       <Field name={name} {...props}>
         {(control, meta, form) => {
-          const onChange = (...args): void => {
-            // Reset field's errors
-            if (meta.errors.length > 0) {
-              form.resetFields([meta.name]);
-            }
-
-            control.onChange(...args);
-          };
-
           const childNode =
             typeof children === 'function'
               ? children(control, meta, form)
               : React.cloneElement(children as React.ReactElement, {
                   ...control,
-                  ...props,
-                  onChange,
                 });
 
           return (
@@ -82,7 +71,7 @@ export const FormField: React.FC<FormFieldProps> = ({
               </Row>
 
               {/* FIXME: Find a better way to display extra and errors below the input control  */}
-              <Row className="ebs-form__field__footer" {...fieldRowProps}>
+              <Row className="ebs-form__field__footer">
                 <Col {...labelProps.col} />
                 <Col {...controlProps.col}>
                   {extra && <FieldExtra>{extra}</FieldExtra>}
