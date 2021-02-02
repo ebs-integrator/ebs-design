@@ -24,7 +24,10 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   const formCtx = React.useContext(FormContext);
 
   // Field's components props
-  const labelProps = Object.assign({}, formCtx.labelOptions, labelOptions);
+  const labelProps = Object.assign({}, formCtx.labelOptions, {
+    ...labelOptions,
+    align: 'start', // Align field group label to the top
+  });
   const controlProps = Object.assign({}, formCtx.controlOptions, controlOptions);
   const fieldRowProps = Object.assign({}, formCtx.fieldRow, fieldRow);
 
@@ -40,7 +43,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
           {label}
         </div>
       </Col>
-      <Col {...controlOptions?.col} className={cn('ebs-form__field__control', controlProps.className)}>
+      <Col {...controlProps.col} className={cn('ebs-form__field__control', controlProps.className)}>
         {children}
       </Col>
     </Row>

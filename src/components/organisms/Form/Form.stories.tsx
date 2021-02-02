@@ -67,24 +67,22 @@ export const Regular = (): React.ReactNode => {
   );
 };
 
-export const Inline = (): React.ReactNode => (
+export const Vertical = (): React.ReactNode => (
   <Form>
-    <Form.Field name="field" label="Text">
+    <Form.Field name="field1" label="Text">
       <Input />
     </Form.Field>
 
-    <Form.Field name="field" label="Text" extra="This field is required">
+    <Form.Field name="field2" label="Text" extra="This field is required">
       <Input />
     </Form.Field>
 
-    <Form.Group>
-      <Form.Field name="field" label="Text">
-        <Input />
-      </Form.Field>
+    <Form.Field name="field3" label="Text">
+      <Input />
+    </Form.Field>
 
-      <Form.Field name="field" label="Text" extra="This field is required">
-        <Input />
-      </Form.Field>
-    </Form.Group>
+    <Form.Field name="field4" label="Text" extra="This field is required">
+      <Input />
+    </Form.Field>
   </Form>
 );

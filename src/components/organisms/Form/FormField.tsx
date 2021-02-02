@@ -64,16 +64,18 @@ export const FormField: React.FC<FormFieldProps> = ({
           return (
             <>
               <Row className="ebs-form__field__wrapper" {...fieldRowProps}>
-                <Col {...labelProps.col}>
-                  <div
-                    className={cn('ebs-form__field__label', labelProps.className, {
-                      [`align-items--${labelProps.align}`]: labelProps.align,
-                      [`justify-content--${labelProps.justify}`]: labelProps.justify,
-                    })}
-                  >
-                    {label}
-                  </div>
-                </Col>
+                {label && (
+                  <Col {...labelProps.col}>
+                    <div
+                      className={cn('ebs-form__field__label', labelProps.className, {
+                        [`align-items--${labelProps.align}`]: labelProps.align,
+                        [`justify-content--${labelProps.justify}`]: labelProps.justify,
+                      })}
+                    >
+                      {label}
+                    </div>
+                  </Col>
+                )}
                 <Col {...controlProps.col} className={cn('ebs-form__field__control', controlProps.className)}>
                   {childNode}
                 </Col>
