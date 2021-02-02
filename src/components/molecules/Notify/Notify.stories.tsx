@@ -89,23 +89,23 @@ export const Regular = (): React.ReactNode => {
     <>
       <SizeSwitcher>{(size) => <Notify size={size} list={list} />}</SizeSwitcher>
       <Space justify="space-between">
-        <Button className="mr-15" size="small" type="fill" onClick={() => onAddItem('regular')}>
+        <Button size="small" type="fill" onClick={() => onAddItem('regular')}>
           Regular
         </Button>
-        <Button className="mr-15" size="small" type="primary" onClick={() => onAddItem('primary')}>
+        <Button size="small" type="primary" onClick={() => onAddItem('primary')}>
           Primary
         </Button>
-        <Button className="mr-15" type="text">
-          <Label status="success" type="fill" circle text="Success" onClick={() => onAddItem('success')} />
+        <Button type="text">
+          <Label status="success" type="fill" text="Success" onClick={() => onAddItem('success')} />
         </Button>
-        <Button className="mr-15" type="text">
-          <Label status="danger" type="fill" circle text="Danger" onClick={() => onAddItem('danger')} />
+        <Button type="text">
+          <Label status="danger" type="fill" text="Danger" onClick={() => onAddItem('danger')} />
         </Button>
-        <Button className="mr-15" type="text">
-          <Label status="info" type="fill" circle text="Info" onClick={() => onAddItem('info')} />
+        <Button type="text">
+          <Label status="info" type="fill" text="Info" onClick={() => onAddItem('info')} />
         </Button>
-        <Button className="mr-15" type="text">
-          <Label status="warning" type="fill" circle text="Warning" onClick={() => onAddItem('warning')} />
+        <Button type="text">
+          <Label status="warning" type="fill" text="Warning" onClick={() => onAddItem('warning')} />
         </Button>
       </Space>
     </>
