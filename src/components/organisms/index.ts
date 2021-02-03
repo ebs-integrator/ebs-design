@@ -1,6 +1,6 @@
 export { default as Actions } from './Actions/Actions';
 export { Form, FormInstance, Field, List, useForm, FormProvider, FormProps } from './Form';
-export { Modal, ModalContent, ModalFooterButton } from './Modal/Modal';
+export { Modal } from './Modal/Modal';
 export { SortBy } from './SortBy/SortBy';
 export { Table } from './Table/Table';
 
