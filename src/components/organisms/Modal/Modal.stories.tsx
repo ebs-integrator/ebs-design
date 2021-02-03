@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs/blocks';
-import { Icon, Switch, Button } from 'components/atoms';
-import { Modal, ModalFooterButton } from './Modal';
+import { Icon, Switch, Button, Space } from 'components/atoms';
+import { Modal } from './Modal';
 import { exportStory } from '../../../libs';
+
+const { Content, Footer } = Modal;
 
 export default {
   title: exportStory('Modal', 'organisms'),
   component: Modal,
-  subcomponents: { Modal, ModalFooterButton },
+  subcomponents: { Content, Footer },
   parameters: {
     docs: {
       page: () => <ArgsTable story={PRIMARY_STORY} />,
@@ -15,39 +17,44 @@ export default {
   },
 };
 
-export const WithNothing = (): React.ReactElement => <Modal>Example</Modal>;
+export const WithNothing = (): React.ReactElement => (
+  <Modal>
+    <Modal.Content>Example</Modal.Content>
+  </Modal>
+);
 
-export const WithTitle = (): React.ReactElement => <Modal title="Confirmă acceptare">Example</Modal>;
+export const WithTitle = (): React.ReactElement => (
+  <Modal title="Confirmă acceptare">
+    <Modal.Content>Example</Modal.Content>
+  </Modal>
+);
 
 export const WithFooter = (): React.ReactElement => (
-  <Modal
-    footer={
-      <ModalFooterButton>
+  <Modal>
+    <Modal.Content>Example</Modal.Content>
+    <Modal.Footer>
+      <Space justify="space-between">
         <Button>Refuză</Button>
 
         <Button type="primary" prefix={<Icon type="check" />}>
           Confirmă
         </Button>
-      </ModalFooterButton>
-    }
-  >
-    Example
+      </Space>
+    </Modal.Footer>
   </Modal>
 );
 export const WithHeaderAndFooter = (): React.ReactElement => (
-  <Modal
-    title="Confirmă acceptare"
-    footer={
-      <ModalFooterButton>
+  <Modal title="Confirmă acceptare">
+    <Modal.Content>Example</Modal.Content>
+    <Modal.Footer>
+      <Space justify="space-between">
         <Button>Refuză</Button>
 
         <Button type="primary" prefix={<Icon type="check" />}>
           Confirmă
         </Button>
-      </ModalFooterButton>
-    }
-  >
-    Example
+      </Space>
+    </Modal.Footer>
   </Modal>
 );
 
@@ -64,14 +71,13 @@ export const CancelWithEscape: React.FC = () => {
       </p>
 
       {open && (
-        <Modal
-          onClose={onToggleHandler}
-          title="Confirmă acceptare"
-          footer={
-            <ModalFooterButton>
+        <Modal onClose={onToggleHandler} title="Confirmă acceptare">
+          <Modal.Content>Example</Modal.Content>
+          <Modal.Footer>
+            <Space justify="space-between">
               <Button onClick={onToggleHandler}>Refuză</Button>
 
-              <div>
+              <Space>
                 <Button type="ghost" prefix={<Icon type="check" />}>
                   Confirmă
                 </Button>
@@ -79,11 +85,9 @@ export const CancelWithEscape: React.FC = () => {
                 <Button type="primary" prefix={<Icon type="edit" />}>
                   Save
                 </Button>
-              </div>
-            </ModalFooterButton>
-          }
-        >
-          Example
+              </Space>
+            </Space>
+          </Modal.Footer>
         </Modal>
       )}
     </>

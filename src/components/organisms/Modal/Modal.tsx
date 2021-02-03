@@ -3,28 +3,32 @@ import cn from 'classnames';
 import { createPortal } from 'react-dom';
 import { useScrollToggler } from 'hooks';
 import { Mask, Button } from 'components/atoms';
+import { ModalContent } from './ModalContent';
+import { ModalFooter } from './ModalFooter';
 
 export type ModalSize = 'small' | 'regular' | 'large';
+
+export interface ModalComposition {
+  Content: React.FC<{ className?: string }>;
+  Footer: React.FC<{ className?: string }>;
+}
 
 export interface ModalProps {
   mask?: boolean;
   size?: ModalSize;
   header?: React.ReactNode;
-  footer?: React.ReactNode;
   className?: string;
-  contentClass?: string;
   title?: string;
   onClose?: () => void;
 }
 
-export const Modal: React.FC<ModalProps> = ({
+const Modal: React.FC<ModalProps> & ModalComposition = ({
   mask = true,
   size = 'regular',
   header,
-  footer,
   className,
-  contentClass,
   title,
+  children,
   ...props
 }) => {
   useScrollToggler();
@@ -76,9 +80,7 @@ export const Modal: React.FC<ModalProps> = ({
             </div>
           ) : null}
 
-          <ModalContent className={cn(contentClass)}>{props.children}</ModalContent>
-
-          {footer && <div className="ebs-modal__footer">{footer}</div>}
+          {children}
         </div>
       </div>
     </>,
@@ -87,11 +89,9 @@ export const Modal: React.FC<ModalProps> = ({
   );
 };
 
-export const ModalContent: React.FC<{ className?: string }> = ({ className, children }) => (
-  <div className={cn(`ebs-modal__content`, className)}>{children}</div>
-);
+Modal.displayName = 'Modal';
 
-export const ModalFooterButton: React.FC<{ justify?: 'space-between' | 'center' }> = ({
-  justify = 'space-between',
-  children,
-}) => <div className={cn(`ebs-modal__footer__button`, `ebs-modal__footer__button--${justify}`)}>{children}</div>;
+Modal.Content = ModalContent;
+Modal.Footer = ModalFooter;
+
+export { Modal };

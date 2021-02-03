@@ -58,6 +58,7 @@ export {
   FormProvider,
   FormProps,
   Layout,
+  Modal,
   Sidebar,
   SortBy,
   Table,
