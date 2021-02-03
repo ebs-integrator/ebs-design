@@ -195,6 +195,16 @@
     svg:first-child {
       font-size: $sidebar-logo-width;
     }
+
+    &::after {
+      content: '';
+      width: 1px;
+      height: $layout-top-bar-height;
+      border-right: 1px solid $layout-top-bar-toggler-border-color;
+      position: absolute;
+      top: 0;
+      left: $sidebar-width - 2px;
+    }
   }
 
   &-left {
