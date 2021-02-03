@@ -150,14 +150,4 @@
       padding-bottom: rem(120px);
     }
   }
-
-  &::after {
-    content: '';
-    width: 1px;
-    height: $layout-top-bar-height + 2;
-    border-right: 1px solid $layout-top-bar-toggler-border-color;
-    position: absolute;
-    top: -$layout-top-bar-height - 2;
-    left: $sidebar-width - 2px;
-  }
 }

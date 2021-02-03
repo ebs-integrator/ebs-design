@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { $Object } from 'libs/object/object.types';
 
 export interface Props {
   onClick?: () => void;
-  style?: $Object;
+  style?: React.CSSProperties;
 }
 
 export const Mask: React.FC<Props> = ({ onClick, style }) => (

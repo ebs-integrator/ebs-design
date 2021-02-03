@@ -1,6 +1,5 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { $Object } from 'libs/object/object.types';
 
 export type LabelType = 'regular' | 'fill' | 'ghost' | 'primary';
 
@@ -11,7 +10,7 @@ export interface Props {
   type?: LabelType;
   circle?: boolean;
   status?: LabelStatus;
-  style?: $Object;
+  style?: React.CSSProperties;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   disabled?: boolean;

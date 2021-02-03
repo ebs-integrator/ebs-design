@@ -1,6 +1,7 @@
+import { $Object } from 'libs';
 import { LabelOptions, ControlOptions } from './interface';
 
-export const combineProps = (...args): { [key: string]: any } => Object.assign({}, ...args);
+export const combineProps = (...args): $Object => Object.assign({}, ...args);
 
 export const getLabelOptions = (type: string, labelOptions?: LabelOptions): LabelOptions => {
   if (type === 'vertical') {

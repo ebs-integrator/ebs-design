@@ -70,11 +70,33 @@ export const InputSelect = React.forwardRef<any, Props>(
       return (options.find((option) => option.value === $value) || { text: $value }).text;
     }, [$value, options]);
 
+    const onClickOutside = React.useCallback((ev): void => {
+      const target = ev.target as HTMLDivElement;
+
+      if (
+        target &&
+        !target.parentElement?.classList.contains('ebs-select__input') &&
+        !target.parentElement?.classList.contains('ebs-select__dropdown-item')
+      ) {
+        setOpenDropdown(false);
+      }
+    }, []);
+
     React.useEffect(() => {
       if (value) {
         setHasExternalValue(true);
       }
     }, [value]);
+
+    React.useEffect(() => {
+      if (openDropdown) {
+        document.addEventListener('click', onClickOutside);
+      }
+
+      return () => {
+        document.removeEventListener('click', onClickOutside);
+      };
+    }, [openDropdown]);
 
     // TODO: decide the type
     const onChangeHandler = (newValue?: any): void => {
@@ -173,7 +195,7 @@ export const InputSelect = React.forwardRef<any, Props>(
               options={options}
               value={$value}
               onChange={onChangeHandler}
-              onClose={onToggleOpenDropdown}
+              onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
               showSearch={props.showSearch}
             />
           )}

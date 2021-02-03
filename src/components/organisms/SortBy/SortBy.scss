@@ -3,6 +3,8 @@
   border: 1px solid $border-color;
   border-radius: $border-radius;
   width: rem(162.5px);
+  max-height: rem($sort-by-tooltip-height);
+  overflow: hidden auto;
 
   &-title {
     @include fontMedium;

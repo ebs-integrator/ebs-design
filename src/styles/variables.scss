@@ -101,6 +101,7 @@ $avatar-status-uanctive: $success-color !default;
 // Actions
 //
 // Customize tooltip, height & icon of actions
+$actions-tooltip-height: 250px !default;
 $actions-tooltip-min-width: 140px !default;
 $actions-tooltip-padding: 0 !default;
 $actions-tooltip-title-font-size: 11px !default;
@@ -315,6 +316,7 @@ $table-font-size: $font-size-base !default;
 //
 // Customize height & icon of sortBy
 $sort-by-height: 36px !default;
+$sort-by-tooltip-height: 250px !default;
 $sort-by-icon-color: $primary-color !default;
 $sort-by-icon-hover-color: $white !default;
 $sort-by-text-color: $text-color !default;
