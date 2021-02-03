@@ -21,7 +21,7 @@
   box-sizing: border-box;
   position: fixed;
   overflow: hidden auto;
-  z-index: 2;
+  z-index: 9999;
   max-height: 100%;
   width: $notify-width;
   padding: rem($gutter-size);

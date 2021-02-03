@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Space, Button, ButtonGroup, Label } from 'components/atoms';
 import { SpaceSize } from 'components/atoms/Space/Space';
-import { Notify } from './Notify';
+import { Notify, NotifyContext } from './Notify';
 import { NotifyItem, NotifyItemProps } from './NotifyItem';
 import { exportStory } from '../../../libs';
 
@@ -82,11 +82,14 @@ export const Regular = (): React.ReactNode => {
         break;
     }
 
-    setList((i) => [...i, item]);
+    push(item);
   };
 
+  const push = React.useCallback((item: any) => setList((i) => [...i, item]), [setList]);
+  const remove = React.useCallback((i: number) => setList((y) => y.filter((_, x) => x !== i)), [setList]);
+
   return (
-    <>
+    <NotifyContext.Provider value={{ list, push, remove }}>
       <SizeSwitcher>{(size) => <Notify size={size} list={list} />}</SizeSwitcher>
       <Space justify="space-between">
         <Button size="small" type="fill" onClick={() => onAddItem('regular')}>
@@ -108,6 +111,6 @@ export const Regular = (): React.ReactNode => {
           <Label status="warning" type="fill" text="Warning" onClick={() => onAddItem('warning')} />
         </Button>
       </Space>
-    </>
+    </NotifyContext.Provider>
   );
 };

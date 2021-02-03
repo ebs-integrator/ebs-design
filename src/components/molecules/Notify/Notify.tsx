@@ -4,6 +4,18 @@ import { Space } from 'components/atoms';
 import { SpaceDirection, SpaceSize } from 'components/atoms/Space/Space';
 import { NotifyItem, NotifyItemProps } from './NotifyItem';
 
+interface ContextProps {
+  list: NotifyItemProps[];
+  push: (value: NotifyItemProps) => void;
+  remove: (value: number) => void;
+}
+
+const NotifyContext = React.createContext<ContextProps>({
+  list: [],
+  push: () => null,
+  remove: () => null,
+});
+
 export interface NotifyProps {
   list?: NotifyItemProps[];
   vertical?: 'top' | 'bottom';
@@ -13,23 +25,13 @@ export interface NotifyProps {
   timeout?: number;
 }
 
-export const Notify: React.FC<NotifyProps> = ({
-  list: notifiesList = [],
-  vertical = 'top',
-  horizontal = 'right',
-  size = 'medium',
-  timeout = 3000,
-}) => {
-  const [list, setList] = React.useState(notifiesList);
-
-  React.useEffect(() => {
-    setList(notifiesList);
-  }, [notifiesList]);
+const Notify: React.FC<NotifyProps> = ({ vertical = 'top', horizontal = 'right', size = 'medium', timeout = 3000 }) => {
+  const { list, remove } = React.useContext(NotifyContext);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
       if (list.length) {
-        setList(list.splice(1, list.length));
+        remove(0);
       }
     }, timeout);
 
@@ -40,7 +42,7 @@ export const Notify: React.FC<NotifyProps> = ({
 
   const position = React.useMemo(() => `${vertical}-${horizontal}`, [vertical, horizontal]);
 
-  const onClose = React.useCallback((i) => setList((v) => v.filter((_, x) => x !== i)), [setList]);
+  const onClose = React.useCallback((i) => remove(i), []);
 
   return (
     <Space direction="vertical" size={size} className={cn('ebs-notify', `ebs-notify--${position}`)}>
@@ -50,3 +52,15 @@ export const Notify: React.FC<NotifyProps> = ({
     </Space>
   );
 };
+
+// Provider
+const NotifyProvider = ({ children }): React.ReactElement => {
+  const [list, setList] = React.useState<NotifyItemProps[]>([]);
+
+  const push = React.useCallback((item: NotifyItemProps) => setList((i) => [...i, item]), [setList]);
+  const remove = React.useCallback((i: number) => setList((y) => y.filter((_, x) => x !== i)), [setList]);
+
+  return <NotifyContext.Provider value={{ list, push, remove }}>{children}</NotifyContext.Provider>;
+};
+
+export { Notify, NotifyContext, NotifyProvider };
