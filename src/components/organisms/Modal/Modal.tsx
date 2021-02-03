@@ -8,9 +8,14 @@ import { ModalFooter } from './ModalFooter';
 
 export type ModalSize = 'small' | 'regular' | 'large';
 
+export type ModalComponent = React.FC<{
+  className?: string;
+  style?: React.CSSProperties;
+}>;
+
 export interface ModalComposition {
-  Content: React.FC<{ className?: string }>;
-  Footer: React.FC<{ className?: string }>;
+  Content: ModalComponent;
+  Footer: ModalComponent;
 }
 
 export interface ModalProps {
