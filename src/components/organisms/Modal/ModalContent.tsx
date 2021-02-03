@@ -1,8 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { ModalComponent } from './Modal';
 
-export const ModalContent: ModalComponent = ({ className, style, children }) => (
+export interface ModalContentProps {
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+export const ModalContent: React.FC<ModalContentProps> = ({ className, style, children }) => (
   <div className={cn(`ebs-modal__content`, className)} style={style}>
     {children}
   </div>

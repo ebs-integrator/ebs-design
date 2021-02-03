@@ -3,19 +3,14 @@ import cn from 'classnames';
 import { createPortal } from 'react-dom';
 import { useScrollToggler } from 'hooks';
 import { Mask, Button } from 'components/atoms';
-import { ModalContent } from './ModalContent';
-import { ModalFooter } from './ModalFooter';
+import { ModalContent, ModalContentProps } from './ModalContent';
+import { ModalFooter, ModalFooterProps } from './ModalFooter';
 
 export type ModalSize = 'small' | 'regular' | 'large';
 
-export type ModalComponent = React.FC<{
-  className?: string;
-  style?: React.CSSProperties;
-}>;
-
 export interface ModalComposition {
-  Content: ModalComponent;
-  Footer: ModalComponent;
+  Content: React.FC<ModalContentProps>;
+  Footer: React.FC<ModalFooterProps>;
 }
 
 export interface ModalProps {
