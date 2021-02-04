@@ -14,7 +14,7 @@ export interface Props {
   className?: string;
   radioAlign?: RadioAlign;
   textClass?: string;
-  textStyle?: { [key: string]: any };
+  textStyle?: React.CSSProperties;
   onChange?: (value: string) => void;
   value?: string | number;
   options?: Option[];
