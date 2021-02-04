@@ -6,8 +6,13 @@
   }
 
   // Commons for all items
-  &__item:not(:last-child) {
-    margin-bottom: rem($field-margin-bottom);
+  &__item {
+    &:empty {
+      display: none;
+    }
+    &:not(:last-child) {
+      margin-bottom: rem($field-margin-bottom);
+    }
   }
 
   &__field {
