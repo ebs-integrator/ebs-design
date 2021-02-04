@@ -43,6 +43,10 @@ export const FormField: React.FC<FormFieldProps> = ({
     <div className={cn(`ebs-form__item ebs-form__field`, className)} style={style}>
       <Field name={name} {...props}>
         {(control, meta, form) => {
+          if (!children) {
+            return null;
+          }
+
           const childNode =
             typeof children === 'function'
               ? children(control, meta, form)
