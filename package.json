@@ -1,6 +1,6 @@
 {
   "name": "@ebs-integrator/react-ebs-ui",
-  "version": "0.0.1-beta.21",
+  "version": "0.0.1-beta.22",
   "description": "Basic React UI elements.",
   "author": "EBS Integrator",
   "maintainers": [
@@ -32,6 +32,7 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
+  "typings": "types.d.ts",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
@@ -115,6 +116,7 @@
     "react-animate-height": "^2.0.23",
     "react-datepicker": "^3.3.0",
     "react-phone-input-2": "^2.13.8",
-    "react-popper-tooltip": "^3.1.1"
+    "react-popper-tooltip": "^3.1.1",
+    "react-use": "^17.1.0"
   }
 }

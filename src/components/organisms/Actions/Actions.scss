@@ -5,6 +5,8 @@
 .ebs-action__tooltip {
   min-width: rem($actions-tooltip-min-width);
   padding: rem($actions-tooltip-padding);
+  max-height: rem($actions-tooltip-height);
+  overflow: hidden auto;
 
   &-title {
     @include fontMedium;

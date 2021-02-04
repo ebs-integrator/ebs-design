@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useClickAway } from 'react-use';
 import cn from 'classnames';
 import { Extra, Label, Icon } from 'components/atoms';
 import { SelectDropdown } from 'components/molecules';
@@ -51,6 +52,7 @@ export const InputSelect = React.forwardRef<any, Props>(
     },
     ref,
   ) => {
+    const inputRef = React.useRef(ref as HTMLDivElement | null);
     const [scopeValue, setScopeValue] = React.useState(value);
     const [hasExternalValue, setHasExternalValue] = React.useState(false);
     const [openDropdown, setOpenDropdown] = React.useState(false);
@@ -75,6 +77,12 @@ export const InputSelect = React.forwardRef<any, Props>(
         setHasExternalValue(true);
       }
     }, [value]);
+
+    useClickAway(inputRef, () => {
+      if (openDropdown) {
+        setOpenDropdown(false);
+      }
+    });
 
     // TODO: decide the type
     const onChangeHandler = (newValue?: any): void => {
@@ -141,7 +149,7 @@ export const InputSelect = React.forwardRef<any, Props>(
 
     return (
       <div
-        ref={ref}
+        ref={inputRef}
         className={cn(`ebs-select__input-wrapper`, `ebs-select__input--${mode}`, className, {
           active: hasValue,
           'has-error': hasError,
@@ -173,7 +181,7 @@ export const InputSelect = React.forwardRef<any, Props>(
               options={options}
               value={$value}
               onChange={onChangeHandler}
-              onClose={onToggleOpenDropdown}
+              onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
               showSearch={props.showSearch}
             />
           )}

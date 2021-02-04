@@ -2,6 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import OldTable from 'rc-table';
 import { Icon } from 'components/atoms';
+import { GenericObject } from 'types';
 
 const types: ['desc', 'asc'] = ['desc', 'asc'];
 
@@ -65,7 +66,7 @@ export const Table = <T extends object>({
 
   const data = React.useMemo(
     () =>
-      $data.map<{ key: number; [key: string]: any }>((item, key) => ({
+      $data.map<GenericObject>((item, key) => ({
         ...(item as object),
         key: page !== undefined && page > 1 ? (page - 1) * 25 + key + 1 : key + 1,
       })),
