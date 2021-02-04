@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useClickAway } from 'react-use';
 import cn from 'classnames';
 import { Extra, Label, Icon } from 'components/atoms';
 import { SelectDropdown } from 'components/molecules';
@@ -51,6 +52,7 @@ export const InputSelect = React.forwardRef<any, Props>(
     },
     ref,
   ) => {
+    const inputRef = React.useRef(ref as HTMLDivElement | null);
     const [scopeValue, setScopeValue] = React.useState(value);
     const [hasExternalValue, setHasExternalValue] = React.useState(false);
     const [openDropdown, setOpenDropdown] = React.useState(false);
@@ -70,33 +72,17 @@ export const InputSelect = React.forwardRef<any, Props>(
       return (options.find((option) => option.value === $value) || { text: $value }).text;
     }, [$value, options]);
 
-    const onClickOutside = React.useCallback((ev): void => {
-      const target = ev.target as HTMLDivElement;
-
-      if (
-        target &&
-        !target.parentElement?.classList.contains('ebs-select__input') &&
-        !target.parentElement?.classList.contains('ebs-select__dropdown-item')
-      ) {
-        setOpenDropdown(false);
-      }
-    }, []);
-
     React.useEffect(() => {
       if (value) {
         setHasExternalValue(true);
       }
     }, [value]);
 
-    React.useEffect(() => {
+    useClickAway(inputRef, () => {
       if (openDropdown) {
-        document.addEventListener('click', onClickOutside);
+        setOpenDropdown(false);
       }
-
-      return () => {
-        document.removeEventListener('click', onClickOutside);
-      };
-    }, [openDropdown]);
+    });
 
     // TODO: decide the type
     const onChangeHandler = (newValue?: any): void => {
@@ -163,7 +149,7 @@ export const InputSelect = React.forwardRef<any, Props>(
 
     return (
       <div
-        ref={ref}
+        ref={inputRef}
         className={cn(`ebs-select__input-wrapper`, `ebs-select__input--${mode}`, className, {
           active: hasValue,
           'has-error': hasError,

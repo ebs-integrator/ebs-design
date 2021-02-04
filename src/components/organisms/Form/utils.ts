@@ -1,7 +1,7 @@
-import { $Object } from 'libs';
+import { GenericObject } from 'types';
 import { LabelOptions, ControlOptions } from './interface';
 
-export const combineProps = (...args): $Object => Object.assign({}, ...args);
+export const combineProps = (...args): GenericObject => Object.assign({}, ...args);
 
 export const getLabelOptions = (type: string, labelOptions?: LabelOptions): LabelOptions => {
   if (type === 'vertical') {
