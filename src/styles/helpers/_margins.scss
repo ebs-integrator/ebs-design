@@ -1,4 +1,8 @@
 @for $i from $spacing-from through $spacing-to {
+  .m-#{$i} {
+    margin: #{$i}px !important;
+  }
+
   .mt-#{$i} {
     margin-top: #{$i}px !important;
   }
@@ -7,8 +11,31 @@
     margin-bottom: #{$i}px !important;
   }
 
-  .my-#{$i} {
+  .ml-#{$i} {
+    margin-left: #{$i}px !important;
+  }
+
+  .mr-#{$i} {
+    margin-right: #{$i}px !important;
+  }
+
+  .mx-#{$i} {
     margin-left: #{$i}px !important;
     margin-right: #{$i}px !important;
   }
+
+  .my-#{$i} {
+    margin-top: #{$i}px !important;
+    margin-bottom: #{$i}px !important;
+  }
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
 }
