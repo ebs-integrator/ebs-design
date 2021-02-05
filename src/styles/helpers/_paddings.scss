@@ -8,15 +8,15 @@
   }
 
   .pl-#{$i} {
-    padding-right: #{$i}px !important;
+    padding-left: #{$i}px !important;
   }
 
   .pt-#{$i} {
-    padding-right: #{$i}px !important;
+    padding-top: #{$i}px !important;
   }
 
   .pb-#{$i} {
-    padding-right: #{$i}px !important;
+    padding-bottom: #{$i}px !important;
   }
 
   .px-#{$i} {

@@ -3,9 +3,11 @@ import { LabelOptions, ControlOptions } from './interface';
 
 export const combineProps = (...args): GenericObject => Object.assign({}, ...args);
 
+// TODO: Find a better way
 export const getLabelOptions = (type: string, labelOptions?: LabelOptions): LabelOptions => {
   if (type === 'vertical') {
     return {
+      className: labelOptions?.className,
       align: labelOptions?.align ? labelOptions.align : 'center',
       justify: labelOptions?.justify ? labelOptions.justify : 'start',
       col: labelOptions?.col
@@ -17,6 +19,7 @@ export const getLabelOptions = (type: string, labelOptions?: LabelOptions): Labe
   }
 
   return {
+    className: labelOptions?.className,
     align: labelOptions?.align ? labelOptions.align : 'center',
     justify: labelOptions?.justify ? labelOptions.justify : 'end',
     col: labelOptions?.col
@@ -30,6 +33,7 @@ export const getLabelOptions = (type: string, labelOptions?: LabelOptions): Labe
 export const getControlOptions = (type: string, controlOptions?: ControlOptions): ControlOptions => {
   if (type === 'vertical') {
     return {
+      className: controlOptions?.className,
       col: controlOptions?.col
         ? controlOptions.col
         : {
@@ -39,6 +43,7 @@ export const getControlOptions = (type: string, controlOptions?: ControlOptions)
   }
 
   return {
+    className: controlOptions?.className,
     col: controlOptions?.col
       ? controlOptions.col
       : {
