@@ -1,6 +1,6 @@
 {
   "name": "@ebs-integrator/react-ebs-ui",
-  "version": "0.0.1-beta.22",
+  "version": "0.0.1-beta.23",
   "description": "Basic React UI elements.",
   "author": "EBS Integrator",
   "maintainers": [
@@ -32,7 +32,6 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
-  "typings": "types.d.ts",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
