@@ -5,7 +5,7 @@ import { FieldProps } from 'rc-field-form/es/Field';
 import { Row, RowProps } from 'components/atoms/Grid/Row/Row';
 import { Col } from 'components/atoms/Grid/Col/Col';
 import { LabelOptions, ControlOptions } from './interface';
-import { combineProps } from './utils';
+import { combineProps, checkRequired } from './utils';
 import { FormContext } from './Form';
 import { FieldError } from './FieldError';
 import { FieldExtra } from './FieldExtra';
@@ -38,6 +38,7 @@ export const FormField: React.FC<FormFieldProps> = ({
   const labelProps = combineProps(formCtx.labelOptions, labelOptions);
   const controlProps = combineProps(formCtx.controlOptions, controlOptions);
   const fieldRowProps = combineProps(formCtx.fieldRow, fieldRow);
+  const isRequired = checkRequired(props.rules);
 
   return (
     <div className={cn(`ebs-form__item ebs-form__field`, className)} style={style}>
@@ -65,7 +66,7 @@ export const FormField: React.FC<FormFieldProps> = ({
                         [`justify-content--${labelProps.justify}`]: labelProps.justify,
                       })}
                     >
-                      {label}
+                      {label} {isRequired && <span className="ebs-form__field__required">*</span>}
                     </div>
                   </Col>
                 )}

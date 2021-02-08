@@ -22,7 +22,7 @@ export const Regular = (): React.ReactNode => {
         <Input size="small" />
       </Form.Field>
 
-      <Form.Field name="lastName" label="Last Name" extra="This field is required">
+      <Form.Field name="lastName" label="Last Name" extra="This field is required" rules={[{ required: true }]}>
         <Input type="email" />
       </Form.Field>
 
@@ -30,7 +30,7 @@ export const Regular = (): React.ReactNode => {
         <Textarea />
       </Form.Field>
 
-      <Form.Field name="age" label="Age" extra="This field is required">
+      <Form.Field name="age" label="Age" extra="This field is required" rules={[{ required: true }]}>
         <InputSelect
           options={[
             { value: '2%', text: '0-60' },
