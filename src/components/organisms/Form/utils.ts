@@ -51,3 +51,15 @@ export const getControlOptions = (type: string, controlOptions?: ControlOptions)
         },
   };
 };
+
+// Check if field is required
+export const checkRequired = (rules?): boolean =>
+  !!(
+    rules &&
+    rules.some((rule) => {
+      if (rule && typeof rule === 'object' && rule.required) {
+        return true;
+      }
+      return false;
+    })
+  );

@@ -11,6 +11,7 @@ export interface FormGroupProps {
   controlOptions?: ControlOptions;
   fieldRow?: RowProps; // The layout for field columns
   className?: string;
+  required?: boolean;
 }
 
 export const FormGroup: React.FC<FormGroupProps> = ({
@@ -20,6 +21,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   fieldRow,
   className,
   children,
+  required,
 }) => {
   const formCtx = React.useContext(FormContext);
 
@@ -40,7 +42,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
             [`justify-content--${labelProps.justify}`]: labelProps.justify,
           })}
         >
-          {label}
+          {label} {label && required && <span className="ebs-form__field__required">*</span>}
         </div>
       </Col>
       <Col {...controlProps.col} className={cn('ebs-form__field__control', controlProps.className)}>

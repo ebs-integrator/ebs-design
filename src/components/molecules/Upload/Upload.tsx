@@ -41,13 +41,13 @@ export const Upload = React.forwardRef<any, UploadProps>((props, ref) => {
     const resFile = normalizeFile(response);
     setFile(resFile);
 
+    if (props.onChange) {
+      props.onChange(resFile as any);
+    }
+
     // Internal save
     if (props.onSuccess) {
       props.onSuccess(response, file, xhr);
-    }
-
-    if (props.onChange) {
-      props.onChange(resFile as any);
     }
   };
 

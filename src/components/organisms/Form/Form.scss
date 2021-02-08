@@ -44,5 +44,11 @@
       font-weight: $field-label-font-weight;
       margin-top: rem(2px);
     }
+
+    // Required
+    &__required {
+      color: $danger-color;
+      margin-left: rem(3px);
+    }
   }
 }
