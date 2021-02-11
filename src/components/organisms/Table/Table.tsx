@@ -6,14 +6,15 @@ import { GenericObject } from 'types';
 
 const types: ['desc', 'asc'] = ['desc', 'asc'];
 
+type renderFn<T> = (value: T, index: number, data: T[]) => React.ReactNode;
 export interface Column<T> {
   title?: React.ReactNode;
   dataIndex?: string;
   className?: string;
   width?: string | number;
   onFilter?: (type: 'asc' | 'desc') => void;
-  render?: (value: T) => React.ReactNode;
-  mobileRender?: (data: T) => React.ReactNode;
+  render?: renderFn<T>;
+  mobileRender?: renderFn<T>;
   children?: Column<T>[];
   action?: boolean;
 }
@@ -110,15 +111,15 @@ export const Table = <T extends object>({
       <div className="ebs-table__mobile">
         {!data.length && <div className="ebs-empty__list">No data</div>}
 
-        {data.map((item: any) => (
+        {data.map((item: any, index) => (
           <div key={item.key} className="ebs-table__mobile-item">
             <div className="ebs-table__mobile-item-key">{item.key}</div>
             {columns.map((column) => {
               const render =
                 column.mobileRender !== undefined
-                  ? column.mobileRender(item as T)
+                  ? column.mobileRender(item as T, index, data)
                   : column.render !== undefined
-                  ? column.render(item as T)
+                  ? column.render(item as T, index, data)
                   : column.dataIndex !== undefined
                   ? (item[column.dataIndex] as T)
                   : '---';
