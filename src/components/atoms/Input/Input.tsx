@@ -11,6 +11,7 @@ export interface InputProps {
   type?: InputType;
   onClick?: (e: any) => void;
   onChange?: (value: string) => void;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
   onClickPrefix?: () => void;
   onClickSuffix?: () => void;
   hasError?: boolean;
@@ -38,6 +39,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       size = 'medium',
       onClick,
       onChange,
+      onKeyDown,
       hasError,
       label,
       extra,
@@ -119,10 +121,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               autoFocus={autoFocus}
               className={cn('ebs-input', `ebs-input--${size}`)}
               value={value || ''}
-              onChange={onClickHandler}
               placeholder={props.placeholder}
               disabled={disabled || loading}
               onClick={onClick}
+              onKeyDown={onKeyDown}
+              onChange={onClickHandler}
               style={{ minWidth: width }}
             />
           </div>
