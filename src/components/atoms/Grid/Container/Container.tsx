@@ -5,15 +5,27 @@ import { getClassName } from '../utils';
 
 export interface ContainerProps extends Grid {
   size?: ColSize;
+  style?: React.CSSProperties;
 }
 
-export const Container: React.FC<ContainerProps> = ({ size, offset, g, gx, gy, className, children, ...props }) => {
+export const Container: React.FC<ContainerProps> = ({
+  size,
+  offset,
+  g,
+  gx,
+  gy,
+  className,
+  style,
+  children,
+  ...props
+}) => {
   return (
     <div
       className={cn(`container`, className, {
         [`container-${size}`]: size,
         ...getClassName({ offset, g, gx, gy }),
       })}
+      style={style}
       {...props}
     >
       {children}
