@@ -4,7 +4,7 @@ import { Extra, Label, LoaderSpinner } from 'components/atoms';
 
 export type InputSize = 'small' | 'medium' | 'large';
 export type InputStyleType = 'white' | 'grey';
-export type InputType = 'text' | 'email' | 'password';
+export type InputType = 'text' | 'number' | 'email' | 'password';
 
 export interface InputProps {
   styleType?: InputStyleType;
