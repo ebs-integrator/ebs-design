@@ -99,6 +99,7 @@ export const Table = <T extends object>({
   return (
     <div className={cn(`ebs-table__wrapper`, className)}>
       <OldTable
+        prefixCls="ebs-table"
         rowClassName={({ status, is_deleted }) =>
           cn(rowClassName, { [`ebs-table__row-status-${is_deleted ? 'deleted' : status}`]: status || is_deleted })
         }
