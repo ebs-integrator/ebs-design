@@ -8,21 +8,20 @@
 
 html,
 body {
-  display: block;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  color: $text-color;
   @include fontMedium;
+  display: block;
   margin: 0;
+  font-size: rem($font-size-base);
+  line-height: rem($line-height-base);
+  color: $text-color;
 
-  // TODO: Move to font-size to variables as responsive
-  // @include mq($until: desktop) {
-  //   font-size: rem(13px);
-  // }
+  @include mq($until: desktop) {
+    font-size: rem(12.5px);
+  }
 
-  // @include mq($until: small-desktop) {
-  //   font-size: rem(12px);
-  // }
+  @include mq($until: small-desktop) {
+    font-size: rem(10px);
+  }
 }
 
 * {
