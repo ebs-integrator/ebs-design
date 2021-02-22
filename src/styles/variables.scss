@@ -40,11 +40,6 @@ $font-size-base: 14px !default;
 $font-size-sm: $font-size-base * 0.875 !default;
 $font-size-lg: $font-size-base * 1.25 !default;
 
-// rems to pixels
-$rem-baseline: $font-size-base !default;
-$rem-fallback: true !default;
-$rem-px-only: false !default;
-
 $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
 $font-weight-medium: 500 !default;
