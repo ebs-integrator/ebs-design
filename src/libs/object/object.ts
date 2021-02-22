@@ -15,3 +15,5 @@ export const validate = (errors: string[] | { [key: string]: string[] }): string
 
   return [];
 };
+
+export const isObject = (val: any): boolean => typeof val === 'object'
