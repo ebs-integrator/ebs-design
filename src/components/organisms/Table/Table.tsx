@@ -1,7 +1,9 @@
 import * as React from 'react';
 import cn from 'classnames';
 import OldTable from 'rc-table';
+import { RenderedCell } from 'rc-table/lib/interface';
 import { Icon } from 'components/atoms';
+import { isObject } from 'libs';
 import { GenericObject } from 'types';
 
 const types: ['desc', 'asc'] = ['desc', 'asc'];
@@ -12,7 +14,7 @@ export interface Column<T> {
   className?: string;
   width?: string | number;
   onFilter?: (type: 'asc' | 'desc') => void;
-  render?: (value: T) => React.ReactNode;
+  render?: (value: T, row: GenericObject, index: number) => React.ReactNode | RenderedCell<GenericObject>;
   mobileRender?: (data: T) => React.ReactNode;
   children?: Column<T>[];
   action?: boolean;
@@ -113,15 +115,20 @@ export const Table = <T extends object>({
         {data.map((item: any) => (
           <div key={item.key} className="ebs-table__mobile-item">
             <div className="ebs-table__mobile-item-key">{item.key}</div>
-            {columns.map((column) => {
+            {columns.map((column, i) => {
               const render =
                 column.mobileRender !== undefined
-                  ? column.mobileRender(item as T)
+                  ? column.mobileRender(item)
                   : column.render !== undefined
-                  ? column.render(item as T)
+                  ? column.render(item, column, i)
                   : column.dataIndex !== undefined
-                  ? (item[column.dataIndex] as T)
+                  ? item[column.dataIndex]
                   : '---';
+              const renderChildren = !isObject(render)
+                ? render
+                : !isObject(render.children)
+                ? render.children
+                : render.children[column.dataIndex!];
 
               return (
                 <React.Fragment key={column.key}>
@@ -138,14 +145,12 @@ export const Table = <T extends object>({
                     >
                       {column.key > 1 && <span className="ebs-table__mobile-item-child-title">{column.title}:</span>}
 
-                      {render}
+                      {renderChildren}
                     </div>
                   ) : (
-                    render && (
-                      <div className="ebs-table__mobile-item-action" key={column.key}>
-                        {render}
-                      </div>
-                    )
+                    <div className="ebs-table__mobile-item-action" key={column.key}>
+                      {renderChildren}
+                    </div>
                   )}
                 </React.Fragment>
               );
