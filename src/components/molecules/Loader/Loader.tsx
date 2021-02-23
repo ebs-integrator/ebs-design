@@ -27,11 +27,11 @@ export const Loader: React.FC<Props> = ({ fade = true, fixed, size = 'regular', 
   );
 };
 
-export const LoaderInline: React.FC = () => {
+export const LoaderInline: React.FC<{ text?: string }> = ({ text = 'Loading ...' }) => {
   return (
     <span className="ebs-loader__inline">
       <LoaderSpinner size="small" />
-      Loading ...
+      {text}
     </span>
   );
 };

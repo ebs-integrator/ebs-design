@@ -34,6 +34,7 @@ export {
 // Molecules
 export {
   Loader,
+  LoaderInline,
   Stepper,
   Calendar,
   InputPhone,

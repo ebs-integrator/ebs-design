@@ -1,4 +1,4 @@
-export { Loader } from './Loader/Loader';
+export { Loader, LoaderInline } from './Loader/Loader';
 export { Calendar } from './Calendar/Calendar';
 export { InputPhone } from './InputPhone/InputPhone';
 export { InputSearch } from './InputSearch/InputSearch';
