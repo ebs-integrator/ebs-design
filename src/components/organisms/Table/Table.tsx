@@ -128,7 +128,9 @@ export const Table = <T extends object>({
                 ? render
                 : render && !isObject(render.children)
                 ? render.children
-                : render && render.children[column.dataIndex!];
+                : render && column.dataIndex
+                ? render.children[column.dataIndex]
+                : null;
 
               return (
                 <React.Fragment key={column.key}>

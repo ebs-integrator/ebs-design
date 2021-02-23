@@ -9,7 +9,6 @@ export {
   Badge,
   Button,
   ButtonGroup,
-  LoaderSpinner,
   Label,
   ListGroup,
   Extra,
@@ -34,7 +33,6 @@ export {
 // Molecules
 export {
   Loader,
-  LoaderInline,
   Stepper,
   Calendar,
   InputPhone,

@@ -1,8 +1,15 @@
 import * as React from 'react';
-import { LoaderSpinner } from 'components/atoms';
-import { SpinnerSize } from 'components/atoms/LoaderSpinner/LoaderSpinner';
+import { LoaderInline } from './LoaderInline';
+import { LoaderSpinner, LoaderSpinnerProps } from './LoaderSpinner';
 
-export interface Props {
+export type SpinnerSize = 'small' | 'middle' | 'regular';
+
+export interface LoaderComposition {
+  Inline: React.FC;
+  Spinner: React.FC<LoaderSpinnerProps>;
+}
+
+export interface LoaderProps {
   fade?: boolean;
   size?: SpinnerSize;
   loading: boolean;
@@ -11,7 +18,14 @@ export interface Props {
   children?: React.ReactNode;
 }
 
-export const Loader: React.FC<Props> = ({ fade = true, fixed, size = 'regular', loading, height = 350, children }) => {
+const Loader: React.FC<LoaderProps> & LoaderComposition = ({
+  fade = true,
+  fixed,
+  size = 'regular',
+  loading,
+  height = 350,
+  children,
+}) => {
   return (
     <div className="ebs-loader" style={{ minHeight: loading ? height : undefined }}>
       <LoaderSpinner fixed={fixed} size={size} className={!loading ? 'hide' : ''} />
@@ -27,11 +41,9 @@ export const Loader: React.FC<Props> = ({ fade = true, fixed, size = 'regular', 
   );
 };
 
-export const LoaderInline: React.FC<{ text?: string }> = ({ text = 'Loading ...' }) => {
-  return (
-    <span className="ebs-loader__inline">
-      <LoaderSpinner size="small" />
-      {text}
-    </span>
-  );
-};
+Loader.displayName = 'Loader';
+
+Loader.Inline = LoaderInline;
+Loader.Spinner = LoaderSpinner;
+
+export { Loader };
