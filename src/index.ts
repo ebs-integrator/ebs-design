@@ -24,8 +24,6 @@ export {
   Col,
   Collapse,
   Tooltip,
-  DetailsCard,
-  HeadLeft,
   Tabs,
   Space,
 } from './components/atoms';
