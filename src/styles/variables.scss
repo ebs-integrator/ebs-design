@@ -23,6 +23,23 @@ $base-size: 32px !default;
 $base-size-sm: 24px !default;
 $base-size-lg: 40px !default;
 
+// Card type spacing
+//
+// Spacing measurements - https://lh3.googleusercontent.com/lNSGNuRb8_y3w6y2gFEBprF4oyGsC0nM7wAVW3NirOoxWwpvz-MKFnO0C2hZ6d3gTbi7BO9DYWUtznmd_7qtnzjKGiUDMKvfFtpRGA=w1064-v0
+// Padding for card type components:
+// - Card
+// - Collapse
+// - Table
+// - Alert
+$card-type-padding-y: 16px !default;
+$card-type-padding-x: 20px !default;
+
+$card-type-padding-y-sm: 12px !default;
+$card-type-padding-x-sm: 16px !default;
+
+$card-type-padding-y-lg: 20px !default;
+$card-type-padding-x-lg: 20px !default;
+
 // Text colors
 $heading-color: #121634 !default;
 $text-color: #494f7d !default;
@@ -134,26 +151,14 @@ $badge-warning-bg-color: $warning-color !default;
 $badge-danger-bg-color: $danger-color !default;
 
 // Card
-//
-// Style cards elements.
-$details-card-padding-size: $gutter-size !default;
-$details-card-border: 1px solid !default;
-$details-card-border-color: $border-color !default;
-$details-card-border-radius: $border-radius !default;
-$details-card-header-icon-size: $base-size * 2 !default;
-$details-card-header-icon-margin-right: $details-card-padding-size !default;
-$details-card-header-border-bottom: 1px solid !default;
-$details-card-header-border-bottom-color: $border-color !default;
-$details-card-footer-border-top: 1px solid !default;
-$details-card-footer-border-top-color: $border-color !default;
+$card-padding-y: $card-type-padding-y !default;
+$card-padding-x: $card-type-padding-x !default;
 
-// Card
-$card-padding-x: 20px !default;
-$card-padding-y: 15px !default;
-$card-padding-x-sm: 15px !default;
-$card-padding-y-sm: 10px !default;
-$card-padding-x-lg: 20px !default;
-$card-padding-y-lg: 20px !default;
+$card-padding-y-sm: $card-type-padding-y-sm !default;
+$card-padding-x-sm: $card-type-padding-x-sm !default;
+
+$card-padding-y-lg: $card-type-padding-y-lg !default;
+$card-padding-x-lg: $card-type-padding-x-lg !default;
 
 $card-border-radius: $border-radius !default;
 $card-border-color: $border-color !default;
@@ -164,12 +169,14 @@ $card-footer-bg-color: $white;
 $card-box-shadow: $box-shadow;
 
 // Collapse
-$collapse-padding-x: 20px !default;
-$collapse-padding-y: 15px !default;
-$collapse-padding-x-sm: 15px !default;
-$collapse-padding-y-sm: 10px !default;
-$collapse-padding-x-lg: 20px !default;
-$collapse-padding-y-lg: 20px !default;
+$collapse-padding-y: $card-type-padding-y !default;
+$collapse-padding-x: $card-type-padding-x !default;
+
+$collapse-padding-y-sm: $card-type-padding-y-sm !default;
+$collapse-padding-x-sm: $card-type-padding-x-sm !default;
+
+$collapse-padding-y-lg: $card-type-padding-y-lg !default;
+$collapse-padding-x-lg: $card-type-padding-x-lg !default;
 
 $collapse-border-radius: $border-radius !default;
 $collapse-border-color: $border-color !default;
@@ -311,6 +318,15 @@ $table-head-cell-border: $table-border !default;
 $table-head-cell-bottom-border: 1px solid $primary-color !default;
 $table-sub-cell-border: $table-border !default;
 $table-font-size: $font-size-base !default;
+
+$table-padding-y: $card-type-padding-y !default;
+$table-padding-x: $card-type-padding-x !default;
+
+$table-padding-y-sm: $card-type-padding-y-sm !default;
+$table-padding-x-sm: $card-type-padding-x-sm !default;
+
+$table-padding-y-lg: $card-type-padding-y-lg !default;
+$table-padding-x-lg: $card-type-padding-x-lg !default;
 
 // SortBy
 //
