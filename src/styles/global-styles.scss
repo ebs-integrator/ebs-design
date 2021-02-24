@@ -11,8 +11,8 @@ body {
   @include fontMedium;
   display: block;
   margin: 0;
-  font-size: rem($font-size-base);
-  line-height: rem($line-height-base);
+  font-size: $font-size-base;
+  line-height: $line-height-base;
   color: $text-color;
 
   @include mq($until: desktop) {
