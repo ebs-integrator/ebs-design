@@ -61,6 +61,11 @@ export {
   Sidebar,
   SortBy,
   Table,
+  Column,
+  ColumnGroup,
+  ColumnType,
+  Summary,
+  TableProps,
 } from './components/organisms';
 
 // Libs

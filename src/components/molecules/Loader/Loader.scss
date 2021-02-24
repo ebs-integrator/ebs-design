@@ -49,13 +49,13 @@
     width: rem($base-size);
     height: rem($base-size);
     border-radius: 50%;
-  
+
     transition-property: transform;
     animation-name: rotate;
     animation-duration: 1.2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-  
+
     &--small {
       border: 2px solid $grey-500;
       border-top: 2px solid $primary-color;
@@ -63,7 +63,7 @@
       height: rem(15px);
       top: calc(50% - 5px);
     }
-  
+
     &--middle {
       border: 2px solid $grey-500;
       border-top: 2px solid $primary-color;
@@ -71,7 +71,7 @@
       height: rem(20px);
       top: calc(50% - 10px);
     }
-  
+
     &--regular {
       border: 6px solid $grey-500;
       border-top: 6px solid $primary-color;

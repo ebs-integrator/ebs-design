@@ -1,45 +1,30 @@
 import * as React from 'react';
 import cn from 'classnames';
-import OldTable from 'rc-table';
-import { RenderedCell } from 'rc-table/lib/interface';
+import RCTable, { Column, ColumnGroup, Summary } from 'rc-table';
+import { TableProps as RCTableProps } from 'rc-table/lib/Table';
+import { ColumnType as RCColumnType } from 'rc-table/lib/interface';
 import { Icon } from 'components/atoms';
-import { isObject } from 'libs';
-import { GenericObject } from 'types';
+import { SizeType } from 'types';
 
-const types: ['desc', 'asc'] = ['desc', 'asc'];
+type FilterType = 'asc' | 'desc';
 
-export interface Column<T> {
-  title?: React.ReactNode;
-  dataIndex?: string;
-  className?: string;
-  width?: string | number;
-  onFilter?: (type: 'asc' | 'desc') => void;
-  render?: (value: T, row: GenericObject, index: number) => React.ReactNode | RenderedCell<GenericObject>;
+// Extend default rc-table Column
+interface ColumnType<T> extends RCColumnType<T> {
+  onFilter?: (type: FilterType) => void;
   mobileRender?: (data: T) => React.ReactNode;
-  children?: Column<T>[];
-  action?: boolean;
+  children?: ColumnType<T>[];
 }
 
-interface TableProps<T extends object> {
-  className?: string;
-  page?: number;
-  data?: T[];
-  columns: Column<T>[];
-  size?: 'small' | 'big' | 'regular';
-  expandable?: any;
-  expandColumn?: boolean;
-  rowClassName?: string;
+interface TableProps<T> extends RCTableProps<T> {
+  size?: SizeType;
+  columns?: ColumnType<T>[];
 }
 
-export const Table = <T extends object>({
-  page,
-  columns: $columns,
-  data: $data = [],
-  size = 'regular',
-  className,
-  rowClassName,
-}: TableProps<T>): React.ReactElement => {
-  const [filters, setFilters] = React.useState<{ [key: number]: 'desc' | 'asc' }>({});
+// Filter types
+const types: FilterType[] = ['desc', 'asc'];
+
+const Table = <T extends object>({ size = 'medium', children, ...props }: TableProps<T>): React.ReactElement => {
+  const [filters, setFilters] = React.useState<{ [key: number]: FilterType }>({});
 
   const onFilterHandler = React.useCallback(
     (key: number) => {
@@ -56,38 +41,31 @@ export const Table = <T extends object>({
         cloneFilters[key] = types[0];
       }
 
-      const { onFilter } = $columns[key];
-      if ($columns[key] && onFilter !== undefined) {
-        onFilter(cloneFilters[key] || '');
+      if (props.columns && props.columns[key]) {
+        const column: ColumnType<T> = props.columns[key];
+
+        if (column.onFilter) {
+          column.onFilter(cloneFilters[key] || '');
+        }
       }
 
       setFilters(cloneFilters);
     },
-    [$columns, filters],
-  );
-
-  const data = React.useMemo(
-    () =>
-      $data.map<GenericObject>((item, key) => ({
-        ...(item as object),
-        key: page !== undefined && page > 1 ? (page - 1) * 25 + key + 1 : key + 1,
-      })),
-    [$data],
+    [props.columns, filters],
   );
 
   const columns = React.useMemo(
     () =>
-      $columns.map(({ title, onFilter, ...column }, key) => ({
+      props.columns?.map(({ title, onFilter, ...column }: ColumnType<T>, index) => ({
+        key: index,
         ...column,
-        key,
-        className: cn({
+        className: cn(column.className, {
           'has-children': column.children !== undefined,
-          'is-action': column.action,
         }),
         title: onFilter ? (
           <span
-            className={cn(`ebs-table__th--filtered`, `ebs-table__th--filtered-${filters[key] || 'none'}`)}
-            onClick={(): void => onFilterHandler(key)}
+            className={cn(`ebs-table__th--filtered`, `ebs-table__th--filtered-${filters[index] || 'none'}`)}
+            onClick={(): void => onFilterHandler(index)}
           >
             {title} <Icon type="arrow-outlined-bottom" />
           </span>
@@ -95,71 +73,14 @@ export const Table = <T extends object>({
           title
         ),
       })),
-    [$columns, filters, onFilterHandler],
+    [props.columns, filters, onFilterHandler],
   );
 
   return (
-    <div className={cn(`ebs-table__wrapper`, className)}>
-      <OldTable
-        rowClassName={({ status, is_deleted }) =>
-          cn(rowClassName, { [`ebs-table__row-status-${is_deleted ? 'deleted' : status}`]: status || is_deleted })
-        }
-        className={cn(`ebs-table`, `ebs-table-size-${size}`)}
-        data={data}
-        columns={columns}
-      />
-
-      <div className="ebs-table__mobile">
-        {!data.length && <div className="ebs-empty__list">No data</div>}
-
-        {data.map((item: any) => (
-          <div key={item.key} className="ebs-table__mobile-item">
-            <div className="ebs-table__mobile-item-key">{item.key}</div>
-            {columns.map((column, i) => {
-              const render =
-                column.mobileRender !== undefined
-                  ? column.mobileRender(item)
-                  : column.render !== undefined
-                  ? column.render(item, column, i)
-                  : column.dataIndex !== undefined
-                  ? item[column.dataIndex]
-                  : '---';
-              const renderChildren = !isObject(render)
-                ? render
-                : render && !isObject(render.children)
-                ? render.children
-                : render && column.dataIndex
-                ? render.children[column.dataIndex]
-                : null;
-
-              return (
-                <React.Fragment key={column.key}>
-                  {column.action !== true ? (
-                    <div
-                      className={
-                        column.key > 1
-                          ? 'ebs-table__mobile-item-child'
-                          : !column.key
-                          ? 'ebs-table__mobile-item-title'
-                          : 'ebs-table__mobile-item-desc'
-                      }
-                      key={column.key}
-                    >
-                      {column.key > 1 && <span className="ebs-table__mobile-item-child-title">{column.title}:</span>}
-
-                      {renderChildren}
-                    </div>
-                  ) : (
-                    <div className="ebs-table__mobile-item-action" key={column.key}>
-                      {renderChildren}
-                    </div>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div>
-        ))}
-      </div>
-    </div>
+    <RCTable {...props} className={cn(`ebs-table ebs-table--${size}`, props.className)} columns={columns}>
+      {children}
+    </RCTable>
   );
 };
+
+export { Table, Column, ColumnGroup, Summary, TableProps, ColumnType };

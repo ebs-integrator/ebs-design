@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Table } from './Table';
+import { Table, ColumnType } from './Table';
 import { exportStory } from '../../../libs';
 
 export default {
@@ -15,11 +15,10 @@ const data = [
   { title: 'Test', desc: 'Desc', date: 'Today' },
 ];
 
-const columns = [
+const columns: ColumnType<any>[] = [
   {
     title: 'Title',
     dataIndex: 'title',
-    filters: ['desc', 'asc'],
     onFilter: console.log,
   },
   {
@@ -40,7 +39,7 @@ export const Regular = (): React.ReactElement => (
       <div className="storybook-row-item">
         <div className="storybook-label">Regular</div>
 
-        <Table page={1} data={data} columns={columns} />
+        <Table data={data} columns={columns} />
       </div>
     </div>
   </div>
@@ -54,22 +53,19 @@ const data2 = [
   { fullname: 'First Last name', id: '5', percent: '2,95%', money: '7375$', paid: '25000$', sold: '50000$' },
 ];
 
-const columns2 = [
+const columns2: ColumnType<any>[] = [
   {
     title: 'Full name',
     dataIndex: 'fullname',
-    filters: ['desc', 'asc'],
     onFilter: console.log,
   },
   {
     title: 'Invoice №',
     dataIndex: 'id',
-    filters: ['desc', 'asc'],
     onFilter: console.log,
   },
   {
     title: 'Commission',
-    filters: ['desc', 'asc'],
     onFilter: console.log,
     children: [
       {
@@ -100,7 +96,7 @@ export const WithHeadChildrens = (): React.ReactElement => (
       <div className="storybook-row-item">
         <div className="storybook-label">With head childrens</div>
 
-        <Table page={1} data={data2} columns={columns2} />
+        <Table data={data2} columns={columns2} />
       </div>
     </div>
   </div>
