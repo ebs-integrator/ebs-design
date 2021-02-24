@@ -9,7 +9,6 @@ export {
   Badge,
   Button,
   ButtonGroup,
-  LoaderSpinner,
   Label,
   ListGroup,
   Extra,
