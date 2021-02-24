@@ -1,0 +1,498 @@
+// THIS FILE IS WORK IN PROGRESS
+$table-font-size: $font-size-base !default;
+$table-font-weight: $font-weight-base !default;
+$table-border-color: $border-color;
+$table-border: 1px solid $table-border-color !default;
+$table-border-radius: $border-radius !default;
+$table-box-shadow: $box-shadow !default;
+$table-cell-fixed-shadow: rgba(18, 22, 52, 0.16) !default;
+
+$table-head-font-size: $table-font-size !default;
+$table-head-font-weight: 500 !default;
+$table-head-cell-bg-color: $background-content !default;
+$table-head-cell-border: $table-border !default;
+$table-head-row-border: 1px solid $primary-color !default;
+
+$table-body-cell-border: $table-border !default;
+$table-body-cell-hover-background: $grey-100 !default;
+$table-body-row-border: $table-body-cell-border !default;
+$table-body-row-odd-background: $background-content !default;
+$table-sub-cell-border: $table-border !default;
+
+@mixin tableSize {
+  .ebs-table-cell,
+  .ebs-table-title,
+  .ebs-table-footer {
+    @content;
+  }
+}
+
+.ebs-table {
+  position: relative;
+  font-size: $table-font-size;
+  line-height: $line-height-base;
+  font-weight: $table-font-weight;
+  color: $text-color;
+  border: $table-border;
+  border-radius: $table-border-radius;
+  box-shadow: $table-box-shadow;
+
+  // Global
+  table {
+    border-spacing: 0px;
+    width: 100%;
+  }
+
+  // Common styles for all cells
+  &-cell {
+    padding: 0;
+    position: relative;
+    transition: box-shadow 0.3s;
+    background-color: #fff;
+    white-space: normal;
+    word-break: normal;
+    text-align: left;
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  // Odd background color
+  &-row {
+    &:nth-child(odd) {
+      .ebs-table-cell {
+        background-color: $table-body-row-odd-background;
+
+        @include hover-state {
+          background-color: $table-body-cell-hover-background;
+        }
+      }
+    }
+  }
+
+  &-thead {
+    th {
+      font-size: $table-head-font-size;
+      font-weight: $table-head-font-weight;
+      border-right: $table-head-cell-border;
+      border-bottom: $table-head-row-border;
+      background-color: $table-head-cell-bg-color;
+
+      &:first-child {
+        border-top-left-radius: $table-border-radius;
+      }
+      &:last-child {
+        border-top-right-radius: $table-border-radius;
+      }
+    }
+  }
+
+  &-tbody {
+    td {
+      border-right: $table-body-cell-border;
+      border-bottom: $table-body-row-border;
+      transition: $transition-base;
+
+      @include hover-state {
+        background-color: $table-body-cell-hover-background;
+      }
+    }
+
+    // Border radius for latest cells
+    &:last-child tr:last-child td {
+      border-bottom: 0;
+
+      &:first-child {
+        border-bottom-left-radius: $table-border-radius;
+      }
+      &:last-child {
+        border-bottom-right-radius: $table-border-radius;
+      }
+    }
+  }
+
+  // Title
+  &-title {
+    border-bottom: $table-border;
+  }
+  // Footer
+  &-footer {
+    border-top: $table-border;
+  }
+
+  // Summary
+  &-summary &-cell {
+    border: 0;
+  }
+
+  // Size
+  &--small {
+    @include tableSize {
+      padding: rem($table-padding-y-sm $table-padding-x-sm);
+    }
+  }
+  &--medium {
+    @include tableSize {
+      padding: rem($table-padding-y $table-padding-x);
+    }
+  }
+  &--large {
+    @include tableSize {
+      padding: rem($table-padding-y-lg $table-padding-x-lg);
+    }
+  }
+
+  // Cell
+  &-cell {
+    &-fix-left,
+    &-fix-right {
+      z-index: 1;
+    }
+
+    &-fix-right:last-child:not(.ebs-table-cell-fix-sticky) {
+      border-right-color: transparent;
+    }
+
+    .ebs-table-rtl & {
+      &-fix-right:last-child {
+        border-right-color: $table-border-color;
+      }
+      &-fix-left:last-child {
+        border-left-color: transparent;
+      }
+    }
+
+    &-fix-left-first {
+      .ebs-table-rtl & {
+        box-shadow: 1px 0 0 $table-border-color;
+      }
+    }
+
+    &-fix-left-first::after,
+    &-fix-left-last::after {
+      pointer-events: none;
+      content: '';
+      transition: box-shadow 0.3s;
+      position: absolute;
+      top: 0;
+      bottom: -1px;
+      width: 20px;
+      right: -1px;
+      transform: translateX(100%);
+    }
+
+    &-fix-right-first,
+    &-fix-right-last {
+      // box-shadow: -1px 0 0 $table-border-color;
+
+      .ebs-table-rtl & {
+        box-shadow: none;
+      }
+
+      &::after {
+        pointer-events: none;
+        content: '';
+        transition: box-shadow 0.3s;
+        position: absolute;
+        top: 0;
+        bottom: -1px;
+        width: 20px;
+        left: -1px;
+        transform: translateX(-100%);
+      }
+    }
+
+    &-ellipsis {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      // Fixed first or last should special process
+      &.ebs-table-cell-fix-left-first,
+      &.ebs-table-cell-fix-left-last,
+      &.ebs-table-cell-fix-right-first &.ebs-table-cell-fix-right-last {
+        overflow: visible;
+
+        .ebs-table-cell-content {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: block;
+        }
+      }
+    }
+
+    &-scrollbar::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      bottom: 0;
+      left: -1px;
+      width: 1px;
+      background: $table-head-cell-bg-color;
+
+      .ebs-table-rtl & {
+        right: -1px;
+        left: auto;
+      }
+    }
+  }
+
+  &-ping-left {
+    .ebs-table-cell-fix-left-first::after,
+    .ebs-table-cell-fix-left-last::after {
+      box-shadow: inset 6px 0px 8px -4px $table-cell-fixed-shadow;
+    }
+  }
+
+  &-ping-right {
+    .ebs-table-cell-fix-right-first::after,
+    .ebs-table-cell-fix-right-last::after {
+      box-shadow: inset -6px 0px 8px -4px $table-cell-fixed-shadow;
+    }
+  }
+
+  &-fixed-column &-body::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-right: $table-border;
+    z-index: 1;
+  }
+
+  // Direction
+  &-rtl {
+    direction: rtl;
+
+    .ebs-table-cell {
+      border-left: $table-border;
+      border-right: 0;
+    }
+  }
+
+  // Empty
+  &-placeholder {
+    text-align: center;
+  }
+
+  // Expand
+  &-expand-icon-col {
+    width: 60px;
+  }
+
+  &-row-expand-icon-cell {
+    text-align: center;
+  }
+
+  &-expanded-row {
+    .ebs-table-cell {
+      box-shadow: inset $box-shadow;
+    }
+
+    &-fixed::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      top: 0;
+      bottom: 0;
+      right: 1px;
+      border-right: $table-border;
+    }
+  }
+
+  &-row-expand-icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid currentColor;
+    color: $text-color;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    line-height: 14px;
+
+    &.ebs-table-row-expanded::after {
+      content: '-';
+    }
+
+    &.ebs-table-row-collapsed::after {
+      content: '+';
+    }
+
+    &.ebs-table-row-spaced {
+      visibility: hidden;
+    }
+  }
+
+  &-sticky {
+    &-header {
+      position: sticky;
+      z-index: 2;
+    }
+    &-scroll {
+      position: sticky;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #f3f3f3;
+      opacity: 0.6;
+      transition: transform 0.1s ease-in 0s;
+      z-index: 2;
+
+      &:hover {
+        transform: scaleY(1.2);
+        transform-origin: center bottom;
+      }
+      &-bar {
+        height: 8px;
+        border-radius: 4px;
+        background-color: #bbb;
+
+        &:hover {
+          background-color: #999;
+        }
+        &-active {
+          background-color: #999;
+        }
+      }
+    }
+  }
+
+  // Filter
+  &__th--filtered {
+    cursor: pointer;
+    transition: $transition-time;
+
+    &:hover {
+      color: $text-color-secondary;
+
+      .ebs-icon {
+        color: $text-color-secondary;
+      }
+    }
+
+    &-desc .ebs-icon {
+      transform: rotate(180deg);
+    }
+
+    &-asc,
+    &-desc {
+      color: $text-color-secondary;
+
+      .ebs-icon {
+        color: $text-color-secondary;
+      }
+    }
+
+    .ebs-icon {
+      margin-left: rem(6px);
+      position: relative;
+      top: 0;
+      transition: $transition-time;
+      color: $text-color;
+    }
+  }
+
+  &__mobile {
+    display: none;
+
+    @include mq($until: desktop) {
+      display: block;
+    }
+
+    &-item {
+      @include elevation-2;
+      position: relative;
+      border: $table-body-cell-border;
+      border-radius: $border-radius;
+      background-color: $table-head-cell-bg-color;
+      display: flex;
+      flex-wrap: wrap;
+
+      &-key {
+        font-size: rem($gutter-size);
+        position: absolute;
+        top: rem($gutter-size);
+        right: rem($gutter-size);
+        color: $grey-400;
+      }
+
+      &-title {
+        padding: rem($gutter-size $gutter-size $gutter-size / 2);
+        font-size: rem($table-font-size);
+        width: 100%;
+      }
+
+      &-desc {
+        padding: rem(0 $gutter-size $gutter-size);
+        width: 100%;
+      }
+
+      &-desc:not(:last-child) {
+        border-bottom: $table-body-cell-border;
+      }
+
+      &-child {
+        padding: rem($gutter-size);
+        width: 50%;
+
+        &-title {
+          display: block;
+          font-size: rem($table-font-size);
+          margin-bottom: rem(5px);
+          color: $grey-400;
+        }
+
+        &:nth-child(even) {
+          border-right: $table-body-cell-border;
+        }
+
+        &:last-child {
+          border-right: unset;
+          width: 100%;
+        }
+      }
+
+      &-action {
+        width: 100%;
+        border-top: $table-body-cell-border;
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        color: $white;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        padding: rem($gutter-size 5px);
+
+        > * {
+          width: 100%;
+          display: block;
+        }
+
+        > .flex {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: rem($gutter-size);
+      }
+    }
+
+    .ebs-button__wrapper {
+      width: 100%;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .ebs-action__wrapper {
+      @include flex-center;
+      position: relative;
+    }
+  }
+}
