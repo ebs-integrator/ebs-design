@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { Loader, LoaderInline } from './Loader';
+import { Loader } from './Loader';
 import { exportStory } from '../../../libs';
+
+const { Inline, Spinner } = Loader;
 
 export default {
   title: exportStory('Loader', 'molecules'),
   component: Loader,
-  subcomponents: { LoaderInline },
+  subcomponents: { Inline, Spinner },
 };
 
-export const DefaultLoader: React.FC = () => {
+export const Regular: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
 
   const onToggleHandler = (): void => setLoading((s) => !s);
@@ -24,4 +26,5 @@ export const DefaultLoader: React.FC = () => {
   );
 };
 
-export const _LoaderInline = (): React.ReactElement => <LoaderInline />;
+export const _Inline = (): React.ReactElement => <Loader.Inline />;
+export const _Spinner = (): React.ReactElement => <Loader.Spinner />;

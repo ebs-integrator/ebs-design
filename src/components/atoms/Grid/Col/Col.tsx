@@ -10,6 +10,7 @@ export interface ColProps extends Grid {
   lg?: ColType | ColSizeType;
   xl?: ColType | ColSizeType;
   xxl?: ColType | ColSizeType;
+  style?: React.CSSProperties;
 }
 
 export const Col: React.FC<ColProps> = ({
@@ -24,6 +25,7 @@ export const Col: React.FC<ColProps> = ({
   gx,
   gy,
   className,
+  style,
   children,
   ...props
 }) => (
@@ -37,6 +39,7 @@ export const Col: React.FC<ColProps> = ({
       [`col-xxl-${(xxl && (xxl as ColSizeType).col) || xxl}`]: xxl,
       ...getClassName({ offset, g, gx, gy }),
     })}
+    style={style}
     {...props}
   >
     {children}

@@ -8,21 +8,20 @@
 
 html,
 body {
+  @include fontMedium;
   display: block;
+  margin: 0;
   font-size: $font-size-base;
   line-height: $line-height-base;
   color: $text-color;
-  @include fontMedium;
-  margin: 0;
 
-  // TODO: Move to font-size to variables as responsive
-  // @include mq($until: desktop) {
-  //   font-size: rem(13px);
-  // }
+  @include mq($until: desktop) {
+    font-size: rem(12.5px);
+  }
 
-  // @include mq($until: small-desktop) {
-  //   font-size: rem(12px);
-  // }
+  @include mq($until: small-desktop) {
+    font-size: rem(10px);
+  }
 }
 
 * {
@@ -117,4 +116,13 @@ strong {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $scrollbar-thumb-hover-background-color;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }

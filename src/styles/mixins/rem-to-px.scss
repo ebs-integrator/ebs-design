@@ -1,5 +1,4 @@
 // rems to pixels
-$rem-baseline: $font-size-base !default;
 $rem-fallback: true !default;
 $rem-px-only: false !default;
 
@@ -20,9 +19,9 @@ $rem-px-only: false !default;
   $separator: rem-separator($values);
   @each $value in $values {
     @if type-of($value) == 'number' and unit($value) == 'rem' and $to== 'px' {
-      $result: append($result, $value / 1rem * $rem-baseline, $separator);
+      $result: append($result, $value / 1rem * $font-size-base, $separator);
     } @else if type-of($value) == 'number' and unit($value) == 'px' and $to== 'rem' {
-      $result: append($result, $value / ($rem-baseline / 1rem), $separator);
+      $result: append($result, $value / ($font-size-base / 1rem), $separator);
     } @else if type-of($value) == 'list' {
       $result: append($result, rem-convert($to, $value...), $separator);
     } @else {

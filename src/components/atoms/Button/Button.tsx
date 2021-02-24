@@ -1,6 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Icon, LoaderSpinner } from 'components/atoms';
+import { Icon } from 'components/atoms';
+import { Loader } from 'components/molecules';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
@@ -51,10 +52,10 @@ export const Button: React.FC<ButtonProps> = ({
       role="presentation"
     >
       {prefix ? (
-        <div className="ebs-button__prefix">{loading ? <LoaderSpinner size="small" /> : prefix}</div>
+        <div className="ebs-button__prefix">{loading ? <Loader.Spinner size="small" /> : prefix}</div>
       ) : loading ? (
         <div className={cn(`ebs-button__loading`, `ebs-button__loading-${type}`)}>
-          <LoaderSpinner size="small" />
+          <Loader.Spinner size="small" />
         </div>
       ) : null}
 
