@@ -3,11 +3,12 @@
 .ebs-table {
   box-shadow: $table-box-shadow;
 
-  @include mq($until: desktop) {
-    display: none;
-  }
+  // FIXME: Fix table on mobile
+  // @include mq($until: desktop) {
+  //   display: none;
+  // }
 
-  &__size-small td {
+  &--small td {
     padding: rem($base-size $gutter-size);
   }
 
