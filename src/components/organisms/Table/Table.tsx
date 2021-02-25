@@ -5,29 +5,86 @@ import { TableProps as RCTableProps } from 'rc-table/lib/Table';
 import { ColumnType as RCColumnType } from 'rc-table/lib/interface';
 import { Icon } from 'components/atoms';
 import { SizeType } from 'types';
+import { flattenArray } from 'libs';
 
 type FilterType = 'asc' | 'desc';
 
 // Extend default rc-table Column
 interface ColumnType<T> extends RCColumnType<T> {
-  onFilter?: (type: FilterType) => void;
+  onFilter?: (type: FilterType) => FilterType;
   mobileRender?: (data: T) => React.ReactNode;
+  emptyCell?: string | React.ReactNode; // Empty value fallback for the specific column
   children?: ColumnType<T>[];
 }
 
 interface TableProps<T> extends RCTableProps<T> {
   size?: SizeType;
   columns?: ColumnType<T>[];
+  emptyCell?: string | React.ReactNode; // Global fallback for empty cell value
 }
 
 // Filter types
 const types: FilterType[] = ['desc', 'asc'];
 
-const Table = <T extends object>({ size = 'medium', children, ...props }: TableProps<T>): React.ReactElement => {
-  const [filters, setFilters] = React.useState<{ [key: number]: FilterType }>({});
+const Table = <T extends object>({
+  size = 'medium',
+  emptyCell,
+  children,
+  ...props
+}: TableProps<T>): React.ReactElement => {
+  const [filters, setFilters] = React.useState<{ [key: string]: FilterType }>({});
 
+  const transformColumns = (column: ColumnType<T>, index: number): ColumnType<T> => {
+    // Get column key or generate unique one
+    const key: React.Key =
+      column.key ||
+      `${Array(column.dataIndex || column.title || 'key')
+        .join()
+        .replace(',', '_')}-${index}`;
+
+    const transformedColumn = {
+      key,
+      // Return fallback value for void data
+      render: (value: any) => {
+        const _emptyCell = emptyCell || column.emptyCell;
+
+        if (_emptyCell && value != null) {
+          return typeof _emptyCell === 'function' ? _emptyCell() : _emptyCell;
+        }
+
+        return value;
+      },
+      ...column,
+      className: cn(column.className, {
+        'has-children': column.children !== undefined,
+      }),
+      title: column.onFilter ? (
+        <span
+          className={cn(`ebs-table__th--filtered`, `ebs-table__th--filtered-${filters[key] || 'none'}`)}
+          onClick={(): void => onFilterHandler(key)}
+        >
+          {column.title} <Icon type="arrow-outlined-bottom" />
+        </span>
+      ) : (
+        column.title
+      ),
+    };
+
+    if (column && column.children) {
+      return {
+        ...transformedColumn,
+        children: column.children.map(transformColumns),
+      };
+    } else {
+      return transformedColumn;
+    }
+  };
+
+  const columns = React.useMemo(() => props.columns?.map(transformColumns), [props.columns, filters]);
+
+  // Handle column filters
   const onFilterHandler = React.useCallback(
-    (key: number) => {
+    (key: React.Key) => {
       const cloneFilters = { ...filters };
 
       if (cloneFilters[key]) {
@@ -41,43 +98,26 @@ const Table = <T extends object>({ size = 'medium', children, ...props }: TableP
         cloneFilters[key] = types[0];
       }
 
-      if (props.columns && props.columns[key]) {
-        const column: ColumnType<T> = props.columns[key];
+      if (columns) {
+        const column = flattenArray(columns).find((item) => item.key === key);
 
-        if (column.onFilter) {
-          column.onFilter(cloneFilters[key] || '');
+        if (column && column.onFilter) {
+          column.onFilter(cloneFilters[key]);
         }
       }
 
       setFilters(cloneFilters);
     },
-    [props.columns, filters],
-  );
-
-  const columns = React.useMemo(
-    () =>
-      props.columns?.map(({ title, onFilter, ...column }: ColumnType<T>, index) => ({
-        key: index,
-        ...column,
-        className: cn(column.className, {
-          'has-children': column.children !== undefined,
-        }),
-        title: onFilter ? (
-          <span
-            className={cn(`ebs-table__th--filtered`, `ebs-table__th--filtered-${filters[index] || 'none'}`)}
-            onClick={(): void => onFilterHandler(index)}
-          >
-            {title} <Icon type="arrow-outlined-bottom" />
-          </span>
-        ) : (
-          title
-        ),
-      })),
-    [props.columns, filters, onFilterHandler],
+    [columns, filters],
   );
 
   return (
-    <RCTable {...props} className={cn(`ebs-table ebs-table--${size}`, props.className)} columns={columns}>
+    <RCTable
+      rowKey={(_, i) => `row-key-${i}`}
+      {...props}
+      className={cn(`ebs-table ebs-table--${size}`, props.className)}
+      columns={columns}
+    >
       {children}
     </RCTable>
   );
