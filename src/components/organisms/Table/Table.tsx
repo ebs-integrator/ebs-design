@@ -46,13 +46,13 @@ const Table = <T extends object>({
       key,
       // Return fallback value for void data
       render: (value: any) => {
-        const _emptyCell = emptyCell || column.emptyCell;
+        const _emptyCell = column.emptyCell || emptyCell;
 
-        if (_emptyCell && value != null) {
-          return typeof _emptyCell === 'function' ? _emptyCell() : _emptyCell;
+        if (value != null) {
+          return value;
         }
 
-        return value;
+        return typeof _emptyCell === 'function' ? _emptyCell() : _emptyCell;
       },
       ...column,
       className: cn(column.className, {
