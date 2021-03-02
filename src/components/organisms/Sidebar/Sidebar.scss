@@ -8,7 +8,7 @@
   top: 0;
   width: $sidebar-width;
   height: 100vh;
-  border-right: 1px solid $border-color;
+  border-right: $sidebar-border;
   transition: width $transition-time;
   background-color: $sidebar-background;
   z-index: 5;
@@ -101,8 +101,8 @@
     opacity: 0;
     height: $layout-top-bar-height;
     width: $sidebar-width - 1;
-    border-top: 1px solid $border-color;
-    border-right: 1px solid $border-color;
+    border-top: $sidebar-border;
+    border-right: $sidebar-border;
 
     &.disabled {
       background-color: $border-color;
@@ -113,7 +113,7 @@
     }
 
     &:nth-last-child(2) {
-      border-bottom: 1px solid $border-color;
+      border-bottom: $sidebar-border;
     }
 
     span {

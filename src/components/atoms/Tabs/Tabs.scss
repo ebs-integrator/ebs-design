@@ -2,7 +2,8 @@
   display: flex;
   border: $tab-border;
   border-bottom: $tab-border-bottom;
-
+  white-space: nowrap;
+  overflow: auto hidden;
 }
 
 .ebs-tabs__item {
