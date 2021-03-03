@@ -25,6 +25,7 @@ export interface Props {
   placeholder?: string;
   disabled?: boolean;
   options?: Option[];
+  initialOptions?: Option[];
   value?: Value | Value[];
   onChange?: (value: Value | Value[]) => void;
 
@@ -45,27 +46,37 @@ export const InputSelect = React.forwardRef<any, Props>(
       onChange,
       placeholder,
       disabled,
+      initialOptions = [],
       showSearch,
       ...props
     },
     ref,
   ) => {
-    const {
-      value
-    } = props;
+    const { value } = props;
     const inputRef = useRef(ref as HTMLDivElement | null);
     const isControlled = useMemo(() => props.hasOwnProperty('value'), [props.value]);
-    const [selectedValue, setSelectedValue] = useState<Value | Value[] | undefined>(mode === 'multiple' ? value ?? [] : value);
+    const [selectedValue, setSelectedValue] = useState<Value | Value[] | undefined>(
+      mode === 'multiple' ? value ?? [] : value,
+    );
 
-    const getSelectedOption = useCallback((selectedValue) => {
-      if (Array.isArray(selectedValue)) {
-        return options.filter((option) => selectedValue.includes(option.value))
-      }
-      return options.find((option) => selectedValue === option.value);
-    }, [options]);
+    const getSelectedOption = useCallback(
+      (selectedValue, _options = options) => {
+        if (Array.isArray(selectedValue)) {
+          return selectedValue.map(
+            (value) => _options.find((option) => option.value === value) ?? { value, text: value },
+          );
+        }
+        return (
+          _options.find((option) => selectedValue === option.value) ?? { value: selectedValue, text: selectedValue }
+        );
+      },
+      [options],
+    );
 
-    const [selectedOption, setSelectedOption] = useState<Option | Option[] | undefined>(getSelectedOption(selectedValue));
-    
+    const [selectedOption, setSelectedOption] = useState<Option | Option[] | undefined>(
+      getSelectedOption(selectedValue, [...initialOptions, ...options]),
+    );
+
     const [openDropdown, setOpenDropdown] = useState(false);
 
     useEffect(() => {
@@ -79,9 +90,9 @@ export const InputSelect = React.forwardRef<any, Props>(
     }, [isControlled, value, mode]);
 
     useUpdateEffect(() => {
-        setSelectedValue(value);
-        setSelectedOption(getSelectedOption(value));
-    }, [value])
+      setSelectedValue(value);
+      setSelectedOption(getSelectedOption(value));
+    }, [value]);
 
     const onChangeHandler = (value: Value): void => {
       let newValue;
@@ -91,9 +102,9 @@ export const InputSelect = React.forwardRef<any, Props>(
         }
       } else if (mode === 'multiple' && Array.isArray(selectedValue)) {
         if (selectedValue.includes(value)) {
-          newValue = selectedValue.filter((item) => value !== item)
+          newValue = selectedValue.filter((item) => value !== item);
         } else {
-          newValue = [...selectedValue, value]
+          newValue = [...selectedValue, value];
         }
       } else {
         newValue = value;
@@ -105,28 +116,28 @@ export const InputSelect = React.forwardRef<any, Props>(
 
       if (!isControlled) {
         setSelectedValue(newValue);
-        setSelectedOption(getSelectedOption(newValue))
+        setSelectedOption(getSelectedOption(newValue));
       }
     };
 
     const renderValue = useMemo(
       () =>
         Array.isArray(selectedOption)
-        ? selectedOption.length
-          ? selectedOption.map((option) => (
-            <Label
-              key={option.value}
-              className="ebs-select__input-label"
-              type="primary"
-              circle
-              text={option.text}
-              prefix={<Icon type="check" />}
-              suffix={<Icon type="close" />}
-              onClickSuffix={() => onChangeHandler(option.value)}
-            />
-            ))
-          : placeholder
-        : selectedOption?.text || placeholder,
+          ? selectedOption.length
+            ? selectedOption.map((option) => (
+                <Label
+                  key={option.value}
+                  className="ebs-select__input-label"
+                  type="primary"
+                  circle
+                  text={option.text}
+                  prefix={<Icon type="check" />}
+                  suffix={<Icon type="close" />}
+                  onClickSuffix={() => onChangeHandler(option.value)}
+                />
+              ))
+            : placeholder
+          : selectedOption?.text || placeholder,
       [selectedOption, placeholder],
     );
 
@@ -144,7 +155,6 @@ export const InputSelect = React.forwardRef<any, Props>(
       }
       return selectedValue !== undefined;
     }, [selectedValue]);
-
 
     const iconType = useMemo(() => `arrow-${openDropdown ? 'top' : 'bottom'}`, [openDropdown]);
 
