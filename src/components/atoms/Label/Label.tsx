@@ -17,8 +17,8 @@ export interface Props {
   icon?: React.ReactElement;
   text?: React.ReactNode;
   onClick?: () => void;
-  onClickPrefix?: () => void;
-  onClickSuffix?: () => void;
+  onClickPrefix?: (e: React.MouseEvent) => void;
+  onClickSuffix?: (e: React.MouseEvent) => void;
 }
 
 export const Label: React.FC<Props> = ({

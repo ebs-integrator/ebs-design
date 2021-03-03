@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { useClickAway } from 'react-use';
+import React, { useCallback, useRef, useState, useEffect, useMemo } from 'react';
+import { useUpdateEffect, useClickAway } from 'react-use';
 import cn from 'classnames';
 import { Extra, Label, Icon } from 'components/atoms';
 import { SelectDropdown } from 'components/molecules';
@@ -9,10 +9,11 @@ export type SelectSize = 'small' | 'medium' | 'large';
 export type InputSelectMode = 'single' | 'multiple';
 
 export type Option = {
-  // TODO: decide the type
   value: any;
   text: string;
 };
+
+type Value = string | number;
 
 export interface Props {
   mode?: InputSelectMode;
@@ -24,11 +25,8 @@ export interface Props {
   placeholder?: string;
   disabled?: boolean;
   options?: Option[];
-
-  // TODO: decide the type
-  value?: any;
-  // TODO: decide the type
-  onChange?: (value: any) => void;
+  value?: Value | Value[];
+  onChange?: (value: Value | Value[]) => void;
 
   // FIXME: Remove this prop and refactor with compound components
   showSearch?: boolean;
@@ -44,39 +42,95 @@ export const InputSelect = React.forwardRef<any, Props>(
       hasError,
       label,
       extra,
-      value,
       onChange,
       placeholder,
       disabled,
+      showSearch,
       ...props
     },
     ref,
   ) => {
-    const inputRef = React.useRef(ref as HTMLDivElement | null);
-    const [scopeValue, setScopeValue] = React.useState(value);
-    const [hasExternalValue, setHasExternalValue] = React.useState(false);
-    const [openDropdown, setOpenDropdown] = React.useState(false);
+    const {
+      value
+    } = props;
+    const inputRef = useRef(ref as HTMLDivElement | null);
+    const isControlled = useMemo(() => props.hasOwnProperty('value'), [props.value]);
+    const [selectedValue, setSelectedValue] = useState<Value | Value[] | undefined>(mode === 'multiple' ? value ?? [] : value);
 
-    const $value = React.useMemo(() => (hasExternalValue ? value : scopeValue), [value, scopeValue, hasExternalValue]);
+    const getSelectedOption = useCallback((selectedValue) => {
+      if (Array.isArray(selectedValue)) {
+        return options.filter((option) => selectedValue.includes(option.value))
+      }
+      return options.find((option) => selectedValue === option.value);
+    }, [options]);
 
-    const hasValue = React.useMemo(() => {
-      const isValueArray = Array.isArray($value);
-      return (!isValueArray && $value !== undefined) || (isValueArray && $value.length > 0);
-    }, [$value]);
+    const [selectedOption, setSelectedOption] = useState<Option | Option[] | undefined>(getSelectedOption(selectedValue));
+    
+    const [openDropdown, setOpenDropdown] = useState(false);
 
-    const textValue = React.useMemo(() => {
-      if (Array.isArray($value)) {
-        return options.filter((option) => $value.includes(option.value)).map((option) => option.text);
+    useEffect(() => {
+      if (isControlled) {
+        if (mode === 'multiple' && !Array.isArray(value)) {
+          throw new Error('In multiple mode value should be an array!');
+        } else if (mode === 'single' && Array.isArray(value)) {
+          throw new Error('In single mode value can not be an array!');
+        }
+      }
+    }, [isControlled, value, mode]);
+
+    useUpdateEffect(() => {
+        setSelectedValue(value);
+        setSelectedOption(getSelectedOption(value));
+    }, [value])
+
+    const onChangeHandler = (value: Value): void => {
+      let newValue;
+      if (mode === 'single') {
+        if (value !== selectedValue) {
+          newValue = value;
+        }
+      } else if (mode === 'multiple' && Array.isArray(selectedValue)) {
+        if (selectedValue.includes(value)) {
+          newValue = selectedValue.filter((item) => value !== item)
+        } else {
+          newValue = [...selectedValue, value]
+        }
+      } else {
+        newValue = value;
       }
 
-      return (options.find((option) => option.value === $value) || { text: $value }).text;
-    }, [$value, options]);
-
-    React.useEffect(() => {
-      if (value) {
-        setHasExternalValue(true);
+      if (onChange) {
+        onChange(newValue);
       }
-    }, [value]);
+
+      if (!isControlled) {
+        setSelectedValue(newValue);
+        setSelectedOption(getSelectedOption(newValue))
+      }
+    };
+
+    const renderValue = useMemo(
+      () =>
+        Array.isArray(selectedOption)
+        ? selectedOption.length
+          ? selectedOption.map((option) => (
+            <Label
+              key={option.value}
+              className="ebs-select__input-label"
+              type="primary"
+              circle
+              text={option.text}
+              prefix={<Icon type="check" />}
+              suffix={<Icon type="close" />}
+              onClickSuffix={() => onChangeHandler(option.value)}
+            />
+            ))
+          : placeholder
+        : selectedOption?.text || placeholder,
+      [selectedOption, placeholder],
+    );
+
+    const onToggleOpenDropdown = (): void => setOpenDropdown((s) => !s);
 
     useClickAway(inputRef, () => {
       if (openDropdown) {
@@ -84,68 +138,15 @@ export const InputSelect = React.forwardRef<any, Props>(
       }
     });
 
-    // TODO: decide the type
-    const onChangeHandler = (newValue?: any): void => {
-      const $newValue = mode === 'single' ? (newValue === $value ? undefined : newValue) : newValue;
-
-      const newModeValue =
-        mode === 'multiple'
-          ? $value && $value.includes($newValue)
-            ? // TODO: decide the type
-              $value.filter((item: any) => $newValue !== item)
-            : [...($value || []), $newValue]
-          : $newValue;
-
-      if (onChange) {
-        onChange(newModeValue);
+    const hasValue = useMemo(() => {
+      if (Array.isArray(selectedValue)) {
+        return selectedValue.length > 0;
       }
+      return selectedValue !== undefined;
+    }, [selectedValue]);
 
-      if (!hasExternalValue) {
-        setScopeValue(newModeValue);
-      }
-    };
 
-    const onDeleteSelect = (key: number): void => {
-      if (mode === 'multiple') {
-        // TODO: decide the type
-        const newValue = $value.filter((_: any, $key: number) => key !== $key);
-
-        if (onChange !== undefined) {
-          onChange(newValue);
-        }
-
-        if (!hasExternalValue) {
-          setScopeValue(newValue);
-        }
-      }
-    };
-
-    const onToggleOpenDropdown = (): void => setOpenDropdown((s) => !s);
-
-    const isArrayValue = React.useMemo(() => textValue && Array.isArray(textValue) && textValue.length > 0, [
-      textValue,
-    ]);
-
-    const renderValue = React.useMemo(
-      () =>
-        isArrayValue
-          ? (textValue as string[]).map((item, key) => (
-              <Label
-                key={item}
-                className="ebs-select__input-label"
-                type="primary"
-                circle
-                text={item}
-                prefix={<Icon type="check" />}
-                suffix={<Icon type="close" />}
-                onClickSuffix={() => onDeleteSelect(key)}
-              />
-            ))
-          : textValue || placeholder,
-      [isArrayValue, textValue, placeholder],
-    );
-
-    const iconType = React.useMemo(() => `arrow-${openDropdown ? 'top' : 'bottom'}`, [openDropdown]);
+    const iconType = useMemo(() => `arrow-${openDropdown ? 'top' : 'bottom'}`, [openDropdown]);
 
     return (
       <div
@@ -162,11 +163,11 @@ export const InputSelect = React.forwardRef<any, Props>(
           <div className={cn('ebs-select__input', `ebs-select__input--${size}`)} onClick={onToggleOpenDropdown}>
             <div className="ebs-select__input-value">{renderValue}</div>
 
-            {hasValue && textValue && mode === 'multiple' && (
+            {Array.isArray(selectedOption) && hasValue && (
               <>
                 <div className="ebs-select__input-transition" />
 
-                <div className="ebs-select__input-count">{textValue.length}</div>
+                <div className="ebs-select__input-count">{selectedOption.length}</div>
               </>
             )}
 
@@ -179,10 +180,10 @@ export const InputSelect = React.forwardRef<any, Props>(
             <SelectDropdown
               mode={mode}
               options={options}
-              value={$value}
+              value={selectedValue}
               onChange={onChangeHandler}
               onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
-              showSearch={props.showSearch}
+              showSearch={showSearch}
             />
           )}
         </div>
