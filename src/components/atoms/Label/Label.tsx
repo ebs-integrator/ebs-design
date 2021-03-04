@@ -16,7 +16,7 @@ export interface Props {
   disabled?: boolean;
   icon?: React.ReactElement;
   text?: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
   onClickPrefix?: (e: React.MouseEvent) => void;
   onClickSuffix?: (e: React.MouseEvent) => void;
 }

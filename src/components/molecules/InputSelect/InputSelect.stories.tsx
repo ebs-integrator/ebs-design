@@ -14,6 +14,16 @@ const options = [
   { value: 3, text: 'Item 3' },
   { value: 4, text: 'Item 4' },
   { value: 5, text: 'Item 5' },
+  { value: 6, text: 'Item 6' },
+  { value: 7, text: 'Item 7' },
+  { value: 8, text: 'Item 8' },
+  { value: 9, text: 'Item 9' },
+  { value: 10, text: 'Item 10' },
+  { value: 11, text: 'Item 11' },
+  { value: 12, text: 'Item 12' },
+  { value: 13, text: 'Item 13' },
+  { value: 14, text: 'Item 14' },
+  { value: 15, text: 'Item 15' },
 ];
 
 export const Regular = (): React.ReactNode => <InputSelect options={options} placeholder="Select" />;

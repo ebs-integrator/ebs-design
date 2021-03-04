@@ -133,7 +133,10 @@ export const InputSelect = React.forwardRef<any, Props>(
                   text={option.text}
                   prefix={<Icon type="check" />}
                   suffix={<Icon type="close" />}
-                  onClickSuffix={() => onChangeHandler(option.value)}
+                  onClickSuffix={(e) => {
+                    e.stopPropagation();
+                    onChangeHandler(option.value);
+                  }}
                 />
               ))
             : placeholder
