@@ -145,7 +145,10 @@ export const InputSelect = React.forwardRef<any, Props>(
       [isArrayValue, textValue, placeholder],
     );
 
-    const iconType = React.useMemo(() => `arrow-${openDropdown ? 'top' : 'bottom'}`, [openDropdown]);
+    const iconType = React.useMemo(() => `arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`, [
+      disabled,
+      openDropdown,
+    ]);
 
     return (
       <div
@@ -175,7 +178,7 @@ export const InputSelect = React.forwardRef<any, Props>(
             </div>
           </div>
 
-          {openDropdown && (
+          {!disabled && openDropdown && (
             <SelectDropdown
               mode={mode}
               options={options}
