@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import cn from 'classnames';
 import { format, dateTimeFormat } from 'libs/date';
 import { Extra, Label } from 'components/atoms';
+import { GenericObject } from 'types';
 
 import { DateState, LimitTimeState } from './Calendar.types';
 
@@ -98,7 +99,7 @@ export const Calendar = React.forwardRef<any, Props>(
 
     React.useEffect(() => {
       setDate((prevState) => {
-        const newState: { [key: string]: any } = {};
+        const newState: GenericObject = {};
 
         if (typeof props.from === 'string' || typeof props.to === 'string') {
           newState.from = props.from ? new Date(props.from) : props.from;

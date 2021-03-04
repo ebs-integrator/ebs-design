@@ -1,16 +1,18 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Extra, Label, LoaderSpinner } from 'components/atoms';
+import { Extra, Label } from 'components/atoms';
+import { Loader } from 'components/molecules';
 
 export type InputSize = 'small' | 'medium' | 'large';
 export type InputStyleType = 'white' | 'grey';
-export type InputType = 'text' | 'email' | 'password';
+export type InputType = 'text' | 'number' | 'email' | 'password';
 
 export interface InputProps {
   styleType?: InputStyleType;
   type?: InputType;
   onClick?: (e: any) => void;
   onChange?: (value: string) => void;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
   onClickPrefix?: () => void;
   onClickSuffix?: () => void;
   hasError?: boolean;
@@ -38,6 +40,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       size = 'medium',
       onClick,
       onChange,
+      onKeyDown,
       hasError,
       label,
       extra,
@@ -98,7 +101,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               className={cn(`ebs-input__prefix`, !loading && props.onClickPrefix ? `clickable` : `not-clickable`)}
               onClick={onClickPrefixHandler}
             >
-              {loading ? <LoaderSpinner size="small" /> : prefix}
+              {loading ? <Loader.Spinner size="small" /> : prefix}
             </div>
           ) : null}
 
@@ -107,7 +110,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               className={cn(`ebs-input__suffix`, !loading && props.onClickSuffix ? `clickable` : `not-clickable`)}
               onClick={onClickSuffixHandler}
             >
-              {loading && !prefix ? <LoaderSpinner size="small" /> : suffix}
+              {loading && !prefix ? <Loader.Spinner size="small" /> : suffix}
             </div>
           ) : null}
 
@@ -119,10 +122,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               autoFocus={autoFocus}
               className={cn('ebs-input', `ebs-input--${size}`)}
               value={value || ''}
-              onChange={onClickHandler}
               placeholder={props.placeholder}
               disabled={disabled || loading}
               onClick={onClick}
+              onKeyDown={onKeyDown}
+              onChange={onClickHandler}
               style={{ minWidth: width }}
             />
           </div>

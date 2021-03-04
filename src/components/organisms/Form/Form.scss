@@ -6,8 +6,13 @@
   }
 
   // Commons for all items
-  &__item:not(:last-child) {
-    margin-bottom: rem($field-margin-bottom);
+  &__item {
+    &:empty {
+      display: none;
+    }
+    &:not(:last-child) {
+      margin-bottom: rem($field-margin-bottom);
+    }
   }
 
   &__field {
@@ -38,6 +43,12 @@
       font-size: rem($field-label-font-size);
       font-weight: $field-label-font-weight;
       margin-top: rem(2px);
+    }
+
+    // Required
+    &__required {
+      color: $danger-color;
+      margin-left: rem(3px);
     }
   }
 }

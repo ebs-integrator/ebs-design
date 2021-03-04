@@ -3,11 +3,12 @@
 .ebs-table {
   box-shadow: $table-box-shadow;
 
-  @include mq($until: desktop) {
-    display: none;
-  }
+  // FIXME: Fix table on mobile
+  // @include mq($until: desktop) {
+  //   display: none;
+  // }
 
-  &__size-small td {
+  &--small td {
     padding: rem($base-size $gutter-size);
   }
 
@@ -15,35 +16,27 @@
     cursor: pointer;
     transition: $transition-time;
 
-    &:hover {
-      color: $text-color-secondary;
-
-      .ebs-icon {
-        color: $text-color-secondary;
-      }
-    }
-
     &-desc .ebs-icon {
       transform: rotate(180deg);
     }
 
+    &:hover,
     &-asc,
     &-desc {
-      @include fontMedium;
-      color: $text-color-secondary;
+      color: $table-filter-active-color;
 
       .ebs-icon {
-        color: $text-color-secondary;
+        color: $table-filter-active-color;
       }
     }
 
     .ebs-icon {
-      font-size: $table-body-font-size;
-      margin-left: rem(6px);
       position: relative;
       top: 0;
+      color: currentColor;
+      font-size: $table-body-font-size;
       transition: $transition-time;
-      color: $text-color;
+      margin-left: rem(6px);
     }
   }
 

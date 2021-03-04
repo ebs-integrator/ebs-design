@@ -24,48 +24,41 @@ export interface Props {
   disabled?: boolean;
 }
 
-export const Checkbox: React.FC<Props> = ({
-  className,
-  checkAlign = 'left',
-  name,
-  value,
-  indeterminate,
-  checked,
-  onChange,
-  text,
-  disabled,
-}) => {
-  const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
-    if (onChange !== undefined) {
-      onChange(target.checked);
-    }
-  };
+export const Checkbox = React.forwardRef<HTMLInputElement, Props>(
+  ({ className, checkAlign = 'left', name, value, indeterminate, checked, onChange, text, disabled }, ref) => {
+    const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
+      if (onChange !== undefined) {
+        onChange(target.checked);
+      }
+    };
 
-  return (
-    <div
-      className={cn(`ebs-checkbox__wrapper`, `ebs-checkbox--${checkAlign}`, className, {
-        'has-text': text,
-        indeterminate: indeterminate,
-        disabled: disabled,
-      })}
-    >
-      <input
-        name={name}
-        type="checkbox"
-        className="ebs-checkbox__input"
-        value={value}
-        onChange={onChangeHandler}
-        {...(checked !== undefined ? { checked } : {})}
-        disabled={disabled}
-      />
+    return (
+      <div
+        className={cn(`ebs-checkbox__wrapper`, `ebs-checkbox--${checkAlign}`, className, {
+          'has-text': text,
+          indeterminate: indeterminate,
+          disabled: disabled,
+        })}
+      >
+        <input
+          ref={ref}
+          name={name}
+          type="checkbox"
+          className="ebs-checkbox__input"
+          value={value}
+          onChange={onChangeHandler}
+          {...(checked !== undefined ? { checked } : {})}
+          disabled={disabled}
+        />
 
-      <div className="ebs-checkbox">
-        <Icon type="indeterminate" className="ebs-checkbox__indeterminate" />
+        <div className="ebs-checkbox">
+          <Icon type="indeterminate" className="ebs-checkbox__indeterminate" />
 
-        <Icon type="check-2" className="ebs-checkbox__check" />
+          <Icon type="check-2" className="ebs-checkbox__check" />
+        </div>
+
+        {text && <div className="ebs-checkbox__text">{text}</div>}
       </div>
-
-      {text && <div className="ebs-checkbox__text">{text}</div>}
-    </div>
-  );
-};
+    );
+  },
+);

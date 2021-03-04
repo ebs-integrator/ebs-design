@@ -1,10 +1,13 @@
+import { GenericObject } from 'types';
 import { LabelOptions, ControlOptions } from './interface';
 
-export const combineProps = (...args): { [key: string]: any } => Object.assign({}, ...args);
+export const combineProps = (...args): GenericObject => Object.assign({}, ...args);
 
+// TODO: Find a better way
 export const getLabelOptions = (type: string, labelOptions?: LabelOptions): LabelOptions => {
   if (type === 'vertical') {
     return {
+      className: labelOptions?.className,
       align: labelOptions?.align ? labelOptions.align : 'center',
       justify: labelOptions?.justify ? labelOptions.justify : 'start',
       col: labelOptions?.col
@@ -16,6 +19,7 @@ export const getLabelOptions = (type: string, labelOptions?: LabelOptions): Labe
   }
 
   return {
+    className: labelOptions?.className,
     align: labelOptions?.align ? labelOptions.align : 'center',
     justify: labelOptions?.justify ? labelOptions.justify : 'end',
     col: labelOptions?.col
@@ -29,6 +33,7 @@ export const getLabelOptions = (type: string, labelOptions?: LabelOptions): Labe
 export const getControlOptions = (type: string, controlOptions?: ControlOptions): ControlOptions => {
   if (type === 'vertical') {
     return {
+      className: controlOptions?.className,
       col: controlOptions?.col
         ? controlOptions.col
         : {
@@ -38,6 +43,7 @@ export const getControlOptions = (type: string, controlOptions?: ControlOptions)
   }
 
   return {
+    className: controlOptions?.className,
     col: controlOptions?.col
       ? controlOptions.col
       : {
@@ -45,3 +51,15 @@ export const getControlOptions = (type: string, controlOptions?: ControlOptions)
         },
   };
 };
+
+// Check if field is required
+export const checkRequired = (rules?): boolean =>
+  !!(
+    rules &&
+    rules.some((rule) => {
+      if (rule && typeof rule === 'object' && rule.required) {
+        return true;
+      }
+      return false;
+    })
+  );

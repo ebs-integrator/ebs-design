@@ -5,15 +5,17 @@ import { getClassName } from '../utils';
 
 export interface RowProps extends Grid {
   size?: ColsType;
+  style?: React.CSSProperties;
 }
 
-export const Row: React.FC<RowProps> = ({ size, offset, g, gx, gy, className, children, ...props }) => {
+export const Row: React.FC<RowProps> = ({ size, offset, g, gx, gy, className, style, children, ...props }) => {
   return (
     <div
       className={cn(`row`, className, {
         [`row-cols-${size}`]: size,
         ...getClassName({ offset, g, gx, gy }),
       })}
+      style={style}
       {...props}
     >
       {children}

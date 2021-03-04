@@ -9,7 +9,6 @@ export {
   Badge,
   Button,
   ButtonGroup,
-  LoaderSpinner,
   Label,
   ListGroup,
   Extra,
@@ -61,9 +60,15 @@ export {
   FormProvider,
   FormProps,
   Layout,
+  Modal,
   Sidebar,
   SortBy,
   Table,
+  Column,
+  ColumnGroup,
+  ColumnType,
+  Summary,
+  TableProps,
 } from './components/organisms';
 
 // Libs

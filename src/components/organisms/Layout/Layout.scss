@@ -62,7 +62,8 @@
 
   &__content {
     width: 100%;
-    height: calc(100vh - #{$layout-top-bar-height} - #{$layout-footer-height});
+    background-color: $layout-content-background;
+    height: calc(100vh - #{$layout-top-bar-height * 2});
     overflow: hidden auto;
     margin: 0 auto;
     padding: rem(15px 25px);
@@ -76,11 +77,29 @@
     }
   }
 
+  &__content.ebs-layout--has-footer {
+    padding-bottom: rem($layout-footer-height);
+  }
+
+  &__container {
+    height: calc(100vh - #{$layout-top-bar-height});
+    overflow: hidden auto;
+  }
+
+  &__container &__content {
+    height: 100%;
+  }
+
   &__footer {
-    height: $layout-footer-height;
+    background-color: $layout-footer-background;
+    height: rem($layout-footer-height);
     display: flex;
     align-items: center;
     color: $grey-300;
+
+    &--fixed {
+      border-top: $layout-footer-fixed-border;
+    }
 
     span {
       @include fontRegular;
@@ -89,8 +108,11 @@
     }
   }
 
-  .ebs-sidebar {
+  &__top-bar + .ebs-sidebar {
     margin-top: $layout-top-bar-height;
+  }
+
+  .ebs-sidebar {
     height: calc(100vh - #{$layout-top-bar-height});
 
     @include mq($until: small-desktop) {
@@ -149,11 +171,6 @@
   }
 }
 
-.ebs-layout__top-bar,
-.ebs-layout__footer {
-  background-color: $layout-footer-background;
-}
-
 .ebs-layout__top-bar-top,
 .ebs-layout__top-bar-bottom,
 .ebs-layout__footer-bar-top,
@@ -194,6 +211,16 @@
 
     svg:first-child {
       font-size: $sidebar-logo-width;
+    }
+
+    &::after {
+      content: '';
+      width: 1px;
+      height: $layout-top-bar-height;
+      border-right: 1px solid $layout-top-bar-toggler-border-color;
+      position: absolute;
+      top: 0;
+      left: $sidebar-width - 2px;
     }
   }
 
