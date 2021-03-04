@@ -137,12 +137,12 @@ export const InputSelect = React.forwardRef<any, Props>(
                 circle
                 text={item}
                 prefix={<Icon type="check" />}
-                suffix={<Icon type="close" />}
-                onClickSuffix={() => onDeleteSelect(key)}
+                suffix={!disabled ? <Icon type="close" /> : undefined}
+                onClickSuffix={() => disabled && onDeleteSelect(key)}
               />
             ))
           : textValue || placeholder,
-      [isArrayValue, textValue, placeholder],
+      [disabled, isArrayValue, textValue, placeholder],
     );
 
     const iconType = React.useMemo(() => `arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`, [
