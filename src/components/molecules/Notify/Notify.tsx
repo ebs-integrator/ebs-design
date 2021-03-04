@@ -25,7 +25,12 @@ export interface NotifyProps {
   timeout?: number;
 }
 
-const Notify: React.FC<NotifyProps> = ({ vertical = 'top', horizontal = 'right', size = 'medium', timeout = 3000 }) => {
+const NotifyContainer: React.FC<NotifyProps> = ({
+  vertical = 'top',
+  horizontal = 'right',
+  size = 'medium',
+  timeout = 3000,
+}) => {
   const { list, remove } = React.useContext(NotifyContext);
 
   React.useEffect(() => {
@@ -63,4 +68,4 @@ const NotifyProvider = ({ children }): React.ReactElement => {
   return <NotifyContext.Provider value={{ list, push, remove }}>{children}</NotifyContext.Provider>;
 };
 
-export { Notify, NotifyContext, NotifyProvider };
+export { NotifyContainer, NotifyContext, NotifyProvider };

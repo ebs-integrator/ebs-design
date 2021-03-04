@@ -44,7 +44,7 @@ export {
   CheckboxGroup,
   Textarea,
   Upload,
-  Notify,
+  NotifyContainer,
   NotifyContext,
   NotifyProvider,
 } from './components/molecules';
@@ -72,4 +72,7 @@ export {
 } from './components/organisms';
 
 // Libs
-export { firstLetters } from './libs/string';
+export { firstLetters } from './libs';
+
+// Hooks
+export { useNotify } from './hooks';

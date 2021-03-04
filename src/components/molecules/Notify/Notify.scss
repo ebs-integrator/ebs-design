@@ -19,7 +19,7 @@
 .ebs-notify {
   @include flex-center-column;
   box-sizing: border-box;
-  position: fixed;
+  position: absolute;
   overflow: hidden auto;
   z-index: 9999;
   max-height: 100%;

@@ -3,10 +3,13 @@ import cn from 'classnames';
 import { Button, Space, Icon } from 'components/atoms';
 import { SpaceDirection, SpaceSize } from 'components/atoms/Space/Space';
 
-export interface NotifyItemProps {
-  title?: string;
-  description?: string;
+export interface NotifyItemType {
   type?: 'regular' | 'primary' | 'success' | 'danger' | 'info' | 'warning';
+}
+
+export interface NotifyItemProps extends NotifyItemType {
+  title: string;
+  description?: string;
   icon?: 'string' | React.ReactNode;
   direction?: SpaceDirection;
   size?: SpaceSize;

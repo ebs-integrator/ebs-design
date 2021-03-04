@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { Space, Button, ButtonGroup, Label } from 'components/atoms';
 import { SpaceSize } from 'components/atoms/Space/Space';
-import { Notify, NotifyContext } from './Notify';
+import { useNotify } from 'hooks';
+import { NotifyContainer, NotifyProvider } from './Notify';
 import { NotifyItem, NotifyItemProps } from './NotifyItem';
 import { exportStory } from '../../../libs';
 
 export default {
   title: exportStory('Notify', 'molecules'),
-  component: Notify,
+  component: NotifyContainer,
   subcomponents: { NotifyItem },
 };
 
@@ -35,82 +36,57 @@ const SizeSwitcher: React.FC<{ children: (size: SpaceSize) => React.ReactNode }>
   );
 };
 
-export const Regular = (): React.ReactNode => {
-  const [list, setList] = React.useState<any[]>([]);
+const description = 'This is an example component';
 
-  const onAddItem = (type): void => {
-    let item: NotifyItemProps = {
-      title: 'Success',
-      description: 'This is an example component',
-    };
+export const Regular = () => {
+  const Notify: React.FC = () => {
+    const notify = useNotify();
 
-    switch (type) {
-      case 'regular':
-        item = {
-          ...item,
-          title: 'Regular',
-          type: 'regular',
-        };
-        break;
-      case 'primary':
-        item = {
-          ...item,
-          title: 'Primary',
-          type: 'primary',
-        };
-        break;
-      case 'danger':
-        item = {
-          ...item,
-          title: 'Danger',
-          type: 'danger',
-        };
-        break;
-      case 'info':
-        item = {
-          ...item,
-          title: 'Info',
-          type: 'info',
-        };
-        break;
-      case 'warning':
-        item = {
-          ...item,
-          title: 'Warning',
-          type: 'warning',
-        };
-        break;
-    }
-
-    push(item);
+    return (
+      <>
+        <SizeSwitcher>{(size) => <NotifyContainer size={size} />}</SizeSwitcher>
+        <Space justify="space-between">
+          <Button size="small" type="fill" onClick={() => notify.regular({ title: 'Regular', description })}>
+            Regular
+          </Button>
+          <Button size="small" type="primary" onClick={() => notify.primary({ title: 'Primary', description })}>
+            Primary
+          </Button>
+          <Button type="text">
+            <Label
+              status="success"
+              type="fill"
+              text="Success"
+              onClick={() => notify.success({ title: 'Success', description })}
+            />
+          </Button>
+          <Button type="text">
+            <Label
+              status="danger"
+              type="fill"
+              text="Danger"
+              onClick={() => notify.error({ title: 'Error', description })}
+            />
+          </Button>
+          <Button type="text">
+            <Label status="info" type="fill" text="Info" onClick={() => notify.info({ title: 'Info', description })} />
+          </Button>
+          <Button type="text">
+            <Label
+              status="warning"
+              type="fill"
+              text="Warning"
+              onClick={() => notify.warning({ title: 'Warning', description })}
+            />
+          </Button>
+        </Space>
+      </>
+    );
   };
 
-  const push = React.useCallback((item: any) => setList((i) => [...i, item]), [setList]);
-  const remove = React.useCallback((i: number) => setList((y) => y.filter((_, x) => x !== i)), [setList]);
-
   return (
-    <NotifyContext.Provider value={{ list, push, remove }}>
-      <SizeSwitcher>{(size) => <Notify size={size} list={list} />}</SizeSwitcher>
-      <Space justify="space-between">
-        <Button size="small" type="fill" onClick={() => onAddItem('regular')}>
-          Regular
-        </Button>
-        <Button size="small" type="primary" onClick={() => onAddItem('primary')}>
-          Primary
-        </Button>
-        <Button type="text">
-          <Label status="success" type="fill" text="Success" onClick={() => onAddItem('success')} />
-        </Button>
-        <Button type="text">
-          <Label status="danger" type="fill" text="Danger" onClick={() => onAddItem('danger')} />
-        </Button>
-        <Button type="text">
-          <Label status="info" type="fill" text="Info" onClick={() => onAddItem('info')} />
-        </Button>
-        <Button type="text">
-          <Label status="warning" type="fill" text="Warning" onClick={() => onAddItem('warning')} />
-        </Button>
-      </Space>
-    </NotifyContext.Provider>
+    <NotifyProvider>
+      <Notify />
+    </NotifyProvider>
   );
 };
