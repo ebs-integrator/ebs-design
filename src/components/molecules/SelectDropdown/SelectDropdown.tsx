@@ -99,11 +99,13 @@ export const SelectDropdown: React.FC<Props> = ({
             <SelectDropdownItem
               key={option.value}
               mode={mode}
-              active={mode === 'multiple' ? value && value.includes(option.value) : value === option.value}
+              active={Array.isArray(value) ? value.includes(option.value) : value === option.value}
               selected={activeItem === key + 1}
               value={option.value}
               text={option.text}
               onClick={onChangeHandler}
+              className={option.className}
+              children={option.children}
             />
           ))
         ) : (

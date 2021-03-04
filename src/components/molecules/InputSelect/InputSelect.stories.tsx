@@ -37,3 +37,14 @@ export const Multiple = (): React.ReactNode => <InputSelect mode="multiple" opti
 export const MultipleHasValue = (): React.ReactNode => (
   <InputSelect mode="multiple" options={options} value={['Selected value']} placeholder="Select" />
 );
+
+export const OptionsAsChildren = (): React.ReactNode => (
+  <InputSelect placeholder="Select">
+    <InputSelect.Option value="2" text="a">
+      aaa
+    </InputSelect.Option>
+    <InputSelect.Option value="3" text="c">
+      bb
+    </InputSelect.Option>
+  </InputSelect>
+);

@@ -1,17 +1,15 @@
-import React, { useCallback, useRef, useState, useEffect, useMemo } from 'react';
+import React, { FC, ReactNode, useCallback, useRef, useState, useEffect, useMemo, Children } from 'react';
 import { useUpdateEffect, useClickAway } from 'react-use';
 import cn from 'classnames';
 import { Extra, Label, Icon } from 'components/atoms';
 import { SelectDropdown } from 'components/molecules';
+import { Option, OptionProps } from './InputSelectOption';
 
 export type SelectSize = 'small' | 'medium' | 'large';
 
 export type InputSelectMode = 'single' | 'multiple';
 
-export type Option = {
-  value: any;
-  text: string;
-};
+export type Option = OptionProps;
 
 type Value = string | number;
 
@@ -28,12 +26,15 @@ export interface Props {
   initialOptions?: Option[];
   value?: Value | Value[];
   onChange?: (value: Value | Value[]) => void;
-
+  children?: ReactNode;
   // FIXME: Remove this prop and refactor with compound components
   showSearch?: boolean;
 }
+export interface InputSelectFC extends React.ForwardRefExoticComponent<Props & React.RefAttributes<any>> {
+  Option: FC<OptionProps>;
+}
 
-export const InputSelect = React.forwardRef<any, Props>(
+const InputSelect = React.forwardRef<any, Props>(
   (
     {
       mode = 'single',
@@ -48,6 +49,7 @@ export const InputSelect = React.forwardRef<any, Props>(
       disabled,
       initialOptions = [],
       showSearch,
+      children,
       ...props
     },
     ref,
@@ -58,23 +60,32 @@ export const InputSelect = React.forwardRef<any, Props>(
     const [selectedValue, setSelectedValue] = useState<Value | Value[] | undefined>(
       mode === 'multiple' ? value ?? [] : value,
     );
+    const _options = useMemo(
+      () => [
+        ...Children.toArray(children)
+          .filter((child: any) => child.type === Option)
+          .map((child: any) => child.props),
+        ...options,
+      ],
+      [options, children],
+    );
 
     const getSelectedOption = useCallback(
-      (selectedValue, _options = options) => {
+      (selectedValue, options = _options) => {
         if (Array.isArray(selectedValue)) {
           return selectedValue.map(
-            (value) => _options.find((option) => option.value === value) ?? { value, text: value },
+            (value) => options.find((option) => option.value === value) ?? { value, text: value },
           );
         }
         return (
-          _options.find((option) => selectedValue === option.value) ?? { value: selectedValue, text: selectedValue }
+          options.find((option) => selectedValue === option.value) ?? { value: selectedValue, text: selectedValue }
         );
       },
-      [options],
+      [_options],
     );
 
     const [selectedOption, setSelectedOption] = useState<Option | Option[] | undefined>(
-      getSelectedOption(selectedValue, [...initialOptions, ...options]),
+      getSelectedOption(selectedValue, [...initialOptions, ..._options]),
     );
 
     const [openDropdown, setOpenDropdown] = useState(false);
@@ -192,7 +203,7 @@ export const InputSelect = React.forwardRef<any, Props>(
           {openDropdown && (
             <SelectDropdown
               mode={mode}
-              options={options}
+              options={_options}
               value={selectedValue}
               onChange={onChangeHandler}
               onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
@@ -205,4 +216,8 @@ export const InputSelect = React.forwardRef<any, Props>(
       </div>
     );
   },
-);
+) as InputSelectFC;
+
+InputSelect.Option = Option;
+
+export { InputSelect };

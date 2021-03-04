@@ -27,6 +27,7 @@ export const SelectDropdownItem: React.FC<Props> = ({
   text,
   active,
   selected,
+  children,
 }) => {
   const onClickHandler = (): void => {
     if (onClick !== undefined) {
@@ -48,7 +49,7 @@ export const SelectDropdownItem: React.FC<Props> = ({
     >
       {prefix && <div className="ebs-select__dropdown-item-prefix">{prefix}</div>}
 
-      <div className="ebs-select__dropdown-item-text">{text}</div>
+      <div className="ebs-select__dropdown-item-text">{children ?? text}</div>
 
       {suffix || isMultiple ? (
         <div className="ebs-select__dropdown-item-suffix">{isMultiple ? <Checkbox checked={active} /> : suffix}</div>
