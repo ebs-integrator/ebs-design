@@ -11,16 +11,28 @@
   &--regular {
     color: $primary-color;
     background-color: $grey-100;
+
+    .ebs-icon {
+      color: $primary-color;
+    }
   }
 
   &--primary {
     color: $white;
     background-color: $primary-color;
+
+    .ebs-icon {
+      color: $white;
+    }
   }
 
   &--light {
     color: $text-color;
     background-color: $white;
+
+    .ebs-icon {
+      color: $text-color;
+    }
   }
 
   &--small {
