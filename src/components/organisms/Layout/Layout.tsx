@@ -13,11 +13,11 @@ const Layout: React.FC<{ className?: string }> = ({ className, children }) => {
   return (
     <LayoutProvider>
       <Container className={className}>
-        {childs.map((child: any) => {
+        {childs.map((child: any, i) => {
           const isFooter = child.type === Footer;
 
           return child.type === Content && hasFooter && !isFixedFooter ? (
-            <div className="ebs-layout__container">
+            <div key={i} className="ebs-layout__container">
               {child}
               {FoolterElement}
             </div>
