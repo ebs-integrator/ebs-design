@@ -9,8 +9,7 @@ interface Props {
   className?: string;
   loading?: boolean;
   disabled?: boolean;
-
-  // lots of conflicts from Animated's types
+  onScroll?: (e: React.UIEvent) => void;
   children: any;
 }
 
@@ -41,7 +40,12 @@ export const Animated: React.FC<Props> = ({ startFrom = '0%', debounce = 1, dura
   }
 
   return (
-    <AnimateHeight duration={duration} height={loading ? startFrom : 'auto'} className={cn(className)}>
+    <AnimateHeight
+      duration={duration}
+      height={loading ? startFrom : 'auto'}
+      className={cn(className)}
+      {...props}
+    >
       {props.children}
     </AnimateHeight>
   );

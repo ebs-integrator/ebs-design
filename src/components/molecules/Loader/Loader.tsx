@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { LoaderInline } from './LoaderInline';
 import { LoaderSpinner, LoaderSpinnerProps } from './LoaderSpinner';
 
@@ -16,6 +17,7 @@ export interface LoaderProps {
   fixed?: boolean;
   height?: number | string;
   children?: React.ReactNode;
+  className?: string;
 }
 
 const Loader: React.FC<LoaderProps> & LoaderComposition = ({
@@ -24,10 +26,14 @@ const Loader: React.FC<LoaderProps> & LoaderComposition = ({
   size = 'regular',
   loading,
   height = 350,
+  className,
   children,
 }) => {
   return (
-    <div className="ebs-loader" style={{ minHeight: loading ? height : undefined }}>
+    <div
+      className={cn('ebs-loader', { 'ebs-loader--loading': loading }, className)}
+      style={{ minHeight: loading ? height : undefined }}
+    >
       <LoaderSpinner fixed={fixed} size={size} className={!loading ? 'hide' : ''} />
 
       {fade ? (

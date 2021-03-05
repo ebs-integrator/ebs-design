@@ -11,7 +11,7 @@ export type InputSelectMode = 'single' | 'multiple';
 
 export type Option = OptionProps;
 
-type Value = string | number;
+export type Value = string | number;
 
 export interface Props {
   mode?: InputSelectMode;
@@ -25,10 +25,13 @@ export interface Props {
   options?: Option[];
   initialOptions?: Option[];
   value?: Value | Value[];
-  onChange?: (value: Value | Value[]) => void;
+  onChange?: (value?: Value | Value[]) => void;
   children?: ReactNode;
-  // FIXME: Remove this prop and refactor with compound components
   showSearch?: boolean;
+  onSearch?: (search: string) => void;
+  loading?: boolean;
+  loadMore?: () => void;
+  hasMore?: boolean;
 }
 export interface InputSelectFC extends React.ForwardRefExoticComponent<Props & React.RefAttributes<any>> {
   Option: FC<OptionProps>;
@@ -49,7 +52,11 @@ const InputSelect = React.forwardRef<any, Props>(
       disabled,
       initialOptions = [],
       showSearch,
+      onSearch,
       children,
+      loading,
+      loadMore,
+      hasMore,
       ...props
     },
     ref,
@@ -71,7 +78,8 @@ const InputSelect = React.forwardRef<any, Props>(
     );
 
     const getSelectedOption = useCallback(
-      (selectedValue, options = _options) => {
+      (selectedValue, additionalOptions = []) => {
+        const options = [...additionalOptions, ..._options];
         if (Array.isArray(selectedValue)) {
           return selectedValue.map(
             (value) => options.find((option) => option.value === value) ?? { value, text: value },
@@ -85,7 +93,7 @@ const InputSelect = React.forwardRef<any, Props>(
     );
 
     const [selectedOption, setSelectedOption] = useState<Option | Option[] | undefined>(
-      getSelectedOption(selectedValue, [...initialOptions, ..._options]),
+      getSelectedOption(selectedValue, initialOptions),
     );
 
     const [openDropdown, setOpenDropdown] = useState(false);
@@ -102,7 +110,7 @@ const InputSelect = React.forwardRef<any, Props>(
 
     useUpdateEffect(() => {
       setSelectedValue(value);
-      setSelectedOption(getSelectedOption(value));
+      setSelectedOption(getSelectedOption(value, selectedOption));
     }, [value]);
 
     const onChangeHandler = (value: Value): void => {
@@ -127,7 +135,7 @@ const InputSelect = React.forwardRef<any, Props>(
 
       if (!isControlled) {
         setSelectedValue(newValue);
-        setSelectedOption(getSelectedOption(newValue));
+        setSelectedOption(getSelectedOption(newValue, selectedOption));
       }
     };
 
@@ -208,6 +216,10 @@ const InputSelect = React.forwardRef<any, Props>(
               onChange={onChangeHandler}
               onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
               showSearch={showSearch}
+              onSearch={onSearch}
+              loading={loading}
+              hasMore={hasMore}
+              loadMore={loadMore}
             />
           )}
         </div>

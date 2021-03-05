@@ -3,3 +3,4 @@ export * from './date';
 export * from './string';
 export * from './object/object';
 export * from './stories';
+export * from './function';
