@@ -1,6 +1,6 @@
 {
   "name": "@ebs-integrator/react-ebs-ui",
-  "version": "0.0.1-beta.36",
+  "version": "0.0.1-beta.37",
   "description": "Basic React UI elements.",
   "author": "EBS Integrator",
   "maintainers": [
@@ -56,7 +56,7 @@
     "react-datepicker": "^3.3.0",
     "react-phone-input-2": "^2.13.8",
     "react-popper-tooltip": "^3.1.1",
-    "react-use": "^17.1.0"
+    "react-use": "^17.1.1"
   },
   "peerDependencies": {
     "react": ">= 16.8",
@@ -108,7 +108,7 @@
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
-    "typescript": "^3.9.7"
+    "typescript": "^4.2.3"
   },
   "files": [
     "dist"
