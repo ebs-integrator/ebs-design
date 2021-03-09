@@ -1,0 +1,308 @@
+@import '~react-datepicker/dist/react-datepicker.css';
+
+.picker-wrapper {
+  display: flex;
+  align-items: center;
+
+  > div:last-child,
+  > div:first-child:not(:last-child),
+  .ebs-data-picker__wrapper > div:last-child,
+  .ebs-data-picker__wrapper > div:first-child:not(:last-child) {
+    margin-right: rem(10px);
+  }
+}
+
+.picker-container {
+  position: absolute;
+  flex-direction: column-reverse;
+  background-color: $white;
+  border: inherit;
+  transform: translate3d(-50%, rem(55px, 0));
+  max-width: rem(600px);
+  width: max-content;
+  z-index: 9999;
+
+  &-date {
+    transform: translate3d(0, rem(55px, 0));
+  }
+}
+
+.ebs-data-picker__wrapper {
+  &.disabled .ebs-data-picker {
+    border-color: $grey-500;
+    background-color: $white;
+    color: $grey-500;
+    cursor: not-allowed;
+
+    @include placeholder {
+      color: $grey-500;
+    }
+  }
+
+  &.active .ebs-data-picker {
+    border-color: $primary-color;
+    background-color: $white;
+  }
+
+  &.has-error .ebs-data-picker {
+    border-color: $danger-color;
+    background-color: $white;
+  }
+
+  &.ebs-data-picker--period {
+    .react-datepicker-wrapper {
+      &:not(:first-child) {
+        .ebs-data-picker {
+          border-left: inherit;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+
+      &:first-child {
+        .ebs-data-picker {
+          border-right: 1px solid $border-color;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
+
+    &.active .react-datepicker-wrapper:first-child .ebs-data-picker {
+      border-right: 1px solid $primary-color;
+    }
+  }
+
+  &.ebs-data-picker--left {
+    .ebs-data-picker {
+      padding-right: rem(10px);
+      padding-left: rem($base-size);
+    }
+
+    .react-datepicker__input-container:before {
+      right: unset;
+      left: 0;
+    }
+  }
+}
+
+.ebs-date-picker__wrapper {
+  display: flex;
+  width: 100%;
+  margin: 0;
+
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .react-datepicker__input-container {
+    position: relative;
+
+    &:before {
+      content: '';
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M12 3.33325H3.99996C3.26358 3.33325 2.66663 3.93021 2.66663 4.66659V12.6666C2.66663 13.403 3.26358 13.9999 3.99996 13.9999H12C12.7363 13.9999 13.3333 13.403 13.3333 12.6666V4.66659C13.3333 3.93021 12.7363 3.33325 12 3.33325Z' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M10.6666 2V4.66667' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M5.33337 2V4.66667' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2.66663 7.33325H13.3333' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7.33337 10H8.00004' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 10V12' stroke='%23494F7D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+      width: rem($base-size);
+      height: 100%;
+      position: absolute;
+      background-repeat: no-repeat;
+      background-position: center;
+      right: 0;
+    }
+  }
+
+  .ebs-data-picker {
+    width: 100%;
+    border: 1px solid $border-color;
+    border-radius: rem($border-radius);
+    outline: none;
+    font-size: rem(14px);
+    line-height: $line-height-base;
+    padding-right: rem($base-size);
+    padding: rem($calendar-padding-y $calendar-padding-x);
+    color: $heading-color;
+
+    @include placeholder {
+      color: $text-color-secondary;
+    }
+
+    // Sizes
+    &--small {
+      font-size: rem(12px);
+      padding: rem($calendar-padding-y-sm $calendar-padding-x-sm);
+      padding-right: rem($base-size-sm);
+    }
+    &--medium {
+      padding: rem($calendar-padding-y $calendar-padding-x);
+      padding-right: rem($base-size);
+    }
+    &--large {
+      padding: rem($calendar-padding-y-lg $calendar-padding-x-lg);
+      padding-right: rem($base-size-lg);
+    }
+  }
+
+  .react-datepicker-popper {
+    z-index: 999999;
+
+    * {
+      outline: 0;
+    }
+
+    .react-datepicker {
+      @include elevation-2;
+      border: none;
+      display: flex;
+
+      &__time-list,
+      &__year-dropdown {
+        @include hiddenScroll;
+      }
+
+      &__time-list-item:hover {
+        background-color: $primary-100;
+        color: $text-color;
+      }
+
+      &__time-list-item--disabled {
+        display: none;
+      }
+
+      &__time-list-item--selected,
+      &__time-list-item--selected:hover {
+        background-color: $primary-color;
+        color: $white;
+      }
+
+      &__navigation {
+        content: '';
+
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='currentColor' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
+
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: rem(15px);
+        height: rem(15px);
+        border: none;
+      }
+
+      &__navigation--previous {
+        transform: rotate(180deg);
+      }
+
+      // arrow
+      &__triangle {
+        display: none;
+      }
+
+      &__time-container {
+        border-color: $border-color;
+      }
+
+      &__time ul li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__navigation {
+        background-size: 50%;
+        padding: rem(10px);
+        top: rem(5px);
+      }
+
+      &__navigation--years {
+        top: unset;
+      }
+
+      &__navigation--years-upcoming {
+        transform: rotate(-90deg);
+      }
+
+      &__navigation--years-previous {
+        transform: rotate(90deg);
+      }
+
+      &__year-option--selected {
+        width: rem(20px);
+        border-radius: rem(100px);
+        font-size: rem(20px);
+      }
+
+      &__year-read-view--down-arrow {
+        border: none;
+        top: rem(7px);
+      }
+
+      &__year-read-view--down-arrow:before {
+        border: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 8 12' fill='currentColor' class='ebs-icon ebs-icon-size-small ebs-icon__arrow-right '%3E%3Cpath fill-rule='evenodd' d='M1.052,-0.003 C1.317,-0.003 1.581,0.098 1.783,0.300 L6.721,5.263 C7.120,5.663 7.120,6.309 6.721,6.710 L1.783,11.672 C1.382,12.074 0.731,12.077 0.328,11.677 C-0.076,11.278 -0.078,10.628 0.322,10.225 L4.541,5.986 L0.322,1.748 C-0.078,1.345 -0.076,0.695 0.328,0.295 C0.528,0.097 0.790,-0.003 1.052,-0.003 Z'%3E%3C/path%3E%3C/svg%3E");
+        background-size: 50%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: rem(15px);
+        height: rem(15px);
+        left: auto;
+        top: auto;
+        bottom: auto;
+        z-index: unset;
+        transform: rotate(90deg) translate3d(-50%, 50%, 0);
+      }
+
+      &__header {
+        background: transparent;
+        border: none;
+      }
+
+      &__year-read-view {
+        padding: rem(5px 10px);
+      }
+
+      &__day-name {
+        font-weight: 600;
+        margin: 0;
+        width: rem(30px);
+        height: rem(30px);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__month {
+        margin: rem(0 15px 15px);
+      }
+
+      &__day {
+        margin: 0;
+        width: rem(30px);
+        height: rem(30px);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0;
+        color: $text-color;
+      }
+
+      &__day:hover {
+        background-color: $primary-100;
+      }
+
+      &__day--in-range {
+        background-color: $primary-100;
+      }
+
+      &__day--in-selecting-range {
+        background-color: $primary-000;
+      }
+
+      &__day--selected,
+      &__day--selected:hover,
+      &__day--keyboard-selected,
+      &__day--keyboard-selected:hover {
+        border-radius: rem($border-radius);
+        background-color: $primary-color;
+        color: $white;
+      }
+    }
+  }
+}
