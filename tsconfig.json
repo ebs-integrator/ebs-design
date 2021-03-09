@@ -3,9 +3,12 @@
     "declaration": true,
     "isolatedModules": false,
     "allowJs": false,
-
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -19,7 +22,9 @@
     "jsx": "react",
     "baseUrl": "src"
   },
-  "include": ["src"],
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules",
     "build",

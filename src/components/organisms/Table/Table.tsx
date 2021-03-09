@@ -123,4 +123,5 @@ const Table = <T extends object>({
   );
 };
 
-export { Table, Column, ColumnGroup, Summary, TableProps, ColumnType };
+export { Table, Column, ColumnGroup, Summary };
+export type { TableProps, ColumnType };
