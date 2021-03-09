@@ -1,4 +1,10 @@
-import { FormInstance, Field, List, useForm, FormProvider, FormProps } from 'rc-field-form';
+import { Field, List, useForm, FormProvider } from 'rc-field-form';
 import { Form } from './Form';
 
-export { Form, FormInstance, Field, List, useForm, FormProvider, FormProps };
+// Import types
+import type { FormInstance } from 'rc-field-form';
+import type { FormProps } from './Form';
+
+export { Form, Field, List, useForm, FormProvider };
+
+export type { FormInstance, FormProps };

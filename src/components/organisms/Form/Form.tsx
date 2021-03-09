@@ -7,7 +7,7 @@ import { FormGroup, FormGroupProps } from './FormGroup';
 import { getControlOptions, getLabelOptions } from './utils';
 import { FormType, LabelOptions, ControlOptions } from './interface';
 
-export interface FormProps extends RCFormProps {
+interface FormProps extends RCFormProps {
   type?: FormType;
   className?: string;
   labelOptions?: LabelOptions; // Input label options, such as align, justify, column
@@ -15,7 +15,7 @@ export interface FormProps extends RCFormProps {
   fieldRow?: RowProps; // The layout for field columns
 }
 
-export interface FormComposition {
+interface FormComposition {
   Field: React.FC<FormFieldProps>;
   Group: React.FC<FormGroupProps>;
 }
@@ -49,4 +49,4 @@ Form.displayName = 'Form';
 Form.Field = FormField;
 Form.Group = FormGroup;
 
-export { Form, FormContext };
+export { Form, FormContext, FormProps };

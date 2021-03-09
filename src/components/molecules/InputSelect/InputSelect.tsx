@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useClickAway } from 'react-use';
+import useClickAway from 'react-use/esm/useClickAway';
 import cn from 'classnames';
 import { Extra, Label, Icon } from 'components/atoms';
 import { SelectDropdown } from 'components/molecules';
