@@ -27,8 +27,8 @@ export const FormGroup: React.FC<FormGroupProps> = ({
 
   // Field's components props
   const labelProps = Object.assign({}, formCtx.labelOptions, {
-    ...labelOptions,
     align: 'start', // Align field group label to the top
+    ...labelOptions,
   });
   const controlProps = Object.assign({}, formCtx.controlOptions, controlOptions);
   const fieldRowProps = Object.assign({}, formCtx.fieldRow, fieldRow);
