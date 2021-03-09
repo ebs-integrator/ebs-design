@@ -53,12 +53,10 @@ export {
 export {
   Actions,
   Form,
-  FormInstance,
   Field,
   List,
   useForm,
   FormProvider,
-  FormProps,
   Layout,
   Modal,
   Sidebar,
@@ -66,10 +64,12 @@ export {
   Table,
   Column,
   ColumnGroup,
-  ColumnType,
   Summary,
-  TableProps,
 } from './components/organisms';
+
+// Export types
+export type { ColumnType, TableProps } from 'components/organisms/Table/Table';
+export type { FormInstance, FormProps } from 'components/organisms/Form';
 
 // Libs
 export { firstLetters } from './libs';

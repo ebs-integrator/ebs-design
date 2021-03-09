@@ -8,16 +8,9 @@ module.exports = {
     '../src/components/molecules/**/*.stories.@(tsx|mdx)',
     '../src/components/organisms/**/*.stories.@(tsx|mdx)',
   ],
-  addons: ['@storybook/addon-docs'],
+  addons: ['@storybook/addon-docs', '@storybook/addon-links'],
   presets: [
-    {
-      name: '@storybook/preset-create-react-app',
-      options: {
-        craOverrides: {
-          fileLoaderExcludes: ['less'],
-        },
-      },
-    },
+    '@storybook/preset-create-react-app',
     {
       name: '@storybook/preset-typescript',
       options: {

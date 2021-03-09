@@ -19,7 +19,6 @@ const columns: ColumnType<any>[] = [
   {
     title: 'Title',
     dataIndex: 'title',
-    onFilter: console.log,
   },
   {
     title: 'Description',
@@ -57,16 +56,13 @@ const columns2: ColumnType<any>[] = [
   {
     title: 'Full name',
     dataIndex: 'fullname',
-    onFilter: console.log,
   },
   {
     title: 'Invoice №',
     dataIndex: 'id',
-    onFilter: console.log,
   },
   {
     title: 'Commission',
-    onFilter: console.log,
     children: [
       {
         title: '%',
