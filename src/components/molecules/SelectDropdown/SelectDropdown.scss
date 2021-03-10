@@ -11,6 +11,15 @@
   border-radius: rem($border-radius);
   z-index: 999;
 
+  &--box {
+    position: relative;
+    box-shadow: none;
+    border: 1px solid $border-color;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
   & > &-search,
   &-search.ebs-input__wrapper--active {
     margin-bottom: rem(4px);
@@ -36,7 +45,7 @@
     font-size: rem(12px);
   }
 
-  .ebs-input__container {
-    padding-bottom: rem(4px);
+  .ebs-input__search-wrapper {
+    margin-bottom: rem(4px);
   }
 }

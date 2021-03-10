@@ -3,35 +3,51 @@ import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { Animated, Icon, Input } from 'components/atoms';
 import { InputSelectMode, Option } from 'components/molecules/InputSelect/InputSelect';
+import { SelectValue } from 'components/organisms/SmartSelect/SmartSelect';
+import { Search } from 'components/organisms/SmartSelect/Search';
+import { Pagination } from 'components/organisms/SmartSelect/Pagination';
+import { GenericObject } from 'types';
 
 import { SelectDropdownItem } from './SelectDropdownItem/SelectDropdownItem';
 
-export interface Props {
+export interface SelectDropdownProps {
   mode: InputSelectMode;
   className?: string;
-  onClose?: () => void;
   options?: Option[];
-
-  // TODO: decide the type
-  onChange?: (value: any) => void;
-  // TODO: decide the type
-  value?: any;
-
-  // FIXME: Remove this prop and refactor with compound components
+  loading?: boolean;
   showSearch?: boolean;
+
+  value?: SelectValue | SelectValue[];
+  onChange?: (value: SelectValue | SelectValue[]) => void;
+  onClose?: () => void;
 }
 
-export const SelectDropdown: React.FC<Props> = ({
+export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   className,
   mode,
   onClose,
   onChange,
+  loading,
   options = [],
   value,
   showSearch,
+  children,
 }) => {
+  const ref = React.useRef<HTMLDivElement | null>(null);
   const [search, setSearch] = React.useState('');
   const [activeItem, setActiveItem] = React.useState(0);
+
+  const onScroll = (e): void => {
+    console.log(Math.round(e.target.scrollTop), e.target.scrollHeight - e.target.offsetHeight);
+  };
+
+  React.useEffect(() => {
+    if (ref.current) {
+      ref.current.addEventListener('scroll', onScroll);
+    }
+  }, [ref, onScroll]);
+
+  const childs = React.useMemo(() => React.Children.toArray(children) as GenericObject[], [children]);
 
   const $options = React.useMemo(
     () => options.filter((option) => option.text.toLowerCase().match(search.toLowerCase())),
@@ -78,9 +94,11 @@ export const SelectDropdown: React.FC<Props> = ({
   const onSearch = (newSearch: string): void => setSearch(newSearch);
 
   const hasOptions = React.useMemo(() => $options && $options.length > 0, [$options]);
-
+  console.log('ref', ref);
   return (
     <div className={cn(`ebs-select__dropdown`, className)}>
+      {childs.find((child) => child.type === Search)}
+
       {showSearch && (
         <Input
           suffix={<Icon type="search" className="cursor" />}
@@ -93,23 +111,29 @@ export const SelectDropdown: React.FC<Props> = ({
         />
       )}
 
-      <Animated className="ebs-select__dropdown-items" duration={100}>
-        {hasOptions ? (
-          $options.map((option, key) => (
-            <SelectDropdownItem
-              key={option.value}
-              mode={mode}
-              active={mode === 'multiple' ? value && value.includes(option.value) : value === option.value}
-              selected={activeItem === key + 1}
-              value={option.value}
-              text={option.text}
-              onClick={onChangeHandler}
-            />
-          ))
-        ) : (
-          <div className="ebs-select__dropdown--empty">No found</div>
-        )}
-      </Animated>
+      <div ref={ref} className="ebs-select__dropdown-items">
+        <Animated loading={loading} duration={100}>
+          {hasOptions ? (
+            $options.map((option, key) => (
+              <SelectDropdownItem
+                key={option.value}
+                mode={mode}
+                active={
+                  mode === 'multiple' && Array.isArray(value) ? value.includes(option.value) : value === option.value
+                }
+                selected={activeItem === key + 1}
+                value={option.value}
+                text={option.text}
+                onClick={onChangeHandler}
+              />
+            ))
+          ) : (
+            <div className="ebs-select__dropdown--empty">No found</div>
+          )}
+        </Animated>
+      </div>
+
+      {childs.find((child) => child.type === Pagination)}
     </div>
   );
 };

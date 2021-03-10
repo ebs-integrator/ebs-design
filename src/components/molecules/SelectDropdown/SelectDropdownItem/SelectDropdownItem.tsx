@@ -2,6 +2,8 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Checkbox } from 'components/molecules';
 import { InputSelectMode } from 'components/molecules/InputSelect/InputSelect';
+import { SelectValue } from 'components/organisms/SmartSelect/SmartSelect';
+
 export interface Props {
   className?: string;
   mode?: InputSelectMode;
@@ -12,9 +14,9 @@ export interface Props {
   selected?: boolean;
 
   // TODO: decide the type
-  onClick?: (value: any) => void;
+  onClick?: (value: SelectValue) => void;
   // TODO: decide the type
-  value?: any;
+  value: SelectValue;
 }
 
 export const SelectDropdownItem: React.FC<Props> = ({
@@ -29,7 +31,7 @@ export const SelectDropdownItem: React.FC<Props> = ({
   selected,
 }) => {
   const onClickHandler = (): void => {
-    if (onClick !== undefined) {
+    if (onClick) {
       onClick(value);
     }
   };
