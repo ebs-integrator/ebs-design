@@ -5,7 +5,7 @@ import { Animated, Icon, Input } from 'components/atoms';
 import { InputSelectMode, Option } from 'components/molecules/InputSelect/InputSelect';
 import { SelectValue } from 'components/organisms/SmartSelect/SmartSelect';
 import { Search } from 'components/organisms/SmartSelect/Search';
-import { Pagination, PaginationMode } from 'components/organisms/SmartSelect/Pagination';
+import { Pagination } from 'components/organisms/SmartSelect/Pagination';
 import { GenericObject } from 'types';
 
 import { SelectDropdownItem } from './SelectDropdownItem/SelectDropdownItem';
@@ -54,7 +54,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const elPagination = childs.find((child) => child.type === Pagination);
 
   const paginationProps = React.useMemo(() => (elPagination && elPagination.props) || {}, [elPagination]);
-  const isScrollModePagination = React.useMemo(() => paginationProps.mode === PaginationMode.Scroll, [paginationProps]);
+  const isScrollModePagination = React.useMemo(() => paginationProps.mode === 'scroll', [paginationProps]);
 
   React.useEffect(() => {
     if (ref.current && isScrollModePagination) {
@@ -152,7 +152,7 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
         </Animated>
       </div>
 
-      {elPagination && elPagination.props.mode === PaginationMode.Regular ? elPagination : null}
+      {elPagination && elPagination.props.mode === 'regular' ? elPagination : null}
     </div>
   );
 };

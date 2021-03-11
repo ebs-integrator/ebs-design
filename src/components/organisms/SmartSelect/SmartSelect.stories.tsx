@@ -41,56 +41,35 @@ export const Regular = (): React.ReactNode => {
   }, [page]);
 
   return (
-    <Space>
-      <Space direction="vertical">
-        <SmartSelect value={value} loading={loading} placeholder="Select" onChange={setValue} optionsMode="box">
-          <SmartSelect.Search value={search} onSearch={setSearch} />
-          {list.map((item, i) => (
-            <SmartSelect.Option key={i} value={item.value}>
-              {item.text}
-            </SmartSelect.Option>
-          ))}
-          <SmartSelect.Pagination count={total} limit={limit} page={page} setPage={setPage} />
-        </SmartSelect>
-      </Space>
-      <Space direction="vertical">
-        <SmartSelect value={value} loading={loading} placeholder="Select" onChange={setValue}>
-          <SmartSelect.Search value={search} onSearch={setSearch} />
-          {list.map((item, i) => (
-            <SmartSelect.Option key={i} value={item.value}>
-              {item.text}
-            </SmartSelect.Option>
-          ))}
-          <SmartSelect.Pagination count={total} limit={limit} page={page} setPage={setPage} />
-        </SmartSelect>
-      </Space>
-      <Space direction="vertical">
-        <SmartSelect
-          value={values}
-          options={list}
-          loading={loading}
-          mode="multiple"
-          placeholder="Select"
-          onChange={setValues}
-          optionsMode="box"
-        >
-          <SmartSelect.Search value={search} onSearch={setSearch} />
-          <SmartSelect.Pagination count={total} limit={limit} page={page} setPage={setPage} mode="scroll" />
-        </SmartSelect>
-      </Space>
-      <Space direction="vertical">
-        <SmartSelect
-          value={values}
-          options={list}
-          loading={loading}
-          mode="multiple"
-          placeholder="Select"
-          onChange={setValues}
-        >
-          <SmartSelect.Search value={search} onSearch={setSearch} />
-          <SmartSelect.Pagination count={total} limit={limit} page={page} setPage={setPage} />
-        </SmartSelect>
-      </Space>
+    <Space direction="vertical" style={{ minWidth: 300 }}>
+      <SmartSelect
+        value={values}
+        // options={list}
+        loading={loading}
+        // mode="multiple"
+        mode="multiple"
+        placeholder="Select"
+        onChange={setValues}
+        // optionsMode="scroll"
+        optionsMode="box"
+      >
+        <SmartSelect.Search value={search} onSearch={setSearch} />
+
+        {list.map((item, i) => (
+          <SmartSelect.Option key={i} value={item.value}>
+            {item.text}
+          </SmartSelect.Option>
+        ))}
+
+        <SmartSelect.Pagination
+          count={total}
+          limit={limit}
+          page={page}
+          setPage={setPage}
+          // mode="regular"
+          mode="scroll"
+        />
+      </SmartSelect>
     </Space>
   );
 };

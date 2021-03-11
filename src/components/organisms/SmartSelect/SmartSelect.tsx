@@ -3,12 +3,13 @@ import useClickAway from 'react-use/esm/useClickAway';
 import cn from 'classnames';
 import { Extra, Label, Icon } from 'components/atoms';
 import { Loader } from 'components/molecules';
+import { isEqualArrays, uniqueArray } from 'libs';
 import { GenericObject } from 'types';
 
 import { SmartSelectDropdown } from './SmartSelectDropdown';
 import { Search } from './Search';
 import { Option } from './Option';
-import { Pagination, PaginationMode } from './Pagination';
+import { Pagination } from './Pagination';
 
 export interface SmartSelectComposition {
   Option: React.FC<any>;
@@ -68,6 +69,7 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
     const [scopeValue, setScopeValue] = React.useState(value);
     const [hasExternalValue, setHasExternalValue] = React.useState(false);
     const [openDropdown, setOpenDropdown] = React.useState(false);
+    const [loaded, setLoaded] = React.useState(false);
     const [options, setOptions] = React.useState<Option[]>([]);
 
     const childs = React.Children.toArray(children) as GenericObject[];
@@ -75,31 +77,33 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
     const elPagination = childs.find((child) => child.type === Pagination);
 
     const paginationProps = (elPagination && elPagination.props) || {};
-    const isScrollModePagination = paginationProps.mode === PaginationMode.Scroll;
+    const isScrollModePagination = paginationProps.mode === 'scroll';
 
     const $value = React.useMemo(() => (hasExternalValue ? value : scopeValue), [value, scopeValue, hasExternalValue]);
 
-    const $options = optionsList.length
-      ? optionsList
-      : childs
-          .filter((i) => ![Search, Pagination].includes(i.type))
-          .map((i) => ({ value: i.props.value, text: i.props.children }));
+    const $options = React.useMemo(
+      () =>
+        optionsList.length
+          ? optionsList
+          : childs
+              .filter((i) => ![Search, Pagination].includes(i.type))
+              .map((i) => ({ value: i.props.value, text: i.props.children })),
+      [optionsList],
+    );
 
     React.useEffect(() => {
-      if (!isScrollModePagination) {
-        setOptions($options);
-      }
-    }, [isScrollModePagination]);
-
-    React.useEffect(() => {
-      if (isScrollModePagination) {
+      if (!isEqualArrays($options, options) && !loaded) {
         setOptions((i) => {
-          const syncOptions = i.concat($options);
-
-          return syncOptions.filter((item, index) => syncOptions.indexOf(item) === index);
+          if (isScrollModePagination) {
+            return uniqueArray(i, $options) as Option[];
+          } else {
+            return $options;
+          }
         });
+
+        setLoaded(true);
       }
-    }, [isScrollModePagination]);
+    }, [$options]);
 
     const hasValue = React.useMemo(() => {
       const isValueArray = Array.isArray($value);
@@ -210,6 +214,8 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
         if (page < Math.ceil(count / limit)) {
           setPage(page + 1);
         }
+
+        setLoaded(false);
       }
     };
 

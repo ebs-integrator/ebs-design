@@ -7,7 +7,7 @@ import { GenericObject } from 'types';
 import { SelectDropdownItem } from './SelectDropdownItem/SelectDropdownItem';
 import { SmartSelectMode, SelectValue, Option } from './SmartSelect';
 import { Search } from './Search';
-import { Pagination, PaginationMode } from './Pagination';
+import { Pagination } from './Pagination';
 
 export interface SelectDropdownProps {
   mode: SmartSelectMode;
@@ -51,7 +51,7 @@ export const SmartSelectDropdown: React.FC<SelectDropdownProps> = ({
   const elPagination = childs.find((child) => child.type === Pagination);
 
   const paginationProps = React.useMemo(() => (elPagination && elPagination.props) || {}, [elPagination]);
-  const isScrollModePagination = React.useMemo(() => paginationProps.mode === PaginationMode.Scroll, [paginationProps]);
+  const isScrollModePagination = React.useMemo(() => paginationProps.mode === 'scroll', [paginationProps]);
 
   React.useEffect(() => {
     if (ref.current && isScrollModePagination) {
@@ -132,7 +132,7 @@ export const SmartSelectDropdown: React.FC<SelectDropdownProps> = ({
         </Animated>
       </div>
 
-      {elPagination && elPagination.props.mode === PaginationMode.Regular ? elPagination : null}
+      {elPagination && elPagination.props.mode === 'regular' ? elPagination : null}
     </div>
   );
 };

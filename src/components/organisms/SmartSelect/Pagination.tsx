@@ -1,17 +1,12 @@
 import * as React from 'react';
 import { Space, Button } from 'components/atoms';
 
-enum PaginationMode {
-  Regular = 'regular',
-  Scroll = 'scroll',
-}
-
 interface PaginationProps {
   className?: string;
   count: number;
   page: number;
   limit: number;
-  mode?: PaginationMode;
+  mode?: 'regular' | 'scroll';
   setPage: (value: number) => void;
 }
 
@@ -49,7 +44,7 @@ const Pagination: React.FC<PaginationProps> = ({ count, page, limit, setPage, cl
 };
 
 Pagination.defaultProps = {
-  mode: PaginationMode.Regular,
+  mode: 'regular',
 };
 
-export { Pagination, PaginationMode };
+export { Pagination };
