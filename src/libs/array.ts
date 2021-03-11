@@ -9,3 +9,4 @@ export const flattenArray = <T>(arr: T[], key = 'children'): T[] =>
 
     return acc;
   }, []);
+

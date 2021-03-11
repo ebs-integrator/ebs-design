@@ -5,7 +5,7 @@
   border-radius: rem($border-radius);
   font-size: rem(14px);
   background-color: $white;
-  width: 300px; // Remove it before push
+  min-width: 300px; // Remove it before push
 
   &--box {
     position: relative;
@@ -63,6 +63,7 @@
     padding-top: rem(4px);
     padding-bottom: rem(4px);
     font-size: rem(12px);
+    height: 100%;
     margin-bottom: 0;
   }
 
@@ -98,6 +99,7 @@
   }
 
   &__pagination {
+    border-top: 1px solid $border-color;
     padding: rem(6px 8px);
   }
 }

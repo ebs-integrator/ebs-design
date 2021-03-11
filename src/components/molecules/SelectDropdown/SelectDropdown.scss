@@ -37,11 +37,10 @@
     }
   }
 
-  & > &--empty {
-    display: block;
+  & &--empty {
     color: $grey-500;
     text-align: center;
-    margin: rem(5px);
+    margin: rem(5px 0);
     font-size: rem(12px);
   }
 

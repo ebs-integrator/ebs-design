@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { SmartSelect, Option } from './SmartSelect';
 import { exportStory } from '../../../libs';
-import { Space } from 'components/atoms';
+import { AvatarInline, Space } from 'components/atoms';
 
 export default {
   title: exportStory('SmartSelect', 'organisms'),
@@ -23,12 +23,15 @@ export const Regular = (): React.ReactNode => {
   React.useEffect(() => {
     setLoaded(true);
 
-    fetch(`https://api.first.org/data/v1/countries?region=europe&limit=${limit}&offset=${(page - 1) * limit}`)
+    fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
       .then((response) => response.json())
       .then(({ data, total: count }) => {
         let newList: Option[] = [];
         Object.keys(data).map((item) => {
-          newList.push({ value: item, text: data[item].country });
+          newList.push({
+            value: item,
+            text: <AvatarInline type="primary" shortAlt={item} alt={data[item].country} />,
+          });
         });
 
         setTotal(count);
@@ -72,7 +75,7 @@ export const Regular = (): React.ReactNode => {
           optionsMode="box"
         >
           <SmartSelect.Search value={search} onSearch={setSearch} />
-          <SmartSelect.Pagination count={total} limit={limit} page={page} setPage={setPage} />
+          <SmartSelect.Pagination count={total} limit={limit} page={page} setPage={setPage} mode="scroll" />
         </SmartSelect>
       </Space>
       <Space direction="vertical">

@@ -1,15 +1,21 @@
 import * as React from 'react';
 import { Space, Button } from 'components/atoms';
 
+enum PaginationMode {
+  Regular = 'regular',
+  Scroll = 'scroll',
+}
+
 interface PaginationProps {
   className?: string;
   count: number;
   page: number;
   limit: number;
+  mode?: PaginationMode;
   setPage: (value: number) => void;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({ count, page, limit, setPage, className }) => {
+const Pagination: React.FC<PaginationProps> = ({ count, page, limit, setPage, className }) => {
   const totals = React.useMemo(() => Math.ceil(count / limit), [count, limit]);
   const state = React.useMemo(() => (count ? `${page} of ${totals}` : null), [count, page]);
 
@@ -41,3 +47,9 @@ export const Pagination: React.FC<PaginationProps> = ({ count, page, limit, setP
     </div>
   );
 };
+
+Pagination.defaultProps = {
+  mode: PaginationMode.Regular,
+};
+
+export { Pagination, PaginationMode };

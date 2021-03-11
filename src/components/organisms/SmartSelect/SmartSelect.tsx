@@ -2,12 +2,13 @@ import * as React from 'react';
 import useClickAway from 'react-use/esm/useClickAway';
 import cn from 'classnames';
 import { Extra, Label, Icon } from 'components/atoms';
-import { SelectDropdown, Loader } from 'components/molecules';
+import { Loader } from 'components/molecules';
 import { GenericObject } from 'types';
 
+import { SmartSelectDropdown } from './SmartSelectDropdown';
 import { Search } from './Search';
 import { Option } from './Option';
-import { Pagination } from './Pagination';
+import { Pagination, PaginationMode } from './Pagination';
 
 export interface SmartSelectComposition {
   Option: React.FC<any>;
@@ -16,10 +17,8 @@ export interface SmartSelectComposition {
 }
 
 export type SelectSize = 'small' | 'medium' | 'large';
-
 export type SmartSelectMode = 'single' | 'multiple';
 export type SmartSelectOptionsMode = 'dropdown' | 'box';
-
 export type SelectValue = string | number;
 export type Option = {
   value: SelectValue;
@@ -49,7 +48,7 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
     {
       mode = 'single',
       optionsMode = 'dropdown',
-      options = [],
+      options: optionsList = [],
       size = 'medium',
       className,
       hasError,
@@ -61,7 +60,6 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
       loading,
       disabled,
       children,
-      ...props
     },
     ref,
   ) => {
@@ -70,48 +68,59 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
     const [scopeValue, setScopeValue] = React.useState(value);
     const [hasExternalValue, setHasExternalValue] = React.useState(false);
     const [openDropdown, setOpenDropdown] = React.useState(false);
+    const [options, setOptions] = React.useState<Option[]>([]);
 
-    const childs = React.useMemo(() => React.Children.toArray(children) as GenericObject[], [children]);
+    const childs = React.Children.toArray(children) as GenericObject[];
+    const elSearch = childs.find((child) => child.type === Search);
+    const elPagination = childs.find((child) => child.type === Pagination);
+
+    const paginationProps = (elPagination && elPagination.props) || {};
+    const isScrollModePagination = paginationProps.mode === PaginationMode.Scroll;
 
     const $value = React.useMemo(() => (hasExternalValue ? value : scopeValue), [value, scopeValue, hasExternalValue]);
 
-    const $options = React.useMemo(
-      () =>
-        options.length
-          ? options
-          : childs
-              .filter((i) => ![Search, Pagination].includes(i.type))
-              .map((i) => ({ value: i.props.value, text: i.props.children })),
-      [options],
-    );
+    const $options = optionsList.length
+      ? optionsList
+      : childs
+          .filter((i) => ![Search, Pagination].includes(i.type))
+          .map((i) => ({ value: i.props.value, text: i.props.children }));
+
+    React.useEffect(() => {
+      if (!isScrollModePagination) {
+        setOptions($options);
+      }
+    }, [isScrollModePagination]);
+
+    React.useEffect(() => {
+      if (isScrollModePagination) {
+        setOptions((i) => {
+          const syncOptions = i.concat($options);
+
+          return syncOptions.filter((item, index) => syncOptions.indexOf(item) === index);
+        });
+      }
+    }, [isScrollModePagination]);
 
     const hasValue = React.useMemo(() => {
       const isValueArray = Array.isArray($value);
       return (
-        (!isValueArray && $value !== undefined) ||
-        (isValueArray && $value && (typeof $value === 'number' || $value.length > 0))
+        (!isValueArray && $value !== undefined) || (isValueArray && $value && ($value as SelectValue[]).length > 0)
       );
     }, [$value]);
 
     const textValue = React.useMemo(() => {
       if (Array.isArray($value)) {
-        return $options.filter((option) => $value.includes(option.value)).map((option) => option.text);
+        return options.filter((option) => $value.includes(option.value)).map((option) => option.text);
       }
 
-      return ($options.find((option) => option.value === $value) || { text: $value }).text;
-    }, [$value, $options]);
+      return (options.find((option) => option.value === $value) || { text: $value }).text;
+    }, [$value, options]);
 
     React.useEffect(() => {
       if (value) {
         setHasExternalValue(true);
       }
     }, [value]);
-
-    useClickAway(inputRef, () => {
-      if (openDropdown) {
-        setOpenDropdown(false);
-      }
-    });
 
     const onChangeHandler = (newValue?: any): void => {
       const $newValue = mode === 'single' ? (newValue === $value ? undefined : newValue) : newValue;
@@ -154,10 +163,10 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
 
     const renderValue = React.useMemo(
       () =>
-        isArrayValue
-          ? (textValue as string[]).map((item, key) => (
+        isArrayValue && textValue
+          ? (textValue as React.ReactNode[]).map((item, key) => (
               <Label
-                key={item}
+                key={key}
                 className="ebs-smart-select__input-label"
                 type="primary"
                 circle
@@ -177,6 +186,32 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
       disabled,
       openDropdown,
     ]);
+
+    useClickAway(inputRef, () => {
+      if (openDropdown && !isBox) {
+        setOpenDropdown(false);
+      }
+    });
+
+    const onPrev = (): void => {
+      if (elPagination) {
+        const { page, setPage } = elPagination.props;
+
+        if (page > 1) {
+          setPage(page - 1);
+        }
+      }
+    };
+
+    const onNext = (): void => {
+      if (elPagination) {
+        const { page, count, limit, setPage } = elPagination.props;
+
+        if (page < Math.ceil(count / limit)) {
+          setPage(page + 1);
+        }
+      }
+    };
 
     return (
       <div
@@ -198,7 +233,7 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
           >
             <div className="ebs-smart-select__input-value">{loading ? <Loader.Inline /> : renderValue}</div>
 
-            {hasValue && textValue && mode === 'multiple' && (
+            {hasValue && textValue && Array.isArray(textValue) && (
               <>
                 <div className="ebs-smart-select__input-transition" />
 
@@ -216,19 +251,20 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
           </div>
 
           {!disabled && (openDropdown || isBox) && (
-            <SelectDropdown
+            <SmartSelectDropdown
               mode={mode}
-              options={$options}
+              options={options}
               value={$value}
               onChange={onChangeHandler}
               loading={loading}
               onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
               className={cn({ 'ebs-select__dropdown--box': isBox })}
-              showSearch={props.showSearch}
+              onPrev={onPrev}
+              onNext={onNext}
             >
-              {childs.find((child) => child.type === Search)}
-              {childs.find((child) => child.type === Pagination)}
-            </SelectDropdown>
+              {elSearch}
+              {elPagination}
+            </SmartSelectDropdown>
           )}
         </div>
 

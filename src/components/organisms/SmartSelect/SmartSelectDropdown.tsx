@@ -1,43 +1,40 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
-import { Animated, Icon, Input } from 'components/atoms';
-import { InputSelectMode, Option } from 'components/molecules/InputSelect/InputSelect';
-import { SelectValue } from 'components/organisms/SmartSelect/SmartSelect';
-import { Search } from 'components/organisms/SmartSelect/Search';
-import { Pagination, PaginationMode } from 'components/organisms/SmartSelect/Pagination';
+import { Animated, Space } from 'components/atoms';
 import { GenericObject } from 'types';
 
 import { SelectDropdownItem } from './SelectDropdownItem/SelectDropdownItem';
+import { SmartSelectMode, SelectValue, Option } from './SmartSelect';
+import { Search } from './Search';
+import { Pagination, PaginationMode } from './Pagination';
 
 export interface SelectDropdownProps {
-  mode: InputSelectMode;
+  mode: SmartSelectMode;
   className?: string;
   options?: Option[];
   loading?: boolean;
-  showSearch?: boolean;
-
   value?: SelectValue | SelectValue[];
+  notFoundLabel?: string;
   onChange?: (value: SelectValue | SelectValue[]) => void;
   onPrev?: () => void;
   onNext?: () => void;
   onClose?: () => void;
 }
 
-export const SelectDropdown: React.FC<SelectDropdownProps> = ({
+export const SmartSelectDropdown: React.FC<SelectDropdownProps> = ({
   className,
   mode,
   onClose,
   onChange,
   loading,
   options = [],
+  notFoundLabel = 'No found',
   value,
-  showSearch,
   onNext,
   children,
 }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
-  const [search, setSearch] = React.useState('');
   const [activeItem, setActiveItem] = React.useState(0);
 
   const onScroll = (e): void => {
@@ -68,11 +65,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     };
   }, [ref, onScroll, isScrollModePagination]);
 
-  const $options = React.useMemo(
-    () => options.filter((option) => option.text.toLowerCase().match(search.toLowerCase())),
-    [options, search],
-  );
-
   useEventListener('keydown', ({ key }: { key: string }) => {
     if (['ArrowUp', 'ArrowDown', 'Escape', 'Enter'].includes(key)) {
       if (key === 'Escape' && mode === 'single' && onClose !== undefined) {
@@ -80,8 +72,8 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
       }
 
       if (key === 'Enter' && onChange !== undefined) {
-        const option = $options[activeItem - 1];
-        onChange(option ? option.value : undefined);
+        const option = options[activeItem - 1];
+        onChange(option.value);
 
         if (mode === 'single' && onClose !== undefined) {
           onClose();
@@ -90,12 +82,12 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
 
       // User pressed the up arrow
       if (key === 'ArrowUp') {
-        setActiveItem((s) => (s !== 0 ? s - 1 : $options.length));
+        setActiveItem((s) => (s !== 0 ? s - 1 : options.length));
       }
 
       // User pressed the down arrow
       if (key === 'ArrowDown') {
-        setActiveItem((s) => (s < $options.length ? s + 1 : 0));
+        setActiveItem((s) => (s < options.length ? s + 1 : 0));
       }
     }
   });
@@ -110,30 +102,16 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     }
   };
 
-  const onSearch = (newSearch: string): void => setSearch(newSearch);
-
-  const hasOptions = React.useMemo(() => $options && $options.length > 0, [$options]);
+  const hasOptions = React.useMemo(() => options && options.length > 0, [options]);
 
   return (
     <div className={cn(`ebs-select__dropdown`, className)}>
       {elSearch}
 
-      {showSearch && (
-        <Input
-          suffix={<Icon type="search" className="cursor" />}
-          disabled={!options || (options && options.length === 0)}
-          autoFocus
-          placeholder="Search"
-          value={search}
-          onChange={onSearch}
-          className="ebs-select__dropdown-search"
-        />
-      )}
-
       <div ref={ref} className="ebs-select__dropdown-items">
         <Animated loading={loading} duration={100}>
           {hasOptions ? (
-            $options.map((option, key) => (
+            options.map((option, key) => (
               <SelectDropdownItem
                 key={option.value}
                 mode={mode}
@@ -147,7 +125,9 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
               />
             ))
           ) : (
-            <div className="ebs-select__dropdown--empty">No found</div>
+            <Space size="large" justify="center" className="ebs-select__dropdown--empty">
+              {notFoundLabel}
+            </Space>
           )}
         </Animated>
       </div>
