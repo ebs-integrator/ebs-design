@@ -95,13 +95,13 @@ const SmartSelect: any & SmartSelectComposition = React.forwardRef<any, SmartSel
       if (!isEqualArrays($options, options) && !loaded) {
         setOptions((i) => {
           if (isScrollModePagination) {
+            setLoaded(true);
+
             return uniqueArray(i, $options) as Option[];
           } else {
             return $options;
           }
         });
-
-        setLoaded(true);
       }
     }, [$options]);
 
