@@ -2,13 +2,14 @@ import * as React from 'react';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { Animated, Icon, Input } from 'components/atoms';
-import { InputSelectMode, Option } from 'components/molecules/InputSelect/InputSelect';
-import { SelectValue } from 'components/organisms/SmartSelect/SmartSelect';
-import { Search } from 'components/organisms/SmartSelect/Search';
-import { Pagination } from 'components/organisms/SmartSelect/Pagination';
 import { GenericObject } from 'types';
 
 import { SelectDropdownItem } from './SelectDropdownItem/SelectDropdownItem';
+import { InputSelectMode, Option } from '../InputSelect/InputSelect';
+
+import { OptionValue } from '../Select/Select';
+import { Search } from '../Select/Search';
+import { Pagination } from '../Select/Pagination';
 
 export interface SelectDropdownProps {
   mode: InputSelectMode;
@@ -16,9 +17,8 @@ export interface SelectDropdownProps {
   options?: Option[];
   loading?: boolean;
   showSearch?: boolean;
-
-  value?: SelectValue | SelectValue[];
-  onChange?: (value: SelectValue | SelectValue[]) => void;
+  value?: OptionValue | OptionValue[];
+  onChange?: (value: OptionValue | OptionValue[]) => void;
   onPrev?: () => void;
   onNext?: () => void;
   onClose?: () => void;

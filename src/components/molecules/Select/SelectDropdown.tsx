@@ -5,31 +5,31 @@ import { Animated, Space } from 'components/atoms';
 import { GenericObject } from 'types';
 
 import { SelectDropdownItem } from './SelectDropdownItem/SelectDropdownItem';
-import { SmartSelectMode, SelectValue, Option } from './SmartSelect';
+import { SelectMode, OptionValue, Option } from './Select';
 import { Search } from './Search';
 import { Pagination } from './Pagination';
 
 export interface SelectDropdownProps {
-  mode: SmartSelectMode;
   className?: string;
+  mode: SelectMode;
   options?: Option[];
   loading?: boolean;
-  value?: SelectValue | SelectValue[];
-  notFoundLabel?: string;
-  onChange?: (value: SelectValue | SelectValue[]) => void;
+  value?: OptionValue | OptionValue[];
+  emptyLabel?: string;
+  onChange?: (value: OptionValue | OptionValue[]) => void;
   onPrev?: () => void;
   onNext?: () => void;
   onClose?: () => void;
 }
 
-export const SmartSelectDropdown: React.FC<SelectDropdownProps> = ({
+export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   className,
   mode,
   onClose,
   onChange,
   loading,
   options = [],
-  notFoundLabel = 'No found',
+  emptyLabel = 'No found',
   value,
   onNext,
   children,
@@ -52,6 +52,12 @@ export const SmartSelectDropdown: React.FC<SelectDropdownProps> = ({
 
   const paginationProps = React.useMemo(() => (elPagination && elPagination.props) || {}, [elPagination]);
   const isScrollModePagination = React.useMemo(() => paginationProps.mode === 'scroll', [paginationProps]);
+
+  React.useEffect(() => {
+    if (ref.current && !isScrollModePagination && options.length) {
+      ref.current.scrollTop = 0;
+    }
+  }, [ref, options]);
 
   React.useEffect(() => {
     if (ref.current && isScrollModePagination) {
@@ -126,7 +132,7 @@ export const SmartSelectDropdown: React.FC<SelectDropdownProps> = ({
             ))
           ) : (
             <Space size="large" justify="center" className="ebs-select__dropdown--empty">
-              {notFoundLabel}
+              {emptyLabel}
             </Space>
           )}
         </Animated>

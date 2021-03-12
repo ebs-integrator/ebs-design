@@ -1,8 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { Checkbox } from 'components/molecules';
-import { InputSelectMode } from 'components/molecules/InputSelect/InputSelect';
-import { SelectValue } from 'components/organisms/SmartSelect/SmartSelect';
+
+import { InputSelectMode } from '../../InputSelect/InputSelect';
+
+import { OptionValue } from '../../Select/Select';
 
 export interface Props {
   className?: string;
@@ -10,13 +12,10 @@ export interface Props {
   prefix?: React.ReactElement;
   suffix?: React.ReactElement;
   text?: React.ReactNode;
+  value: OptionValue;
   active?: boolean;
   selected?: boolean;
-
-  // TODO: decide the type
-  onClick?: (value: SelectValue) => void;
-  // TODO: decide the type
-  value: SelectValue;
+  onClick?: (value: OptionValue) => void;
 }
 
 export const SelectDropdownItem: React.FC<Props> = ({

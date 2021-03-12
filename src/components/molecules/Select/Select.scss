@@ -1,11 +1,4 @@
 .ebs-smart-select__input {
-  cursor: pointer;
-  padding: rem(11px 10px);
-  border: 1px solid $border-color;
-  border-radius: rem($border-radius);
-  font-size: rem(14px);
-  background-color: $white;
-
   &--box {
     position: relative;
     border-bottom-left-radius: 0;
@@ -70,6 +63,48 @@
     margin-right: rem(4px);
   }
 
+  &-wrapper {
+    cursor: pointer;
+    border: 1px solid $border-color;
+    border-radius: rem($border-radius);
+    font-size: rem(14px);
+    background-color: $white;
+    min-width: 300px;
+
+    &.disabled .ebs-smart-select__input-dropdown-wrapper .ebs-smart-select__input {
+      cursor: not-allowed;
+      border-color: $grey-500;
+
+      .ebs-smart-select__input-value {
+        color: $grey-500;
+      }
+    }
+
+    &.has-error .ebs-smart-select__input-dropdown-wrapper .ebs-smart-select__input {
+      border-color: $danger-color;
+      background-color: $white;
+    }
+
+    &.active {
+      &.ebs-smart-select__input--multiple .ebs-smart-select__input-value {
+        padding-right: rem(75px);
+      }
+
+      .ebs-smart-select__input-dropdown-wrapper .ebs-smart-select__input {
+        border-color: $primary-color;
+        background-color: $white;
+
+        .ebs-smart-select__input-value {
+          color: $heading-color;
+        }
+      }
+    }
+
+    .ebs-icon {
+      color: $heading-color;
+    }
+  }
+
   // Sizes
   &--small {
     font-size: rem(12px);
@@ -100,41 +135,6 @@
   &__pagination {
     border-top: 1px solid $border-color;
     padding: rem(6px 8px);
-  }
-}
-
-.ebs-smart-select__input-wrapper {
-  &.disabled .ebs-smart-select__input-dropdown-wrapper .ebs-smart-select__input {
-    cursor: not-allowed;
-    border-color: $grey-500;
-
-    .ebs-smart-select__input-value {
-      color: $grey-500;
-    }
-  }
-
-  &.has-error .ebs-smart-select__input-dropdown-wrapper .ebs-smart-select__input {
-    border-color: $danger-color;
-    background-color: $white;
-  }
-
-  &.active {
-    &.ebs-smart-select__input--multiple .ebs-smart-select__input-value {
-      padding-right: rem(75px);
-    }
-
-    .ebs-smart-select__input-dropdown-wrapper .ebs-smart-select__input {
-      border-color: $primary-color;
-      background-color: $white;
-
-      .ebs-smart-select__input-value {
-        color: $heading-color;
-      }
-    }
-  }
-
-  .ebs-icon {
-    color: $heading-color;
   }
 }
 
