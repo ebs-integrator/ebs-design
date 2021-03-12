@@ -6,6 +6,7 @@ export {
   Avatar,
   AvatarCard,
   AvatarInline,
+  Animated,
   Badge,
   Button,
   ButtonGroup,
