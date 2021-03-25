@@ -1,7 +1,7 @@
 import * as React from 'react';
 import DatePicker from 'react-datepicker';
 import cn from 'classnames';
-import { format, dateTimeFormat } from 'libs/date';
+import { format, dateTimeFormat as DTFormat, dateFormat as DFormat } from 'libs/date';
 import { Extra, Label } from 'components/atoms';
 import { GenericObject } from 'types';
 
@@ -28,6 +28,8 @@ interface Props {
   hasError?: boolean;
   disabled?: boolean;
   iconAlign?: 'left' | 'right';
+  dateFormat?: string;
+  dateTimeFormat?: string;
 
   from?: any;
   to?: any;
@@ -52,6 +54,8 @@ export const Calendar = React.forwardRef<any, Props>(
       extra,
       hasError,
       disabled,
+      dateFormat = DFormat,
+      dateTimeFormat = DTFormat,
       ...props
     },
     ref,
@@ -145,6 +149,8 @@ export const Calendar = React.forwardRef<any, Props>(
       [],
     );
 
+    const formatDate = React.useMemo(() => (withTime ? dateTimeFormat : dateFormat), [withTime]);
+
     return (
       <div
         className={cn(`ebs-calendar__wrapper`, `ebs-calendar--${type}`, className, {
@@ -164,8 +170,8 @@ export const Calendar = React.forwardRef<any, Props>(
                 showTimeSelect={withTime}
                 showYearDropdown
                 scrollableYearDropdown
-                dateFormat={withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
-                placeholderText={startPlaceholder || withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+                dateFormat={formatDate}
+                placeholderText={startPlaceholder ? startPlaceholder : formatDate.toUpperCase()}
                 className={cn(`ebs-calendar ebs-calendar--${size}`, { active: from })}
                 selected={from}
                 onChange={onChangeFrom}
@@ -182,11 +188,11 @@ export const Calendar = React.forwardRef<any, Props>(
                 showTimeSelect={withTime}
                 showYearDropdown
                 scrollableYearDropdown
-                dateFormat={withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+                dateFormat={formatDate}
                 minDate={from || minDate}
                 minTime={limitTime.min}
                 maxTime={limitTime.max}
-                placeholderText={endPlaceholder || withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+                placeholderText={endPlaceholder ? endPlaceholder : formatDate.toUpperCase()}
                 className={cn(`ebs-calendar ebs-calendar--${size}`, { active: to })}
                 selected={to}
                 onChange={onChangeTo}
@@ -207,8 +213,9 @@ export const Calendar = React.forwardRef<any, Props>(
               showYearDropdown
               scrollableYearDropdown
               minDate={minDate}
+              dateFormat={dateFormat}
               className={cn(`ebs-calendar ebs-calendar--${size}`, { active: date })}
-              placeholderText={placeholder || withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+              placeholderText={placeholder ? placeholder : formatDate.toUpperCase()}
               selected={date}
               onChange={onChangeDate}
               locale={locale}
@@ -225,7 +232,8 @@ export const Calendar = React.forwardRef<any, Props>(
               minDate={minDate}
               minTime={limitTime.min}
               maxTime={limitTime.max}
-              placeholderText={placeholder || withTime ? `yyyy-MM-dd HH:mm` : `yyyy-MM-dd`}
+              dateFormat={dateTimeFormat}
+              placeholderText={placeholder ? placeholder : formatDate.toUpperCase()}
               className={cn(`ebs-calendar ebs-calendar--${size}`, { active: date })}
               selected={date}
               onChange={onChangeDate}

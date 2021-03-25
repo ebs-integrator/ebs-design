@@ -3,8 +3,8 @@ import dayjs from 'dayjs';
 
 export const today = dayjs();
 export const timeFormat = 'HH:mm';
-export const dateFormat = 'YYYY-MM-DD';
-export const dateTimeFormat = 'YYYY-MM-DD HH:mm';
+export const dateFormat = 'dd/MM/yyyy';
+export const dateTimeFormat = 'dd/MM/yyyy HH:mm';
 
 export const format = (date?: Date | string, format?: string): string => dayjs(date).format(format || dateFormat);
 

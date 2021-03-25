@@ -69,6 +69,7 @@ export {
 } from './components/organisms';
 
 // Export types
+export type { CalendarType } from 'components/molecules/Calendar/Calendar';
 export type { ColumnType, TableProps } from 'components/organisms/Table/Table';
 export type { FormInstance, FormProps } from 'components/organisms/Form';
 
