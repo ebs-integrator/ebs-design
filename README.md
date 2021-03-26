@@ -1,3 +1,4 @@
+# WARNING: The UI Kit is UNDER DEVELOPMENT, PLEASE CREATE ISSUES OR PR WITH CHANGES
 # React EBS UI
 
 EBS UI is a complete library of styling components. Link to [Storybook](https://ebs-integrator.github.io/react-ebs-ui/)
