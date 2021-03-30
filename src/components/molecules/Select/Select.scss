@@ -1,4 +1,4 @@
-.ebs-smart-select__input {
+.ebs-select {
   &--box {
     position: relative;
     border-bottom-left-radius: 0;
@@ -63,7 +63,7 @@
     margin-right: rem(4px);
   }
 
-  &-wrapper {
+  &__wrapper {
     cursor: pointer;
     border: 1px solid $border-color;
     border-radius: rem($border-radius);
@@ -71,30 +71,25 @@
     background-color: $white;
     min-width: 300px;
 
-    &.disabled .ebs-smart-select__input-dropdown-wrapper .ebs-smart-select__input {
+    &.disabled .ebs-select-dropdown__wrapper .ebs-select {
       cursor: not-allowed;
       border-color: $grey-500;
 
-      .ebs-smart-select__input-value {
+      .ebs-select-value {
         color: $grey-500;
       }
     }
 
-    &.has-error .ebs-smart-select__input-dropdown-wrapper .ebs-smart-select__input {
-      border-color: $danger-color;
-      background-color: $white;
-    }
-
     &.active {
-      &.ebs-smart-select__input--multiple .ebs-smart-select__input-value {
+      &.ebs-select--multiple .ebs-select-value {
         padding-right: rem(75px);
       }
 
-      .ebs-smart-select__input-dropdown-wrapper .ebs-smart-select__input {
+      .ebs-select-dropdown__wrapper .ebs-select {
         border-color: $primary-color;
         background-color: $white;
 
-        .ebs-smart-select__input-value {
+        .ebs-select-value {
           color: $heading-color;
         }
       }
@@ -111,7 +106,7 @@
     padding: rem($select-padding-y-sm $select-padding-x-sm);
 
     // FIXME: Temporary hack
-    .ebs-smart-select__input-value:empty {
+    .ebs-select-value:empty {
       min-height: $base-size-sm - $select-padding-y-sm * 2;
     }
   }
@@ -119,7 +114,7 @@
     padding: rem($select-padding-y $select-padding-x);
 
     // FIXME: Temporary hack
-    .ebs-smart-select__input-value:empty {
+    .ebs-select-value:empty {
       min-height: $base-size - $select-padding-y * 2;
     }
   }
@@ -127,7 +122,7 @@
     padding: rem($select-padding-y-lg $select-padding-x-lg);
 
     // FIXME: Temporary hack
-    .ebs-smart-select__input-value:empty {
+    .ebs-select-value:empty {
       min-height: $base-size-lg - $select-padding-y-lg * 2;
     }
   }
@@ -138,6 +133,6 @@
   }
 }
 
-.ebs-smart-select__input-dropdown-wrapper {
+.ebs-select-dropdown__wrapper {
   position: relative;
 }

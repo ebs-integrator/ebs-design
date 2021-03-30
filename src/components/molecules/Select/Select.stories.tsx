@@ -76,7 +76,7 @@ export const Regular = (): React.ReactNode => {
             // mode="multiple"
             // mode="single" // by default
             placeholder="Select"
-            onChange={setValue}
+            onChange={(value) => setValue(value as OptionValue)}
             // optionsMode="dropdown" // by default
             // optionsMode="box"
           >
@@ -141,7 +141,7 @@ export const OptionsBox = (): React.ReactNode => {
             mode="single"
             size={size}
             placeholder="Select"
-            onChange={setValue}
+            onChange={(value) => setValue(value as OptionValue)}
             optionsMode="box"
           >
             <Select.Search value={search} onSearch={setSearch} />
@@ -168,7 +168,7 @@ export const OptionsBox = (): React.ReactNode => {
 };
 
 export const OptionsMultiple = (): React.ReactNode => {
-  const [values, setValues] = React.useState<number[] | undefined>(undefined);
+  const [values, setValues] = React.useState<OptionValue[] | undefined>(undefined);
   const [search, setSearch] = React.useState<string>('');
   const [loading, setLoaded] = React.useState(true);
   const [list, setList] = React.useState<Option[]>([]);
@@ -205,7 +205,7 @@ export const OptionsMultiple = (): React.ReactNode => {
             mode="multiple"
             size={size}
             placeholder="Select"
-            onChange={setValues}
+            onChange={(value) => setValues(value as OptionValue[])}
             optionsMode="box"
           >
             <Select.Search value={search} onSearch={setSearch} />
@@ -225,7 +225,7 @@ export const OptionsMultiple = (): React.ReactNode => {
 };
 
 export const InfiniteScrollPagination = (): React.ReactNode => {
-  const [values, setValues] = React.useState<number[] | undefined>(undefined);
+  const [values, setValues] = React.useState<OptionValue[] | undefined>(undefined);
   const [search, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
   const [page, setPage] = React.useState(1);
@@ -262,7 +262,7 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
             mode="multiple"
             size={size}
             placeholder="Select"
-            onChange={setValues}
+            onChange={(value) => setValues(value as OptionValue[])}
           >
             <Select.Search value={search} onSearch={setSearch} />
 

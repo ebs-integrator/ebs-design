@@ -2,4 +2,8 @@ import * as React from 'react';
 
 import { OptionValue } from './Select';
 
-export const Option: React.FC<{ value: OptionValue; disabled?: boolean }> = () => null;
+export interface OptionProps {
+  value: OptionValue;
+}
+
+export const Option: React.FC<OptionProps> = () => null;

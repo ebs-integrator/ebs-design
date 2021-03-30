@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { InputSearch, InputSearchProps } from 'components/molecules/InputSearch/InputSearch';
 
-export const Search: React.FC<InputSearchProps> = (props) => {
-  return <InputSearch {...props} />;
-};
+export interface SearchProps extends InputSearchProps {
+  className?: string;
+}
+
+export const Search: React.FC<SearchProps> = (props) => <InputSearch {...props} />;
