@@ -37,7 +37,7 @@ const SizeSwitcher: React.FC<{ children: (size: ButtonSize) => React.ReactNode }
 const limit = 15;
 
 export const Regular = (): React.ReactNode => {
-  const [value, setValue] = React.useState<OptionValue | undefined>('BW');
+  const [value, setValue] = React.useState<OptionValue | undefined>();
   const [search, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
   const [page, setPage] = React.useState(1);
@@ -84,9 +84,9 @@ export const Regular = (): React.ReactNode => {
 
             <Select.Options>
               {list.map((item, i) => (
-                <Select.Option key={i} value={item.value}>
+                <Select.Options.Item key={i} value={item.value}>
                   {item.text}
-                </Select.Option>
+                </Select.Options.Item>
               ))}
             </Select.Options>
 
@@ -150,9 +150,9 @@ export const OptionsBox = (): React.ReactNode => {
 
             <Select.Options>
               {list.map((item, i) => (
-                <Select.Option key={i} value={item.value}>
+                <Select.Options.Item key={i} value={item.value}>
                   {item.text}
-                </Select.Option>
+                </Select.Options.Item>
               ))}
             </Select.Options>
 
@@ -216,9 +216,9 @@ export const OptionsMultiple = (): React.ReactNode => {
 
             <Select.Options>
               {list.map((item, i) => (
-                <Select.Option key={i} value={item.value}>
+                <Select.Options.Item key={i} value={item.value}>
                   {item.text}
-                </Select.Option>
+                </Select.Options.Item>
               ))}
             </Select.Options>
 
@@ -274,9 +274,9 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
 
             <Select.Options>
               {list.map((item, i) => (
-                <Select.Option key={i} value={item.value}>
+                <Select.Options.Item key={i} value={item.value}>
                   {item.text}
-                </Select.Option>
+                </Select.Options.Item>
               ))}
             </Select.Options>
 

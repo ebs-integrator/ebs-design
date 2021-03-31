@@ -7,13 +7,11 @@ import { isArray, isEqualArrays, uniqueArray } from 'libs';
 import { GenericObject, SizeType } from 'types';
 
 import { Search, SearchProps } from './Search';
-import { Option, OptionProps } from './Option';
-import { Options, OptionsProps } from './Options';
 import { Pagination, PaginationProps } from './Pagination';
+import { Options, OptionsProps, OptionsComposition } from './Options';
 
 export interface SelectComposition {
-  Options: React.FC<OptionsProps>;
-  Option: React.FC<OptionProps>;
+  Options: React.FC<OptionsProps> & OptionsComposition;
   Search: React.FC<SearchProps>;
   Pagination: React.FC<PaginationProps>;
 }
@@ -60,7 +58,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   const inputRef = React.useRef<HTMLDivElement | null>(null);
 
   const [openDropdown, setOpenDropdown] = React.useState(false);
-  const [scrolled, setScrolled] = React.useState(false);
+  const [loaded, setLoaded] = React.useState(false);
 
   const [options, setOptions] = React.useState<Option[]>([]);
   const [cacheOptions, setCacheOptions] = React.useState<Option[]>([]);
@@ -95,11 +93,13 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
     return (PaginationEl && PaginationEl.props) || {};
   }, [childs]);
 
+  console.log('paginationProps', paginationProps);
+
   React.useEffect(() => {
-    if (!isEqualArrays($options, options) && !scrolled) {
+    if (!isEqualArrays($options, options) && !loaded) {
       setOptions((i) => {
         if (paginationProps.mode === 'scroll') {
-          setScrolled(true);
+          setLoaded(true);
 
           return uniqueArray(i, $options) as Option[];
         } else return $options;
@@ -165,7 +165,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const onPrev = React.useCallback(() => {
     if (paginationProps) {
-      const { page, setPage } = paginationProps.props;
+      const { page, setPage } = paginationProps;
 
       if (page > 1) {
         setPage(page - 1);
@@ -175,14 +175,14 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const onNext = React.useCallback(() => {
     if (paginationProps) {
-      const { page, count, limit, setPage } = paginationProps.props;
+      const { page, count, limit, setPage } = paginationProps;
 
       if (page < Math.ceil(count / limit)) {
         setPage(page + 1);
       }
 
       if (paginationProps.mode === 'scroll') {
-        setScrolled(false);
+        setLoaded(false);
       }
     }
   }, [paginationProps]);
@@ -285,7 +285,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
         </div>
 
         {!disabled && (openDropdown || isBox) && (
-          <div className={cn(`ebs-select__dropdown`, className)}>{renderChilds}</div>
+          <div className={cn(`ebs-select__options`, className)}>{renderChilds}</div>
         )}
       </div>
     </div>
@@ -295,7 +295,6 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 Select.displayName = 'Select';
 
 Select.Search = Search;
-Select.Option = Option;
 Select.Options = Options;
 Select.Pagination = Pagination;
 

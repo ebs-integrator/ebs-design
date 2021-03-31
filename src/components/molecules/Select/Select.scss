@@ -69,7 +69,7 @@
     border-radius: rem($border-radius);
     font-size: rem(14px);
     background-color: $white;
-    min-width: 300px;
+    min-width: rem(300px);
 
     &.disabled .ebs-select-dropdown__wrapper .ebs-select {
       cursor: not-allowed;

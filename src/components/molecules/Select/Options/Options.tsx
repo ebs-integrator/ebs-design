@@ -1,12 +1,14 @@
 import * as React from 'react';
-import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { Animated, Space } from 'components/atoms';
-import { GenericObject } from 'types';
+import { Item, ItemProps } from './Item';
 
-import { OptionItem } from './OptionItem';
-import { SelectMode, OptionValue, Option } from './Select';
-import { Pagination, ScrollMode } from './Pagination';
+import { SelectMode, OptionValue, Option } from '../Select';
+import { ScrollMode } from '../Pagination';
+
+export interface OptionsComposition {
+  Item: React.FC<ItemProps>;
+}
 
 export interface OptionsProps {
   className?: string;
@@ -16,13 +18,13 @@ export interface OptionsProps {
   loading?: boolean;
   value?: OptionValue | OptionValue[];
   emptyLabel?: string;
-  onChange?: (value: OptionValue | OptionValue[]) => void;
   onPrev?: () => void;
   onNext?: () => void;
   onClose?: () => void;
+  onChange?: (value: OptionValue | OptionValue[]) => void;
 }
 
-export const Options: React.FC<OptionsProps> = ({
+const Options: React.FC<OptionsProps> & OptionsComposition = ({
   mode = 'single',
   scrollMode = 'regular',
   loading,
@@ -103,24 +105,24 @@ export const Options: React.FC<OptionsProps> = ({
 
   return (
     <>
-      <div ref={ref} className="ebs-select__dropdown-items">
+      <div ref={ref} className="ebs-select__options-items">
         <Animated loading={loading} duration={100}>
           {hasOptions ? (
             options.map((option, key) => (
-              <OptionItem
+              <Item
                 key={option.value}
                 mode={mode}
                 active={
                   mode === 'multiple' && Array.isArray(value) ? value.includes(option.value) : value === option.value
                 }
                 selected={activeItem === key + 1}
-                value={option.value}
                 text={option.text}
                 onClick={onChangeHandler}
+                {...option}
               />
             ))
           ) : (
-            <Space size="large" justify="center" className="ebs-select__dropdown--empty">
+            <Space size="large" justify="center" className="ebs-select__options--empty">
               {emptyLabel}
             </Space>
           )}
@@ -129,3 +131,9 @@ export const Options: React.FC<OptionsProps> = ({
     </>
   );
 };
+
+Options.displayName = 'Options';
+
+Options.Item = Item;
+
+export { Options };
