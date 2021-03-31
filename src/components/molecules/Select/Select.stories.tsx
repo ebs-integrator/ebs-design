@@ -82,11 +82,13 @@ export const Regular = (): React.ReactNode => {
           >
             <Select.Search value={search} onSearch={setSearch} />
 
-            {list.map((item, i) => (
-              <Select.Option key={i} value={item.value}>
-                {item.text}
-              </Select.Option>
-            ))}
+            <Select.Options>
+              {list.map((item, i) => (
+                <Select.Option key={i} value={item.value}>
+                  {item.text}
+                </Select.Option>
+              ))}
+            </Select.Options>
 
             <Select.Pagination
               count={total}
@@ -146,11 +148,13 @@ export const OptionsBox = (): React.ReactNode => {
           >
             <Select.Search value={search} onSearch={setSearch} />
 
-            {list.map((item, i) => (
-              <Select.Option key={i} value={item.value}>
-                {item.text}
-              </Select.Option>
-            ))}
+            <Select.Options>
+              {list.map((item, i) => (
+                <Select.Option key={i} value={item.value}>
+                  {item.text}
+                </Select.Option>
+              ))}
+            </Select.Options>
 
             <Select.Pagination
               count={total}
@@ -210,11 +214,13 @@ export const OptionsMultiple = (): React.ReactNode => {
           >
             <Select.Search value={search} onSearch={setSearch} />
 
-            {list.map((item, i) => (
-              <Select.Option key={i} value={item.value}>
-                {item.text}
-              </Select.Option>
-            ))}
+            <Select.Options>
+              {list.map((item, i) => (
+                <Select.Option key={i} value={item.value}>
+                  {item.text}
+                </Select.Option>
+              ))}
+            </Select.Options>
 
             <Select.Pagination count={total} limit={limit} page={page} setPage={setPage} mode="regular" />
           </Select>
@@ -266,11 +272,13 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
           >
             <Select.Search value={search} onSearch={setSearch} />
 
-            {list.map((item, i) => (
-              <Select.Option key={i} value={item.value}>
-                {item.text}
-              </Select.Option>
-            ))}
+            <Select.Options>
+              {list.map((item, i) => (
+                <Select.Option key={i} value={item.value}>
+                  {item.text}
+                </Select.Option>
+              ))}
+            </Select.Options>
 
             <Select.Pagination count={total} limit={limit} page={page} setPage={setPage} mode="scroll" />
           </Select>

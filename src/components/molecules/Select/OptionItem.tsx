@@ -1,9 +1,9 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { Checkbox } from 'components/molecules';
-import { SelectMode, OptionValue } from '../Select';
+import { SelectMode, OptionValue } from './Select';
 
-export interface Props {
+export interface OptionItemProps {
   className?: string;
   mode: SelectMode;
   prefix?: React.ReactElement;
@@ -16,7 +16,7 @@ export interface Props {
   onClick?: (value: OptionValue) => void;
 }
 
-export const SelectDropdownItem: React.FC<Props> = ({
+export const OptionItem: React.FC<OptionItemProps> = ({
   className,
   mode,
   onClick,

@@ -4,14 +4,14 @@ import { useEventListener } from 'hooks';
 import { Animated, Space } from 'components/atoms';
 import { GenericObject } from 'types';
 
-import { SelectDropdownItem } from './SelectDropdownItem/SelectDropdownItem';
+import { OptionItem } from './OptionItem';
 import { SelectMode, OptionValue, Option } from './Select';
-import { Search } from './Search';
-import { Pagination } from './Pagination';
+import { Pagination, ScrollMode } from './Pagination';
 
-export interface SelectDropdownProps {
+export interface OptionsProps {
   className?: string;
-  mode: SelectMode;
+  mode?: SelectMode;
+  scrollMode?: ScrollMode;
   options?: Option[];
   loading?: boolean;
   value?: OptionValue | OptionValue[];
@@ -22,17 +22,16 @@ export interface SelectDropdownProps {
   onClose?: () => void;
 }
 
-export const SelectDropdown: React.FC<SelectDropdownProps> = ({
-  className,
-  mode,
-  onClose,
-  onChange,
+export const Options: React.FC<OptionsProps> = ({
+  mode = 'single',
+  scrollMode = 'regular',
   loading,
   options = [],
-  emptyLabel = 'No found',
   value,
+  emptyLabel = 'No found',
   onNext,
-  children,
+  onClose,
+  onChange,
 }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
   const [activeItem, setActiveItem] = React.useState(0);
@@ -45,31 +44,23 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
     }
   };
 
-  const childs = React.useMemo(() => React.Children.toArray(children) as GenericObject[], [children]);
-
-  const elSearch = childs.find((child) => child.type === Search);
-  const elPagination = childs.find((child) => child.type === Pagination);
-
-  const paginationProps = React.useMemo(() => (elPagination && elPagination.props) || {}, [elPagination]);
-  const isScrollModePagination = React.useMemo(() => paginationProps.mode === 'scroll', [paginationProps]);
-
   React.useEffect(() => {
-    if (ref.current && !isScrollModePagination && options.length) {
+    if (ref.current && !scrollMode && options.length) {
       ref.current.scrollTop = 0;
     }
-  }, [ref, options]);
+  }, [ref, options, scrollMode]);
 
   React.useEffect(() => {
-    if (ref.current && isScrollModePagination) {
+    if (ref.current && scrollMode) {
       ref.current.addEventListener('scroll', onScroll);
     }
 
     return () => {
-      if (ref.current && isScrollModePagination) {
+      if (ref.current && scrollMode) {
         ref.current.removeEventListener('scroll', onScroll);
       }
     };
-  }, [ref, onScroll, isScrollModePagination]);
+  }, [ref, onScroll, scrollMode]);
 
   useEventListener('keydown', ({ key }: { key: string }) => {
     if (['ArrowUp', 'ArrowDown', 'Escape', 'Enter'].includes(key)) {
@@ -111,14 +102,12 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   const hasOptions = React.useMemo(() => options && options.length > 0, [options]);
 
   return (
-    <div className={cn(`ebs-select__dropdown`, className)}>
-      {elSearch}
-
+    <>
       <div ref={ref} className="ebs-select__dropdown-items">
         <Animated loading={loading} duration={100}>
           {hasOptions ? (
             options.map((option, key) => (
-              <SelectDropdownItem
+              <OptionItem
                 key={option.value}
                 mode={mode}
                 active={
@@ -137,8 +126,6 @@ export const SelectDropdown: React.FC<SelectDropdownProps> = ({
           )}
         </Animated>
       </div>
-
-      {elPagination && elPagination.props.mode === 'regular' ? elPagination : null}
-    </div>
+    </>
   );
 };

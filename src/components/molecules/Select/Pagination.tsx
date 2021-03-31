@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Space, Button } from 'components/atoms';
 
+export type ScrollMode = 'regular' | 'scroll';
+
 export interface PaginationProps {
   className?: string;
   count: number;
   page: number;
   limit: number;
-  mode?: 'regular' | 'scroll';
+  mode?: ScrollMode;
   setPage: (value: number) => void;
 }
 

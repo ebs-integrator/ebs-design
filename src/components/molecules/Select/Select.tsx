@@ -1,17 +1,18 @@
 import * as React from 'react';
 import useClickAway from 'react-use/esm/useClickAway';
 import cn from 'classnames';
-import { Extra, Label, Icon } from 'components/atoms';
+import { Label, Icon } from 'components/atoms';
 import { Loader } from 'components/molecules';
 import { isArray, isEqualArrays, uniqueArray } from 'libs';
 import { GenericObject, SizeType } from 'types';
 
-import { SelectDropdown } from './SelectDropdown';
 import { Search, SearchProps } from './Search';
 import { Option, OptionProps } from './Option';
+import { Options, OptionsProps } from './Options';
 import { Pagination, PaginationProps } from './Pagination';
 
 export interface SelectComposition {
+  Options: React.FC<OptionsProps>;
   Option: React.FC<OptionProps>;
   Search: React.FC<SearchProps>;
   Pagination: React.FC<PaginationProps>;
@@ -65,11 +66,6 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   const [cacheOptions, setCacheOptions] = React.useState<Option[]>([]);
 
   const childs = React.Children.toArray(children) as GenericObject[];
-  const elSearch = childs.find((child) => child.type === Search);
-  const elPagination = childs.find((child) => child.type === Pagination);
-
-  const paginationProps = (elPagination && elPagination.props) || {};
-  const isScrollModePagination = paginationProps.mode === 'scroll';
 
   React.useEffect(() => {
     if (value) {
@@ -88,22 +84,28 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       optionsList.length
         ? optionsList
         : childs
-            .filter((i) => [Option].includes(i.type))
-            .map((i) => ({ value: i.props.value, text: i.props.children })),
-    [optionsList],
+            .filter((i) => i.type === Options)[0]
+            .props.children.map((i) => ({ value: i.props.value, text: i.props.children })),
+    [optionsList, childs],
   );
+
+  const paginationProps = React.useMemo(() => {
+    const PaginationEl = childs.find((child) => child.type === Pagination);
+
+    return (PaginationEl && PaginationEl.props) || {};
+  }, [childs]);
 
   React.useEffect(() => {
     if (!isEqualArrays($options, options) && !scrolled) {
       setOptions((i) => {
-        if (isScrollModePagination) {
+        if (paginationProps.mode === 'scroll') {
           setScrolled(true);
 
           return uniqueArray(i, $options) as Option[];
         } else return $options;
       });
     }
-  }, [$options]);
+  }, [$options, paginationProps]);
 
   const hasValue = React.useMemo(
     () => (!isArray(value) && value !== undefined) || (isArray(value) && (value as OptionValue[]).length > 0),
@@ -122,30 +124,36 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const isBox = React.useMemo(() => optionsMode === 'box', [optionsMode]);
 
-  const onChangeHandler = (newValue?: any): void => {
-    const $newValue = mode === 'single' ? (newValue === value ? undefined : newValue) : newValue;
+  const onChangeHandler = React.useCallback(
+    (newValue) => {
+      const $newValue = mode === 'single' ? (newValue === value ? undefined : newValue) : newValue;
 
-    const newModeValue =
-      mode === 'multiple'
-        ? isArray(value) && (value as OptionValue[]).includes($newValue)
-          ? (value as OptionValue[]).filter((item) => $newValue !== item)
-          : [...(isArray(value) ? (value as OptionValue[]) : []), $newValue]
-        : $newValue;
+      const newModeValue =
+        mode === 'multiple'
+          ? isArray(value) && (value as OptionValue[]).includes($newValue)
+            ? (value as OptionValue[]).filter((item) => $newValue !== item)
+            : [...(isArray(value) ? (value as OptionValue[]) : []), $newValue]
+          : $newValue;
 
-    if (onChange) {
-      onChange(newModeValue);
-    }
-  };
-
-  const onDeleteSelect = (key: number): void => {
-    if (isArray(value)) {
-      const newValue = (value as OptionValue[]).filter((_, $key) => key !== $key);
-
-      if (onChange !== undefined) {
-        onChange(newValue);
+      if (onChange) {
+        onChange(newModeValue);
       }
-    }
-  };
+    },
+    [mode, value, onChange],
+  );
+
+  const onDeleteSelect = React.useCallback(
+    (key: number) => {
+      if (isArray(value)) {
+        const newValue = (value as OptionValue[]).filter((_, $key) => key !== $key);
+
+        if (onChange !== undefined) {
+          onChange(newValue);
+        }
+      }
+    },
+    [value, onChange],
+  );
 
   const onToggleOpenDropdown = (): void => setOpenDropdown((s) => !s);
 
@@ -155,29 +163,71 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
     }
   });
 
-  const onPrev = (): void => {
-    if (elPagination) {
-      const { page, setPage } = elPagination.props;
+  const onPrev = React.useCallback(() => {
+    if (paginationProps) {
+      const { page, setPage } = paginationProps.props;
 
       if (page > 1) {
         setPage(page - 1);
       }
     }
-  };
+  }, [paginationProps]);
 
-  const onNext = (): void => {
-    if (elPagination) {
-      const { page, count, limit, setPage } = elPagination.props;
+  const onNext = React.useCallback(() => {
+    if (paginationProps) {
+      const { page, count, limit, setPage } = paginationProps.props;
 
       if (page < Math.ceil(count / limit)) {
         setPage(page + 1);
       }
 
-      if (isScrollModePagination) {
+      if (paginationProps.mode === 'scroll') {
         setScrolled(false);
       }
     }
-  };
+  }, [paginationProps]);
+
+  const renderChilds = React.useMemo(
+    () =>
+      childs.map((child) => {
+        if (child.type === Options) {
+          return (
+            <Options
+              mode={mode}
+              scrollMode={paginationProps.mode === 'scroll'}
+              options={options}
+              value={value}
+              loading={loading}
+              className={cn({ 'ebs-select--box': isBox })}
+              emptyLabel={emptyLabel}
+              onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
+              onChange={onChangeHandler}
+              onPrev={onPrev}
+              onNext={onNext}
+              {...child.props}
+            />
+          );
+        } else if (child.type === Pagination && child.props.mode === 'scroll') {
+          return null;
+        }
+
+        return child;
+      }),
+    [
+      childs,
+      mode,
+      paginationProps,
+      options,
+      value,
+      loading,
+      emptyLabel,
+      isBox,
+      onChangeHandler,
+      onPrev,
+      onNext,
+      onToggleOpenDropdown,
+    ],
+  );
 
   return (
     <div
@@ -235,21 +285,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
         </div>
 
         {!disabled && (openDropdown || isBox) && (
-          <SelectDropdown
-            mode={mode}
-            options={options}
-            value={value}
-            onChange={onChangeHandler}
-            loading={loading}
-            onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
-            className={cn({ 'ebs-select--box': isBox })}
-            emptyLabel={emptyLabel}
-            onPrev={onPrev}
-            onNext={onNext}
-          >
-            {elSearch}
-            {elPagination}
-          </SelectDropdown>
+          <div className={cn(`ebs-select__dropdown`, className)}>{renderChilds}</div>
         )}
       </div>
     </div>
@@ -260,6 +296,7 @@ Select.displayName = 'Select';
 
 Select.Search = Search;
 Select.Option = Option;
+Select.Options = Options;
 Select.Pagination = Pagination;
 
 export { Select };
