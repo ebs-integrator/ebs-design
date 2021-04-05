@@ -37,8 +37,6 @@
 
   & > &__spinner {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 
   & > &__spinner.fixed {
@@ -46,8 +44,8 @@
   }
 
   &__spinner {
-    width: rem($base-size);
-    height: rem($base-size);
+    width: rem(#{$base-size});
+    height: rem(#{$base-size});
     border-radius: 50%;
 
     transition-property: transform;
@@ -59,25 +57,27 @@
     &--small {
       border: 2px solid $grey-500;
       border-top: 2px solid $primary-color;
-      width: rem(15px);
-      height: rem(15px);
-      top: calc(50% - 5px);
+      width: rem(#{$base-size / 2});
+      height: rem(#{$base-size / 2});
+      top: calc(50% - #{$base-size / 4});
     }
 
     &--middle {
       border: 2px solid $grey-500;
       border-top: 2px solid $primary-color;
-      width: rem(20px);
-      height: rem(20px);
-      top: calc(50% - 10px);
+      width: rem(#{$base-size - $gutter-size});
+      height: rem(#{$base-size - $gutter-size});
+      top: calc(50% - #{($base-size - $gutter-size) / 2});
+      left: calc(50% - #{($base-size - $gutter-size) / 2});
     }
 
     &--regular {
       border: 6px solid $grey-500;
       border-top: 6px solid $primary-color;
-      width: rem(60px);
-      height: rem(60px);
-      top: calc(50% - 20px);
+      width: rem(#{$base-size * 2});
+      height: rem(#{$base-size * 2});
+      top: calc(50% - #{$base-size});
+      left: calc(50% - #{$base-size});
     }
   }
 }
