@@ -1,4 +1,4 @@
-.ebs-select__dropdown {
+.ebs-select__options {
   @include elevation-2;
 
   position: absolute;
@@ -29,10 +29,10 @@
 
   & > &-items {
     @include greyScroll;
-    max-height: rem(174px);
+    max-height: 30vh;
     overflow-y: auto;
 
-    .ebs-select__dropdown-item:not(:last-child) {
+    .ebs-select__options-item:not(:last-child) {
       margin-bottom: rem(4px);
     }
   }
