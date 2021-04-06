@@ -2,25 +2,24 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Checkbox } from 'components/molecules';
 
-import { InputSelectMode } from '../../InputSelect/InputSelect';
+import { SelectMode, OptionValue } from '../../Select';
 
-import { OptionValue } from '../../Select/Select';
-
-export interface Props {
+export interface ItemProps {
   className?: string;
-  mode?: InputSelectMode;
+  mode?: SelectMode;
   prefix?: React.ReactElement;
   suffix?: React.ReactElement;
   text?: React.ReactNode;
-  value: OptionValue;
   active?: boolean;
+  value: OptionValue;
   selected?: boolean;
+
   onClick?: (value: OptionValue) => void;
 }
 
-export const SelectDropdownItem: React.FC<Props> = ({
+export const Item: React.FC<ItemProps> = ({
   className,
-  mode,
+  mode = 'single',
   onClick,
   prefix,
   suffix,
@@ -39,7 +38,7 @@ export const SelectDropdownItem: React.FC<Props> = ({
 
   return (
     <div
-      className={cn(`ebs-select__dropdown-item`, className, {
+      className={cn(`ebs-select__options-item`, className, {
         active: active,
         selected: selected,
         'has-prefix': prefix,
@@ -47,12 +46,12 @@ export const SelectDropdownItem: React.FC<Props> = ({
       })}
       onClick={onClickHandler}
     >
-      {prefix && <div className="ebs-select__dropdown-item-prefix">{prefix}</div>}
+      {prefix && <div className="ebs-select__options-item-prefix">{prefix}</div>}
 
-      <div className="ebs-select__dropdown-item-text">{text}</div>
+      <div className="ebs-select__options-item-text">{text}</div>
 
       {suffix || isMultiple ? (
-        <div className="ebs-select__dropdown-item-suffix">{isMultiple ? <Checkbox checked={active} /> : suffix}</div>
+        <div className="ebs-select__options-item-suffix">{isMultiple ? <Checkbox checked={active} /> : suffix}</div>
       ) : null}
     </div>
   );

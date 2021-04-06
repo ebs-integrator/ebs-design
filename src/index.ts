@@ -6,6 +6,7 @@ export {
   Avatar,
   AvatarCard,
   AvatarInline,
+  Animated,
   Badge,
   Button,
   ButtonGroup,
@@ -48,6 +49,7 @@ export {
   NotifyContainer,
   NotifyContext,
   NotifyProvider,
+  Select,
 } from './components/molecules';
 
 // Organisms
