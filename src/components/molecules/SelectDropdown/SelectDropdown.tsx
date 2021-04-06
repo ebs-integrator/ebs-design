@@ -2,36 +2,71 @@ import * as React from 'react';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { Animated, Icon, Input } from 'components/atoms';
-import { InputSelectMode, Option } from 'components/molecules/InputSelect/InputSelect';
+import { GenericObject } from 'types';
 
 import { SelectDropdownItem } from './SelectDropdownItem/SelectDropdownItem';
+import { InputSelectMode, Option } from '../InputSelect/InputSelect';
 
-export interface Props {
+import { OptionValue } from '../Select/Select';
+import { Search } from '../Select/Search';
+import { Pagination } from '../Select/Pagination';
+
+export interface SelectDropdownProps {
   mode: InputSelectMode;
   className?: string;
-  onClose?: () => void;
   options?: Option[];
-
-  // TODO: decide the type
-  onChange?: (value: any) => void;
-  // TODO: decide the type
-  value?: any;
-
-  // FIXME: Remove this prop and refactor with compound components
+  loading?: boolean;
   showSearch?: boolean;
+  value?: OptionValue | OptionValue[];
+  onChange?: (value: OptionValue | OptionValue[]) => void;
+  onPrev?: () => void;
+  onNext?: () => void;
+  onClose?: () => void;
 }
 
-export const SelectDropdown: React.FC<Props> = ({
+export const SelectDropdown: React.FC<SelectDropdownProps> = ({
   className,
   mode,
   onClose,
   onChange,
+  loading,
   options = [],
   value,
   showSearch,
+  onNext,
+  children,
 }) => {
+  const ref = React.useRef<HTMLDivElement | null>(null);
   const [search, setSearch] = React.useState('');
   const [activeItem, setActiveItem] = React.useState(0);
+
+  const onScroll = (e): void => {
+    const scrollTop = Math.floor(e.target.scrollTop);
+
+    if (onNext && e.target.scrollHeight - e.target.offsetHeight - scrollTop <= 3) {
+      onNext();
+    }
+  };
+
+  const childs = React.useMemo(() => React.Children.toArray(children) as GenericObject[], [children]);
+
+  const elSearch = childs.find((child) => child.type === Search);
+  const elPagination = childs.find((child) => child.type === Pagination);
+
+  const paginationProps = React.useMemo(() => (elPagination && elPagination.props) || {}, [elPagination]);
+  const isScrollModePagination = React.useMemo(() => paginationProps.mode === 'scroll', [paginationProps]);
+
+  React.useEffect(() => {
+    if (ref.current && isScrollModePagination) {
+      ref.current.addEventListener('scroll', onScroll);
+    }
+
+    return () => {
+      if (ref.current && isScrollModePagination) {
+        ref.current.removeEventListener('scroll', onScroll);
+      }
+    };
+  }, [ref, onScroll, isScrollModePagination]);
 
   const $options = React.useMemo(
     () => options.filter((option) => option.text.toLowerCase().match(search.toLowerCase())),
@@ -81,6 +116,8 @@ export const SelectDropdown: React.FC<Props> = ({
 
   return (
     <div className={cn(`ebs-select__dropdown`, className)}>
+      {elSearch}
+
       {showSearch && (
         <Input
           suffix={<Icon type="search" className="cursor" />}
@@ -93,23 +130,29 @@ export const SelectDropdown: React.FC<Props> = ({
         />
       )}
 
-      <Animated className="ebs-select__dropdown-items" duration={100}>
-        {hasOptions ? (
-          $options.map((option, key) => (
-            <SelectDropdownItem
-              key={option.value}
-              mode={mode}
-              active={mode === 'multiple' ? value && value.includes(option.value) : value === option.value}
-              selected={activeItem === key + 1}
-              value={option.value}
-              text={option.text}
-              onClick={onChangeHandler}
-            />
-          ))
-        ) : (
-          <div className="ebs-select__dropdown--empty">No found</div>
-        )}
-      </Animated>
+      <div ref={ref} className="ebs-select__dropdown-items">
+        <Animated loading={loading} duration={100}>
+          {hasOptions ? (
+            $options.map((option, key) => (
+              <SelectDropdownItem
+                key={option.value}
+                mode={mode}
+                active={
+                  mode === 'multiple' && Array.isArray(value) ? value.includes(option.value) : value === option.value
+                }
+                selected={activeItem === key + 1}
+                value={option.value}
+                text={option.text}
+                onClick={onChangeHandler}
+              />
+            ))
+          ) : (
+            <div className="ebs-select__dropdown--empty">No found</div>
+          )}
+        </Animated>
+      </div>
+
+      {elPagination && elPagination.props.mode === 'regular' ? elPagination : null}
     </div>
   );
 };

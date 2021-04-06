@@ -48,6 +48,7 @@ export {
   NotifyContainer,
   NotifyContext,
   NotifyProvider,
+  Select,
 } from './components/molecules';
 
 // Organisms
