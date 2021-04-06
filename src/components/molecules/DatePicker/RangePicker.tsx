@@ -17,10 +17,12 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
 
     React.useEffect(() => {
       if (props.value && Array.isArray(props.value)) {
-        setStartDate(parseDate(props.value[0], dateFormat));
-        setEndDate(parseDate(props.value[1], dateFormat));
+        if (!startDate || !endDate) {
+          setStartDate(parseDate(props.value[0], dateFormat));
+          setEndDate(parseDate(props.value[1], dateFormat));
+        }
       }
-    }, []);
+    }, [props]);
 
     React.useEffect(() => {
       const outputStartDate = getOutputDate(startDate, dateFormat);

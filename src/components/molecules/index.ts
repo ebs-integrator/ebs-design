@@ -1,5 +1,6 @@
 export { Loader } from './Loader/Loader';
 export { Calendar } from './Calendar/Calendar';
+export { DatePicker } from './DatePicker/DatePicker';
 export { InputPhone } from './InputPhone/InputPhone';
 export { InputSearch } from './InputSearch/InputSearch';
 export { Checkbox } from './Checkbox/Checkbox';
