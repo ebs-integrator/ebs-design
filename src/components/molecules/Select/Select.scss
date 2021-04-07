@@ -31,12 +31,13 @@
     padding: rem(5px 8px);
   }
 
-  &-prefix {
+  &__prefix {
     border-right: $select-prefix-border-right;
     padding: rem($select-padding-prefix-y $select-padding-prefix-x);
+    @include flex-center-vert;
   }
 
-  &-suffix {
+  &__suffix {
     position: absolute;
     right: rem(14px);
     top: 50%;
