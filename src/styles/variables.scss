@@ -380,6 +380,11 @@ $select-padding-x-sm: $input-padding-x-sm !default;
 $select-padding-y-lg: $input-padding-y-lg !default;
 $select-padding-x-lg: $input-padding-x-lg !default;
 
+$select-padding-prefix-y: $input-padding-y !default;
+$select-padding-prefix-x: $input-padding-x !default;
+
+$select-prefix-border-right: 1px solid $border-color;
+
 // Calendar
 $calendar-padding-y: $input-padding-y !default;
 $calendar-padding-x: $input-padding-x !default;

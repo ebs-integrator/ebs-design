@@ -35,6 +35,7 @@ export interface SelectProps {
   disabled?: boolean;
   options?: Option[];
   emptyLabel?: string;
+  prefix?: React.ReactNode;
 
   value?: OptionValue | OptionValue[];
   onChange?: (value: OptionValue | OptionValue[]) => void;
@@ -53,6 +54,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   placeholder,
   loading,
   disabled,
+  prefix,
   children,
 }) => {
   const inputRef = React.useRef<HTMLDivElement | null>(null);
@@ -243,6 +245,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       <Label text={label} disabled={disabled} />
 
       <div className="ebs-select-dropdown__wrapper">
+        {prefix && <div className="ebs-select__prefix">{prefix}</div>}
         <div
           className={cn('ebs-select', `ebs-select--${size}`, {
             'ebs-select--box': isBox,
@@ -281,7 +284,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
           )}
 
           {!isBox && (
-            <div className="ebs-select-suffix">
+            <div className="ebs-select__suffix">
               <Icon type={`arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`} />
             </div>
           )}
