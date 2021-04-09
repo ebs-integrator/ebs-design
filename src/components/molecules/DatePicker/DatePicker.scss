@@ -47,6 +47,8 @@
   box-sizing: border-box;
   transition: $transition-base;
 
+  @include text-ellipsis;
+
   @include placeholder {
     color: $text-color-secondary;
   }
@@ -312,7 +314,9 @@
     &__day--selected,
     &__day--selected:hover,
     &__day--keyboard-selected,
-    &__day--keyboard-selected:hover {
+    &__day--keyboard-selected:hover,
+    &__day--range-start,
+    &__day--range-end {
       border-radius: rem($border-radius);
       background-color: $primary-color;
       color: $white;

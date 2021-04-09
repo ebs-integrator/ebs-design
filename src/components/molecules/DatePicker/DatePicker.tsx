@@ -1,11 +1,12 @@
 import * as React from 'react';
 import ReactDatePicker, { registerLocale } from 'react-datepicker';
 import cn from 'classnames';
-import { DataPickerProps, DatePickerComposition } from './types';
+import { DatePickerProps, DatePickerComposition } from './types';
 import { getDefaultDateFormat, parseDate, getOutputDate } from './utils';
 import RangePicker from './RangePicker';
+import RangeInputPicker from './RangeInputPicker';
 
-const InternalDatePicker = React.forwardRef<ReactDatePicker, DataPickerProps>(({ size = 'medium', ...props }, ref) => {
+const InternalDatePicker = React.forwardRef<ReactDatePicker, DatePickerProps>(({ size = 'medium', ...props }, ref) => {
   const dateFormat = React.useMemo(() => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect), [
     props.dateFormat,
     props.showTimeSelect,
@@ -40,5 +41,6 @@ const InternalDatePicker = React.forwardRef<ReactDatePicker, DataPickerProps>(({
 const DatePicker = InternalDatePicker as DatePickerComposition;
 
 DatePicker.Range = RangePicker;
+DatePicker.RangeInput = RangeInputPicker;
 
 export { DatePicker, registerLocale };

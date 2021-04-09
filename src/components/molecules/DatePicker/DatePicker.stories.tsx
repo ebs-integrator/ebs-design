@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { DatePicker } from './DatePicker';
 import { exportStory } from '../../../libs';
+import { Button } from '../../atoms';
 import { Form, useForm } from '../../organisms/Form';
 
 export default {
@@ -9,12 +10,56 @@ export default {
   component: DatePicker,
 };
 
+export const Regular = (): React.ReactElement => {
+  const [date, setDate] = React.useState('');
+  const [time, setTime] = React.useState('');
+  const [range, setRange] = React.useState();
+
+  return (
+    <div className="storybook-rows">
+      <div className="storybook-row" style={{ maxWidth: 120 }}>
+        <div className="storybook-header">DatePicker</div>
+
+        <div className="storybook-row-item">
+          <div className="storybook-label">Date</div>
+          <DatePicker
+            placeholderText="Date placeholder"
+            value={date}
+            onChange={(v) => setDate(v as string)}
+            isClearable
+            dateFormat="dd-MM-yyyy"
+          />
+        </div>
+
+        <div className="storybook-row-item">
+          <div className="storybook-label">Time</div>
+          <DatePicker
+            showTimeSelect
+            placeholderText="Time placeholder"
+            dateFormat="yy/MMMM/d HH"
+            value={time}
+            onChange={(v) => setTime(v as string)}
+          />
+        </div>
+
+        <div className="storybook-row-item">
+          <div className="storybook-label">Range</div>
+          <DatePicker.Range dateFormat="MM-dd-yyyy" value={range} onChange={(v) => setRange(v as any)} />
+        </div>
+
+        <div className="storybook-row-item">
+          <div className="storybook-label">Range Input</div>
+          <DatePicker.RangeInput dateFormat="MM-dd-yyyy" value={range} onChange={(v) => setRange(v as any)} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const WithForm = (): React.ReactElement => {
   const [form] = useForm();
-  const [v, setV] = React.useState();
 
   const handleChange = (values): void => {
-    setV(values);
     console.log('values :>> ', values);
   };
 
@@ -30,36 +75,33 @@ export const WithForm = (): React.ReactElement => {
           }}
           onFinish={handleChange}
         >
-          <div className="storybook-header">Calendar</div>
+          <div className="storybook-header">DatePicker</div>
 
           <div className="storybook-row-item">
             <div className="storybook-label">Date</div>
-            <Form.Field name="date" label="Test Calendar" rules={[{ required: true }]}>
+            <Form.Field name="date" label="Date" rules={[{ required: true }]}>
               <DatePicker placeholderText="Birthday" isClearable dateFormat="dd-MM-yyyy" />
             </Form.Field>
           </div>
 
           <div className="storybook-row-item">
             <div className="storybook-label">Time</div>
-            <Form.Field name="time" label="Test Calendar" rules={[{ required: true }]}>
-              <DatePicker showTimeSelect placeholderText="Birthday" dateFormat="yy/MMMM/d HH" />
+            <Form.Field name="time" label="Time" rules={[{ required: true }]}>
+              <DatePicker showTimeSelect placeholderText="Birthday" isClearable dateFormat="yy/MMMM/d HH" />
             </Form.Field>
           </div>
 
           <div className="storybook-row-item">
             <div className="storybook-label">Range</div>
-            <Form.Field name="range" label="Test Calendar" rules={[{ required: true }]}>
-              <DatePicker.Range dateFormat="MM-dd-yyyy" className="range-test-className" />
+            <Form.Field name="range" label="Range" rules={[{ required: true }]}>
+              <DatePicker.Range dateFormat="MM-dd-yyyy" isClearable />
             </Form.Field>
           </div>
 
-          <button type="submit">submit</button>
+          <Button submit type="primary">
+            Submit
+          </Button>
         </Form>
-
-        <div className="storybook-row-item">
-          <div className="storybook-label">Not in form</div>
-          <DatePicker dateFormat="MM-dd-yyyy" value={v} onChange={handleChange} className="range-test-className" />
-        </div>
       </div>
     </div>
   );
@@ -71,224 +113,14 @@ export const Range = (): React.ReactElement => (
       <div className="storybook-header">Calendar</div>
 
       <div className="storybook-row-item">
-        <div className="storybook-label">Inactive</div>
+        <div className="storybook-label">Range</div>
         <DatePicker.Range />
       </div>
 
       <div className="storybook-row-item">
-        <div className="storybook-label">Active</div>
-        <DatePicker.Range value={['2020-10-11', '2020-12-11']} dateFormat="yyyy-MM-dd" />
-      </div>
-
-      <div className="storybook-row-item">
-        <div className="storybook-label">Error</div>
-        <DatePicker.Range className="has-error" />
-      </div>
-
-      <div className="storybook-row-item">
-        <div className="storybook-label">Disabled</div>
-        <DatePicker.Range disabled />
+        <div className="storybook-label">Range Input</div>
+        <DatePicker.RangeInput size="small" value={['2020-10-11', '2020-12-11']} dateFormat="yyyy-MM-dd" />
       </div>
     </div>
   </div>
 );
-
-// export const Date = (): React.ReactElement => (
-//   <div className="storybook-rows">
-//     <div className="storybook-row">
-//       <div className="storybook-header">Calendar</div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Inactive</div>
-//         <Calendar type="date" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Active</div>
-//         <Calendar type="date" date="2020-12-11" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Error</div>
-//         <Calendar hasError type="date" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Disabled</div>
-//         <Calendar disabled type="date" />
-//       </div>
-//     </div>
-
-//     <div className="storybook-row">
-//       <div className="storybook-header">Calendar + Label</div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Inactive</div>
-//         <Calendar label="Label" type="date" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Active</div>
-//         <Calendar label="Label" type="date" date="2020-12-11" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Error</div>
-//         <Calendar label="Label" hasError type="date" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Disabled</div>
-//         <Calendar label="Label" disabled type="date" />
-//       </div>
-//     </div>
-
-//     <div className="storybook-row">
-//       <div className="storybook-header">Calendar + Extra</div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Inactive</div>
-//         <Calendar extra="Extra" type="date" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Active</div>
-//         <Calendar extra="Extra" type="date" date="2020-12-11" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Error</div>
-//         <Calendar extra="Extra" hasError type="date" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Disabled</div>
-//         <Calendar extra="Extra" disabled type="date" />
-//       </div>
-//     </div>
-
-//     <div className="storybook-row">
-//       <div className="storybook-header">Calendar + Label & Extra</div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Inactive</div>
-//         <Calendar label="Label" extra="Extra" type="date" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Active</div>
-//         <Calendar label="Label" extra="Extra" type="date" date="2020-12-11" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Error</div>
-//         <Calendar label="Label" extra="Extra" hasError type="date" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Disabled</div>
-//         <Calendar label="Label" extra="Extra" disabled type="date" />
-//       </div>
-//     </div>
-//   </div>
-// );
-
-// export const DateTime = (): React.ReactElement => (
-//   <div className="storybook-rows">
-//     <div className="storybook-row">
-//       <div className="storybook-header">Calendar</div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Inactive</div>
-//         <Calendar type="date-time" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Active</div>
-//         <Calendar type="date-time" date="2020-12-11 11:30" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Error</div>
-//         <Calendar hasError type="date-time" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Disabled</div>
-//         <Calendar disabled type="date-time" />
-//       </div>
-//     </div>
-
-//     <div className="storybook-row">
-//       <div className="storybook-header">Calendar + Label</div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Inactive</div>
-//         <Calendar label="Label" type="date-time" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Active</div>
-//         <Calendar label="Label" type="date-time" date="2020-12-11 11:30" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Error</div>
-//         <Calendar label="Label" hasError type="date-time" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Disabled</div>
-//         <Calendar label="Label" disabled type="date-time" />
-//       </div>
-//     </div>
-
-//     <div className="storybook-row">
-//       <div className="storybook-header">Calendar + Extra</div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Inactive</div>
-//         <Calendar extra="Extra" type="date-time" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Active</div>
-//         <Calendar extra="Extra" type="date-time" date="2020-12-11 11:30" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Error</div>
-//         <Calendar extra="Extra" hasError type="date-time" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Disabled</div>
-//         <Calendar extra="Extra" disabled type="date-time" />
-//       </div>
-//     </div>
-
-//     <div className="storybook-row">
-//       <div className="storybook-header">Calendar + Label & Extra</div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Inactive</div>
-//         <Calendar label="Label" extra="Extra" type="date-time" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Active</div>
-//         <Calendar label="Label" extra="Extra" type="date-time" date="2020-12-11 11:30" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Error</div>
-//         <Calendar label="Label" extra="Extra" hasError type="date-time" />
-//       </div>
-
-//       <div className="storybook-row-item">
-//         <div className="storybook-label">Disabled</div>
-//         <Calendar label="Label" extra="Extra" disabled type="date-time" />
-//       </div>
-//     </div>
-//   </div>
-// );

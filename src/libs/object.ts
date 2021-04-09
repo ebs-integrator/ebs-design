@@ -17,3 +17,11 @@ export const validate = (errors: string[] | { [key: string]: string[] }): string
 };
 
 export const isObject = (val: any): boolean => typeof val === 'object';
+
+export const omitKeys = (keys: string[], obj: object): object => {
+  const updatedObj = { ...obj };
+
+  for (const n of keys) delete updatedObj[n];
+
+  return updatedObj;
+};

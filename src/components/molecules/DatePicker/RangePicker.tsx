@@ -5,9 +5,9 @@ import { RangePickerProps, DateValueType, DateType } from './types';
 import { getDefaultDateFormat, getOutputDate, parseDate } from './utils';
 
 const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
-  ({ size = 'medium', startProps, endProps, ...props }, ref) => {
-    const [startDate, setStartDate] = React.useState<DateValueType>(undefined);
-    const [endDate, setEndDate] = React.useState<DateValueType>(undefined);
+  ({ size = 'medium', startProps, endProps, value, onChange, ...props }, ref) => {
+    const [startDate, setStartDate] = React.useState<DateValueType>();
+    const [endDate, setEndDate] = React.useState<DateValueType>();
     const [isOpen, setIsOpen] = React.useState(false);
 
     const dateFormat = React.useMemo(() => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect), [
@@ -15,24 +15,33 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
       props.showTimeSelect,
     ]);
 
-    React.useEffect(() => {
-      if (props.value && Array.isArray(props.value)) {
-        if (!startDate || !endDate) {
-          setStartDate(parseDate(props.value[0], dateFormat));
-          setEndDate(parseDate(props.value[1], dateFormat));
-        }
-      }
-    }, [props]);
-
-    React.useEffect(() => {
+    const dateRange = React.useMemo(() => {
       const outputStartDate = getOutputDate(startDate, dateFormat);
       const outputEndDate = getOutputDate(endDate, dateFormat);
-      const range = [outputStartDate, outputEndDate];
+      let range: null | DateType[] = [outputStartDate, outputEndDate];
 
-      if (props.onChange) {
-        props.onChange(range as DateType);
+      // It's used to trigger the form field error
+      if (range.filter((r) => r === null).length === range.length) {
+        range = null;
       }
+
+      return range;
     }, [startDate, endDate]);
+
+    React.useEffect(() => {
+      if (value && Array.isArray(value)) {
+        if (!startDate || !endDate) {
+          setStartDate(parseDate(value[0], dateFormat));
+          setEndDate(parseDate(value[1], dateFormat));
+        }
+      }
+    }, []);
+
+    React.useEffect(() => {
+      if (onChange) {
+        onChange(dateRange as DateType);
+      }
+    }, [dateRange]);
 
     return (
       <div
@@ -40,7 +49,8 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
         style={props.style}
       >
         <ReactDatePicker
-          disabled={props.disabled}
+          {...props}
+          title={`${dateRange?.[0] || ''}`}
           {...startProps}
           ref={ref}
           selected={startDate}
@@ -56,7 +66,9 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
         />
 
         <ReactDatePicker
-          disabled={props.disabled}
+          {...props}
+          minDate={startDate}
+          title={`${dateRange?.[1] || ''}`}
           {...endProps}
           ref={ref}
           selected={endDate}
@@ -64,7 +76,6 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
           selectsEnd
           startDate={startDate}
           endDate={endDate}
-          minDate={startDate}
           className={cn(`ebs-datepicker ebs-datepicker--${size}`, endProps?.className)}
           wrapperClassName={cn('ebs-datepicker__wrapper', endProps?.wrapperClassName)}
           popperClassName={cn('ebs-datepicker__popper', endProps?.popperClassName)}
