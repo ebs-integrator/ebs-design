@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarInline, Space, ButtonGroup, Button } from 'components/atoms';
+import { AvatarInline, Space, ButtonGroup, Button, Icon } from 'components/atoms';
 import { ButtonSize } from 'components/atoms/Button/Button';
 
 import { Select, Option, OptionValue } from './Select';
@@ -79,6 +79,7 @@ export const Regular = (): React.ReactNode => {
             onChange={(value) => setValue(value as OptionValue)}
             // optionsMode="dropdown" // by default
             // optionsMode="box"
+            prefix={<Icon type="eye" />}
           >
             <Select.Search value={search} onSearch={setSearch} />
 
