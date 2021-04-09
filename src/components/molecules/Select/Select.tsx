@@ -6,13 +6,15 @@ import { Loader } from 'components/molecules';
 import { isArray, isEqualArrays, uniqueArray } from 'libs';
 import { GenericObject, SizeType } from 'types';
 
-import { Search, SearchProps } from './Search';
+import { Search } from './Search';
 import { Pagination, PaginationProps } from './Pagination';
 import { Options, OptionsProps, OptionsComposition } from './Options';
 
+import { InputSearchProps } from '../InputSearch/InputSearch';
+
 export interface SelectComposition {
   Options: React.FC<OptionsProps> & OptionsComposition;
-  Search: React.FC<SearchProps>;
+  Search: React.FC<InputSearchProps>;
   Pagination: React.FC<PaginationProps>;
 }
 
@@ -65,8 +67,6 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   const [options, setOptions] = React.useState<Option[]>([]);
   const [cacheOptions, setCacheOptions] = React.useState<Option[]>([]);
 
-  const childs = React.Children.toArray(children) as GenericObject[];
-
   React.useEffect(() => {
     if (value) {
       setCacheOptions((i) => {
@@ -79,38 +79,26 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
     } else setCacheOptions([]);
   }, [options, value]);
 
-  const $options = React.useMemo(
-    () =>
-      optionsList.length
-        ? optionsList
-        : childs
-            .filter((i) => i.type === Options)[0]
-            ?.props.children.map((i) => ({
-              value: i.props.value,
-              text: i.props.children,
-            })),
-    [optionsList, childs],
-  );
+  const childs = React.useMemo(() => React.Children.toArray(children) as GenericObject[], [children]);
 
-  const paginationProps = React.useMemo(() => {
-    const PaginationEl = childs.find((child) => child.type === Pagination);
+  const $options = React.useMemo(() => {
+    const child = childs.find((i) => i.type === Options);
 
-    return (PaginationEl && PaginationEl.props) || {};
-  }, [childs]);
+    return !!optionsList.length
+      ? optionsList
+      : !!child?.props?.children?.length
+      ? child.props.children.map((i) => ({
+          value: i.props.value,
+          text: i.props.children,
+        }))
+      : optionsList;
+  }, [optionsList, childs]);
 
-  console.log('paginationProps', paginationProps);
-
-  React.useEffect(() => {
-    if (!isEqualArrays($options, options) && !loaded) {
-      setOptions((i) => {
-        if (paginationProps.mode === 'scroll') {
-          setLoaded(true);
-
-          return uniqueArray(i, $options) as Option[];
-        } else return $options;
-      });
-    }
-  }, [$options, paginationProps]);
+  const isBox = React.useMemo(() => optionsMode === 'box', [optionsMode]);
+  const isSearch = React.useMemo(() => !!childs.find((child) => child.type === Search)?.props?.value?.length || false, [
+    childs,
+  ]);
+  const paginationProps = React.useMemo(() => childs.find((child) => child.type === Pagination)?.props || {}, [childs]);
 
   const hasValue = React.useMemo(
     () => (!isArray(value) && value !== undefined) || (isArray(value) && (value as OptionValue[]).length > 0),
@@ -126,8 +114,6 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
     return (cacheOptions.find((option) => option.value === value) || { text: value }).text;
   }, [value, cacheOptions]);
-
-  const isBox = React.useMemo(() => optionsMode === 'box', [optionsMode]);
 
   const onChangeHandler = React.useCallback(
     (newValue) => {
@@ -168,6 +154,22 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
     }
   });
 
+  React.useEffect(() => {
+    if ((!isEqualArrays($options, options) && !loaded) || isSearch) {
+      setOptions(() => {
+        if (paginationProps.mode === 'scroll' && !isSearch) {
+          setLoaded(true);
+
+          return uniqueArray(options, $options) as Option[];
+        } else return $options;
+      });
+
+      if (isSearch) {
+        setLoaded(false);
+      }
+    }
+  }, [$options, options, loaded, paginationProps, isSearch, setLoaded, setOptions]);
+
   const onPrev = React.useCallback(() => {
     if (paginationProps) {
       const { page, setPage } = paginationProps;
@@ -191,48 +193,6 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       }
     }
   }, [paginationProps]);
-
-  const renderChilds = React.useMemo(
-    () =>
-      childs.map((child) => {
-        if (child.type === Options) {
-          return (
-            <Options
-              mode={mode}
-              scrollMode={paginationProps.mode === 'scroll'}
-              options={options}
-              value={value}
-              loading={loading}
-              className={cn({ 'ebs-select--box': isBox })}
-              emptyLabel={emptyLabel}
-              onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
-              onChange={onChangeHandler}
-              onPrev={onPrev}
-              onNext={onNext}
-              {...child.props}
-            />
-          );
-        } else if (child.type === Pagination && child.props.mode === 'scroll') {
-          return null;
-        }
-
-        return child;
-      }),
-    [
-      childs,
-      mode,
-      paginationProps,
-      options,
-      value,
-      loading,
-      emptyLabel,
-      isBox,
-      onChangeHandler,
-      onPrev,
-      onNext,
-      onToggleOpenDropdown,
-    ],
-  );
 
   return (
     <div
@@ -291,7 +251,33 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
         </div>
 
         {!disabled && (openDropdown || isBox) && (
-          <div className={cn(`ebs-select__options`, className)}>{renderChilds}</div>
+          <div className={cn(`ebs-select__options`, className)}>
+            {childs.map((child, i) => {
+              if (child.type === Options) {
+                return (
+                  <Options
+                    key={i}
+                    mode={mode}
+                    scrollMode={paginationProps.mode === 'scroll'}
+                    options={options}
+                    value={value}
+                    loading={loading}
+                    className={cn({ 'ebs-select--box': isBox })}
+                    emptyLabel={emptyLabel}
+                    onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
+                    onChange={onChangeHandler}
+                    onPrev={onPrev}
+                    onNext={onNext}
+                    {...child.props}
+                  />
+                );
+              } else if (child.type === Pagination && child.props.mode === 'scroll') {
+                return null;
+              }
+
+              return child;
+            })}
+          </div>
         )}
       </div>
     </div>

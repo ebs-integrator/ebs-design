@@ -47,7 +47,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   };
 
   React.useEffect(() => {
-    if (ref.current && !scrollMode && options.length) {
+    if (ref.current && !scrollMode && options?.length) {
       ref.current.scrollTop = 0;
     }
   }, [ref, options, scrollMode]);
@@ -64,32 +64,36 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
     };
   }, [ref, onScroll, scrollMode]);
 
-  useEventListener('keydown', ({ key }: { key: string }) => {
-    if (['ArrowUp', 'ArrowDown', 'Escape', 'Enter'].includes(key)) {
-      if (key === 'Escape' && mode === 'single' && onClose !== undefined) {
-        onClose();
-      }
-
-      if (key === 'Enter' && onChange !== undefined) {
-        const option = options[activeItem - 1];
-        onChange(option.value);
-
-        if (mode === 'single' && onClose !== undefined) {
+  useEventListener(
+    'keydown',
+    ({ key }: { key: string }) => {
+      if (['ArrowUp', 'ArrowDown', 'Escape', 'Enter'].includes(key)) {
+        if (key === 'Escape' && mode === 'single' && onClose !== undefined) {
           onClose();
         }
-      }
 
-      // User pressed the up arrow
-      if (key === 'ArrowUp') {
-        setActiveItem((s) => (s !== 0 ? s - 1 : options.length));
-      }
+        if (key === 'Enter' && onChange !== undefined) {
+          const option = options[activeItem - 1];
+          onChange(option.value);
 
-      // User pressed the down arrow
-      if (key === 'ArrowDown') {
-        setActiveItem((s) => (s < options.length ? s + 1 : 0));
+          if (mode === 'single' && onClose !== undefined) {
+            onClose();
+          }
+        }
+
+        // User pressed the up arrow
+        if (key === 'ArrowUp') {
+          setActiveItem((s) => (s !== 0 ? s - 1 : options.length));
+        }
+
+        // User pressed the down arrow
+        if (key === 'ArrowDown') {
+          setActiveItem((s) => (s < options.length ? s + 1 : 0));
+        }
       }
-    }
-  });
+    },
+    ref,
+  );
 
   const onChangeHandler = (value: any): void => {
     if (onChange !== undefined) {
@@ -101,34 +105,30 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
     }
   };
 
-  const hasOptions = React.useMemo(() => options && options.length > 0, [options]);
-
   return (
-    <>
-      <div ref={ref} className="ebs-select__options-items">
-        <Animated loading={loading} duration={100}>
-          {hasOptions ? (
-            options.map((option, key) => (
-              <Item
-                key={option.value}
-                mode={mode}
-                active={
-                  mode === 'multiple' && Array.isArray(value) ? value.includes(option.value) : value === option.value
-                }
-                selected={activeItem === key + 1}
-                text={option.text}
-                onClick={onChangeHandler}
-                {...option}
-              />
-            ))
-          ) : (
-            <Space size="large" justify="center" className="ebs-select__options--empty">
-              {emptyLabel}
-            </Space>
-          )}
-        </Animated>
-      </div>
-    </>
+    <div ref={ref} className="ebs-select__options-items">
+      <Animated loading={loading} duration={100}>
+        {options.length ? (
+          options.map((option, key) => (
+            <Item
+              key={key}
+              mode={mode}
+              active={
+                mode === 'multiple' && Array.isArray(value) ? value.includes(option.value) : value === option.value
+              }
+              selected={activeItem === key + 1}
+              text={option.text}
+              onClick={onChangeHandler}
+              {...option}
+            />
+          ))
+        ) : (
+          <Space size="large" justify="center" className="ebs-select__options--empty">
+            {emptyLabel}
+          </Space>
+        )}
+      </Animated>
+    </div>
   );
 };
 
