@@ -53,6 +53,7 @@ export const FormField: React.FC<FormFieldProps> = ({
               ? children(control, meta, form)
               : React.cloneElement(children as React.ReactElement, {
                   ...control,
+                  ...(meta.errors.length && { className: 'has-error' }),
                 });
 
           return (

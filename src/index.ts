@@ -36,6 +36,7 @@ export {
   Loader,
   Stepper,
   Calendar,
+  DatePicker,
   InputPhone,
   InputSearch,
   InputSelect,
@@ -70,6 +71,8 @@ export {
 } from './components/organisms';
 
 // Export types
+export type { CalendarType } from 'components/molecules/Calendar/Calendar';
+export type { DataPickerProps, RangePickerProps, DatePickerComposition } from 'components/molecules/DatePicker/types';
 export type { ColumnType, TableProps } from 'components/organisms/Table/Table';
 export type { FormInstance, FormProps } from 'components/organisms/Form';
 
