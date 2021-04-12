@@ -68,6 +68,12 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   const [cacheOptions, setCacheOptions] = React.useState<Option[]>([]);
 
   React.useEffect(() => {
+    if (!loading) {
+      setLoaded(false);
+    }
+  }, [loading]);
+
+  React.useEffect(() => {
     if (value) {
       setCacheOptions((i) => {
         const cache = options.filter(
