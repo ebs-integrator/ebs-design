@@ -33,3 +33,9 @@ export const Regular = (): React.ReactElement => (
     <Button>Upload</Button>
   </Upload>
 );
+
+export const Multiple = (): React.ReactElement => (
+  <Upload multiple {...uploaderProps}>
+    <Button>Upload</Button>
+  </Upload>
+);
