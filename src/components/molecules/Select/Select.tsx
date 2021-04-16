@@ -100,10 +100,16 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       : optionsList;
   }, [optionsList, childs]);
 
+  const searchEl = React.useMemo(() => childs.find((child) => child.type === Search), [childs]);
+
+  React.useEffect(() => {
+    if (!openDropdown && searchEl && searchEl.props?.value?.length) {
+      searchEl.props.onSearch('');
+    }
+  }, [openDropdown, searchEl]);
+
   const isBox = React.useMemo(() => optionsMode === 'box', [optionsMode]);
-  const isSearch = React.useMemo(() => !!childs.find((child) => child.type === Search)?.props?.value?.length || false, [
-    childs,
-  ]);
+  const isSearch = React.useMemo(() => (searchEl && !!searchEl.props?.value?.length) || false, [searchEl]);
   const paginationProps = React.useMemo(() => childs.find((child) => child.type === Pagination)?.props || {}, [childs]);
 
   const hasValue = React.useMemo(
