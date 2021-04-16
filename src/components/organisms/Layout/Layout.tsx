@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { GenericObject } from 'types';
 
 import { Topbar } from './Topbar';
@@ -8,7 +9,6 @@ import { LayoutProvider } from './context';
 const Layout: React.FC<{ className?: string }> = ({ className, children }) => {
   const childs = React.useMemo(() => React.Children.toArray(children) as GenericObject[], [children]);
   const FoolterElement = React.useMemo(() => childs.find((child) => child.type === Footer), [childs]);
-  const hasFooter = React.useMemo(() => !!FoolterElement, [FoolterElement]);
   const isFixedFooter = React.useMemo(() => FoolterElement?.props?.fixed, [FoolterElement]);
 
   return (
@@ -17,13 +17,16 @@ const Layout: React.FC<{ className?: string }> = ({ className, children }) => {
         {childs.map((child, i) => {
           const isFooter = child.type === Footer;
 
-          return child.type === Content && hasFooter && !isFixedFooter ? (
-            <div key={i} className="ebs-layout__container">
+          return child.type === Content ? (
+            <div
+              key={i}
+              className={cn('ebs-layout__container', { 'ebs-layout__container--has-fixed-footer': isFixedFooter })}
+            >
               {child}
               {FoolterElement}
             </div>
           ) : (
-            (!isFooter || (isFooter && isFixedFooter)) && child
+            !isFooter && child
           );
         })}
       </Container>
