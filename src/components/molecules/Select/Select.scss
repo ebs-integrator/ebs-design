@@ -1,5 +1,6 @@
 .ebs-select {
   flex: auto;
+  position: relative;
   cursor: pointer;
   border: 1px solid $border-color;
   border-radius: rem($border-radius);
@@ -11,6 +12,10 @@
     position: relative;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+  }
+
+  &--box + &__options {
+    position: unset;
   }
 
   &-transition {
@@ -38,9 +43,18 @@
   }
 
   &__prefix {
-    border-right: $select-prefix-border-right;
+    border: $select-prefix-border-right;
+    border-right: none;
+    border-radius: rem($border-radius);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     padding: rem($select-padding-prefix-y $select-padding-prefix-x);
     @include flex-center-vert;
+  }
+
+  &__prefix + & {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   &__suffix {
@@ -99,6 +113,10 @@
         padding-right: rem(75px);
       }
 
+      .ebs-select__prefix {
+        border-color: $primary-color;
+      }
+
       .ebs-select-dropdown__wrapper .ebs-select {
         border-color: $primary-color;
         background-color: $white;
@@ -145,4 +163,5 @@
 .ebs-select-dropdown__wrapper {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
 }
