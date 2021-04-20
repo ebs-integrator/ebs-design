@@ -102,15 +102,15 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const searchEl = React.useMemo(() => childs.find((child) => child.type === Search), [childs]);
 
-  React.useEffect(() => {
-    if (!openDropdown && searchEl && searchEl.props?.value?.length) {
-      searchEl.props.onSearch('');
-    }
-  }, [openDropdown, searchEl]);
-
   const isBox = React.useMemo(() => optionsMode === 'box', [optionsMode]);
   const isSearch = React.useMemo(() => (searchEl && !!searchEl.props?.value?.length) || false, [searchEl]);
   const paginationProps = React.useMemo(() => childs.find((child) => child.type === Pagination)?.props || {}, [childs]);
+
+  React.useEffect(() => {
+    if (!isBox && !openDropdown && searchEl && searchEl.props?.value?.length) {
+      searchEl.props.onSearch('');
+    }
+  }, [isBox, openDropdown, searchEl]);
 
   const hasValue = React.useMemo(
     () => (!isArray(value) && value !== undefined) || (isArray(value) && (value as OptionValue[]).length > 0),
@@ -167,7 +167,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   });
 
   React.useEffect(() => {
-    if ((!isEqualArrays($options, options) && !loaded) || isSearch) {
+    if ((!isEqualArrays($options, options) && !loaded) || (!isEqualArrays($options, options) && isSearch)) {
       setOptions(() => {
         if (paginationProps.mode === 'scroll' && !isSearch) {
           setLoaded(true);
