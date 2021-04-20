@@ -7,18 +7,19 @@ import { GenericObject } from 'types';
 const bytesToMegaBytes = (bytes: number): string => (bytes / (1024 * 1024)).toFixed(2);
 
 export const Upload = React.forwardRef<any, UploadProps>((props, ref) => {
-  const [files, setFiles] = React.useState<any>([]);
+  const [, setData] = React.useState<GenericObject[]>([]);
+  const [files, setFiles] = React.useState<GenericObject[]>([]);
   const [progress, setProgress] = React.useState<GenericObject>({});
   const [errors, setErrors] = React.useState<{ [key: string]: Error }>({});
 
   React.useEffect(() => {
     if (props.value) {
       if (isArray(props.value) && (props.value as []).length && !isEqualArrays(props.value, files)) {
-        setFiles(props.value);
+        setFiles(props.value as []);
 
         (props.value as []).forEach(({ uid, id }) => setProgress((i) => ({ ...i, [uid || id]: 100 })));
       } else if (!isArray(props.value) && !progress[(props.value as GenericObject).id]) {
-        setFiles([props.value]);
+        setFiles([props.value as GenericObject]);
         setProgress((i) => ({ ...i, [(props.value as GenericObject).id]: 100 }));
       }
     }
@@ -38,26 +39,38 @@ export const Upload = React.forwardRef<any, UploadProps>((props, ref) => {
 
   const onSuccess = React.useCallback(
     (response, file, xhr) => {
-      setProgress((i) => ({ ...i, [file.uid || file.id]: 100 }));
-      setFiles((i) => {
+      setProgress((i) => ({ ...i, [file.uid]: 100 }));
+
+      setFiles((i) =>
+        i.map((x) => {
+          if (x.uid === file.uid) {
+            x.id = response[0].id;
+          }
+
+          return x;
+        }),
+      );
+      setData((i) => {
+        const newData = props.multiple ? [...i, ...response] : response;
+
         if (props.onChange) {
-          props.onChange(i);
+          props.onChange(newData);
         }
 
-        return i;
-      });
+        // Internal save
+        if (props.onSuccess) {
+          props.onSuccess(newData, file, xhr);
+        }
 
-      // Internal save
-      if (props.onSuccess) {
-        props.onSuccess(response, file, xhr);
-      }
+        return newData;
+      });
     },
     [props],
   );
 
   const onProgress = React.useCallback(
     (event, file) => {
-      setProgress((i) => ({ ...i, [file.uid || file.id]: Math.round(event.percent) }));
+      setProgress((i) => ({ ...i, [file.uid]: Math.round(event.percent) }));
       setFiles((i) => [...i, file]);
 
       if (props.onProgress) {
@@ -69,16 +82,19 @@ export const Upload = React.forwardRef<any, UploadProps>((props, ref) => {
 
   // Handle remove file
   const handleRemove = React.useCallback(
-    (value) =>
-      setFiles((i) => {
-        const data = i.filter(({ uid, id }) => (uid || id) !== value);
+    (uid, id) => {
+      setFiles((i) => i.filter((x) => x.uid !== uid));
+
+      setData((i) => {
+        const data = i.filter((x) => x.id !== id);
 
         if (props.onChange) {
-          props.onChange(data);
+          props.onChange(data as any);
         }
 
         return data;
-      }),
+      });
+    },
     [props, files],
   );
 
@@ -97,9 +113,9 @@ export const Upload = React.forwardRef<any, UploadProps>((props, ref) => {
       </RCUpload>
 
       {files.map(({ uid, id, url, name, size }) => (
-        <div key={uid || id}>
+        <div key={uid}>
           <div className="upload__container">
-            <div className="upload__file__remove" onClick={() => handleRemove(uid || id)}>
+            <div className="upload__file__remove" onClick={() => handleRemove(uid, id)}>
               <Icon type="close" />
             </div>
 
@@ -121,7 +137,7 @@ export const Upload = React.forwardRef<any, UploadProps>((props, ref) => {
             </div>
           </div>
 
-          {errors[uid || id] && <div className="upload__error">{errors[uid || id].message}</div>}
+          {errors[uid] && <div className="upload__error">{errors[uid].message}</div>}
         </div>
       ))}
     </>
