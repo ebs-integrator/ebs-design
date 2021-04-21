@@ -136,14 +136,29 @@
   &--small {
     font-size: rem(12px);
     padding: rem($select-padding-y-sm $select-padding-x-sm);
+
+    // FIXME: Temporary hack
+    .ebs-select-value:empty {
+      min-height: $base-size-sm - $select-padding-y-sm * 2;
+    }
   }
 
   &--medium {
     padding: rem($select-padding-y $select-padding-x);
+
+    // FIXME: Temporary hack
+    .ebs-select-value:empty {
+      min-height: $base-size - $select-padding-y * 2;
+    }
   }
 
   &--large {
     padding: rem($select-padding-y-lg $select-padding-x-lg);
+
+    // FIXME: Temporary hack
+    .ebs-select-value:empty {
+      min-height: $base-size-lg - $select-padding-y-lg * 2;
+    }
   }
 
   &__pagination {
