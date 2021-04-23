@@ -93,6 +93,7 @@ export const Regular = (): React.ReactNode => {
                 // optionsMode="dropdown" // by default
                 // optionsMode="box"
                 prefix={<Icon type="eye" />}
+                isClearable
               >
                 <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
@@ -167,7 +168,7 @@ export const OptionsBox = (): React.ReactNode => {
             onFinish={handleChange}
           >
             <Form.Field name="select" label="Select" rules={[{ required: true }]}>
-              <Select loading={loading} mode="single" size={size} placeholder="Select" optionsMode="box">
+              <Select loading={loading} mode="single" size={size} placeholder="Select" optionsMode="box" isClearable>
                 <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
                 <Select.Options>
@@ -241,7 +242,7 @@ export const OptionsMultiple = (): React.ReactNode => {
             onFinish={handleChange}
           >
             <Form.Field name="select" label="Select" rules={[{ required: true }]}>
-              <Select loading={loading} mode="multiple" size={size} placeholder="Select" optionsMode="box">
+              <Select loading={loading} mode="multiple" size={size} placeholder="Select" optionsMode="box" isClearable>
                 <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
                 <Select.Options>
@@ -308,7 +309,7 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
             onFinish={handleChange}
           >
             <Form.Field name="select" label="Select" rules={[{ required: true }]}>
-              <Select loading={loading} mode="multiple" size={size} placeholder="Select">
+              <Select loading={loading} mode="multiple" size={size} placeholder="Select" isClearable>
                 <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
                 <Select.Options>

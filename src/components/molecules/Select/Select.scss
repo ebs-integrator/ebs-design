@@ -1,4 +1,5 @@
 .ebs-select {
+  @include flex-center-vert;
   flex: auto;
   position: relative;
   cursor: pointer;
@@ -19,11 +20,11 @@
   }
 
   &-transition {
-    width: rem(90px);
+    width: rem(80px);
     height: calc(100% - 2px);
     margin: 1px;
     position: absolute;
-    right: 0;
+    right: $gutter-size;
     top: 0;
     border-top-right-radius: rem(4px);
     border-bottom-right-radius: rem(4px);
@@ -40,6 +41,19 @@
     font-size: rem(12px);
     border-radius: rem($border-radius);
     padding: rem(5px 8px);
+    z-index: 2;
+  }
+
+  &-count + &__clear {
+    margin-right: rem($base-size + $gutter-size);
+  }
+
+  &--box &__clear {
+    margin-right: 0;
+  }
+
+  &--box &-count + &__clear {
+    margin-right: rem($base-size + ($gutter-size / 2));
   }
 
   &__prefix {
@@ -57,11 +71,28 @@
     border-bottom-left-radius: 0;
   }
 
+  &__clear {
+    z-index: 2;
+    margin-right: rem($gutter-size / 2);
+
+    .ebs-button__wrapper {
+      border-radius: 100%;
+      width: rem($gutter-size + 4);
+      height: rem($gutter-size + 4);
+
+      .ebs-button {
+        @include flex-center-vert;
+        padding: 0;
+
+        .ebs-icon {
+          font-size: 1rem;
+          color: $white;
+        }
+      }
+    }
+  }
+
   &__suffix {
-    position: absolute;
-    right: rem(14px);
-    top: 50%;
-    transform: translateY(-50%);
     color: $text-color;
 
     .ebs-icon {
@@ -80,7 +111,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding-right: rem(20px);
+    width: 100%;
+    padding-right: rem($gutter-size);
     @include hiddenScroll;
   }
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import useClickAway from 'react-use/esm/useClickAway';
 import cn from 'classnames';
-import { Label, Icon } from 'components/atoms';
+import { Label, Icon, Button } from 'components/atoms';
 import { Loader } from 'components/molecules';
 import { isArray, isEqualArrays, uniqueArray } from 'libs';
 import { GenericObject, SizeType } from 'types';
@@ -40,6 +40,7 @@ export interface SelectProps {
   prefix?: React.ReactNode;
 
   value?: OptionValue | OptionValue[];
+  isClearable?: boolean;
   onChange?: (value: OptionValue | OptionValue[]) => void;
 }
 
@@ -57,6 +58,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   loading,
   disabled,
   prefix,
+  isClearable,
   children,
 }) => {
   const inputRef = React.useRef<HTMLDivElement | null>(null);
@@ -132,7 +134,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       const $newValue = mode === 'single' ? (newValue === value ? undefined : newValue) : newValue;
 
       const newModeValue =
-        mode === 'multiple'
+        mode === 'multiple' && !isArray($newValue)
           ? isArray(value) && (value as OptionValue[]).includes($newValue)
             ? (value as OptionValue[]).filter((item) => $newValue !== item)
             : [...(isArray(value) ? (value as OptionValue[]) : []), $newValue]
@@ -173,7 +175,11 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
           setLoaded(true);
 
           return uniqueArray(options, $options) as Option[];
-        } else return $options;
+        } else {
+          setLoaded(true);
+
+          return $options;
+        }
       });
 
       if (isSearch) {
@@ -205,6 +211,8 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       }
     }
   }, [paginationProps]);
+
+  const onClear = (): void => onChangeHandler(mode === 'single' ? undefined : []);
 
   return (
     <div
@@ -246,13 +254,17 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
           </div>
 
           {hasValue && isArray(textValue) && (
-            <>
-              <div className="ebs-select-transition" />
+            <div className="ebs-select-count" style={isBox ? { right: '1rem' } : undefined}>
+              {(textValue as OptionValue[]).length}
+            </div>
+          )}
 
-              <div className="ebs-select-count" style={isBox ? { right: '1rem' } : undefined}>
-                {(textValue as OptionValue[]).length}
-              </div>
-            </>
+          {hasValue && isClearable && (
+            <div className="ebs-select__clear">
+              <Button size="small" type="primary" onClick={onClear}>
+                <Icon type="close" />
+              </Button>
+            </div>
           )}
 
           {!isBox && (
@@ -260,6 +272,8 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
               <Icon type={`arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`} />
             </div>
           )}
+
+          {hasValue && isArray(textValue) && <div className="ebs-select-transition" />}
         </div>
 
         {!disabled && (openDropdown || isBox) && (
