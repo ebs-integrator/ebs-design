@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { AvatarInline, Space, ButtonGroup, Button, Icon } from 'components/atoms';
+import { Form, useForm } from 'components/organisms';
 import { ButtonSize } from 'components/atoms/Button/Button';
 
-import { Select, Option, OptionValue } from './Select';
+import { Select, Option } from './Select';
 import { exportStory } from '../../../libs';
 
 export default {
@@ -37,7 +38,7 @@ const SizeSwitcher: React.FC<{ children: (size: ButtonSize) => React.ReactNode }
 const limit = 15;
 
 export const Regular = (): React.ReactNode => {
-  const [value, setValue] = React.useState<OptionValue | undefined>();
+  const [form] = useForm();
   const [search, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
   const [page, setPage] = React.useState(1);
@@ -50,8 +51,8 @@ export const Regular = (): React.ReactNode => {
     fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
       .then((response) => response.json())
       .then(({ data, total: count }) => {
-        let newList: Option[] = [];
-        Object.keys(data).map((item) => {
+        const newList: Option[] = [];
+        Object.keys(data).forEach((item) => {
           newList.push({
             value: item,
             text: <AvatarInline type="primary" shortAlt={item} alt={data[item].country} />,
@@ -64,42 +65,57 @@ export const Regular = (): React.ReactNode => {
       });
   }, [page]);
 
+  const handleChange = (values): void => {
+    console.log('values :>> ', values);
+  };
+
   return (
     <SizeSwitcher>
       {(size) => (
         <Space direction="vertical" style={{ minWidth: 300 }}>
-          <Select
-            value={value}
-            // options={list}
-            loading={loading}
-            size={size}
-            // mode="multiple"
-            // mode="single" // by default
-            placeholder="Select"
-            onChange={(value) => setValue(value as OptionValue)}
-            // optionsMode="dropdown" // by default
-            // optionsMode="box"
-            prefix={<Icon type="eye" />}
+          <Form
+            form={form}
+            initialValues={{
+              date: '10/10/2025',
+              time: '15-11-2020 11:30',
+              range: ['09-10-2029', '10-10-2029'],
+            }}
+            onFinish={handleChange}
           >
-            <Select.Search value={search} onSearch={setSearch} />
+            <Form.Field name="select" label="Select" rules={[{ required: true }]}>
+              <Select
+                // options={list}
+                loading={loading}
+                size={size}
+                // mode="multiple"
+                // mode="single" // by default
+                placeholder="Select"
+                // optionsMode="dropdown" // by default
+                // optionsMode="box"
+                prefix={<Icon type="eye" />}
+                isClearable
+              >
+                <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
-            <Select.Options>
-              {list.map((item, i) => (
-                <Select.Options.Item key={i} value={item.value}>
-                  {item.text}
-                </Select.Options.Item>
-              ))}
-            </Select.Options>
+                <Select.Options>
+                  {list.map((item, i) => (
+                    <Select.Options.Item key={i} value={item.value}>
+                      {item.text}
+                    </Select.Options.Item>
+                  ))}
+                </Select.Options>
 
-            <Select.Pagination
-              count={total}
-              limit={limit}
-              page={page}
-              setPage={setPage}
-              mode="regular"
-              // mode="scroll"
-            />
-          </Select>
+                <Select.Pagination
+                  count={total}
+                  limit={limit}
+                  page={page}
+                  setPage={setPage}
+                  mode="regular"
+                  // mode="scroll"
+                />
+              </Select>
+            </Form.Field>
+          </Form>
         </Space>
       )}
     </SizeSwitcher>
@@ -107,7 +123,7 @@ export const Regular = (): React.ReactNode => {
 };
 
 export const OptionsBox = (): React.ReactNode => {
-  const [value, setValue] = React.useState<OptionValue | undefined>(undefined);
+  const [form] = useForm();
   const [search, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
   const [page, setPage] = React.useState(1);
@@ -120,8 +136,8 @@ export const OptionsBox = (): React.ReactNode => {
     fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
       .then((response) => response.json())
       .then(({ data, total: count }) => {
-        let newList: Option[] = [];
-        Object.keys(data).map((item) => {
+        const newList: Option[] = [];
+        Object.keys(data).forEach((item) => {
           newList.push({
             value: item,
             text: <AvatarInline type="primary" shortAlt={item} alt={data[item].country} />,
@@ -134,38 +150,46 @@ export const OptionsBox = (): React.ReactNode => {
       });
   }, [page]);
 
+  const handleChange = (values): void => {
+    console.log('values :>> ', values);
+  };
+
   return (
     <SizeSwitcher>
       {(size) => (
         <Space direction="vertical" style={{ minWidth: 300 }}>
-          <Select
-            value={value}
-            loading={loading}
-            mode="single"
-            size={size}
-            placeholder="Select"
-            onChange={(value) => setValue(value as OptionValue)}
-            optionsMode="box"
+          <Form
+            form={form}
+            initialValues={{
+              date: '10/10/2025',
+              time: '15-11-2020 11:30',
+              range: ['09-10-2029', '10-10-2029'],
+            }}
+            onFinish={handleChange}
           >
-            <Select.Search value={search} onSearch={setSearch} />
+            <Form.Field name="select" label="Select" rules={[{ required: true }]}>
+              <Select loading={loading} mode="single" size={size} placeholder="Select" optionsMode="box" isClearable>
+                <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
-            <Select.Options>
-              {list.map((item, i) => (
-                <Select.Options.Item key={i} value={item.value}>
-                  {item.text}
-                </Select.Options.Item>
-              ))}
-            </Select.Options>
+                <Select.Options>
+                  {list.map((item, i) => (
+                    <Select.Options.Item key={i} value={item.value}>
+                      {item.text}
+                    </Select.Options.Item>
+                  ))}
+                </Select.Options>
 
-            <Select.Pagination
-              count={total}
-              limit={limit}
-              page={page}
-              setPage={setPage}
-              mode="regular"
-              // mode="scroll"
-            />
-          </Select>
+                <Select.Pagination
+                  count={total}
+                  limit={limit}
+                  page={page}
+                  setPage={setPage}
+                  mode="regular"
+                  // mode="scroll"
+                />
+              </Select>
+            </Form.Field>
+          </Form>
         </Space>
       )}
     </SizeSwitcher>
@@ -173,7 +197,7 @@ export const OptionsBox = (): React.ReactNode => {
 };
 
 export const OptionsMultiple = (): React.ReactNode => {
-  const [values, setValues] = React.useState<OptionValue[] | undefined>(undefined);
+  const [form] = useForm();
   const [search, setSearch] = React.useState<string>('');
   const [loading, setLoaded] = React.useState(true);
   const [list, setList] = React.useState<Option[]>([]);
@@ -186,8 +210,8 @@ export const OptionsMultiple = (): React.ReactNode => {
     fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
       .then((response) => response.json())
       .then(({ data, total: count }) => {
-        let newList: Option[] = [];
-        Object.keys(data).map((item) => {
+        const newList: Option[] = [];
+        Object.keys(data).forEach((item) => {
           newList.push({
             value: item,
             text: <AvatarInline type="primary" shortAlt={item} alt={data[item].country} />,
@@ -200,31 +224,39 @@ export const OptionsMultiple = (): React.ReactNode => {
       });
   }, [page]);
 
+  const handleChange = (values): void => {
+    console.log('values :>> ', values);
+  };
+
   return (
     <SizeSwitcher>
       {(size) => (
         <Space direction="vertical" style={{ minWidth: 300 }}>
-          <Select
-            value={values}
-            loading={loading}
-            mode="multiple"
-            size={size}
-            placeholder="Select"
-            onChange={(value) => setValues(value as OptionValue[])}
-            optionsMode="box"
+          <Form
+            form={form}
+            initialValues={{
+              date: '10/10/2025',
+              time: '15-11-2020 11:30',
+              range: ['09-10-2029', '10-10-2029'],
+            }}
+            onFinish={handleChange}
           >
-            <Select.Search value={search} onSearch={setSearch} />
+            <Form.Field name="select" label="Select" rules={[{ required: true }]}>
+              <Select loading={loading} mode="multiple" size={size} placeholder="Select" optionsMode="box" isClearable>
+                <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
-            <Select.Options>
-              {list.map((item, i) => (
-                <Select.Options.Item key={i} value={item.value}>
-                  {item.text}
-                </Select.Options.Item>
-              ))}
-            </Select.Options>
+                <Select.Options>
+                  {list.map((item, i) => (
+                    <Select.Options.Item key={i} value={item.value}>
+                      {item.text}
+                    </Select.Options.Item>
+                  ))}
+                </Select.Options>
 
-            <Select.Pagination count={total} limit={limit} page={page} setPage={setPage} mode="regular" />
-          </Select>
+                <Select.Pagination count={total} limit={limit} page={page} setPage={setPage} mode="regular" />
+              </Select>
+            </Form.Field>
+          </Form>
         </Space>
       )}
     </SizeSwitcher>
@@ -232,7 +264,7 @@ export const OptionsMultiple = (): React.ReactNode => {
 };
 
 export const InfiniteScrollPagination = (): React.ReactNode => {
-  const [values, setValues] = React.useState<OptionValue[] | undefined>(undefined);
+  const [form] = useForm();
   const [search, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
   const [page, setPage] = React.useState(1);
@@ -245,8 +277,8 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
     fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
       .then((response) => response.json())
       .then(({ data, total: count }) => {
-        let newList: Option[] = [];
-        Object.keys(data).map((item) => {
+        const newList: Option[] = [];
+        Object.keys(data).forEach((item) => {
           newList.push({
             value: item,
             text: <AvatarInline type="primary" shortAlt={item} alt={data[item].country} />,
@@ -259,30 +291,39 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
       });
   }, [page]);
 
+  const handleChange = (values): void => {
+    console.log('values :>> ', values);
+  };
+
   return (
     <SizeSwitcher>
       {(size) => (
         <Space direction="vertical" style={{ minWidth: 300 }}>
-          <Select
-            value={values}
-            loading={loading}
-            mode="multiple"
-            size={size}
-            placeholder="Select"
-            onChange={(value) => setValues(value as OptionValue[])}
+          <Form
+            form={form}
+            initialValues={{
+              date: '10/10/2025',
+              time: '15-11-2020 11:30',
+              range: ['09-10-2029', '10-10-2029'],
+            }}
+            onFinish={handleChange}
           >
-            <Select.Search value={search} onSearch={setSearch} />
+            <Form.Field name="select" label="Select" rules={[{ required: true }]}>
+              <Select loading={loading} mode="multiple" size={size} placeholder="Select" isClearable>
+                <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
-            <Select.Options>
-              {list.map((item, i) => (
-                <Select.Options.Item key={i} value={item.value}>
-                  {item.text}
-                </Select.Options.Item>
-              ))}
-            </Select.Options>
+                <Select.Options>
+                  {list.map((item, i) => (
+                    <Select.Options.Item key={i} value={item.value}>
+                      {item.text}
+                    </Select.Options.Item>
+                  ))}
+                </Select.Options>
 
-            <Select.Pagination count={total} limit={limit} page={page} setPage={setPage} mode="scroll" />
-          </Select>
+                <Select.Pagination count={total} limit={limit} page={page} setPage={setPage} mode="scroll" />
+              </Select>
+            </Form.Field>
+          </Form>
         </Space>
       )}
     </SizeSwitcher>
