@@ -9,10 +9,8 @@
     padding-left: rem(32.5px);
   }
 
-  &.active {
-    &, .ebs-avatar__inline-alt {
-      color: $primary-color;
-    }
+  &.active &-text {
+    color: $primary-color;
   }
 
   &.selected {

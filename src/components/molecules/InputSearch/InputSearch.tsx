@@ -1,4 +1,5 @@
 import * as React from 'react';
+import useDebounce from 'react-use/esm/useDebounce';
 import cn from 'classnames';
 import { capitalize } from 'libs/string';
 import { Icon, Input } from 'components/atoms';
@@ -60,7 +61,10 @@ export const InputSearch: React.FC<InputSearchProps> = ({
     }
   };
 
+  const [, cancel] = useDebounce(onSearchHandler, 1000, [value]);
+
   const onChangeHandler = (newValue: string): void => {
+    cancel();
     setChangedValue(false);
 
     setValue(newValue);

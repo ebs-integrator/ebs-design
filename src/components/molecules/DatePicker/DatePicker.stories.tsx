@@ -17,7 +17,7 @@ export const Regular = (): React.ReactElement => {
 
   return (
     <div className="storybook-rows">
-      <div className="storybook-row" style={{ maxWidth: 120 }}>
+      <div className="storybook-row" style={{ maxWidth: 250 }}>
         <div className="storybook-header">DatePicker</div>
 
         <div className="storybook-row-item">
