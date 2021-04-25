@@ -74,7 +74,6 @@
     width: 100%;
     background-color: $layout-content-background;
     height: calc(100vh - #{$layout-top-bar-height * 2});
-    overflow: hidden auto;
     margin: 0 auto;
     padding: rem(15px 25px);
 
@@ -96,6 +95,10 @@
     overflow: hidden auto;
   }
 
+  &__container--has-fixed-footer &__content-wrapper {
+    padding-bottom: rem($layout-footer-height);
+  }
+
   &__container &__content {
     height: 100%;
   }
@@ -109,6 +112,10 @@
 
     &--fixed {
       border-top: $layout-footer-fixed-border;
+      background: $white;
+      position: fixed;
+      bottom: 0;
+      right: 0;
     }
 
     span {

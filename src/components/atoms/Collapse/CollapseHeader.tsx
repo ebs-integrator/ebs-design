@@ -18,6 +18,9 @@ export const CollapseHeader: React.FC<CollapseHeaderProps> = ({ className, style
   const handleClick = (e: React.SyntheticEvent<HTMLElement>): void => {
     e.stopPropagation();
 
+    // Do nothing if header was not directly clicked
+    if (e.target !== e.currentTarget) return;
+
     toggle();
 
     // Custom click

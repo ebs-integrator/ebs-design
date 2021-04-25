@@ -1,5 +1,13 @@
 .ebs-select {
+  @include flex-center-vert;
   flex: auto;
+  position: relative;
+  cursor: pointer;
+  border: 1px solid $border-color;
+  border-radius: rem($border-radius);
+  font-size: rem(14px);
+  background-color: $white;
+  overflow: hidden;
 
   &--box {
     position: relative;
@@ -7,12 +15,16 @@
     border-bottom-right-radius: 0;
   }
 
+  &--box + &__options {
+    position: unset;
+  }
+
   &-transition {
-    width: rem(90px);
+    width: rem(80px);
     height: calc(100% - 2px);
     margin: 1px;
     position: absolute;
-    right: 0;
+    right: $gutter-size;
     top: 0;
     border-top-right-radius: rem(4px);
     border-bottom-right-radius: rem(4px);
@@ -29,19 +41,58 @@
     font-size: rem(12px);
     border-radius: rem($border-radius);
     padding: rem(5px 8px);
+    z-index: 2;
+  }
+
+  &-count + &__clear {
+    margin-right: rem($base-size + $gutter-size);
+  }
+
+  &--box &__clear {
+    margin-right: 0;
+  }
+
+  &--box &-count + &__clear {
+    margin-right: rem($base-size + ($gutter-size / 2));
   }
 
   &__prefix {
-    border-right: $select-prefix-border-right;
+    border: $select-prefix-border-right;
+    border-right: none;
+    border-radius: rem($border-radius);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     padding: rem($select-padding-prefix-y $select-padding-prefix-x);
     @include flex-center-vert;
   }
 
+  &__prefix + & {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &__clear {
+    z-index: 2;
+    margin-right: rem($gutter-size / 2);
+
+    .ebs-button__wrapper {
+      border-radius: 100%;
+      width: rem($gutter-size + 4);
+      height: rem($gutter-size + 4);
+
+      .ebs-button {
+        @include flex-center-vert;
+        padding: 0;
+
+        .ebs-icon {
+          font-size: 1rem;
+          color: $white;
+        }
+      }
+    }
+  }
+
   &__suffix {
-    position: absolute;
-    right: rem(14px);
-    top: 50%;
-    transform: translateY(-50%);
     color: $text-color;
 
     .ebs-icon {
@@ -49,11 +100,19 @@
     }
   }
 
+  &--multiple &-value {
+    text-overflow: unset;
+  }
+
   &-value {
     color: $text-color-secondary;
     overflow: auto hidden;
     white-space: nowrap;
-    padding-top: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding-right: rem($gutter-size);
     @include hiddenScroll;
   }
 
@@ -72,12 +131,6 @@
   }
 
   &__wrapper {
-    cursor: pointer;
-    border: 1px solid $border-color;
-    border-radius: rem($border-radius);
-    font-size: rem(14px);
-    background-color: $white;
-
     &.disabled .ebs-select-dropdown__wrapper .ebs-select {
       cursor: not-allowed;
       border-color: $grey-500;
@@ -90,6 +143,10 @@
     &.active {
       &.ebs-select--multiple .ebs-select-value {
         padding-right: rem(75px);
+      }
+
+      .ebs-select__prefix {
+        border-color: $primary-color;
       }
 
       .ebs-select-dropdown__wrapper .ebs-select {
@@ -140,9 +197,18 @@
     border-top: 1px solid $border-color;
     padding: rem(6px 8px);
   }
+
+  .ebs-loader__inline {
+    font-size: rem(12px);
+  }
+
+  .ebs-loader__spinner {
+    float: left;
+  }
 }
 
 .ebs-select-dropdown__wrapper {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
 }
