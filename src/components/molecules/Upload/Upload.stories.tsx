@@ -36,36 +36,6 @@ const uploaderProps = {
   },
 };
 
-// FIXME: TEST FILES, DELETE AFTER IMPLEMENTATION
-const attachments = [
-  {
-    id: 787,
-    file_name: 'c83f32f9aa4124b22e2efa6dbd683f05',
-    name: 'EAA003120953_Triomac.xml',
-    mime_type: '',
-    url: 'https://fs.primecapital.devebs.net/media/c83f32f9aa4124b22e2efa6dbd683f05.xml',
-    type: 'OTHER',
-    width: '0.000',
-    height: '0.000',
-    sign_data: null,
-    signed: false,
-    signed_timestamp: null,
-  },
-  {
-    id: 784,
-    file_name: 'ab1bb5b8d0233e819162d0917e03f337',
-    name: 'EAA004386264_Petrom.xml',
-    mime_type: '',
-    url: 'http://10.1.1.186:3408/media/ab1bb5b8d0233e819162d0917e03f337.xml',
-    type: 'CONTRACT',
-    width: '0.000',
-    height: '0.000',
-    sign_data: null,
-    signed: false,
-    signed_timestamp: null,
-  },
-];
-
 export const Regular = (): React.ReactElement => (
   <Upload {...uploaderProps}>
     <Button>Upload</Button>
@@ -85,7 +55,6 @@ export const WithForm = (): React.ReactNode => {
     <Form
       form={form}
       type="horizontal"
-      initialValues={{ multipleUpload: attachments }}
       onFinish={(values) => console.log('values', values)}
       // onFieldsChange={(field, fields) => console.log('field', field)}
       labelOptions={{ col: { size: 2 } }}

@@ -6,15 +6,15 @@ const bytesToMegaBytes = (bytes: number): string => (bytes / (1024 * 1024)).toFi
 
 export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
   // FIXME: Fix any type for files
-  const [internalFiles, setFiles] = React.useState<any>(() => {
-    if (props.value) {
-      return Array.isArray(props.value) ? props.value : [props.value];
-    }
-
-    return [];
-  });
+  const [internalFiles, setFiles] = React.useState<any>([]);
   const [internalError, setError] = React.useState<Error>();
   const [progress, setProgress] = React.useState<{ [key: string]: number }>({});
+
+  React.useEffect(() => {
+    if (props.value) {
+      setFiles(Array.isArray(props.value) ? props.value : [props.value]);
+    }
+  }, [props.value]);
 
   React.useEffect(() => {
     if (props.value) {
