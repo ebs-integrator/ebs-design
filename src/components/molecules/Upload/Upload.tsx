@@ -1,111 +1,151 @@
 import * as React from 'react';
+import RCUpload, { UploadProps as RCUploadProps } from 'rc-upload';
 import { Icon } from 'components/atoms';
-import RCUpload, { UploadProps } from 'rc-upload';
+import { GenericObject } from 'types';
+import { isEqualArrays } from 'libs';
 
 const bytesToMegaBytes = (bytes: number): string => (bytes / (1024 * 1024)).toFixed(2);
 
-export const Upload = React.forwardRef<any, UploadProps>((props, ref) => {
-  const [internalFile, setFile] = React.useState<any>();
-  const [internalError, setError] = React.useState<Error>();
-  const [progress, setProgress] = React.useState(0);
+export const Upload = React.forwardRef<any, RCUploadProps>((props, ref) => {
+  const [data, setData] = React.useState<any>([]);
+  const [files, setFiles] = React.useState<any>(() => {
+    if (props.value) {
+      const value = Array.isArray(props.value) ? props.value : [props.value];
 
-  // FIXME: Implement multiple files
-  const normalizeFile = (value: unknown): unknown => {
-    if (Array.isArray(value) && value.length > 0) {
-      // HACK: This is a hack to get first file, should be fixed
-      return value[0];
+      setData(value);
+
+      return value;
     }
 
-    return value;
-  };
+    return [];
+  });
+  const [progress, setProgress] = React.useState<GenericObject>({});
+  const [error, setError] = React.useState<Error>();
 
   React.useEffect(() => {
     if (props.value) {
-      setFile(normalizeFile(props.value));
+      const files = Array.isArray(props.value) ? props.value : [props.value];
 
-      // If file exist, then progress is full
-      setProgress(100);
+      // If files exist, then progress is full
+      const progresses = files.reduce((prev, curr) => ({ ...prev, [curr.name]: 100 }), {});
+      setProgress(progresses);
     }
   }, [props.value]);
 
+  // Trigger onChange
+  React.useEffect(() => {
+    const value = data.length > 0 ? data : undefined;
+
+    if (
+      props.onChange &&
+      ((props.value && !value) ||
+        (value && !props.value) ||
+        (value && props.value && !isEqualArrays(value, props.value)))
+    ) {
+      props.onChange(value);
+    }
+  }, [data, props]);
+
   // Handlers
-  const onError = (error, ret, file): void => {
-    setError(error);
+  const onError = (error): void => setError(error);
 
-    if (props.onError) {
-      props.onError(error, ret, file);
-    }
-  };
+  const onSuccess = React.useCallback(
+    (response, file, xhr) => {
+      setProgress((prevState) => ({ ...prevState, [file.uid]: 100 }));
 
-  const onSuccess = (response, file, xhr): void => {
-    const resFile = normalizeFile(response);
-    setFile(resFile);
+      setFiles((prevState) =>
+        prevState.map((state) => {
+          if (state.uid === file.uid) {
+            state.id = response[0].id;
+          }
 
-    if (props.onChange) {
-      props.onChange(resFile as any);
-    }
+          return state;
+        }),
+      );
+      setData((prevState) => {
+        const newData = props.multiple ? [...prevState, ...response] : response;
 
-    // Internal save
-    if (props.onSuccess) {
-      props.onSuccess(response, file, xhr);
-    }
-  };
+        // Internal save
+        if (props.onSuccess) {
+          props.onSuccess(newData, file, xhr);
+        }
 
-  const onProgress = (event, file): void => {
-    setProgress(Math.round(event.percent));
-    // Set file for progress
-    setFile(file);
+        return newData;
+      });
+    },
+    [props],
+  );
 
-    if (props.onProgress) {
-      props.onProgress(event, file);
-    }
+  const onProgress = React.useCallback(
+    (event, file) => {
+      setProgress((prevState) => ({ ...prevState, [file.uid]: Math.round(event.percent) }));
+
+      if (props.onProgress) {
+        props.onProgress(event, file);
+      }
+    },
+    [props],
+  );
+
+  const onStart = (file): void => {
+    setProgress({ [file.uid]: 0 });
+    setFiles((prevState) =>
+      props.multiple ? [...prevState.map((item) => (item.uid === file.uid ? file : item)), file] : [file],
+    );
   };
 
   // Handle remove file
-  const handleRemove = (): void => {
-    setFile(undefined);
-
-    if (props.onChange) {
-      props.onChange(undefined as any);
-    }
-  };
-
-  const uploadProps = {
-    ...props,
-    onSuccess,
-    onProgress,
-    onError,
+  const handleRemove = (i): void => {
+    setFiles(files.filter((_, index) => index !== i));
+    setData(data.filter((_, index) => index !== i));
   };
 
   return (
     <>
-      <RCUpload ref={ref} {...uploadProps}>
+      <RCUpload
+        ref={ref}
+        {...{
+          ...props,
+          onSuccess,
+          onProgress,
+          onStart,
+          onError,
+        }}
+      >
         {props.children}
       </RCUpload>
 
-      {internalFile && (
-        <div className="upload__container">
-          <div className="upload__file__remove" onClick={handleRemove}>
-            <Icon type="close" />
-          </div>
+      {files.map(({ uid, url, name, size }, i) => {
+        const fileProgress = progress[uid] || 100;
 
-          <div className="upload__file">
-            <a href={internalFile?.url} target="_blank" rel="noopener noreferrer" className="upload__file__name">
-              {internalFile?.name}
-            </a>
+        return (
+          <div key={uid}>
+            <div className="upload__container">
+              <div className="upload__file__remove" onClick={() => handleRemove(i)}>
+                <Icon type="close" />
+              </div>
 
-            <div className="upload__status">
-              {internalFile.size && <div className="upload__file__size">{bytesToMegaBytes(internalFile.size)} MB</div>}
-              <div className="upload__progress">
-                <span className="upload__progress__text">{progress}%</span>
-                <span className="upload__progress__bar" style={{ width: `${progress}%`, flexBasis: `${progress}%` }} />
+              <div className="upload__file">
+                <a href={url} target="_blank" rel="noopener noreferrer" className="upload__file__name">
+                  {name}
+                </a>
+
+                <div className="upload__status">
+                  {size && <div className="upload__file__size">{bytesToMegaBytes(size)} MB</div>}
+                  <div className="upload__progress">
+                    <span className="upload__progress__text">{fileProgress}%</span>
+                    <span
+                      className="upload__progress__bar"
+                      style={{ width: `${fileProgress}%`, flexBasis: `${fileProgress}%` }}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-
-      {internalFile && internalError && <div className="upload__error">{internalError.message}</div>}
+        );
+      })}
+      {files.length > 0 && error && <div className="upload__error">{error.message}</div>}
     </>
   );
 });
