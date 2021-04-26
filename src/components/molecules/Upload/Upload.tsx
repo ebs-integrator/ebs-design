@@ -2,14 +2,19 @@ import * as React from 'react';
 import RCUpload, { UploadProps as RCUploadProps } from 'rc-upload';
 import { Icon } from 'components/atoms';
 import { GenericObject } from 'types';
+import { isEqualArrays } from 'libs';
 
 const bytesToMegaBytes = (bytes: number): string => (bytes / (1024 * 1024)).toFixed(2);
 
 export const Upload = React.forwardRef<any, RCUploadProps>((props, ref) => {
-  const [, setData] = React.useState<GenericObject[]>([]);
+  const [data, setData] = React.useState<any>([]);
   const [files, setFiles] = React.useState<any>(() => {
     if (props.value) {
-      return Array.isArray(props.value) ? props.value : [props.value];
+      const value = Array.isArray(props.value) ? props.value : [props.value];
+
+      setData(value);
+
+      return value;
     }
 
     return [];
@@ -29,10 +34,17 @@ export const Upload = React.forwardRef<any, RCUploadProps>((props, ref) => {
 
   // Trigger onChange
   React.useEffect(() => {
-    if (props.onChange) {
-      props.onChange(files.length > 0 ? files : undefined);
+    const value = data.length > 0 ? data : undefined;
+
+    if (
+      props.onChange &&
+      ((props.value && !value) ||
+        (value && !props.value) ||
+        (value && props.value && !isEqualArrays(value, props.value)))
+    ) {
+      props.onChange(value);
     }
-  }, [files]);
+  }, [data, props]);
 
   // Handlers
   const onError = (error): void => setError(error);
@@ -52,10 +64,6 @@ export const Upload = React.forwardRef<any, RCUploadProps>((props, ref) => {
       );
       setData((prevState) => {
         const newData = props.multiple ? [...prevState, ...response] : response;
-
-        if (props.onChange) {
-          props.onChange(newData);
-        }
 
         // Internal save
         if (props.onSuccess) {
@@ -80,29 +88,17 @@ export const Upload = React.forwardRef<any, RCUploadProps>((props, ref) => {
   );
 
   const onStart = (file): void => {
+    setProgress({ [file.uid]: 0 });
     setFiles((prevState) =>
       props.multiple ? [...prevState.map((item) => (item.uid === file.uid ? file : item)), file] : [file],
     );
-    setProgress({ [file.uid]: 0 });
   };
 
   // Handle remove file
-  const handleRemove = React.useCallback(
-    (uid, id) => {
-      setFiles((prevState) => prevState.filter((state) => state.uid !== uid));
-
-      setData((prevState) => {
-        const data = prevState.filter((state) => state.id !== id);
-
-        if (props.onChange) {
-          props.onChange(data as any);
-        }
-
-        return data;
-      });
-    },
-    [props, files],
-  );
+  const handleRemove = (i): void => {
+    setFiles(files.filter((_, index) => index !== i));
+    setData(data.filter((_, index) => index !== i));
+  };
 
   return (
     <>
@@ -119,13 +115,13 @@ export const Upload = React.forwardRef<any, RCUploadProps>((props, ref) => {
         {props.children}
       </RCUpload>
 
-      {files.map(({ uid, id, url, name, size }) => {
+      {files.map(({ uid, url, name, size }, i) => {
         const fileProgress = progress[uid] || 100;
 
         return (
           <div key={uid}>
             <div className="upload__container">
-              <div className="upload__file__remove" onClick={() => handleRemove(uid, id)}>
+              <div className="upload__file__remove" onClick={() => handleRemove(i)}>
                 <Icon type="close" />
               </div>
 

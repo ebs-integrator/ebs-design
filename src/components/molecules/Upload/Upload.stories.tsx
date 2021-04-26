@@ -9,9 +9,8 @@ export default {
   component: Upload,
 };
 
-const ACTION_URL = 'https://api.primecapital.devebs.net/api/attachments/';
-const TOKEN =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjIwNjI3ODUwLCJqdGkiOiI2MTBlNzRmZmZhNjY0NDFiYmVkN2JmZjk3MDhhYjcyNiIsInVzZXJfaWQiOjYxLCJ1c2VybmFtZSI6ImxlZnRlcm1hcmNlbEBnbWFpbC5jb20ifQ.nd0jxTQ2zO0Wv0SLgZ5eJBk5ANs2i663JuEBbP4WcGE';
+const ACTION_URL = 'your/url';
+const TOKEN = 'your/token';
 
 const uploaderProps = {
   name: 'files',
