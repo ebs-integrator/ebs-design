@@ -56,7 +56,7 @@ export const WithForm = (): React.ReactNode => {
       form={form}
       type="horizontal"
       onFinish={(values) => console.log('values', values)}
-      // onFieldsChange={(field, fields) => console.log('field', field)}
+      onFieldsChange={(field, fields) => console.log('field', field)}
       labelOptions={{ col: { size: 2 } }}
       controlOptions={{ col: { size: 6 } }}
     >

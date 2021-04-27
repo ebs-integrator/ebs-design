@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Icon } from 'components/atoms';
 import RCUpload, { UploadProps } from 'rc-upload';
 
-const bytesToMegaBytes = (bytes: number): string => (bytes / (1024 * 1024)).toFixed(2);
-
 export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
   // FIXME: Fix any type for files
   const [internalFiles, setFiles] = React.useState<any>([]);
@@ -12,17 +10,12 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
 
   React.useEffect(() => {
     if (props.value) {
-      setFiles(Array.isArray(props.value) ? props.value : [props.value]);
-    }
-  }, [props.value]);
-
-  React.useEffect(() => {
-    if (props.value) {
       const files = Array.isArray(props.value) ? props.value : [props.value];
 
       // If files exist, then progress is full
       const progresses = files.reduce((prev, curr) => ({ ...prev, [curr.name]: 100 }), {});
       setProgress(progresses);
+      setFiles(files);
     }
   }, [props.value]);
 
@@ -56,7 +49,7 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
 
       // Save files into array on multiple prop
       if (props.multiple) {
-        files = [...prevState.filter((state) => response.some((res) => res.name !== state.name)), ...response];
+        files = [...prevState.filter((state) => file.uid !== state.uid), ...response];
       }
 
       // Internal save
@@ -110,7 +103,6 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
               </a>
 
               <div className="upload__status">
-                {file.size && <div className="upload__file__size">{bytesToMegaBytes(file.size)} MB</div>}
                 <div className="upload__progress">
                   <span className="upload__progress__text">{fileProgress}%</span>
                   <span
