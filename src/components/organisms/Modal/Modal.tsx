@@ -85,7 +85,7 @@ const Modal: React.FC<ModalProps> & ModalComposition = ({
       </div>
     </>,
 
-    document.getElementById('root') as HTMLElement,
+    document.getElementById('portal') as HTMLElement,
   );
 };
 
