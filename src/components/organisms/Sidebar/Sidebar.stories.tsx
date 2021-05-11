@@ -34,6 +34,7 @@ export const Regular = (): React.ReactNode => (
       <TopSide>
         <Item text="Organizations" />
         <Item text="Company profile" disabled />
+        <Item href="https://www.google.com" text="Link Name" />
       </TopSide>
     </Options>
 
