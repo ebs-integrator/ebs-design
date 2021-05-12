@@ -56,11 +56,8 @@
 
     .ebs-sidebar__item {
       padding-right: 0;
-
-      .ebs-sidebar__text {
-        animation: fadeOut 0.1s;
-        white-space: nowrap;
-      }
+      animation: fadeOut 0.1s;
+      white-space: nowrap;
 
       .ebs-sidebar__suffix .ebs-icon {
         right: $gutter-size / 2;

@@ -54,7 +54,7 @@ export const Item: React.FC<{
     children: (
       <>
         {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}
-        <span className="ebs-sidebar__text">{text}</span>
+        {text}
         {options !== undefined && (
           <div className="ebs-sidebar__suffix">
             <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}`} />

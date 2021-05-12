@@ -5,15 +5,14 @@
   color: $text-color;
   transition: all $transition-time;
 
-  &.disabled,
-  &.disabled:hover {
-    cursor: not-allowed;
-    color: $grey-300;
-    background-color: transparent;
-  }
-
   @include hover-state {
     background-color: $primary-000;
     color: $primary-color;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $grey-300;
+    background-color: transparent;
   }
 }
