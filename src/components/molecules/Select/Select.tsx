@@ -36,6 +36,7 @@ export interface SelectProps {
   loading?: boolean;
   disabled?: boolean;
   options?: Option[];
+  additional?: Option[];
   emptyLabel?: string;
   prefix?: React.ReactNode;
 
@@ -48,6 +49,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   mode = 'single',
   optionsMode = 'dropdown',
   options: optionsList = [],
+  additional = [],
   size = 'medium',
   emptyLabel,
   className,
@@ -293,7 +295,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                     key={i}
                     mode={mode}
                     scrollMode={paginationProps.mode === 'scroll'}
-                    options={options}
+                    options={[...options, ...additional]}
                     value={value}
                     loading={loading}
                     className={cn({ 'ebs-select--box': isBox })}
