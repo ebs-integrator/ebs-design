@@ -1,5 +1,8 @@
 import * as React from 'react';
 import useClickAway from 'react-use/esm/useClickAway';
+import useIntersection from 'react-use/esm/useIntersection';
+import useTimeoutFn from 'react-use/esm/useTimeoutFn';
+import useScrolling from 'react-use/esm/useScrolling';
 import cn from 'classnames';
 import { Label, Icon, Button } from 'components/atoms';
 import { Loader } from 'components/molecules';
@@ -36,9 +39,10 @@ export interface SelectProps {
   loading?: boolean;
   disabled?: boolean;
   options?: Option[];
-  additional?: Option[];
+  additionalOptions?: Option[];
   emptyLabel?: string;
   prefix?: React.ReactNode;
+  rootRef?: React.MutableRefObject<HTMLDivElement | null>;
 
   value?: OptionValue | OptionValue[];
   isClearable?: boolean;
@@ -49,7 +53,8 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   mode = 'single',
   optionsMode = 'dropdown',
   options: optionsList = [],
-  additional = [],
+  additionalOptions = [],
+  rootRef,
   size = 'medium',
   emptyLabel,
   className,
@@ -64,6 +69,13 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   children,
 }) => {
   const inputRef = React.useRef<HTMLDivElement | null>(null);
+  const optionsRef = React.useRef<HTMLDivElement | null>(null);
+
+  const scrolling = useScrolling(rootRef!);
+  const intersection = useIntersection(optionsRef, {
+    root: rootRef?.current || null,
+    threshold: 1,
+  });
 
   const [openDropdown, setOpenDropdown] = React.useState(false);
   const [loaded, setLoaded] = React.useState(false);
@@ -71,6 +83,23 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const [options, setOptions] = React.useState<Option[]>([]);
   const [cacheOptions, setCacheOptions] = React.useState<Option[]>([]);
+  const [isIntersecting, setIntersecting] = React.useState(false);
+
+  const [, , reset] = useTimeoutFn(() => {
+    if (intersection) {
+      if (intersection.intersectionRatio < 1) {
+        setIntersecting((i) => !i);
+      }
+    } else {
+      reset();
+    }
+  }, 101);
+
+  React.useEffect(() => {
+    if (openDropdown || scrolling) {
+      reset();
+    }
+  }, [openDropdown, scrolling]);
 
   React.useEffect(() => {
     if (!loading) {
@@ -287,7 +316,10 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
         </div>
 
         {!disabled && (openDropdown || isBox) && (
-          <div className={cn(`ebs-select__options`, className)}>
+          <div
+            ref={optionsRef}
+            className={cn(`ebs-select__options`, className, { 'ebs-select__options--top': isIntersecting })}
+          >
             {childs.map((child, i) => {
               if (child.type === Options) {
                 return (
@@ -295,7 +327,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                     key={i}
                     mode={mode}
                     scrollMode={paginationProps.mode === 'scroll'}
-                    options={[...options, ...additional]}
+                    options={[...options, ...additionalOptions]}
                     value={value}
                     loading={loading}
                     className={cn({ 'ebs-select--box': isBox })}
