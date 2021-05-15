@@ -35,6 +35,14 @@
     }
   }
 
+  &--dynamic {
+    color: $white;
+
+    .ebs-icon {
+      color: $white;
+    }
+  }
+
   &--small {
     min-width: $avatar-size-small;
     width: $avatar-size-small;
