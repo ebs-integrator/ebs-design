@@ -39,9 +39,9 @@ export interface SelectProps {
   loading?: boolean;
   disabled?: boolean;
   options?: Option[];
-  additionalOptions?: Option[];
   emptyLabel?: string;
   prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
   rootRef?: React.MutableRefObject<HTMLDivElement | null>;
 
   value?: OptionValue | OptionValue[];
@@ -53,7 +53,6 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   mode = 'single',
   optionsMode = 'dropdown',
   options: optionsList = [],
-  additionalOptions = [],
   rootRef,
   size = 'medium',
   emptyLabel,
@@ -65,13 +64,14 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   loading,
   disabled,
   prefix,
+  suffix,
   isClearable,
   children,
 }) => {
   const inputRef = React.useRef<HTMLDivElement | null>(null);
   const optionsRef = React.useRef<HTMLDivElement | null>(null);
 
-  const scrolling = useScrolling(rootRef!);
+  const scrolling = useScrolling(rootRef || React.createRef());
   const intersection = useIntersection(optionsRef, {
     root: rootRef?.current || null,
     threshold: 1,
@@ -90,16 +90,16 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       if (intersection.intersectionRatio < 1) {
         setIntersecting((i) => !i);
       }
-    } else {
+    } else if (rootRef) {
       reset();
     }
   }, 101);
 
   React.useEffect(() => {
-    if (openDropdown || scrolling) {
+    if (rootRef && (openDropdown || scrolling)) {
       reset();
     }
-  }, [openDropdown, scrolling]);
+  }, [rootRef, openDropdown, scrolling]);
 
   React.useEffect(() => {
     if (!loading) {
@@ -265,9 +265,11 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
       <div className="ebs-select-dropdown__wrapper">
         {prefix && <div className="ebs-select__prefix">{prefix}</div>}
+
         <div
           className={cn('ebs-select', `ebs-select--${size}`, {
             'ebs-select--box': isBox,
+            'has-suffix': suffix,
           })}
           onClick={onToggleOpenDropdown}
         >
@@ -315,6 +317,8 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
           {hasValue && isArray(textValue) && <div className="ebs-select-transition" />}
         </div>
 
+        {suffix && <div className="ebs-select__suffix">{suffix}</div>}
+
         {!disabled && (openDropdown || isBox) && (
           <div
             ref={optionsRef}
@@ -327,7 +331,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                     key={i}
                     mode={mode}
                     scrollMode={paginationProps.mode === 'scroll'}
-                    options={[...options, ...additionalOptions]}
+                    options={options}
                     value={value}
                     loading={loading}
                     className={cn({ 'ebs-select--box': isBox })}
