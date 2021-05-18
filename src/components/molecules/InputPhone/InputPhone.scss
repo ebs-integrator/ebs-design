@@ -74,4 +74,26 @@
     border: 1px solid $border-color;
     background-color: $white;
   }
+
+  &-dropdown {
+    &::-webkit-scrollbar {
+      width: $scrollbar-size !important;
+      height: $scrollbar-size !important;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: $scrollbar-track-background-color !important;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: $scrollbar-thumb-background-color !important;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: $scrollbar-thumb-hover-background-color !important;
+    }
+  }
 }
