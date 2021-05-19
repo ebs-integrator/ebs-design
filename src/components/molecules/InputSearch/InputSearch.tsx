@@ -21,6 +21,7 @@ export interface InputSearchProps {
   label?: React.ReactNode;
   extra?: React.ReactNode;
   size?: InputSize;
+  isClearable?: boolean;
 }
 
 export const InputSearch: React.FC<InputSearchProps> = ({
@@ -35,6 +36,7 @@ export const InputSearch: React.FC<InputSearchProps> = ({
   label,
   extra,
   size,
+  isClearable,
 }) => {
   const [changedValue, setChangedValue] = React.useState(false);
   const [value, setValue] = React.useState('');
@@ -91,6 +93,7 @@ export const InputSearch: React.FC<InputSearchProps> = ({
         label={label}
         extra={extra}
         size={size}
+        isClearable={isClearable}
       />
     </form>
   );
