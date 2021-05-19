@@ -56,11 +56,12 @@
   }
 
   &__short-alt {
+    @include fontBold;
+    @include flex-center;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    @include fontBold;
     white-space: nowrap;
   }
 
@@ -136,10 +137,11 @@
     }
 
     &-alt {
-      margin-left: $gutter-size;
       @include fontSemiBold;
+      margin-left: $gutter-size;
       font-size: rem(12px);
       color: $black;
+      overflow: hidden;
     }
 
     &--light &-alt {
@@ -149,6 +151,8 @@
     &-description {
       font-size: rem(10px);
       color: $avatar-description-color;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

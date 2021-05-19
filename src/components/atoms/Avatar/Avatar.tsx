@@ -9,7 +9,7 @@ export interface AvatarProps {
   size?: 'small' | 'big';
   className?: string;
   circle?: boolean;
-  shortAlt?: string;
+  shortAlt?: React.ReactNode;
   shortLetters?: number;
   alt?: string;
   icon?: React.ReactNode;
