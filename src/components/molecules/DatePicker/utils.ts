@@ -3,7 +3,7 @@ import format from 'date-fns/format';
 import isValid from 'date-fns/isValid';
 import { DateType } from './types';
 
-export const defaultDateFormat = 'yyyy-MM-dd';
+export const defaultDateFormat = 'YYYY-MM-dd';
 export const defaultTimeFormat = 'HH:mm';
 
 export const getDefaultDateFormat = (showTime?: boolean): string =>

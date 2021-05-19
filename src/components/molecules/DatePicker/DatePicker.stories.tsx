@@ -27,7 +27,7 @@ export const Regular = (): React.ReactElement => {
             value={date}
             onChange={(v) => setDate(v as string)}
             isClearable
-            dateFormat="dd-MM-yyyy"
+            dateFormat="dd-MM-YYYY"
           />
         </div>
 
@@ -36,7 +36,7 @@ export const Regular = (): React.ReactElement => {
           <DatePicker
             showTimeSelect
             placeholderText="Time placeholder"
-            dateFormat="yy/MMMM/d HH"
+            dateFormat="YY/MMMM/d HH"
             value={time}
             onChange={(v) => setTime(v as string)}
           />
@@ -44,12 +44,12 @@ export const Regular = (): React.ReactElement => {
 
         <div className="storybook-row-item">
           <div className="storybook-label">Range</div>
-          <DatePicker.Range dateFormat="MM-dd-yyyy" value={range} onChange={(v) => setRange(v as any)} />
+          <DatePicker.Range dateFormat="MM-dd-YYYY" value={range} onChange={(v) => setRange(v as any)} />
         </div>
 
         <div className="storybook-row-item">
           <div className="storybook-label">Range Input</div>
-          <DatePicker.RangeInput dateFormat="MM-dd-yyyy" value={range} onChange={(v) => setRange(v as any)} />
+          <DatePicker.RangeInput dateFormat="MM-dd-YYYY" value={range} onChange={(v) => setRange(v as any)} />
         </div>
       </div>
     </div>
@@ -80,21 +80,21 @@ export const WithForm = (): React.ReactElement => {
           <div className="storybook-row-item">
             <div className="storybook-label">Date</div>
             <Form.Field name="date" label="Date" rules={[{ required: true }]}>
-              <DatePicker placeholderText="Birthday" isClearable dateFormat="dd-MM-yyyy" />
+              <DatePicker placeholderText="Birthday" isClearable dateFormat="dd-MM-YYYY" />
             </Form.Field>
           </div>
 
           <div className="storybook-row-item">
             <div className="storybook-label">Time</div>
             <Form.Field name="time" label="Time" rules={[{ required: true }]}>
-              <DatePicker showTimeSelect placeholderText="Birthday" isClearable dateFormat="yy/MMMM/d HH" />
+              <DatePicker showTimeSelect placeholderText="Birthday" isClearable dateFormat="YY/MMMM/d HH" />
             </Form.Field>
           </div>
 
           <div className="storybook-row-item">
             <div className="storybook-label">Range</div>
             <Form.Field name="range" label="Range" rules={[{ required: true }]}>
-              <DatePicker.Range dateFormat="MM-dd-yyyy" isClearable />
+              <DatePicker.Range dateFormat="MM-dd-YYYY" isClearable />
             </Form.Field>
           </div>
 
@@ -119,7 +119,7 @@ export const Range = (): React.ReactElement => (
 
       <div className="storybook-row-item">
         <div className="storybook-label">Range Input</div>
-        <DatePicker.RangeInput size="small" value={['2020-10-11', '2020-12-11']} dateFormat="yyyy-MM-dd" />
+        <DatePicker.RangeInput size="small" value={['2020-10-11', '2020-12-11']} dateFormat="YYYY-MM-dd" />
       </div>
     </div>
   </div>
