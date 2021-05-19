@@ -9,6 +9,11 @@
   background-color: $white;
   overflow: hidden;
 
+  &.has-suffix {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
   &--box {
     position: relative;
     border-bottom-left-radius: 0;
@@ -69,6 +74,14 @@
   &__prefix + & {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  &__suffix {
+    .ebs-button__wrapper {
+      border-left: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 
   &__clear {
@@ -157,6 +170,12 @@
           color: $heading-color;
         }
       }
+
+      .ebs-select__suffix {
+        .ebs-button__wrapper {
+          border-color: $primary-color;
+        }
+      }
     }
 
     .ebs-icon {
@@ -210,5 +229,4 @@
 .ebs-select-dropdown__wrapper {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
 }

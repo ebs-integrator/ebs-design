@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import cn from 'classnames';
 import { Space } from 'components/atoms';
 import { SpaceDirection, SpaceSize } from 'components/atoms/Space/Space';
@@ -49,12 +50,14 @@ const NotifyContainer: React.FC<NotifyProps> = ({
 
   const onClose = React.useCallback((i) => remove(i), []);
 
-  return (
+  return createPortal(
     <Space direction="vertical" size={size} className={cn('ebs-notify', `ebs-notify--${position}`)}>
       {list.map((props, i) => (
         <NotifyItem key={i} size={size} onClose={() => onClose(i)} {...props} />
       ))}
-    </Space>
+    </Space>,
+
+    document.getElementById('portal') as HTMLElement,
   );
 };
 

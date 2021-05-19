@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Extra, Label } from 'components/atoms';
+import { Extra, Label, Button, Icon } from 'components/atoms';
 import { Loader } from 'components/molecules';
 
 export type InputSize = 'small' | 'medium' | 'large';
@@ -29,6 +29,7 @@ export interface InputProps {
   autoFocus?: boolean;
   className?: string;
   containerClass?: string;
+  isClearable?: boolean;
   size?: InputSize;
 }
 
@@ -54,6 +55,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       autoFocus,
       className,
       containerClass,
+      isClearable,
       ...props
     },
     ref,
@@ -129,6 +131,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               onChange={onClickHandler}
               style={{ minWidth: width }}
             />
+
+            {value && isClearable && (
+              <div className="ebs-input__clear">
+                <Button size="small" type="primary" onClick={onChange && (() => onChange(''))}>
+                  <Icon type="close" />
+                </Button>
+              </div>
+            )}
           </div>
         </div>
 
