@@ -56,3 +56,7 @@ export const cardWithStatus = (): React.ReactElement => <AvatarCard alt="Wladimi
 export const avatarInline = (): React.ReactElement => (
   <AvatarInline alt="Wladimir Zhosan" status="active" description="Administrator" />
 );
+
+export const avatarInlineDynamicColor = (): React.ReactElement => (
+  <AvatarInline alt="Wladimir Zhosan" status="active" type="dynamic" description="Administrator" />
+);
