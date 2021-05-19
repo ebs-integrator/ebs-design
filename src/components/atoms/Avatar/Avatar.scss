@@ -56,13 +56,13 @@
   }
 
   &__short-alt {
-    @include fontBold;
     @include flex-center;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
+    font-weight: $avatar-short-alt-font-weight;
   }
 
   &__img {
@@ -109,8 +109,8 @@
       padding: rem(0 $gutter-size / 2);
       border-top-right-radius: $border-radius;
       border-bottom-right-radius: $border-radius;
-      @include fontMedium;
       font-size: rem(9px);
+      font-weight: $avatar-card-alt-font-weight;
     }
 
     img {
@@ -137,11 +137,11 @@
     }
 
     &-alt {
-      @include fontSemiBold;
       margin-left: $gutter-size;
       font-size: rem(12px);
       color: $black;
       overflow: hidden;
+      font-weight: $avatar-inline-alt-font-weight;
     }
 
     &--light &-alt {
