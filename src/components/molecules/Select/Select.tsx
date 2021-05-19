@@ -184,8 +184,6 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
           return uniqueArray(options, $options) as Option[];
         } else {
-          setLoaded(true);
-
           return $options;
         }
       });
