@@ -6,7 +6,7 @@ export interface CardProps {
   type?: AvatarType;
   size?: 'small' | 'big';
   className?: string;
-  shortAlt?: string;
+  shortAlt?: React.ReactNode;
   alt?: string;
   icon?: React.ReactNode;
   circle?: boolean;
