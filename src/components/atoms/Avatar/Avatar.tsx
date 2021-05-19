@@ -1,15 +1,15 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { firstLetters } from 'libs/string';
+import { colorFromString, firstLetters } from 'libs';
 
-export type AvatarType = 'regular' | 'primary' | 'light';
+export type AvatarType = 'regular' | 'primary' | 'light' | 'dynamic';
 
 export interface AvatarProps {
   type?: AvatarType;
   size?: 'small' | 'big';
   className?: string;
   circle?: boolean;
-  shortAlt?: string;
+  shortAlt?: React.ReactNode;
   shortLetters?: number;
   alt?: string;
   icon?: React.ReactNode;
@@ -36,6 +36,7 @@ export const Avatar: React.FC<AvatarProps> = ({
       className={cn(`ebs-avatar`, `ebs-avatar--${size}`, `ebs-avatar--${type}`, className, {
         'ebs-avatar--circle': circle,
       })}
+      style={{ backgroundColor: type === 'dynamic' ? colorFromString(alt) : undefined }}
     >
       {img ? (
         <img className="ebs-avatar__img" src={img} alt={alt} />

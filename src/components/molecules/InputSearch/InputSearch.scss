@@ -27,4 +27,8 @@
   &.disabled .cursor {
     cursor: not-allowed;
   }
+
+  .ebs-input__clear {
+    right: rem($gutter-size * 2);
+  }
 }

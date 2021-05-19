@@ -35,6 +35,14 @@
     }
   }
 
+  &--dynamic {
+    color: $white;
+
+    .ebs-icon {
+      color: $white;
+    }
+  }
+
   &--small {
     min-width: $avatar-size-small;
     width: $avatar-size-small;
@@ -56,12 +64,13 @@
   }
 
   &__short-alt {
+    @include flex-center;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    @include fontBold;
     white-space: nowrap;
+    font-weight: $avatar-short-alt-font-weight;
   }
 
   &__img {
@@ -108,8 +117,8 @@
       padding: rem(0 $gutter-size / 2);
       border-top-right-radius: $border-radius;
       border-bottom-right-radius: $border-radius;
-      @include fontMedium;
       font-size: rem(9px);
+      font-weight: $avatar-card-alt-font-weight;
     }
 
     img {
@@ -137,9 +146,10 @@
 
     &-alt {
       margin-left: $gutter-size;
-      @include fontSemiBold;
       font-size: rem(12px);
       color: $black;
+      overflow: hidden;
+      font-weight: $avatar-inline-alt-font-weight;
     }
 
     &--light &-alt {
@@ -149,6 +159,8 @@
     &-description {
       font-size: rem(10px);
       color: $avatar-description-color;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

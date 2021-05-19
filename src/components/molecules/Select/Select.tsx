@@ -1,5 +1,8 @@
 import * as React from 'react';
 import useClickAway from 'react-use/esm/useClickAway';
+import useIntersection from 'react-use/esm/useIntersection';
+import useTimeoutFn from 'react-use/esm/useTimeoutFn';
+import useScrolling from 'react-use/esm/useScrolling';
 import cn from 'classnames';
 import { Label, Icon, Button } from 'components/atoms';
 import { Loader } from 'components/molecules';
@@ -38,6 +41,8 @@ export interface SelectProps {
   options?: Option[];
   emptyLabel?: string;
   prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
+  rootRef?: React.MutableRefObject<HTMLDivElement | null>;
 
   value?: OptionValue | OptionValue[];
   isClearable?: boolean;
@@ -48,6 +53,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   mode = 'single',
   optionsMode = 'dropdown',
   options: optionsList = [],
+  rootRef,
   size = 'medium',
   emptyLabel,
   className,
@@ -58,10 +64,18 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   loading,
   disabled,
   prefix,
+  suffix,
   isClearable,
   children,
 }) => {
   const inputRef = React.useRef<HTMLDivElement | null>(null);
+  const optionsRef = React.useRef<HTMLDivElement | null>(null);
+
+  const scrolling = useScrolling(rootRef || React.createRef());
+  const intersection = useIntersection(optionsRef, {
+    root: rootRef?.current || null,
+    threshold: 1,
+  });
 
   const [openDropdown, setOpenDropdown] = React.useState(false);
   const [loaded, setLoaded] = React.useState(false);
@@ -69,6 +83,23 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const [options, setOptions] = React.useState<Option[]>([]);
   const [cacheOptions, setCacheOptions] = React.useState<Option[]>([]);
+  const [isIntersecting, setIntersecting] = React.useState(false);
+
+  const [, , reset] = useTimeoutFn(() => {
+    if (intersection) {
+      if (intersection.intersectionRatio < 1) {
+        setIntersecting((i) => !i);
+      }
+    } else if (rootRef) {
+      reset();
+    }
+  }, 101);
+
+  React.useEffect(() => {
+    if (rootRef && (openDropdown || scrolling)) {
+      reset();
+    }
+  }, [rootRef, openDropdown, scrolling]);
 
   React.useEffect(() => {
     if (!loading) {
@@ -107,7 +138,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const isBox = React.useMemo(() => optionsMode === 'box', [optionsMode]);
   const isSearch = React.useMemo(() => (searchEl && !!searchEl.props?.value?.length) || false, [searchEl]);
-  const paginationProps = React.useMemo(() => childs.find((child) => child.type === Pagination)?.props || {}, [childs]);
+  const paginationProps = React.useMemo(() => childs.find((child) => child.type === Pagination)?.props, [childs]);
 
   React.useEffect(() => {
     if (searchEl?.props?.value !== undefined && search !== searchEl.props.value) {
@@ -179,13 +210,11 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   React.useEffect(() => {
     if (!isEqualArrays($options, options) && !loaded) {
       setOptions(() => {
-        if (paginationProps.mode === 'scroll' && !isSearch) {
+        if (paginationProps && paginationProps.mode === 'scroll' && !isSearch) {
           setLoaded(true);
 
           return uniqueArray(options, $options) as Option[];
         } else {
-          setLoaded(true);
-
           return $options;
         }
       });
@@ -234,9 +263,11 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
       <div className="ebs-select-dropdown__wrapper">
         {prefix && <div className="ebs-select__prefix">{prefix}</div>}
+
         <div
           className={cn('ebs-select', `ebs-select--${size}`, {
             'ebs-select--box': isBox,
+            'has-suffix': suffix,
           })}
           onClick={onToggleOpenDropdown}
         >
@@ -284,15 +315,20 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
           {hasValue && isArray(textValue) && <div className="ebs-select-transition" />}
         </div>
 
+        {suffix && <div className="ebs-select__suffix">{suffix}</div>}
+
         {!disabled && (openDropdown || isBox) && (
-          <div className={cn(`ebs-select__options`, className)}>
+          <div
+            ref={optionsRef}
+            className={cn(`ebs-select__options`, className, { 'ebs-select__options--top': isIntersecting })}
+          >
             {childs.map((child, i) => {
               if (child.type === Options) {
                 return (
                   <Options
                     key={i}
                     mode={mode}
-                    scrollMode={paginationProps.mode === 'scroll'}
+                    scrollMode={paginationProps && paginationProps.mode === 'scroll'}
                     options={options}
                     value={value}
                     loading={loading}
