@@ -107,7 +107,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const isBox = React.useMemo(() => optionsMode === 'box', [optionsMode]);
   const isSearch = React.useMemo(() => (searchEl && !!searchEl.props?.value?.length) || false, [searchEl]);
-  const paginationProps = React.useMemo(() => childs.find((child) => child.type === Pagination)?.props || {}, [childs]);
+  const paginationProps = React.useMemo(() => childs.find((child) => child.type === Pagination)?.props, [childs]);
 
   React.useEffect(() => {
     if (searchEl?.props?.value !== undefined && search !== searchEl.props.value) {
@@ -179,7 +179,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   React.useEffect(() => {
     if (!isEqualArrays($options, options) && !loaded) {
       setOptions(() => {
-        if (paginationProps.mode === 'scroll' && !isSearch) {
+        if (paginationProps && paginationProps.mode === 'scroll' && !isSearch) {
           setLoaded(true);
 
           return uniqueArray(options, $options) as Option[];
@@ -292,7 +292,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                   <Options
                     key={i}
                     mode={mode}
-                    scrollMode={paginationProps.mode === 'scroll'}
+                    scrollMode={paginationProps && paginationProps.mode === 'scroll'}
                     options={options}
                     value={value}
                     loading={loading}
