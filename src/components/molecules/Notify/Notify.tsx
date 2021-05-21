@@ -57,7 +57,7 @@ const NotifyContainer: React.FC<NotifyProps> = ({
       ))}
     </Space>,
 
-    document.getElementById('portal') as HTMLElement,
+    (document.getElementById('portal') || document.getElementById('root')) as HTMLElement,
   );
 };
 
