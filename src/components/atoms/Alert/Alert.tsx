@@ -5,13 +5,13 @@ import { Icon } from '../';
 
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
 
-interface Props {
+export interface AlertProps {
   type?: AlertType;
   className?: string;
   message?: string;
 }
 
-export const Alert: React.FC<Props> = ({ type = 'success', message = '', className }) => {
+export const Alert: React.FC<AlertProps> = ({ type = 'success', message = '', className }) => {
   const ref = React.useRef<null | HTMLDivElement>(null);
   const getHeader = document.getElementsByClassName('ebs-layout__top-bar');
 
