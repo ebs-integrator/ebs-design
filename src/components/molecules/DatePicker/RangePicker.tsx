@@ -1,6 +1,8 @@
 import * as React from 'react';
 import ReactDatePicker from 'react-datepicker';
 import cn from 'classnames';
+import { isEqualArrays } from 'libs';
+
 import { RangePickerProps, DateValueType, DateType } from './types';
 import { getDefaultDateFormat, getOutputDate, parseDate } from './utils';
 
@@ -29,13 +31,11 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
     }, [startDate, endDate]);
 
     React.useEffect(() => {
-      if (value && Array.isArray(value)) {
-        if (!startDate || !endDate) {
-          setStartDate(parseDate(value[0], dateFormat));
-          setEndDate(parseDate(value[1], dateFormat));
-        }
+      if (value && Array.isArray(value) && !isEqualArrays(dateRange, value)) {
+        setStartDate(parseDate(value[0], dateFormat));
+        setEndDate(parseDate(value[1], dateFormat));
       }
-    }, []);
+    }, [value]);
 
     React.useEffect(() => {
       if (onChange) {
