@@ -60,6 +60,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
+    const hasValue = React.useMemo(() => value != undefined, [value]);
+
     const onClickHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
       if (onChange !== undefined) {
         onChange(target.value);
@@ -85,7 +87,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div
           className={cn(
             `ebs-input__wrapper`,
-            `ebs-input__wrapper--${value ? `active` : `unactive`}`,
+            `ebs-input__wrapper--${hasValue ? `active` : `unactive`}`,
             `ebs-input__type--${type}`,
             `ebs-input-style-${styleType}`,
             className,
@@ -132,13 +134,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               style={{ minWidth: width }}
             />
 
-            {value && isClearable && (
+            {hasValue && isClearable ? (
               <div className="ebs-input__clear">
                 <Button size="small" type="primary" onClick={onChange && (() => onChange(''))}>
                   <Icon type="close" />
                 </Button>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
 
