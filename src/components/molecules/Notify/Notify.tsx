@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { createPortal } from 'react-dom';
 import cn from 'classnames';
+import { usePortal } from 'hooks';
 import { Space } from 'components/atoms';
 import { SpaceDirection, SpaceSize } from 'components/atoms/Space/Space';
+
 import { NotifyItem, NotifyItemProps } from './NotifyItem';
 
 interface ContextProps {
@@ -32,6 +33,7 @@ const NotifyContainer: React.FC<NotifyProps> = ({
   size = 'medium',
   timeout = 3000,
 }) => {
+  const createPortal = usePortal();
   const { list, remove } = React.useContext(NotifyContext);
 
   React.useEffect(() => {
@@ -56,8 +58,6 @@ const NotifyContainer: React.FC<NotifyProps> = ({
         <NotifyItem key={i} size={size} onClose={() => onClose(i)} {...props} />
       ))}
     </Space>,
-
-    (document.getElementById('portal') || document.getElementById('root')) as HTMLElement,
   );
 };
 
