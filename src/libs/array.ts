@@ -14,8 +14,7 @@ export const flattenArray = <T>(arr: T[], key = 'children'): T[] =>
 
 export const isArray = (arr): boolean => arr && Array.isArray(arr);
 
-export const isEqualArrays = (arr1, arr2): boolean =>
-  !arr1.filter((i) => !arr2.includes(i)).concat(arr2.filter((i) => !arr1.includes(i))).length;
+export const isEqualArrays = (arr1, arr2): boolean => JSON.stringify(arr1) === JSON.stringify(arr2);
 
 export const uniqueArray = (arr1, arr2): GenericObject[] => {
   const newArray: GenericObject[] = [];
