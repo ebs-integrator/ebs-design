@@ -5,7 +5,7 @@ object-assign
 */
 
 /*!
-  Copyright (c) 2017 Jed Watson.
+  Copyright (c) 2018 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
 */
@@ -17,19 +17,6 @@ object-assign
  * All Rights Reserved. Apache Software License 2.0
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
- */
-
-/*!
- * OverlayScrollbars
- * https://github.com/KingSora/OverlayScrollbars
- *
- * Version: 1.13.0
- *
- * Copyright KingSora | Rene Haas.
- * https://github.com/KingSora
- *
- * Released under the MIT license.
- * Date: 02.08.2020
  */
 
 /*!
@@ -53,15 +40,6 @@ object-assign
  *
  * Copyright (c) 2014-2017, Jon Schlinkert.
  * Released under the MIT License.
- */
-
-/**
- * Prism: Lightweight, robust, elegant syntax highlighting
- *
- * @license MIT <https://opensource.org/licenses/MIT>
- * @author Lea Verou <https://lea.verou.me>
- * @namespace
- * @public
  */
 
 /** @license React v0.19.1
@@ -100,7 +78,7 @@ object-assign
  * LICENSE file in the root directory of this source tree.
  */
 
-/** @license React v17.0.1
+/** @license React v17.0.2
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -108,7 +86,3 @@ object-assign
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-
-//! stable.js 0.1.8, https://github.com/Two-Screen/stable
-
-//! © 2018 Angry Bytes and contributors. MIT licensed.
