@@ -8,6 +8,7 @@
   }
 
   &__file {
+    @include text-ellipsis;
     width: 100%;
 
     &__remove {
