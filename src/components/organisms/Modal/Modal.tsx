@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { createPortal } from 'react-dom';
-import { useScrollToggler } from 'hooks';
+import { usePortal, useScrollToggler } from 'hooks';
 import { Mask, Button } from 'components/atoms';
 import { ModalContent, ModalContentProps } from './ModalContent';
 import { ModalFooter, ModalFooterProps } from './ModalFooter';
@@ -31,6 +30,7 @@ const Modal: React.FC<ModalProps> & ModalComposition = ({
   children,
   ...props
 }) => {
+  const createPortal = usePortal();
   useScrollToggler();
 
   React.useEffect(() => {
@@ -84,8 +84,6 @@ const Modal: React.FC<ModalProps> & ModalComposition = ({
         </div>
       </div>
     </>,
-
-    document.getElementById('portal') as HTMLElement,
   );
 };
 

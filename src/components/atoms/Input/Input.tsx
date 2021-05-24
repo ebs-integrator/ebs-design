@@ -60,7 +60,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
-    const hasValue = React.useMemo(() => value != undefined, [value]);
+    // eslint-disable-next-line eqeqeq
+    const hasValue = React.useMemo(() => value != undefined && value.toString().length, [value]);
 
     const onClickHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
       if (onChange !== undefined) {
