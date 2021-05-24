@@ -83,7 +83,7 @@ export const FormField: React.FC<FormFieldProps> = ({
                   {extra && <FieldExtra>{extra}</FieldExtra>}
                   {meta.errors.length > 0 && (
                     <FieldError>
-                      {meta.errors.map((error) => (label ? error.replace(meta.name.join('.'), label) : error))}
+                      {meta.errors.map((error) => (label ? error.replace(`'${meta.name.join('.')}'`, label) : error))}
                     </FieldError>
                   )}
                 </Col>
