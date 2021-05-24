@@ -1,30 +1,30 @@
 {
-  "name": "@ebs-integrator/react-ebs-ui",
-  "version": "0.0.1-beta.48",
-  "description": "Basic React UI elements.",
-  "author": "EBS Integrator",
+  "name": "ebs-design",
+  "version": "0.0.1-beta.50",
+  "description": "EBS Design System React UI elements.",
+  "author": "EBS Integrator <contact@ebs-integrator.com> (https://ebs-integrator.com/)",
   "maintainers": [
-    {
-      "name": "Vladimir Josan",
-      "email": "iaskivsky@gmail.com"
-    },
     {
       "name": "Marcel Lefter",
       "email": "leftermarcel@gmail.com"
     },
     {
-      "name": "Dima Danu",
-      "email": "dima.danu@gmail.com"
-    },
-    {
       "name": "Nicolae Tataru",
       "email": "devdfan@gmail.com"
+    },
+    {
+      "name": "Vladimir Josan",
+      "email": "iaskivsky@gmail.com"
+    },
+    {
+      "name": "Dima Danu",
+      "email": "dima.danu@gmail.com"
     }
   ],
   "keywords": [
     "react",
     "react-ui",
-    "react-intl",
+    "ebs-design",
     "ebs-ui"
   ],
   "license": "MIT",
