@@ -24,6 +24,7 @@ export const Regular = (): React.ReactNode => (
           <>
             <Item text="Child tab" />
             <Item text="Disabled Child tab" disabled />
+            <Item href="https://www.google.com" text="Link Name" />
           </>
         }
       />

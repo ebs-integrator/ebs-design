@@ -5,21 +5,32 @@ export const Item: React.FC<{
   className?: string;
   text?: React.ReactNode;
   active?: boolean;
+  prefix?: React.ReactNode;
   disabled?: boolean;
+  href?: string;
   onClick?: () => void;
-}> = ({ className, onClick, active, disabled, text }) => {
+}> = ({ className, onClick, active, disabled, text, prefix, href }) => {
   const onClickHandler = (): void => {
     if (onClick !== undefined && !disabled) {
       onClick();
     }
   };
+  const props = {
+    className: cn(`ebs-optionsbar__item`, className, { active: active, disabled: disabled }),
+  };
 
   return (
-    <div
-      className={cn(`ebs-optionsbar__item`, className, { active: active, disabled: disabled })}
-      onClick={onClickHandler}
-    >
-      {text}
-    </div>
+    <>
+      {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}
+      {href ? (
+        <a href={href} {...props}>
+          {text}
+        </a>
+      ) : (
+        <div {...props} onClick={onClickHandler}>
+          {text}
+        </div>
+      )}
+    </>
   );
 };

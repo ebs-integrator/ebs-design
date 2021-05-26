@@ -60,6 +60,7 @@ export const Regular = (): React.ReactNode => (
             <>
               <Sidebar.Item text="Child tab" />
               <Sidebar.Item text="Disabled Child tab" disabled />
+              <Sidebar.Item href="https://www.google.com" text="Link Name" />
             </>
           }
         />
@@ -72,6 +73,8 @@ export const Regular = (): React.ReactNode => (
           <Sidebar.Options.Item text="Organizations" />
 
           <Sidebar.Options.Item text="Company profile" disabled />
+
+          <Sidebar.Options.Item href="https://www.google.com" text="Link Name" />
         </Sidebar.Options.TopSide>
       </Sidebar.Options>
 

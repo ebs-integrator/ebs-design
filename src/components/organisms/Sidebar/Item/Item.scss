@@ -120,7 +120,7 @@
     }
 
     &.disabled {
-      cursor: not-allowed;
+      pointer-events: none;
       color: $grey-300;
       background-color: transparent;
     }
