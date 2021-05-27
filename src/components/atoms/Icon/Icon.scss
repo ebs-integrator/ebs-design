@@ -14,4 +14,8 @@
   &--arrow-left {
     transform: rotate(270deg);
   }
+
+  &--alert path:last-child {
+    fill: $white;
+  }
 }
