@@ -29,19 +29,16 @@ export const isEqualArrays = (value, other): boolean => {
   const otherLen = type === '[object Array]' ? other.length : Object.keys(other).length;
   if (valueLen !== otherLen) return false;
 
-  // Compare two items
-  const compare = (item1, item2): boolean => {
-    return item1?.value === item2?.value;
-  };
-
   if (type === '[object Array]') {
     for (let i = 0; i < valueLen; i++) {
-      compare(value[i], other[i]);
+      if (value[i]?.value !== other[i]?.value) {
+        return false;
+      }
     }
   } else {
     for (const key in value) {
-      if (value.hasOwnProperty(key)) {
-        compare(value[key], other[key]);
+      if (value.hasOwnProperty(key) && value[key]?.value !== other[key]?.value) {
+        return false;
       }
     }
   }
