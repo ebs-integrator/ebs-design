@@ -14,7 +14,41 @@ export const flattenArray = <T>(arr: T[], key = 'children'): T[] =>
 
 export const isArray = (arr): boolean => arr && Array.isArray(arr);
 
-export const isEqualArrays = (arr1, arr2): boolean => JSON.stringify(arr1) === JSON.stringify(arr2);
+export const isEqualArrays = (value, other): boolean => {
+  // Get the value type
+  const type = Object.prototype.toString.call(value);
+
+  // If the two objects are not the same type, return false
+  if (type !== Object.prototype.toString.call(other)) return false;
+
+  // If items are not an object or array, return false
+  if (['[object Array]', '[object Object]'].indexOf(type) < 0) return false;
+
+  // Compare the length of the length of the two items
+  const valueLen = type === '[object Array]' ? value.length : Object.keys(value).length;
+  const otherLen = type === '[object Array]' ? other.length : Object.keys(other).length;
+  if (valueLen !== otherLen) return false;
+
+  // Compare two items
+  const compare = (item1, item2): boolean => {
+    return item1?.value === item2?.value;
+  };
+
+  if (type === '[object Array]') {
+    for (let i = 0; i < valueLen; i++) {
+      compare(value[i], other[i]);
+    }
+  } else {
+    for (const key in value) {
+      if (value.hasOwnProperty(key)) {
+        compare(value[key], other[key]);
+      }
+    }
+  }
+
+  // If nothing failed, return true
+  return true;
+};
 
 export const uniqueArray = (arr1, arr2): GenericObject[] => {
   const newArray: GenericObject[] = [];
