@@ -157,10 +157,9 @@
     }
 
     &-description {
+      @include text-ellipsis;
       font-size: rem(10px);
       color: $avatar-description-color;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
   }
 }
