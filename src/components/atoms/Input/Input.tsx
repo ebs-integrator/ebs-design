@@ -30,6 +30,9 @@ export interface InputProps {
   className?: string;
   containerClass?: string;
   size?: InputSize;
+  min?: string | number;
+  max?: string | number;
+  pattern?: string;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -54,6 +57,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       autoFocus,
       className,
       containerClass,
+      min,
+      max,
+      pattern,
       ...props
     },
     ref,
@@ -117,6 +123,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <div className="ebs-input__container">
             <input
               ref={ref}
+              min={min}
+              max={max}
+              pattern={pattern}
               name={name}
               type={type}
               autoFocus={autoFocus}
