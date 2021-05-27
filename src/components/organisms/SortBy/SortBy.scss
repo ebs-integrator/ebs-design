@@ -15,13 +15,11 @@
   }
 
   &-items &-item {
+    @include fontMedium;
+    @include text-ellipsis;
     position: relative;
     padding: rem(12.5px);
     font-size: rem(12px);
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    @include fontMedium;
     cursor: pointer;
     transition: 0.2s;
 
