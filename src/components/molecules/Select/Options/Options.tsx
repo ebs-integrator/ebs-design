@@ -47,18 +47,18 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   };
 
   React.useEffect(() => {
-    if (ref.current && !scrollMode && options?.length) {
+    if (ref?.current && !scrollMode && options?.length) {
       ref.current.scrollTop = 0;
     }
   }, [ref, options, scrollMode]);
 
   React.useEffect(() => {
-    if (ref.current && scrollMode) {
+    if (ref?.current && scrollMode) {
       ref.current.addEventListener('scroll', onScroll);
     }
 
     return () => {
-      if (ref.current && scrollMode) {
+      if (ref?.current && scrollMode) {
         ref.current.removeEventListener('scroll', onScroll);
       }
     };

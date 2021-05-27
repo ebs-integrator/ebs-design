@@ -1,25 +1,27 @@
-# React EBS UI
+# EBS Design System - React UI
+## WARNING: The UI Kit is UNDER DEVELOPMENT, PLEASE CREATE ISSUES OR PR WITH CHANGES
+## DON'T USE IT IN PRODUCTION UNTIL AT LEAST RC WILL BE RELEASED
 
-EBS UI is a complete library of styling components. Link to [Storybook](https://ebs-integrator.github.io/react-ebs-ui/)
+EBS UI is a complete library of styling components. Link to [Storybook](https://ebs-integrator.github.io/ebs-design/)
 
 ## Installation
 
 Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install/#debian-stable) or npm to install library.
 
 ```bash
-yarn add react-ebs-ui
+yarn add ebs-design
 ```
 
 or
 
 ```bash
-npm install react-ebs-ui
+npm install ebs-design
 ```
 
 ## Usage guide
 
 ```javascript
-import { Button } from 'react-ebs-ui';
+import { Button } from 'ebs-design';
 
 // Create and import your scss to customize
 import './variables.scss';
@@ -47,7 +49,7 @@ $primary-700: #1a39b6;
 $primary-800: #102693;
 $primary-900: #0a1a7a;
 
-@import 'react-ebs-ui/dist/styles/index.scss';
+@import 'ebs-design/dist/styles/index.scss';
 ```
 
 ## Contributing

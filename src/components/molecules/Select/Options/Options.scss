@@ -10,6 +10,11 @@
   border-radius: rem($border-radius);
   z-index: 999;
 
+  &--top {
+    top: auto;
+    bottom: calc(100% + #{rem(4px)});
+  }
+
   &--box {
     position: relative;
     box-shadow: none;

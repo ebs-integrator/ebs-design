@@ -110,6 +110,10 @@
   &__suffix {
     left: inherit;
     right: rem(10px);
+
+    & + .ebs-input__container .ebs-input__clear {
+      right: rem($gutter-size * 2);
+    }
   }
 
   // Sizes
@@ -122,5 +126,29 @@
   }
   &--large {
     padding: rem($input-padding-y-lg $input-padding-x-lg);
+  }
+}
+
+.ebs-input__clear {
+  position: absolute;
+  right: rem($gutter-size / 2);
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+  z-index: 2;
+
+  .ebs-button__wrapper {
+    border-radius: 100%;
+    width: rem($gutter-size + 4);
+    height: rem($gutter-size + 4);
+
+    .ebs-button {
+      @include flex-center-vert;
+      padding: 0;
+
+      .ebs-icon {
+        font-size: 1rem;
+        color: $white;
+      }
+    }
   }
 }
