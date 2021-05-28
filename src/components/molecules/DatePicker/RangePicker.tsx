@@ -10,6 +10,7 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
   ({ size = 'medium', startProps, endProps, value, onChange, ...props }, ref) => {
     const [startDate, setStartDate] = React.useState<DateValueType>();
     const [endDate, setEndDate] = React.useState<DateValueType>();
+    const [loaded, setLoaded] = React.useState(false);
     const [isOpen, setIsOpen] = React.useState(false);
 
     const dateFormat = React.useMemo(() => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect), [
@@ -31,9 +32,10 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
     }, [startDate, endDate]);
 
     React.useEffect(() => {
-      if (value && Array.isArray(value) && !isEqualArrays(dateRange, value)) {
+      if (value && Array.isArray(value) && !isEqualArrays(dateRange, value) && !loaded) {
         setStartDate(parseDate(value[0], dateFormat));
         setEndDate(parseDate(value[1], dateFormat));
+        setLoaded(true);
       }
     }, [value]);
 

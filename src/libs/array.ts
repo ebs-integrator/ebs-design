@@ -31,12 +31,13 @@ export const isEqualArrays = (value, other): boolean => {
 
   if (type === '[object Array]') {
     for (let i = 0; i < valueLen; i++) {
-      if (value[i]?.value !== other[i]?.value) {
+      if ((typeof value[i] === 'object' && value[i]?.value !== other[i]?.value) || value[i] !== other[i]) {
         return false;
       }
     }
   } else {
     for (const key in value) {
+      console.log('value[key]', value.hasOwnProperty(key) && value[key]);
       if (value.hasOwnProperty(key) && value[key]?.value !== other[key]?.value) {
         return false;
       }
