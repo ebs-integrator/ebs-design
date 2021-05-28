@@ -37,7 +37,10 @@ export const isEqual = (value, other): boolean => {
     }
   } else {
     for (const key in value) {
-      if (value.hasOwnProperty(key) && value[key] !== other[key]) {
+      if (
+        value.hasOwnProperty(key) &&
+        ((typeof value[key] === 'object' && value[key]?.value !== other[key]?.value) || value[key] !== other[key])
+      ) {
         return false;
       }
     }

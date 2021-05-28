@@ -227,6 +227,8 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
           return uniqueArray(options, $options) as Option[];
         } else {
+          setLoaded(true);
+
           return $options;
         }
       });
@@ -262,6 +264,55 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   }, [paginationProps]);
 
   const onClear = (): void => onChangeHandler(mode === 'single' ? undefined : []);
+
+  const optionsBlock = React.useMemo(
+    () => (
+      <div ref={optionsRef} className={cn(`ebs-select__options`, className)} style={optionsStyle}>
+        {childs.map((child, i) => {
+          if (child.type === Options) {
+            return (
+              <Options
+                key={i}
+                mode={mode}
+                scrollMode={paginationProps && paginationProps.mode === 'scroll'}
+                options={options}
+                value={value}
+                loading={loading}
+                className={cn({ 'ebs-select--box': isBox })}
+                emptyLabel={emptyLabel}
+                onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
+                onChange={onChangeHandler}
+                onPrev={onPrev}
+                onNext={onNext}
+                {...child.props}
+              />
+            );
+          } else if (child.type === Pagination && child.props.mode === 'scroll') {
+            return null;
+          }
+
+          return child;
+        })}
+      </div>
+    ),
+    [
+      optionsRef,
+      className,
+      optionsStyle,
+      childs,
+      mode,
+      paginationProps,
+      options,
+      value,
+      loading,
+      isBox,
+      emptyLabel,
+      onToggleOpenDropdown,
+      onChangeHandler,
+      onPrev,
+      onNext,
+    ],
+  );
 
   return (
     <div
@@ -329,67 +380,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
         {suffix && <div className="ebs-select__suffix">{suffix}</div>}
 
-        {!disabled &&
-          (openDropdown || isBox) &&
-          (isBox ? (
-            <div ref={optionsRef} className={cn(`ebs-select__options`, className)} style={optionsStyle}>
-              {childs.map((child, i) => {
-                if (child.type === Options) {
-                  return (
-                    <Options
-                      key={i}
-                      mode={mode}
-                      scrollMode={paginationProps && paginationProps.mode === 'scroll'}
-                      options={options}
-                      value={value}
-                      loading={loading}
-                      className={cn({ 'ebs-select--box': isBox })}
-                      emptyLabel={emptyLabel}
-                      onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
-                      onChange={onChangeHandler}
-                      onPrev={onPrev}
-                      onNext={onNext}
-                      {...child.props}
-                    />
-                  );
-                } else if (child.type === Pagination && child.props.mode === 'scroll') {
-                  return null;
-                }
-
-                return child;
-              })}
-            </div>
-          ) : (
-            createPortal(
-              <div ref={optionsRef} className={cn(`ebs-select__options`, className)} style={optionsStyle}>
-                {childs.map((child, i) => {
-                  if (child.type === Options) {
-                    return (
-                      <Options
-                        key={i}
-                        mode={mode}
-                        scrollMode={paginationProps && paginationProps.mode === 'scroll'}
-                        options={options}
-                        value={value}
-                        loading={loading}
-                        className={cn({ 'ebs-select--box': isBox })}
-                        emptyLabel={emptyLabel}
-                        onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
-                        onChange={onChangeHandler}
-                        onPrev={onPrev}
-                        onNext={onNext}
-                        {...child.props}
-                      />
-                    );
-                  } else if (child.type === Pagination && child.props.mode === 'scroll') {
-                    return null;
-                  }
-
-                  return child;
-                })}
-              </div>,
-            )
-          ))}
+        {!disabled && (openDropdown || isBox) && (isBox ? optionsBlock : createPortal(optionsBlock))}
       </div>
     </div>
   );
