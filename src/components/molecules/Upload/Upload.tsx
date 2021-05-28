@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon } from 'components/atoms';
 import RCUpload, { UploadProps } from 'rc-upload';
-import { isEqualArrays } from 'libs';
+import { isEqual } from 'libs';
 
 export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
   // FIXME: Fix any type for files
@@ -24,7 +24,7 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
   React.useEffect(() => {
     if (
       props.onChange &&
-      ((props.value && (!internalFiles.length || !isEqualArrays(props.value, internalFiles))) ||
+      ((props.value && (!internalFiles.length || !isEqual(props.value, internalFiles))) ||
         (!props.value && internalFiles.length))
     ) {
       props.onChange(internalFiles.length > 0 ? internalFiles : undefined);

@@ -14,13 +14,12 @@ export const usePortal = (id = 'portal') => {
 
   useLayoutEffect(() => {
     const wrapper = wrapperRef.current;
+
     if (!wrapper || typeof document === 'undefined') {
       return;
     }
+
     document.body.appendChild(wrapper);
-    return () => {
-      document.body.removeChild(wrapper);
-    };
   }, []);
 
   return (children) => wrapperRef.current && createPortal(children, wrapperRef.current);
