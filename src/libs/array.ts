@@ -31,7 +31,7 @@ export const isEqual = (value, other): boolean => {
 
   if (type === '[object Array]') {
     for (let i = 0; i < valueLen; i++) {
-      if (value[i]?.value !== other[i]?.value) {
+      if ((typeof value[i] === 'object' && value[i]?.value !== other[i]?.value) || value[i] !== other[i]) {
         return false;
       }
     }
