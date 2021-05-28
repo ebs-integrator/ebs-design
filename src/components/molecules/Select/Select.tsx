@@ -1,6 +1,8 @@
 import * as React from 'react';
 import useClickAway from 'react-use/esm/useClickAway';
 import useScrolling from 'react-use/esm/useScrolling';
+import useWindowScroll from 'react-use/esm/useWindowScroll';
+import useMouseWheel from 'react-use/esm/useMouseWheel';
 import useIntersection from 'react-use/esm/useIntersection';
 import cn from 'classnames';
 import { Label, Icon, Button } from 'components/atoms';
@@ -76,7 +78,9 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
     root: rootRef?.current || null,
     threshold: 1,
   });
-  const scrolling = useScrolling(rootRef || React.createRef());
+  const isScrolling = useScrolling(rootRef || React.createRef());
+  const isWindowScrolling = useWindowScroll();
+  const isMouseScrolling = useMouseWheel();
 
   const [openDropdown, setOpenDropdown] = React.useState(false);
   const [loaded, setLoaded] = React.useState(false);
@@ -150,7 +154,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
         setOptionsStyle(style);
       }
     }
-  }, [openDropdown, inputRef, scrolling, optionsStyle]);
+  }, [openDropdown, inputRef, optionsStyle, isScrolling, isWindowScrolling, isMouseScrolling]);
 
   React.useEffect(() => {
     if (searchEl?.props?.value !== undefined && search !== searchEl.props.value) {
