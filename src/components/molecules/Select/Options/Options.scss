@@ -1,6 +1,6 @@
 .ebs-select__options {
   @include elevation-2;
-  position: absolute;
+  position: relative;
   left: 0;
   top: calc(100% + 4px);
   width: 100%;
@@ -8,12 +8,7 @@
   background-color: $white;
   border: 1px solid $white;
   border-radius: rem($border-radius);
-  z-index: 999;
-
-  &--top {
-    top: auto;
-    bottom: calc(100% + #{rem(4px)});
-  }
+  overflow: auto;
 
   &--box {
     position: relative;
