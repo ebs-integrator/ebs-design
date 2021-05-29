@@ -329,60 +329,62 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       <Label text={label} disabled={disabled} />
 
       <div className="ebs-select-dropdown__wrapper">
-        {prefix && <div className="ebs-select__prefix">{prefix}</div>}
+        <div className="ebs-select-dropdown__container">
+          {prefix && <div className="ebs-select__prefix">{prefix}</div>}
 
-        <div
-          className={cn('ebs-select', `ebs-select--${size}`, {
-            'ebs-select--box': isBox,
-            'has-suffix': suffix,
-          })}
-          onClick={onToggleOpenDropdown}
-        >
-          <div className="ebs-select-value">
-            {loading ? (
-              <Loader.Inline />
-            ) : isArray(textValue) ? (
-              (textValue as React.ReactNode[]).map((item, key) => (
-                <Label
-                  key={key}
-                  className="ebs-select-label"
-                  type="primary"
-                  circle
-                  text={item}
-                  prefix={<Icon type="check" />}
-                  suffix={!disabled ? <Icon type="close" /> : undefined}
-                  onClickSuffix={() => !disabled && onDeleteSelect(key)}
-                />
-              ))
-            ) : (
-              textValue || placeholder
+          <div
+            className={cn('ebs-select', `ebs-select--${size}`, {
+              'ebs-select--box': isBox,
+              'has-suffix': suffix,
+            })}
+            onClick={onToggleOpenDropdown}
+          >
+            <div className="ebs-select-value">
+              {loading ? (
+                <Loader.Inline />
+              ) : isArray(textValue) ? (
+                (textValue as React.ReactNode[]).map((item, key) => (
+                  <Label
+                    key={key}
+                    className="ebs-select-label"
+                    type="primary"
+                    circle
+                    text={item}
+                    prefix={<Icon type="check" />}
+                    suffix={!disabled ? <Icon type="close" /> : undefined}
+                    onClickSuffix={() => !disabled && onDeleteSelect(key)}
+                  />
+                ))
+              ) : (
+                textValue || placeholder
+              )}
+            </div>
+
+            {hasValue && isArray(textValue) && (
+              <div className="ebs-select-count" style={isBox ? { right: '1rem' } : undefined}>
+                {(textValue as OptionValue[]).length}
+              </div>
             )}
+
+            {hasValue && isClearable && (
+              <div className="ebs-select__clear">
+                <Button size="small" type="primary" onClick={onClear}>
+                  <Icon type="close" />
+                </Button>
+              </div>
+            )}
+
+            {!isBox && (
+              <div className="ebs-select__suffix">
+                <Icon type={`arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`} />
+              </div>
+            )}
+
+            {hasValue && isArray(textValue) && <div className="ebs-select-transition" />}
           </div>
 
-          {hasValue && isArray(textValue) && (
-            <div className="ebs-select-count" style={isBox ? { right: '1rem' } : undefined}>
-              {(textValue as OptionValue[]).length}
-            </div>
-          )}
-
-          {hasValue && isClearable && (
-            <div className="ebs-select__clear">
-              <Button size="small" type="primary" onClick={onClear}>
-                <Icon type="close" />
-              </Button>
-            </div>
-          )}
-
-          {!isBox && (
-            <div className="ebs-select__suffix">
-              <Icon type={`arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`} />
-            </div>
-          )}
-
-          {hasValue && isArray(textValue) && <div className="ebs-select-transition" />}
+          {suffix && <div className="ebs-select__suffix">{suffix}</div>}
         </div>
-
-        {suffix && <div className="ebs-select__suffix">{suffix}</div>}
 
         {!disabled && (openDropdown || isBox) && (isBox ? optionsBlock : createPortal(optionsBlock))}
       </div>
