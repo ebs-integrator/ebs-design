@@ -26,7 +26,10 @@
 
   // Clear icon
   .react-datepicker__close-icon {
+    margin-right: rem($gutter-size + $gutter-size / 2);
+
     &::after {
+      @include flex-center;
       background-color: $primary-color;
       font-size: rem(14px);
     }
@@ -195,6 +198,10 @@
       width: rem(15px);
       height: rem(15px);
       border: none;
+
+      &-icon::before {
+        border: none;
+      }
     }
 
     &__navigation--previous {
