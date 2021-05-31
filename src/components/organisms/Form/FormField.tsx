@@ -11,7 +11,7 @@ import { FieldError } from './FieldError';
 import { FieldExtra } from './FieldExtra';
 
 export interface FormFieldProps extends FieldProps {
-  label?: string;
+  label?: React.ReactNode;
   labelOptions?: LabelOptions;
   controlOptions?: ControlOptions;
   fieldRow?: RowProps; // The layout for field columns
@@ -83,7 +83,9 @@ export const FormField: React.FC<FormFieldProps> = ({
                   {extra && <FieldExtra>{extra}</FieldExtra>}
                   {meta.errors.length > 0 && (
                     <FieldError>
-                      {meta.errors.map((error) => (label ? error.replace(`'${meta.name.join('.')}'`, label) : error))}
+                      {meta.errors.map((error) =>
+                        label ? error.replace(`'${meta.name.join('.')}'`, label as string) : error,
+                      )}
                     </FieldError>
                   )}
                 </Col>
