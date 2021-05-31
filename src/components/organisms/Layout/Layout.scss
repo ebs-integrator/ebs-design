@@ -68,6 +68,7 @@
 
   &__content-wrapper {
     position: relative;
+    min-height: calc(100% - #{$layout-top-bar-height});
   }
 
   &__content {
