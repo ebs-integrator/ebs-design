@@ -81,6 +81,7 @@
       border-left: none;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      height: 100%;
     }
   }
 
@@ -223,8 +224,16 @@
   }
 }
 
-.ebs-select-dropdown__wrapper {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
+.ebs-select-dropdown {
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    width: 100%;
+  }
 }
