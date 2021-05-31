@@ -151,6 +151,10 @@
   }
 }
 
+.react-datepicker__year-select {
+  border: none;
+}
+
 // DatePicker Popper
 .react-datepicker-popper.ebs-datepicker__popper {
   z-index: 999999;
@@ -195,6 +199,10 @@
       width: rem(15px);
       height: rem(15px);
       border: none;
+
+      &-icon::before {
+        display: none;
+      }
     }
 
     &__navigation--previous {
