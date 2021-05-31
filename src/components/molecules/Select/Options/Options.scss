@@ -27,10 +27,6 @@
   }
 
   & > &-items {
-    @include greyScroll;
-    max-height: 30vh;
-    overflow-y: auto;
-
     .ebs-select__options-item:not(:last-child) {
       margin-bottom: rem(4px);
     }
