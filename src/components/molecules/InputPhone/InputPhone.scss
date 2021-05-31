@@ -1,6 +1,6 @@
 @import '~react-phone-input-2/lib/style.css';
 
-.ebs-input__phone {
+.react-tel-input.ebs-input__phone {
   &.active .form-control,
   &.active .flag-dropdown {
     border-color: $primary-color;
