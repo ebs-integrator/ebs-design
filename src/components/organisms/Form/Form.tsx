@@ -13,6 +13,7 @@ interface FormProps extends RCFormProps {
   labelOptions?: LabelOptions; // Input label options, such as align, justify, column
   controlOptions?: ControlOptions; // Input control options, such as align, justify, column
   fieldRow?: RowProps; // The layout for field columns
+  draft?: boolean;
 }
 
 interface FormComposition {
@@ -24,6 +25,7 @@ const FormContext = React.createContext<FormProps>({});
 
 const Form: React.FC<FormProps> & FormComposition = ({
   type = 'vertical',
+  draft,
   labelOptions,
   controlOptions,
   fieldRow,
@@ -37,7 +39,7 @@ const Form: React.FC<FormProps> & FormComposition = ({
 
   return (
     <RCForm className={cn(`ebs-form ebs-form--${type}`, className)} {...props}>
-      <FormContext.Provider value={{ type, fieldRow, labelOptions: labelProps, controlOptions: controlProps }}>
+      <FormContext.Provider value={{ type, fieldRow, labelOptions: labelProps, controlOptions: controlProps, draft }}>
         {children}
       </FormContext.Provider>
     </RCForm>
