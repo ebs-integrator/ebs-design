@@ -90,6 +90,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   const [cacheOptions, setCacheOptions] = React.useState<Option[]>([]);
 
   const [optionsStyle, setOptionsStyle] = React.useState({});
+  const [maxHeight, setMaxHeight] = React.useState(350);
 
   React.useEffect(() => {
     if (openDropdown && intersection && intersection.intersectionRatio < 1) {
@@ -146,12 +147,12 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
         width: `${rect.width}px`,
         top: `${offsetTop}px`,
         bottom: `auto`,
-        maxHeight: `${window.innerHeight - offsetTop}px`,
         zIndex: `9999999`,
       };
 
       if (!isEqual(style, optionsStyle)) {
         setOptionsStyle(style);
+        setMaxHeight(window.innerHeight - offsetTop - 50);
       }
     }
   }, [openDropdown, inputRef, optionsStyle, isScrolling, isWindowScrolling, isMouseScrolling]);
@@ -284,6 +285,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                 loading={loading}
                 className={cn({ 'ebs-select--box': isBox })}
                 emptyLabel={emptyLabel}
+                maxHeight={maxHeight}
                 onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
                 onChange={onChangeHandler}
                 onPrev={onPrev}
@@ -311,6 +313,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       loading,
       isBox,
       emptyLabel,
+      maxHeight,
       onToggleOpenDropdown,
       onChangeHandler,
       onPrev,
