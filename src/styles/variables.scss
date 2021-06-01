@@ -161,10 +161,10 @@ $card-padding-y-lg: 20px !default;
 $card-border-radius: $border-radius !default;
 $card-border-color: $border-color !default;
 $card-bordered-color: $primary-color !default;
-$card-header-bg-color: $white;
-$card-body-bg-color: $grey-100;
-$card-footer-bg-color: $white;
-$card-box-shadow: $box-shadow;
+$card-header-bg-color: $white !default;
+$card-body-bg-color: $grey-100 !default;
+$card-footer-bg-color: $white !default;
+$card-box-shadow: $box-shadow !default;
 
 // Collapse
 $collapse-padding-x: 20px !default;
@@ -177,9 +177,9 @@ $collapse-padding-y-lg: 20px !default;
 $collapse-border-radius: $border-radius !default;
 $collapse-border-color: $border-color !default;
 $collapse-bordered-color: $primary-color !default;
-$collapse-header-bg-color: $white;
-$collapse-body-bg-color: $grey-100;
-$collapse-group-box-shadow: $box-shadow;
+$collapse-header-bg-color: $white !default;
+$collapse-body-bg-color: $grey-100 !default;
+$collapse-group-box-shadow: $box-shadow !default;
 
 // Links
 //
@@ -361,7 +361,7 @@ $field-label-color: $text-color !default;
 $field-label-font-size: 12px !default;
 $field-label-font-weight: 400 !default;
 
-$field-extra-color: $text-color-secondary;
+$field-extra-color: $text-color-secondary !default;
 
 // Input
 $input-padding-y: 6px !default;
