@@ -27,6 +27,9 @@
   }
 
   & > &-items {
+    height: 30vh;
+    overflow: hidden auto;
+
     .ebs-select__options-item:not(:last-child) {
       margin-bottom: rem(4px);
     }

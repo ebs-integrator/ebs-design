@@ -18,6 +18,7 @@ export interface OptionsProps {
   loading?: boolean;
   value?: OptionValue | OptionValue[];
   emptyLabel?: string;
+  maxHeight?: number;
   onPrev?: () => void;
   onNext?: () => void;
   onClose?: () => void;
@@ -31,6 +32,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   options = [],
   value,
   emptyLabel = 'No found',
+  maxHeight,
   onNext,
   onClose,
   onChange,
@@ -106,7 +108,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   };
 
   return (
-    <div ref={ref} className="ebs-select__options-items">
+    <div ref={ref} className="ebs-select__options-items" style={maxHeight ? { maxHeight } : undefined}>
       <Animated loading={loading} duration={100}>
         {options.length ? (
           options.map((option, key) => (

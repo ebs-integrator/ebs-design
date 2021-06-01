@@ -9,9 +9,10 @@ import { combineProps, checkRequired } from './utils';
 import { FormContext } from './Form';
 import { FieldError } from './FieldError';
 import { FieldExtra } from './FieldExtra';
+import { GenericObject } from 'types';
 
 export interface FormFieldProps extends FieldProps {
-  label?: string;
+  label?: React.ReactNode;
   labelOptions?: LabelOptions;
   controlOptions?: ControlOptions;
   fieldRow?: RowProps; // The layout for field columns
@@ -42,7 +43,21 @@ export const FormField: React.FC<FormFieldProps> = ({
 
   return (
     <div className={cn(`ebs-form__item ebs-form__field`, className)} style={style}>
-      <Field name={name} {...props}>
+      <Field
+        name={name}
+        {...{
+          ...props,
+          rules: props.rules
+            ? props.rules.map((rule: GenericObject) => {
+                if (formCtx.draft && rule.required) {
+                  rule.required = false;
+                }
+
+                return rule;
+              })
+            : [],
+        }}
+      >
         {(control, meta, form) => {
           if (!children) {
             return null;
@@ -83,7 +98,9 @@ export const FormField: React.FC<FormFieldProps> = ({
                   {extra && <FieldExtra>{extra}</FieldExtra>}
                   {meta.errors.length > 0 && (
                     <FieldError>
-                      {meta.errors.map((error) => (label ? error.replace(`'${meta.name.join('.')}'`, label) : error))}
+                      {meta.errors.map((error) =>
+                        label ? error.replace(`'${meta.name.join('.')}'`, label as string) : error,
+                      )}
                     </FieldError>
                   )}
                 </Col>
