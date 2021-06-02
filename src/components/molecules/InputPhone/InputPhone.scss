@@ -77,8 +77,8 @@
 
   &-dropdown {
     &::-webkit-scrollbar {
-      width: $scrollbar-size !important;
-      height: $scrollbar-size !important;
+      width: rem($scrollbar-size) !important;
+      height: rem($scrollbar-size) !important;
     }
 
     /* Track */

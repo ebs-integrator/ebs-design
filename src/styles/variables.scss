@@ -37,6 +37,8 @@ $background-content: #f8f8f8 !default;
 // Font, line-height, and color for body text, headings, and more.
 $font-family: 'Roboto', sans-serif !default;
 $font-size-base: 14px !default;
+$font-size-desktop: 12.5px !default;
+$font-size-small-desktop: 10px !default;
 $font-size-sm: $font-size-base * 0.875 !default;
 $font-size-lg: $font-size-base * 1.25 !default;
 
@@ -253,8 +255,8 @@ $layout-top-bar-height: 58px !default;
 $layout-top-bar-border-color: 1px solid $border-color !default;
 $layout-top-bar-background: $white !default;
 
-$layout-top-bar-side-left-magin-left: $gutter-size !default;
-$layout-top-bar-side-right-magin-left: $gutter-size !default;
+$layout-top-bar-side-left-margin-left: $gutter-size !default;
+$layout-top-bar-side-right-margin-left: $gutter-size !default;
 
 $layout-top-bar-avatar-background: $primary-color !default;
 $layout-top-bar-avatar-color: $white !default;

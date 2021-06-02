@@ -5,7 +5,7 @@
   white-space: nowrap;
   font-size: rem($label-font-size);
   color: $label-color;
-  border-radius: $label-border-radius;
+  border-radius: rem($label-border-radius);
 
   .ebs-icon {
     color: $label-color;
@@ -55,11 +55,11 @@
 
   &--icon {
     @include flex-center;
-    width: $gutter-size;
-    height: $gutter-size;
+    width: rem($gutter-size);
+    height: rem($gutter-size);
     float: left;
     padding: 0;
-    margin-right: $gutter-size / 2;
+    margin-right: rem($gutter-size / 2);
   }
 
   &--circle {

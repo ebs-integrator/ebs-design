@@ -8,8 +8,8 @@
 
 .ebs-tabs__item {
   cursor: pointer;
-  margin: $tab-item-margin;
-  padding: $tab-item-padding;
+  margin: rem($tab-item-margin);
+  padding: rem($tab-item-padding);
 
   &.active {
     border-bottom: $tab-item-border-bottom-active;
@@ -22,5 +22,5 @@
 }
 
 .ebs-tabs__content {
-  padding: $tab-content-padding;
+  padding: rem($tab-content-padding);
 }

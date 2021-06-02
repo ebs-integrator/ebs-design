@@ -188,7 +188,7 @@
 
     // FIXME: Temporary hack
     .ebs-select-value:empty {
-      min-height: $base-size-sm - $select-padding-y-sm * 2;
+      min-height: rem($base-size-sm - $select-padding-y-sm * 2);
     }
   }
 
@@ -197,7 +197,7 @@
 
     // FIXME: Temporary hack
     .ebs-select-value:empty {
-      min-height: $base-size - $select-padding-y * 2;
+      min-height: rem($base-size - $select-padding-y * 2);
     }
   }
 
@@ -206,7 +206,7 @@
 
     // FIXME: Temporary hack
     .ebs-select-value:empty {
-      min-height: $base-size-lg - $select-padding-y-lg * 2;
+      min-height: rem($base-size-lg - $select-padding-y-lg * 2);
     }
   }
 

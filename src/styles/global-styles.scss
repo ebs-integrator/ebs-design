@@ -16,11 +16,11 @@ body {
   color: $text-color;
 
   @include mq($until: desktop) {
-    font-size: rem(12.5px);
+    font-size: $font-size-desktop;
   }
 
   @include mq($until: small-desktop) {
-    font-size: rem(10px);
+    font-size: $font-size-small-desktop;
   }
 }
 

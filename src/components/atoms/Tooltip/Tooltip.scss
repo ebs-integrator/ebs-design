@@ -30,15 +30,15 @@
 
     &-title {
       color: $heading-color;
-      font-size: $font-size-base;
-      margin-bottom: $border-radius;
+      font-size: rem($font-size-base);
+      margin-bottom: rem($border-radius);
       @include fontMedium;
     }
   }
 
   &__arrow {
     position: absolute;
-    font-size: $gutter-size;
+    font-size: rem($gutter-size);
     transform: translate3d(-50%, 0, 0) rotate(180deg);
   }
 

@@ -2,7 +2,7 @@
   width: 100%;
   border: $details-card-border;
   border-color: $details-card-border-color;
-  border-radius: $details-card-border-radius;
+  border-radius: rem($details-card-border-radius);
 
   &__header {
     display: flex;
@@ -19,7 +19,7 @@
       align-items: center;
 
       > *:not(:last-child) {
-        margin-right: $details-card-padding-size;
+        margin-right: rem($details-card-padding-size);
       }
     }
 

@@ -9,7 +9,7 @@
 .ebs-collapse {
   width: 100%;
   border: 1px solid $collapse-border-color;
-  border-radius: $collapse-border-radius;
+  border-radius: rem($collapse-border-radius);
   background-color: #fff;
   overflow: hidden;
 
@@ -61,7 +61,7 @@
   &__group {
     width: 100%;
     border: 1px solid $collapse-border-color;
-    border-radius: $collapse-border-radius;
+    border-radius: rem($collapse-border-radius);
     box-shadow: $collapse-group-box-shadow;
     overflow: hidden;
 

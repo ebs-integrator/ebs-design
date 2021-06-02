@@ -34,7 +34,7 @@
       position: relative;
       top: 0;
       color: currentColor;
-      font-size: $table-body-font-size;
+      font-size: rem($table-body-font-size);
       transition: $transition-time;
       margin-left: rem(6px);
     }
@@ -65,6 +65,7 @@
       border: $table-body-cell-border;
       transition: $transition-time;
       text-align: $table-body-cell-text-align;
+      font-size: rem($table-body-font-size);
       white-space: nowrap;
 
       &:not(:last-child) {
@@ -74,7 +75,6 @@
 
     &:nth-child(odd) td.rc-table-cell {
       background-color: $table-body-cell-odd-background;
-      font-size: $table-body-font-size;
     }
 
     &:hover:nth-child(odd) td.rc-table-cell,
@@ -98,7 +98,7 @@
       @include elevation-2;
       position: relative;
       border: $table-body-mobile-cell-border;
-      border-radius: $border-radius;
+      border-radius: rem($border-radius);
       background-color: $table-head-background;
       display: flex;
       flex-wrap: wrap;
@@ -229,7 +229,7 @@
     }
 
     .ebs-time__period-cell > div > .ebs-info:not(:first-child) {
-      padding-left: $table-body-font-size;
+      padding-left: rem($table-body-font-size);
 
       .ebs-info__icon {
         display: none;
@@ -237,7 +237,7 @@
     }
 
     .ebs-time__period-cell > div > .ebs-info:not(:last-child) {
-      margin-right: $table-body-font-size;
+      margin-right: rem($table-body-font-size);
     }
   }
 
@@ -255,7 +255,7 @@
       font-weight: $table-head-font-weight;
       text-align: $table-head-cell-text-align;
       background-color: $table-head-background;
-      font-size: $table-head-font-size;
+      font-size: rem($table-head-font-size);
       color: $heading-color;
       word-break: normal;
 

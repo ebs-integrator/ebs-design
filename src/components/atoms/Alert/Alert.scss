@@ -3,14 +3,14 @@
   display: flex;
   align-items: center;
   border: 1px solid $success-color;
-  padding: $alert-padding;
-  border-radius: $border-radius;
+  padding: rem($alert-padding);
+  border-radius: rem($border-radius);
 
   .ebs-icon {
-    width: $alert-icon-size;
-    height: $alert-icon-size;
+    width: rem($alert-icon-size);
+    height: rem($alert-icon-size);
     border-radius: 100px;
-    margin-right: $alert-icon-margin;
+    margin-right: rem($alert-icon-margin);
     color: $success-color;
   }
 
