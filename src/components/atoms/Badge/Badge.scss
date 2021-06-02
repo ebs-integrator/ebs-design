@@ -1,8 +1,8 @@
 .ebs-badge {
   @include flex-center-vert;
 
-  min-width: $badge-min-size;
-  min-height: $badge-min-size;
+  min-width: rem($badge-min-size);
+  min-height: rem($badge-min-size);
 
   &__container {
     @include flex-center;
@@ -12,19 +12,19 @@
     top: 0;
     z-index: 2;
     background-color: $badge-regular-bg-color;
-    width: $badge-size;
-    height: $badge-size;
+    width: rem($badge-size);
+    height: rem($badge-size);
     color: $black;
-    border-radius: $badge-border-radius;
-    padding: $badge-padding;
-    transform: $badge-transform;
-    font-size: $badge-font-size;
+    border-radius: rem($badge-border-radius);
+    padding: rem($badge-padding);
+    font-size: rem($badge-font-size);
     font-weight: $badge-font-weight;
+    transform: $badge-transform;
 
     &--text {
       width: auto;
-      padding: $badge-text-padding;
-      border-radius: $badge-text-border-radius;
+      padding: rem($badge-text-padding);
+      border-radius: rem($badge-text-border-radius);
     }
   }
 
@@ -37,7 +37,7 @@
     position: relative;
 
     > .ebs-icon {
-      font-size: $badge-size;
+      font-size: rem($badge-size);
     }
   }
 

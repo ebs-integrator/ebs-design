@@ -16,14 +16,14 @@
 @media (min-width: $grid-sm-size + 36) {
   .container-sm,
   .container {
-    max-width: $grid-sm-size;
+    max-width: rem($grid-sm-size);
   }
 }
 @media (min-width: $grid-md-size + 49) {
   .container-md,
   .container-sm,
   .container {
-    max-width: $grid-md-size;
+    max-width: rem($grid-md-size);
   }
 }
 @media (min-width: $grid-lg-size + 32) {
@@ -31,7 +31,7 @@
   .container-md,
   .container-sm,
   .container {
-    max-width: $grid-lg-size;
+    max-width: rem($grid-lg-size);
   }
 }
 @media (min-width: $grid-xl-size + 60) {
@@ -40,7 +40,7 @@
   .container-md,
   .container-sm,
   .container {
-    max-width: $grid-xl-size;
+    max-width: rem($grid-xl-size);
   }
 }
 @media (min-width: $grid-xxl-size + 80) {
@@ -50,7 +50,7 @@
   .container-md,
   .container-sm,
   .container {
-    max-width: $grid-xxl-size;
+    max-width: rem($grid-xxl-size);
   }
 }
 .row {

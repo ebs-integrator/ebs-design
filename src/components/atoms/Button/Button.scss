@@ -7,7 +7,7 @@
   cursor: pointer;
   width: 100%;
   font-size: rem(13px);
-  line-height: $btn-line-height;
+  line-height: rem($btn-line-height);
   border-color: transparent;
   background: transparent;
   padding: 0;
@@ -209,7 +209,7 @@
 
   // button size
   &--large {
-    border-radius: $btn-border-radius-lg;
+    border-radius: rem($btn-border-radius-lg);
   }
 
   &--large & {
@@ -219,7 +219,7 @@
   }
 
   &--medium {
-    border-radius: $btn-border-radius;
+    border-radius: rem($btn-border-radius);
   }
 
   &--medium & {
@@ -229,14 +229,14 @@
   }
 
   &--small {
-    border-radius: $btn-border-radius-sm;
+    border-radius: rem($btn-border-radius-sm);
   }
 
   &--small & {
     padding: rem($btn-padding-y-sm $btn-padding-x-sm);
     font-weight: $btn-font-weight-sm;
     font-size: rem($btn-font-size-sm);
-    line-height: $btn-line-height-sm;
+    line-height: rem($btn-line-height-sm);
   }
 
   &__wrapper {
