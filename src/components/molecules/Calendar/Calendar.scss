@@ -116,7 +116,7 @@
     border-radius: rem($border-radius);
     outline: none;
     font-size: rem(14px);
-    line-height: $line-height-base;
+    line-height: rem($line-height-base);
     padding-right: rem($base-size);
     padding: rem($calendar-padding-y $calendar-padding-x);
     color: $heading-color;
