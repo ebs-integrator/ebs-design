@@ -363,19 +363,19 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
               )}
             </div>
 
-            {hasValue && isArray(textValue) && (
+            {hasValue && isArray(textValue) ? (
               <div className="ebs-select-count" style={isBox ? { right: '1rem' } : undefined}>
                 {(textValue as OptionValue[]).length}
               </div>
-            )}
+            ) : null}
 
-            {hasValue && isClearable && (
+            {hasValue && isClearable ? (
               <div className="ebs-select__clear">
                 <Button size="small" type="primary" onClick={onClear}>
                   <Icon type="close" />
                 </Button>
               </div>
-            )}
+            ) : null}
 
             {!isBox && (
               <div className="ebs-select__suffix">
@@ -383,7 +383,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
               </div>
             )}
 
-            {hasValue && isArray(textValue) && <div className="ebs-select-transition" />}
+            {hasValue && isArray(textValue) ? <div className="ebs-select-transition" /> : null}
           </div>
 
           {suffix && <div className="ebs-select__suffix">{suffix}</div>}
