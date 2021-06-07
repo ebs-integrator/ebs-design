@@ -225,15 +225,18 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   });
 
   React.useEffect(() => {
-    if (!isEqual($options, options) && !loaded) {
-      setOptions(() => {
-        if (paginationProps && paginationProps.mode === 'scroll' && !isSearch) {
-          setLoaded(true);
+    if ($options.length === options.length && !isSearch && !isEqual($options, options) && loaded) {
+      setOptions($options);
+    }
+  }, [$options, options, loaded, isSearch]);
 
+  React.useEffect(() => {
+    if (!isEqual($options, options, 'value') && !loaded) {
+      setLoaded(true);
+      setOptions(() => {
+        if (paginationProps?.mode === 'scroll' && !isSearch) {
           return uniqueArray(options, $options) as Option[];
         } else {
-          setLoaded(true);
-
           return $options;
         }
       });
@@ -285,7 +288,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                 loading={loading}
                 className={cn({ 'ebs-select--box': isBox })}
                 emptyLabel={emptyLabel}
-                maxHeight={maxHeight}
+                maxHeight={maxHeight > 250 ? 250 : maxHeight}
                 onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
                 onChange={onChangeHandler}
                 onPrev={onPrev}
