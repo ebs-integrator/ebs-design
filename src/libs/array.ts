@@ -14,7 +14,7 @@ export const flattenArray = <T>(arr: T[], key = 'children'): T[] =>
 
 export const isArray = (arr): boolean => arr && Array.isArray(arr);
 
-export const isEqual = (value, other): boolean => {
+export const isEqual = (value, other, prop = 'text'): boolean => {
   // Get the value type
   const type = Object.prototype.toString.call(value);
 
@@ -31,7 +31,10 @@ export const isEqual = (value, other): boolean => {
 
   if (type === '[object Array]') {
     for (let i = 0; i < valueLen; i++) {
-      if ((typeof value[i] === 'object' && value[i]?.value !== other[i]?.value) || value[i] !== other[i]) {
+      if (
+        (typeof value[i] === 'object' && prop in value[i] && value[i][prop] !== other[i][prop]) ||
+        JSON.stringify(value[i]) !== JSON.stringify(other[i])
+      ) {
         return false;
       }
     }
@@ -39,7 +42,8 @@ export const isEqual = (value, other): boolean => {
     for (const key in value) {
       if (
         value.hasOwnProperty(key) &&
-        ((typeof value[key] === 'object' && value[key]?.value !== other[key]?.value) || value[key] !== other[key])
+        ((typeof value[key] === 'object' && prop in value[key] && value[key][prop] !== other[key][prop]) ||
+          JSON.stringify(value[key]) !== JSON.stringify(other[key]))
       ) {
         return false;
       }
