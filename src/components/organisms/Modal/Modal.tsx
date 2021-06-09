@@ -30,7 +30,7 @@ const Modal: React.FC<ModalProps> & ModalComposition = ({
   children,
   ...props
 }) => {
-  const createPortal = usePortal();
+  const createPortal = usePortal('modal-portal');
   useScrollToggler();
 
   React.useEffect(() => {
