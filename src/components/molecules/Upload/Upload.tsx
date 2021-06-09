@@ -49,11 +49,14 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
 
   const onSuccess = (response, file, xhr): void => {
     setFiles((prevState) => {
-      let files = response;
+      let files = Array.isArray(response) ? response : [response];
 
       // Save files into array on multiple prop
       if (props.multiple) {
-        files = [...prevState.filter((state) => file.uid !== state.uid), ...response];
+        files = [
+          ...prevState.filter((state) => file.uid !== state.uid),
+          ...(Array.isArray(response) ? response : [response]),
+        ];
       }
 
       // Internal save
