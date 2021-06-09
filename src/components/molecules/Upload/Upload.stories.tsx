@@ -9,11 +9,11 @@ export default {
   component: Upload,
 };
 
-const ACTION_URL = 'https://fs.api.dev.ebs.io/file/upload/';
+const ACTION_URL = 'your/url';
 const TOKEN = 'your/token';
 
 const uploaderProps = {
-  name: 'file',
+  name: 'files',
   action: ACTION_URL,
   headers: {
     Authorization: `Bearer ${TOKEN}`,
