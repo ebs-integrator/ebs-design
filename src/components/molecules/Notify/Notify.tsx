@@ -33,7 +33,7 @@ const NotifyContainer: React.FC<NotifyProps> = ({
   size = 'medium',
   timeout = 3000,
 }) => {
-  const createPortal = usePortal();
+  const createPortal = usePortal('notify-portal');
   const { list, remove } = React.useContext(NotifyContext);
 
   React.useEffect(() => {
