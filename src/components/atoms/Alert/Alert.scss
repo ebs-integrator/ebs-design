@@ -1,44 +1,89 @@
 .ebs-alert {
   position: relative;
   display: flex;
-  align-items: center;
   border: 1px solid $success-color;
-  padding: rem($alert-padding);
   border-radius: rem($border-radius);
+  background-color: rgba($success-100, 0.2);
+
+  &-content {
+    width: 95%;
+  }
+
+  &--success {
+    &--dashed {
+      border: 1px dashed $success-color;
+    }
+  }
 
   .ebs-icon {
     width: rem($alert-icon-size);
-    height: rem($alert-icon-size);
-    border-radius: 100px;
+    height: 25px;
     margin-right: rem($alert-icon-margin);
     color: $success-color;
+    &-alert {
+      width: 13px;
+      cursor: pointer;
+    }
   }
 
   &--info {
-    border: 1px dashed $info-color;
+    border: 1px solid $info-color;
+    background-color: rgba($info-100, 0.3);
 
     .ebs-icon {
-      color: $info-color;
+      color: $info-600;
+      font-size: 12px;
+    }
+
+    &--dashed {
+      border: 1px dashed $info-color;
     }
   }
 
   &--warning {
-    border: 1px dashed $warning-color;
+    background-color: rgba($warning-100, 0.3);
+    border: 1px solid $warning-color;
 
     .ebs-icon {
-      color: $warning-color;
+      color: $warning-600;
+    }
+
+    &--dashed {
+      border: 1px dashed $warning-color;
     }
   }
 
   &--error {
-    border: 1px dashed $danger-color;
+    background-color: rgba($danger-200, 0.3);
+    border-color: $danger-color;
 
     .ebs-icon {
-      color: $danger-color;
+      font-size: 12px;
+      color: $danger-600;
 
       path:last-child {
-        fill: $white;
+        fill: rgba($danger-200, 0.3);
       }
     }
+
+    &--dashed {
+      border: 1px dashed $danger-color;
+    }
+  }
+
+  &--small {
+    font-size: rem(13px);
+    padding: rem($alert-padding-y-sm $alert-padding-x-sm);
+  }
+  &--medium {
+    padding: rem($alert-padding-y $alert-padding-x);
+  }
+  &--large {
+    font-size: rem(14px);
+    padding: rem($alert-padding-y-lg $alert-padding-x-lg);
+  }
+
+  &--hidden {
+    display: none;
   }
 }

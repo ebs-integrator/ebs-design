@@ -84,9 +84,17 @@ $box-shadow: 0px 4px 8px rgba(18, 22, 52, 0.16) !default;
 // Alerts
 //
 // Define alert padding & icon size
-$alert-padding: 20px 16px !default;
-$alert-icon-size: 20px !default;
+$alert-icon-size: 32px !default;
 $alert-icon-margin: 10px !default;
+
+$alert-padding-y: 20px !default;
+$alert-padding-x: 16px !default;
+
+$alert-padding-y-sm: 16px !default;
+$alert-padding-x-sm: 12px !default;
+
+$alert-padding-y-lg: 24px !default;
+$alert-padding-x-lg: 10px !default;
 
 //Avatars
 //
