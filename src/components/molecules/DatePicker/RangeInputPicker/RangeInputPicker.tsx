@@ -37,7 +37,6 @@ const RangeInputPicker = React.forwardRef<ReactDatePicker, DatePickerProps>(
     };
 
     React.useEffect(() => {
-      console.log(dateRange);
       if (value && Array.isArray(value) && !isEqual(dateRange, value)) {
         setStartDate(parseDate(value[0], dateFormat));
         setEndDate(parseDate(value[1], dateFormat));
