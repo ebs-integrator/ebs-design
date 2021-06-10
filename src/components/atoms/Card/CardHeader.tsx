@@ -10,7 +10,6 @@ export interface CardHeaderProps {
 }
 
 export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, onClick, children }) => {
-  const refContent = React.useRef(null);
   const { collapsible, height, setHeight } = React.useContext(CardContext);
 
   // Card header classNames
@@ -31,7 +30,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, onC
     e.stopPropagation();
 
     // Do nothing if header was not directly clicked
-    if (e.target !== e.currentTarget && e.target !== refContent.current) return;
+    if (e.target !== e.currentTarget && e.target instanceof HTMLButtonElement) return;
 
     toggle();
 
@@ -43,9 +42,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, onC
 
   return (
     <header onClick={handleClick} className={classNames}>
-      <div ref={refContent} className="ebs-card__header__content">
-        {children}
-      </div>
+      <div className="ebs-card__header__content">{children}</div>
       <div className="ebs-card__header__toggle" onClick={toggle}>
         <Icon type={height === 0 ? 'arrow-right' : 'arrow-bottom'} />
       </div>
