@@ -36,6 +36,10 @@
     margin-top: rem(5px);
   }
 
+  &__text {
+    @include text-ellipsis;
+  }
+
   &--untoggled &__options {
     left: rem($sidebar-width);
   }
@@ -59,7 +63,6 @@
 
       .ebs-sidebar__text {
         animation: fadeOut 0.1s;
-        white-space: nowrap;
       }
 
       .ebs-sidebar__suffix .ebs-icon {
@@ -115,14 +118,6 @@
     &:nth-last-child(2) {
       border-bottom: $sidebar-border;
     }
-
-    span {
-      @include text-ellipsis;
-    }
-  }
-
-  &--toggled &__options &__item span {
-    @include text-ellipsis;
   }
 
   &__mask {
