@@ -107,20 +107,26 @@ export const WithForm = (): React.ReactElement => {
   );
 };
 
-export const Range = (): React.ReactElement => (
-  <div className="storybook-rows">
-    <div className="storybook-row">
-      <div className="storybook-header">Calendar</div>
+export const Range = (): React.ReactElement => {
+  const [value, setValue] = React.useState();
+  const handleChange = (date): void => {
+    setValue(date);
+  };
+  return (
+    <div className="storybook-rows">
+      <div className="storybook-row">
+        <div className="storybook-header">Calendar</div>
 
-      <div className="storybook-row-item">
-        <div className="storybook-label">Range</div>
-        <DatePicker.Range />
-      </div>
+        <div className="storybook-row-item">
+          <div className="storybook-label">Range</div>
+          <DatePicker.Range />
+        </div>
 
-      <div className="storybook-row-item">
-        <div className="storybook-label">Range Input</div>
-        <DatePicker.RangeInput size="small" value={['2020-10-11', '2020-12-11']} dateFormat="yyyy-MM-dd" />
+        <div className="storybook-row-item">
+          <div className="storybook-label">Range Input</div>
+          <DatePicker.RangeInput onChange={handleChange} size="small" value={value} dateFormat="yyyy-MM-dd" />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
