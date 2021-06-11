@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  border: 1px solid $success-color;
+  border: $alert-border;
   padding: rem($alert-padding);
   border-radius: rem($border-radius);
 
@@ -11,34 +11,50 @@
     height: rem($alert-icon-size);
     border-radius: 100px;
     margin-right: rem($alert-icon-margin);
-    color: $success-color;
+    color: $alert-success-color;
   }
 
   &--info {
-    border: 1px dashed $info-color;
+    border: $alert-border--info;
 
     .ebs-icon {
-      color: $info-color;
+      color: $alert-info-color;
     }
   }
 
   &--warning {
-    border: 1px dashed $warning-color;
+    border: $alert-border--warning;
 
     .ebs-icon {
-      color: $warning-color;
+      color: $alert-warning-color;
     }
   }
 
   &--error {
-    border: 1px dashed $danger-color;
+    border: $alert-border--danger;
 
     .ebs-icon {
-      color: $danger-color;
+      color: $alert-danger-color;
 
       path:last-child {
         fill: $white;
       }
+    }
+  }
+
+  &--fill {
+    background-color: $warning-100;
+
+    &.ebs-alert--warning {
+      background-color: $warning-100;
+    }
+
+    &.ebs-alert--error {
+      background-color: $warning-100;
+    }
+
+    &.ebs-alert--info {
+      background-color: $warning-100;
     }
   }
 }

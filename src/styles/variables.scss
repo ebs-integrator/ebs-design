@@ -87,6 +87,14 @@ $box-shadow: 0px 4px 8px rgba(18, 22, 52, 0.16) !default;
 $alert-padding: 20px 16px !default;
 $alert-icon-size: 20px !default;
 $alert-icon-margin: 10px !default;
+$alert-border: 1px solid $success-color !default;
+$alert-border--info: 1px dashed $info-color !default;
+$alert-border--warning: 1px dashed $warning-color !default;
+$alert-border--danger: 1px dashed $danger-color !default;
+$alert-success-color: $success-color !default;
+$alert-info-color: $info-color !default;
+$alert-warning-color: $warning-color !default;
+$alert-danger-color: $danger-color !default;
 
 //Avatars
 //

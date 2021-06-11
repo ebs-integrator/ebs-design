@@ -7,11 +7,13 @@ export type AlertType = 'success' | 'info' | 'warning' | 'error';
 
 export interface AlertProps {
   type?: AlertType;
+  icon?: React.ReactNode;
+  fill?: boolean;
   className?: string;
   message?: string;
 }
 
-export const Alert: React.FC<AlertProps> = ({ type = 'success', message = '', className }) => {
+export const Alert: React.FC<AlertProps> = ({ type = 'success', message = '', fill, className, icon }) => {
   const ref = React.useRef<null | HTMLDivElement>(null);
   const getHeader = document.getElementsByClassName('ebs-layout__top-bar');
 
@@ -32,8 +34,13 @@ export const Alert: React.FC<AlertProps> = ({ type = 'success', message = '', cl
   }, [message, getHeader]);
 
   return message.length ? (
-    <div ref={ref} className={cn(`ebs-alert`, `ebs-alert--${type}`, className)}>
-      {renderByType[type]}
+    <div
+      ref={ref}
+      className={cn(`ebs-alert`, `ebs-alert--${type}`, className, {
+        'ebs-alert--fill': fill,
+      })}
+    >
+      {icon || renderByType[type]}
       {message}
     </div>
   ) : null;
