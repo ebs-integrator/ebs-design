@@ -225,7 +225,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   });
 
   React.useEffect(() => {
-    if ($options.length === options.length && !isSearch && !isEqual($options, options) && loaded) {
+    if ((!paginationProps || paginationProps.page === 1) && !isSearch && !isEqual($options, options) && loaded) {
       setOptions($options);
     }
   }, [$options, options, loaded, isSearch]);

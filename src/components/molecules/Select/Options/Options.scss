@@ -10,6 +10,10 @@
   border-radius: rem($border-radius);
   overflow: auto;
 
+  &--multiple &-item-text {
+    padding-right: rem($gutter-size + $gutter-size / 2);
+  }
+
   &--box {
     position: relative;
     box-shadow: none;

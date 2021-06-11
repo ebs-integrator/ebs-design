@@ -31,10 +31,7 @@ export const isEqual = (value, other, prop = 'text'): boolean => {
 
   if (type === '[object Array]') {
     for (let i = 0; i < valueLen; i++) {
-      if (
-        (typeof value[i] === 'object' && value[i] && prop in value[i] && value[i][prop] !== other[i][prop]) ||
-        JSON.stringify(value[i]) !== JSON.stringify(other[i])
-      ) {
+      if (typeof value[i] === 'object' && value[i] && prop in value[i] && value[i][prop] !== other[i][prop]) {
         return false;
       }
     }
@@ -42,11 +39,10 @@ export const isEqual = (value, other, prop = 'text'): boolean => {
     for (const key in value) {
       if (
         value.hasOwnProperty(key) &&
-        ((typeof value[key] === 'object' &&
-          value[key] &&
-          prop in value[key] &&
-          value[key][prop] !== other[key][prop]) ||
-          JSON.stringify(value[key]) !== JSON.stringify(other[key]))
+        typeof value[key] === 'object' &&
+        value[key] &&
+        prop in value[key] &&
+        value[key][prop] !== other[key][prop]
       ) {
         return false;
       }
