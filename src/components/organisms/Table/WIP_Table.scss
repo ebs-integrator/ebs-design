@@ -14,7 +14,7 @@ $table-head-cell-border: $table-border !default;
 $table-head-row-border: 1px solid $primary-color !default;
 
 $table-body-cell-border: $table-border !default;
-$table-body-cell-hover-background: $grey-100 !default;
+// $table-body-cell-hover-background: $grey-100 !default;
 $table-body-row-border: $table-body-cell-border !default;
 $table-body-row-odd-background: $background-content !default;
 $table-sub-cell-border: $table-border !default;
@@ -33,7 +33,7 @@ $table-sub-cell-border: $table-border !default;
   line-height: $line-height-base;
   font-weight: $table-font-weight;
   color: $text-color;
-  border: $table-border;
+  // border: $table-border;
   border-radius: $table-border-radius;
   box-shadow: $table-box-shadow;
 
@@ -58,9 +58,35 @@ $table-sub-cell-border: $table-border !default;
     }
   }
 
+  &-bordered {
+    border: $table-border;
+  }
+
+  &-bordered .ebs-table {
+    &-tbody td {
+      border-right: $table-body-cell-border;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+    &-thead th {
+      border-right: $table-head-cell-border;
+
+      .has-children {
+        &:last-child {
+          border-right: $table-head-cell-border;
+        }
+      }
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+
   // Odd background color
-  &-row {
-    &:nth-child(odd) {
+  &-striped .ebs-table-row {
+    &:nth-child(even) {
       .ebs-table-cell {
         background-color: $table-body-row-odd-background;
 
@@ -75,7 +101,6 @@ $table-sub-cell-border: $table-border !default;
     th {
       font-size: $table-head-font-size;
       font-weight: $table-head-font-weight;
-      border-right: $table-head-cell-border;
       border-bottom: $table-head-row-border;
       background-color: $table-head-cell-bg-color;
 
@@ -90,12 +115,21 @@ $table-sub-cell-border: $table-border !default;
 
   &-tbody {
     td {
-      border-right: $table-body-cell-border;
+      // border-right: $table-body-cell-border;
       border-bottom: $table-body-row-border;
       transition: $transition-base;
 
+      // @include hover-state {
+      //   background-color: $table-body-cell-hover-background;
+      // }
+    }
+
+    //Hover on row
+    tr {
       @include hover-state {
-        background-color: $table-body-cell-hover-background;
+        > td {
+          background-color: $table-body-cell-hover-background;
+        }
       }
     }
 
@@ -392,6 +426,7 @@ $table-sub-cell-border: $table-border !default;
       top: 0;
       transition: $transition-time;
       color: $text-color;
+      font-size: rem(14px);
     }
   }
 

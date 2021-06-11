@@ -18,12 +18,20 @@ interface ColumnType<T> extends RCColumnType<T> {
 interface TableProps<T> extends RCTableProps<T> {
   size?: SizeType;
   columns?: ColumnType<T>[];
+  striped?: boolean;
+  bordered?: boolean;
 }
 
 // Filter types
 const types: FilterType[] = ['desc', 'asc'];
 
-const Table = <T extends object>({ size = 'medium', children, ...props }: TableProps<T>): React.ReactElement => {
+const Table = <T extends object>({
+  size = 'medium',
+  striped = false,
+  bordered = true,
+  children,
+  ...props
+}: TableProps<T>): React.ReactElement => {
   const [filters, setFilters] = React.useState<{ [key: number]: FilterType }>({});
 
   const onFilterHandler = React.useCallback(
@@ -77,7 +85,17 @@ const Table = <T extends object>({ size = 'medium', children, ...props }: TableP
   );
 
   return (
-    <RCTable {...props} className={cn(`ebs-table ebs-table--${size}`, props.className)} columns={columns}>
+    <RCTable
+      {...props}
+      prefixCls="ebs-table"
+      className={cn(
+        `ebs-table ebs-table--${size}`,
+        { 'ebs-table-striped': striped },
+        { 'ebs-table-bordered': bordered },
+        props.className,
+      )}
+      columns={columns}
+    >
       {children}
     </RCTable>
   );
