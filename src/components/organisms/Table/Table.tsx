@@ -27,8 +27,8 @@ const types: FilterType[] = ['desc', 'asc'];
 
 const Table = <T extends object>({
   size = 'medium',
-  striped = false,
-  bordered = true,
+  striped,
+  bordered,
   children,
   ...props
 }: TableProps<T>): React.ReactElement => {

@@ -70,16 +70,15 @@ $table-sub-cell-border: $table-border !default;
         border-right: 0;
       }
     }
-    &-thead th {
-      border-right: $table-head-cell-border;
-
-      .has-children {
-        &:last-child {
-          border-right: $table-head-cell-border;
-        }
+    &-thead {
+      th {
+        border-right: $table-head-cell-border;
+      }
+      tr:first-child th:last-child {
+        border-right: 0;
       }
       &:last-child {
-        border-right: 0;
+        border-right: $table-border;
       }
     }
   }
@@ -322,7 +321,7 @@ $table-sub-cell-border: $table-border !default;
 
   &-expanded-row {
     .ebs-table-cell {
-      box-shadow: inset $box-shadow;
+      box-shadow: inset $table-box-shadow;
     }
 
     &-fixed::after {
