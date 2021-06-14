@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { icons } from './iconsList';
 import cn from 'classnames';
+
+export type modelType = 'regular' | 'bold';
 export interface Props {
   onClick?: () => void;
   type?: string;

@@ -17,7 +17,7 @@ export const Regular = (): React.ReactElement => (
         return (
           <div className="storybook-icon-item" key={icon}>
             <div className="storybook-icon">
-              <Icon type={icon} />
+              <Icon type={icon} model={model} />
             </div>
 
             <div className="storybook-icon-name">{`<Icon type="${icon}" />`}</div>

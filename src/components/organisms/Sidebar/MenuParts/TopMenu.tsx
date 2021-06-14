@@ -13,7 +13,7 @@ export const TopMenu: React.FC<{ showToggle?: boolean }> = ({ showToggle = true,
         <Item
           className="ebs-sidebar__toggler"
           invert
-          prefix={<Icon type="menu-fold" />}
+          prefix={<Icon type="menu-fold" model="bold" />}
           text="Hide titles"
           onClick={onSetToggled}
         />

@@ -49,7 +49,7 @@ export const Item: React.FC<{
 
         {options !== undefined && (
           <div className="ebs-sidebar__suffix">
-            <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}`} />
+            <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}`} model="bold" />
           </div>
         )}
       </div>

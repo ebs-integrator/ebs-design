@@ -20,16 +20,41 @@ import { Info } from './svgs/Regular/Info';
 import { Warning } from './svgs/Regular/Warning';
 import { Error } from './svgs/Regular/Error';
 import { Link } from './svgs/Regular/Link';
+import { ArrowOutlinedTop } from './svgs/Regular/ArrowOutlinedTop';
+import { ArrowOutlinedBottom } from './svgs/Regular/ArrowOutlinedBottom';
+import { Indeterminate } from './svgs/Regular/Indeterminate';
+import { Message } from './svgs/Regular/Messege';
+import { Dots } from './svgs/Regular/Dots';
+import { Lock } from './svgs/Regular/Lock';
 
 //Bold icons
-import { ArrowOutlinedTop } from './svgs/Bold/ArrowOutlinedTop';
-import { ArrowOutlinedBottom } from './svgs/Bold/ArrowOutlinedBottom';
+import { EyeBold } from './svgs/Bold/EyeBold';
 import { CheckBold } from './svgs/Bold/CheckBold';
-import { Indeterminate } from './svgs/Bold/Indeterminate';
 import { SearchBold } from './svgs/Bold/SearchBold';
 import { CloseBold } from './svgs/Bold/CloseBold';
-import { Message } from './svgs/Bold/Messege';
-import { Dots } from './svgs/Bold/Dots';
+import { BoxBold } from './svgs/Bold/BoxBold';
+import { UsersBold } from './svgs/Bold/UsersBold';
+import { ArchiveBold } from './svgs/Bold/ArchiveBold';
+import { CreateBold } from './svgs/Bold/CreateBold';
+import { HomeBold } from './svgs/Bold/HomeBold';
+import { EditBold } from './svgs/Bold/EditBold';
+import { BellBold } from './svgs/Bold/BellBold';
+import { CalendarBold } from './svgs/Bold/CalendarBold';
+import { EuroBold } from './svgs/Bold/EuroBold';
+import { RefreshBold } from './svgs/Bold/RefreshBold';
+import { StarBold } from './svgs/Bold/StarBold';
+import { GlobeBold } from './svgs/Bold/GlobeBold';
+import { SuccessBold } from './svgs/Bold/SuccessBold';
+import { InfoBold } from './svgs/Bold/InfoBold';
+import { WarningBold } from './svgs/Bold/WarningBold';
+import { LinkBold } from './svgs/Bold/LinkBold';
+import { ArrowOutlinedTopBold } from './svgs/Bold/ArrowOutlinedTopBold';
+import { ArrowOutlinedBottomBold } from './svgs/Bold/ArrowOutlinedBottomBold';
+import { IndeterminateBold } from './svgs/Bold/IndeterminateBold';
+import { MessageBold } from './svgs/Bold/MessegeBold';
+import { DotsBold } from './svgs/Bold/DotsBold';
+import { ErrorBold } from './svgs/Bold/ErrorBold';
+import { LockBold } from './svgs/Bold/LockBold';
 
 //old to fix!
 import { MenuFold } from './svgs/Bold/MenuFold';
@@ -38,7 +63,6 @@ import { Chart } from './svgs/Bold/Chart';
 import { Arrow } from './svgs/Bold/Arrow';
 import { OpenSidebar } from './svgs/Bold/OpenSidebar';
 import { CloseSidebar } from './svgs/Bold/CloseSidebar';
-import { Lock } from './svgs/Bold/Lock';
 import { Sort } from './svgs/Regular/Sort';
 
 export const iconsRegular = {
@@ -63,24 +87,49 @@ export const iconsRegular = {
   warning: Warning,
   error: Error,
   link: Link,
+  indeterminate: Indeterminate,
+  message: Message,
+  dots: Dots,
+  lock: Lock,
+  'arrow-outline-top': ArrowOutlinedTop,
+  'arrow-outline-bottom': ArrowOutlinedBottom,
 
-  //old icons
+  //old icons fix me
   'open-sidebar': OpenSidebar,
   'close-sidebar': CloseSidebar,
   sort: Sort,
 };
 
 export const iconsBold = {
-  'arrow-outline-top': ArrowOutlinedTop,
-  'arrow-outline-bottom': ArrowOutlinedBottom,
-  'check-2': CheckBold,
-  indeterminate: Indeterminate,
-  'search-2': SearchBold,
-  'close-2': CloseBold,
-  message: Message,
-  dots: Dots,
+  eye: EyeBold,
+  check: CheckBold,
+  search: SearchBold,
+  box: BoxBold,
+  close: CloseBold,
+  users: UsersBold,
+  archive: ArchiveBold,
+  create: CreateBold,
+  home: HomeBold,
+  edit: EditBold,
+  bell: BellBold,
+  calendar: CalendarBold,
+  euro: EuroBold,
+  refresh: RefreshBold,
+  star: StarBold,
+  globe: GlobeBold,
+  success: SuccessBold,
+  info: InfoBold,
+  warning: WarningBold,
+  error: ErrorBold,
+  link: LinkBold,
+  indeterminate: IndeterminateBold,
+  message: MessageBold,
+  dots: DotsBold,
+  lock: LockBold,
+  'arrow-outline-top': ArrowOutlinedTopBold,
+  'arrow-outline-bottom': ArrowOutlinedBottomBold,
 
-  //old icons
+  //old icons fix me
   'arrow-top': Arrow,
   'arrow-bottom': Arrow,
   'arrow-right': Arrow,
@@ -88,9 +137,9 @@ export const iconsBold = {
   'menu-fold': MenuFold,
   chart: Chart,
   apps: Apps,
-  lock: Lock,
 };
 
 export const icons = {
   regular: iconsRegular,
+  bold: iconsBold,
 };

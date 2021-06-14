@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Indeterminate: React.FC = (defaultProps) => {
+export const DotsBold: React.FC = (defaultProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +13,7 @@ export const Indeterminate: React.FC = (defaultProps) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="0"
-        d="M1.5 13.5h21a1.5 1.5 0 000-3h-21a1.5 1.5 0 000 3z"
+        d="M0 12a3.25 3.25 0 106.5 0A3.25 3.25 0 100 12zm8.75 0a3.25 3.25 0 106.5 0 3.25 3.25 0 10-6.5 0zm8.75 0a3.25 3.25 0 106.5 0 3.25 3.25 0 10-6.5 0z"
         transform="scale(1.33333)"
       ></path>
     </svg>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Error: React.FC = (defaultProps) => {
+export const SuccessBold: React.FC = (defaultProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10,11 +10,10 @@ export const Error: React.FC = (defaultProps) => {
       {...defaultProps}
     >
       <path
-        fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="M.748 12a11.25 11.25 0 1022.5 0 11.25 11.25 0 10-22.5 0zm6.75 4.5l8.999-9m.001 9l-9.001-9"
+        strokeWidth="0"
+        d="M12 0a12 12 0 1012 12A12.014 12.014 0 0012 0zm6.927 8.2l-6.845 9.289a1.011 1.011 0 01-1.43.188l-4.888-3.908a1 1 0 111.25-1.562l4.076 3.261 6.227-8.451a1 1 0 111.61 1.183z"
         transform="scale(1.33333)"
       ></path>
     </svg>

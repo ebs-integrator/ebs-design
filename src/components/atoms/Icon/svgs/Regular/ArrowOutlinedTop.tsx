@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Error: React.FC = (defaultProps) => {
+export const ArrowOutlinedTop: React.FC = (defaultProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +14,7 @@ export const Error: React.FC = (defaultProps) => {
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
-        d="M.748 12a11.25 11.25 0 1022.5 0 11.25 11.25 0 10-22.5 0zm6.75 4.5l8.999-9m.001 9l-9.001-9"
+        d="M.75 17.189L11.47 6.47a.749.749 0 011.06 0l10.72 10.719"
         transform="scale(1.33333)"
       ></path>
     </svg>
