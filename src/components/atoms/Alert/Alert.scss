@@ -1,86 +1,78 @@
 .ebs-alert {
   position: relative;
   display: flex;
-  border: 1px solid $success-color;
-  border-radius: rem($border-radius);
-  background-color: rgba($success-100, 0.2);
+  border: $alert-border;
+  border-radius: rem($alert-border-radius);
+  background-color: $alert-success-color;
+  padding: rem($alert-padding-y $alert-padding-x);
 
-  &-content {
-    width: 95%;
+  &--outlined {
+    background-color: white;
+
+    &.ebs-alert--warning {
+      background-color: white;
+    }
+
+    &.ebs-alert--error {
+      background-color: white;
+      .ebs-icon {
+        path:last-child {
+          fill: white;
+        }
+      }
+    }
+
+    &.ebs-alert--info {
+      background-color: white;
+    }
   }
 
-  &--success {
-    &--dashed {
-      border: 1px dashed $success-color;
-    }
+  &-content {
+    align-self: center;
+    width: 95%;
   }
 
   .ebs-icon {
     width: rem($alert-icon-size);
-    height: 25px;
+    height: rem($alert-icon-height);
     margin-right: rem($alert-icon-margin);
     color: $success-color;
-    &-alert {
-      width: 13px;
+
+    &-close {
+      width: rem(12px);
       cursor: pointer;
     }
   }
 
   &--info {
-    border: 1px solid $info-color;
-    background-color: rgba($info-100, 0.3);
+    border: $alert-border--info;
+    background-color: $alert-info-color;
 
     .ebs-icon {
       color: $info-600;
-      font-size: 12px;
-    }
-
-    &--dashed {
-      border: 1px dashed $info-color;
     }
   }
 
   &--warning {
-    background-color: rgba($warning-100, 0.3);
-    border: 1px solid $warning-color;
+    border: $alert-border--warning;
+    background-color: $alert-warning-color;
 
     .ebs-icon {
       color: $warning-600;
     }
-
-    &--dashed {
-      border: 1px dashed $warning-color;
-    }
   }
 
   &--error {
-    background-color: rgba($danger-200, 0.3);
-    border-color: $danger-color;
+    border: $alert-border--danger;
+    background-color: $alert-danger-color;
 
     .ebs-icon {
-      font-size: 12px;
       color: $danger-600;
 
       path:last-child {
         fill: rgba($danger-200, 0.3);
       }
     }
-
-    &--dashed {
-      border: 1px dashed $danger-color;
-    }
-  }
-
-  &--small {
-    font-size: rem(13px);
-    padding: rem($alert-padding-y-sm $alert-padding-x-sm);
-  }
-  &--medium {
-    padding: rem($alert-padding-y $alert-padding-x);
-  }
-  &--large {
-    font-size: rem(14px);
-    padding: rem($alert-padding-y-lg $alert-padding-x-lg);
   }
 
   &--hidden {

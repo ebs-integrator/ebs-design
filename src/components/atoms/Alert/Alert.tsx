@@ -4,27 +4,26 @@ import cn from 'classnames';
 import { Icon } from '../';
 
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
-export type AlertSize = 'small' | 'medium' | 'large';
-export type BorderType = 'dashed' | 'solid';
-
 export interface AlertProps {
   type?: AlertType;
   className?: string;
   message?: string;
   description?: string;
-  size?: AlertSize;
   closable?: boolean;
-  borderType?: BorderType;
+  outlined?: boolean;
+  icon?: boolean;
+  onClose?: () => void;
 }
 
 export const Alert: React.FC<AlertProps> = ({
   type = 'success',
+  icon,
+  outlined,
   message = '',
-  description = '',
-  size = 'medium',
-  closable = true,
-  borderType = 'solid',
+  onClose,
+  closable,
   className,
+  children,
 }) => {
   const ref = React.useRef<null | HTMLDivElement>(null);
   const [closed, setClosed] = React.useState(false);
@@ -39,33 +38,37 @@ export const Alert: React.FC<AlertProps> = ({
     [],
   );
 
-  return message.length ? (
+  return (
     <>
       <div
         ref={ref}
         className={cn(
           `ebs-alert`,
           `ebs-alert--${type}`,
-          `ebs-alert--${size}`,
-          `ebs-alert--${type}--${borderType}`,
           { 'ebs-alert--hidden': closed },
+          { 'ebs-alert--outlined': outlined },
           className,
         )}
       >
-        {renderByType[type]}
+        {icon && renderByType[type]}
         <div className="ebs-alert-content">
           <h3>{message}</h3>
-          <p>{description}</p>
+          {children}
         </div>
 
         {closable ? (
           <Icon
             type="close"
-            className={cn({ 'ebs-alert--hidden': closed }, 'ebs-icon-alert')}
-            onClick={() => setClosed(true)}
+            className={cn({ 'ebs-alert--hidden': closed }, 'ebs-icon-close')}
+            onClick={() => {
+              setClosed(true);
+              if (typeof onClose === 'function') {
+                onClose();
+              }
+            }}
           />
         ) : null}
       </div>
     </>
-  ) : null;
+  );
 };
