@@ -66,3 +66,5 @@ export const uniqueArray = (arr1, arr2): GenericObject[] => {
 
   return newArray;
 };
+
+export const toArray = (value): any[] => (Array.isArray(value) ? value : value ? [value] : []);
