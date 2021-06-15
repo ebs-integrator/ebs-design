@@ -53,7 +53,7 @@
     "rc-table": "^7.12.3",
     "rc-upload": "^3.3.4",
     "react-animate-height": "^2.0.23",
-    "react-datepicker": "^3.6.0",
+    "react-datepicker": "^4.1.1",
     "react-phone-input-2": "^2.13.8",
     "react-popper-tooltip": "^3.1.1",
     "react-use": "^17.1.0"
