@@ -116,8 +116,8 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   React.useEffect(() => {
     if (value) {
       setCacheOptions((i) => {
-        const cache = toArray(selected)
-          .filter((x) => !options.includes(x))
+        const cache = options
+          .filter((x) => !toArray(selected).includes(x))
           .filter((i) => (isArray(value) && (value as OptionValue[]).includes(i.value)) || value === i.value);
 
         return cache.length ? cache : i;
