@@ -17,7 +17,7 @@ export interface AlertProps {
 
 export const Alert: React.FC<AlertProps> = ({
   type = 'success',
-  icon,
+  icon = true,
   outlined,
   message = '',
   onClose,
