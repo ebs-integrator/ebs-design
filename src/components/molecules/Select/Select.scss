@@ -24,6 +24,16 @@
     position: unset;
   }
 
+  &--tags {
+    .ebs-select-value__container {
+      max-width: 70%;
+    }
+
+    .ebs-select-transition {
+      right: calc(30% - #{rem(40px)});
+    }
+  }
+
   &-transition {
     width: rem(80px);
     height: calc(100% - 2px);
@@ -119,12 +129,23 @@
   }
 
   &-value {
+    @include flex-center-vert;
     @include text-ellipsis;
     @include hiddenScroll;
     color: $text-color-secondary;
     overflow: auto hidden;
     width: 100%;
-    padding-right: rem($gutter-size);
+    margin-right: rem($gutter-size);
+
+    .ebs-input__container {
+      width: 100%;
+      margin: 0;
+      z-index: 2;
+
+      .ebs-input__wrapper {
+        border: none;
+      }
+    }
   }
 
   &-label {
