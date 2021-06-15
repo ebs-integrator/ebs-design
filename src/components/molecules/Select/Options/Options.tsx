@@ -1,4 +1,5 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { Animated, Space } from 'components/atoms';
 import { Item, ItemProps } from './Item';
@@ -108,7 +109,11 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   };
 
   return (
-    <div ref={ref} className="ebs-select__options-items" style={maxHeight ? { maxHeight } : undefined}>
+    <div
+      ref={ref}
+      className={cn('ebs-select__options-items', { 'ebs-select__options--multiple': mode === 'multiple' })}
+      style={maxHeight ? { maxHeight } : undefined}
+    >
       <Animated loading={loading} duration={100}>
         {options.length ? (
           options.map((option, key) => (

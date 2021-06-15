@@ -18,6 +18,7 @@ export interface ModalProps {
   header?: React.ReactNode;
   className?: string;
   title?: string;
+  closeOnClickOutside?: boolean;
   onClose?: () => void;
 }
 
@@ -27,10 +28,11 @@ const Modal: React.FC<ModalProps> & ModalComposition = ({
   header,
   className,
   title,
+  closeOnClickOutside = true,
   children,
   ...props
 }) => {
-  const createPortal = usePortal();
+  const createPortal = usePortal('modal-portal');
   useScrollToggler();
 
   React.useEffect(() => {
@@ -61,7 +63,10 @@ const Modal: React.FC<ModalProps> & ModalComposition = ({
     <>
       <Mask />
 
-      <div className={cn(`ebs-modal__wrapper`, className)} {...(mask ? { onClick: onClickOutside } : {})}>
+      <div
+        className={cn(`ebs-modal__wrapper`, className)}
+        {...(mask ? { onClick: closeOnClickOutside ? onClickOutside : undefined } : {})}
+      >
         <div className={cn(`ebs-modal`, `ebs-modal__size--${size}`, { 'hide-header': !showHeader })}>
           {showHeader ? (
             <div className="ebs-modal__header">

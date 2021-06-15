@@ -6,9 +6,10 @@ import { CardContext } from './Card';
 export interface CardHeaderProps {
   className?: string;
   bordered?: boolean;
+  onClick?: () => void;
 }
 
-export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, children }) => {
+export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, onClick, children }) => {
   const { collapsible, height, setHeight } = React.useContext(CardContext);
 
   // Card header classNames
@@ -29,9 +30,14 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, chi
     e.stopPropagation();
 
     // Do nothing if header was not directly clicked
-    if (e.target !== e.currentTarget) return;
+    if (e.target !== e.currentTarget && e.target instanceof HTMLButtonElement) return;
 
     toggle();
+
+    // Custom click
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
