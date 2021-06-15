@@ -29,17 +29,18 @@
 
   &-content {
     align-self: center;
-    width: 95%;
+    width: 100%;
   }
 
   .ebs-icon {
-    width: rem($alert-icon-size);
-    height: rem($alert-icon-height);
+    min-width: rem($alert-icon-size);
+    min-height: rem($alert-icon-size);
     margin-right: rem($alert-icon-margin);
     color: $success-color;
 
     &-close {
-      width: rem(12px);
+      min-width: unset;
+      min-height: unset;
       cursor: pointer;
     }
   }

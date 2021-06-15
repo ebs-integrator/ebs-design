@@ -8,7 +8,7 @@ export interface Props {
   type?: string;
   className?: string;
   component?: any;
-  model?: string;
+  model?: modelType;
 }
 
 export const Icon: React.FC<Props> = ({

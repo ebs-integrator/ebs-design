@@ -28,6 +28,7 @@ export const Tooltip: React.FC<any> = ({ bodyClass, children, title, tooltip, hi
               className: 'ebs-tooltip__arrow',
               'data-placement': placement,
             })}
+            model="bold"
           />
         )}
 

@@ -1,5 +1,5 @@
 .ebs-icon {
-  font-size: 32px;
+  font-size: 1em;
   color: $icon-svg-color;
   transition: transform $transition-time;
 
@@ -14,8 +14,4 @@
   &--arrow-left {
     transform: rotate(270deg);
   }
-
-  // &--alert path:last-child {
-  //   fill: $white;
-  // }
 }

@@ -174,7 +174,7 @@ export const InputSelect = React.forwardRef<any, Props>(
             )}
 
             <div className="ebs-select__input-suffix">
-              <Icon type={iconType} />
+              <Icon type={iconType} model="bold" />
             </div>
           </div>
 

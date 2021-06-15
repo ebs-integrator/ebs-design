@@ -44,7 +44,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, onC
     <header onClick={handleClick} className={classNames}>
       <div className="ebs-card__header__content">{children}</div>
       <div className="ebs-card__header__toggle" onClick={toggle}>
-        <Icon type={height === 0 ? 'arrow-right' : 'arrow-bottom'} />
+        <Icon type={height === 0 ? 'arrow-right' : 'arrow-bottom'} model="bold" />
       </div>
     </header>
   );

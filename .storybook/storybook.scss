@@ -105,6 +105,10 @@
     border: 1px solid $primary-100;
     text-align: center;
 
+    .ebs-icon {
+      font-size: rem($base-size);
+    }
+
     .storybook-icon-name {
       font-size: rem(12px);
       color: $text-color-secondary;
