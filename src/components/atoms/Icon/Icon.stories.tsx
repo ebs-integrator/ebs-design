@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { icons } from './iconsList';
-import { Icon } from './Icon';
+import { Icon, modelType } from './Icon';
 import { exportStory } from '../../../libs';
 // import IconSvg from 'resources/svg/example.svg';
 
@@ -17,7 +17,7 @@ export const Regular = (): React.ReactElement => (
         return (
           <div className="storybook-icon-item" key={icon}>
             <div className="storybook-icon">
-              <Icon type={icon} model={model} />
+              <Icon type={icon} model={model as modelType} />
             </div>
 
             <div className="storybook-icon-name">{`<Icon type="${icon}" />`}</div>
