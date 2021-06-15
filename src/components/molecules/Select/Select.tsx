@@ -5,10 +5,10 @@ import useWindowScroll from 'react-use/esm/useWindowScroll';
 import useMouseWheel from 'react-use/esm/useMouseWheel';
 import useIntersection from 'react-use/esm/useIntersection';
 import cn from 'classnames';
-import { Label, Icon, Button } from 'components/atoms';
+import { Label, Icon, Button, Input } from 'components/atoms';
 import { Loader } from 'components/molecules';
 import { usePortal } from 'hooks';
-import { isArray, isEqual, uniqueArray } from 'libs';
+import { isArray, isEqual, toArray, uniqueArray } from 'libs';
 import { GenericObject, SizeType } from 'types';
 
 import { Search } from './Search';
@@ -23,7 +23,7 @@ export interface SelectComposition {
   Pagination: React.FC<PaginationProps>;
 }
 
-export type SelectMode = 'single' | 'multiple';
+export type SelectMode = 'single' | 'multiple' | 'tags';
 export type OptionsMode = 'dropdown' | 'box';
 export type OptionValue = string | number;
 export type Option = {
@@ -38,6 +38,7 @@ export interface SelectProps {
   size?: SizeType;
   label?: React.ReactNode;
   placeholder?: string;
+  newPlaceholder?: string;
   loading?: boolean;
   disabled?: boolean;
   options?: Option[];
@@ -47,8 +48,11 @@ export interface SelectProps {
   rootRef?: React.MutableRefObject<HTMLDivElement | null>;
 
   value?: OptionValue | OptionValue[];
+  selected?: Option | Option[];
   isClearable?: boolean;
   onChange?: (value: OptionValue | OptionValue[]) => void;
+  onSearch?: (value: string) => void;
+  onAddNew?: (value: string) => void;
 }
 
 const Select: React.FC<SelectProps> & SelectComposition = ({
@@ -61,8 +65,12 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   className,
   label,
   value,
+  selected,
   onChange,
+  onAddNew,
+  onSearch,
   placeholder,
+  newPlaceholder,
   loading,
   disabled,
   prefix,
@@ -88,6 +96,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const [options, setOptions] = React.useState<Option[]>([]);
   const [cacheOptions, setCacheOptions] = React.useState<Option[]>([]);
+  const [newOption, setNewOption] = React.useState<string | undefined>();
 
   const [optionsStyle, setOptionsStyle] = React.useState({});
   const [maxHeight, setMaxHeight] = React.useState(350);
@@ -107,14 +116,14 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   React.useEffect(() => {
     if (value) {
       setCacheOptions((i) => {
-        const cache = options.filter(
-          (i) => (isArray(value) && (value as OptionValue[]).includes(i.value)) || value === i.value,
-        );
+        const cache = options
+          .filter((x) => !toArray(selected).includes(x))
+          .filter((i) => (isArray(value) && (value as OptionValue[]).includes(i.value)) || value === i.value);
 
         return cache.length ? cache : i;
       });
-    } else setCacheOptions([]);
-  }, [options, value]);
+    } else setCacheOptions(toArray(selected));
+  }, [options, value, selected]);
 
   const childs = React.useMemo(() => React.Children.toArray(children) as GenericObject[], [children]);
 
@@ -190,7 +199,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       const $newValue = mode === 'single' ? (newValue === value ? undefined : newValue) : newValue;
 
       const newModeValue =
-        mode === 'multiple' && !isArray($newValue)
+        ['multiple', 'tags'].includes(mode) && !isArray($newValue)
           ? isArray(value) && (value as OptionValue[]).includes($newValue)
             ? (value as OptionValue[]).filter((item) => $newValue !== item)
             : [...(isArray(value) ? (value as OptionValue[]) : []), $newValue]
@@ -273,6 +282,17 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const onClear = (): void => onChangeHandler(mode === 'single' ? undefined : []);
 
+  const onClickAddNew = React.useCallback(() => {
+    if (onAddNew && newOption) {
+      onAddNew(newOption);
+      setNewOption(undefined);
+
+      if (onSearch) {
+        onSearch('');
+      }
+    }
+  }, [newOption, onAddNew, onSearch]);
+
   const optionsBlock = React.useMemo(
     () => (
       <div ref={optionsRef} className={cn(`ebs-select__options`, className)} style={optionsStyle}>
@@ -289,10 +309,12 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                 className={cn({ 'ebs-select--box': isBox })}
                 emptyLabel={emptyLabel}
                 maxHeight={maxHeight > 250 ? 250 : maxHeight}
+                newOption={newOption}
                 onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
                 onChange={onChangeHandler}
                 onPrev={onPrev}
                 onNext={onNext}
+                onClickAddNew={onClickAddNew}
                 {...child.props}
               />
             );
@@ -317,12 +339,28 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       isBox,
       emptyLabel,
       maxHeight,
+      newOption,
       onToggleOpenDropdown,
       onChangeHandler,
       onPrev,
       onNext,
+      onClickAddNew,
     ],
   );
+
+  const onKeyDownNewOption = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (onSearch && e.keyCode === 13 && newOption?.length) {
+        onSearch(newOption);
+      }
+    },
+    [newOption, onSearch],
+  );
+
+  const onChangeNewOption = React.useCallback((value) => {
+    setOpenDropdown(true);
+    setNewOption(value);
+  }, []);
 
   return (
     <div
@@ -341,28 +379,40 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
           <div
             className={cn('ebs-select', `ebs-select--${size}`, {
               'ebs-select--box': isBox,
+              'ebs-select--tags': mode === 'tags',
               'has-suffix': suffix,
             })}
             onClick={onToggleOpenDropdown}
           >
             <div className="ebs-select-value">
-              {loading ? (
-                <Loader.Inline />
-              ) : isArray(textValue) ? (
-                (textValue as React.ReactNode[]).map((item, key) => (
-                  <Label
-                    key={key}
-                    className="ebs-select-label"
-                    type="primary"
-                    circle
-                    text={item}
-                    prefix={<Icon type="check" />}
-                    suffix={!disabled ? <Icon type="close" /> : undefined}
-                    onClickSuffix={() => !disabled && onDeleteSelect(key)}
-                  />
-                ))
-              ) : (
-                textValue || placeholder
+              <div className="ebs-select-value__container">
+                {loading ? (
+                  <Loader.Inline />
+                ) : isArray(textValue) ? (
+                  (textValue as React.ReactNode[]).map((item, key) => (
+                    <Label
+                      key={key}
+                      className="ebs-select-label"
+                      type="primary"
+                      circle
+                      text={item}
+                      prefix={<Icon type="check" />}
+                      suffix={!disabled ? <Icon type="close" /> : undefined}
+                      onClickSuffix={() => !disabled && onDeleteSelect(key)}
+                    />
+                  ))
+                ) : (
+                  textValue || placeholder
+                )}
+              </div>
+              {mode === 'tags' && (
+                <Input
+                  size="small"
+                  placeholder={newPlaceholder}
+                  value={newOption}
+                  onChange={onChangeNewOption}
+                  onKeyDown={onKeyDownNewOption}
+                />
               )}
             </div>
 

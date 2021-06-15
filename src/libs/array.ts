@@ -1,4 +1,5 @@
 import { GenericObject } from 'types';
+import { isObject } from './object';
 
 export const flattenArray = <T>(arr: T[], key = 'children'): T[] =>
   arr.reduce((acc: T[], value: T) => {
@@ -31,18 +32,22 @@ export const isEqual = (value, other, prop = 'text'): boolean => {
 
   if (type === '[object Array]') {
     for (let i = 0; i < valueLen; i++) {
-      if (typeof value[i] === 'object' && value[i] && prop in value[i] && value[i][prop] !== other[i][prop]) {
+      if (
+        (isObject(value[i]) && value[i] && prop in value[i] && value[i][prop] !== other[i][prop]) ||
+        (!isObject(value[i]) && value[i] !== other[i])
+      ) {
         return false;
       }
     }
   } else {
     for (const key in value) {
       if (
-        value.hasOwnProperty(key) &&
-        typeof value[key] === 'object' &&
-        value[key] &&
-        prop in value[key] &&
-        value[key][prop] !== other[key][prop]
+        (value.hasOwnProperty(key) &&
+          isObject(value[key]) &&
+          value[key] &&
+          prop in value[key] &&
+          value[key][prop] !== other[key][prop]) ||
+        (!isObject(value[key]) && value[key] !== other[key])
       ) {
         return false;
       }
@@ -66,3 +71,5 @@ export const uniqueArray = (arr1, arr2): GenericObject[] => {
 
   return newArray;
 };
+
+export const toArray = (value): any[] => (Array.isArray(value) ? value : value ? [value] : []);
