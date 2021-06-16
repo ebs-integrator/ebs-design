@@ -18,6 +18,7 @@ const data = [
 const columns: ColumnType<any>[] = [
   {
     title: 'Title',
+    onFilter: (field) => field,
     dataIndex: 'title',
   },
   {
