@@ -136,8 +136,8 @@ export const InputSelect = React.forwardRef<any, Props>(
                 type="primary"
                 circle
                 text={item}
-                prefix={<Icon type="check" />}
-                suffix={!disabled ? <Icon type="close" /> : undefined}
+                prefix={<Icon type="check" model="bold" />}
+                suffix={!disabled ? <Icon type="close" model="bold" /> : undefined}
                 onClickSuffix={() => disabled && onDeleteSelect(key)}
               />
             ))
@@ -174,7 +174,7 @@ export const InputSelect = React.forwardRef<any, Props>(
             )}
 
             <div className="ebs-select__input-suffix">
-              <Icon type={iconType} />
+              <Icon type={iconType} model="bold" />
             </div>
           </div>
 

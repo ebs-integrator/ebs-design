@@ -32,6 +32,11 @@
     }
   }
 
+  &--toggled &__item.has-options + div {
+    position: absolute;
+    top: 0;
+  }
+
   &__top {
     margin-top: rem(5px);
   }

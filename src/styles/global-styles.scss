@@ -98,6 +98,10 @@ strong {
   white-space: nowrap !important;
 }
 
+.relative {
+  position: relative;
+}
+
 ::-webkit-scrollbar {
   width: $scrollbar-size;
   height: $scrollbar-size;

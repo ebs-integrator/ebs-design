@@ -50,8 +50,8 @@ export const Stepper: React.FC<StepperProps> = ({
       className="ebs-stepper"
       disabled={disabled}
       value={value}
-      upHandler={<Icon type="arrow-top" />}
-      downHandler={<Icon type="arrow-bottom" />}
+      upHandler={<Icon type="arrow-top" model="bold" />}
+      downHandler={<Icon type="arrow-bottom" model="bold" />}
       {...props}
     />
 

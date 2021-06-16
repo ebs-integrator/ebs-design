@@ -18,7 +18,7 @@ export const regular = (): React.ReactElement => (
       </Col>
       <Col>
         <Badge count={2}>
-          <Icon type="message" />
+          <Icon model="bold" type="message" />
         </Badge>
       </Col>
       <Col>

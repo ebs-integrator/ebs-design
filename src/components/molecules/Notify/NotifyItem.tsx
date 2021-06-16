@@ -55,7 +55,7 @@ export const NotifyItem: React.FC<NotifyItemProps> = ({
         {description && <p className="ebs-notify__item-message">{description}</p>}
       </Space>
       <Button type="text" className="ebs-notify__item-close" onClick={onClose}>
-        <Icon type="close" />
+        <Icon type="close" model="bold" />
       </Button>
     </Space>
   );

@@ -147,7 +147,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {hasValue && isClearable ? (
               <div className="ebs-input__clear">
                 <Button size="small" type="primary" onClick={onChange && (() => onChange(''))}>
-                  <Icon type="close" />
+                  <Icon type="close" model="bold" />
                 </Button>
               </div>
             ) : null}

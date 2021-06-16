@@ -24,7 +24,7 @@ export const Item: React.FC<{
         setCollapsed((s) => !s);
       }
 
-      if (onClick !== undefined) {
+      if (!options && onClick !== undefined) {
         onClick();
       }
     }
@@ -34,29 +34,31 @@ export const Item: React.FC<{
     <>
       {label && <Label className={cn(`ebs-sidebar__label`, labelClass)} text={label} />}
 
-      <div
-        className={cn(`ebs-sidebar__item`, className, {
-          invert: invert,
-          active: active || collapsed,
-          disabled: disabled,
-          'has-options': options,
-        })}
-        onClick={onClickHandler}
-      >
-        {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}
+      <div className="relative">
+        <div
+          className={cn(`ebs-sidebar__item`, className, {
+            invert: invert,
+            active: active || collapsed,
+            disabled: disabled,
+            'has-options': options,
+          })}
+          onClick={onClickHandler}
+        >
+          {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}
 
-        <span className="ebs-sidebar__text">{text}</span>
+          <span className="ebs-sidebar__text">{text}</span>
 
-        {options !== undefined && (
-          <div className="ebs-sidebar__suffix">
-            <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}`} />
-          </div>
-        )}
+          {options !== undefined && (
+            <div className="ebs-sidebar__suffix">
+              <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}`} model="bold" />
+            </div>
+          )}
+        </div>
+
+        <AnimateHeight duration={150} height={collapsed ? 'auto' : 0}>
+          <div className={cn(`ebs-sidebar__options`, optionsClass)}>{options}</div>
+        </AnimateHeight>
       </div>
-
-      <AnimateHeight duration={150} height={collapsed ? 'auto' : 0}>
-        <div className={cn(`ebs-sidebar__options`, optionsClass)}>{options}</div>
-      </AnimateHeight>
     </>
   );
 };
