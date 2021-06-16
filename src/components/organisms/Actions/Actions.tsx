@@ -30,7 +30,7 @@ const Actions: React.FC<ActionsProps> = ({ title = 'Actions', showTitle = true, 
           </>
         }
       >
-        <Icon type="dots" className="ebs-action__tooltip-icon" />
+        <Icon type="dots" model="bold" className="ebs-action__tooltip-icon" />
       </Tooltip>
     </div>
   );
