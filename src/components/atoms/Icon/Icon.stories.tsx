@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { iconsList } from './iconsList';
-import { Icon } from './Icon';
+import { icons } from './iconsList';
+import { Icon, modelType } from './Icon';
 import { exportStory } from '../../../libs';
 // import IconSvg from 'resources/svg/example.svg';
 
@@ -12,15 +12,19 @@ export default {
 
 export const Regular = (): React.ReactElement => (
   <div className="storybook-icon-items">
-    {iconsList.map((icon) => (
-      <div className="storybook-icon-item" key={icon}>
-        <div className="storybook-icon">
-          <Icon type={icon} />
-        </div>
+    {Object.keys(icons).map((model) => {
+      return Object.keys(icons[model]).map((icon) => {
+        return (
+          <div className="storybook-icon-item" key={icon}>
+            <div className="storybook-icon">
+              <Icon type={icon} model={model as modelType} />
+            </div>
 
-        <div className="storybook-icon-name">{`<Icon type="${icon}" />`}</div>
-      </div>
-    ))}
+            <div className="storybook-icon-name">{`<Icon type="${icon}" />`}</div>
+          </div>
+        );
+      });
+    })}
   </div>
 );
 

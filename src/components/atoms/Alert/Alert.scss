@@ -1,44 +1,82 @@
 .ebs-alert {
   position: relative;
   display: flex;
-  align-items: center;
-  border: 1px solid $success-color;
-  padding: rem($alert-padding);
-  border-radius: rem($border-radius);
+  border: $alert-border;
+  border-radius: rem($alert-border-radius);
+  background-color: $alert-success-color;
+  padding: rem($alert-padding-y $alert-padding-x);
+
+  &--outlined {
+    background-color: white;
+
+    &.ebs-alert--warning {
+      background-color: white;
+    }
+
+    &.ebs-alert--error {
+      background-color: white;
+      .ebs-icon {
+        path:last-child {
+          fill: white;
+        }
+      }
+    }
+
+    &.ebs-alert--info {
+      background-color: white;
+    }
+  }
+
+  &-content {
+    align-self: center;
+    width: 100%;
+  }
 
   .ebs-icon {
-    width: rem($alert-icon-size);
-    height: rem($alert-icon-size);
-    border-radius: 100px;
+    min-width: rem($alert-icon-size);
+    min-height: rem($alert-icon-size);
     margin-right: rem($alert-icon-margin);
     color: $success-color;
+
+    &-close {
+      min-width: unset;
+      min-height: unset;
+      cursor: pointer;
+    }
   }
 
   &--info {
-    border: 1px dashed $info-color;
+    border: $alert-border--info;
+    background-color: $alert-info-color;
 
     .ebs-icon {
-      color: $info-color;
+      color: $info-600;
     }
   }
 
   &--warning {
-    border: 1px dashed $warning-color;
+    border: $alert-border--warning;
+    background-color: $alert-warning-color;
 
     .ebs-icon {
-      color: $warning-color;
+      color: $warning-600;
     }
   }
 
   &--error {
-    border: 1px dashed $danger-color;
+    border: $alert-border--danger;
+    background-color: $alert-danger-color;
 
     .ebs-icon {
-      color: $danger-color;
+      color: $danger-600;
 
       path:last-child {
-        fill: $white;
+        fill: rgba($danger-200, 0.3);
       }
     }
+  }
+
+  &--hidden {
+    display: none;
   }
 }

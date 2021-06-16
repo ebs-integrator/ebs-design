@@ -9,7 +9,7 @@ export const Toggler: React.FC = ({ children }) => {
   return (
     <div className="ebs-layout__top-bar-mobile">
       <div className="ebs-layout__top-bar-mobile--toggler" onClick={onSetOpened}>
-        {children || <Icon type="menu-fold" />}
+        {children || <Icon type="menu-fold" model="bold" />}
       </div>
     </div>
   );

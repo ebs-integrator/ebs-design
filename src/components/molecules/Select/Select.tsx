@@ -396,8 +396,8 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                       type="primary"
                       circle
                       text={item}
-                      prefix={<Icon type="check" />}
-                      suffix={!disabled ? <Icon type="close" /> : undefined}
+                      prefix={<Icon type="check" model="bold" />}
+                      suffix={!disabled ? <Icon type="close" model="bold" /> : undefined}
                       onClickSuffix={() => !disabled && onDeleteSelect(key)}
                     />
                   ))
@@ -425,14 +425,14 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
             {hasValue && isClearable ? (
               <div className="ebs-select__clear">
                 <Button size="small" type="primary" onClick={onClear}>
-                  <Icon type="close" />
+                  <Icon type="close" model="bold" />
                 </Button>
               </div>
             ) : null}
 
             {!isBox && (
               <div className="ebs-select__suffix">
-                <Icon type={`arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`} />
+                <Icon type={`arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`} model="bold" />
               </div>
             )}
 

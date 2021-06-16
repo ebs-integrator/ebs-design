@@ -101,7 +101,7 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
         return (
           <div key={`${file?.name}-${idx}`} className="upload__container">
             <div className="upload__file__remove" onClick={() => handleRemove(file, idx)}>
-              <Icon type="close" />
+              <Icon type="close" model="bold" />
             </div>
 
             <div className="upload__file">

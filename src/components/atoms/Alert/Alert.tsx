@@ -4,37 +4,67 @@ import cn from 'classnames';
 import { Icon } from '../';
 
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
-
 export interface AlertProps {
   type?: AlertType;
   className?: string;
   message?: string;
+  description?: string;
+  closable?: boolean;
+  outlined?: boolean;
+  icon?: boolean;
+  onClose?: () => void;
 }
 
-export const Alert: React.FC<AlertProps> = ({ type = 'success', message = '', className }) => {
-  const ref = React.useRef<null | HTMLDivElement>(null);
-  const getHeader = document.getElementsByClassName('ebs-layout__top-bar');
+export const Alert: React.FC<AlertProps> = ({
+  type = 'success',
+  icon = true,
+  outlined,
+  message = '',
+  onClose,
+  closable,
+  className,
+  children,
+}) => {
+  const [closed, setClosed] = React.useState(false);
 
   const renderByType = React.useMemo(
     () => ({
-      success: <Icon type="check" />,
+      success: <Icon type="success" />,
       info: <Icon type="info" />,
       warning: <Icon type="warning" />,
-      error: <Icon type="alert" />,
+      error: <Icon type="error" />,
     }),
     [],
   );
 
-  React.useEffect(() => {
-    if (message.length && ref.current && getHeader.length) {
-      window.scrollTo(0, ref.current.offsetTop - getHeader[0].clientHeight - 1);
-    }
-  }, [message, getHeader]);
+  return (
+    <div
+      className={cn(
+        `ebs-alert`,
+        `ebs-alert--${type}`,
+        { 'ebs-alert--hidden': closed },
+        { 'ebs-alert--outlined': outlined },
+        className,
+      )}
+    >
+      {icon && renderByType[type]}
+      <div className="ebs-alert-content">
+        <h3>{message}</h3>
+        {children}
+      </div>
 
-  return message.length ? (
-    <div ref={ref} className={cn(`ebs-alert`, `ebs-alert--${type}`, className)}>
-      {renderByType[type]}
-      {message}
+      {closable ? (
+        <Icon
+          type="close"
+          className={cn({ 'ebs-alert--hidden': closed }, 'ebs-icon-close')}
+          onClick={() => {
+            setClosed(true);
+            if (typeof onClose === 'function') {
+              onClose();
+            }
+          }}
+        />
+      ) : null}
     </div>
-  ) : null;
+  );
 };

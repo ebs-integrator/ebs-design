@@ -3,7 +3,8 @@
 @import '../src/styles/mixins/index.scss';
 
 .sb-show-main {
-  #root, #portal {
+  #root,
+  #portal {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -104,8 +105,8 @@
     border: 1px solid $primary-100;
     text-align: center;
 
-    .storybook-icon svg {
-      font-size: rem(20px);
+    .ebs-icon {
+      font-size: rem($base-size);
     }
 
     .storybook-icon-name {

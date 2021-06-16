@@ -83,7 +83,7 @@ export const SortBy: React.FC<SortByProps> = ({
                       >
                         {title}
 
-                        {active && <Icon type="check" />}
+                        {active && <Icon type="check" model="bold" />}
                       </div>
                     );
                   })
