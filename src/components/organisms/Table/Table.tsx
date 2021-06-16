@@ -63,7 +63,7 @@ const Table = <T extends object>({
           className={cn(`ebs-table__th--filtered`, `ebs-table__th--filtered-${filters[key] || 'none'}`)}
           onClick={(): void => onFilterHandler(key)}
         >
-          {column.title} <Icon type="arrow-outlined-bottom" />
+          {column.title} <Icon type="arrow-outline-bottom" model="bold" />
         </span>
       ) : (
         column.title
