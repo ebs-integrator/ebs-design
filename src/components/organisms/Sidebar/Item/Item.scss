@@ -47,7 +47,7 @@
 
     // item has options
     &.invert.has-options:hover,
-    &.invert.has-options.active {
+    &.invert.has-options.active:not(.has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
@@ -58,7 +58,7 @@
     }
 
     &.has-options:hover,
-    &.has-options.active {
+    &.has-options.active:not(.has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
