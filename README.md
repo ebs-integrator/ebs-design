@@ -1,8 +1,24 @@
-# EBS Design System - React UI
-## WARNING: The UI Kit is UNDER DEVELOPMENT, PLEASE CREATE ISSUES OR PR WITH CHANGES
-## DON'T USE IT IN PRODUCTION UNTIL AT LEAST RC WILL BE RELEASED
+# EBS Design System
 
-EBS UI is a complete library of styling components. Link to [Storybook](https://ebs-integrator.github.io/ebs-design/)
+EBS UI is a complete library of styling components for React.js
+
+[npm-image]: http://img.shields.io/npm/v/ebs-design.svg?style=flat-square
+[npm-url]: http://npmjs.org/package/ebs-design
+[github-action-image]: https://github.com/ebs-integrator/ebs-design/workflows/%E2%9C%85%20test/badge.svg
+[github-action-url]: https://github.com/ebs-integrator/ebs-design/actions?query=workflow%3A%22%E2%9C%85+test%22
+[download-image]: https://img.shields.io/npm/dm/ebs-design.svg?style=flat-square
+[download-url]: https://npmjs.org/package/ebs-design
+[discussions-image]: https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square
+[discussions-url]: https://github.com/ebs-integrator/ebs-design/discussions
+
+### WARNING: The UI Kit is UNDER DEVELOPMENT, PLEASE CREATE ISSUES OR PR WITH CHANGES
+### DON'T USE IT IN PRODUCTION UNTIL AT LEAST RC WILL BE RELEASED
+
+
+
+Link to [Storybook](https://ebs-integrator.github.io/ebs-design/)
+
+
 
 ## Installation
 
