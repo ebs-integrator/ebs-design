@@ -95,6 +95,13 @@ export const iconsRegular = {
   'arrow-outline-bottom': ArrowOutlinedBottom,
 
   //old icons fix me
+  'arrow-top': Arrow,
+  'arrow-bottom': Arrow,
+  'arrow-right': Arrow,
+  'arrow-left': Arrow,
+  'menu-fold': MenuFold,
+  chart: Chart,
+  apps: Apps,
   'open-sidebar': OpenSidebar,
   'close-sidebar': CloseSidebar,
   sort: Sort,
@@ -104,8 +111,8 @@ export const iconsBold = {
   eye: EyeBold,
   check: CheckBold,
   search: SearchBold,
-  box: BoxBold,
   close: CloseBold,
+  box: BoxBold,
   users: UsersBold,
   archive: ArchiveBold,
   create: CreateBold,
@@ -137,6 +144,9 @@ export const iconsBold = {
   'menu-fold': MenuFold,
   chart: Chart,
   apps: Apps,
+  'open-sidebar': OpenSidebar,
+  'close-sidebar': CloseSidebar,
+  sort: Sort,
 };
 
 export const icons = {

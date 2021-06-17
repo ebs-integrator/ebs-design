@@ -134,8 +134,8 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       ? optionsList
       : !!child?.props?.children?.length
       ? child.props.children.map((i) => ({
-          value: i.props.value,
           text: i.props.children,
+          ...i.props,
         }))
       : optionsList;
   }, [optionsList, childs]);

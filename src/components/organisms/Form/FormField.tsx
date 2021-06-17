@@ -18,12 +18,14 @@ export interface FormFieldProps extends FieldProps {
   fieldRow?: RowProps; // The layout for field columns
   extra?: React.ReactNode;
   className?: string;
+  hideLabel?: boolean;
   style?: React.CSSProperties;
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
   label,
   labelOptions,
+  hideLabel,
   name,
   extra,
   className,
@@ -74,7 +76,7 @@ export const FormField: React.FC<FormFieldProps> = ({
           return (
             <>
               <Row className="ebs-form__field__wrapper" {...fieldRowProps}>
-                {label && (
+                {label && !hideLabel && (
                   <Col {...labelProps.col}>
                     <div
                       className={cn('ebs-form__field__label', labelProps.className, {
