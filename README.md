@@ -12,7 +12,7 @@ A complete library of styling components for React.js
 
 [npm-image]: http://img.shields.io/npm/v/ebs-design.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/ebs-design
-[elements-image]: https://storage.fileservice.dev/media/ec86e2f4-0f02-400a-b6a1-d3c93e8c819e.png
+[elements-image]: https://storage.fileservice.dev/media/4a06deb9-0269-46a9-ad2f-462f89980cf0.png
 [elements-url]: https://ebs-integrator.github.io/ebs-design/
 [download-image]: https://img.shields.io/npm/dm/ebs-design.svg?style=flat-square
 [download-url]: https://npmjs.org/package/ebs-design
