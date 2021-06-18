@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Input, Radio } from 'components/atoms';
-import { Textarea, Checkbox, InputSelect, Calendar, InputPhone } from 'components/molecules';
+import { Textarea, Checkbox, Select, DatePicker, InputPhone } from 'components/molecules';
 
 import { Form } from './Form';
 import { useForm } from './index';
@@ -31,7 +31,7 @@ export const Regular = (): React.ReactNode => {
       </Form.Field>
 
       <Form.Field name="age" label="Age" extra="This field is required" rules={[{ required: true }]}>
-        <InputSelect
+        <Select
           options={[
             { value: '2%', text: '0-60' },
             { value: 3, text: '60-90' },
@@ -55,7 +55,7 @@ export const Regular = (): React.ReactNode => {
       </Form.Field>
 
       <Form.Field name="birthday" label="Birthday" extra="This field is required">
-        <Calendar type="date" />
+        <DatePicker />
       </Form.Field>
 
       <Form.Field name="phone" label="Phone Nr:" extra="This field is required">
