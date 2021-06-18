@@ -45,7 +45,7 @@ export const Regular = (): React.ReactNode => (
       </Layout.Topbar.LeftSide>
 
       <Layout.Topbar.RightSide>
-        <Button icon="bell" />
+        <Button type="ghost" icon="bell" />
         <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
       </Layout.Topbar.RightSide>
     </Layout.Topbar>
@@ -279,7 +279,7 @@ export const withFixedFooter = (): React.ReactNode => (
   </Layout>
 );
 
-const ExampleContent = () => (
+const ExampleContent: React.FC = () => (
   <Row gy={3}>
     {new Array(3).fill(null).map(() => (
       <Col size={12}>

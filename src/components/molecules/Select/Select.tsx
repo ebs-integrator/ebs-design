@@ -7,7 +7,7 @@ import useIntersection from 'react-use/esm/useIntersection';
 import cn from 'classnames';
 import { Label, Icon, Button, Input } from 'components/atoms';
 import { Loader } from 'components/molecules';
-import { usePortal } from 'hooks';
+import { usePortal, useEventListener } from 'hooks';
 import { isArray, isEqual, toArray, uniqueArray } from 'libs';
 import { GenericObject, SizeType } from 'types';
 
@@ -125,7 +125,12 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
     } else setCacheOptions(toArray(selected));
   }, [options, value, selected]);
 
-  const childs = React.useMemo(() => React.Children.toArray(children) as GenericObject[], [children]);
+  const childs = React.useMemo(() => {
+    const childrens = React.Children.toArray(children) as GenericObject[];
+    const optionsEl = childrens.find((child) => child.type === Options);
+
+    return [...childrens, ...(!optionsEl ? (React.Children.toArray(<Options />) as GenericObject[]) : [])];
+  }, [children]);
 
   const $options = React.useMemo(() => {
     const child = childs.find((i) => i.type === Options);
@@ -290,8 +295,20 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       if (onSearch) {
         onSearch('');
       }
+
+      onChangeHandler(newOption);
     }
   }, [newOption, onAddNew, onSearch]);
+
+  useEventListener(
+    'keypress',
+    ({ key, ctrlKey }: { key: string; ctrlKey: boolean }) => {
+      if (ctrlKey && ['Enter'].includes(key)) {
+        onClickAddNew();
+      }
+    },
+    inputRef,
+  );
 
   const optionsBlock = React.useMemo(
     () => (
@@ -396,7 +413,6 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                       type="primary"
                       circle
                       text={item}
-                      prefix={<Icon type="check" model="bold" />}
                       suffix={!disabled ? <Icon type="close" model="bold" /> : undefined}
                       onClickSuffix={() => !disabled && onDeleteSelect(key)}
                     />

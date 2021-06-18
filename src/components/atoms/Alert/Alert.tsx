@@ -27,16 +27,6 @@ export const Alert: React.FC<AlertProps> = ({
 }) => {
   const [closed, setClosed] = React.useState(false);
 
-  const renderByType = React.useMemo(
-    () => ({
-      success: <Icon type="success" />,
-      info: <Icon type="info" />,
-      warning: <Icon type="warning" />,
-      error: <Icon type="error" />,
-    }),
-    [],
-  );
-
   return (
     <div
       className={cn(
@@ -47,7 +37,8 @@ export const Alert: React.FC<AlertProps> = ({
         className,
       )}
     >
-      {icon && renderByType[type]}
+      {icon && <Icon type={type} />}
+
       <div className="ebs-alert-content">
         <h3>{message}</h3>
         {children}

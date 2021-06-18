@@ -28,7 +28,7 @@ export const NotifyItem: React.FC<NotifyItemProps> = ({
   if (!icon) {
     switch (type) {
       case 'success':
-        icon = 'check-2';
+        icon = 'check';
         break;
       case 'danger':
         icon = 'alert';

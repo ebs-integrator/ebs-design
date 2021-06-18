@@ -3,7 +3,7 @@ import { Space, Button, ButtonGroup, Label } from 'components/atoms';
 import { SpaceSize } from 'components/atoms/Space/Space';
 import { useNotify } from 'hooks';
 import { NotifyContainer, NotifyProvider } from './Notify';
-import { NotifyItem, NotifyItemProps } from './NotifyItem';
+import { NotifyItem } from './NotifyItem';
 import { exportStory } from '../../../libs';
 
 export default {
@@ -38,7 +38,7 @@ const SizeSwitcher: React.FC<{ children: (size: SpaceSize) => React.ReactNode }>
 
 const description = 'This is an example component';
 
-export const Regular = () => {
+export const Regular = (): React.ReactNode => {
   const Notify: React.FC = () => {
     const notify = useNotify();
 

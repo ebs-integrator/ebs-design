@@ -1,34 +1,45 @@
 import * as React from 'react';
+import { useNotify } from 'hooks';
 
 import { icons } from './iconsList';
-import { Icon, modelType } from './Icon';
-import { exportStory } from '../../../libs';
-// import IconSvg from 'resources/svg/example.svg';
+import { modelType } from './Icon';
+import { exportStory, copyToClipboard } from '../../../libs';
+import { Button, Space, Icon } from '../';
 
 export default {
   title: exportStory('Icon', 'atoms'),
   component: Icon,
 };
 
-export const Regular = (): React.ReactElement => (
-  <div className="storybook-icon-items">
-    {Object.keys(icons).map((model) => {
-      return Object.keys(icons[model]).map((icon) => {
-        return (
-          <div className="storybook-icon-item" key={icon}>
-            <div className="storybook-icon">
-              <Icon type={icon} model={model as modelType} />
-            </div>
+export const Regular: React.FC = () => {
+  const notify = useNotify();
 
-            <div className="storybook-icon-name">{`<Icon type="${icon}" />`}</div>
-          </div>
-        );
-      });
-    })}
-  </div>
-);
+  return (
+    <Space direction="vertical">
+      <div className="storybook-header">Copy to clipboard on hover</div>
+      <div className="storybook-icon-items">
+        {(Object.keys(icons) as modelType[]).map((model) => {
+          return Object.keys(icons[model]).map((icon) => {
+            const iconName = `<Icon type="${icon}" ${model === 'bold' ? 'model="bold"' : ''} />`;
 
-// FIXME: Storybook build fail on importing svg
-// export const Custom = (): React.ReactElement => {
-//   return <Icon type="star" component={IconSvg} />;
-// };
+            const onCopy = (): void => {
+              copyToClipboard(iconName);
+
+              notify.success({ title: 'Success', description: 'Copied to clipboard' });
+            };
+
+            return (
+              <Button className="storybook-icon-item" key={icon} onClick={onCopy}>
+                <div className="storybook-icon">
+                  <Icon type={icon} model={model} />
+                </div>
+
+                <div className="storybook-icon-name">{iconName}</div>
+              </Button>
+            );
+          });
+        })}
+      </div>
+    </Space>
+  );
+};

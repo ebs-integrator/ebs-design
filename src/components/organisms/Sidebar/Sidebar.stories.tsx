@@ -8,7 +8,7 @@ const { TopMenu, BottomMenu, Options, Item } = Sidebar;
 const { TopSide, BottomSide, Item: OptionItem } = Options;
 
 export default {
-  title: exportStory('Sidebar', 'organisms'),
+  title: exportStory('Layout/Sidebar', 'organisms'),
   component: Sidebar,
   subcomponents: { TopMenu, BottomMenu, Options, Item, TopSide, BottomSide, OptionItem },
 };

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs/blocks';
 import { Icon, Switch, Button, Space } from 'components/atoms';
 import { Modal } from './Modal';
 import { exportStory } from '../../../libs';
@@ -10,57 +9,101 @@ export default {
   title: exportStory('Modal', 'organisms'),
   component: Modal,
   subcomponents: { Content, Footer },
-  parameters: {
-    docs: {
-      page: () => <ArgsTable story={PRIMARY_STORY} />,
-    },
-  },
 };
 
-export const WithNothing = (): React.ReactElement => (
-  <Modal>
-    <Modal.Content>Example</Modal.Content>
-  </Modal>
-);
+export const WithNothing: React.FC = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [open, setOpen] = useState(false);
 
-export const WithTitle = (): React.ReactElement => (
-  <Modal title="Confirmă acceptare">
-    <Modal.Content>Example</Modal.Content>
-  </Modal>
-);
+  const onToggleHandler = (): void => setOpen((s) => !s);
 
-export const WithFooter = (): React.ReactElement => (
-  <Modal>
-    <Modal.Content>Example</Modal.Content>
-    <Modal.Footer>
-      <Space justify="space-between">
-        <Button>Refuză</Button>
+  return (
+    <>
+      <p>
+        Toggle: <Switch checked={open} onChange={onToggleHandler} />
+      </p>
+      <Modal open={open} onClose={onToggleHandler}>
+        <Modal.Content>Example</Modal.Content>
+      </Modal>
+    </>
+  );
+};
 
-        <Button type="primary" prefix={<Icon type="check" />}>
-          Confirmă
-        </Button>
-      </Space>
-    </Modal.Footer>
-  </Modal>
-);
-export const WithHeaderAndFooter = (): React.ReactElement => (
-  <Modal title="Confirmă acceptare">
-    <Modal.Content>Example</Modal.Content>
-    <Modal.Footer>
-      <Space justify="space-between">
-        <Button>Refuză</Button>
+export const WithTitle: React.FC = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [open, setOpen] = useState(false);
 
-        <Button type="primary" prefix={<Icon type="check" />}>
-          Confirmă
-        </Button>
-      </Space>
-    </Modal.Footer>
-  </Modal>
-);
+  const onToggleHandler = (): void => setOpen((s) => !s);
+
+  return (
+    <>
+      <p>
+        Toggle: <Switch checked={open} onChange={onToggleHandler} />
+      </p>
+      <Modal open={open} onClose={onToggleHandler} title="Confirmă acceptare">
+        <Modal.Content>Example</Modal.Content>
+      </Modal>
+    </>
+  );
+};
+
+export const WithFooter: React.FC = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [open, setOpen] = useState(false);
+
+  const onToggleHandler = (): void => setOpen((s) => !s);
+
+  return (
+    <>
+      <p>
+        Toggle: <Switch checked={open} onChange={onToggleHandler} />
+      </p>
+      <Modal open={open} onClose={onToggleHandler}>
+        <Modal.Content>Example</Modal.Content>
+        <Modal.Footer>
+          <Space justify="space-between">
+            <Button>Refuză</Button>
+
+            <Button type="primary" prefix={<Icon type="check" />}>
+              Confirmă
+            </Button>
+          </Space>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+
+export const WithHeaderAndFooter: React.FC = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [open, setOpen] = useState(false);
+
+  const onToggleHandler = (): void => setOpen((s) => !s);
+
+  return (
+    <>
+      <p>
+        Toggle: <Switch checked={open} onChange={onToggleHandler} />
+      </p>
+      <Modal open={open} onClose={onToggleHandler} title="Confirmă acceptare">
+        <Modal.Content>Example</Modal.Content>
+        <Modal.Footer>
+          <Space justify="space-between">
+            <Button>Refuză</Button>
+
+            <Button type="primary" prefix={<Icon type="check" />}>
+              Confirmă
+            </Button>
+          </Space>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
 
 export const CancelWithEscape: React.FC = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const onToggleHandler = (): void => setOpen((s) => !s);
 
@@ -71,7 +114,7 @@ export const CancelWithEscape: React.FC = () => {
       </p>
 
       {open && (
-        <Modal onClose={onToggleHandler} title="Confirmă acceptare">
+        <Modal open={open} onClose={onToggleHandler} title="Confirmă acceptare">
           <Modal.Content>Example</Modal.Content>
           <Modal.Footer>
             <Space justify="space-between">
