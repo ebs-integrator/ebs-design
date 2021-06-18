@@ -12,7 +12,6 @@ export { Chips } from './Chips/Chips';
 export { Radio } from './Radio/Radio';
 export { Tooltip } from './Tooltip/Tooltip';
 export { Card } from './Card/Card';
-export { DetailsCard, HeadLeft } from './DetailsCard/DetailsCard';
 export { Mask } from './Mask/Mask';
 export { Container, Row, Col } from './Grid';
 export { Collapse } from './Collapse/Collapse';

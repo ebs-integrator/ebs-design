@@ -3,6 +3,8 @@
 @import '../src/styles/mixins/index.scss';
 
 .sb-show-main {
+  flex-direction: column;
+
   #root,
   #portal {
     width: 100%;
@@ -95,9 +97,11 @@
 
 .storybook-icon-items {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 
   .storybook-icon-item {
+    cursor: pointer;
     width: 18.486%;
     margin: rem(12.5px);
     padding: rem(22.5px 12.5px);
@@ -115,6 +119,12 @@
       @include fontMedium;
       margin-top: rem(25px);
     }
+
+    &:hover {
+      .storybook-icon-name {
+        color: $white;
+      }
+    }
   }
 }
 
@@ -125,5 +135,9 @@
 
   .ebs-select__wrapper {
     min-width: 300px;
+  }
+
+  #story--react-ebs-ui-organisms-layout-sidebar--regular {
+    min-height: 50vh;
   }
 }

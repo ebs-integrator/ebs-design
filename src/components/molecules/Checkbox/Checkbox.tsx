@@ -52,9 +52,9 @@ export const Checkbox = React.forwardRef<HTMLInputElement, Props>(
         />
 
         <div className="ebs-checkbox">
-          <Icon type="indeterminate" className="ebs-checkbox__indeterminate" />
+          <Icon type="indeterminate" model="bold" className="ebs-checkbox__indeterminate" />
 
-          <Icon type="check-2" className="ebs-checkbox__check" />
+          <Icon type="check" model="bold" className="ebs-checkbox__check" />
         </div>
 
         {text && <div className="ebs-checkbox__text">{text}</div>}

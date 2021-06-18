@@ -21,7 +21,6 @@ export interface OptionsProps {
   emptyLabel?: string;
   maxHeight?: number;
   newOption?: string;
-  newLabel?: string;
   onPrev?: () => void;
   onNext?: () => void;
   onClose?: () => void;
@@ -38,7 +37,6 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   emptyLabel = 'No found',
   maxHeight,
   newOption,
-  newLabel = 'New',
   onNext,
   onClose,
   onChange,
@@ -125,14 +123,10 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
       {newOption && onClickAddNew && (
         <Item
           value={newOption}
-          text={
-            <Space>
-              <Label text={newLabel} type="ghost" />
-              {newOption}
-            </Space>
-          }
+          text={newOption}
           selected
           onClick={() => onClickAddNew(newOption)}
+          suffix={<Label type="ghost" text="CTRL+Enter" />}
         />
       )}
       <Animated loading={loading} duration={100}>

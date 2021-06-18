@@ -51,4 +51,4 @@ Form.displayName = 'Form';
 Form.Field = FormField;
 Form.Group = FormGroup;
 
-export { Form, FormContext, FormProps };
+export { Form, FormContext, FormProps, FormComposition };
