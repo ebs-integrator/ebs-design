@@ -134,7 +134,6 @@
     @include text-ellipsis;
     @include hiddenScroll;
     color: $text-color-secondary;
-    overflow: auto hidden;
     width: 100%;
     margin-right: rem($gutter-size);
 
@@ -146,6 +145,12 @@
       .ebs-input__wrapper {
         border: none;
       }
+    }
+
+    &__container {
+      display: flex;
+      align-items: center;
+      max-height: rem($base-size - ($gutter-size - 6px));
     }
   }
 
@@ -234,7 +239,7 @@
 
   &__pagination {
     border-top: 1px solid $border-color;
-    padding: rem(6px 8px);
+    padding: rem(6px 8px 1px);
   }
 
   .ebs-loader__inline {
