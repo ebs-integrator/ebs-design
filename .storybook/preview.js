@@ -8,6 +8,7 @@ addParameters({
   docs: {
     container: DocsContainer,
     page: DocsPage,
+    previewSource: 'open'
   },
 });
 
