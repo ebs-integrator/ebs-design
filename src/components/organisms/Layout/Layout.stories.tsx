@@ -279,7 +279,7 @@ export const withFixedFooter = (): React.ReactNode => (
   </Layout>
 );
 
-const ExampleContent = (): React.ReactNode => (
+const ExampleContent: React.FC = () => (
   <Row gy={3}>
     {new Array(3).fill(null).map(() => (
       <Col size={12}>
