@@ -25,8 +25,6 @@ export {
   Col,
   Collapse,
   Tooltip,
-  DetailsCard,
-  HeadLeft,
   Tabs,
   Space,
 } from './components/atoms';
@@ -35,13 +33,9 @@ export {
 export {
   Loader,
   Stepper,
-  Calendar,
   DatePicker,
   InputPhone,
   InputSearch,
-  InputSelect,
-  SelectDropdown,
-  SelectDropdownItem,
   Checkbox,
   CheckboxGroup,
   Textarea,
@@ -71,7 +65,6 @@ export {
 } from './components/organisms';
 
 // Export types
-export type { CalendarType } from 'components/molecules/Calendar/Calendar';
 export type { DatePickerProps, RangePickerProps, DatePickerComposition } from 'components/molecules/DatePicker/types';
 export type { ColumnType, TableProps } from 'components/organisms/Table/Table';
 export type { FormInstance, FormProps } from 'components/organisms/Form';
