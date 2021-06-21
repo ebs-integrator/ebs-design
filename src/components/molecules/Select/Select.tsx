@@ -8,12 +8,13 @@ import cn from 'classnames';
 import { Label, Icon, Button, Input } from 'components/atoms';
 import { Loader } from 'components/molecules';
 import { usePortal, useEventListener } from 'hooks';
-import { isArray, isEqual, toArray, uniqueArray } from 'libs';
+import { isArray, toArray, uniqueArray } from 'libs';
 import { GenericObject, SizeType } from 'types';
 
 import { Search } from './Search';
 import { Pagination, PaginationProps } from './Pagination';
 import { Options, OptionsProps, OptionsComposition } from './Options';
+import { isEqual } from './utils';
 
 import { InputSearchProps } from '../InputSearch/InputSearch';
 
