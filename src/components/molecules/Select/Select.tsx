@@ -239,10 +239,10 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   });
 
   React.useEffect(() => {
-    if ((!paginationProps || paginationProps.page === 1) && !isSearch && !isEqual($options, options) && loaded) {
+    if ((!paginationProps || paginationProps.page === 1) && !isSearch && !isEqual($options, options)) {
       setOptions($options);
     }
-  }, [$options, options, loaded, isSearch]);
+  }, [$options, options, isSearch]);
 
   React.useEffect(() => {
     if (!isEqual($options, options, 'value') && !loaded) {

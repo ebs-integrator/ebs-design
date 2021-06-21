@@ -1,7 +1,5 @@
 # EBS Design System
 
-A complete library of styling components for React.js
-
 [![NPM version][npm-image]][npm-url] 
 [![NPM downloads][download-image]][download-url]
 [![Discussions][discussions-image]][discussions-url]
