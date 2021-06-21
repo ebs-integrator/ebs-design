@@ -32,7 +32,7 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
     }, [startDate, endDate]);
 
     React.useEffect(() => {
-      if (value && Array.isArray(value) && !isEqual(dateRange, value) && !loaded) {
+      if (value && !isEqual(dateRange, value) && !loaded) {
         setStartDate(parseDate(value[0], dateFormat));
         setEndDate(parseDate(value[1], dateFormat));
         setLoaded(true);
