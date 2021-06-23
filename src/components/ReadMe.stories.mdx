@@ -20,7 +20,6 @@ import { exportStory } from '../libs';
 [discussions-image]: https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square
 [discussions-url]: https://github.com/ebs-integrator/ebs-design/discussions
 
-
 ## ⚠️ WARNING
 
 The UI Kit is UNDER DEVELOPMENT, PLEASE CREATE ISSUES OR PR WITH CHANGES
@@ -45,43 +44,28 @@ Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install/#debi
 
 <img width="415px" src="https://nodei.co/npm/ebs-design.png?downloads=true&downloadRank=true&stars=true" />
 
+Requires a peer of `node-sass@^4.0.0 | ^5.0.0`
+<img alt="sass" width="26px" src="https://camo.githubusercontent.com/e42f5a6972953c0b7a055a4bdadb9f464866e14fd27ee15d7335f4b401626aca/68747470733a2f2f696d672e69636f6e73382e636f6d2f636f6c6f722f3234302f3030303030302f736173732e706e67" data-canonical-src="https://img.icons8.com/color/240/000000/sass.png" />
+If your app isn't already configured with SASS, you will first need to install
 
-## 🏗️ Usage guide
-
-Import components you want into your UI
-
-```javascript
-import { Button } from 'ebs-design';
-
-// Create and import your scss to customize
-import './variables.scss';
-```
-
-and use them like so
-
-```javascript
-const Example: React.FC = () => (
-  <>
-    <Button type="primary" size="large">
-      Do something
-    </Button>
-
-    <Badge count={1}>
-      <Icon component={IconSVG} />
-    </Badge>
-  </>
-);
-```
-
-#### Using SASS
-If your app isn't already configured with SASS, you will first need to install `node-sass` (version: ^4.0.0 || ^5.0.0):
 ```bash
 npm install -D node-sass@^5.0.0
 # or
 yarn add node-sass@^5.0.0
 ```
 
-#### Example of `variables.scss`
+## 🏗️ Usage guide
+
+```javascript
+import { Button } from 'ebs-design';
+
+// Import styles scss into a `src/App.(js|tsx)`
+import 'ebs-design/dist/styles/index.scss';
+// Or create and import your scss to customize variables
+import './variables.scss';
+```
+
+Example of `variables.scss`
 
 ```scss
 // Main colors

@@ -25,6 +25,10 @@
   }
 
   &--tags {
+    .ebs-select-value .ebs-input {
+      padding: 0;
+    }
+
     .ebs-select-value__container {
       max-width: 70%;
     }
