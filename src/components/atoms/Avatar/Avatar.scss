@@ -1,4 +1,5 @@
 .ebs-avatar {
+  @include elevation-1;
   @include flex-center;
   position: relative;
   border-radius: rem($border-radius);

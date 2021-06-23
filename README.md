@@ -36,20 +36,12 @@ For more usage details visit [Storybook](https://ebs-integrator.github.io/ebs-de
 - High-quality and performant React components.
 - 100% Open Source.
 
-
 ## 📦 Installation
 
 Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install/#debian-stable) or npm to install library.
 
-```bash
-yarn add ebs-design
-```
+<img width="415px" src="https://nodei.co/npm/ebs-design.png?downloads=true&downloadRank=true&stars=true" />
 
-or
-
-```bash
-npm install ebs-design
-```
 
 ## 🏗️ Usage guide
 
@@ -76,6 +68,14 @@ const Example: React.FC = () => (
     </Badge>
   </>
 );
+```
+
+#### Using SASS
+If your app isn't already configured with SASS, you will first need to install `node-sass` (version: ^4.0.0 || ^5.0.0):
+```bash
+npm install -D node-sass@^5.0.0
+# or
+yarn add node-sass@^5.0.0
 ```
 
 #### Example of `variables.scss`
