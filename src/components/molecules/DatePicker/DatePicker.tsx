@@ -6,37 +6,48 @@ import { getDefaultDateFormat, parseDate, getOutputDate } from './utils';
 import RangePicker from './RangePicker';
 import RangeInputPicker from './RangeInputPicker';
 
-const InternalDatePicker = React.forwardRef<ReactDatePicker, DatePickerProps>(({ size = 'medium', ...props }, ref) => {
-  const dateFormat = React.useMemo(() => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect), [
-    props.dateFormat,
-    props.showTimeSelect,
-  ]);
+const InternalDatePicker = React.forwardRef<ReactDatePicker, DatePickerProps>(
+  ({ size = 'medium', value, ...props }, ref) => {
+    const [val, setVal] = React.useState('');
 
-  const handleChange = (date, event): void => {
-    const outputDate = getOutputDate(date, dateFormat);
+    React.useEffect(() => {
+      if (value !== val) {
+        setVal(value);
+      }
+    }, [value]);
 
-    if (props.onChange) {
-      props.onChange(outputDate, event);
-    }
-  };
+    const dateFormat = React.useMemo(() => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect), [
+      props.dateFormat,
+      props.showTimeSelect,
+    ]);
 
-  const selectedDate = parseDate(props?.value, dateFormat);
+    const handleChange = (date, event): void => {
+      const outputDate = getOutputDate(date, dateFormat);
 
-  return (
-    <ReactDatePicker
-      showYearDropdown
-      {...props}
-      ref={ref}
-      onChange={handleChange}
-      selected={selectedDate}
-      className={cn(`ebs-datepicker ebs-datepicker--${size}`, props.className)}
-      wrapperClassName={cn('ebs-datepicker__wrapper', props.wrapperClassName)}
-      popperClassName={cn('ebs-datepicker__popper', props.popperClassName)}
-    >
-      {props.children}
-    </ReactDatePicker>
-  );
-});
+      if (props.onChange && event.currentTarget.value?.length >= dateFormat.length) {
+        props.onChange(outputDate, event);
+      }
+
+      setVal(date);
+    };
+
+    return (
+      <ReactDatePicker
+        showYearDropdown
+        {...props}
+        ref={ref}
+        value={val}
+        onChange={handleChange}
+        selected={parseDate(val, dateFormat)}
+        className={cn(`ebs-datepicker ebs-datepicker--${size}`, props.className)}
+        wrapperClassName={cn('ebs-datepicker__wrapper', props.wrapperClassName)}
+        popperClassName={cn('ebs-datepicker__popper', props.popperClassName)}
+      >
+        {props.children}
+      </ReactDatePicker>
+    );
+  },
+);
 
 const DatePicker = InternalDatePicker as DatePickerComposition;
 
