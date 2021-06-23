@@ -4,9 +4,7 @@ const { override, useEslintRc } = require('customize-cra');
 module.exports = {
   stories: [
     '../src/components/*.stories.mdx',
-    '../src/components/atoms/**/*.stories.@(tsx|mdx)',
-    '../src/components/molecules/**/*.stories.@(tsx|mdx)',
-    '../src/components/organisms/**/*.stories.@(tsx|mdx)',
+    '../src/components/**/**/*.stories.@(tsx|mdx)',
   ],
   addons: ['@storybook/addon-docs', '@storybook/addon-links'],
   presets: [
