@@ -2,10 +2,10 @@ import * as React from 'react';
 import { useNotify } from 'hooks';
 
 import { icons } from './iconsList';
-import { modelType } from './Icon';
+import { IconType, modelType } from './Icon';
+import { exportStory, copyToClipboard } from '../../../libs';
 import { Button, Space, Icon } from '../';
 import { NotifyProvider, NotifyContainer } from '../../molecules';
-import { exportStory, copyToClipboard } from '../../../libs';
 
 export default {
   title: exportStory('Icon', 'atoms'),
@@ -36,7 +36,7 @@ export const Regular = (): React.ReactNode => {
               return (
                 <Button className="storybook-icon-item" key={icon} onClick={onCopy}>
                   <div className="storybook-icon">
-                    <Icon type={icon} model={model} />
+                    <Icon type={icon as IconType} model={model} />
                   </div>
 
                   <div className="storybook-icon-name">{iconName}</div>

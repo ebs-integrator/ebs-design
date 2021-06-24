@@ -2,7 +2,7 @@ import * as React from 'react';
 import { icons } from './iconsList';
 import cn from 'classnames';
 
-export type IconType = (keyof typeof icons.regular & keyof typeof icons.bold) | undefined;
+export type IconType = keyof typeof icons.regular & keyof typeof icons.bold;
 export type modelType = 'regular' | 'bold';
 export interface IconProps {
   onClick?: () => void;
