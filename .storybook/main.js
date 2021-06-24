@@ -3,6 +3,7 @@ const { override, useEslintRc } = require('customize-cra');
 
 module.exports = {
   stories: [
+    '../src/components/ReadMe.stories.mdx',
     '../src/components/*.stories.mdx',
     '../src/components/**/**/*.stories.@(tsx|mdx)',
   ],
