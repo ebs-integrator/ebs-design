@@ -2,6 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Icon } from 'components/atoms';
 import { Loader } from 'components/molecules';
+import { IconType } from '../Icon/Icon';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
@@ -18,7 +19,7 @@ export interface ButtonProps {
   className?: string;
   buttonClass?: string;
   form?: string;
-  icon?: string;
+  icon?: IconType;
   block?: boolean;
 }
 

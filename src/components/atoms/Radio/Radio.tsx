@@ -1,78 +1,41 @@
-import * as React from 'react';
-import cn from 'classnames';
-import { makeid } from 'libs/string';
+import React from 'react';
 
-export type RadioAlign = 'left' | 'right';
+import { clsModifiers } from 'libs';
 
-type RadioValue = string | number;
+import { RadioGroup } from './RadioGroup';
+import { RadioButton, RadioButtonContainer } from './RadioButton';
+import { useRadio } from './useRadio';
 
-export interface Option {
-  text: React.ReactNode;
-  value: RadioValue;
+export interface RadioProps {
+  value: string;
   disabled?: boolean;
+  defaultChecked?: boolean;
+  checked?: boolean;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
-export interface Props {
-  className?: string;
-  radioAlign?: RadioAlign;
-  textClass?: string;
-  textStyle?: React.CSSProperties;
-  onChange?: (e?: any) => void;
-  value?: RadioValue;
-  options?: Option[];
-  name?: string;
-}
+export const Radio: React.FC<RadioProps> = (myProps) => {
+  const {
+    inputProps,
+    props: { disabled, checked },
+  } = useRadio(myProps);
 
-export const Radio = React.forwardRef<HTMLInputElement, Props>(
-  ({ className, radioAlign = 'left', textClass = '', textStyle, options, value, onChange, ...props }, ref) => {
-    const name = props.name || React.useMemo(() => makeid(), []);
+  return (
+    <label className={clsModifiers('ebs-radio__wrapper', { disabled })}>
+      <span className={clsModifiers('ebs-radio-checkbox__wrapper', { disabled })}>
+        <input {...inputProps} />
+        <span className={clsModifiers('ebs-radio-checkbox__mark', { disabled, checked })}>
+          <span className={clsModifiers('ebs-radio-checkbox__fill', { disabled, checked })}></span>
+        </span>
+      </span>
+      <span className={clsModifiers('ebs-radio__children', { disabled })}>{myProps.children}</span>
+    </label>
+  );
+};
 
-    const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
-      if (onChange !== undefined) {
-        onChange(target.value);
-      }
-    };
-
-    const onClickHandler = (newValue: string | number): void => {
-      if (onChange !== undefined && `${value}` === `${newValue}`) {
-        onChange('');
-      }
-    };
-
-    if (!options || (options && options.length === 0)) {
-      return null;
-    }
-
-    return (
-      <div className={cn(`ebs-radio__group`, `ebs-radio__align--${radioAlign}`, className)}>
-        {options.map((option, idx) => (
-          <div key={idx} className={cn(`ebs-radio__wrapper`, { 'has-text': option.text, disabled: option.disabled })}>
-            <input
-              ref={ref}
-              type="radio"
-              className="ebs-radio__input"
-              name={name}
-              onClick={() => onClickHandler(option.value)}
-              value={option.value}
-              onChange={onChangeHandler}
-              {...(value !== undefined && option.value !== undefined
-                ? { checked: `${value}` === `${option.value}` }
-                : {})}
-              disabled={option.disabled}
-            />
-
-            <div className="ebs-radio">
-              <div className="ebs-radio__dot" />
-            </div>
-
-            {option.text && (
-              <div className={cn(`ebs-radio__text`, textClass)} style={textStyle}>
-                {option.text}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    );
-  },
-);
+export default Object.assign(Radio, {
+  Group: RadioGroup,
+  Button: RadioButton,
+  ButtonContainer: RadioButtonContainer,
+  useRadio,
+});
