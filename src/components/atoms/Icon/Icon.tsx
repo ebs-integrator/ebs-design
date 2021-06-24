@@ -2,16 +2,17 @@ import * as React from 'react';
 import { icons } from './iconsList';
 import cn from 'classnames';
 
+export type IconType = (keyof typeof icons.regular & keyof typeof icons.bold) | undefined;
 export type modelType = 'regular' | 'bold';
-export interface Props {
+export interface IconProps {
   onClick?: () => void;
-  type?: string;
+  type?: IconType;
   className?: string;
   component?: any;
   model?: modelType;
 }
 
-export const Icon: React.FC<Props> = ({
+export const Icon: React.FC<IconProps> = ({
   onClick,
   type = 'none',
   model = 'regular',
