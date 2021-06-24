@@ -1,11 +1,17 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { Tooltip, Button, Icon } from 'components/atoms';
 import { ButtonSize } from 'components/atoms/Button/Button';
 
 interface Sort {
   title: React.ReactNode;
   value: string;
-  type?: 'asc' | 'desc';
+  type?: SortDirection;
+}
+
+enum SortDirection {
+  ASC = 'asc',
+  DESC = 'desc'
 }
 
 export interface SortByProps {
@@ -26,11 +32,11 @@ export const SortBy: React.FC<SortByProps> = ({
   onChange,
 }) => {
   const [selected, setSelected] = React.useState(options.find((item) => item.value === value?.replace('-', '')));
-  const [type, setType] = React.useState(value?.charAt(0) === '-' ? 'desc' : 'asc');
+  const [type, setType] = React.useState(value?.charAt(0) === '-' ? SortDirection.DESC : SortDirection.ASC);
 
   React.useEffect(()=> {
     if (selected) {
-      onChange((type === 'asc' ? '' : '-') + selected?.value);
+      onChange((type === SortDirection.ASC ? '' : '-') + selected?.value);
     } else {
       onChange('');
     }
@@ -44,7 +50,7 @@ export const SortBy: React.FC<SortByProps> = ({
     if (!selected && options.length) {
       setSelected(options[0]);
     }
-    setType((s) => (s === 'asc' ? 'desc' : 'asc'));
+    setType((s) => (s === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC));
   };
 
   return (
@@ -63,7 +69,7 @@ export const SortBy: React.FC<SortByProps> = ({
                 return (
                   <div
                     key={item.value}
-                    className={`ebs-sort-by__tooltip-item${active ? ' ebs-sort-by__tooltip-item--active' : ''}`}
+                    className={cn('ebs-sort-by__tooltip-item', {'ebs-sort-by__tooltip-item--active': active})}
                     onClick={() => onChangeHandler(item)}
                   >
                     {item.title}
