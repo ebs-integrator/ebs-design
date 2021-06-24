@@ -11,7 +11,7 @@ export default {
 export const regular = (): React.ReactNode => (
   <div className="storybook-rows">
     <div className="storybook-row">
-      <SortBy options={[{ title: 'Example', value: 'example' }]} value="" onChange={(): null => null} />
+      <SortBy options={[{ title: 'Example', value: 'example' }, { title: 'Example 2', value: 'example_2' }]} onChange={(): null => null} />
     </div>
   </div>
 );
