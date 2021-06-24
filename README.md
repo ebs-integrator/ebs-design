@@ -40,6 +40,7 @@ Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install/#debi
 <img width="415px" src="https://nodei.co/npm/ebs-design.png?downloads=true&downloadRank=true&stars=true" />
 
 Requires a peer of `node-sass@^4.0.0 | ^5.0.0`
+
 <img alt="sass" width="26px" src="https://camo.githubusercontent.com/e42f5a6972953c0b7a055a4bdadb9f464866e14fd27ee15d7335f4b401626aca/68747470733a2f2f696d672e69636f6e73382e636f6d2f636f6c6f722f3234302f3030303030302f736173732e706e67" data-canonical-src="https://img.icons8.com/color/240/000000/sass.png" />
 If your app isn't already configured with SASS, you will first need to install
 
