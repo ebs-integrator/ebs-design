@@ -2,6 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Button, Space, Icon } from 'components/atoms';
 import { SpaceDirection, SpaceSize } from 'components/atoms/Space/Space';
+import { IconType } from 'components/atoms/Icon/Icon';
 
 export interface NotifyItemType {
   type?: 'regular' | 'primary' | 'success' | 'danger' | 'info' | 'warning';
@@ -46,7 +47,7 @@ export const NotifyItem: React.FC<NotifyItemProps> = ({
     <Space size={size} className={cn('ebs-notify__item', `ebs-notify__item--${type}`)}>
       {icon && (
         <Icon
-          type={typeof icon === 'string' ? (icon as string) : undefined}
+          type={typeof icon === 'string' ? (icon as IconType) : undefined}
           component={typeof icon !== 'string' ? icon : undefined}
         />
       )}

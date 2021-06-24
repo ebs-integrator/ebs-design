@@ -16,8 +16,16 @@ export default {
 export const Regular = (): React.ReactNode => {
   const [form] = useForm();
 
+  const finishHandler = (values): void => alert('Form values:\n' + JSON.stringify(values, null, 2));
+
   return (
-    <Form form={form} type="horizontal" labelOptions={{ col: { size: 2 } }} controlOptions={{ col: { size: 6 } }}>
+    <Form
+      onFinish={finishHandler}
+      form={form}
+      type="horizontal"
+      labelOptions={{ col: { size: 2 } }}
+      controlOptions={{ col: { size: 6 } }}
+    >
       <Form.Field name="firstName" label="First Name" initialValue={'blue'} rules={[{ required: true }]}>
         <Input size="small" />
       </Form.Field>
@@ -42,12 +50,11 @@ export const Regular = (): React.ReactNode => {
       </Form.Field>
 
       <Form.Field name="sex" label="Sex" extra="This field is required">
-        <Radio
-          options={[
-            { text: 'Male', value: 'm' },
-            { text: 'Female', value: 'f' },
-          ]}
-        />
+        <Radio.Group>
+          <Radio value="m">Male</Radio>
+          <br />
+          <Radio value="f">Female</Radio>
+        </Radio.Group>
       </Form.Field>
 
       <Form.Field name="education" label="Education" extra="This field is required">

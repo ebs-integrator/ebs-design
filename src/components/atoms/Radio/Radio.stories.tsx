@@ -1,9 +1,10 @@
 import * as React from 'react';
 
-import Radio, { RadioProps } from './Radio';
+import { Radio, RadioProps } from './Radio';
 import { exportStory } from 'libs';
 import { Form, Space, useForm } from 'index';
 import { Icon } from '../Icon/Icon';
+import { useRadio } from './useRadio';
 
 export default {
   title: exportStory('Radio', 'atoms'),
@@ -300,11 +301,11 @@ export const ControlledByForm = (): React.ReactElement => {
   );
 };
 
-const MyRadio: React.FC<RadioProps> = (myProps) => {
+const MyRadio: React.FC<RadioProps> = (radioProps) => {
   const {
     props: { checked, disabled },
     inputProps,
-  } = Radio.useRadio(myProps);
+  } = useRadio(radioProps);
   return (
     <label
       style={{
@@ -318,7 +319,7 @@ const MyRadio: React.FC<RadioProps> = (myProps) => {
         }}
       />
       {checked ? '>' : '|'}
-      {myProps.children}
+      {radioProps.children}
     </label>
   );
 };

@@ -10,6 +10,7 @@ export { Extra } from './Extra/Extra';
 export { Switch } from './Switch/Switch';
 export { Chips } from './Chips/Chips';
 export { Radio } from './Radio/Radio';
+export { useRadio } from './Radio/useRadio';
 export { Tooltip } from './Tooltip/Tooltip';
 export { Card } from './Card/Card';
 export { Mask } from './Mask/Mask';

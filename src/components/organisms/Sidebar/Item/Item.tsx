@@ -2,6 +2,7 @@ import * as React from 'react';
 import AnimateHeight from 'react-animate-height';
 import cn from 'classnames';
 import { Icon, Label } from 'components/atoms';
+import { IconType } from 'components/atoms/Icon/Icon';
 
 export const Item: React.FC<{
   className?: string;
@@ -50,7 +51,7 @@ export const Item: React.FC<{
 
           {options !== undefined && (
             <div className="ebs-sidebar__suffix">
-              <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}`} model="bold" />
+              <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}` as IconType} model="bold" />
             </div>
           )}
         </div>

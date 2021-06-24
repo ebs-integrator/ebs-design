@@ -12,13 +12,14 @@ export interface RadioProps {
   defaultChecked?: boolean;
   checked?: boolean;
   inputRef?: React.RefObject<HTMLInputElement>;
+  children?: React.ReactNode;
 }
 
-export const Radio: React.FC<RadioProps> = (myProps) => {
+export const Radio = (radioProps: RadioProps): JSX.Element => {
   const {
     inputProps,
     props: { disabled, checked },
-  } = useRadio(myProps);
+  } = useRadio(radioProps);
 
   return (
     <label className={clsModifiers('ebs-radio__wrapper', { disabled })}>
@@ -28,14 +29,11 @@ export const Radio: React.FC<RadioProps> = (myProps) => {
           <span className={clsModifiers('ebs-radio-checkbox__fill', { disabled, checked })}></span>
         </span>
       </span>
-      <span className={clsModifiers('ebs-radio__children', { disabled })}>{myProps.children}</span>
+      <span className={clsModifiers('ebs-radio__children', { disabled })}>{radioProps.children}</span>
     </label>
   );
 };
 
-export default Object.assign(Radio, {
-  Group: RadioGroup,
-  Button: RadioButton,
-  ButtonContainer: RadioButtonContainer,
-  useRadio,
-});
+Radio.Button = RadioButton;
+Radio.ButtonContainer = RadioButtonContainer;
+Radio.Group = RadioGroup;
