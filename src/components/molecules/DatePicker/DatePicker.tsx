@@ -24,11 +24,11 @@ const InternalDatePicker = React.forwardRef<ReactDatePicker, DatePickerProps>(
     const handleChange = (date, event): void => {
       const outputDate = getOutputDate(date, dateFormat);
 
-      if (props.onChange && event.currentTarget.value?.length >= dateFormat.length) {
+      setVal(date);
+
+      if (props.onChange && (!event.currentTarget.value || event.currentTarget.value.length >= dateFormat.length)) {
         props.onChange(outputDate, event);
       }
-
-      setVal(date);
     };
 
     return (
