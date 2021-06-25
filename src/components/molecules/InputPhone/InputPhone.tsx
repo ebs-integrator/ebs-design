@@ -15,6 +15,7 @@ export interface Props extends PhoneInputProps {
 export const InputPhone: React.FC<Props> = ({
   className,
   dropdownClass,
+  placeholder = '',
   disabled,
   hasError,
   value,
@@ -35,6 +36,7 @@ export const InputPhone: React.FC<Props> = ({
         disabled: disabled,
       })}
       dropdownClass={cn(`ebs-input__phone-dropdown`, dropdownClass)}
+      placeholder={placeholder}
       disabled={disabled}
       {...props}
     />
