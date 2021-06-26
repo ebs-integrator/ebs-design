@@ -34,6 +34,7 @@
   "jsnext:main": "dist/index.es.js",
   "engines": {
     "node": ">=8",
+    "yarn": ">=1.22.4 <2",
     "npm": ">=5"
   },
   "scripts": {
@@ -60,7 +61,8 @@
   },
   "peerDependencies": {
     "react": ">= 16.8",
-    "react-dom": ">= 16.8"
+    "react-dom": ">= 16.8",
+    "node-sass": ">=4.0.0 <5.0.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.3.0",
