@@ -153,6 +153,18 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   const paginationProps = React.useMemo(() => childs.find((child) => child.type === Pagination)?.props, [childs]);
 
   React.useEffect(() => {
+    if (
+      paginationProps &&
+      value &&
+      !loading &&
+      !$options.some((option) => (typeof value === 'object' ? value.includes(option.value) : option.value === value)) &&
+      Math.ceil(paginationProps.count / parseInt(paginationProps.limit)) > paginationProps.page
+    ) {
+      paginationProps.setPage(paginationProps.page + 1);
+    }
+  }, [value, $options, loading, paginationProps]);
+
+  React.useEffect(() => {
     if (!isBox && openDropdown && inputRef.current) {
       const rect = inputRef.current.getBoundingClientRect();
       const offsetTop = rect.top + rect.height;
