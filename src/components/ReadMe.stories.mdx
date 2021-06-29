@@ -44,29 +44,27 @@ Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install/#debi
 
 <img width="415px" src="https://nodei.co/npm/ebs-design.png?downloads=true&downloadRank=true&stars=true" />
 
-Requires a peer of `node-sass@^4.0.0 | ^5.0.0`
-
-<img alt="sass" width="26px" src="https://camo.githubusercontent.com/e42f5a6972953c0b7a055a4bdadb9f464866e14fd27ee15d7335f4b401626aca/68747470733a2f2f696d672e69636f6e73382e636f6d2f636f6c6f722f3234302f3030303030302f736173732e706e67" data-canonical-src="https://img.icons8.com/color/240/000000/sass.png" />
-If your app isn't already configured with SASS, you will first need to install
-
-```bash
-npm install -D node-sass@^5.0.0
-# or
-yarn add node-sass@^5.0.0
-```
+#### ⚠️ Peer Dependencies
+Package's name  | Version
+------------- | -------------
+react         | >= 16.8
+react-dom     | >= 16.8
+node-sass     | >=4.0.0 <5.0.0
 
 ## 🏗️ Usage guide
 
 ```javascript
 import { Button } from 'ebs-design';
-
-// Import styles scss into a `src/App.(js|tsx)`
+```
+Import styles scss into a `src/App.(js|tsx)`
+```javascript
 import 'ebs-design/dist/styles/index.scss';
-// Or create and import your scss to customize variables
+```
+Or create and import your scss to customize variables
+
+```javascript
 import './variables.scss';
 ```
-
-Example of `variables.scss`
 
 ```scss
 // Main colors

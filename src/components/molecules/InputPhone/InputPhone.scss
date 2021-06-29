@@ -63,6 +63,7 @@
     width: 100%;
     border-radius: rem($border-radius);
     height: rem($base-size);
+    font-size: rem($font-size-base);
 
     @include placeholder {
       color: $text-color-secondary;
