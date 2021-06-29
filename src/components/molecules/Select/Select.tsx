@@ -8,7 +8,7 @@ import cn from 'classnames';
 import { Label, Icon, Button, Input } from 'components/atoms';
 import { Loader } from 'components/molecules';
 import { usePortal, useEventListener } from 'hooks';
-import { isArray, toArray, uniqueArray } from 'libs';
+import { isArray, toArray, uniqueArray, isEqual as isEqualArray } from 'libs';
 import { GenericObject, SizeType } from 'types';
 
 import { Search } from './Search';
@@ -52,6 +52,7 @@ export interface SelectProps {
   selected?: Option | Option[];
   isClearable?: boolean;
   onChange?: (value: OptionValue | OptionValue[]) => void;
+  onSelect?: (value: Option[]) => void;
   onSearch?: (value: string) => void;
   onAddNew?: (value: string) => void;
 }
@@ -68,6 +69,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   value,
   selected,
   onChange,
+  onSelect,
   onAddNew,
   onSearch,
   placeholder,
@@ -115,16 +117,26 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
   }, [loading]);
 
   React.useEffect(() => {
-    if (value) {
-      setCacheOptions((i) => {
-        const cache = options
-          .filter((x) => !toArray(selected).includes(x))
-          .filter((i) => (isArray(value) && (value as OptionValue[]).includes(i.value)) || value === i.value);
+    let data = cacheOptions;
 
-        return cache.length ? cache : i;
-      });
-    } else setCacheOptions(toArray(selected));
-  }, [options, value, selected]);
+    if (value) {
+      const cache = options
+        .filter((x) => !toArray(selected).includes(x))
+        .filter((i) => (isArray(value) && (value as OptionValue[]).includes(i.value)) || value === i.value);
+
+      data = cache.length ? cache : selected ? toArray(selected) : cacheOptions;
+    } else if (selected) {
+      data = toArray(selected);
+    }
+
+    if (!isEqualArray(data, cacheOptions)) {
+      if (onSelect) {
+        onSelect(data);
+      }
+
+      setCacheOptions(data);
+    }
+  }, [options, value, selected, cacheOptions, onSelect]);
 
   const childs = React.useMemo(() => {
     const childrens = React.Children.toArray(children) as GenericObject[];
