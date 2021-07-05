@@ -60,18 +60,20 @@
     "react-use": "^17.1.0"
   },
   "peerDependencies": {
+    "node-sass": ">=4.0.0 <5.0.0",
     "react": ">= 16.8",
-    "react-dom": ">= 16.8",
-    "node-sass": ">=4.0.0 <5.0.0"
+    "react-dom": ">= 16.8"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.3.0",
-    "@storybook/addon-docs": "^6.3.0",
-    "@storybook/addon-essentials": "^6.3.0",
-    "@storybook/addon-links": "^6.3.0",
+    "@storybook/addon-actions": "^6.3.1",
+    "@storybook/addon-docs": "^6.3.1",
+    "@storybook/addon-essentials": "^6.3.1",
+    "@storybook/addon-links": "^6.3.1",
+    "@storybook/addons": "^6.3.1",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/preset-typescript": "^3.0.0",
-    "@storybook/react": "^6.3.0",
+    "@storybook/react": "^6.3.1",
+    "@storybook/theming": "^6.3.1",
     "@svgr/rollup": "^2.4.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
