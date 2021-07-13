@@ -25,3 +25,9 @@ export const omitKeys = (keys: string[], obj: object): object => {
 
   return updatedObj;
 };
+
+export const typedOmitKeys = <T extends object, TKeys extends keyof T>(keys: TKeys[], obj: T): Omit<T, TKeys> => {
+  const updatedObj = { ...obj };
+  for (const key of keys) delete updatedObj[key];
+  return updatedObj;
+};

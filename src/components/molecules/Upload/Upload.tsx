@@ -4,47 +4,58 @@ import { RcFile } from 'rc-upload/lib/interface';
 
 import { Icon } from 'components/atoms/Icon/Icon';
 import { GenericObject } from 'types';
+import { typedOmitKeys, isEqual } from 'libs';
 
-export interface UploadProps extends RcUploadProps {
-  onFileRemove?: (file: RcFile, idx: number) => void;
-  onFilesChange?: (files: RcFile[]) => void;
-  files?: RcFile[];
+export interface UploadProps extends Omit<RcUploadProps, 'value' | 'onChange' | 'onRemove'> {
+  value?: RcFile[];
+  onChange?: (files: RcFile[]) => void;
+
+  // no need to remove file from props.value, it's handled in onChange
+  onRemove?: (file: RcFile, idx: number) => void;
 }
 
-export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
+export const Upload: React.FC<UploadProps> = (props) => {
+  //
   const [internalFiles, setFiles] = React.useState<RcFile[]>([]);
   const [internalError, setError] = React.useState<Error>();
   const [progress, setProgress] = React.useState<GenericObject<number>>({});
 
   React.useEffect(() => {
-    const files = props.files;
-    if (files && !files?.every((value, i) => internalFiles[i] === value)) {
+    const files = props.value;
+
+    if (!files) {
+      setFiles([]);
+      setProgress({});
+      setError(undefined);
+    }
+
+    if (files && !isEqual(files, internalFiles)) {
       // If files exist, then progress is full
       const progresses = files.reduce((prev, curr) => ({ ...prev, [curr.name]: 100 }), {});
 
       setProgress(progresses);
       setFiles(files);
+      setError(undefined);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.files]);
+  }, [props.value]);
 
   // Trigger onChange
   React.useEffect(() => {
-    props.onFilesChange && props.onFilesChange(internalFiles);
-    setError(undefined);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [internalFiles, props.onFilesChange]);
+    const files = props.value;
+    if (!files || !isEqual(files, internalFiles)) props.onChange && props.onChange(internalFiles);
 
-  const uploadProps: RcUploadProps = {
-    ...props,
-  };
+    setError(undefined);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [internalFiles]);
+
+  const uploadProps: RcUploadProps = typedOmitKeys(['value', 'onChange'], props);
 
   // Handlers
   uploadProps.onStart = (file): void => {
-    setFiles((prevState) =>
-      props.multiple ? [...prevState.map((item) => (item.uid === file.uid ? file : item)), file] : [file],
-    );
-    setProgress({ [file.uid]: 0 });
+    setFiles((prevState) => (props.multiple ? [...prevState, file] : [file]));
+    props.multiple ? setProgress((prev) => ({ ...prev, [file.uid]: 0 })) : setProgress({ [file.uid]: 0 });
 
     props.onStart && props.onStart(file);
   };
@@ -56,46 +67,35 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
   };
 
   uploadProps.onSuccess = (response, file, xhr): void => {
-    let files = Array.isArray(response) ? response : [response];
-
-    setFiles((prevState) => {
+    setFiles((prevState) =>
       // Save files into array on multiple prop
-      if (props.multiple) {
-        files = [
-          ...prevState.filter((state) => file.uid !== state.uid),
-          ...(Array.isArray(response) ? response : [response]),
-        ];
-      }
+      props.multiple ? [file, ...prevState.filter((state) => file.uid !== state.uid)] : [file],
+    );
 
-      return files;
-    });
-
-    props.onSuccess && props.onSuccess(files, file, xhr);
+    props.onSuccess && props.onSuccess(Array.isArray(response) ? response : [response], file, xhr);
   };
 
   uploadProps.onProgress = (event, file): void => {
     setProgress((prevState) => ({
       ...prevState,
-      [file.uid]: Math.round(event.percent),
+      [file.uid]: event.percent,
     }));
-
     props.onProgress && props.onProgress(event, file);
   };
 
   // Handle remove file
   const handleRemove = (file: RcFile, idx: number): void => {
     setFiles((prevState) => prevState.filter((_, i) => idx !== i));
-    props.onFileRemove && props.onFileRemove(file, idx);
+
+    props.onRemove && props.onRemove(file, idx);
   };
 
   return (
     <>
-      <RCUpload ref={ref} {...uploadProps}>
-        {props.children}
-      </RCUpload>
+      <RCUpload {...uploadProps}>{props.children}</RCUpload>
 
       {internalFiles.map((file, idx) => {
-        const fileProgress = progress[file.uid] || 100;
+        const fileProgress = Math.round(progress[file.uid] || 100);
 
         return (
           <div key={`${file?.name}-${idx}`} className="upload__container">
@@ -128,4 +128,4 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
       {internalFiles.length > 0 && internalError && <div className="upload__error">{internalError.message}</div>}
     </>
   );
-});
+};

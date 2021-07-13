@@ -97,7 +97,7 @@ export const WithForm = (): React.ReactNode => {
       labelOptions={{ col: { size: 2 } }}
       controlOptions={{ col: { size: 6 } }}
     >
-      <Form.Field name="singleUpload" label="Single upload" rules={[{ required: true }]}>
+      <Form.Field name="singleUpload" label="Single upload" rules={[{ required: true }]} initialValue={[]}>
         <Upload {...uploadProps}>
           <Button>Upload</Button>
         </Upload>
@@ -108,6 +108,7 @@ export const WithForm = (): React.ReactNode => {
         label="Multiple upload"
         extra="This field is required"
         rules={[{ required: true }]}
+        initialValue={[]}
       >
         <Upload multiple {...uploadProps}>
           <Button>Upload</Button>
