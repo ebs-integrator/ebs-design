@@ -5,6 +5,7 @@
   cursor: pointer;
   border: 1px solid $border-color;
   border-radius: rem($border-radius);
+  height: 100%;
   font-size: rem(14px);
   background-color: $white;
   overflow: hidden;
@@ -216,28 +217,31 @@
   &--small {
     font-size: rem(12px);
     padding: rem($select-padding-y-sm $select-padding-x-sm);
+    max-height: rem($base-size-sm);
 
     // FIXME: Temporary hack
     .ebs-select-value:empty {
-      min-height: rem($base-size-sm - $select-padding-y-sm * 2);
+      height: rem($base-size-sm - $select-padding-y-sm * 2);
     }
   }
 
   &--medium {
     padding: rem($select-padding-y $select-padding-x);
+    max-height: rem($base-size);
 
     // FIXME: Temporary hack
     .ebs-select-value:empty {
-      min-height: rem($base-size - $select-padding-y * 2);
+      height: rem($base-size - $select-padding-y * 2);
     }
   }
 
   &--large {
     padding: rem($select-padding-y-lg $select-padding-x-lg);
+    max-height: rem($base-size-lg);
 
     // FIXME: Temporary hack
     .ebs-select-value:empty {
-      min-height: rem($base-size-lg - $select-padding-y-lg * 2);
+      height: rem($base-size-lg - $select-padding-y-lg * 2);
     }
   }
 
@@ -252,6 +256,7 @@
 
   .ebs-loader__spinner {
     float: left;
+    top: 0;
   }
 }
 

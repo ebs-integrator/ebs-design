@@ -22,7 +22,7 @@ export const Regular = (): React.ReactElement => {
 
         <div className="storybook-row-item">
           <div className="storybook-label">Inactive</div>
-          <Input placeholder="Text field" />
+          <Input placeholder="Text field" size="large" />
         </div>
 
         <div className="storybook-row-item">
