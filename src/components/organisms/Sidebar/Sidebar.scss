@@ -80,9 +80,9 @@
     }
 
     .ebs-sidebar__options .ebs-sidebar__item:hover,
-    .ebs-sidebar__options .ebs-sidebar__item.active,
-    .ebs-sidebar__options .ebs-sidebar__item.invert:hover,
-    .ebs-sidebar__options .ebs-sidebar__item.invert.active:hover {
+    .ebs-sidebar__options .ebs-sidebar__item--active,
+    .ebs-sidebar__options .ebs-sidebar__item--invert:hover,
+    .ebs-sidebar__options .ebs-sidebar__item--invert .ebs-sidebar__item--active:hover {
       background-color: $primary-color;
     }
   }
@@ -95,7 +95,7 @@
     padding-right: 0;
   }
 
-  &--toggled &__item.active + .rah-static &__options &__item {
+  &--toggled &__item--active + .rah-static &__options &__item {
     opacity: 1;
     left: rem($layout-top-bar-height - 1);
     transition: all $transition-time;
@@ -112,7 +112,7 @@
     border-top: rem($sidebar-border);
     border-right: rem($sidebar-border);
 
-    &.disabled {
+    &--disabled {
       background-color: $border-color;
 
       span {

@@ -47,9 +47,9 @@ export const Item: React.FC<{
   const textRender = (
     <div
       className={cn(`ebs-sidebar__item`, className, {
-        invert: invert,
-        active: active || collapsed,
-        disabled: disabled,
+        'ebs-sidebar__item--invert': invert,
+        'ebs-sidebar__item--active': active || collapsed,
+        'ebs-sidebar__item--disabled': disabled,
         'has-options': options,
       })}
       onClick={onClickHandler}
