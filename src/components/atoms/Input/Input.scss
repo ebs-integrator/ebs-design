@@ -65,8 +65,8 @@
   display: block;
   font-size: rem(14px);
   padding: rem($select-padding-y $select-padding-x);
-  line-height: $line-height-base;
   color: $heading-color;
+  min-height: 100%;
 
   @include placeholder {
     color: $text-color-secondary;
@@ -118,13 +118,16 @@
 
   // Sizes
   &--small {
+    max-height: rem($base-size-sm);
     font-size: rem(12px);
     padding: rem($input-padding-y-sm $input-padding-x-sm);
   }
   &--medium {
+    max-height: rem($base-size);
     padding: rem($input-padding-y $input-padding-x);
   }
   &--large {
+    max-height: rem($base-size-lg);
     padding: rem($input-padding-y-lg $input-padding-x-lg);
   }
 }

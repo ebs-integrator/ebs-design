@@ -1,17 +1,25 @@
 import * as React from 'react';
-import { GenericObject } from 'types';
 import { NotifyItemProps } from '../components/molecules/Notify/NotifyItem';
 import { NotifyContext } from '../';
 
-export const useNotify = (): GenericObject => {
+export interface Props {
+  error: (item: NotifyItemProps) => void;
+  success: (item: NotifyItemProps) => void;
+  info: (item: NotifyItemProps) => void;
+  primary: (item: NotifyItemProps) => void;
+  regular: (item: NotifyItemProps) => void;
+  warning: (item: NotifyItemProps) => void;
+}
+
+export const useNotify = (): Props => {
   const { push } = React.useContext(NotifyContext);
 
   return {
-    error: (item: NotifyItemProps) => push({ type: 'danger', ...item }),
-    success: (item: NotifyItemProps) => push({ type: 'success', ...item }),
-    info: (item: NotifyItemProps) => push({ type: 'info', ...item }),
-    primary: (item: NotifyItemProps) => push({ type: 'primary', ...item }),
-    regular: (item: NotifyItemProps) => push({ type: 'regular', ...item }),
-    warning: (item: NotifyItemProps) => push({ type: 'warning', ...item }),
+    error: (item) => push({ type: 'danger', ...item }),
+    success: (item) => push({ type: 'success', ...item }),
+    info: (item) => push({ type: 'info', ...item }),
+    primary: (item) => push({ type: 'primary', ...item }),
+    regular: (item) => push({ type: 'regular', ...item }),
+    warning: (item) => push({ type: 'warning', ...item }),
   };
 };
