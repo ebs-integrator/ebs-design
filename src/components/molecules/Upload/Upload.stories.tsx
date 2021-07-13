@@ -30,7 +30,7 @@ const uploadProps: UploadProps = {
     console.log('onSuccess', files, file);
   },
   onProgress(step, file) {
-    // console.log('onProgress', Math.round(step.percent), file);
+    console.log('onProgress', Math.round(step.percent), file);
   },
   onError(err) {
     console.log('onError', err);
