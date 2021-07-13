@@ -69,10 +69,10 @@
       .ebs-sidebar__text {
         animation: fadeOut 0.1s;
       }
+    }
 
-      .ebs-sidebar__suffix .ebs-icon {
-        right: rem($gutter-size / 2);
-      }
+    .ebs-sidebar__suffix .ebs-icon {
+      right: rem($gutter-size / 2);
     }
 
     .ebs-sidebar__options {

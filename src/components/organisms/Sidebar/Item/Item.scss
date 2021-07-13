@@ -10,6 +10,14 @@
     color: $sidebar-item-text-color;
     max-height: rem(44px);
 
+    &:hover,
+    &.invert:hover,
+    &.invert.active:hover {
+      & + .ebs-sidebar__suffix .ebs-icon {
+        color: $sidebar-item-hover-color;
+      }
+    }
+
     .ebs-icon {
       color: $sidebar-item-text-color;
     }
