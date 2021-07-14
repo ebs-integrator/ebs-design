@@ -451,7 +451,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
               </div>
             ) : null}
 
-            {hasValue && isClearable ? (
+            {hasValue && isClearable && !disabled ? (
               <div className="ebs-select__clear">
                 <Button size="small" type="primary" onClick={onClear}>
                   <Icon type="close" model="bold" />
