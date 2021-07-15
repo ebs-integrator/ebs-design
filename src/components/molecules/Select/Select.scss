@@ -93,10 +93,16 @@
 
   &__suffix {
     .ebs-button__wrapper {
+      @include flex-center;
       border-left: none;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
       height: 100%;
+
+      .ebs-button {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
     }
   }
 
