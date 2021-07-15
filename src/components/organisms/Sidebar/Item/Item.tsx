@@ -11,25 +11,11 @@ export const Item: React.FC<{
   prefix?: React.ReactNode;
   invert?: boolean;
   text?: React.ReactNode;
-  url?: string;
   options?: React.ReactNode;
   active?: boolean;
   disabled?: boolean;
   onClick?: () => void;
-}> = ({
-  className,
-  labelClass,
-  optionsClass,
-  label,
-  active,
-  prefix,
-  invert,
-  text,
-  url,
-  disabled,
-  onClick,
-  options,
-}) => {
+}> = ({ className, labelClass, optionsClass, label, active, prefix, invert, text, disabled, onClick, options }) => {
   const [collapsed, setCollapsed] = React.useState(false);
 
   const onClickHandler = (): void => {
@@ -44,28 +30,24 @@ export const Item: React.FC<{
     }
   };
 
-  const textRender = (
-    <div
-      className={cn(`ebs-sidebar__item`, className, {
-        'ebs-sidebar__item--invert': invert,
-        'ebs-sidebar__item--active': active || collapsed,
-        'ebs-sidebar__item--disabled': disabled,
-        'has-options': options,
-      })}
-      onClick={onClickHandler}
-    >
-      {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}
-      <span className="ebs-sidebar__text">{text}</span>
-    </div>
-  );
-
   return (
     <>
       {label && <Label className={cn(`ebs-sidebar__label`, labelClass)} text={label} />}
 
       <div className="relative">
         <div className="relative">
-          {url ? <a href={url}>{textRender}</a> : textRender}
+          <div
+            className={cn(`ebs-sidebar__item`, className, {
+              'ebs-sidebar__item--invert': invert,
+              'ebs-sidebar__item--active': active || collapsed,
+              'ebs-sidebar__item--disabled': disabled,
+              'has-options': options,
+            })}
+            onClick={onClickHandler}
+          >
+            {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}
+            <span className="ebs-sidebar__text">{text}</span>
+          </div>
 
           {options !== undefined && (
             <div className="ebs-sidebar__suffix">
