@@ -5,35 +5,24 @@ import { Loader } from 'components/molecules';
 
 export type InputSize = 'small' | 'medium' | 'large';
 export type InputStyleType = 'white' | 'grey';
-export type InputType = 'text' | 'number' | 'email' | 'password';
 
-export interface InputProps {
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'onChange'> {
   styleType?: InputStyleType;
-  type?: InputType;
-  onClick?: (e: any) => void;
-  onChange?: (value: string) => void;
-  onKeyDown?: (e: React.KeyboardEvent) => void;
-  onClickPrefix?: () => void;
-  onClickSuffix?: () => void;
   hasError?: boolean;
   label?: React.ReactNode;
   extra?: React.ReactNode;
-  name?: string;
-  value?: string | number | null | undefined;
   prefix?: React.ReactElement;
   suffix?: React.ReactElement;
-  placeholder?: string;
   loading?: boolean;
-  disabled?: boolean;
-  width?: number | string;
   autoFocus?: boolean;
-  className?: string;
   containerClass?: string;
-  isClearable?: boolean;
   size?: InputSize;
-  min?: string | number;
-  max?: string | number;
-  pattern?: string;
+  isClearable?: boolean;
+  onClick?: (e: any) => void;
+  onChange?: (value: string | number) => void;
+  onKeyDown?: (e: React.KeyboardEvent) => void;
+  onClickPrefix?: () => void;
+  onClickSuffix?: () => void;
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -58,9 +47,6 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       autoFocus,
       className,
       containerClass,
-      min,
-      max,
-      pattern,
       isClearable,
       ...props
     },
@@ -71,7 +57,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     const onClickHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
       if (onChange !== undefined) {
-        onChange(target.value);
+        onChange(
+          props.min !== undefined && parseFloat(props.min as string) >= parseFloat(target.value)
+            ? props.min
+            : props.max !== undefined && parseFloat(props.max as string) <= parseFloat(target.value)
+            ? props.max
+            : target.value,
+        );
       }
     };
 
@@ -128,20 +120,16 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <div className="ebs-input__container">
             <input
               ref={ref}
-              min={min}
-              max={max}
-              pattern={pattern}
               name={name}
               type={type}
+              value={value}
               autoFocus={autoFocus}
               className={cn('ebs-input', `ebs-input--${size}`)}
-              value={value || ''}
-              placeholder={props.placeholder}
               disabled={disabled || loading}
               onClick={onClick}
               onKeyDown={onKeyDown}
               onChange={onClickHandler}
-              style={{ minWidth: width }}
+              {...props}
             />
 
             {hasValue && isClearable ? (
