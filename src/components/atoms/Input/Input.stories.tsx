@@ -11,8 +11,8 @@ export default {
 
 export const Regular = (): React.ReactElement => {
   const [inputValues, setInputValues] = React.useState({
-    numMin: '',
-    numMax: '',
+    numMin: 0,
+    numMax: 0,
   });
 
   return (
@@ -22,7 +22,7 @@ export const Regular = (): React.ReactElement => {
 
         <div className="storybook-row-item">
           <div className="storybook-label">Inactive</div>
-          <Input placeholder="Text field" />
+          <Input placeholder="Text field" size="large" />
         </div>
 
         <div className="storybook-row-item">
@@ -48,11 +48,10 @@ export const Regular = (): React.ReactElement => {
             type="number"
             name="numMin"
             value={inputValues.numMin}
-            placeholder="min"
-            min="0"
-            max={inputValues.numMax}
+            placeholder="min: 0"
+            min={0}
             onChange={(value) => {
-              setInputValues((s) => ({ ...s, numMin: value }));
+              setInputValues((s) => ({ ...s, numMin: value as number }));
             }}
           />
         </div>
@@ -63,10 +62,9 @@ export const Regular = (): React.ReactElement => {
             type="number"
             name="numMax"
             value={inputValues.numMax}
-            placeholder="max"
-            min={inputValues.numMin}
-            max="100"
-            onChange={(value) => setInputValues((s) => ({ ...s, numMax: value }))}
+            placeholder="max: 100"
+            max={100}
+            onChange={(value) => setInputValues((s) => ({ ...s, numMax: value as number }))}
           />
         </div>
       </div>

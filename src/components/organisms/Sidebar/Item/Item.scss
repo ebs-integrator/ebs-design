@@ -1,14 +1,48 @@
 .ebs-sidebar {
+  &__text {
+    color: $sidebar-item-text-color;
+    font-size: rem(14px);
+    transition: $transition-time;
+    padding: rem($gutter-size 27.5px $gutter-size 57.5px);
+
+    a {
+      padding: rem($gutter-size 27.5px $gutter-size 57.5px);
+    }
+  }
+
+  &:not(.ebs-sidebar--toggled) &__item--collapsed.has-options {
+    background-color: rgba($sidebar-item-hover-background, 0.1);
+
+    .ebs-sidebar__text,
+    a,
+    svg,
+    & + .ebs-sidebar__suffix svg {
+      color: $sidebar-item-text-color;
+    }
+  }
+
   &__item {
     @include text-ellipsis;
     position: relative;
     cursor: pointer;
     transition: $transition-time;
-    padding: rem($gutter-size 27.5px $gutter-size 57.5px);
     display: flex;
     align-items: center;
     color: $sidebar-item-text-color;
     max-height: rem(44px);
+
+    &__options &__item .ebs-sidebar__text {
+      font-size: rem(12px);
+      color: $sidebar-item-text-color;
+    }
+
+    &:hover,
+    &--invert:hover,
+    &--invert .ebs-sidebar__item--active:hover {
+      & + .ebs-sidebar__suffix .ebs-icon {
+        color: $sidebar-item-hover-color;
+      }
+    }
 
     .ebs-icon {
       color: $sidebar-item-text-color;
@@ -23,8 +57,8 @@
     }
 
     // item has no options
-    &.invert:not(.has-options):hover,
-    &.invert.active:not(.has-options) {
+    &--invert:not(.has-options):hover,
+    &--invert .ebs-sidebar__item--active:not(.has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
@@ -35,7 +69,7 @@
     }
 
     &:hover:not(.has-options),
-    &.active:not(.has-options) {
+    &--active:not(.has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
@@ -46,8 +80,8 @@
     }
 
     // item has options
-    &.invert.has-options:hover,
-    &.invert.has-options.active:not(.has-options) {
+    &--invert.has-options:hover,
+    &--invert.has-options.ebs-sidebar__item--active:not(.has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
@@ -58,7 +92,7 @@
     }
 
     &.has-options:hover,
-    &.has-options.active:not(.has-options) {
+    &--active.has-options:not(.has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
@@ -75,12 +109,6 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: rem(18px);
-  }
-
-  &__text {
-    color: $sidebar-item-text-color;
-    font-size: rem(14px);
-    transition: $transition-time;
   }
 
   &__suffix {
@@ -111,13 +139,15 @@
     color: $sidebar-item-text-color;
   }
 
-  &__options &__item {
-    padding: rem(5px 13.75px 5px 60px);
+  &__options &__text {
+    padding-top: rem(5px);
+    padding-bottom: rem(5px);
+    padding-right: rem(10px);
 
     &:hover,
-    &.active,
-    &.invert:hover,
-    &.invert.active:hover {
+    &--active,
+    &--invert:hover,
+    &--invert.ebs-sidebar__item--active:hover {
       background-color: rgba($sidebar-item-hover-background, 0.7);
 
       .ebs-sidebar__text {
@@ -128,10 +158,5 @@
 
   &__options &__item &__prefix {
     display: none;
-  }
-
-  &__options &__item .ebs-sidebar__text {
-    font-size: rem(12px);
-    color: $sidebar-item-text-color;
   }
 }

@@ -131,6 +131,7 @@
   }
 
   .ebs-sidebar {
+    @include flex-column;
     height: rem(calc(100vh - #{$layout-top-bar-height}));
 
     @include mq($until: small-desktop) {

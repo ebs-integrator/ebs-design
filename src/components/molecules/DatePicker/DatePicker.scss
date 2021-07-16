@@ -40,11 +40,11 @@
   border-radius: rem($border-radius);
   outline: none;
   font-size: rem(14px);
-  line-height: rem($line-height-base);
   padding-right: rem($base-size);
   padding: rem($calendar-padding-y $calendar-padding-x);
   color: $heading-color;
   box-sizing: border-box;
+  min-height: 100%;
   transition: $transition-base;
 
   @include text-ellipsis;
@@ -82,6 +82,7 @@
   // Sizes
   &--small {
     $padding-y: $calendar-padding-y-sm - 1px; // 1px is the border-width
+    min-height: rem($base-size-sm);
 
     font-size: rem(12px);
     padding: rem($padding-y $calendar-padding-x-sm);
@@ -89,12 +90,14 @@
   }
   &--medium {
     $padding-y: $calendar-padding-y - 1px; // 1px is the border-width
+    min-height: rem($base-size);
 
     padding: rem($padding-y $calendar-padding-x);
     padding-right: rem($base-size);
   }
   &--large {
     $padding-y: $calendar-padding-y-lg - 1px; // 1px is the border-width
+    min-height: rem($base-size-lg);
 
     padding: rem($padding-y $calendar-padding-x-lg);
     padding-right: rem($base-size-lg);

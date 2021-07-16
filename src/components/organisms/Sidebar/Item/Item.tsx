@@ -1,7 +1,8 @@
 import * as React from 'react';
 import AnimateHeight from 'react-animate-height';
 import cn from 'classnames';
-import { Icon, Label } from 'components/atoms';
+import { Icon, Label, Tooltip } from 'components/atoms';
+import { useLayoutState } from 'components/organisms/Layout/context';
 
 export const Item: React.FC<{
   className?: string;
@@ -11,20 +12,20 @@ export const Item: React.FC<{
   prefix?: React.ReactNode;
   invert?: boolean;
   text?: React.ReactNode;
-  options?: React.ReactNode;
   active?: boolean;
   disabled?: boolean;
   onClick?: () => void;
-}> = ({ className, labelClass, optionsClass, label, active, prefix, invert, text, disabled, onClick, options }) => {
+}> = ({ className, labelClass, optionsClass, label, active, prefix, invert, text, disabled, onClick, children }) => {
+  const { toggled } = useLayoutState();
   const [collapsed, setCollapsed] = React.useState(false);
 
   const onClickHandler = (): void => {
     if (!disabled) {
-      if (options !== undefined) {
+      if (children) {
         setCollapsed((s) => !s);
       }
 
-      if (!options && onClick !== undefined) {
+      if (!children && onClick !== undefined) {
         onClick();
       }
     }
@@ -35,29 +36,40 @@ export const Item: React.FC<{
       {label && <Label className={cn(`ebs-sidebar__label`, labelClass)} text={label} />}
 
       <div className="relative">
-        <div
-          className={cn(`ebs-sidebar__item`, className, {
-            invert: invert,
-            active: active || collapsed,
-            disabled: disabled,
-            'has-options': options,
-          })}
-          onClick={onClickHandler}
+        <Tooltip
+          bodyClass="p-0"
+          placement="right"
+          trigger={toggled && children ? 'click' : undefined}
+          tooltip={toggled ? <div className={cn(`ebs-sidebar__options`)}>{children}</div> : undefined}
         >
-          {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}
-
-          <span className="ebs-sidebar__text">{text}</span>
-
-          {options !== undefined && (
-            <div className="ebs-sidebar__suffix">
-              <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}`} model="bold" />
+          <div className="relative">
+            <div
+              className={cn(`ebs-sidebar__item`, className, {
+                'ebs-sidebar__item--invert': invert,
+                'ebs-sidebar__item--active': active,
+                'ebs-sidebar__item--collapsed': collapsed,
+                'ebs-sidebar__item--disabled': disabled,
+                'has-options': children,
+              })}
+              onClick={onClickHandler}
+            >
+              {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}
+              <span className={cn('ebs-sidebar__text', { 'px-0': typeof text !== 'string' })}>{text}</span>
             </div>
-          )}
-        </div>
 
-        <AnimateHeight duration={150} height={collapsed ? 'auto' : 0}>
-          <div className={cn(`ebs-sidebar__options`, optionsClass)}>{options}</div>
-        </AnimateHeight>
+            {children && (
+              <div className="ebs-sidebar__suffix">
+                <Icon type={`arrow-${collapsed ? 'bottom' : 'left'}`} model="bold" />
+              </div>
+            )}
+          </div>
+        </Tooltip>
+
+        {!toggled && (
+          <AnimateHeight duration={150} height={collapsed ? 'auto' : 0}>
+            <div className={cn(`ebs-sidebar__options`, optionsClass)}>{children}</div>
+          </AnimateHeight>
+        )}
       </div>
     </>
   );

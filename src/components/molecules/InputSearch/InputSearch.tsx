@@ -65,11 +65,11 @@ export const InputSearch: React.FC<InputSearchProps> = ({
 
   const [, cancel] = useDebounce(onSearchHandler, 1000, [value]);
 
-  const onChangeHandler = (newValue: string): void => {
+  const onChangeHandler = (newValue: string | number): void => {
     cancel();
     setChangedValue(false);
 
-    setValue(newValue);
+    setValue(newValue as string);
   };
 
   return (

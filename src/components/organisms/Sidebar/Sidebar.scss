@@ -38,7 +38,9 @@
   }
 
   &__top {
+    height: 100%;
     margin-top: rem(5px);
+    overflow: hidden auto;
   }
 
   &__text {
@@ -69,20 +71,24 @@
       .ebs-sidebar__text {
         animation: fadeOut 0.1s;
       }
+    }
 
-      .ebs-sidebar__suffix .ebs-icon {
-        right: rem($gutter-size / 2);
-      }
+    .ebs-sidebar__suffix .ebs-icon {
+      right: rem($gutter-size / 2);
     }
 
     .ebs-sidebar__options {
+      position: absolute;
+      top: 0;
       left: rem(57px);
     }
 
     .ebs-sidebar__options .ebs-sidebar__item:hover,
-    .ebs-sidebar__options .ebs-sidebar__item.active,
-    .ebs-sidebar__options .ebs-sidebar__item.invert:hover,
-    .ebs-sidebar__options .ebs-sidebar__item.invert.active:hover {
+    .ebs-sidebar__options .ebs-sidebar__item.ebs-sidebar__item--active,
+    .ebs-sidebar__options .ebs-sidebar__item.ebs-sidebar__item--invert:hover,
+    .ebs-sidebar__options
+      .ebs-sidebar__item.ebs-sidebar__item--invert
+      .ebs-sidebar__item.ebs-sidebar__item--active:hover {
       background-color: $primary-color;
     }
   }
@@ -95,34 +101,10 @@
     padding-right: 0;
   }
 
-  &--toggled &__item.active + .rah-static &__options &__item {
+  &--toggled &__item--active + .rah-static &__options &__item {
     opacity: 1;
     left: rem($layout-top-bar-height - 1);
     transition: all $transition-time;
-  }
-
-  &--toggled &__options &__item {
-    background-color: $sidebar-background;
-    padding: rem($gutter-size / 3 $gutter-size);
-    z-index: 2;
-    left: -#{rem($sidebar-width)};
-    opacity: 0;
-    height: rem($layout-top-bar-height);
-    width: rem($sidebar-width - 1);
-    border-top: rem($sidebar-border);
-    border-right: rem($sidebar-border);
-
-    &.disabled {
-      background-color: $border-color;
-
-      span {
-        color: $grey-500;
-      }
-    }
-
-    &:nth-last-child(2) {
-      border-bottom: $sidebar-border;
-    }
   }
 
   &__mask {
@@ -139,15 +121,16 @@
   &__bottom {
     background-color: $sidebar-bottom-background;
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin-top: rem(20px);
     padding-bottom: rem(20px);
     overflow: hidden;
 
     @include mq($until: small-desktop) {
       padding-bottom: rem(120px);
     }
+  }
+
+  &__suffix,
+  &__prefix {
+    pointer-events: none;
   }
 }
