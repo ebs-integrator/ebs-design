@@ -16,17 +16,10 @@ export default {
 export const Regular = (): React.ReactNode => (
   <Sidebar>
     <TopMenu>
-      <Item
-        label="Category 1"
-        prefix={<Icon type="search" />}
-        text="Top parent tab"
-        options={
-          <>
-            <Item text="Child tab" />
-            <Item text="Disabled Child tab" disabled />
-          </>
-        }
-      />
+      <Item label="Category 1" prefix={<Icon type="search" />} text="Top parent tab">
+        <Item text="Child tab" />
+        <Item text="Disabled Child tab" disabled />
+      </Item>
       <Item prefix={<Icon type="eye" />} text="Top tab" active={true} />
     </TopMenu>
 
