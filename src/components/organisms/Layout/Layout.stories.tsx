@@ -52,17 +52,10 @@ export const Regular = (): React.ReactNode => (
 
     <Sidebar>
       <Sidebar.TopMenu>
-        <Sidebar.Item
-          label="Category 1"
-          prefix={<Icon type="search" />}
-          text="Top parent tab"
-          options={
-            <>
-              <Sidebar.Item text="Child tab" />
-              <Sidebar.Item text="Disabled Child tab" disabled />
-            </>
-          }
-        />
+        <Sidebar.Item label="Category 1" prefix={<Icon type="search" />} text="Top parent tab">
+          <Sidebar.Item text="Child tab" />
+          <Sidebar.Item text="Disabled Child tab" disabled />
+        </Sidebar.Item>
 
         <Sidebar.Item prefix={<Icon type="eye" />} text="Top tab" active={true} />
       </Sidebar.TopMenu>
@@ -91,17 +84,10 @@ export const withoutTopbar = (): React.ReactNode => (
   <Layout>
     <Sidebar>
       <Sidebar.TopMenu>
-        <Sidebar.Item
-          label="Category 1"
-          prefix={<Icon type="search" />}
-          text="Top parent tab"
-          options={
-            <>
-              <Sidebar.Item text="Child tab" />
-              <Sidebar.Item text="Disabled Child tab" disabled />
-            </>
-          }
-        />
+        <Sidebar.Item label="Category 1" prefix={<Icon type="search" />} text="Top parent tab">
+          <Sidebar.Item text="Child tab" />
+          <Sidebar.Item text="Disabled Child tab" disabled />
+        </Sidebar.Item>
 
         <Sidebar.Item prefix={<Icon type="eye" />} text="Top tab" active={true} />
       </Sidebar.TopMenu>
@@ -145,17 +131,10 @@ export const withoutSidebarOptions = (): React.ReactNode => (
 
     <Sidebar>
       <Sidebar.TopMenu>
-        <Sidebar.Item
-          label="Category 1"
-          prefix={<Icon type="search" />}
-          text="Top parent tab"
-          options={
-            <>
-              <Sidebar.Item text="Child tab" />
-              <Sidebar.Item text="Disabled Child tab" disabled />
-            </>
-          }
-        />
+        <Sidebar.Item label="Category 1" prefix={<Icon type="search" />} text="Top parent tab">
+          <Sidebar.Item text="Child tab" />
+          <Sidebar.Item text="Disabled Child tab" disabled />
+        </Sidebar.Item>
 
         <Sidebar.Item prefix={<Icon type="eye" />} text="Top tab" active={true} />
       </Sidebar.TopMenu>
@@ -191,17 +170,10 @@ export const withoutFooter = (): React.ReactNode => (
 
     <Sidebar>
       <Sidebar.TopMenu>
-        <Sidebar.Item
-          label="Category 1"
-          prefix={<Icon type="search" />}
-          text="Top parent tab"
-          options={
-            <>
-              <Sidebar.Item text="Child tab" />
-              <Sidebar.Item text="Disabled Child tab" disabled />
-            </>
-          }
-        />
+        <Sidebar.Item label="Category 1" prefix={<Icon type="search" />} text="Top parent tab">
+          <Sidebar.Item text="Child tab" />
+          <Sidebar.Item text="Disabled Child tab" disabled />
+        </Sidebar.Item>
 
         <Sidebar.Item prefix={<Icon type="eye" />} text="Top tab" active={true} />
       </Sidebar.TopMenu>
@@ -244,17 +216,10 @@ export const withFixedFooter = (): React.ReactNode => (
 
     <Sidebar>
       <Sidebar.TopMenu>
-        <Sidebar.Item
-          label="Category 1"
-          prefix={<Icon type="search" />}
-          text="Top parent tab"
-          options={
-            <>
-              <Sidebar.Item text="Child tab" />
-              <Sidebar.Item text="Disabled Child tab" disabled />
-            </>
-          }
-        />
+        <Sidebar.Item label="Category 1" prefix={<Icon type="search" />} text="Top parent tab">
+          <Sidebar.Item text="Child tab" />
+          <Sidebar.Item text="Disabled Child tab" disabled />
+        </Sidebar.Item>
 
         <Sidebar.Item prefix={<Icon type="eye" />} text="Top tab" active={true} />
       </Sidebar.TopMenu>

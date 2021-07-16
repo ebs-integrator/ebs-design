@@ -1,14 +1,40 @@
 .ebs-sidebar {
+  &__text {
+    color: $sidebar-item-text-color;
+    font-size: rem(14px);
+    transition: $transition-time;
+    padding: rem($gutter-size 27.5px $gutter-size 57.5px);
+
+    a {
+      padding: rem($gutter-size 27.5px $gutter-size 57.5px);
+    }
+  }
+
+  &:not(.ebs-sidebar--toggled) &__item--collapsed.has-options {
+    background-color: rgba($sidebar-item-hover-background, 0.1);
+
+    .ebs-sidebar__text,
+    a,
+    svg,
+    & + .ebs-sidebar__suffix svg {
+      color: $sidebar-item-text-color;
+    }
+  }
+
   &__item {
     @include text-ellipsis;
     position: relative;
     cursor: pointer;
     transition: $transition-time;
-    padding: rem($gutter-size 27.5px $gutter-size 57.5px);
     display: flex;
     align-items: center;
     color: $sidebar-item-text-color;
     max-height: rem(44px);
+
+    &__options &__item .ebs-sidebar__text {
+      font-size: rem(12px);
+      color: $sidebar-item-text-color;
+    }
 
     &:hover,
     &--invert:hover,
@@ -85,12 +111,6 @@
     font-size: rem(18px);
   }
 
-  &__text {
-    color: $sidebar-item-text-color;
-    font-size: rem(14px);
-    transition: $transition-time;
-  }
-
   &__suffix {
     .ebs-icon {
       position: absolute;
@@ -119,8 +139,10 @@
     color: $sidebar-item-text-color;
   }
 
-  &__options &__item {
-    padding: rem(5px 13.75px 5px 60px);
+  &__options &__text {
+    padding-top: rem(5px);
+    padding-bottom: rem(5px);
+    padding-right: rem(10px);
 
     &:hover,
     &--active,
@@ -136,10 +158,5 @@
 
   &__options &__item &__prefix {
     display: none;
-  }
-
-  &__options &__item .ebs-sidebar__text {
-    font-size: rem(12px);
-    color: $sidebar-item-text-color;
   }
 }
