@@ -169,7 +169,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       const rect = inputRef.current.getBoundingClientRect();
       const offsetTop = rect.top + rect.height;
       const style = {
-        position: 'absolute',
+        position: 'fixed',
         left: `${rect.left}px`,
         width: `${rect.width}px`,
         top: `${offsetTop}px`,
