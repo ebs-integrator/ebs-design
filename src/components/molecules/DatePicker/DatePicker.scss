@@ -27,9 +27,14 @@
   // Clear icon
   .react-datepicker__close-icon {
     &::after {
-      background-color: $primary-color;
-      font-size: rem(14px);
+      background-color: white;
+      border-radius: 0;
+      color: $text-color;
+      font-size: rem(24px);
+      height: rem(22px);
+      overflow: hidden;
     }
+    padding-right: rem(6px);
   }
 }
 
