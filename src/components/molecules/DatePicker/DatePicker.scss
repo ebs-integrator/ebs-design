@@ -30,8 +30,9 @@
       background-color: white;
       border-radius: 0;
       color: $text-color;
-      font-size: rem(24px);
-      height: rem(22px);
+      font-size: rem(22px);
+      height: rem(20px);
+      display: inline-block;
       overflow: hidden;
     }
     padding-right: rem(6px);

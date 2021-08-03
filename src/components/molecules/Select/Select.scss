@@ -71,18 +71,7 @@
 
   &__clear {
     z-index: 2;
-    display: inline-flex;
-    align-items: center;
-
-    .ebs-icon {
-      padding: rem(3px);
-      font-size: 1rem;
-      color: $text-color;
-
-      path {
-        stroke-width: 1;
-      }
-    }
+    @include close-icon-container;
   }
 
   &__suffix {

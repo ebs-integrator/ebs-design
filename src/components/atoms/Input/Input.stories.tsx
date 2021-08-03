@@ -31,6 +31,11 @@ export const Regular = (): React.ReactElement => {
         </div>
 
         <div className="storybook-row-item">
+          <div className="storybook-label">Clearable</div>
+          <Input placeholder="Text field" isClearable value="Text field" onChange={(): null => null} />
+        </div>
+
+        <div className="storybook-row-item">
           <div className="storybook-label">Error</div>
           <Input hasError placeholder="Text field" />
         </div>
