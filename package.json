@@ -56,13 +56,13 @@
     "react-animate-height": "^2.0.23",
     "react-datepicker": "^4.1.1",
     "react-phone-input-2": "^2.13.8",
-    "react-popper-tooltip": "^3.1.1",
+    "react-popper-tooltip": "^4.3.0",
     "react-use": "^17.1.0"
   },
   "peerDependencies": {
+    "node-sass": ">=4.0.0 <5.0.0",
     "react": ">= 16.8",
-    "react-dom": ">= 16.8",
-    "node-sass": ">=4.0.0 <5.0.0"
+    "react-dom": ">= 16.8"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.3.0",

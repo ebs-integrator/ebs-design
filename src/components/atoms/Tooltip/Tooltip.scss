@@ -5,6 +5,8 @@
     border-radius: rem($border-radius);
     margin: rem(0 $gutter-size / 2);
     z-index: 2;
+    color: $text-color;
+    background-color: $white;
 
     &.ebs-tooltip--top {
       margin: rem(0 0 $gutter-size / 2);
@@ -26,7 +28,6 @@
   &__body {
     padding: rem($gutter-size);
     font-size: rem($gutter-size);
-    color: $text-color;
 
     &-title {
       color: $heading-color;
@@ -37,36 +38,41 @@
   }
 
   &__arrow {
-    position: absolute;
     font-size: rem($gutter-size);
-    transform: translate3d(-50%, 0, 0) rotate(180deg);
+    display: inline-block;
+    height: 1em;
+    width: 1em;
   }
 
   &__arrow path {
-    stroke: transparent;
     fill: $white;
   }
 
   &__arrow[data-placement*='top'] {
     bottom: rem(-$gutter-size + 5);
-    left: 50%;
+    svg {
+      transform: translateY(-1px) rotate(180deg);
+    }
   }
 
   &__arrow[data-placement*='right'] {
     left: rem(-$gutter-size + 5);
-    top: 50%;
-    transform: translate3d(0, -50%, 0) rotate(270deg);
+    svg {
+      transform: rotate(-90deg);
+    }
   }
 
   &__arrow[data-placement*='bottom'] {
     top: rem(-$gutter-size + 5);
-    left: 50%;
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    svg {
+      transform: translateY(-2px) rotate(0deg);
+    }
   }
 
   &__arrow[data-placement*='left'] {
     right: rem(-$gutter-size + 5);
-    top: 50%;
-    transform: translate3d(0, -50%, 0) rotate(90deg);
+    svg {
+      transform: rotate(90deg);
+    }
   }
 }
