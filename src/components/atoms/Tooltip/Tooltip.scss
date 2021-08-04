@@ -1,4 +1,20 @@
 .ebs-tooltip {
+  $self: &;
+
+  &--inline {
+    display: inline-block;
+    #{$self}__trigger {
+      display: inline-block;
+    }
+  }
+
+  &--nowrap {
+    #{$self}__body,
+    #{$self}__body-title {
+      white-space: nowrap;
+    }
+  }
+
   &__wrapper {
     @include elevation-2;
     background-color: $white;
@@ -7,22 +23,6 @@
     z-index: 2;
     color: $text-color;
     background-color: $white;
-
-    &.ebs-tooltip--top {
-      margin: rem(0 0 $gutter-size / 2);
-    }
-
-    &.ebs-tooltip--bottom {
-      margin: rem($gutter-size / 2 0 0);
-    }
-
-    &.ebs-tooltip--left {
-      margin: rem(0 $gutter-size / 2 0 0);
-    }
-
-    &.ebs-tooltip--right {
-      margin: rem(0 0 0 $gutter-size / 2);
-    }
   }
 
   &__body {
@@ -48,28 +48,28 @@
     fill: $white;
   }
 
-  &__arrow[data-placement*='top'] {
+  &__wrapper[data-popper-placement*='top'] &__arrow {
     bottom: rem(-$gutter-size + 5);
     svg {
       transform: translateY(-1px) rotate(180deg);
     }
   }
 
-  &__arrow[data-placement*='right'] {
+  &__wrapper[data-popper-placement*='right'] &__arrow {
     left: rem(-$gutter-size + 5);
     svg {
       transform: rotate(-90deg);
     }
   }
 
-  &__arrow[data-placement*='bottom'] {
+  &__wrapper[data-popper-placement*='bottom'] &__arrow {
     top: rem(-$gutter-size + 5);
     svg {
       transform: translateY(-2px) rotate(0deg);
     }
   }
 
-  &__arrow[data-placement*='left'] {
+  &__wrapper[data-popper-placement*='left'] &__arrow {
     right: rem(-$gutter-size + 5);
     svg {
       transform: rotate(90deg);

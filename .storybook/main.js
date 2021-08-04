@@ -7,7 +7,7 @@ module.exports = {
     '../src/components/*.stories.mdx',
     '../src/components/**/**/*.stories.@(tsx|mdx)',
   ],
-  addons: ['@storybook/addon-docs', '@storybook/addon-links'],
+  addons: ['@storybook/addon-docs', '@storybook/addon-links', '@storybook/addon-controls'],
   presets: [
     '@storybook/preset-create-react-app',
     {

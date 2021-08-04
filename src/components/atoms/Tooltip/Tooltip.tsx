@@ -45,6 +45,9 @@ export interface TooltipProps extends TooltipConfig {
   title?: React.ReactNode;
   tooltip?: React.ReactNode;
   hideArrow?: boolean;
+  width?: number | string;
+  nowrap?: boolean;
+  inline?: boolean;
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({
@@ -53,16 +56,17 @@ export const Tooltip: React.FC<TooltipProps> = ({
   title,
   tooltip,
   hideArrow,
+  width,
+  nowrap,
+  inline,
   ...tooltipConfig
 }) => {
   const { getArrowProps, getTooltipProps, setTooltipRef, setTriggerRef, visible } = usePopperTooltip({
     ...tooltipConfig,
   });
 
-  const { placement } = tooltipConfig;
-
   return (
-    <div style={{ position: 'relative' }}>
+    <div className={cn(`ebs-tooltip`, { [`ebs-tooltip--nowrap`]: nowrap, [`ebs-tooltip--inline`]: inline })}>
       <div className="ebs-tooltip__trigger" ref={setTriggerRef}>
         {children}
       </div>
@@ -70,14 +74,14 @@ export const Tooltip: React.FC<TooltipProps> = ({
         <div
           ref={setTooltipRef}
           {...getTooltipProps({
-            className: `ebs-tooltip__wrapper ebs-tooltip--${placement}`,
+            className: cn(`ebs-tooltip__wrapper`, { [`ebs-tooltip--nowrap`]: nowrap }),
+            style: { width },
           })}
         >
           {!hideArrow && (
             <div
               {...getArrowProps({
                 className: 'ebs-tooltip__arrow',
-                'data-placement': placement,
               })}
             >
               <Icon type="arrow-top" />

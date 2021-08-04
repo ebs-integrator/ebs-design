@@ -47,6 +47,7 @@
     "build:storybook": "build-storybook -o docs-build"
   },
   "dependencies": {
+    "@storybook/addon-controls": "^6.3.6",
     "classnames": "^2.2.6",
     "dayjs": "^1.9.4",
     "rc-field-form": "^1.17.4",
