@@ -172,17 +172,20 @@ export const Titled = (): React.ReactElement => (
   </div>
 );
 
-export const Playground: React.FC<TooltipProps> = ({ children, ...props }): React.ReactElement => {
+export const Playground: React.FC<TooltipProps> & { args: TooltipProps } = ({
+  children,
+  ...props
+}): React.ReactElement => {
   return (
     <div>
       <Tooltip {...props}>
         <Button>Trigger</Button>
       </Tooltip>
-      <div className="mr-15" style={{ display: 'inline-block' }}></div>
+      <div className="mr-15 inline"></div>
       <Tooltip {...props}>
         <Button>Trigger</Button>
       </Tooltip>
-      <div className="mr-15" style={{ display: 'inline-block' }}></div>
+      <div className="mr-15 inline"></div>
       <Tooltip {...props}>
         <Button>Trigger</Button>
       </Tooltip>
@@ -190,8 +193,7 @@ export const Playground: React.FC<TooltipProps> = ({ children, ...props }): Reac
   );
 };
 
-// ? maybe FIXME
-(Playground as any).args = {
+Playground.args = {
   tooltip: 'Tooltip content',
   inline: true,
   trigger: 'hover',

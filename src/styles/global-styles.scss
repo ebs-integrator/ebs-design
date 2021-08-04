@@ -102,6 +102,10 @@ strong {
   position: relative;
 }
 
+.inline {
+  display: inline-block;
+}
+
 ::-webkit-scrollbar {
   width: $scrollbar-size;
   height: $scrollbar-size;
