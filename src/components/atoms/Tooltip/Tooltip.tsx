@@ -36,7 +36,7 @@ export type TooltipConfig = Partial<{
   offset: [number, number]; // [0, 0]
   onVisibleChange: (state: boolean) => void;
   placement: TooltipPlacement;
-  trigger: TooltipTriggerType; // 'hover'
+  trigger: TooltipTriggerType | null; // 'hover'
   visible: boolean;
 }>;
 
