@@ -1,32 +1,33 @@
 .ebs-tooltip {
+  $self: &;
+
+  &--inline {
+    display: inline-block;
+    #{$self}__trigger {
+      display: inline-block;
+    }
+  }
+
+  &--nowrap {
+    #{$self}__body,
+    #{$self}__body-title {
+      white-space: nowrap;
+    }
+  }
+
   &__wrapper {
     @include elevation-2;
     background-color: $white;
     border-radius: rem($border-radius);
     margin: rem(0 $gutter-size / 2);
     z-index: 2;
-
-    &.ebs-tooltip--top {
-      margin: rem(0 0 $gutter-size / 2);
-    }
-
-    &.ebs-tooltip--bottom {
-      margin: rem($gutter-size / 2 0 0);
-    }
-
-    &.ebs-tooltip--left {
-      margin: rem(0 $gutter-size / 2 0 0);
-    }
-
-    &.ebs-tooltip--right {
-      margin: rem(0 0 0 $gutter-size / 2);
-    }
+    color: $text-color;
+    background-color: $white;
   }
 
   &__body {
     padding: rem($gutter-size);
     font-size: rem($gutter-size);
-    color: $text-color;
 
     &-title {
       color: $heading-color;
@@ -37,36 +38,41 @@
   }
 
   &__arrow {
-    position: absolute;
     font-size: rem($gutter-size);
-    transform: translate3d(-50%, 0, 0) rotate(180deg);
+    display: inline-block;
+    height: 1em;
+    width: 1em;
   }
 
   &__arrow path {
-    stroke: transparent;
     fill: $white;
   }
 
-  &__arrow[data-placement*='top'] {
+  &__wrapper[data-popper-placement*='top'] &__arrow {
     bottom: rem(-$gutter-size + 5);
-    left: 50%;
+    svg {
+      transform: translateY(-1px) rotate(180deg);
+    }
   }
 
-  &__arrow[data-placement*='right'] {
+  &__wrapper[data-popper-placement*='right'] &__arrow {
     left: rem(-$gutter-size + 5);
-    top: 50%;
-    transform: translate3d(0, -50%, 0) rotate(270deg);
+    svg {
+      transform: rotate(-90deg);
+    }
   }
 
-  &__arrow[data-placement*='bottom'] {
+  &__wrapper[data-popper-placement*='bottom'] &__arrow {
     top: rem(-$gutter-size + 5);
-    left: 50%;
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    svg {
+      transform: translateY(-1px) rotate(0deg);
+    }
   }
 
-  &__arrow[data-placement*='left'] {
+  &__wrapper[data-popper-placement*='left'] &__arrow {
     right: rem(-$gutter-size + 5);
-    top: 50%;
-    transform: translate3d(0, -50%, 0) rotate(90deg);
+    svg {
+      transform: rotate(90deg);
+    }
   }
 }

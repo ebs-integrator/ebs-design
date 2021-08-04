@@ -46,13 +46,16 @@ export const Radio = React.forwardRef<HTMLInputElement, Props>(
     return (
       <div className={cn(`ebs-radio__group`, `ebs-radio__align--${radioAlign}`, className)}>
         {options.map((option, idx) => (
-          <div key={idx} className={cn(`ebs-radio__wrapper`, { 'has-text': option.text, disabled: option.disabled })}>
+          <div
+            key={idx}
+            className={cn(`ebs-radio__wrapper`, { 'has-text': option.text, disabled: option.disabled })}
+            onClick={() => onClickHandler(option.value)}
+          >
             <input
               ref={ref}
               type="radio"
               className="ebs-radio__input"
               name={name}
-              onClick={() => onClickHandler(option.value)}
               value={option.value}
               onChange={onChangeHandler}
               {...(value !== undefined && option.value !== undefined

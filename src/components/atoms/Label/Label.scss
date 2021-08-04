@@ -139,8 +139,10 @@
   &__prefix,
   &__suffix {
     position: absolute;
-    top: calc(50% + 1px);
+    top: 50%;
     transform: translateY(-50%);
+    display: flex;
+    align-items: center;
 
     .ebs-icon__close:hover svg {
       opacity: 0.5;

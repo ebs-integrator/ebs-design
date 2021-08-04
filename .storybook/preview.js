@@ -8,7 +8,7 @@ addParameters({
   docs: {
     container: DocsContainer,
     page: DocsPage,
-    previewSource: 'open'
+    previewSource: 'open',
   },
 });
 
@@ -19,4 +19,5 @@ document.body.append(modalRoot);
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   layout: 'centered',
+  controls: { expanded: true },
 };
