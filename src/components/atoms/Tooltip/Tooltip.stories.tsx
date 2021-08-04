@@ -178,9 +178,11 @@ export const Playground: React.FC<TooltipProps> = ({ children, ...props }): Reac
       <Tooltip {...props}>
         <Button>Trigger</Button>
       </Tooltip>
+      <div className="mr-15" style={{ display: 'inline-block' }}></div>
       <Tooltip {...props}>
         <Button>Trigger</Button>
       </Tooltip>
+      <div className="mr-15" style={{ display: 'inline-block' }}></div>
       <Tooltip {...props}>
         <Button>Trigger</Button>
       </Tooltip>
@@ -192,4 +194,5 @@ export const Playground: React.FC<TooltipProps> = ({ children, ...props }): Reac
 (Playground as any).args = {
   tooltip: 'Tooltip content',
   inline: true,
+  trigger: 'hover',
 };
