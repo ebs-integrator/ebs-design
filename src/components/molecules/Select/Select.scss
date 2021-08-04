@@ -33,47 +33,10 @@
     .ebs-select-value__container {
       max-width: 70%;
     }
-
-    .ebs-select-transition {
-      right: calc(30% - #{rem(40px)});
-    }
-  }
-
-  &-transition {
-    width: rem(80px);
-    height: calc(100% - 2px);
-    margin: 1px;
-    position: absolute;
-    right: $gutter-size;
-    top: 0;
-    border-top-right-radius: rem(4px);
-    border-bottom-right-radius: rem(4px);
-    box-shadow: inset -90px 0px 15px -12px rgba($white, 1);
-  }
-
-  &-count {
-    position: absolute;
-    right: (35px);
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: $primary-color;
-    color: $white;
-    font-size: rem(12px);
-    border-radius: rem($border-radius);
-    padding: rem(5px 8px);
-    z-index: 2;
-  }
-
-  &-count + &__clear {
-    margin-right: rem($base-size + $gutter-size);
   }
 
   &--box &__clear {
     margin-right: 0;
-  }
-
-  &--box &-count + &__clear {
-    margin-right: rem($base-size + ($gutter-size / 2));
   }
 
   &__prefix {
@@ -107,29 +70,14 @@
   }
 
   &__clear {
-    z-index: 2;
-    margin-right: rem($gutter-size / 2);
-
-    .ebs-button__wrapper {
-      border-radius: 100%;
-      width: rem($gutter-size + 4);
-      height: rem($gutter-size + 4);
-
-      .ebs-button {
-        @include flex-center-vert;
-        padding: 0;
-
-        .ebs-icon {
-          padding: rem(2px);
-          font-size: 1rem;
-          color: $white;
-        }
-      }
-    }
+    @include close-icon-container;
   }
 
   &__suffix {
     color: $text-color;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
 
     .ebs-icon {
       font-size: rem(10px);
