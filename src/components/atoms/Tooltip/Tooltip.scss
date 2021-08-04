@@ -65,7 +65,7 @@
   &__wrapper[data-popper-placement*='bottom'] &__arrow {
     top: rem(-$gutter-size + 5);
     svg {
-      transform: translateY(-2px) rotate(0deg);
+      transform: translateY(-1px) rotate(0deg);
     }
   }
 
