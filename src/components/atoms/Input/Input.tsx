@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Extra, Label, Button, Icon } from 'components/atoms';
+import { Extra, Label, Icon } from 'components/atoms';
 import { Loader } from 'components/molecules';
 
 export type InputSize = 'small' | 'medium' | 'large';
@@ -134,9 +134,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
             {hasValue && isClearable ? (
               <div className="ebs-input__clear">
-                <Button size="small" type="primary" onClick={onChange && (() => onChange(''))}>
-                  <Icon type="close" model="bold" />
-                </Button>
+                <Icon type="close" model="bold" onClick={onChange && (() => onChange(''))} />
               </div>
             ) : null}
           </div>

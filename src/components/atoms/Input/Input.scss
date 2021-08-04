@@ -137,22 +137,5 @@
   right: rem($gutter-size / 2);
   top: 50%;
   transform: translate3d(0, -50%, 0);
-  z-index: 2;
-
-  .ebs-button__wrapper {
-    border-radius: 100%;
-    width: rem($gutter-size + 4);
-    height: rem($gutter-size + 4);
-
-    .ebs-button {
-      @include flex-center-vert;
-      padding: 0;
-
-      .ebs-icon {
-        padding: rem(2px);
-        font-size: 1rem;
-        color: $white;
-      }
-    }
-  }
+  @include close-icon-container;
 }

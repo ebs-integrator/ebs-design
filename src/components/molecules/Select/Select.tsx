@@ -5,7 +5,7 @@ import useWindowScroll from 'react-use/esm/useWindowScroll';
 import useMouseWheel from 'react-use/esm/useMouseWheel';
 import useIntersection from 'react-use/esm/useIntersection';
 import cn from 'classnames';
-import { Label, Icon, Button, Input } from 'components/atoms';
+import { Label, Icon, Input } from 'components/atoms';
 import { Loader } from 'components/molecules';
 import { usePortal, useEventListener } from 'hooks';
 import { isArray, toArray, uniqueArray, isEqual as isEqualArray } from 'libs';
@@ -169,7 +169,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       const rect = inputRef.current.getBoundingClientRect();
       const offsetTop = rect.top + rect.height;
       const style = {
-        position: 'absolute',
+        position: 'fixed',
         left: `${rect.left}px`,
         width: `${rect.width}px`,
         top: `${offsetTop}px`,
@@ -426,7 +426,13 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                       type="primary"
                       circle
                       text={item}
-                      suffix={!disabled ? <Icon type="close" model="bold" /> : undefined}
+                      suffix={
+                        !disabled ? (
+                          <div className="ebs-select__clear">
+                            <Icon type="close" model="bold" />
+                          </div>
+                        ) : undefined
+                      }
                       onClickSuffix={() => !disabled && onDeleteSelect(key)}
                     />
                   ))
@@ -445,17 +451,9 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
               )}
             </div>
 
-            {hasValue && isArray(textValue) ? (
-              <div className="ebs-select-count" style={isBox ? { right: '1rem' } : undefined}>
-                {(textValue as OptionValue[]).length}
-              </div>
-            ) : null}
-
             {hasValue && isClearable && !disabled ? (
-              <div className="ebs-select__clear">
-                <Button size="small" type="primary" onClick={onClear}>
-                  <Icon type="close" model="bold" />
-                </Button>
+              <div className="ebs-select__clear" onClick={onClear}>
+                <Icon type="close" model="bold" />
               </div>
             ) : null}
 
@@ -464,8 +462,6 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                 <Icon type={`arrow-${!disabled && openDropdown ? 'top' : 'bottom'}`} model="bold" />
               </div>
             )}
-
-            {hasValue && isArray(textValue) ? <div className="ebs-select-transition" /> : null}
           </div>
 
           {suffix && <div className="ebs-select__suffix">{suffix}</div>}
