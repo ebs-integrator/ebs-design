@@ -73,6 +73,13 @@
     @include close-icon-container;
   }
 
+  &__clear {
+    font-size: rem(22px);
+    display: inline-block;
+    padding: rem(0 7px);
+    margin: rem(0 -7px);
+  }
+
   &__suffix {
     color: $text-color;
     margin-left: 0.5rem;

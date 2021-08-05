@@ -10,6 +10,7 @@ export interface Props extends PhoneInputProps {
   hasError?: boolean;
   label?: React.ReactNode;
   extra?: React.ReactNode;
+  isClearable?: boolean;
 }
 
 export const InputPhone: React.FC<Props> = ({
@@ -22,24 +23,36 @@ export const InputPhone: React.FC<Props> = ({
   onChange,
   label,
   extra,
+  isClearable,
   ...props
 }) => (
   <div className="ebs-input__phone-wrapper">
     <Label text={label} disabled={disabled} />
 
-    <PhoneInput
-      value={value}
-      onChange={onChange}
-      containerClass={cn(`ebs-input__phone`, className, {
-        'has-error': hasError,
-        active: value,
-        disabled: disabled,
-      })}
-      dropdownClass={cn(`ebs-input__phone-dropdown`, dropdownClass)}
-      placeholder={placeholder}
-      disabled={disabled}
-      {...props}
-    />
+    <div className="ebs-input__phone-wrapper__container">
+      <PhoneInput
+        value={value}
+        onChange={onChange}
+        containerClass={cn(`ebs-input__phone`, className, {
+          'has-error': hasError,
+          active: value,
+          disabled: disabled,
+        })}
+        dropdownClass={cn(`ebs-input__phone-dropdown`, dropdownClass)}
+        placeholder={placeholder}
+        disabled={disabled}
+        {...props}
+      />
+
+      {isClearable && !!value?.length && (
+        <div
+          className="ebs-input__phone__clear"
+          onClick={() => onChange && onChange('', {}, {} as React.ChangeEvent<HTMLInputElement>, '')}
+        >
+          &#215;
+        </div>
+      )}
+    </div>
 
     <Extra text={extra} status={hasError ? 'danger' : 'text'} disabled={disabled} />
   </div>

@@ -24,6 +24,11 @@ export const Regular: React.FC = () => (
       </div>
 
       <div className="storybook-row-item">
+        <div className="storybook-label">Clearable</div>
+        <InputPhone value="+37378014910" isClearable />
+      </div>
+
+      <div className="storybook-row-item">
         <div className="storybook-label">Error</div>
         <InputPhone hasError />
       </div>

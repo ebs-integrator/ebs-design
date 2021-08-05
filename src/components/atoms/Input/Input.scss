@@ -137,5 +137,9 @@
   right: rem($gutter-size / 2);
   top: 50%;
   transform: translate3d(0, -50%, 0);
+  font-size: rem(22px);
+  display: inline-block;
+  padding: rem(0 7px);
+  margin: rem(0 -7px);
   @include close-icon-container;
 }

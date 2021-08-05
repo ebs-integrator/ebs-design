@@ -1,6 +1,8 @@
 @import '~react-phone-input-2/lib/style.css';
 
 .react-tel-input.ebs-input__phone {
+  position: relative;
+
   &.active .form-control,
   &.active .flag-dropdown {
     border-color: $primary-color;
@@ -96,5 +98,23 @@
     &::-webkit-scrollbar-thumb:hover {
       background: $scrollbar-thumb-hover-background-color !important;
     }
+  }
+}
+
+.ebs-input__phone {
+  &-wrapper__container {
+    position: relative;
+  }
+
+  &__clear {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    right: rem($gutter-size / 2);
+    font-size: rem(22px);
+    display: inline-block;
+    padding: rem(0 7px);
+    margin: rem(0 -7px);
+    transform: translate3d(0, -50%, 0);
   }
 }

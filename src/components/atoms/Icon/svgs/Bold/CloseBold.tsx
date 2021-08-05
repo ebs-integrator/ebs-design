@@ -2,13 +2,7 @@ import React from 'react';
 
 export const CloseBold: React.FC = (defaultProps) => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="currentColor"
-      stroke="currentColor"
-      viewBox="0 0 32 32"
-      {...defaultProps}
-    >
+    <svg fill="currentColor" stroke="currentColor" viewBox="0 0 32 32" {...defaultProps}>
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
