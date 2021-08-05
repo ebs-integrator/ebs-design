@@ -24,6 +24,11 @@ export const Regular = (): React.ReactElement => (
       </div>
 
       <div className="storybook-row-item">
+        <div className="storybook-label">Clearable</div>
+        <InputSearch value="Text field" isClearable />
+      </div>
+
+      <div className="storybook-row-item">
         <div className="storybook-label">Disabled</div>
         <InputSearch disabled value="Text field" />
       </div>
@@ -40,6 +45,11 @@ export const Regular = (): React.ReactElement => (
       <div className="storybook-row-item">
         <div className="storybook-label">Active</div>
         <InputSearch styleType="fill" value="Text field" />
+      </div>
+
+      <div className="storybook-row-item">
+        <div className="storybook-label">Clearable</div>
+        <InputSearch styleType="fill" value="Text field" isClearable />
       </div>
 
       <div className="storybook-row-item">
