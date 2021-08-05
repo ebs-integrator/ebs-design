@@ -140,13 +140,13 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
 
   const childs = React.useMemo(() => {
     const childrens = React.Children.toArray(children) as GenericObject[];
-    const optionsEl = childrens.find((child) => child.type === Options);
+    const optionsEl = childrens.find((child) => child?.type === Options);
 
     return [...childrens, ...(!optionsEl ? (React.Children.toArray(<Options />) as GenericObject[]) : [])];
   }, [children]);
 
   const $options = React.useMemo(() => {
-    const child = childs.find((i) => i.type === Options);
+    const child = childs.find((i) => i?.type === Options);
 
     return !!optionsList.length
       ? optionsList
@@ -158,11 +158,11 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
       : optionsList;
   }, [optionsList, childs]);
 
-  const searchEl = React.useMemo(() => childs.find((child) => child.type === Search), [childs]);
+  const searchEl = React.useMemo(() => childs.find((child) => child?.type === Search), [childs]);
 
   const isBox = React.useMemo(() => optionsMode === 'box', [optionsMode]);
   const isSearch = React.useMemo(() => (searchEl && !!searchEl.props?.value?.length) || false, [searchEl]);
-  const paginationProps = React.useMemo(() => childs.find((child) => child.type === Pagination)?.props, [childs]);
+  const paginationProps = React.useMemo(() => childs.find((child) => child?.type === Pagination)?.props, [childs]);
 
   React.useEffect(() => {
     if (!isBox && openDropdown && inputRef.current) {
@@ -327,7 +327,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
     () => (
       <div ref={optionsRef} className={cn(`ebs-select__options`, className)} style={optionsStyle}>
         {childs.map((child, i) => {
-          if (child.type === Options) {
+          if (child?.type === Options) {
             return (
               <Options
                 key={i}
@@ -348,7 +348,7 @@ const Select: React.FC<SelectProps> & SelectComposition = ({
                 {...child.props}
               />
             );
-          } else if (child.type === Pagination && child.props.mode === 'scroll') {
+          } else if (child?.type === Pagination && child.props.mode === 'scroll') {
             return null;
           }
 
