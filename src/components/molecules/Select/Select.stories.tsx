@@ -3,7 +3,8 @@ import { AvatarInline, Space, ButtonGroup, Button, Icon } from 'components/atoms
 import { Form, useForm } from 'components/organisms';
 import { ButtonSize } from 'components/atoms/Button/Button';
 
-import { Select, Option } from './Select';
+import { Select } from './Select';
+import { Option } from './interfaces';
 import { exportStory } from '../../../libs';
 
 export default {

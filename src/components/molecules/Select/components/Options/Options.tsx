@@ -4,7 +4,7 @@ import { useEventListener } from 'hooks';
 import { Animated, Space, Label } from 'components/atoms';
 import { Item, ItemProps } from './Item';
 
-import { SelectMode, OptionValue, Option } from '../Select';
+import { SelectMode, OptionValue, Option } from '../../interfaces';
 import { ScrollMode } from '../Pagination';
 
 export interface OptionsComposition {

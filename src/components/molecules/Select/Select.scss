@@ -107,6 +107,7 @@
       width: 100%;
       margin: 0;
       z-index: 2;
+      padding-left: rem($gutter-size / 4);
 
       .ebs-input__wrapper {
         border: none;
@@ -122,9 +123,6 @@
 
   &-label {
     position: relative;
-    top: rem(-1px);
-    padding-top: rem(4px);
-    padding-bottom: rem(4px);
     font-size: rem(12px);
     height: 100%;
     margin-bottom: 0;
@@ -218,6 +216,24 @@
   .ebs-loader__spinner {
     float: left;
     top: 0;
+  }
+
+  .ebs-select-value {
+    .ebs-avatar__inline {
+      &-alt {
+        margin-left: rem($gutter-size / 2);
+      }
+
+      > .ebs-avatar {
+        width: rem($font-size-base * 1.5);
+        height: rem($font-size-base * 1.5);
+        min-width: auto;
+      }
+    }
+
+    .ebs-label .ebs-avatar__inline {
+      margin-left: rem(-$label-font-size);
+    }
   }
 }
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Checkbox } from 'components/molecules';
 
-import { SelectMode, OptionValue } from '../../Select';
+import { SelectMode, OptionValue } from '../../../interfaces';
 
 export interface ItemProps {
   className?: string;
