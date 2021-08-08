@@ -296,7 +296,7 @@ export default ({ loading, refs, children, ...params }): Props => {
               <Options
                 key={i}
                 mode={mode}
-                scrollMode={paginationProps && paginationProps.mode === 'scroll'}
+                scrollMode={paginationProps.mode || 'regular'}
                 options={options}
                 value={value}
                 loading={loading}
@@ -304,7 +304,7 @@ export default ({ loading, refs, children, ...params }): Props => {
                 emptyLabel={emptyLabel}
                 maxHeight={maxHeight > 250 ? 250 : maxHeight}
                 newOption={newOption}
-                onClose={mode !== 'multiple' ? onToggleOpenDropdown : undefined}
+                onClose={!['multiple', 'tags'].includes(mode) ? onToggleOpenDropdown : undefined}
                 onChange={onChangeHandler}
                 onPrev={onPrev}
                 onNext={onNext}

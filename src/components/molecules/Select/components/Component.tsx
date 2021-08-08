@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Label, Input, Icon } from 'components/atoms';
+import { Label, Input, Icon, Space } from 'components/atoms';
 import { Loader } from 'components/molecules';
 import { isArray } from 'libs';
 import { usePortal } from 'hooks';
@@ -84,7 +84,7 @@ const Component: React.FC<ComponentProps> = ({ mode = 'single', size = 'medium',
           >
             <div className="ebs-select-value">
               <div className="ebs-select-value__container">
-                {loading ? (
+                {loading && !isOpen && !isBox ? (
                   <Loader.Inline />
                 ) : isArray(textValue) ? (
                   (textValue as React.ReactNode[]).map((item, key) => (
@@ -99,18 +99,19 @@ const Component: React.FC<ComponentProps> = ({ mode = 'single', size = 'medium',
                     />
                   ))
                 ) : (
-                  textValue || props.placeholder
+                  <Space>{textValue || props.placeholder}</Space>
+                )}
+
+                {mode === 'tags' && (
+                  <Input
+                    size="small"
+                    placeholder={props.newPlaceholder}
+                    value={newOption}
+                    onChange={onChangeNewOption}
+                    onKeyDown={onKeyDownNewOption}
+                  />
                 )}
               </div>
-              {mode === 'tags' && (
-                <Input
-                  size="small"
-                  placeholder={props.newPlaceholder}
-                  value={newOption}
-                  onChange={onChangeNewOption}
-                  onKeyDown={onKeyDownNewOption}
-                />
-              )}
             </div>
 
             {hasValue && props.isClearable && !props.disabled ? (

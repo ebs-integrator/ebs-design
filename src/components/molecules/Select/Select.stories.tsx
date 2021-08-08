@@ -2,6 +2,7 @@ import * as React from 'react';
 import { AvatarInline, Space, ButtonGroup, Button, Icon } from 'components/atoms';
 import { Form, useForm } from 'components/organisms';
 import { ButtonSize } from 'components/atoms/Button/Button';
+import { capitalize } from 'libs/string';
 
 import { Select } from './Select';
 import { Option } from './interfaces';
@@ -36,7 +37,7 @@ const SizeSwitcher: React.FC<{ children: (size: ButtonSize) => React.ReactNode }
   );
 };
 
-const limit = 15;
+const limit = 10;
 
 export const Regular = (): React.ReactNode => {
   const [form] = useForm();
@@ -49,18 +50,24 @@ export const Regular = (): React.ReactNode => {
   React.useEffect(() => {
     setLoaded(true);
 
-    fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
+    fetch(`https://randomuser.me/api/1.2/?page=${page}&results=${limit}&seed=abc&inc=id,name,picture`)
       .then((response) => response.json())
-      .then(({ data, total: count }) => {
+      .then(({ results }) => {
         const newList: Option[] = [];
-        Object.keys(data).forEach((item) => {
+        results.forEach((item) => {
           newList.push({
-            value: item,
-            text: <AvatarInline type="primary" shortAlt={item} alt={data[item].country} />,
+            value: item.id.value,
+            text: (
+              <AvatarInline
+                img={item.picture.thumbnail}
+                type="primary"
+                alt={`${capitalize(item.name.title)} ${capitalize(item.name.first)} ${capitalize(item.name.last)}`}
+              />
+            ),
           });
         });
 
-        setTotal(count);
+        setTotal(1000);
         setList(newList);
         setLoaded(false);
       });
@@ -134,18 +141,24 @@ export const OptionsBox = (): React.ReactNode => {
   React.useEffect(() => {
     setLoaded(true);
 
-    fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
+    fetch(`https://randomuser.me/api/1.2/?page=${page}&results=${limit}&seed=abc&inc=id,name,picture`)
       .then((response) => response.json())
-      .then(({ data, total: count }) => {
+      .then(({ results }) => {
         const newList: Option[] = [];
-        Object.keys(data).forEach((item) => {
+        results.forEach((item) => {
           newList.push({
-            value: item,
-            text: <AvatarInline type="primary" shortAlt={item} alt={data[item].country} />,
+            value: item.id.value,
+            text: (
+              <AvatarInline
+                img={item.picture.thumbnail}
+                type="primary"
+                alt={`${capitalize(item.name.title)} ${capitalize(item.name.first)} ${capitalize(item.name.last)}`}
+              />
+            ),
           });
         });
 
-        setTotal(count);
+        setTotal(1000);
         setList(newList);
         setLoaded(false);
       });
@@ -208,18 +221,24 @@ export const OptionsMultiple = (): React.ReactNode => {
   React.useEffect(() => {
     setLoaded(true);
 
-    fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
+    fetch(`https://randomuser.me/api/1.2/?page=${page}&results=${limit}&seed=abc&inc=id,name,picture`)
       .then((response) => response.json())
-      .then(({ data, total: count }) => {
+      .then(({ results }) => {
         const newList: Option[] = [];
-        Object.keys(data).forEach((item) => {
+        results.forEach((item) => {
           newList.push({
-            value: item,
-            text: <AvatarInline type="primary" shortAlt={item} alt={data[item].country} />,
+            value: item.id.value,
+            text: (
+              <AvatarInline
+                img={item.picture.thumbnail}
+                type="primary"
+                alt={`${capitalize(item.name.title)} ${capitalize(item.name.first)} ${capitalize(item.name.last)}`}
+              />
+            ),
           });
         });
 
-        setTotal(count);
+        setTotal(1000);
         setList(newList);
         setLoaded(false);
       });
@@ -275,18 +294,24 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
   React.useEffect(() => {
     setLoaded(true);
 
-    fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
+    fetch(`https://randomuser.me/api/1.2/?page=${page}&results=${limit}&seed=abc&inc=id,name,picture`)
       .then((response) => response.json())
-      .then(({ data, total: count }) => {
+      .then(({ results }) => {
         const newList: Option[] = [];
-        Object.keys(data).forEach((item) => {
+        results.forEach((item) => {
           newList.push({
-            value: item,
-            text: <AvatarInline type="primary" shortAlt={item} alt={data[item].country} />,
+            value: item.id.value,
+            text: (
+              <AvatarInline
+                img={item.picture.thumbnail}
+                type="primary"
+                alt={`${capitalize(item.name.title)} ${capitalize(item.name.first)} ${capitalize(item.name.last)}`}
+              />
+            ),
           });
         });
 
-        setTotal(count);
+        setTotal(1000);
         setList(newList);
         setLoaded(false);
       });
@@ -342,18 +367,18 @@ export const TagsMode = (): React.ReactNode => {
   React.useEffect(() => {
     setLoaded(true);
 
-    fetch(`https://api.first.org/data/v1/countries?limit=${limit}&offset=${(page - 1) * limit}`)
+    fetch(`https://randomuser.me/api/1.2/?page=${page}&results=${limit}&seed=abc&inc=id,name,picture`)
       .then((response) => response.json())
-      .then(({ data, total: count }) => {
+      .then(({ results }) => {
         const newList: Option[] = [];
-        Object.keys(data).forEach((item) => {
+        results.forEach((item) => {
           newList.push({
-            value: item,
-            text: data[item].country,
+            value: item.id.value,
+            text: `${capitalize(item.name.first)} ${capitalize(item.name.last)}`,
           });
         });
 
-        setTotal(count);
+        setTotal(1000);
         setList(newList);
         setLoaded(false);
       });

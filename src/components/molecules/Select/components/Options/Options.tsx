@@ -6,6 +6,7 @@ import { Item, ItemProps } from './Item';
 
 import { SelectMode, OptionValue, Option } from '../../interfaces';
 import { ScrollMode } from '../Pagination';
+import { Loader } from 'components/molecules/Loader/Loader';
 
 export interface OptionsComposition {
   Item: React.FC<ItemProps>;
@@ -48,7 +49,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   const onScroll = (e): void => {
     const scrollTop = Math.floor(e.target.scrollTop);
 
-    if (onNext && e.target.scrollHeight - e.target.offsetHeight - scrollTop <= 3) {
+    if (scrollMode !== 'regular' && onNext && e.target.scrollHeight - e.target.offsetHeight - scrollTop <= 3) {
       onNext();
     }
   };
@@ -129,29 +130,41 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
           suffix={<Label type="ghost" text="CTRL+Enter" />}
         />
       )}
-      <Animated loading={loading} duration={100}>
-        {options.length ? (
-          options.map((option, key) => (
-            <Item
-              key={key}
-              mode={mode}
-              active={
-                ['multiple', 'tags'].includes(mode) && Array.isArray(value)
-                  ? value.includes(option.value)
-                  : value === option.value
-              }
-              selected={activeItem === key + 1}
-              text={option.text}
-              onClick={onChangeHandler}
-              {...option}
-            />
-          ))
-        ) : (
-          <Space size="large" justify="center" className="ebs-select__options--empty">
-            {emptyLabel}
-          </Space>
-        )}
-      </Animated>
+
+      <Loader
+        loading={scrollMode !== 'scroll' ? loading || false : false}
+        height={!maxHeight || maxHeight > 250 ? 250 : maxHeight}
+      >
+        <Animated loading={scrollMode !== 'scroll' && loading} duration={100}>
+          {options.length ? (
+            options.map((option, key) => (
+              <Item
+                key={key}
+                active={
+                  ['multiple', 'tags'].includes(mode) && Array.isArray(value)
+                    ? value.includes(option.value)
+                    : value === option.value
+                }
+                mode={mode}
+                text={option.text}
+                selected={activeItem === key + 1}
+                onClick={onChangeHandler}
+                {...option}
+              />
+            ))
+          ) : (
+            <Space size="large" justify="center" className="ebs-select__options--empty">
+              {emptyLabel}
+            </Space>
+          )}
+        </Animated>
+      </Loader>
+
+      {scrollMode === 'scroll' && loading ? (
+        <Space justify="center">
+          <Loader.Inline />
+        </Space>
+      ) : null}
     </div>
   );
 };
