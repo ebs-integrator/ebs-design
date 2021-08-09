@@ -1,6 +1,6 @@
 {
   "name": "ebs-design",
-  "version": "0.0.1-beta.88",
+  "version": "0.0.1-beta.89",
   "description": "EBS Design System React UI elements.",
   "author": "EBS Integrator <contact@ebs-integrator.com> (https://ebs-integrator.com/)",
   "maintainers": [
@@ -58,7 +58,7 @@
     "react-datepicker": "^4.1.1",
     "react-phone-input-2": "^2.13.8",
     "react-popper-tooltip": "^4.3.0",
-    "react-use": "^17.1.0"
+    "react-use": "^17.2.4"
   },
   "peerDependencies": {
     "node-sass": ">=4.0.0 <5.0.0",

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import cn from 'classnames';
 import { usePopperTooltip } from 'react-popper-tooltip';
 
@@ -70,31 +71,33 @@ export const Tooltip: React.FC<TooltipProps> = ({
       <div className="ebs-tooltip__trigger" ref={setTriggerRef}>
         {children}
       </div>
-      {visible && (
-        <div
-          ref={setTooltipRef}
-          {...getTooltipProps({
-            className: cn(`ebs-tooltip__wrapper`, { [`ebs-tooltip--nowrap`]: nowrap }),
-            style: { width },
-          })}
-        >
-          {!hideArrow && (
-            <div
-              {...getArrowProps({
-                className: 'ebs-tooltip__arrow',
-              })}
-            >
-              <Icon type="arrow-top" />
+      {visible &&
+        createPortal(
+          <div
+            ref={setTooltipRef}
+            {...getTooltipProps({
+              className: cn(`ebs-tooltip__wrapper`, { [`ebs-tooltip--nowrap`]: nowrap }),
+              style: { width },
+            })}
+          >
+            {!hideArrow && (
+              <div
+                {...getArrowProps({
+                  className: 'ebs-tooltip__arrow',
+                })}
+              >
+                <Icon type="arrow-top" />
+              </div>
+            )}
+
+            <div className={cn(`ebs-tooltip__body`, bodyClass)}>
+              {title && <div className="ebs-tooltip__body-title">{title}</div>}
+
+              {tooltip}
             </div>
-          )}
-
-          <div className={cn(`ebs-tooltip__body`, bodyClass)}>
-            {title && <div className="ebs-tooltip__body-title">{title}</div>}
-
-            {tooltip}
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </div>
   );
 };
