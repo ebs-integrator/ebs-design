@@ -1,9 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Label, Input, Icon, Space } from 'components/atoms';
+import { Label, Input, Icon, Space, Tooltip } from 'components/atoms';
 import { Loader } from 'components/molecules';
 import { isArray } from 'libs';
-import { usePortal } from 'hooks';
 import { SizeType } from 'types';
 
 import useSelect from '../Hook';
@@ -34,7 +33,6 @@ export interface ComponentProps {
 }
 
 const Component: React.FC<ComponentProps> = ({ mode = 'single', size = 'medium', loading, children, ...props }) => {
-  const createPortal = usePortal();
   const inputRef = React.useRef<HTMLDivElement | null>(null);
 
   const {
@@ -70,68 +68,76 @@ const Component: React.FC<ComponentProps> = ({ mode = 'single', size = 'medium',
     >
       <Label text={props.label} disabled={props.disabled} />
 
-      <div className="ebs-select-dropdown__wrapper">
-        <div className="ebs-select-dropdown__container">
-          {props.prefix && <div className="ebs-select__prefix">{props.prefix}</div>}
+      <Tooltip
+        visible={!isBox && isOpen}
+        trigger={null}
+        tooltip={!props.disabled && (isOpen ? dropdownOptions : null)}
+        offset={[5, 5]}
+        bodyClass="p-0"
+      >
+        <div className="ebs-select-dropdown__wrapper">
+          <div className="ebs-select-dropdown__container">
+            {props.prefix && <div className="ebs-select__prefix">{props.prefix}</div>}
 
-          <div
-            className={cn('ebs-select', `ebs-select--${size}`, {
-              'ebs-select--box': isBox,
-              'ebs-select--tags': mode === 'tags',
-              'has-suffix': props.suffix,
-            })}
-            onClick={() => setState((prevState) => ({ isOpen: !prevState.isOpen }))}
-          >
-            <div className="ebs-select-value">
-              <div className="ebs-select-value__container">
-                {loading && !isOpen && !isBox ? (
-                  <Loader.Inline />
-                ) : isArray(textValue) ? (
-                  (textValue as React.ReactNode[]).map((item, key) => (
-                    <Label
-                      key={key}
-                      className="ebs-select-label"
-                      type="primary"
-                      circle
-                      text={item}
-                      suffix={!props.disabled ? <div className="ebs-select__clear">&#215;</div> : undefined}
-                      onClickSuffix={() => !props.disabled && onDeleteSelect(key)}
+            <div
+              className={cn('ebs-select', `ebs-select--${size}`, {
+                'ebs-select--box': isBox,
+                'ebs-select--tags': mode === 'tags',
+                'has-suffix': props.suffix,
+              })}
+              onClick={() => setState((prevState) => ({ isOpen: !prevState.isOpen }))}
+            >
+              <div className="ebs-select-value">
+                <div className="ebs-select-value__container">
+                  {loading && !isOpen && !isBox ? (
+                    <Loader.Inline />
+                  ) : isArray(textValue) ? (
+                    (textValue as React.ReactNode[]).map((item, key) => (
+                      <Label
+                        key={key}
+                        className="ebs-select-label"
+                        type="primary"
+                        circle
+                        text={item}
+                        suffix={!props.disabled ? <div className="ebs-select__clear">&#215;</div> : undefined}
+                        onClickSuffix={() => !props.disabled && onDeleteSelect(key)}
+                      />
+                    ))
+                  ) : (
+                    <Space>{textValue || props.placeholder}</Space>
+                  )}
+
+                  {mode === 'tags' && (
+                    <Input
+                      size="small"
+                      placeholder={props.newPlaceholder}
+                      value={newOption}
+                      onChange={onChangeNewOption}
+                      onKeyDown={onKeyDownNewOption}
                     />
-                  ))
-                ) : (
-                  <Space>{textValue || props.placeholder}</Space>
-                )}
-
-                {mode === 'tags' && (
-                  <Input
-                    size="small"
-                    placeholder={props.newPlaceholder}
-                    value={newOption}
-                    onChange={onChangeNewOption}
-                    onKeyDown={onKeyDownNewOption}
-                  />
-                )}
+                  )}
+                </div>
               </div>
+
+              {hasValue && props.isClearable && !props.disabled ? (
+                <div className="ebs-select__clear" onClick={onClear}>
+                  &#215;
+                </div>
+              ) : null}
+
+              {!isBox && (
+                <div className="ebs-select__suffix">
+                  <Icon type={`arrow-${!props.disabled && isOpen ? 'top' : 'bottom'}`} model="bold" />
+                </div>
+              )}
             </div>
 
-            {hasValue && props.isClearable && !props.disabled ? (
-              <div className="ebs-select__clear" onClick={onClear}>
-                &#215;
-              </div>
-            ) : null}
-
-            {!isBox && (
-              <div className="ebs-select__suffix">
-                <Icon type={`arrow-${!props.disabled && isOpen ? 'top' : 'bottom'}`} model="bold" />
-              </div>
-            )}
+            {props.suffix && <div className="ebs-select__suffix">{props.suffix}</div>}
           </div>
 
-          {props.suffix && <div className="ebs-select__suffix">{props.suffix}</div>}
+          {!props.disabled && (isBox ? dropdownOptions : null)}
         </div>
-
-        {!props.disabled && (isOpen || isBox) && (isBox ? dropdownOptions : createPortal(dropdownOptions))}
-      </div>
+      </Tooltip>
     </div>
   );
 };

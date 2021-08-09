@@ -1,9 +1,5 @@
 import * as React from 'react';
 import useClickAway from 'react-use/esm/useClickAway';
-import useScrolling from 'react-use/esm/useScrolling';
-import useWindowScroll from 'react-use/esm/useWindowScroll';
-import useMouseWheel from 'react-use/esm/useMouseWheel';
-import useIntersection from 'react-use/esm/useIntersection';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { isArray, toArray, uniqueArray, isEqual as isEqualArray } from 'libs';
@@ -21,7 +17,6 @@ interface Props extends ContextProps {
   isBox: boolean;
   isScrolling?: boolean;
   isMouseScrolling?: number;
-  isWindowScrolling?: { x: number; y: number };
   onClear: () => void;
   onDeleteSelect: (key: number) => void;
   onChangeNewOption: (value: string | number) => void;
@@ -48,7 +43,6 @@ export default ({ loading, refs, children, ...params }): Props => {
     options,
     cache: cacheOptions,
     style: optionsStyle,
-    maxHeight,
     newOption,
     search,
     isOpen,
@@ -56,15 +50,6 @@ export default ({ loading, refs, children, ...params }): Props => {
     setState,
     ...props
   } = React.useContext(Context);
-
-  const intersection = useIntersection(refs.input, {
-    root: refs.root?.current || null,
-    threshold: 1,
-  });
-
-  const isScrolling = useScrolling(refs.root || React.createRef());
-  const isMouseScrolling = useMouseWheel();
-  const isWindowScrolling = useWindowScroll();
 
   const childs = React.useMemo(() => {
     const childrens = React.Children.toArray(children) as GenericObject[];
@@ -111,21 +96,16 @@ export default ({ loading, refs, children, ...params }): Props => {
   React.useEffect(() => {
     if (!isBox && isOpen && refs.input.current) {
       const rect = refs.input.current.getBoundingClientRect();
-      const offsetTop = rect.top + rect.height;
+
       const style: React.CSSProperties = {
-        position: 'fixed',
-        left: `${rect.left}px`,
         width: `${rect.width}px`,
-        top: `${offsetTop}px`,
-        bottom: `auto`,
-        zIndex: 9999999,
       };
 
       if (!isEqual(style, optionsStyle)) {
-        setState({ style, maxHeight: window.innerHeight - offsetTop - 50 });
+        setState({ style });
       }
     }
-  }, [isOpen, refs.input, optionsStyle, isScrolling, isWindowScrolling, isMouseScrolling]);
+  }, [isOpen, refs, optionsStyle]);
 
   React.useEffect(() => {
     if (searchEl?.props?.value !== undefined && search !== searchEl.props.value) {
@@ -148,12 +128,6 @@ export default ({ loading, refs, children, ...params }): Props => {
       });
     }
   }, [$options, options, isLoaded, paginationProps, isSearch]);
-
-  React.useEffect(() => {
-    if (isOpen && intersection && intersection.intersectionRatio < 1) {
-      setState({ isOpen: false });
-    }
-  }, [intersection, isOpen]);
 
   React.useEffect(() => {
     if (!loading) {
@@ -296,13 +270,12 @@ export default ({ loading, refs, children, ...params }): Props => {
               <Options
                 key={i}
                 mode={mode}
-                scrollMode={paginationProps.mode || 'regular'}
+                scrollMode={paginationProps?.mode || 'regular'}
                 options={options}
                 value={value}
                 loading={loading}
                 className={cn({ 'ebs-select--box': isBox })}
                 emptyLabel={emptyLabel}
-                maxHeight={maxHeight > 250 ? 250 : maxHeight}
                 newOption={newOption}
                 onClose={!['multiple', 'tags'].includes(mode) ? onToggleOpenDropdown : undefined}
                 onChange={onChangeHandler}
@@ -332,7 +305,6 @@ export default ({ loading, refs, children, ...params }): Props => {
       loading,
       isBox,
       emptyLabel,
-      maxHeight,
       newOption,
       onToggleOpenDropdown,
       onChangeHandler,
@@ -350,13 +322,9 @@ export default ({ loading, refs, children, ...params }): Props => {
     hasValue,
     newOption,
     textValue,
-    maxHeight,
     dropdownOptions,
     isOpen,
     isLoaded,
-    isScrolling,
-    isMouseScrolling,
-    isWindowScrolling,
     isBox,
     setState,
     onDeleteSelect,

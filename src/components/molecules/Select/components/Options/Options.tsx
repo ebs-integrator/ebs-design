@@ -20,7 +20,6 @@ export interface OptionsProps {
   loading?: boolean;
   value?: OptionValue | OptionValue[];
   emptyLabel?: string;
-  maxHeight?: number;
   newOption?: string;
   onPrev?: () => void;
   onNext?: () => void;
@@ -36,7 +35,6 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   options = [],
   value,
   emptyLabel = 'No found',
-  maxHeight,
   newOption,
   onNext,
   onClose,
@@ -119,7 +117,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
       className={cn('ebs-select__options-items', {
         'ebs-select__options--multiple': ['multiple', 'tags'].includes(mode),
       })}
-      style={maxHeight ? { maxHeight } : undefined}
+      style={scrollMode === 'scroll' ? { maxHeight: 300 } : undefined}
     >
       {newOption && onClickAddNew && (
         <Item
@@ -133,7 +131,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
 
       <Loader
         loading={scrollMode !== 'scroll' ? loading || false : false}
-        height={!maxHeight || maxHeight > 250 ? 250 : maxHeight}
+        height={!ref.current || ref.current?.offsetHeight < 300 ? 300 : ref.current.offsetHeight}
       >
         <Animated loading={scrollMode !== 'scroll' && loading} duration={100}>
           {options.length ? (
