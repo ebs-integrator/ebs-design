@@ -1,8 +1,6 @@
 .ebs-select__options {
   @include elevation-2;
   position: relative;
-  left: 0;
-  top: calc(100% + 4px);
   width: 100%;
   padding: rem(4px);
   background-color: $white;

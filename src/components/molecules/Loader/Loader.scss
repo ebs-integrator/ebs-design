@@ -25,6 +25,7 @@
   &__inline {
     color: $text-color-secondary;
     @include fontRegular;
+    @include flex-center;
     font-size: rem(14px);
   }
 

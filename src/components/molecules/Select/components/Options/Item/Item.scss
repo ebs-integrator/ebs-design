@@ -9,6 +9,10 @@
     padding-left: rem(32.5px);
   }
 
+  &.active {
+    background-color: $primary-000;
+  }
+
   &.active &-text {
     color: $primary-color;
   }

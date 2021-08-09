@@ -19,8 +19,7 @@
     @include elevation-2;
     background-color: $white;
     border-radius: rem($border-radius);
-    margin: rem(0 $gutter-size / 2);
-    z-index: 2;
+    z-index: 9999;
     color: $text-color;
     background-color: $white;
   }
