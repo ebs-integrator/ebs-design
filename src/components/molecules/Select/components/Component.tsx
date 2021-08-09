@@ -72,7 +72,7 @@ const Component: React.FC<ComponentProps> = ({ mode = 'single', size = 'medium',
         visible={!isBox && isOpen}
         trigger={null}
         tooltip={!props.disabled && (isOpen ? dropdownOptions : null)}
-        offset={[5, 5]}
+        offset={[0, 10]}
         bodyClass="p-0"
       >
         <div className="ebs-select-dropdown__wrapper">
