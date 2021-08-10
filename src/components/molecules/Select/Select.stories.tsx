@@ -302,7 +302,7 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
           });
         });
 
-        setTotal(1000);
+        setTotal(1);
         setList(newList);
         setLoaded(false);
       });

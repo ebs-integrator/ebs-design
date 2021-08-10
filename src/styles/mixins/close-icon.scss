@@ -3,11 +3,11 @@
   z-index: 2;
   display: flex;
   align-items: center;
+  color: $text-color;
 
   .ebs-icon {
     padding: rem(3px);
     font-size: 1rem;
-    color: $text-color;
 
     path {
       stroke-width: 1;
