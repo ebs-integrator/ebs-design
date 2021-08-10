@@ -3,6 +3,7 @@ import { AvatarInline, Space, Icon } from 'components/atoms';
 import { Form, useForm } from 'components/organisms';
 import SizeSwitcher from 'components/SizeSwitcher';
 import { capitalize } from 'libs/string';
+import { SizeType } from 'types';
 
 import { Select } from './Select';
 import { Option } from './interfaces';
@@ -70,7 +71,7 @@ export const Regular = (): React.ReactNode => {
               <Select
                 // options={list}
                 loading={loading}
-                size={size}
+                size={size as SizeType}
                 // mode="multiple"
                 // mode="single" // by default
                 placeholder="Select"
@@ -158,7 +159,14 @@ export const OptionsBox = (): React.ReactNode => {
             onFinish={handleChange}
           >
             <Form.Field name="select" label="Select" rules={[{ required: true }]}>
-              <Select loading={loading} mode="single" size={size} placeholder="Select" optionsMode="box" isClearable>
+              <Select
+                loading={loading}
+                mode="single"
+                size={size as SizeType}
+                placeholder="Select"
+                optionsMode="box"
+                isClearable
+              >
                 <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
                 <Select.Options>
@@ -238,7 +246,14 @@ export const OptionsMultiple = (): React.ReactNode => {
             onFinish={handleChange}
           >
             <Form.Field name="select" label="Select" rules={[{ required: true }]}>
-              <Select loading={loading} mode="multiple" size={size} placeholder="Select" optionsMode="box" isClearable>
+              <Select
+                loading={loading}
+                mode="multiple"
+                size={size as SizeType}
+                placeholder="Select"
+                optionsMode="box"
+                isClearable
+              >
                 <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
                 <Select.Options>
@@ -311,7 +326,7 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
             onFinish={handleChange}
           >
             <Form.Field name="select" label="Select" rules={[{ required: true }]}>
-              <Select loading={loading} mode="multiple" size={size} placeholder="Select" isClearable>
+              <Select loading={loading} mode="multiple" size={size as SizeType} placeholder="Select" isClearable>
                 <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
                 <Select.Options>
@@ -381,7 +396,7 @@ export const TagsMode = (): React.ReactNode => {
               <Select
                 loading={loading}
                 mode="tags"
-                size={size}
+                size={size as SizeType}
                 newPlaceholder="Add new..."
                 isClearable
                 onSearch={(val) => setSearch(val)}
