@@ -71,7 +71,6 @@
 
   &__clear {
     font-size: rem(22px);
-    display: inline-block;
     padding: rem(0 7px);
     margin: rem(0 -7px);
   }
@@ -236,7 +235,8 @@
       > .ebs-avatar {
         width: rem($font-size-base * 1.5);
         height: rem($font-size-base * 1.5);
-        min-width: auto;
+        min-width: unset;
+        min-height: unset;
       }
     }
 
