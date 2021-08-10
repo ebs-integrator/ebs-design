@@ -134,32 +134,32 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
         height={!ref.current || ref.current?.offsetHeight < 300 ? 300 : ref.current.offsetHeight}
       >
         <Animated loading={scrollMode !== 'scroll' && loading} duration={100}>
-          {options.length ? (
-            options.map((option, key) => (
-              <Item
-                key={key}
-                active={
-                  ['multiple', 'tags'].includes(mode) && Array.isArray(value)
-                    ? value.includes(option.value)
-                    : value === option.value
-                }
-                mode={mode}
-                text={option.text}
-                selected={activeItem === key + 1}
-                onClick={onChangeHandler}
-                {...option}
-              />
-            ))
-          ) : (
-            <Space size="large" justify="center" className="ebs-select__options--empty">
-              {emptyLabel}
-            </Space>
-          )}
+          {options.length
+            ? options.map((option, key) => (
+                <Item
+                  key={key}
+                  active={
+                    ['multiple', 'tags'].includes(mode) && Array.isArray(value)
+                      ? value.includes(option.value)
+                      : value === option.value
+                  }
+                  mode={mode}
+                  text={option.text}
+                  selected={activeItem === key + 1}
+                  onClick={onChangeHandler}
+                  {...option}
+                />
+              ))
+            : !loading && (
+                <Space size="large" justify="center" className="ebs-select__options--empty">
+                  {emptyLabel}
+                </Space>
+              )}
         </Animated>
       </Loader>
 
-      {scrollMode === 'scroll' && loading ? (
-        <Space justify="center">
+      {scrollMode === 'scroll' && (loading || true) ? (
+        <Space justify="center" className="mt-10">
           <Loader.Inline />
         </Space>
       ) : null}

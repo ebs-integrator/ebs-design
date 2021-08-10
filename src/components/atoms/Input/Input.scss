@@ -136,6 +136,7 @@
   position: absolute;
   right: rem($gutter-size / 2);
   top: 50%;
+  color: $text-color;
   transform: translate3d(0, -50%, 0);
   font-size: rem(22px);
   display: inline-block;
