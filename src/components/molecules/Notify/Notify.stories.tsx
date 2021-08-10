@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Space, Button, Label } from 'components/atoms';
 import SizeSwitcher from 'components/SizeSwitcher';
+import { SpaceSize } from 'components/atoms/Space/Space';
 import { useNotify } from 'hooks';
 
 import { NotifyContainer, NotifyProvider } from './Notify';
@@ -21,7 +22,7 @@ export const Regular = (): React.ReactNode => {
 
     return (
       <>
-        <SizeSwitcher>{(size) => <NotifyContainer size={size} />}</SizeSwitcher>
+        <SizeSwitcher>{(size) => <NotifyContainer size={size as SpaceSize} />}</SizeSwitcher>
         <Space justify="space-between">
           <Button size="small" type="fill" onClick={() => notify.regular({ title: 'Regular', description })}>
             Regular
