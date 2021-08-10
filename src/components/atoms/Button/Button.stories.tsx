@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Icon as SVGIcon, Row, Col } from 'components/atoms';
+import SizeSwitcher from 'components/SizeSwitcher';
 
 import { Button, ButtonSize, ButtonGroup } from './Button';
 import { exportStory } from '../../../libs';
@@ -10,54 +11,30 @@ export default {
   subcomponents: { ButtonGroup },
 };
 
-const SizeSwitcher: React.FC<{ children: (size: ButtonSize) => React.ReactNode }> = ({ children }) => {
-  const [size, setSize] = React.useState<ButtonSize>('medium');
-
-  return (
-    <>
-      <ButtonGroup className="mb-30">
-        <Button size="small" type={size === 'small' ? 'primary' : 'fill'} onClick={() => setSize('small')}>
-          Small
-        </Button>
-
-        <Button size="small" type={size === 'medium' ? 'primary' : 'fill'} onClick={() => setSize('medium')}>
-          Medium
-        </Button>
-
-        <Button size="small" type={size === 'large' ? 'primary' : 'fill'} onClick={() => setSize('large')}>
-          Large
-        </Button>
-      </ButtonGroup>
-
-      {children(size)}
-    </>
-  );
-};
-
 export const Primary = (): React.ReactNode => (
   <SizeSwitcher>
     {(size) => (
       <Row>
         <Col>
-          <Button className="mr-15" type="primary" size={size}>
+          <Button className="mr-15" type="primary" size={size as ButtonSize}>
             Normal
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 hover" type="primary" size={size}>
+          <Button className="mr-15 hover" type="primary" size={size as ButtonSize}>
             Hover
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 active" type="primary" size={size}>
+          <Button className="mr-15 active" type="primary" size={size as ButtonSize}>
             Active
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15" type="primary" disabled size={size}>
+          <Button className="mr-15" type="primary" disabled size={size as ButtonSize}>
             Disabled
           </Button>
         </Col>
@@ -71,25 +48,25 @@ export const Fill = (): React.ReactNode => (
     {(size) => (
       <Row>
         <Col>
-          <Button className="mr-15" type="fill" size={size}>
+          <Button className="mr-15" type="fill" size={size as ButtonSize}>
             Normal
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 hover" type="fill" size={size}>
+          <Button className="mr-15 hover" type="fill" size={size as ButtonSize}>
             Hover
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 active" type="fill" size={size}>
+          <Button className="mr-15 active" type="fill" size={size as ButtonSize}>
             Active
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15" type="fill" disabled size={size}>
+          <Button className="mr-15" type="fill" disabled size={size as ButtonSize}>
             Disabled
           </Button>
         </Col>
@@ -103,25 +80,25 @@ export const Ghost = (): React.ReactNode => (
     {(size) => (
       <Row>
         <Col>
-          <Button className="mr-15" type="ghost" size={size}>
+          <Button className="mr-15" type="ghost" size={size as ButtonSize}>
             Normal
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 hover" type="ghost" size={size}>
+          <Button className="mr-15 hover" type="ghost" size={size as ButtonSize}>
             Hover
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 active" type="ghost" size={size}>
+          <Button className="mr-15 active" type="ghost" size={size as ButtonSize}>
             Active
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15" type="ghost" disabled size={size}>
+          <Button className="mr-15" type="ghost" disabled size={size as ButtonSize}>
             Disabled
           </Button>
         </Col>
@@ -135,25 +112,25 @@ export const Dark = (): React.ReactNode => (
     {(size) => (
       <Row>
         <Col>
-          <Button className="mr-15" type="dark" size={size}>
+          <Button className="mr-15" type="dark" size={size as ButtonSize}>
             Normal
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 hover" type="dark" size={size}>
+          <Button className="mr-15 hover" type="dark" size={size as ButtonSize}>
             Hover
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 active" type="dark" size={size}>
+          <Button className="mr-15 active" type="dark" size={size as ButtonSize}>
             Active
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15" type="dark" disabled size={size}>
+          <Button className="mr-15" type="dark" disabled size={size as ButtonSize}>
             Disabled
           </Button>
         </Col>
@@ -167,25 +144,25 @@ export const Text = (): React.ReactNode => (
     {(size) => (
       <Row>
         <Col>
-          <Button className="mr-15" type="text" size={size}>
+          <Button className="mr-15" type="text" size={size as ButtonSize}>
             Normal
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 hover" type="text" size={size}>
+          <Button className="mr-15 hover" type="text" size={size as ButtonSize}>
             Hover
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15 active" type="text" size={size}>
+          <Button className="mr-15 active" type="text" size={size as ButtonSize}>
             Active
           </Button>
         </Col>
 
         <Col>
-          <Button className="mr-15" type="text" disabled size={size}>
+          <Button className="mr-15" type="text" disabled size={size as ButtonSize}>
             Disabled
           </Button>
         </Col>
@@ -199,25 +176,25 @@ export const Icon = (): React.ReactNode => (
     {(size) => (
       <Row>
         <Col>
-          <Button type="primary" size={size} icon="home">
+          <Button type="primary" size={size as ButtonSize} icon="home">
             Primary
           </Button>
         </Col>
 
         <Col>
-          <Button type="fill" size={size} icon="home">
+          <Button type="fill" size={size as ButtonSize} icon="home">
             Fill
           </Button>
         </Col>
 
         <Col>
-          <Button type="text" size={size} icon="home">
+          <Button type="text" size={size as ButtonSize} icon="home">
             Text
           </Button>
         </Col>
 
         <Col>
-          <Button type="ghost" size={size} icon="home">
+          <Button type="ghost" size={size as ButtonSize} icon="home">
             Ghost
           </Button>
         </Col>
@@ -231,25 +208,25 @@ export const WithIcon = (): React.ReactNode => (
     {(size) => (
       <Row>
         <Col>
-          <Button type="primary" size={size} prefix={<SVGIcon type="home" />}>
+          <Button type="primary" size={size as ButtonSize} prefix={<SVGIcon type="home" />}>
             Primary
           </Button>
         </Col>
 
         <Col>
-          <Button type="fill" size={size} prefix={<SVGIcon type="home" />}>
+          <Button type="fill" size={size as ButtonSize} prefix={<SVGIcon type="home" />}>
             Fill
           </Button>
         </Col>
 
         <Col>
-          <Button type="text" size={size} prefix={<SVGIcon type="home" />}>
+          <Button type="text" size={size as ButtonSize} prefix={<SVGIcon type="home" />}>
             Text
           </Button>
         </Col>
 
         <Col>
-          <Button type="ghost" size={size} prefix={<SVGIcon type="home" />}>
+          <Button type="ghost" size={size as ButtonSize} prefix={<SVGIcon type="home" />}>
             Ghost
           </Button>
         </Col>

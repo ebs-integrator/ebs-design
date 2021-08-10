@@ -1,6 +1,8 @@
 import * as React from 'react';
+import SizeSwitcher from 'components/SizeSwitcher';
 
 import { Avatar, AvatarCard, AvatarInline } from './';
+import { AvatarSize } from './AvatarCard';
 import { exportStory } from '../../../libs';
 
 export default {
@@ -9,54 +11,99 @@ export default {
   subcomponents: { AvatarCard, AvatarInline },
 };
 
+const sizes = ['small', 'big'];
+
 export const regularWithPhoto = (): React.ReactElement => (
-  <Avatar
-    img="https://s3.amazonaws.com/TWFiles/328702/userAvatar/tf_ae0f94af-4f65-47f5-bc9e-e5cebb5537e2.photo_2018-08-07_16-57-45.jpg"
-    alt="Wladimir Zhosan"
-  />
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => (
+      <Avatar
+        size={size as AvatarSize}
+        img="https://s3.amazonaws.com/TWFiles/328702/userAvatar/tf_ae0f94af-4f65-47f5-bc9e-e5cebb5537e2.photo_2018-08-07_16-57-45.jpg"
+        alt="Wladimir Zhosan"
+      />
+    )}
+  </SizeSwitcher>
 );
 
-export const regularWithOutPhoto = (): React.ReactElement => <Avatar alt="Wladimir Zhosan" />;
+export const regularWithOutPhoto = (): React.ReactElement => (
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => <Avatar size={size as AvatarSize} alt="Wladimir Zhosan" />}
+  </SizeSwitcher>
+);
 
 export const regularCicledWithPhoto = (): React.ReactElement => (
-  <Avatar
-    circle
-    img="https://s3.amazonaws.com/TWFiles/328702/userAvatar/tf_ae0f94af-4f65-47f5-bc9e-e5cebb5537e2.photo_2018-08-07_16-57-45.jpg"
-    alt="Wladimir Zhosan"
-  />
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => (
+      <Avatar
+        circle
+        size={size as AvatarSize}
+        img="https://s3.amazonaws.com/TWFiles/328702/userAvatar/tf_ae0f94af-4f65-47f5-bc9e-e5cebb5537e2.photo_2018-08-07_16-57-45.jpg"
+        alt="Wladimir Zhosan"
+      />
+    )}
+  </SizeSwitcher>
 );
 
-export const regularCicledWithoutPhoto = (): React.ReactElement => <Avatar circle alt="Wladimir Zhosan" />;
-
-export const statusActive = (): React.ReactElement => <Avatar alt="Wladimir Zhosan" status="active" />;
-
-export const statusUnactive = (): React.ReactElement => <Avatar alt="Wladimir Zhosan" status="unactive" />;
-
-export const bigWithPhoto = (): React.ReactElement => (
-  <Avatar
-    size="big"
-    img="https://s3.amazonaws.com/TWFiles/328702/userAvatar/tf_ae0f94af-4f65-47f5-bc9e-e5cebb5537e2.photo_2018-08-07_16-57-45.jpg"
-    alt="Wladimir Zhosan"
-  />
+export const regularCicledWithoutPhoto = (): React.ReactElement => (
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => <Avatar size={size as AvatarSize} circle alt="Wladimir Zhosan" />}
+  </SizeSwitcher>
 );
 
-export const bigWithOutPhoto = (): React.ReactElement => <Avatar size="big" alt="Wladimir Zhosan" />;
+export const statusActive = (): React.ReactElement => (
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => <Avatar size={size as AvatarSize} alt="Wladimir Zhosan" status="active" />}
+  </SizeSwitcher>
+);
+
+export const statusUnactive = (): React.ReactElement => (
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => <Avatar size={size as AvatarSize} alt="Wladimir Zhosan" status="unactive" />}
+  </SizeSwitcher>
+);
 
 export const cardWithPhoto = (): React.ReactElement => (
-  <AvatarCard
-    img="https://s3.amazonaws.com/TWFiles/328702/userAvatar/tf_ae0f94af-4f65-47f5-bc9e-e5cebb5537e2.photo_2018-08-07_16-57-45.jpg"
-    alt="Wladimir Zhosan"
-  />
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => (
+      <AvatarCard
+        size={size as AvatarSize}
+        img="https://s3.amazonaws.com/TWFiles/328702/userAvatar/tf_ae0f94af-4f65-47f5-bc9e-e5cebb5537e2.photo_2018-08-07_16-57-45.jpg"
+        alt="Wladimir Zhosan"
+      />
+    )}
+  </SizeSwitcher>
 );
 
-export const cardWithOutPhoto = (): React.ReactElement => <AvatarCard alt="Wladimir Zhosan" />;
+export const cardWithOutPhoto = (): React.ReactElement => (
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => <AvatarCard size={size as AvatarSize} alt="Wladimir Zhosan" />}
+  </SizeSwitcher>
+);
 
-export const cardWithStatus = (): React.ReactElement => <AvatarCard alt="Wladimir Zhosan" status="active" />;
+export const cardWithStatus = (): React.ReactElement => (
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => <AvatarCard size={size as AvatarSize} alt="Wladimir Zhosan" status="active" />}
+  </SizeSwitcher>
+);
 
 export const avatarInline = (): React.ReactElement => (
-  <AvatarInline alt="Wladimir Zhosan" status="active" description="Administrator" />
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => (
+      <AvatarInline size={size as AvatarSize} alt="Wladimir Zhosan" status="active" description="Administrator" />
+    )}
+  </SizeSwitcher>
 );
 
 export const avatarInlineDynamicColor = (): React.ReactElement => (
-  <AvatarInline alt="Wladimir Zhosan" status="active" type="dynamic" description="Administrator" />
+  <SizeSwitcher sizes={sizes} defaultSize="small">
+    {(size) => (
+      <AvatarInline
+        size={size as AvatarSize}
+        alt="Wladimir Zhosan"
+        status="active"
+        type="dynamic"
+        description="Administrator"
+      />
+    )}
+  </SizeSwitcher>
 );

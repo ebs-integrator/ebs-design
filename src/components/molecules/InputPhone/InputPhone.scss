@@ -117,4 +117,12 @@
     margin: rem(0 -7px);
     transform: translate3d(0, -50%, 0);
   }
+
+  // Sizes
+  &--small .react-tel-input .form-control {
+    height: rem($base-size-sm);
+  }
+  &--large .react-tel-input .form-control {
+    height: rem($base-size-lg);
+  }
 }

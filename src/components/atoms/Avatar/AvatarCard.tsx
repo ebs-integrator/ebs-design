@@ -2,9 +2,11 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Avatar, AvatarType } from './Avatar';
 
+export type AvatarSize = 'small' | 'big';
+
 export interface CardProps {
   type?: AvatarType;
-  size?: 'small' | 'big';
+  size?: AvatarSize;
   className?: string;
   shortAlt?: React.ReactNode;
   alt?: string;
@@ -19,6 +21,7 @@ export interface CardProps {
 export const AvatarCard: React.FC<CardProps> = ({
   className = '',
   type = 'primary',
+  size = 'small',
   icon,
   img,
   shortAlt,
@@ -26,7 +29,7 @@ export const AvatarCard: React.FC<CardProps> = ({
   status,
 }) => (
   <div className={cn('ebs-avatar__card', className)}>
-    <Avatar size="small" type={type} icon={icon} img={img} shortAlt={shortAlt} alt={alt} status={status} />
+    <Avatar size={size} type={type} icon={icon} img={img} shortAlt={shortAlt} alt={alt} status={status} />
 
     <div className="ebs-avatar__card-alt">{alt}</div>
   </div>

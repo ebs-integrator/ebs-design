@@ -47,7 +47,7 @@
   &--small {
     min-width: rem($avatar-size-small);
     width: rem($avatar-size-small);
-    height: rem($avatar-size-small);
+    min-height: rem($avatar-size-small);
   }
 
   &--small &-short-alt {
@@ -57,7 +57,7 @@
   &--big {
     min-width: rem($avatar-size-big);
     width: rem($avatar-size-big);
-    height: rem($avatar-size-big);
+    min-height: rem($avatar-size-big);
   }
 
   &--big &-short-alt {

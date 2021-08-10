@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { AvatarInline, Space, ButtonGroup, Button, Icon } from 'components/atoms';
+import { AvatarInline, Space, Icon } from 'components/atoms';
 import { Form, useForm } from 'components/organisms';
-import { ButtonSize } from 'components/atoms/Button/Button';
+import SizeSwitcher from 'components/SizeSwitcher';
 import { capitalize } from 'libs/string';
 
 import { Select } from './Select';
@@ -11,30 +11,6 @@ import { exportStory } from '../../../libs';
 export default {
   title: exportStory('Select', 'molecules'),
   component: Select,
-};
-
-const SizeSwitcher: React.FC<{ children: (size: ButtonSize) => React.ReactNode }> = ({ children }) => {
-  const [size, setSize] = React.useState<ButtonSize>('medium');
-
-  return (
-    <>
-      <ButtonGroup className="mb-30">
-        <Button size="small" type={size === 'small' ? 'primary' : 'fill'} onClick={() => setSize('small')}>
-          Small
-        </Button>
-
-        <Button size="small" type={size === 'medium' ? 'primary' : 'fill'} onClick={() => setSize('medium')}>
-          Medium
-        </Button>
-
-        <Button size="small" type={size === 'large' ? 'primary' : 'fill'} onClick={() => setSize('large')}>
-          Large
-        </Button>
-      </ButtonGroup>
-
-      {children(size)}
-    </>
-  );
 };
 
 const limit = 10;

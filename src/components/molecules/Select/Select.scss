@@ -118,9 +118,13 @@
       padding: rem(4px 0);
 
       > *,
-      .ebs-select-label {
+      > .ebs-select-label {
         margin-top: rem(4px);
         margin-bottom: rem(4px);
+      }
+
+      > .ebs-select-label {
+        padding-left: rem($label-font-size);
       }
     }
   }
