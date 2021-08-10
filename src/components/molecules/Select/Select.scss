@@ -125,6 +125,10 @@
       > .ebs-select-label {
         padding-left: rem($label-font-size);
       }
+
+      .ebs-select__clear {
+        color: $primary-color;
+      }
     }
   }
 
