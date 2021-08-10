@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Space, Button, ButtonGroup, Label } from 'components/atoms';
-import { SpaceSize } from 'components/atoms/Space/Space';
+import { Space, Button, Label } from 'components/atoms';
+import SizeSwitcher from 'components/SizeSwitcher';
 import { useNotify } from 'hooks';
+
 import { NotifyContainer, NotifyProvider } from './Notify';
 import { NotifyItem } from './NotifyItem';
 import { exportStory } from '../../../libs';
@@ -10,30 +11,6 @@ export default {
   title: exportStory('Notify', 'molecules'),
   component: NotifyContainer,
   subcomponents: { NotifyItem },
-};
-
-const SizeSwitcher: React.FC<{ children: (size: SpaceSize) => React.ReactNode }> = ({ children }) => {
-  const [size, setSize] = React.useState<SpaceSize>('medium');
-
-  return (
-    <>
-      <ButtonGroup className="mb-30">
-        <Button size="small" type={size === 'small' ? 'primary' : 'fill'} onClick={() => setSize('small')}>
-          Small
-        </Button>
-
-        <Button size="small" type={size === 'medium' ? 'primary' : 'fill'} onClick={() => setSize('medium')}>
-          Medium
-        </Button>
-
-        <Button size="small" type={size === 'large' ? 'primary' : 'fill'} onClick={() => setSize('large')}>
-          Large
-        </Button>
-      </ButtonGroup>
-
-      {children(size)}
-    </>
-  );
 };
 
 const description = 'This is an example component';

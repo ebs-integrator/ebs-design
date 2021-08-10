@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Loader } from './Loader';
+import SizeSwitcher from 'components/SizeSwitcher';
+
+import { Loader, SpinnerSize } from './Loader';
 import { exportStory } from '../../../libs';
 
 const { Inline, Spinner } = Loader;
@@ -16,15 +18,23 @@ export const Regular: React.FC = () => {
   const onToggleHandler = (): void => setLoading((s) => !s);
 
   return (
-    <>
-      <p onClick={onToggleHandler}>Toggle</p>
+    <SizeSwitcher sizes={['small', 'middle', 'regular']} defaultSize="regular">
+      {(size) => (
+        <>
+          <p onClick={onToggleHandler}>Toggle</p>
 
-      <Loader loading={loading}>
-        <h1>Test</h1>
-      </Loader>
-    </>
+          <Loader size={size as SpinnerSize} loading={loading}>
+            <h1>Test</h1>
+          </Loader>
+        </>
+      )}
+    </SizeSwitcher>
   );
 };
 
 export const _Inline = (): React.ReactElement => <Loader.Inline />;
-export const _Spinner = (): React.ReactElement => <Loader.Spinner />;
+export const _Spinner = (): React.ReactElement => (
+  <SizeSwitcher sizes={['small', 'middle', 'regular']} defaultSize="regular">
+    {(size) => <Loader.Spinner size={size as SpinnerSize} />}
+  </SizeSwitcher>
+);
