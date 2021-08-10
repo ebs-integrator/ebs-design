@@ -6,6 +6,7 @@ import { CardProps } from './AvatarCard';
 export const AvatarInline: React.FC<CardProps> = ({
   className = '',
   type = 'primary',
+  size = 'small',
   icon,
   img,
   shortAlt,
@@ -27,7 +28,7 @@ export const AvatarInline: React.FC<CardProps> = ({
   >
     {!reversed && (
       <Avatar
-        size="small"
+        size={size}
         type={type}
         shortAlt={shortAlt}
         icon={icon}
@@ -45,7 +46,7 @@ export const AvatarInline: React.FC<CardProps> = ({
 
     {reversed && (
       <Avatar
-        size="small"
+        size={size}
         type={type}
         shortAlt={shortAlt}
         icon={icon}

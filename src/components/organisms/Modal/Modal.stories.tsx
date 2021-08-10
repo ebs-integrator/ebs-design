@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Icon, Switch, Button, Space } from 'components/atoms';
-import { Modal } from './Modal';
+import SizeSwitcher from 'components/SizeSwitcher';
+
+import { Modal, ModalSize } from './Modal';
 import { exportStory } from '../../../libs';
 
 const { Content, Footer } = Modal;
@@ -18,14 +20,18 @@ export const WithNothing: React.FC = () => {
   const onToggleHandler = (): void => setOpen((s) => !s);
 
   return (
-    <>
-      <p>
-        Toggle: <Switch checked={open} onChange={onToggleHandler} />
-      </p>
-      <Modal open={open} onClose={onToggleHandler}>
-        <Modal.Content>Example</Modal.Content>
-      </Modal>
-    </>
+    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
+      {(size) => (
+        <>
+          <p>
+            Toggle: <Switch checked={open} onChange={onToggleHandler} />
+          </p>
+          <Modal size={size as ModalSize} open={open} onClose={onToggleHandler}>
+            <Modal.Content>Example</Modal.Content>
+          </Modal>
+        </>
+      )}
+    </SizeSwitcher>
   );
 };
 
@@ -36,14 +42,18 @@ export const WithTitle: React.FC = () => {
   const onToggleHandler = (): void => setOpen((s) => !s);
 
   return (
-    <>
-      <p>
-        Toggle: <Switch checked={open} onChange={onToggleHandler} />
-      </p>
-      <Modal open={open} onClose={onToggleHandler} title="Confirmă acceptare">
-        <Modal.Content>Example</Modal.Content>
-      </Modal>
-    </>
+    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
+      {(size) => (
+        <>
+          <p>
+            Toggle: <Switch checked={open} onChange={onToggleHandler} />
+          </p>
+          <Modal size={size as ModalSize} open={open} onClose={onToggleHandler} title="Confirmă acceptare">
+            <Modal.Content>Example</Modal.Content>
+          </Modal>
+        </>
+      )}
+    </SizeSwitcher>
   );
 };
 
@@ -54,23 +64,27 @@ export const WithFooter: React.FC = () => {
   const onToggleHandler = (): void => setOpen((s) => !s);
 
   return (
-    <>
-      <p>
-        Toggle: <Switch checked={open} onChange={onToggleHandler} />
-      </p>
-      <Modal open={open} onClose={onToggleHandler}>
-        <Modal.Content>Example</Modal.Content>
-        <Modal.Footer>
-          <Space justify="space-between">
-            <Button>Refuză</Button>
+    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
+      {(size) => (
+        <>
+          <p>
+            Toggle: <Switch checked={open} onChange={onToggleHandler} />
+          </p>
+          <Modal size={size as ModalSize} open={open} onClose={onToggleHandler}>
+            <Modal.Content>Example</Modal.Content>
+            <Modal.Footer>
+              <Space justify="space-between">
+                <Button>Refuză</Button>
 
-            <Button type="primary" prefix={<Icon type="check" />}>
-              Confirmă
-            </Button>
-          </Space>
-        </Modal.Footer>
-      </Modal>
-    </>
+                <Button type="primary" prefix={<Icon type="check" />}>
+                  Confirmă
+                </Button>
+              </Space>
+            </Modal.Footer>
+          </Modal>
+        </>
+      )}
+    </SizeSwitcher>
   );
 };
 
@@ -81,23 +95,27 @@ export const WithHeaderAndFooter: React.FC = () => {
   const onToggleHandler = (): void => setOpen((s) => !s);
 
   return (
-    <>
-      <p>
-        Toggle: <Switch checked={open} onChange={onToggleHandler} />
-      </p>
-      <Modal open={open} onClose={onToggleHandler} title="Confirmă acceptare">
-        <Modal.Content>Example</Modal.Content>
-        <Modal.Footer>
-          <Space justify="space-between">
-            <Button>Refuză</Button>
+    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
+      {(size) => (
+        <>
+          <p>
+            Toggle: <Switch checked={open} onChange={onToggleHandler} />
+          </p>
+          <Modal size={size as ModalSize} open={open} onClose={onToggleHandler} title="Confirmă acceptare">
+            <Modal.Content>Example</Modal.Content>
+            <Modal.Footer>
+              <Space justify="space-between">
+                <Button>Refuză</Button>
 
-            <Button type="primary" prefix={<Icon type="check" />}>
-              Confirmă
-            </Button>
-          </Space>
-        </Modal.Footer>
-      </Modal>
-    </>
+                <Button type="primary" prefix={<Icon type="check" />}>
+                  Confirmă
+                </Button>
+              </Space>
+            </Modal.Footer>
+          </Modal>
+        </>
+      )}
+    </SizeSwitcher>
   );
 };
 
@@ -108,31 +126,35 @@ export const CancelWithEscape: React.FC = () => {
   const onToggleHandler = (): void => setOpen((s) => !s);
 
   return (
-    <>
-      <p>
-        Toggle: <Switch checked={open} onChange={onToggleHandler} />
-      </p>
+    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
+      {(size) => (
+        <>
+          <p>
+            Toggle: <Switch checked={open} onChange={onToggleHandler} />
+          </p>
 
-      {open && (
-        <Modal open={open} onClose={onToggleHandler} title="Confirmă acceptare">
-          <Modal.Content>Example</Modal.Content>
-          <Modal.Footer>
-            <Space justify="space-between">
-              <Button onClick={onToggleHandler}>Refuză</Button>
+          {open && (
+            <Modal size={size as ModalSize} open={open} onClose={onToggleHandler} title="Confirmă acceptare">
+              <Modal.Content>Example</Modal.Content>
+              <Modal.Footer>
+                <Space justify="space-between">
+                  <Button onClick={onToggleHandler}>Refuză</Button>
 
-              <Space>
-                <Button type="ghost" prefix={<Icon type="check" />}>
-                  Confirmă
-                </Button>
+                  <Space>
+                    <Button type="ghost" prefix={<Icon type="check" />}>
+                      Confirmă
+                    </Button>
 
-                <Button type="primary" prefix={<Icon type="edit" />}>
-                  Save
-                </Button>
-              </Space>
-            </Space>
-          </Modal.Footer>
-        </Modal>
+                    <Button type="primary" prefix={<Icon type="edit" />}>
+                      Save
+                    </Button>
+                  </Space>
+                </Space>
+              </Modal.Footer>
+            </Modal>
+          )}
+        </>
       )}
-    </>
+    </SizeSwitcher>
   );
 };
