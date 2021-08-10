@@ -158,7 +158,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
         </Animated>
       </Loader>
 
-      {scrollMode === 'scroll' && (loading || true) ? (
+      {scrollMode === 'scroll' && loading ? (
         <Space justify="center" className="mt-10">
           <Loader.Inline />
         </Space>
