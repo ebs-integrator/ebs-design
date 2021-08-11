@@ -2,7 +2,7 @@ import * as React from 'react';
 import { AvatarInline, Space, Icon } from 'components/atoms';
 import { Form, useForm } from 'components/organisms';
 import SizeSwitcher from 'components/SizeSwitcher';
-import { capitalize } from 'libs/string';
+import { capitalize, makeid } from 'libs/string';
 import { SizeType } from 'types';
 
 import { Select } from './Select';
@@ -33,7 +33,7 @@ export const Regular = (): React.ReactNode => {
         const newList: Option[] = [];
         results.forEach((item) => {
           newList.push({
-            value: item.id.value,
+            value: makeid(),
             text: (
               <AvatarInline
                 img={item.picture.thumbnail}
@@ -124,7 +124,7 @@ export const OptionsBox = (): React.ReactNode => {
         const newList: Option[] = [];
         results.forEach((item) => {
           newList.push({
-            value: item.id.value,
+            value: makeid(),
             text: (
               <AvatarInline
                 img={item.picture.thumbnail}
@@ -211,7 +211,7 @@ export const OptionsMultiple = (): React.ReactNode => {
         const newList: Option[] = [];
         results.forEach((item) => {
           newList.push({
-            value: item.id.value,
+            value: makeid(),
             text: (
               <AvatarInline
                 img={item.picture.thumbnail}
@@ -291,7 +291,7 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
         const newList: Option[] = [];
         results.forEach((item) => {
           newList.push({
-            value: item.id.value,
+            value: makeid(),
             text: (
               <AvatarInline
                 img={item.picture.thumbnail}
@@ -364,7 +364,7 @@ export const TagsMode = (): React.ReactNode => {
         const newList: Option[] = [];
         results.forEach((item) => {
           newList.push({
-            value: item.id.value,
+            value: makeid(),
             text: `${capitalize(item.name.first)} ${capitalize(item.name.last)}`,
           });
         });
@@ -396,6 +396,80 @@ export const TagsMode = (): React.ReactNode => {
               <Select
                 loading={loading}
                 mode="tags"
+                size={size as SizeType}
+                newPlaceholder="Add new..."
+                isClearable
+                onSearch={(val) => setSearch(val)}
+                onAddNew={(value) => setList([{ value, text: value }, ...list])}
+              >
+                <Select.Options mode="multiple">
+                  {list.map((item, i) => (
+                    <Select.Options.Item key={i} value={item.value}>
+                      {item.text}
+                    </Select.Options.Item>
+                  ))}
+                </Select.Options>
+
+                <Select.Pagination count={total} limit={limit} page={page} setPage={setPage} mode="scroll" />
+              </Select>
+            </Form.Field>
+          </Form>
+        </Space>
+      )}
+    </SizeSwitcher>
+  );
+};
+
+export const InlineValueMode = (): React.ReactNode => {
+  const [form] = useForm();
+  const [, setSearch] = React.useState<string>('');
+  const [list, setList] = React.useState<Option[]>([]);
+  const [page, setPage] = React.useState(1);
+  const [total, setTotal] = React.useState(0);
+  const [loading, setLoaded] = React.useState(true);
+
+  React.useEffect(() => {
+    setLoaded(true);
+
+    fetch(`https://randomuser.me/api/1.2/?page=${page}&results=${limit}&seed=abc&inc=id,name,picture`)
+      .then((response) => response.json())
+      .then(({ results }) => {
+        const newList: Option[] = [];
+        results.forEach((item) => {
+          newList.push({
+            value: makeid(),
+            text: `${capitalize(item.name.first)} ${capitalize(item.name.last)}`,
+          });
+        });
+
+        setTotal(1000);
+        setList(newList);
+        setLoaded(false);
+      });
+  }, [page]);
+
+  const handleChange = (values): void => {
+    console.log('values :>> ', values);
+  };
+
+  return (
+    <SizeSwitcher>
+      {(size) => (
+        <Space direction="vertical" style={{ minWidth: 300 }}>
+          <Form
+            form={form}
+            initialValues={{
+              date: '10/10/2025',
+              time: '15-11-2020 11:30',
+              range: ['09-10-2029', '10-10-2029'],
+            }}
+            onFinish={handleChange}
+          >
+            <Form.Field name="select" label="Select" rules={[{ required: true }]}>
+              <Select
+                loading={loading}
+                mode="tags"
+                valueMode="inline"
                 size={size as SizeType}
                 newPlaceholder="Add new..."
                 isClearable
