@@ -35,6 +35,17 @@
     margin-right: 0;
   }
 
+  &--inline {
+    .ebs-select-value__container {
+      flex-wrap: nowrap;
+      overflow: auto hidden;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
   &__prefix {
     border: $select-prefix-border-right;
     border-right: none;
@@ -71,8 +82,6 @@
 
   &__clear {
     font-size: rem(22px);
-    padding: rem(0 7px);
-    margin: rem(0 -7px);
   }
 
   &__suffix {
@@ -96,12 +105,13 @@
     @include hiddenScroll;
     color: $text-color-secondary;
     width: 100%;
-    margin-right: rem($gutter-size);
+    margin-right: rem($gutter-size / 2);
     min-height: 1em;
 
     .ebs-input__container {
       z-index: 2;
       padding-left: rem($gutter-size / 4);
+      min-width: rem(80px);
 
       .ebs-input__wrapper {
         border: none;
@@ -127,8 +137,14 @@
       }
 
       .ebs-select__clear {
+        font-weight: 100;
         color: $primary-color;
       }
+    }
+
+    .ebs-label__suffix {
+      margin-top: rem(-1px);
+      right: rem($label-font-size / 2);
     }
   }
 
@@ -140,7 +156,7 @@
   }
 
   &-label:not(:last-child) {
-    margin-right: rem(4px);
+    margin-right: rem($label-font-size / 2);
   }
 
   &__wrapper {
@@ -154,10 +170,6 @@
     }
 
     &.active {
-      &.ebs-select--multiple .ebs-select-value {
-        padding-right: rem(75px);
-      }
-
       .ebs-select__prefix {
         border-color: $primary-color;
       }

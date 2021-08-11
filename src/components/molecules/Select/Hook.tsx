@@ -13,12 +13,12 @@ import { isEqual } from './utils';
 interface Props extends ContextProps {
   dropdownOptions?: React.ReactNode;
   hasValue?: boolean;
-  textValue?: any;
+  textValue?: Option[] | Option;
   isBox: boolean;
   isScrolling?: boolean;
   isMouseScrolling?: number;
   onClear: () => void;
-  onDeleteSelect: (key: number) => void;
+  onDeleteSelect: (key: number | string) => void;
   onChangeNewOption: (value: string | number) => void;
   onKeyDownNewOption: (e: React.KeyboardEvent) => void;
 }
@@ -221,13 +221,9 @@ export default ({ loading, refs, children, ...params }): Props => {
   );
 
   const onDeleteSelect = React.useCallback(
-    (key: number) => {
-      if (isArray(value)) {
-        const newValue = (value as OptionValue[]).filter((_, $key) => key !== $key);
-
-        if (onChange !== undefined) {
-          onChange(newValue);
-        }
+    (key: number | string) => {
+      if (isArray(value) && onChange) {
+        onChange(value.filter((item) => key !== item));
       }
     },
     [value, onChange],
@@ -253,12 +249,10 @@ export default ({ loading, refs, children, ...params }): Props => {
 
   const textValue = React.useMemo(() => {
     if (isArray(value)) {
-      return cacheOptions
-        .filter((option) => (value as OptionValue[]).includes(option.value))
-        .map((option) => option.text);
+      return cacheOptions.filter((option) => (value as OptionValue[]).includes(option.value));
     }
 
-    return (cacheOptions.find((option) => option.value === value) || { text: value }).text;
+    return cacheOptions.find((option) => option.value === value) || { value, text: value };
   }, [value, cacheOptions]);
 
   const dropdownOptions = React.useMemo(
@@ -321,7 +315,7 @@ export default ({ loading, refs, children, ...params }): Props => {
     search,
     hasValue,
     newOption,
-    textValue,
+    textValue: textValue as Option[],
     dropdownOptions,
     isOpen,
     isLoaded,
