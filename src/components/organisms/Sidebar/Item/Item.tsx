@@ -21,6 +21,12 @@ export const Item: React.FC<{
   const [collapsed, setCollapsed] = React.useState(false);
 
   React.useEffect(() => {
+    if (toggled) {
+      setCollapsed(false);
+    }
+  }, [toggled]);
+
+  React.useEffect(() => {
     setCollapsed(active || false);
 
     React.Children?.forEach(children as GenericObject[], (child) => {
@@ -53,6 +59,7 @@ export const Item: React.FC<{
           bodyClass="p-0"
           placement="right"
           trigger={toggled && children ? 'click' : undefined}
+          visible={toggled && collapsed}
           tooltip={toggled ? <div className={cn(`ebs-sidebar__options`)}>{children}</div> : undefined}
         >
           <div className="relative">
