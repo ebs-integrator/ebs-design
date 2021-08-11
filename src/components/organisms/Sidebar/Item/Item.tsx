@@ -3,6 +3,7 @@ import AnimateHeight from 'react-animate-height';
 import cn from 'classnames';
 import { Icon, Label, Tooltip } from 'components/atoms';
 import { useLayoutState } from 'components/organisms/Layout/context';
+import { GenericObject } from 'types';
 
 export const Item: React.FC<{
   className?: string;
@@ -18,6 +19,24 @@ export const Item: React.FC<{
 }> = ({ className, labelClass, optionsClass, label, active, prefix, invert, text, disabled, onClick, children }) => {
   const { toggled } = useLayoutState();
   const [collapsed, setCollapsed] = React.useState(false);
+
+  React.useEffect(() => {
+    if (toggled) {
+      setCollapsed(false);
+    }
+  }, [toggled]);
+
+  React.useEffect(() => {
+    setCollapsed(active || false);
+
+    React.Children?.forEach(children as GenericObject[], (child) => {
+      child?.props?.children?.forEach((element) => {
+        if (element?.props?.children?.props?.active) {
+          setCollapsed(true);
+        }
+      });
+    });
+  }, [children]);
 
   const onClickHandler = (): void => {
     if (!disabled) {
@@ -40,6 +59,7 @@ export const Item: React.FC<{
           bodyClass="p-0"
           placement="right"
           trigger={toggled && children ? 'click' : undefined}
+          visible={toggled && collapsed}
           tooltip={toggled ? <div className={cn(`ebs-sidebar__options`)}>{children}</div> : undefined}
         >
           <div className="relative">
