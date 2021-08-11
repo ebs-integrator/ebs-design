@@ -2,15 +2,15 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Label, Input, Icon, Space, Tooltip } from 'components/atoms';
 import { Loader } from 'components/molecules';
-import { isArray } from 'libs';
 import { SizeType } from 'types';
 
 import useSelect from '../Hook';
-import { SelectMode, OptionsMode, Option, OptionValue } from '../interfaces';
+import { SelectMode, ValueMode, OptionsMode, Option, OptionValue } from '../interfaces';
 
 export interface ComponentProps {
   mode?: SelectMode;
   optionsMode?: OptionsMode;
+  valueMode?: ValueMode;
   className?: string;
   size?: SizeType;
   label?: React.ReactNode;
@@ -32,8 +32,16 @@ export interface ComponentProps {
   onAddNew?: (value: string) => void;
 }
 
-const Component: React.FC<ComponentProps> = ({ mode = 'single', size = 'medium', loading, children, ...props }) => {
+const Component: React.FC<ComponentProps> = ({
+  mode = 'single',
+  size = 'medium',
+  valueMode = 'regular',
+  loading,
+  children,
+  ...props
+}) => {
   const inputRef = React.useRef<HTMLDivElement | null>(null);
+  const valueRef = React.useRef<HTMLDivElement | null>(null);
 
   const {
     newOption,
@@ -58,10 +66,16 @@ const Component: React.FC<ComponentProps> = ({ mode = 'single', size = 'medium',
     ...props,
   });
 
+  React.useEffect(() => {
+    if (valueRef.current) {
+      valueRef.current.scrollLeft = valueRef.current.scrollWidth;
+    }
+  }, [textValue]);
+
   return (
     <div
       ref={inputRef}
-      className={cn(`ebs-select__wrapper`, `ebs-select--${mode}`, props.className, {
+      className={cn(`ebs-select__wrapper`, `ebs-select--${mode}`, `ebs-select--${valueMode}`, props.className, {
         active: hasValue,
         disabled: props.disabled,
       })}
@@ -88,23 +102,23 @@ const Component: React.FC<ComponentProps> = ({ mode = 'single', size = 'medium',
               onClick={() => setState((prevState) => ({ isOpen: !prevState.isOpen }))}
             >
               <div className="ebs-select-value">
-                <div className="ebs-select-value__container">
+                <div ref={valueRef} className="ebs-select-value__container">
                   {loading && !isOpen && !isBox ? (
                     <Loader.Inline />
-                  ) : isArray(textValue) ? (
-                    (textValue as React.ReactNode[]).map((item, key) => (
+                  ) : Array.isArray(textValue) && textValue?.length ? (
+                    textValue.map((item) => (
                       <Label
-                        key={key}
+                        key={item.value}
                         className="ebs-select-label"
                         type="primary"
                         circle
-                        text={item}
+                        text={item.text}
                         suffix={!props.disabled ? <div className="ebs-select__clear">&#215;</div> : undefined}
-                        onClickSuffix={() => !props.disabled && onDeleteSelect(key)}
+                        onClickSuffix={() => !props.disabled && onDeleteSelect(item.value)}
                       />
                     ))
                   ) : (
-                    <Space>{textValue || props.placeholder}</Space>
+                    <Space>{(textValue as Option).value ? (textValue as Option).text : props.placeholder}</Space>
                   )}
 
                   {mode === 'tags' && (
