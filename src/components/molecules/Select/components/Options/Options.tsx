@@ -61,7 +61,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
     if (rect?.height && offsetBottom) {
       const height = window.innerHeight - offsetBottom;
 
-      setMaxHeight(height <= rect.height ? height : rect.height);
+      setMaxHeight(height <= rect.height ? height : rect.height - +(scrollMode === 'scroll'));
     }
   }, [ref.current, offsetBottom]);
 
