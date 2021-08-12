@@ -1,12 +1,13 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
-import { Animated, Space, Label } from 'components/atoms';
+import { Space, Label } from 'components/atoms';
+import { Loader } from 'components/molecules';
 import { Item, ItemProps } from './Item';
 
+import { Context } from '../../Context';
 import { SelectMode, OptionValue, Option } from '../../interfaces';
 import { ScrollMode } from '../Pagination';
-import { Loader } from 'components/molecules/Loader/Loader';
 
 export interface OptionsComposition {
   Item: React.FC<ItemProps>;
@@ -42,7 +43,9 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   onClickAddNew,
 }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
+  const { offsetBottom } = React.useContext(Context);
   const [activeItem, setActiveItem] = React.useState(0);
+  const [maxHeight, setMaxHeight] = React.useState(0);
 
   const onScroll = (e): void => {
     const scrollTop = Math.floor(e.target.scrollTop);
@@ -53,22 +56,32 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   };
 
   React.useEffect(() => {
-    if (ref?.current && !scrollMode && options?.length) {
-      ref.current.scrollTop = 0;
+    const rect = ref.current?.getBoundingClientRect();
+
+    if (rect?.height && offsetBottom) {
+      const height = window.innerHeight - offsetBottom;
+
+      setMaxHeight(height <= rect.height ? height : rect.height);
     }
-  }, [ref, options, scrollMode]);
+  }, [ref.current, offsetBottom]);
 
   React.useEffect(() => {
-    if (ref?.current && scrollMode) {
+    if (ref.current && !scrollMode && options?.length) {
+      ref.current.scrollTop = 0;
+    }
+  }, [ref.current, options, scrollMode]);
+
+  React.useEffect(() => {
+    if (ref.current && scrollMode) {
       ref.current.addEventListener('scroll', onScroll);
     }
 
     return () => {
-      if (ref?.current && scrollMode) {
+      if (ref.current && scrollMode) {
         ref.current.removeEventListener('scroll', onScroll);
       }
     };
-  }, [ref, onScroll, scrollMode]);
+  }, [ref.current, onScroll, scrollMode]);
 
   useEventListener(
     'keydown',
@@ -117,7 +130,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
       className={cn('ebs-select__options-items', {
         'ebs-select__options--multiple': ['multiple', 'tags'].includes(mode),
       })}
-      style={scrollMode === 'scroll' ? { maxHeight: 300 } : undefined}
+      style={maxHeight ? { maxHeight } : undefined}
     >
       {newOption && onClickAddNew && (
         <Item
@@ -133,32 +146,30 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
         loading={scrollMode !== 'scroll' ? loading || false : false}
         height={!ref.current || ref.current?.offsetHeight < 300 ? 300 : ref.current.offsetHeight}
       >
-        <Animated loading={scrollMode !== 'scroll' && loading} duration={100}>
-          {options.length
-            ? options.map((option, key) => (
-                <Item
-                  key={key}
-                  active={
-                    ['multiple', 'tags'].includes(mode) && Array.isArray(value)
-                      ? value.includes(option.value)
-                      : value === option.value
-                  }
-                  mode={mode}
-                  text={option.text}
-                  selected={activeItem === key + 1}
-                  onClick={onChangeHandler}
-                  {...option}
-                />
-              ))
-            : !loading && (
-                <Space size="large" justify="center" className="ebs-select__options--empty">
-                  {emptyLabel}
-                </Space>
-              )}
-        </Animated>
+        {options.length
+          ? options.map((option, key) => (
+              <Item
+                key={key}
+                active={
+                  ['multiple', 'tags'].includes(mode) && Array.isArray(value)
+                    ? value.includes(option.value)
+                    : value === option.value
+                }
+                mode={mode}
+                text={option.text}
+                selected={activeItem === key + 1}
+                onClick={onChangeHandler}
+                {...option}
+              />
+            ))
+          : !loading && (
+              <Space size="large" justify="center" className="ebs-select__options--empty">
+                {emptyLabel}
+              </Space>
+            )}
       </Loader>
 
-      {scrollMode === 'scroll' && loading ? (
+      {loading ? (
         <Space justify="center" className="mt-10">
           <Loader.Inline />
         </Space>

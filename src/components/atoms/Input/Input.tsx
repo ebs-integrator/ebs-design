@@ -56,7 +56,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const hasValue = React.useMemo(() => value != undefined && value.toString().length, [value]);
 
     const onClickHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
-      if (onChange !== undefined) {
+      if (onChange) {
         onChange(
           props.min !== undefined && parseFloat(props.min as string) >= parseFloat(target.value)
             ? props.min
@@ -68,13 +68,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const onClickPrefixHandler = (): void => {
-      if (!loading && props.onClickPrefix !== undefined) {
+      if (!loading && props.onClickPrefix) {
         props.onClickPrefix();
       }
     };
 
     const onClickSuffixHandler = (): void => {
-      if (!loading && props.onClickSuffix !== undefined) {
+      if (!loading && props.onClickSuffix) {
         props.onClickSuffix();
       }
     };

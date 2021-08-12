@@ -10,7 +10,7 @@ interface StateProps {
   newOption?: string;
   search: string | boolean;
   style?: React.CSSProperties;
-  maxHeight: number;
+  offsetBottom?: number;
   isOpen: boolean;
   isLoaded: boolean;
 }
@@ -23,7 +23,6 @@ export interface ContextProps extends StateProps {
 const Context = React.createContext<ContextProps>({
   options: [],
   cache: [],
-  maxHeight: 350,
   search: false,
   isOpen: false,
   isLoaded: false,
@@ -35,7 +34,6 @@ const Provider: React.FC = ({ children }) => {
   const [state, setState] = useSetState<StateProps>({
     options: [],
     cache: [],
-    maxHeight: 350,
     search: false,
     isOpen: false,
     isLoaded: false,
