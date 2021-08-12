@@ -63,7 +63,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
 
       setMaxHeight(height <= rect.height ? height : rect.height - +(scrollMode === 'scroll'));
     }
-  }, [ref.current, offsetBottom]);
+  }, [ref.current, offsetBottom, scrollMode]);
 
   React.useEffect(() => {
     if (ref.current && !scrollMode && options?.length) {
