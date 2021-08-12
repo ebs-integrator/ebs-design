@@ -73,6 +73,7 @@ const Component: React.FC<ComponentProps> = ({
     <div
       ref={ref}
       className={cn(`ebs-select__wrapper`, `ebs-select--${mode}`, `ebs-select--${valueMode}`, props.className, {
+        'ebs-select--box': isBox,
         active: hasValue,
         disabled: props.disabled,
       })}
@@ -92,7 +93,6 @@ const Component: React.FC<ComponentProps> = ({
 
             <div
               className={cn('ebs-select', `ebs-select--${size}`, {
-                'ebs-select--box': isBox,
                 'ebs-select--tags': mode === 'tags',
                 'has-suffix': props.suffix,
               })}
