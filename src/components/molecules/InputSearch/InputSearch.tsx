@@ -3,25 +3,17 @@ import useDebounce from 'react-use/esm/useDebounce';
 import cn from 'classnames';
 import { capitalize } from 'libs/string';
 import { Icon, Input } from 'components/atoms';
-import { InputSize } from 'components/atoms/Input/Input';
+import { InputProps } from 'components/atoms/Input/Input';
 
 export type InputSearchIconAlign = 'prefix' | 'suffix';
 
 export type InputSearchStyleType = 'stroke' | 'fill' | 'transparent';
 
-export interface InputSearchProps {
-  className?: string;
+export interface InputSearchProps extends Omit<InputProps, 'styleType'> {
   styleType?: InputSearchStyleType;
   iconAlign?: InputSearchIconAlign;
-  autoFocus?: boolean;
-  onSearch?: (value: string) => void;
   value?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  label?: React.ReactNode;
-  extra?: React.ReactNode;
-  size?: InputSize;
-  isClearable?: boolean;
+  onSearch?: (value: string) => void;
 }
 
 export const InputSearch: React.FC<InputSearchProps> = ({
@@ -31,12 +23,13 @@ export const InputSearch: React.FC<InputSearchProps> = ({
   autoFocus,
   onSearch,
   value: $value,
-  placeholder,
+  placeholder = 'Search by keyword',
   disabled,
   label,
   extra,
   size,
   isClearable,
+  ...props
 }) => {
   const [changedValue, setChangedValue] = React.useState(false);
   const [value, setValue] = React.useState('');
@@ -54,11 +47,11 @@ export const InputSearch: React.FC<InputSearchProps> = ({
   }, [changedValue, $value, value]);
 
   const onSearchHandler = (ev?: React.FormEvent<HTMLFormElement>): void => {
-    if (ev && ev.preventDefault !== undefined) {
+    if (ev?.preventDefault !== undefined) {
       ev.preventDefault();
     }
 
-    if (!disabled && onSearch !== undefined) {
+    if (!disabled && onSearch) {
       onSearch(value);
     }
   };
@@ -82,11 +75,7 @@ export const InputSearch: React.FC<InputSearchProps> = ({
       <Input
         className="ebs-input__search"
         autoFocus={autoFocus}
-        {...{
-          [`onClick${capitalize(iconAlign)}`]: onSearchHandler,
-          [iconAlign]: <Icon type="search" className="cursor" />,
-        }}
-        placeholder={placeholder || 'Search by keyword'}
+        placeholder={placeholder}
         value={value}
         onChange={onChangeHandler}
         disabled={disabled}
@@ -94,6 +83,11 @@ export const InputSearch: React.FC<InputSearchProps> = ({
         extra={extra}
         size={size}
         isClearable={isClearable}
+        {...{
+          ...props,
+          [`onClick${capitalize(iconAlign)}`]: onSearchHandler,
+          [iconAlign]: <Icon type="search" className="cursor" />,
+        }}
       />
     </form>
   );

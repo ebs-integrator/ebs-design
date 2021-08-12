@@ -8,7 +8,6 @@ export interface Props extends PhoneInputProps {
   className?: string;
   size?: SizeType;
   dropdownClass?: string;
-  disabled?: boolean;
   hasError?: boolean;
   label?: React.ReactNode;
   extra?: React.ReactNode;
