@@ -1,1 +1,1 @@
-export * from './Options';
+export { Options, OptionsComposition, OptionsProps } from './Options';

@@ -40,7 +40,7 @@ const Component: React.FC<ComponentProps> = ({
   children,
   ...props
 }) => {
-  const inputRef = React.useRef<HTMLDivElement | null>(null);
+  const ref = React.useRef<HTMLDivElement | null>(null);
   const valueRef = React.useRef<HTMLDivElement | null>(null);
 
   const {
@@ -58,10 +58,7 @@ const Component: React.FC<ComponentProps> = ({
   } = useSelect({
     mode,
     loading,
-    refs: {
-      root: props.rootRef,
-      input: inputRef,
-    },
+    ref,
     children,
     ...props,
   });
@@ -74,7 +71,7 @@ const Component: React.FC<ComponentProps> = ({
 
   return (
     <div
-      ref={inputRef}
+      ref={ref}
       className={cn(`ebs-select__wrapper`, `ebs-select--${mode}`, `ebs-select--${valueMode}`, props.className, {
         active: hasValue,
         disabled: props.disabled,

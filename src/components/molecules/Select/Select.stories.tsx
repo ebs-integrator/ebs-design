@@ -14,7 +14,7 @@ export default {
   component: Select,
 };
 
-const limit = 10;
+const limit = 20;
 
 export const Regular = (): React.ReactNode => {
   const [form] = useForm();
@@ -57,7 +57,7 @@ export const Regular = (): React.ReactNode => {
   return (
     <SizeSwitcher>
       {(size) => (
-        <Space direction="vertical" style={{ minWidth: 300 }}>
+        <Space direction="vertical">
           <Form
             form={form}
             initialValues={{
@@ -148,7 +148,7 @@ export const OptionsBox = (): React.ReactNode => {
   return (
     <SizeSwitcher>
       {(size) => (
-        <Space direction="vertical" style={{ minWidth: 300 }}>
+        <Space direction="vertical">
           <Form
             form={form}
             initialValues={{
@@ -235,7 +235,7 @@ export const OptionsMultiple = (): React.ReactNode => {
   return (
     <SizeSwitcher>
       {(size) => (
-        <Space direction="vertical" style={{ minWidth: 300 }}>
+        <Space direction="vertical">
           <Form
             form={form}
             initialValues={{
@@ -315,7 +315,7 @@ export const InfiniteScrollPagination = (): React.ReactNode => {
   return (
     <SizeSwitcher>
       {(size) => (
-        <Space direction="vertical" style={{ minWidth: 300 }}>
+        <Space direction="vertical">
           <Form
             form={form}
             initialValues={{
@@ -382,7 +382,7 @@ export const TagsMode = (): React.ReactNode => {
   return (
     <SizeSwitcher>
       {(size) => (
-        <Space direction="vertical" style={{ minWidth: 300 }}>
+        <Space direction="vertical">
           <Form
             form={form}
             initialValues={{
@@ -455,7 +455,7 @@ export const InlineValueMode = (): React.ReactNode => {
   return (
     <SizeSwitcher>
       {(size) => (
-        <Space direction="vertical" style={{ minWidth: 300 }}>
+        <Space direction="vertical">
           <Form
             form={form}
             initialValues={{

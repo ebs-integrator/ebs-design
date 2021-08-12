@@ -23,7 +23,7 @@ interface Props extends ContextProps {
   onKeyDownNewOption: (e: React.KeyboardEvent) => void;
 }
 
-export default ({ loading, refs, children, ...params }): Props => {
+export default ({ loading, ref, children, ...params }): Props => {
   const {
     mode = 'single',
     optionsMode = 'dropdown',
@@ -84,28 +84,29 @@ export default ({ loading, refs, children, ...params }): Props => {
         onClickAddNew();
       }
     },
-    refs.input,
+    ref,
   );
 
-  useClickAway(refs.input, (e) => {
+  useClickAway(ref, (e) => {
     if (isOpen && !isBox && optionsRef.current && !optionsRef.current.contains(e.target as Node)) {
       setState({ isOpen: false });
     }
   });
 
   React.useEffect(() => {
-    if (!isBox && isOpen && refs.input.current) {
-      const rect = refs.input.current.getBoundingClientRect();
+    if (!isBox && isOpen && ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      const offsetBottom = rect.bottom + rect.height;
 
       const style: React.CSSProperties = {
         width: `${rect.width}px`,
       };
 
       if (!isEqual(style, optionsStyle)) {
-        setState({ style });
+        setState({ style, offsetBottom });
       }
     }
-  }, [isOpen, refs, optionsStyle]);
+  }, [isOpen, ref, optionsStyle]);
 
   React.useEffect(() => {
     if (searchEl?.props?.value !== undefined && search !== searchEl.props.value) {

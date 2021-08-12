@@ -15,8 +15,8 @@ const SizeSwitcher: React.FC<Props> = ({ sizes = ['small', 'medium', 'large'], d
   return (
     <>
       <ButtonGroup className="mb-30">
-        {sizes.map((value) => (
-          <Button size="small" type={size === value ? 'primary' : 'fill'} onClick={() => setSize(value)}>
+        {sizes.map((value, i) => (
+          <Button key={i} size="small" type={size === value ? 'primary' : 'fill'} onClick={() => setSize(value)}>
             {capitalize(value)}
           </Button>
         ))}
