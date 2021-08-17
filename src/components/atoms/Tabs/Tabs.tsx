@@ -3,15 +3,15 @@ import cn from 'classnames';
 import { Panel, PanelProps } from './Panel';
 import { Tab, TabProps } from './Tab';
 
-export interface TabsProps {
+export interface TabsComposition {
   Tab: React.FC<TabProps>;
   Panel: React.FC<PanelProps>;
 }
 
-export interface TabsMainProps {
+export interface TabsProps {
+  className?: string;
   activeTab?: string;
   setActiveTab?: (key: string) => void;
-  className?: string;
 }
 
 export interface TabsContext {
@@ -21,7 +21,7 @@ export interface TabsContext {
 
 const TabsContext = React.createContext<TabsContext | undefined>(undefined);
 
-const Tabs: React.FC<TabsMainProps> & TabsProps = ({ activeTab, setActiveTab, className, children }) => {
+const Tabs: React.FC<TabsProps> & TabsComposition = ({ activeTab, setActiveTab, className, children }) => {
   const memoizedContextValue = React.useMemo(
     () => ({
       activeTab,

@@ -1,7 +1,6 @@
 import * as React from 'react';
+import { Button, ButtonGroup } from 'components/atoms';
 import { capitalize } from 'libs';
-
-import { Button, ButtonGroup } from './atoms/Button/Button';
 
 interface Props {
   sizes?: string[];

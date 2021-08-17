@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Space, Button, Label } from 'components/atoms';
-import SizeSwitcher from 'components/SizeSwitcher';
+import { SizeSwitcher } from 'components/storybook';
 import { SpaceSize } from 'components/atoms/Space/Space';
 import { useNotify } from 'hooks';
 

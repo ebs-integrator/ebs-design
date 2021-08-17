@@ -1,10 +1,9 @@
 import * as React from 'react';
 
-export interface Props {
+export interface MaskProps extends React.HTMLAttributes<HTMLDivElement> {
   onClick?: () => void;
-  style?: React.CSSProperties;
 }
 
-export const Mask: React.FC<Props> = ({ onClick, style }) => (
-  <div className="ebs-mask" style={style} onClick={onClick} />
+export const Mask: React.FC<MaskProps> = ({ onClick, ...props }) => (
+  <div className="ebs-mask" onClick={onClick} {...props} />
 );

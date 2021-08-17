@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { AvatarInline, Space, Icon } from 'components/atoms';
 import { Form, useForm } from 'components/organisms';
-import SizeSwitcher from 'components/SizeSwitcher';
+import { SizeSwitcher } from 'components/storybook';
 import { capitalize, makeid } from 'libs/string';
 import { SizeType } from 'types';
 
 import { Select } from './Select';
+import { ComponentProps } from './components/Component';
 import { Option } from './interfaces';
 import { exportStory } from '../../../libs';
 
@@ -420,7 +421,7 @@ export const TagsMode = (): React.ReactNode => {
   );
 };
 
-export const InlineValueMode = (): React.ReactNode => {
+export const InlineValueMode: React.FC<ComponentProps> & { args: ComponentProps } = ({ children, ...props }) => {
   const [form] = useForm();
   const [, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
@@ -475,6 +476,7 @@ export const InlineValueMode = (): React.ReactNode => {
                 isClearable
                 onSearch={(val) => setSearch(val)}
                 onAddNew={(value) => setList([{ value, text: value }, ...list])}
+                {...props}
               >
                 <Select.Options mode="multiple">
                   {list.map((item, i) => (
@@ -492,4 +494,15 @@ export const InlineValueMode = (): React.ReactNode => {
       )}
     </SizeSwitcher>
   );
+};
+
+InlineValueMode.args = {
+  loading: false,
+  mode: 'tags',
+  valueMode: 'inline',
+  size: 'medium',
+  newPlaceholder: 'Add new...',
+  emptyLabel: 'No found',
+  isClearable: true,
+  disabled: false,
 };

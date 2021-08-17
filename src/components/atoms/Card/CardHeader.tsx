@@ -3,13 +3,13 @@ import cn from 'classnames';
 import { Icon } from 'components/atoms';
 import { CardContext } from './Card';
 
-export interface CardHeaderProps {
+export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   bordered?: boolean;
   onClick?: () => void;
 }
 
-export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, onClick, children }) => {
+export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, onClick, children, ...props }) => {
   const { collapsible, height, setHeight } = React.useContext(CardContext);
 
   // Card header classNames
@@ -41,7 +41,7 @@ export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, onC
   };
 
   return (
-    <header onClick={handleClick} className={classNames}>
+    <header onClick={handleClick} className={classNames} {...props}>
       <div className="ebs-card__header__content">{children}</div>
       <div className="ebs-card__header__toggle" onClick={toggle}>
         <Icon type={height === 0 ? 'arrow-right' : 'arrow-bottom'} model="bold" />

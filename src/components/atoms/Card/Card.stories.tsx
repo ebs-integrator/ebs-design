@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Space } from 'components/atoms';
 import { Table } from 'components/organisms';
 
-import { Card } from './Card';
+import { Card, CardProps } from './Card';
 import { exportStory } from '../../../libs';
 
 const { Header: CardHeader, Footer: CardFooter, Body: CardBody } = Card;
@@ -11,6 +11,12 @@ export default {
   title: exportStory('Card', 'atoms'),
   component: Card,
   subcomponents: { CardHeader, CardBody, CardFooter },
+  argTypes: {
+    size: {
+      options: ['small', 'medium', 'large'],
+      control: { type: 'select' },
+    },
+  },
 };
 
 const data = [
@@ -38,8 +44,8 @@ const columns = [
   },
 ];
 
-export const Regular = (): React.ReactElement => (
-  <Card collapsible>
+export const Regular: React.FC<CardProps> & { args: CardProps } = ({ children, ...props }) => (
+  <Card {...props}>
     <Card.Header bordered>
       <Space align="center" justify="space-between">
         <Space align="center">
@@ -65,3 +71,9 @@ export const Regular = (): React.ReactElement => (
     </Card.Footer>
   </Card>
 );
+
+Regular.args = {
+  size: 'medium',
+  collapsible: true,
+  className: '',
+};

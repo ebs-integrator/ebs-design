@@ -10,7 +10,6 @@ export interface ColProps extends Grid {
   lg?: ColType | ColSizeType;
   xl?: ColType | ColSizeType;
   xxl?: ColType | ColSizeType;
-  style?: React.CSSProperties;
 }
 
 export const Col: React.FC<ColProps> = ({

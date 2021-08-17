@@ -5,7 +5,6 @@ import { getClassName } from '../utils';
 
 export interface ContainerProps extends Grid {
   size?: ColSize;
-  style?: React.CSSProperties;
 }
 
 export const Container: React.FC<ContainerProps> = ({

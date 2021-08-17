@@ -1,171 +1,140 @@
 import * as React from 'react';
-import SizeSwitcher from 'components/SizeSwitcher';
+import { Template } from 'components/storybook';
 
 import { DatePicker } from './DatePicker';
+import { DatePickerProps, DateType, RangePickerProps } from './types';
 import { exportStory } from '../../../libs';
-import { Button } from '../../atoms';
-import { Form, useForm } from '../../organisms/Form';
-import { SizeType } from 'types';
 
 export default {
   title: exportStory('DatePicker', 'molecules'),
   component: DatePicker,
 };
 
-export const Regular = (): React.ReactElement => {
-  const [date, setDate] = React.useState('');
-  const [time, setTime] = React.useState('');
-  const [range, setRange] = React.useState();
+export const Regular: React.FC<DatePickerProps> & { args: DatePickerProps } = ({ children, ...props }) => {
+  const [value, setValue] = React.useState<DateType>('');
 
   return (
-    <SizeSwitcher>
-      {(size) => (
-        <div className="storybook-rows">
-          <div className="storybook-row" style={{ maxWidth: 250 }}>
-            <div className="storybook-header">DatePicker</div>
-
-            <div className="storybook-row-item">
-              <div className="storybook-label">Date</div>
-              <DatePicker
-                size={size as SizeType}
-                placeholderText="Date placeholder"
-                value={date}
-                onChange={(v) => setDate(v as string)}
-                isClearable
-                dateFormat="dd-MM-yyyy"
-              />
-            </div>
-
-            <div className="storybook-row-item">
-              <div className="storybook-label">Time</div>
-              <DatePicker
-                size={size as SizeType}
-                showTimeSelect
-                placeholderText="Time placeholder"
-                dateFormat="yy/MMMM/d HH"
-                value={time}
-                onChange={(v) => setTime(v as string)}
-              />
-            </div>
-
-            <div className="storybook-row-item">
-              <div className="storybook-label">Range</div>
-              <DatePicker.Range
-                size={size as SizeType}
-                dateFormat="MM-dd-yyyy"
-                value={range}
-                onChange={(v) => setRange(v as any)}
-              />
-            </div>
-
-            <div className="storybook-row-item">
-              <div className="storybook-label">Range Input</div>
-              <DatePicker.RangeInput
-                size={size as SizeType}
-                dateFormat="MM-dd-yyyy"
-                value={range}
-                onChange={(v) => setRange(v as any)}
-              />
-            </div>
-          </div>
-        </div>
-      )}
-    </SizeSwitcher>
+    <Template>
+      <DatePicker value={value} onChange={setValue} {...props} />
+    </Template>
   );
 };
 
-export const WithForm = (): React.ReactElement => {
-  const [form] = useForm();
-
-  const handleChange = (values): void => {
-    console.log('values :>> ', values);
-  };
-
-  return (
-    <SizeSwitcher>
-      {(size) => (
-        <div className="storybook-rows">
-          <div className="storybook-row">
-            <Form
-              form={form}
-              initialValues={{
-                date: '10/10/2025',
-                time: '15-11-2020 11:30',
-                range: ['09-10-2029', '10-10-2029'],
-              }}
-              onFinish={handleChange}
-            >
-              <div className="storybook-header">DatePicker</div>
-
-              <div className="storybook-row-item">
-                <div className="storybook-label">Date</div>
-                <Form.Field name="date" label="Date" rules={[{ required: true }]}>
-                  <DatePicker size={size as SizeType} placeholderText="Birthday" isClearable dateFormat="dd-MM-yyyy" />
-                </Form.Field>
-              </div>
-
-              <div className="storybook-row-item">
-                <div className="storybook-label">Time</div>
-                <Form.Field name="time" label="Time" rules={[{ required: true }]}>
-                  <DatePicker
-                    size={size as SizeType}
-                    showTimeSelect
-                    placeholderText="Birthday"
-                    isClearable
-                    dateFormat="yy/MMMM/d HH"
-                  />
-                </Form.Field>
-              </div>
-
-              <div className="storybook-row-item">
-                <div className="storybook-label">Range</div>
-                <Form.Field name="range" label="Range" rules={[{ required: true }]}>
-                  <DatePicker.Range size={size as SizeType} dateFormat="MM-dd-yyyy" isClearable />
-                </Form.Field>
-              </div>
-
-              <Button submit type="primary">
-                Submit
-              </Button>
-            </Form>
-          </div>
-        </div>
-      )}
-    </SizeSwitcher>
-  );
+Regular.args = {
+  size: 'medium',
+  adjustDateOnChange: undefined,
+  allowSameDay: undefined,
+  ariaLabelClose: '',
+  ariaLabelledBy: '',
+  autoComplete: undefined,
+  autoFocus: true,
+  calendarClassName: '',
+  chooseDayAriaLabelPrefix: '',
+  className: '',
+  clearButtonTitle: undefined,
+  closeOnScroll: undefined,
+  customInput: undefined,
+  customInputRef: undefined,
+  customTimeInput: undefined,
+  dateFormat: undefined,
+  dateFormatCalendar: undefined,
+  disabledDayAriaLabelPrefix: undefined,
+  disabled: undefined,
+  disabledKeyboardNavigation: undefined,
+  dropdownMode: 'scroll',
+  endDate: null,
+  excludeDates: [],
+  excludeTimes: [],
+  fixedHeight: undefined,
+  forceShowMonthNavigation: true,
+  highlightDates: [],
+  id: undefined,
+  includeDates: [],
+  includeTimes: [],
+  injectTimes: [],
+  inline: false,
+  isClearable: true,
+  focusSelectedMonth: undefined,
+  locale: 'en',
+  maxDate: undefined,
+  maxTime: undefined,
+  minDate: undefined,
+  minTime: undefined,
+  monthsShown: undefined,
+  name: undefined,
+  nextMonthButtonLabel: undefined,
+  nextYearButtonLabel: undefined,
+  open: undefined,
+  openToDate: undefined,
+  peekNextMonth: undefined,
+  placeholderText: 'Date field',
+  popperClassName: '',
+  popperModifiers: undefined,
+  popperPlacement: undefined,
+  popperProps: {},
+  preventOpenOnFocus: undefined,
+  previousMonthButtonLabel: undefined,
+  previousYearButtonLabel: undefined,
+  readOnly: undefined,
+  required: undefined,
+  scrollableMonthYearDropdown: undefined,
+  scrollableYearDropdown: undefined,
+  selected: null,
+  selectsEnd: undefined,
+  selectsStart: undefined,
+  selectsRange: undefined,
+  shouldCloseOnSelect: undefined,
+  showDisabledMonthNavigation: undefined,
+  showFullMonthYearPicker: undefined,
+  showMonthDropdown: undefined,
+  showMonthYearDropdown: undefined,
+  showMonthYearPicker: undefined,
+  showPopperArrow: undefined,
+  showPreviousMonths: undefined,
+  showQuarterYearPicker: undefined,
+  showTimeInput: undefined,
+  showTimeSelect: undefined,
+  showTimeSelectOnly: undefined,
+  showTwoColumnMonthYearPicker: undefined,
+  showWeekNumbers: undefined,
+  showYearDropdown: true,
+  showYearPicker: undefined,
+  startDate: null,
+  startOpen: undefined,
+  strictParsing: undefined,
+  tabIndex: undefined,
+  timeCaption: undefined,
+  timeFormat: undefined,
+  timeInputLabel: undefined,
+  timeIntervals: undefined,
+  title: undefined,
+  todayButton: undefined,
+  useShortMonthInDropdown: undefined,
+  useWeekdaysShort: undefined,
+  weekAriaLabelPrefix: undefined,
+  value: undefined,
+  weekLabel: undefined,
+  withPortal: undefined,
+  portalId: undefined,
+  wrapperClassName: '',
+  yearDropdownItemNumber: undefined,
+  excludeScrollbar: undefined,
+  enableTabLoop: undefined,
+  yearItemNumber: undefined,
 };
 
-export const Range = (): React.ReactElement => {
-  const [value, setValue] = React.useState();
+export const RangeInput: React.FC<DatePickerProps> & { args: DatePickerProps } = ({ children, ...props }) => (
+  <Template>
+    <DatePicker.RangeInput {...props} />
+  </Template>
+);
 
-  const handleChange = (date): void => {
-    setValue(date);
-  };
+RangeInput.args = Regular.args;
 
-  return (
-    <SizeSwitcher>
-      {(size) => (
-        <div className="storybook-rows">
-          <div className="storybook-row">
-            <div className="storybook-header">Calendar</div>
+export const Range: React.FC<RangePickerProps> & { args: RangePickerProps } = ({ children, ...props }) => (
+  <Template>
+    <DatePicker.Range {...props} />
+  </Template>
+);
 
-            <div className="storybook-row-item">
-              <div className="storybook-label">Range</div>
-              <DatePicker.Range size={size as SizeType} />
-            </div>
-
-            <div className="storybook-row-item">
-              <div className="storybook-label">Range Input</div>
-              <DatePicker.RangeInput
-                size={size as SizeType}
-                onChange={handleChange}
-                value={value}
-                dateFormat="yyyy-MM-dd"
-              />
-            </div>
-          </div>
-        </div>
-      )}
-    </SizeSwitcher>
-  );
-};
+Range.args = Regular.args;

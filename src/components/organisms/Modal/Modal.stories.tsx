@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Icon, Switch, Button, Space } from 'components/atoms';
-import SizeSwitcher from 'components/SizeSwitcher';
+import { SizeSwitcher } from 'components/storybook';
 
 import { Modal, ModalSize } from './Modal';
 import { exportStory } from '../../../libs';

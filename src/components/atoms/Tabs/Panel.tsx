@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { useTabs } from './Tabs';
 
-export interface PanelProps {
+export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
   tabKey: string;
   className?: string;
 }
@@ -10,8 +10,12 @@ export interface PanelProps {
 /**
  * Individual panel component.
  */
-export const Panel: React.FC<PanelProps> = ({ tabKey, className, children }) => {
+export const Panel: React.FC<PanelProps> = ({ tabKey, className, children, ...props }) => {
   const { activeTab } = useTabs();
 
-  return activeTab === tabKey ? <div className={cn(className)}>{children}</div> : null;
+  return activeTab === tabKey ? (
+    <div className={cn(className)} {...props}>
+      {children}
+    </div>
+  ) : null;
 };

@@ -1,17 +1,26 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-interface Props {
+export interface ChipsProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onChange'> {
   className?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
-  disabled?: boolean;
-  checked?: boolean;
-  onChange?: (value: boolean) => void;
   text?: React.ReactNode;
+  checked?: boolean;
+  disabled?: boolean;
+  onChange?: (value: boolean) => void;
 }
 
-export const Chips: React.FC<Props> = ({ className, prefix, suffix, disabled, checked, onChange, text }) => {
+export const Chips: React.FC<ChipsProps> = ({
+  className,
+  prefix,
+  suffix,
+  disabled,
+  checked,
+  onChange,
+  text,
+  ...props
+}) => {
   const onClickHandler = (): void => (!disabled && onChange !== undefined ? onChange(!checked) : undefined);
 
   return (
@@ -22,6 +31,7 @@ export const Chips: React.FC<Props> = ({ className, prefix, suffix, disabled, ch
         disabled: disabled,
       })}
       onClick={onClickHandler}
+      {...props}
     >
       {prefix && <div className="ebs-chips__prefix">{prefix}</div>}
 

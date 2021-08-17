@@ -4,7 +4,7 @@ import { Avatar, AvatarType } from './Avatar';
 
 export type AvatarSize = 'small' | 'big';
 
-export interface CardProps {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: AvatarType;
   size?: AvatarSize;
   className?: string;
@@ -27,8 +27,9 @@ export const AvatarCard: React.FC<CardProps> = ({
   shortAlt,
   alt = '',
   status,
+  ...props
 }) => (
-  <div className={cn('ebs-avatar__card', className)}>
+  <div className={cn('ebs-avatar__card', className)} {...props}>
     <Avatar size={size} type={type} icon={icon} img={img} shortAlt={shortAlt} alt={alt} status={status} />
 
     <div className="ebs-avatar__card-alt">{alt}</div>

@@ -5,13 +5,11 @@ import { CollapseGroup, CollapseGroupProps } from './CollapseGroup';
 import { CollapseHeader, CollapseHeaderProps } from './CollapseHeader';
 import { CollapseBody, CollapseBodyProps } from './CollapseBody';
 
-export interface CollapseProps {
+export interface CollapseProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsed?: boolean;
   className?: string;
   size?: SizeType;
-  style?: React.CSSProperties;
   bordered?: boolean;
-  onClick?: (collapsed?: boolean) => void;
 }
 
 export interface CollapseComposition {
@@ -37,13 +35,17 @@ const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
   collapsed = false,
   bordered = false,
   className,
-  style,
   children,
+  ...props
 }) => {
   const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
 
+  React.useEffect(() => {
+    setHeight(collapsed ? 0 : 'auto');
+  }, [collapsed]);
+
   return (
-    <div className={cn(`ebs-collapse ebs-collapse--${size}`, className)} style={style}>
+    <div className={cn(`ebs-collapse ebs-collapse--${size}`, className)} {...props}>
       <CollapseContext.Provider value={{ height, setHeight, bordered }}>{children}</CollapseContext.Provider>
     </div>
   );

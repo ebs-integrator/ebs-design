@@ -4,7 +4,7 @@ import { colorFromString, firstLetters } from 'libs';
 
 export type AvatarType = 'regular' | 'primary' | 'light' | 'dynamic';
 
-export interface AvatarProps {
+export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: AvatarType;
   size?: 'small' | 'big';
   className?: string;
@@ -28,6 +28,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   alt = '',
   img,
   status,
+  ...props
 }) => {
   const shortAlt = React.useMemo(() => ($shortAlt ? $shortAlt : alt ? firstLetters(alt, shortLetters) : alt), [alt]);
 
@@ -37,6 +38,7 @@ export const Avatar: React.FC<AvatarProps> = ({
         'ebs-avatar--circle': circle,
       })}
       style={{ backgroundColor: type === 'dynamic' ? colorFromString(alt) : undefined }}
+      {...props}
     >
       {img ? (
         <img className="ebs-avatar__img" src={img} alt={alt} />

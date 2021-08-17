@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { Template } from 'components/storybook';
 
-import { Switch } from './Switch';
+import { Switch, SwitchProps } from './Switch';
 import { exportStory } from '../../../libs';
 
 export default {
@@ -8,39 +9,14 @@ export default {
   component: Switch,
 };
 
-export const Regular = (): React.ReactElement => {
-  const [checked, setChecked] = React.useState(false);
+export const Regular: React.FC<SwitchProps> & { args: SwitchProps } = ({ children, ...props }) => (
+  <Template>
+    <Switch {...props} />
+    {children}
+  </Template>
+);
 
-  return (
-    <div className="storybook-rows">
-      <div className="storybook-row">
-        <div className="storybook-header">Switch</div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Switcher</div>
-          <Switch onChange={setChecked} checked={checked} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Inactive</div>
-          <Switch checked={false} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Active</div>
-          <Switch checked />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Disabled & Inactive</div>
-          <Switch disabled />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Disabled & Active</div>
-          <Switch checked disabled />
-        </div>
-      </div>
-    </div>
-  );
+Regular.args = {
+  checked: false,
+  children: 'Example',
 };

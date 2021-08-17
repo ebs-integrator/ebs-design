@@ -5,12 +5,11 @@ export type LabelType = 'regular' | 'fill' | 'ghost' | 'primary';
 
 export type LabelStatus = 'success' | 'warning' | 'danger' | 'info';
 
-export interface Props {
+export interface LabelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'> {
   className?: string;
   type?: LabelType;
   circle?: boolean;
   status?: LabelStatus;
-  style?: React.CSSProperties;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   disabled?: boolean;
@@ -21,20 +20,20 @@ export interface Props {
   onClickSuffix?: () => void;
 }
 
-export const Label: React.FC<Props> = ({
+export const Label: React.FC<LabelProps> = ({
   className,
   type = 'regular',
   status,
   circle,
   icon,
   text,
-  style,
   prefix,
   suffix,
   onClick,
   onClickPrefix,
   onClickSuffix,
   disabled,
+  ...props
 }) => {
   if (!text && !icon) {
     return null;
@@ -51,8 +50,8 @@ export const Label: React.FC<Props> = ({
         'has-suffix': suffix,
         disabled: disabled,
       })}
-      style={style}
       onClick={onClick}
+      {...props}
     >
       {prefix && (
         <div className="ebs-label__prefix" onClick={onClickPrefix}>

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { Container } from './Container/Container';
-import { Row } from './Row/Row';
-import { Col } from './Col/Col';
+import { Container, ContainerProps } from './Container/Container';
+import { Row, RowProps } from './Row/Row';
+import { Col, ColProps } from './Col/Col';
 import { exportStory } from '../../../libs';
 
 import './ExampleGrid.scss';
@@ -13,26 +13,32 @@ export default {
   subcomponents: { Row, Col },
 };
 
-export const _Container = (): React.ReactElement => <Container className="example-block">Container</Container>;
+export const _Container: React.FC<ContainerProps> = ({ children, ...props }) => (
+  <Container className="example-block" {...props}>
+    Container
+  </Container>
+);
 
-export const _Row = (): React.ReactElement => (
+export const _Row: React.FC<RowProps> = ({ children, ...props }) => (
   <div className="storybook-rows">
     <Container>
-      <Row className="example-block">Row</Row>
+      <Row className="example-block" {...props}>
+        Row
+      </Row>
     </Container>
   </div>
 );
 
-export const _Col = (): React.ReactElement => (
+export const _Col: React.FC<ColProps> = ({ children, ...props }) => (
   <Container>
     <Row className="mb-16">
-      <Col>
+      <Col {...props}>
         <div className="example-block">Col</div>
       </Col>
-      <Col>
+      <Col {...props}>
         <div className="example-block">Col</div>
       </Col>
-      <Col>
+      <Col {...props}>
         <div className="example-block">Col</div>
       </Col>
     </Row>
@@ -47,22 +53,22 @@ export const _Col = (): React.ReactElement => (
     </Row>
 
     <Row className="mb-16">
-      <Col>
+      <Col {...props}>
         <div className="example-block">Col</div>
       </Col>
-      <Col>
+      <Col {...props}>
         <div className="example-block">Col</div>
       </Col>
-      <Col>
+      <Col {...props}>
         <div className="example-block">Col</div>
       </Col>
-      <Col>
+      <Col {...props}>
         <div className="example-block">Col</div>
       </Col>
     </Row>
 
     <Row>
-      <Col size={12}>
+      <Col size={12} {...props}>
         <div className="example-block">Col 12</div>
       </Col>
     </Row>

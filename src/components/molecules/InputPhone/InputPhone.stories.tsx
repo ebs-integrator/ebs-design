@@ -1,120 +1,68 @@
 import * as React from 'react';
-import SizeSwitcher from 'components/SizeSwitcher';
+import { Template } from 'components/storybook';
 
-import { InputPhone } from './InputPhone';
+import { InputPhone, InputPhoneProps } from './InputPhone';
 import { exportStory } from '../../../libs';
-import { SizeType } from 'types';
 
 export default {
   title: exportStory('InputPhone', 'molecules'),
   component: InputPhone,
+  argTypes: {
+    label: { control: 'text' },
+    extra: { control: 'text' },
+  },
 };
 
-export const Regular: React.FC = () => (
-  <SizeSwitcher>
-    {(size) => (
-      <div className="storybook-rows">
-        <div className="storybook-row">
-          <div className="storybook-header">Input Phone</div>
+export const Regular: React.FC<InputPhoneProps> & { args: InputPhoneProps } = ({ children, ...props }) => {
+  const [value, setValue] = React.useState('');
 
-          <div className="storybook-row-item">
-            <div className="storybook-label">Inactive</div>
-            <InputPhone size={size as SizeType} />
-          </div>
+  return (
+    <Template>
+      <InputPhone value={value} onChange={setValue} {...props} />
+    </Template>
+  );
+};
 
-          <div className="storybook-row-item">
-            <div className="storybook-label">Active</div>
-            <InputPhone size={size as SizeType} value="+37378014910" />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Clearable</div>
-            <InputPhone size={size as SizeType} value="+37378014910" isClearable />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Error</div>
-            <InputPhone size={size as SizeType} hasError />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Disabled</div>
-            <InputPhone size={size as SizeType} disabled />
-          </div>
-        </div>
-
-        <div className="storybook-row">
-          <div className="storybook-header">Input Phone + Label</div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Inactive</div>
-            <InputPhone size={size as SizeType} label="Label" />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Active</div>
-            <InputPhone size={size as SizeType} label="Label" value="+37378014910" />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Error</div>
-            <InputPhone size={size as SizeType} label="Label" hasError />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Disabled</div>
-            <InputPhone size={size as SizeType} label="Label" disabled />
-          </div>
-        </div>
-
-        <div className="storybook-row">
-          <div className="storybook-header">Input Phone + Extra</div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Inactive</div>
-            <InputPhone size={size as SizeType} extra="Extra" />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Active</div>
-            <InputPhone size={size as SizeType} extra="Extra" value="+37378014910" />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Error</div>
-            <InputPhone size={size as SizeType} extra="Extra" hasError />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Disabled</div>
-            <InputPhone size={size as SizeType} extra="Extra" disabled />
-          </div>
-        </div>
-
-        <div className="storybook-row">
-          <div className="storybook-header">Input Phone + Label & Extra</div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Inactive</div>
-            <InputPhone size={size as SizeType} label="Label" extra="Extra" />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Active</div>
-            <InputPhone size={size as SizeType} label="Label" extra="Extra" value="+37378014910" />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Error</div>
-            <InputPhone size={size as SizeType} label="Label" extra="Extra" hasError />
-          </div>
-
-          <div className="storybook-row-item">
-            <div className="storybook-label">Disabled</div>
-            <InputPhone size={size as SizeType} label="Label" extra="Extra" disabled />
-          </div>
-        </div>
-      </div>
-    )}
-  </SizeSwitcher>
-);
+Regular.args = {
+  size: 'medium',
+  country: 'md',
+  isClearable: true,
+  value: '',
+  onlyCountries: [],
+  preferredCountries: [],
+  excludeCountries: [],
+  placeholder: 'Phone field',
+  searchPlaceholder: '',
+  searchNotFound: 'Not found',
+  disabled: undefined,
+  autoFormat: undefined,
+  enableAreaCodes: undefined,
+  enableTerritories: undefined,
+  disableCountryCode: undefined,
+  disableDropdown: undefined,
+  enableLongNumbers: undefined,
+  countryCodeEditable: undefined,
+  enableSearch: undefined,
+  disableSearchIcon: undefined,
+  regions: undefined,
+  inputProps: {},
+  localization: {},
+  masks: {},
+  areaCodes: {},
+  preserveOrder: [],
+  defaultMask: undefined,
+  alwaysDefaultMask: undefined,
+  prefix: undefined,
+  copyNumbersOnly: undefined,
+  renderStringAsFlag: undefined,
+  autocompleteSearch: undefined,
+  jumpCursorToEnd: undefined,
+  priority: undefined,
+  enableAreaCodeStretch: undefined,
+  enableClickOutside: undefined,
+  showDropdown: undefined,
+  defaultErrorMessage: undefined,
+  specialLabel: undefined,
+  disableInitialCountryGuess: undefined,
+  disableCountryGuess: undefined,
+};

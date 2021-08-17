@@ -1,10 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-export interface ListGroupItemProps {
+export interface ListGroupItemProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-export const ListGroupItem: React.FC<ListGroupItemProps> = ({ className, children }) => (
-  <div className={cn(`ebs-list-group__item`, className)}>{children}</div>
+export const ListGroupItem: React.FC<ListGroupItemProps> = ({ className, children, ...props }) => (
+  <div className={cn(`ebs-list-group__item`, className)} {...props}>
+    {children}
+  </div>
 );

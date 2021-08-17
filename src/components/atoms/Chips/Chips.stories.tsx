@@ -1,105 +1,31 @@
 import * as React from 'react';
 import { Icon } from 'components/atoms';
+import { Template } from 'components/storybook';
 
-import { Chips } from './Chips';
+import { Chips, ChipsProps } from './Chips';
 import { exportStory } from '../../../libs';
 
 export default {
   title: exportStory('Chips', 'atoms'),
   component: Chips,
+  argTypes: {
+    text: { control: 'text' },
+    prefix: { control: 'text' },
+    suffix: { control: 'text' },
+  },
 };
 
-export const Regular = (): React.ReactElement => {
+export const Regular: React.FC<ChipsProps> = ({
+  children,
+  prefix = <Icon type="check" />,
+  text = 'Simple Chips',
+  ...props
+}) => {
   const [checked, setChecked] = React.useState(false);
 
   return (
-    <div className="storybook-rows">
-      <div className="storybook-row">
-        <div className="storybook-header">Chips</div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Switcher</div>
-          <Chips onChange={setChecked} checked={checked} text="Simple Chips" />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Inactive</div>
-          <Chips checked={false} text="Simple Chips" />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Active</div>
-          <Chips checked text="Simple Chips" />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Disabled & Inactive</div>
-          <Chips disabled text="Simple Chips" />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Disabled & Active</div>
-          <Chips checked disabled text="Simple Chips" />
-        </div>
-      </div>
-
-      <div className="storybook-row">
-        <div className="storybook-header">Chips + Prefix</div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Switcher</div>
-          <Chips onChange={setChecked} checked={checked} text="Simple Chips" prefix={<Icon type="check" />} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Inactive</div>
-          <Chips checked={false} text="Simple Chips" prefix={<Icon type="check" />} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Active</div>
-          <Chips checked text="Simple Chips" prefix={<Icon type="check" />} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Disabled & Inactive</div>
-          <Chips disabled text="Simple Chips" prefix={<Icon type="check" />} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Disabled & Active</div>
-          <Chips checked disabled text="Simple Chips" prefix={<Icon type="check" />} />
-        </div>
-      </div>
-
-      <div className="storybook-row">
-        <div className="storybook-header">Chips + Suffix</div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Switcher</div>
-          <Chips onChange={setChecked} checked={checked} text="Simple Chips" suffix={<Icon type="check" />} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Inactive</div>
-          <Chips checked={false} text="Simple Chips" suffix={<Icon type="check" />} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Active</div>
-          <Chips checked text="Simple Chips" suffix={<Icon type="check" />} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Disabled & Inactive</div>
-          <Chips disabled text="Simple Chips" suffix={<Icon type="check" />} />
-        </div>
-
-        <div className="storybook-row-item inline">
-          <div className="storybook-label">Disabled & Active</div>
-          <Chips checked disabled text="Simple Chips" suffix={<Icon type="check" />} />
-        </div>
-      </div>
-    </div>
+    <Template>
+      <Chips onChange={setChecked} checked={checked} prefix={prefix} text={text} {...props} />
+    </Template>
   );
 };

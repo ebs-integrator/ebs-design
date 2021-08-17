@@ -7,15 +7,13 @@ export type ButtonSize = 'small' | 'medium' | 'large';
 
 export type ButtonType = 'text' | 'primary' | 'fill' | 'ghost' | 'dark' | 'light';
 
-export interface ButtonProps {
+export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'>, 'prefix'> {
   onClick?: () => void;
   prefix?: React.ReactNode;
   size?: ButtonSize;
   type?: ButtonType;
   loading?: boolean;
   submit?: boolean;
-  disabled?: boolean;
-  className?: string;
   buttonClass?: string;
   form?: string;
   icon?: string;
@@ -62,8 +60,8 @@ export const Button: React.FC<ButtonProps> = ({
       <button
         type={submit ? 'submit' : 'button'}
         className={cn(`ebs-button`, buttonClass, { 'ebs-button--is-icon': icon })}
-        disabled={props.disabled || loading}
         {...props}
+        disabled={props.disabled || loading}
       >
         {icon ? <Icon type={icon} /> : props.children}
       </button>

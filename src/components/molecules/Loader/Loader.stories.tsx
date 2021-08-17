@@ -1,7 +1,7 @@
 import * as React from 'react';
-import SizeSwitcher from 'components/SizeSwitcher';
+import { SizeSwitcher, Template } from 'components/storybook';
 
-import { Loader, SpinnerSize } from './Loader';
+import { Loader, LoaderProps, SpinnerSize } from './Loader';
 import { exportStory } from '../../../libs';
 
 const { Inline, Spinner } = Loader;
@@ -10,26 +10,26 @@ export default {
   title: exportStory('Loader', 'molecules'),
   component: Loader,
   subcomponents: { Inline, Spinner },
+  argTypes: {
+    size: {
+      options: ['small', 'middle', 'regular'],
+      control: { type: 'select' },
+    },
+  },
 };
 
-export const Regular: React.FC = () => {
-  const [loading, setLoading] = React.useState(true);
+export const Regular: React.FC<LoaderProps> & { args: LoaderProps } = ({ children, ...props }) => (
+  <Template>
+    <Loader {...props}>Loaded</Loader>
+  </Template>
+);
 
-  const onToggleHandler = (): void => setLoading((s) => !s);
-
-  return (
-    <SizeSwitcher sizes={['small', 'middle', 'regular']} defaultSize="regular">
-      {(size) => (
-        <>
-          <p onClick={onToggleHandler}>Toggle</p>
-
-          <Loader size={size as SpinnerSize} loading={loading}>
-            <h1>Test</h1>
-          </Loader>
-        </>
-      )}
-    </SizeSwitcher>
-  );
+Regular.args = {
+  size: 'regular',
+  loading: true,
+  fade: true,
+  fixed: true,
+  height: '100%',
 };
 
 export const _Inline = (): React.ReactElement => <Loader.Inline />;

@@ -1,13 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-export interface CollapseGroupProps {
+export interface CollapseGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
-  style?: React.CSSProperties;
 }
 
-export const CollapseGroup: React.FC<CollapseGroupProps> = ({ className, style, children }) => (
-  <div className={cn('ebs-collapse__group', className)} style={style}>
+export const CollapseGroup: React.FC<CollapseGroupProps> = ({ className, style, children, ...props }) => (
+  <div className={cn('ebs-collapse__group', className)} {...props}>
     {children}
   </div>
 );
