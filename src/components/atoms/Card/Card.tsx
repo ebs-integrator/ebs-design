@@ -6,7 +6,6 @@ import { CardBody, CardBodyProps } from './CardBody';
 import { CardFooter, CardFooterProps } from './CardFooter';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
   size?: SizeType;
   collapsible?: boolean;
   collapsed?: boolean;

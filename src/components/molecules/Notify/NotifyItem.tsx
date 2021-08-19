@@ -31,7 +31,7 @@ export const NotifyItem: React.FC<NotifyItemProps> = ({
         icon = 'check';
         break;
       case 'danger':
-        icon = 'alert';
+        icon = 'error';
         break;
       case 'info':
         icon = 'info';

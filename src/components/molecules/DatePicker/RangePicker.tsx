@@ -51,6 +51,7 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
         style={props.style}
       >
         <ReactDatePicker
+          value={value as any}
           {...props}
           title={`${dateRange?.[0] || ''}`}
           {...startProps}
@@ -68,6 +69,7 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
         />
 
         <ReactDatePicker
+          value={value as any}
           {...props}
           minDate={startDate}
           title={`${dateRange?.[1] || ''}`}

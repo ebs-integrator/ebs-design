@@ -15,6 +15,7 @@ export const AvatarInline: React.FC<CardProps> = ({
   status,
   description,
   reversed = false,
+  ...props
 }) => (
   <div
     className={cn(
@@ -25,6 +26,7 @@ export const AvatarInline: React.FC<CardProps> = ({
       },
       className,
     )}
+    {...props}
   >
     {!reversed && (
       <Avatar

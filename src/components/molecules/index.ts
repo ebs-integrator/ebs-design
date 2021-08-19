@@ -8,4 +8,4 @@ export { Stepper } from './Stepper/Stepper';
 export { Textarea } from './Textarea/Textarea';
 export { Upload } from './Upload/Upload';
 export { NotifyContainer, NotifyContext, NotifyProvider } from './Notify/Notify';
-export { Select } from './Select/Select';
+export { SelectComponent as Select } from './Select/Select';

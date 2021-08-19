@@ -14,9 +14,7 @@ interface Props extends ContextProps {
   dropdownOptions?: React.ReactNode;
   hasValue?: boolean;
   textValue?: Option[] | Option;
-  isBox: boolean;
-  isScrolling?: boolean;
-  isMouseScrolling?: number;
+  isBox?: boolean;
   onClear: () => void;
   onDeleteSelect: (key: number | string) => void;
   onChangeNewOption: (value: string | number) => void;

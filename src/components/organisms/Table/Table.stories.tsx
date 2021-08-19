@@ -1,11 +1,15 @@
 import * as React from 'react';
 
-import { Table, ColumnType } from './Table';
+import { Table, TableProps, ColumnType } from './Table';
 import { exportStory } from '../../../libs';
+import { GenericObject } from 'types';
 
 export default {
   title: exportStory('Table', 'organisms'),
   component: Table,
+  argTypes: {
+    emptyCell: { control: 'text' },
+  },
 };
 
 const data = [
@@ -31,7 +35,10 @@ const columns: ColumnType<any>[] = [
   },
 ];
 
-export const Regular = (): React.ReactElement => (
+export const Regular: React.FC<TableProps<GenericObject>> & { args: TableProps<GenericObject> } = ({
+  children,
+  ...props
+}) => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Table</div>
@@ -39,11 +46,15 @@ export const Regular = (): React.ReactElement => (
       <div className="storybook-row-item">
         <div className="storybook-label">Regular</div>
 
-        <Table data={data} columns={columns} />
+        <Table data={data} columns={columns} {...props} />
       </div>
     </div>
   </div>
 );
+
+Regular.args = {
+  size: 'medium',
+};
 
 const data2 = [
   { fullname: 'First Last name', id: '1', percent: '2,95%', money: '7375$', paid: '25000$', sold: '50000$' },
@@ -85,7 +96,10 @@ const columns2: ColumnType<any>[] = [
   },
 ];
 
-export const WithHeadChildrens = (): React.ReactElement => (
+export const WithHeadChildrens: React.FC<TableProps<GenericObject>> & { args: TableProps<GenericObject> } = ({
+  children,
+  ...props
+}) => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Table</div>
@@ -93,8 +107,10 @@ export const WithHeadChildrens = (): React.ReactElement => (
       <div className="storybook-row-item">
         <div className="storybook-label">With head childrens</div>
 
-        <Table data={data2} columns={columns2} />
+        <Table data={data2} columns={columns2} {...props} />
       </div>
     </div>
   </div>
 );
+
+WithHeadChildrens.args = Regular.args;

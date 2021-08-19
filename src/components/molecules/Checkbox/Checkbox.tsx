@@ -12,20 +12,22 @@ export interface Option {
   disabled?: boolean;
 }
 
-export interface Props {
-  className?: string;
+export interface CheckboxProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   checkAlign?: CheckAlign;
   name?: string;
   value?: CheckboxValue;
+  text?: React.ReactNode;
   indeterminate?: boolean;
   checked?: boolean;
-  onChange?: (value: boolean) => void;
-  text?: React.ReactNode;
   disabled?: boolean;
+  onChange?: (value: boolean) => void;
 }
 
-export const Checkbox = React.forwardRef<HTMLInputElement, Props>(
-  ({ className, checkAlign = 'left', name, value, indeterminate, checked, onChange, text, disabled }, ref) => {
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  (
+    { className, checkAlign = 'left', name, value, indeterminate, checked, onChange, text, disabled, ...props },
+    ref,
+  ) => {
     const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
       if (onChange !== undefined) {
         onChange(target.checked);
@@ -39,6 +41,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, Props>(
           indeterminate: indeterminate,
           disabled: disabled,
         })}
+        {...props}
       >
         <input
           ref={ref}

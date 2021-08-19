@@ -1,16 +1,22 @@
 import * as React from 'react';
 import { Button } from 'components/atoms';
 
-import { Space } from './Space';
+import { Space, SpaceProps } from './Space';
 import { exportStory } from '../../../libs';
 
 export default {
   title: exportStory('Space', 'atoms'),
   component: Space,
+  argTypes: {
+    size: {
+      options: ['small', 'medium', 'large'],
+      control: { type: 'select' },
+    },
+  },
 };
 
-export const Regular = (): React.ReactElement => (
-  <Space>
+export const Regular: React.FC<SpaceProps> & { args: SpaceProps } = ({ children, ...props }) => (
+  <Space {...props}>
     <Button>Button 1</Button>
     <h3>green</h3>
     <Button>Button 2</Button>
@@ -19,3 +25,11 @@ export const Regular = (): React.ReactElement => (
     <Button>Button 3</Button>
   </Space>
 );
+
+Regular.args = {
+  size: 'medium',
+  direction: 'horizontal',
+  wrap: false,
+  align: 'center',
+  justify: 'start',
+};

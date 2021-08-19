@@ -6,7 +6,7 @@ import Item from './Item';
 import { Options } from './Options';
 import { TopMenu, BottomMenu } from './MenuParts';
 
-const Sidebar: React.FC<{ className?: string }> = ({ className, children }) => {
+const Sidebar: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, children, ...props }) => {
   const { toggled, opened, onSetOpened } = useLayoutState();
 
   return (
@@ -22,6 +22,7 @@ const Sidebar: React.FC<{ className?: string }> = ({ className, children }) => {
           `ebs-sidebar__mobile--${opened ? `opened` : `closed`}`,
           className,
         )}
+        {...props}
       >
         {children}
       </div>

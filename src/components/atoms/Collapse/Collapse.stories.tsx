@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Icon, Space } from 'components/atoms';
-
-import { Collapse } from './Collapse';
 import { exportStory } from 'libs';
+
+import { Collapse, CollapseProps } from './Collapse';
 
 const { Group: CollapseGroup, Header: CollapseHeader, Body: CollapseBody } = Collapse;
 
@@ -10,48 +10,59 @@ export default {
   title: exportStory('Collapse', 'atoms'),
   component: Collapse,
   subcomponents: { CollapseGroup, CollapseHeader, CollapseBody },
+  argTypes: {
+    size: {
+      options: ['small', 'medium', 'large'],
+      control: { type: 'select' },
+    },
+  },
 };
 
-export const Regular = (): React.ReactElement => (
-  <Collapse collapsed>
-    <Collapse.Header>Collapse element</Collapse.Header>
-    <Collapse.Body>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sed unde, aut nobis tempora debitis explicabo
-        dicta qui nulla corrupti.
-      </p>
-    </Collapse.Body>
+export const Regular: React.FC<CollapseProps> & { args: CollapseProps } = ({ children, ...props }) => (
+  <Collapse {...props}>
+    <Collapse.Header>Example</Collapse.Header>
+    <Collapse.Body>{children}</Collapse.Body>
   </Collapse>
 );
 
-export const Group = (): React.ReactElement => (
+export const Group: React.FC<CollapseProps> & { args: CollapseProps } = ({ children, ...props }) => (
   <Collapse.Group>
-    <Collapse bordered>
+    <Collapse {...props}>
       <Collapse.Header>
         <Space>
           <Icon type="star" />
-          Condition 1
+          Example 1
         </Space>
       </Collapse.Header>
-      <Collapse.Body>Example collapse</Collapse.Body>
+      <Collapse.Body>{children}</Collapse.Body>
     </Collapse>
-    <Collapse collapsed>
+    <Collapse {...props}>
       <Collapse.Header>
         <Space>
           <Icon type="star" />
-          Condition 2
+          Example 2
         </Space>
       </Collapse.Header>
-      <Collapse.Body>Example collapse</Collapse.Body>
+      <Collapse.Body>{children}</Collapse.Body>
     </Collapse>
-    <Collapse collapsed>
+    <Collapse {...props}>
       <Collapse.Header>
         <Space>
           <Icon type="star" />
-          Condition 3
+          Example 3
         </Space>
       </Collapse.Header>
-      <Collapse.Body>Example collapse</Collapse.Body>
+      <Collapse.Body>{children}</Collapse.Body>
     </Collapse>
   </Collapse.Group>
 );
+
+Regular.args = {
+  size: 'medium',
+  collapsed: true,
+  bordered: false,
+  children:
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sed unde, aut nobis tempora debitis explicabo dicta qui nulla corrupti.',
+};
+
+Group.args = Regular.args;

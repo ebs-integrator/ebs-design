@@ -165,7 +165,8 @@
 }
 
 // DatePicker Popper
-.react-datepicker-popper.ebs-datepicker__popper {
+.react-datepicker-popper.ebs-datepicker__popper,
+.react-datepicker.ebs-datepicker__calendar {
   z-index: 999999;
 
   * {
@@ -377,4 +378,8 @@
     li.react-datepicker__time-list-item--selected {
     background-color: $primary-color;
   }
+}
+
+.react-datepicker.ebs-datepicker__calendar {
+  border: 1px solid $border-color;
 }

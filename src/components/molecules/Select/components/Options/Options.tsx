@@ -13,8 +13,7 @@ export interface OptionsComposition {
   Item: React.FC<ItemProps>;
 }
 
-export interface OptionsProps {
-  className?: string;
+export interface OptionsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   mode?: SelectMode;
   scrollMode?: ScrollMode;
   options?: Option[];
@@ -29,7 +28,7 @@ export interface OptionsProps {
   onClickAddNew?: (value: string) => void;
 }
 
-const Options: React.FC<OptionsProps> & OptionsComposition = ({
+const Options: React.FC<OptionsProps> = ({
   mode = 'single',
   scrollMode = 'regular',
   loading,
@@ -41,11 +40,11 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   onClose,
   onChange,
   onClickAddNew,
+  ...props
 }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
-  const { offsetBottom } = React.useContext(Context);
+  const { offsetBottom, maxHeight, setState } = React.useContext(Context);
   const [activeItem, setActiveItem] = React.useState(0);
-  const [maxHeight, setMaxHeight] = React.useState(0);
 
   const onScroll = (e): void => {
     const scrollTop = Math.floor(e.target.scrollTop);
@@ -58,12 +57,12 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   React.useEffect(() => {
     const rect = ref.current?.getBoundingClientRect();
 
-    if (rect?.height && offsetBottom) {
+    if (!maxHeight && rect?.height && offsetBottom && options.length && !loading) {
       const height = window.innerHeight - offsetBottom;
 
-      setMaxHeight(height <= rect.height ? height : rect.height - +(scrollMode === 'scroll'));
+      setState({ maxHeight: height <= rect.height ? height : rect.height - +(scrollMode === 'scroll') });
     }
-  }, [ref.current, offsetBottom, scrollMode]);
+  }, [ref.current, offsetBottom, scrollMode, options, loading, maxHeight]);
 
   React.useEffect(() => {
     if (ref.current && !scrollMode && options?.length) {
@@ -72,12 +71,12 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   }, [ref.current, options, scrollMode]);
 
   React.useEffect(() => {
-    if (ref.current && scrollMode) {
+    if (ref.current && scrollMode === 'scroll') {
       ref.current.addEventListener('scroll', onScroll);
     }
 
     return () => {
-      if (ref.current && scrollMode) {
+      if (ref.current && scrollMode === 'scroll') {
         ref.current.removeEventListener('scroll', onScroll);
       }
     };
@@ -127,10 +126,15 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   return (
     <div
       ref={ref}
-      className={cn('ebs-select__options-items', {
-        'ebs-select__options--multiple': ['multiple', 'tags'].includes(mode),
-      })}
-      style={maxHeight ? { maxHeight } : undefined}
+      {...props}
+      className={cn(
+        'ebs-select__options-items',
+        {
+          'ebs-select__options--multiple': ['multiple', 'tags'].includes(mode),
+        },
+        props.className,
+      )}
+      style={maxHeight ? { ...props.style, maxHeight } : props.style}
     >
       {newOption && onClickAddNew && (
         <Item
@@ -178,8 +182,12 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   );
 };
 
-Options.displayName = 'Options';
+const OptionsComponent: React.FC<OptionsProps> & OptionsComposition = ({ ...props }) => {
+  return <Options {...props} />;
+};
 
-Options.Item = Item;
+OptionsComponent.displayName = 'Options';
 
-export { Options };
+OptionsComponent.Item = Item;
+
+export { Options, OptionsComponent };
