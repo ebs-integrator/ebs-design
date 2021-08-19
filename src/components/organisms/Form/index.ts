@@ -1,5 +1,5 @@
 import { Field, List, useForm, FormProvider } from 'rc-field-form';
-import { Form } from './Form';
+import { FormComponent as Form } from './Form';
 
 // Import types
 import type { FormInstance } from 'rc-field-form';

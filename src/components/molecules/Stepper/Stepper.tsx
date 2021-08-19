@@ -1,12 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
 import InputNumber from 'rc-input-number';
+import { InputNumberProps } from 'rc-input-number/es/interface';
 import { Extra, Label, Icon } from 'components/atoms';
 
 export type AlignType = 'left' | 'right';
 
-export interface StepperProps {
-  className?: string;
+export interface StepperProps extends InputNumberProps {
   align?: AlignType;
   hasError?: boolean;
   label?: React.ReactNode;
@@ -50,9 +50,9 @@ export const Stepper: React.FC<StepperProps> = ({
       className="ebs-stepper"
       disabled={disabled}
       value={value}
+      {...props}
       upHandler={<Icon type="arrow-top" model="bold" />}
       downHandler={<Icon type="arrow-bottom" model="bold" />}
-      {...props}
     />
 
     <Extra text={extra} status={hasError ? 'danger' : 'text'} disabled={disabled} />

@@ -16,13 +16,20 @@
   }
 
   &--box {
-    position: relative;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+    .ebs-select {
+      position: relative;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-  &--box + &__options {
-    position: unset;
+    .ebs-select__options {
+      position: relative;
+      box-shadow: none;
+      border: 1px solid $border-color;
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
   }
 
   &--tags {

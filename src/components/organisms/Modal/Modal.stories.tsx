@@ -1,160 +1,43 @@
-import React, { useState } from 'react';
-import { Icon, Switch, Button, Space } from 'components/atoms';
-import SizeSwitcher from 'components/SizeSwitcher';
+import React from 'react';
+import { Icon, Button, Space } from 'components/atoms';
+import { Template } from 'components/storybook';
 
-import { Modal, ModalSize } from './Modal';
+import { Modal as _Modal, ModalComponent as Modal, ModalProps } from './Modal';
 import { exportStory } from '../../../libs';
 
 const { Content, Footer } = Modal;
 
 export default {
   title: exportStory('Modal', 'organisms'),
-  component: Modal,
+  component: _Modal,
   subcomponents: { Content, Footer },
+  argTypes: {
+    header: { control: 'text' },
+  },
 };
 
-export const WithNothing: React.FC = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [open, setOpen] = useState(false);
+export const Regular: React.FC<ModalProps> & { args: ModalProps } = ({ children, ...props }) => (
+  <Template>
+    <Modal {...props}>
+      <Modal.Content>Content</Modal.Content>
+      <Modal.Footer>
+        <Space justify="space-between">
+          <Button>Cancel</Button>
 
-  const onToggleHandler = (): void => setOpen((s) => !s);
+          <Button type="primary" prefix={<Icon type="check" />}>
+            Confirm
+          </Button>
+        </Space>
+      </Modal.Footer>
+    </Modal>
+  </Template>
+);
 
-  return (
-    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
-      {(size) => (
-        <>
-          <p>
-            Toggle: <Switch checked={open} onChange={onToggleHandler} />
-          </p>
-          <Modal size={size as ModalSize} open={open} onClose={onToggleHandler}>
-            <Modal.Content>Example</Modal.Content>
-          </Modal>
-        </>
-      )}
-    </SizeSwitcher>
-  );
-};
-
-export const WithTitle: React.FC = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [open, setOpen] = useState(false);
-
-  const onToggleHandler = (): void => setOpen((s) => !s);
-
-  return (
-    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
-      {(size) => (
-        <>
-          <p>
-            Toggle: <Switch checked={open} onChange={onToggleHandler} />
-          </p>
-          <Modal size={size as ModalSize} open={open} onClose={onToggleHandler} title="Confirmă acceptare">
-            <Modal.Content>Example</Modal.Content>
-          </Modal>
-        </>
-      )}
-    </SizeSwitcher>
-  );
-};
-
-export const WithFooter: React.FC = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [open, setOpen] = useState(false);
-
-  const onToggleHandler = (): void => setOpen((s) => !s);
-
-  return (
-    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
-      {(size) => (
-        <>
-          <p>
-            Toggle: <Switch checked={open} onChange={onToggleHandler} />
-          </p>
-          <Modal size={size as ModalSize} open={open} onClose={onToggleHandler}>
-            <Modal.Content>Example</Modal.Content>
-            <Modal.Footer>
-              <Space justify="space-between">
-                <Button>Refuză</Button>
-
-                <Button type="primary" prefix={<Icon type="check" />}>
-                  Confirmă
-                </Button>
-              </Space>
-            </Modal.Footer>
-          </Modal>
-        </>
-      )}
-    </SizeSwitcher>
-  );
-};
-
-export const WithHeaderAndFooter: React.FC = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [open, setOpen] = useState(false);
-
-  const onToggleHandler = (): void => setOpen((s) => !s);
-
-  return (
-    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
-      {(size) => (
-        <>
-          <p>
-            Toggle: <Switch checked={open} onChange={onToggleHandler} />
-          </p>
-          <Modal size={size as ModalSize} open={open} onClose={onToggleHandler} title="Confirmă acceptare">
-            <Modal.Content>Example</Modal.Content>
-            <Modal.Footer>
-              <Space justify="space-between">
-                <Button>Refuză</Button>
-
-                <Button type="primary" prefix={<Icon type="check" />}>
-                  Confirmă
-                </Button>
-              </Space>
-            </Modal.Footer>
-          </Modal>
-        </>
-      )}
-    </SizeSwitcher>
-  );
-};
-
-export const CancelWithEscape: React.FC = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [open, setOpen] = useState(false);
-
-  const onToggleHandler = (): void => setOpen((s) => !s);
-
-  return (
-    <SizeSwitcher sizes={['small', 'regular', 'large']} defaultSize="regular">
-      {(size) => (
-        <>
-          <p>
-            Toggle: <Switch checked={open} onChange={onToggleHandler} />
-          </p>
-
-          {open && (
-            <Modal size={size as ModalSize} open={open} onClose={onToggleHandler} title="Confirmă acceptare">
-              <Modal.Content>Example</Modal.Content>
-              <Modal.Footer>
-                <Space justify="space-between">
-                  <Button onClick={onToggleHandler}>Refuză</Button>
-
-                  <Space>
-                    <Button type="ghost" prefix={<Icon type="check" />}>
-                      Confirmă
-                    </Button>
-
-                    <Button type="primary" prefix={<Icon type="edit" />}>
-                      Save
-                    </Button>
-                  </Space>
-                </Space>
-              </Modal.Footer>
-            </Modal>
-          )}
-        </>
-      )}
-    </SizeSwitcher>
-  );
+Regular.args = {
+  title: 'Example',
+  open: true,
+  defaultOpen: false,
+  size: 'regular',
+  closeOnClickOutside: true,
+  mask: true,
 };

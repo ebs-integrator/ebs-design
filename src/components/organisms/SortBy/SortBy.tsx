@@ -14,7 +14,7 @@ enum SortDirection {
   DESC = 'desc',
 }
 
-export interface SortByProps {
+export interface SortByProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   title?: string;
   sortByTitle?: string;
   value?: string;
@@ -30,6 +30,7 @@ export const SortBy: React.FC<SortByProps> = ({
   options,
   value,
   onChange,
+  ...props
 }) => {
   const [selected, setSelected] = React.useState(options.find((item) => item.value === value?.replace('-', '')));
   const [type, setType] = React.useState(value?.charAt(0) === '-' ? SortDirection.DESC : SortDirection.ASC);
@@ -54,7 +55,7 @@ export const SortBy: React.FC<SortByProps> = ({
   };
 
   return (
-    <div className={`ebs-sort-by__wrapper ebs-sort-${type}`}>
+    <div className={`ebs-sort-by__wrapper ebs-sort-${type}`} {...props}>
       <Button type="ghost" icon="sort" size={size} onClick={onChangeType} />
       <Tooltip
         bodyClass="ebs-sort-by__tooltip"

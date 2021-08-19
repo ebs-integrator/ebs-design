@@ -132,6 +132,16 @@
   #story--react-ebs-ui-organisms-layout-sidebar--regular {
     min-height: 50vh;
   }
+
+  #story--react-ebs-ui-molecules-loader--regular .ebs-loader {
+    height: 200px;
+  }
+
+  .ebs-loader {
+    > .ebs-loader__spinner.fixed {
+      position: absolute;
+    }
+  }
 }
 
 .ebs-select__wrapper {
@@ -140,7 +150,8 @@
 }
 
 @media (max-width: 500px) {
-  .ebs-select__wrapper, .ebs-space__item {
+  .ebs-select__wrapper,
+  .ebs-space__item {
     width: 100%;
   }
 }

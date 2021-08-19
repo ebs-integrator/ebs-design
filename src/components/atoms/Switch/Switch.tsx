@@ -1,14 +1,13 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-interface Props {
-  className?: string;
+export interface SwitchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   disabled?: boolean;
   checked?: boolean;
   onChange?: (value: boolean) => void;
 }
 
-export const Switch: React.FC<Props> = ({ className, disabled, checked, onChange }) => {
+export const Switch: React.FC<SwitchProps> = ({ className, disabled, checked, onChange, ...props }) => {
   const onClickHandler = (): void => (!disabled && onChange !== undefined ? onChange(!checked) : undefined);
 
   return (
@@ -17,6 +16,7 @@ export const Switch: React.FC<Props> = ({ className, disabled, checked, onChange
         disabled: disabled,
       })}
       onClick={onClickHandler}
+      {...props}
     >
       {checked && <div className="ebs-switch__checked-sheet" />}
 

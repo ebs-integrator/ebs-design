@@ -5,12 +5,11 @@ import { Col } from 'components/atoms/Grid/Col/Col';
 import { LabelOptions, ControlOptions } from './interface';
 import { FormContext } from './Form';
 
-export interface FormGroupProps {
+export interface FormGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string;
   labelOptions?: LabelOptions;
   controlOptions?: ControlOptions;
   fieldRow?: RowProps; // The layout for field columns
-  className?: string;
   required?: boolean;
 }
 
@@ -22,6 +21,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   className,
   children,
   required,
+  ...props
 }) => {
   const formCtx = React.useContext(FormContext);
 
@@ -34,7 +34,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   const fieldRowProps = Object.assign({}, formCtx.fieldRow, fieldRow);
 
   return (
-    <Row className={cn(`ebs-form__item ebs-form__group`, className)} {...fieldRowProps}>
+    <Row className={cn(`ebs-form__item ebs-form__group`, className)} {...fieldRowProps} {...props}>
       <Col {...labelProps.col}>
         <div
           className={cn('ebs-form__field__label', labelProps.className, {

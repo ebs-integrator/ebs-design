@@ -4,7 +4,7 @@ import PhoneInput, { PhoneInputProps } from 'react-phone-input-2';
 import { Extra, Label } from 'components/atoms';
 import { SizeType } from 'types';
 
-export interface Props extends PhoneInputProps {
+export interface InputPhoneProps extends PhoneInputProps {
   className?: string;
   size?: SizeType;
   dropdownClass?: string;
@@ -14,7 +14,7 @@ export interface Props extends PhoneInputProps {
   isClearable?: boolean;
 }
 
-export const InputPhone: React.FC<Props> = ({
+export const InputPhone: React.FC<InputPhoneProps> = ({
   className,
   dropdownClass,
   size = 'medium',

@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { Template } from 'components/storybook';
 
-import { default as Actions } from './Actions';
+import { default as Actions, ActionsProps } from './Actions';
 import { exportStory } from '../../../libs';
 
 const { Item } = Actions;
@@ -11,8 +12,15 @@ export default {
   subcomponents: { Item },
 };
 
-export const regular = (): React.ReactNode => (
-  <Actions>
-    <Item onClick={console.log}>Example</Item>
-  </Actions>
+export const Regular: React.FC<ActionsProps> & { args: ActionsProps } = ({ children, ...props }) => (
+  <Template>
+    <Actions {...props}>
+      <Item onClick={console.log}>Example</Item>
+    </Actions>
+  </Template>
 );
+
+Regular.args = {
+  placement: 'left',
+  showTitle: true,
+};

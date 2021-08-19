@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { Tabs } from './Tabs';
+import { Tabs, TabsProps } from './Tabs';
 import { exportStory } from 'libs';
 
 export default {
   title: exportStory('Tabs', 'atoms'),
   component: Tabs,
+  argTypes: {
+    activeTab: {
+      options: ['first', 'third'],
+      control: { type: 'select' },
+    },
+  },
 };
 
-export const regular = (): React.ReactElement => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [active, setActive] = React.useState('first');
-
+export const Regular: React.FC<TabsProps> & { args: TabsProps } = ({ children, ...props }) => {
   const data = [
     {
       label: <span>First tab</span>,
@@ -38,18 +41,22 @@ export const regular = (): React.ReactElement => {
   ];
 
   return (
-    <div>
-      <Tabs activeTab={active} setActiveTab={setActive}>
-        {data.map((item) => (
-          <Tabs.Tab {...item} tabKey={item.key} />
-        ))}
-        <h2>Custom elements for all tabs</h2>
-        {data.map((item) => (
-          <Tabs.Panel key={item.key} tabKey={item.key}>
-            {item.content}
-          </Tabs.Panel>
-        ))}
-      </Tabs>
-    </div>
+    <Tabs {...props}>
+      {data.map((item) => (
+        <Tabs.Tab {...item} tabKey={item.key} />
+      ))}
+      <h2>Custom elements for all tabs</h2>
+      {data.map((item) => (
+        <Tabs.Panel key={item.key} tabKey={item.key}>
+          {item.content}
+        </Tabs.Panel>
+      ))}
+    </Tabs>
   );
+};
+
+Regular.args = {
+  className: '',
+  activeTab: 'first',
+  setActiveTab: (key: string) => console.log(key),
 };

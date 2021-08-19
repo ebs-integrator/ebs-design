@@ -6,9 +6,7 @@ import { SizeType } from 'types';
 export type SpaceSize = SizeType | number;
 export type SpaceDirection = 'horizontal' | 'vertical';
 
-export interface SpaceProps {
-  className?: string;
-  style?: React.CSSProperties;
+export interface SpaceProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: SpaceSize | [SpaceSize, SpaceSize];
   direction?: SpaceDirection;
   align?: 'start' | 'end' | 'center' | 'baseline';

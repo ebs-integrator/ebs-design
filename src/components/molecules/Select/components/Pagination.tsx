@@ -3,8 +3,7 @@ import { Space, Button } from 'components/atoms';
 
 export type ScrollMode = 'regular' | 'scroll';
 
-export interface PaginationProps {
-  className?: string;
+export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   count: number;
   page: number;
   limit: number;
@@ -12,7 +11,7 @@ export interface PaginationProps {
   setPage: (value: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ count, page, limit, setPage, className }) => {
+const Pagination: React.FC<PaginationProps> = ({ count, page, limit, setPage, className, ...props }) => {
   const totalPages = React.useMemo(() => Math.ceil(count / limit), [count, limit]);
   const currentPage = React.useMemo(() => (count ? `${page} of ${totalPages}` : null), [count, page, totalPages]);
 
@@ -28,7 +27,7 @@ const Pagination: React.FC<PaginationProps> = ({ count, page, limit, setPage, cl
   const onClickNext = React.useCallback(() => setPage(page + 1), [page, setPage]);
 
   return (
-    <div className="ebs-select__pagination">
+    <div className="ebs-select__pagination" {...props}>
       <Space align="center" justify="space-between" className={className}>
         <span className="no-wrap">{currentPage}</span>
         <Space>

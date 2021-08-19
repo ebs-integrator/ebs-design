@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useLayoutState } from 'components/organisms/Layout/context';
 
-export const BottomSide: React.FC = ({ children }) => {
+export const BottomSide: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
   const { hasOptions, onSetHasOptions } = useLayoutState();
 
   React.useEffect(() => {
@@ -10,5 +10,9 @@ export const BottomSide: React.FC = ({ children }) => {
     }
   }, [hasOptions, onSetHasOptions]);
 
-  return <div className="ebs-optionsbar__bottom">{children}</div>;
+  return (
+    <div className="ebs-optionsbar__bottom" {...props}>
+      {children}
+    </div>
+  );
 };

@@ -1,14 +1,13 @@
 import * as React from 'react';
-
 import cn from 'classnames';
+
 import { Icon } from '../';
 
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
-export interface AlertProps {
+
+export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: AlertType;
-  className?: string;
   message?: string;
-  description?: string;
   closable?: boolean;
   outlined?: boolean;
   icon?: boolean;
@@ -24,6 +23,7 @@ export const Alert: React.FC<AlertProps> = ({
   closable,
   className,
   children,
+  ...props
 }) => {
   const [closed, setClosed] = React.useState(false);
 
@@ -36,6 +36,7 @@ export const Alert: React.FC<AlertProps> = ({
         { 'ebs-alert--outlined': outlined },
         className,
       )}
+      {...props}
     >
       {icon && <Icon type={type} />}
 

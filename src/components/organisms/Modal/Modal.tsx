@@ -2,29 +2,28 @@ import * as React from 'react';
 import cn from 'classnames';
 import { usePortal, useScrollToggler } from 'hooks';
 import { Mask, Button } from 'components/atoms';
-import { ModalContent, ModalContentProps } from './ModalContent';
-import { ModalFooter, ModalFooterProps } from './ModalFooter';
+import { ModalContent } from './ModalContent';
+import { ModalFooter } from './ModalFooter';
 
 export type ModalSize = 'small' | 'regular' | 'large';
 
 export interface ModalComposition {
-  Content: React.FC<ModalContentProps>;
-  Footer: React.FC<ModalFooterProps>;
+  Content: React.FC<React.HTMLAttributes<HTMLDivElement>>;
+  Footer: React.FC<React.HTMLAttributes<HTMLDivElement>>;
 }
 
-export interface ModalProps {
+export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   defaultOpen?: boolean;
   mask?: boolean;
   size?: ModalSize;
   header?: React.ReactNode;
-  className?: string;
   title?: string;
   closeOnClickOutside?: boolean;
   onClose?: () => void;
 }
 
-const Modal: React.FC<ModalProps> & ModalComposition = ({
+const Modal: React.FC<ModalProps> = ({
   open: isOpen = false,
   mask = true,
   size = 'regular',
@@ -78,7 +77,7 @@ const Modal: React.FC<ModalProps> & ModalComposition = ({
 
             <div
               className={cn(`ebs-modal__wrapper`, className)}
-              {...(mask ? { onClick: closeOnClickOutside ? onClickOutside : undefined } : {})}
+              {...(mask ? { ...props, onClick: closeOnClickOutside ? onClickOutside : undefined } : props)}
             >
               <div className={cn(`ebs-modal`, `ebs-modal__size--${size}`, { 'hide-header': !showHeader })}>
                 {showHeader ? (
@@ -107,9 +106,11 @@ const Modal: React.FC<ModalProps> & ModalComposition = ({
   );
 };
 
-Modal.displayName = 'Modal';
+const ModalComponent: React.FC<ModalProps> & ModalComposition = ({ ...props }) => <Modal {...props} />;
 
-Modal.Content = ModalContent;
-Modal.Footer = ModalFooter;
+ModalComponent.displayName = 'Modal';
 
-export { Modal };
+ModalComponent.Content = ModalContent;
+ModalComponent.Footer = ModalFooter;
+
+export { ModalComponent, Modal };

@@ -62,6 +62,14 @@
   align-items: flex-start;
 }
 
+.flex {
+  @include flex;
+}
+
+.flex-column {
+  @include flex-column;
+}
+
 .flex--row {
   flex-direction: row !important;
 }

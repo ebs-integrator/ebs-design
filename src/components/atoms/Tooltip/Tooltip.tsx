@@ -42,6 +42,7 @@ export type TooltipConfig = Partial<{
 }>;
 
 export interface TooltipProps extends TooltipConfig {
+  className?: string;
   bodyClass?: string;
   title?: React.ReactNode;
   tooltip?: React.ReactNode;
@@ -52,6 +53,7 @@ export interface TooltipProps extends TooltipConfig {
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({
+  className,
   bodyClass,
   children,
   title,
@@ -76,7 +78,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
           <div
             ref={setTooltipRef}
             {...getTooltipProps({
-              className: cn(`ebs-tooltip__wrapper`, { [`ebs-tooltip--nowrap`]: nowrap }),
+              className: cn(`ebs-tooltip__wrapper`, className, { [`ebs-tooltip--nowrap`]: nowrap }),
               style: { width },
             })}
           >

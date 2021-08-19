@@ -11,14 +11,13 @@ export interface Option {
   disabled?: boolean;
 }
 
-export interface Props {
-  className?: string;
+export interface Props extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   checkboxClass?: string;
   checkAlign?: CheckAlign;
   options?: Option[];
   values: CheckboxGroupValue;
-  onChange?: (value: CheckboxGroupValue) => void;
   disabled?: boolean;
+  onChange?: (value: CheckboxGroupValue) => void;
 }
 
 export const CheckboxGroup: React.FC<Props> = ({
@@ -29,6 +28,7 @@ export const CheckboxGroup: React.FC<Props> = ({
   values,
   onChange,
   disabled,
+  ...props
 }) => {
   const name = React.useMemo(() => makeid(), []);
 
@@ -43,7 +43,7 @@ export const CheckboxGroup: React.FC<Props> = ({
   }
 
   return (
-    <div className={cn(`ebs-checkbox__group`, className)}>
+    <div className={cn(`ebs-checkbox__group`, className)} {...props}>
       {options.map((option) => (
         <Checkbox
           key={option.value}

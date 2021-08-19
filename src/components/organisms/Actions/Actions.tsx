@@ -9,15 +9,21 @@ const Item: React.FC<{ onClick?: () => void }> = ({ children, onClick }) => {
   );
 };
 
-export interface ActionsProps {
+export interface ActionsProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   showTitle?: boolean;
   placement?: 'right' | 'left' | 'top' | 'bottom';
 }
 
-const Actions: React.FC<ActionsProps> = ({ title = 'Actions', showTitle = true, placement = 'left', children }) => {
+const Actions: React.FC<ActionsProps> = ({
+  title = 'Actions',
+  showTitle = true,
+  placement = 'left',
+  children,
+  ...props
+}) => {
   return (
-    <div className="ebs-action__wrapper">
+    <div className="ebs-action__wrapper" {...props}>
       <Tooltip
         bodyClass="ebs-action__tooltip"
         trigger="click"

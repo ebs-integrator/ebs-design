@@ -108,9 +108,7 @@
       background-color: $danger-color;
 
       .ebs-icon {
-        path:last-child {
-          fill: $danger-color;
-        }
+        color: $white;
       }
     }
 
@@ -120,6 +118,10 @@
 
     &--warning {
       background-color: $warning-color;
+    }
+
+    .ebs-icon:not(.ebs-icon--close) {
+      font-size: rem($gutter-size * 1.5);
     }
   }
 }

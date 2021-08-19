@@ -1,25 +1,20 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { GenericObject } from 'types';
 
 const Copyright: React.FC = () => (
   <>
-  Designed by <b>EBS Integrator</b>
+    Designed by <b>EBS Integrator</b>
   </>
-)
+);
 
-export interface FooterProps {
+export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: React.ReactNode;
   fixed?: boolean;
 }
 
-const Footer: React.FC<FooterProps> & GenericObject = ({ label = <Copyright />, fixed, children }) => (
-  <footer className={cn('ebs-layout__footer', { 'ebs-layout__footer--fixed': fixed })}>
-    {children || (
-      <span>
-        {label}
-      </span>
-    )}
+const Footer: React.FC<FooterProps> = ({ label = <Copyright />, fixed, children, ...props }) => (
+  <footer className={cn('ebs-layout__footer', { 'ebs-layout__footer--fixed': fixed })} {...props}>
+    {children || <span>{label}</span>}
   </footer>
 );
 

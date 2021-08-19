@@ -9,7 +9,6 @@ import { FormType, LabelOptions, ControlOptions } from './interface';
 
 interface FormProps extends RCFormProps {
   type?: FormType;
-  className?: string;
   labelOptions?: LabelOptions; // Input label options, such as align, justify, column
   controlOptions?: ControlOptions; // Input control options, such as align, justify, column
   fieldRow?: RowProps; // The layout for field columns
@@ -23,7 +22,7 @@ interface FormComposition {
 
 const FormContext = React.createContext<FormProps>({});
 
-const Form: React.FC<FormProps> & FormComposition = ({
+const Form: React.FC<FormProps> = ({
   type = 'vertical',
   draft,
   labelOptions,
@@ -46,9 +45,13 @@ const Form: React.FC<FormProps> & FormComposition = ({
   );
 };
 
-Form.displayName = 'Form';
+const FormComponent: React.FC<FormProps> & FormComposition = ({ ...props }) => {
+  return <Form {...props} />;
+};
 
-Form.Field = FormField;
-Form.Group = FormGroup;
+FormComponent.displayName = 'Form';
 
-export { Form, FormContext, FormProps, FormComposition };
+FormComponent.Field = FormField;
+FormComponent.Group = FormGroup;
+
+export { Form, FormComponent, FormContext, FormProps, FormComposition };

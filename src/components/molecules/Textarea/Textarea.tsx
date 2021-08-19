@@ -2,8 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Extra, Label } from 'components/atoms';
 
-export interface TextareaProps {
-  className?: string;
+export interface TextareaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   placeholder?: string;
   onChange?: (value: string) => void;
   value?: string;
@@ -19,7 +18,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       onChange !== undefined ? onChange(ev.target.value) : undefined;
 
     return (
-      <div className={cn(`ebs-textarea__wrapper`, className)}>
+      <div className={cn(`ebs-textarea__wrapper`, className)} {...props}>
         <Label text={label} disabled={disabled} />
 
         <textarea
@@ -29,7 +28,6 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           onChange={onChangeHandler}
           value={value || ''}
           disabled={disabled}
-          {...props}
         />
 
         <Extra text={extra} status={hasError ? 'danger' : 'text'} disabled={disabled} />

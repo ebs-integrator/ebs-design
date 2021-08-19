@@ -6,7 +6,7 @@ import { Topbar } from './Topbar';
 import { Container, Content, Footer } from './Parts';
 import { LayoutProvider } from './context';
 
-const Layout: React.FC<{ className?: string }> = ({ className, children }) => {
+const Layout: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, children }) => {
   const childs = React.useMemo(() => React.Children.toArray(children) as GenericObject[], [children]);
   const FoolterElement = React.useMemo(() => childs.find((child) => child.type === Footer), [childs]);
   const isFixedFooter = React.useMemo(() => FoolterElement?.props?.fixed, [FoolterElement]);
