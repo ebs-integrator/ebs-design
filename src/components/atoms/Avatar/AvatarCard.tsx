@@ -7,7 +7,6 @@ export type AvatarSize = 'small' | 'big';
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: AvatarType;
   size?: AvatarSize;
-  className?: string;
   shortAlt?: React.ReactNode;
   alt?: string;
   icon?: React.ReactNode;

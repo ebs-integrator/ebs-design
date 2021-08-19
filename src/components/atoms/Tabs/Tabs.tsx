@@ -8,8 +8,7 @@ export interface TabsComposition {
   Panel: React.FC<PanelProps>;
 }
 
-export interface TabsProps {
-  className?: string;
+export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   activeTab?: string;
   setActiveTab?: (key: string) => void;
 }
@@ -21,7 +20,7 @@ export interface TabsContext {
 
 const TabsContext = React.createContext<TabsContext | undefined>(undefined);
 
-const Tabs: React.FC<TabsProps> & TabsComposition = ({ activeTab, setActiveTab, className, children }) => {
+const Tabs: React.FC<TabsProps> & TabsComposition = ({ activeTab, setActiveTab, className, children, ...props }) => {
   const memoizedContextValue = React.useMemo(
     () => ({
       activeTab,
@@ -31,7 +30,7 @@ const Tabs: React.FC<TabsProps> & TabsComposition = ({ activeTab, setActiveTab, 
   );
 
   return (
-    <TabsContext.Provider value={memoizedContextValue}>
+    <TabsContext.Provider value={memoizedContextValue} {...props}>
       <div className={cn(`ebs-tabs`, className)}>
         {children &&
           React.Children.map(children, (child) => {

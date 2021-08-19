@@ -18,13 +18,12 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   mask?: boolean;
   size?: ModalSize;
   header?: React.ReactNode;
-  className?: string;
   title?: string;
   closeOnClickOutside?: boolean;
   onClose?: () => void;
 }
 
-const Modal: React.FC<ModalProps> & ModalComposition = ({
+const Modal: React.FC<ModalProps> = ({
   open: isOpen = false,
   mask = true,
   size = 'regular',
@@ -107,9 +106,11 @@ const Modal: React.FC<ModalProps> & ModalComposition = ({
   );
 };
 
-Modal.displayName = 'Modal';
+const ModalComponent: React.FC<ModalProps> & ModalComposition = ({ ...props }) => <Modal {...props} />;
 
-Modal.Content = ModalContent;
-Modal.Footer = ModalFooter;
+ModalComponent.displayName = 'Modal';
 
-export { Modal };
+ModalComponent.Content = ModalContent;
+ModalComponent.Footer = ModalFooter;
+
+export { ModalComponent, Modal };

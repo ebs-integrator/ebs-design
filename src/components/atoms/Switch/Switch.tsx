@@ -2,7 +2,6 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export interface SwitchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  className?: string;
   disabled?: boolean;
   checked?: boolean;
   onChange?: (value: boolean) => void;

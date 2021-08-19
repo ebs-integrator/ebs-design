@@ -3,11 +3,9 @@ import cn from 'classnames';
 import AnimateHeight from 'react-animate-height';
 import { CardContext } from './Card';
 
-export interface CardBodyProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
-}
+export type CardBodyProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const CardBody: React.FC<CardBodyProps> = ({ className, children, ...props }) => {
+export const CardBody: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, children, ...props }) => {
   const { height, collapsible } = React.useContext(CardContext);
 
   // Return animated card body for collapse

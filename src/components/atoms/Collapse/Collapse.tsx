@@ -7,7 +7,6 @@ import { CollapseBody, CollapseBodyProps } from './CollapseBody';
 
 export interface CollapseProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsed?: boolean;
-  className?: string;
   size?: SizeType;
   bordered?: boolean;
 }

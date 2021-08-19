@@ -4,7 +4,6 @@ import { Icon } from 'components/atoms';
 import { CollapseContext } from './Collapse';
 
 export interface CollapseHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
   onClick?: () => void;
 }
 

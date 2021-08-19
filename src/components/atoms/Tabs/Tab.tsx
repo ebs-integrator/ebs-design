@@ -6,7 +6,6 @@ export interface TabProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'on
   tabKey: string;
   label: React.ReactNode;
   disabled?: boolean;
-  className?: string;
   onClick?: (tabKey: string) => void;
 }
 

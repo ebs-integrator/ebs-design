@@ -2,7 +2,6 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
   bordered?: boolean;
 }
 

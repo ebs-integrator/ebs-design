@@ -4,8 +4,7 @@ import { Checkbox } from 'components/molecules';
 
 import { SelectMode, OptionValue } from '../../../interfaces';
 
-export interface ItemProps {
-  className?: string;
+export interface ItemProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onClick'> {
   mode?: SelectMode;
   prefix?: React.ReactElement;
   suffix?: React.ReactElement;
@@ -27,6 +26,7 @@ export const Item: React.FC<ItemProps> = ({
   text,
   active,
   selected,
+  ...props
 }) => {
   const onClickHandler = (): void => {
     if (onClick) {
@@ -45,6 +45,7 @@ export const Item: React.FC<ItemProps> = ({
         'has-suffix': suffix,
       })}
       onClick={onClickHandler}
+      {...props}
     >
       {prefix && <div className="ebs-select__options-item-prefix">{prefix}</div>}
 

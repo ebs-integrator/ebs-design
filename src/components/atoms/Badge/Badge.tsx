@@ -7,7 +7,6 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   count?: number;
   text?: string;
   type?: BadgeType;
-  className?: string;
 }
 
 export const Badge: React.FC<BadgeProps> = ({ count, text, type = 'regular', className, children, ...props }) => {

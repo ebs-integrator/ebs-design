@@ -7,7 +7,6 @@ export type SpaceSize = SizeType | number;
 export type SpaceDirection = 'horizontal' | 'vertical';
 
 export interface SpaceProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
   size?: SpaceSize | [SpaceSize, SpaceSize];
   direction?: SpaceDirection;
   align?: 'start' | 'end' | 'center' | 'baseline';

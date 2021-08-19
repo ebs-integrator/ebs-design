@@ -13,8 +13,7 @@ export interface OptionsComposition {
   Item: React.FC<ItemProps>;
 }
 
-export interface OptionsProps {
-  className?: string;
+export interface OptionsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   mode?: SelectMode;
   scrollMode?: ScrollMode;
   options?: Option[];
@@ -29,7 +28,7 @@ export interface OptionsProps {
   onClickAddNew?: (value: string) => void;
 }
 
-const Options: React.FC<OptionsProps> & OptionsComposition = ({
+const Options: React.FC<OptionsProps> = ({
   mode = 'single',
   scrollMode = 'regular',
   loading,
@@ -41,6 +40,7 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   onClose,
   onChange,
   onClickAddNew,
+  ...props
 }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
   const { offsetBottom } = React.useContext(Context);
@@ -130,7 +130,8 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
       className={cn('ebs-select__options-items', {
         'ebs-select__options--multiple': ['multiple', 'tags'].includes(mode),
       })}
-      style={maxHeight ? { maxHeight } : undefined}
+      {...props}
+      style={maxHeight ? { ...props.style, maxHeight } : props.style}
     >
       {newOption && onClickAddNew && (
         <Item
@@ -178,8 +179,12 @@ const Options: React.FC<OptionsProps> & OptionsComposition = ({
   );
 };
 
-Options.displayName = 'Options';
+const OptionsComponent: React.FC<OptionsProps> & OptionsComposition = ({ ...props }) => {
+  return <Options {...props} />;
+};
 
-Options.Item = Item;
+OptionsComponent.displayName = 'Options';
 
-export { Options };
+OptionsComponent.Item = Item;
+
+export { Options, OptionsComponent };

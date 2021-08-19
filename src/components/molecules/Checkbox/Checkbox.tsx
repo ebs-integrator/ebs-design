@@ -13,7 +13,6 @@ export interface Option {
 }
 
 export interface CheckboxProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  className?: string;
   checkAlign?: CheckAlign;
   name?: string;
   value?: CheckboxValue;

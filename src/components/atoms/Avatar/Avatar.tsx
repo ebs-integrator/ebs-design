@@ -7,7 +7,6 @@ export type AvatarType = 'regular' | 'primary' | 'light' | 'dynamic';
 export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: AvatarType;
   size?: 'small' | 'big';
-  className?: string;
   circle?: boolean;
   shortAlt?: React.ReactNode;
   shortLetters?: number;

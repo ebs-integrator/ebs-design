@@ -4,7 +4,6 @@ import { Icon } from 'components/atoms';
 import { CardContext } from './Card';
 
 export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
   bordered?: boolean;
   onClick?: () => void;
 }

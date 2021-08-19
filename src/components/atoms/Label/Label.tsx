@@ -6,7 +6,6 @@ export type LabelType = 'regular' | 'fill' | 'ghost' | 'primary';
 export type LabelStatus = 'success' | 'warning' | 'danger' | 'info';
 
 export interface LabelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'> {
-  className?: string;
   type?: LabelType;
   circle?: boolean;
   status?: LabelStatus;

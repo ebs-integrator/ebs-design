@@ -5,8 +5,7 @@ import { Icon, Label, Tooltip } from 'components/atoms';
 import { useLayoutState } from 'components/organisms/Layout/context';
 import { GenericObject } from 'types';
 
-export const Item: React.FC<{
-  className?: string;
+export interface ItemProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onClick'> {
   labelClass?: string;
   optionsClass?: string;
   label?: React.ReactNode;
@@ -16,7 +15,21 @@ export const Item: React.FC<{
   active?: boolean;
   disabled?: boolean;
   onClick?: () => void;
-}> = ({ className, labelClass, optionsClass, label, active, prefix, invert, text, disabled, onClick, children }) => {
+}
+
+export const Item: React.FC<ItemProps> = ({
+  className,
+  labelClass,
+  optionsClass,
+  label,
+  active,
+  prefix,
+  invert,
+  text,
+  disabled,
+  onClick,
+  children,
+}) => {
   const { toggled } = useLayoutState();
   const [collapsed, setCollapsed] = React.useState(false);
 

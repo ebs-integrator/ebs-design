@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import { useLayoutState } from '../context';
 
-export const Container: React.FC<{ className?: string }> = ({ className, children }) => {
+export const Container: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, children, ...props }) => {
   const { toggled, hasOptions } = useLayoutState();
 
   return (
@@ -11,6 +11,7 @@ export const Container: React.FC<{ className?: string }> = ({ className, childre
       className={cn(`ebs-layout`, `ebs-layout__sidebar--${toggled ? `toggled` : `untoggled`}`, className, {
         'has-options': hasOptions,
       })}
+      {...props}
     >
       {children}
     </div>

@@ -3,15 +3,14 @@ import { icons } from './iconsList';
 import cn from 'classnames';
 
 export type modelType = 'regular' | 'bold';
-export interface Props {
+export interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
   onClick?: () => void;
   type?: string;
-  className?: string;
   component?: any;
   model?: modelType;
 }
 
-export const Icon: React.FC<Props> = ({
+export const Icon: React.FC<IconProps> = ({
   onClick,
   type = 'none',
   model = 'regular',

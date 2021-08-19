@@ -4,7 +4,6 @@ import { useTabs } from './Tabs';
 
 export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
   tabKey: string;
-  className?: string;
 }
 
 /**

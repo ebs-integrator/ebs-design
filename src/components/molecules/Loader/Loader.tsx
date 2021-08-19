@@ -9,13 +9,12 @@ export interface LoaderComposition {
   Spinner: React.FC<LoaderSpinnerProps>;
 }
 
-export interface LoaderProps {
+export interface LoaderProps extends React.HTMLAttributes<HTMLDivElement> {
   fade?: boolean;
   size?: SpinnerSize;
   loading: boolean;
   fixed?: boolean;
   height?: number | string;
-  children?: React.ReactNode;
 }
 
 const Loader: React.FC<LoaderProps> & LoaderComposition = ({
@@ -25,9 +24,10 @@ const Loader: React.FC<LoaderProps> & LoaderComposition = ({
   loading,
   height = 350,
   children,
+  ...props
 }) => {
   return (
-    <div className="ebs-loader" style={{ minHeight: loading ? height : undefined }}>
+    <div className="ebs-loader" style={{ minHeight: loading ? height : undefined }} {...props}>
       <LoaderSpinner fixed={fixed} size={size} className={!loading ? 'hide' : ''} />
 
       {fade ? (

@@ -2,7 +2,6 @@ import * as React from 'react';
 import cn from 'classnames';
 
 export interface ChipsProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onChange'> {
-  className?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   text?: React.ReactNode;

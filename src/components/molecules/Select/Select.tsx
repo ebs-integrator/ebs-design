@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import {
-  Component,
-  ComponentProps,
+  Select,
+  SelectProps,
   Search,
   SearchProps,
-  Options,
+  OptionsComponent,
   OptionsProps,
   OptionsComposition,
   Pagination,
@@ -19,18 +19,18 @@ export interface Composition {
   Pagination: React.FC<PaginationProps>;
 }
 
-const Select: React.FC<ComponentProps> & Composition = (props) => {
+const SelectComponent: React.FC<SelectProps> & Composition = (props) => {
   return (
     <Provider>
-      <Component {...props} />
+      <Select {...props} />
     </Provider>
   );
 };
 
-Select.displayName = 'Select';
+SelectComponent.displayName = 'Select';
 
-Select.Search = Search;
-Select.Options = Options;
-Select.Pagination = Pagination;
+SelectComponent.Search = Search;
+SelectComponent.Options = OptionsComponent;
+SelectComponent.Pagination = Pagination;
 
-export { Select };
+export { SelectComponent };

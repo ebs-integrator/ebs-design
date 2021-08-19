@@ -14,7 +14,6 @@ export interface Option {
 
 export interface RadioProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'value'>, 'onChange'> {
   name?: string;
-  className?: string;
   textClass?: string;
   radioAlign?: RadioAlign;
   value?: RadioValue;

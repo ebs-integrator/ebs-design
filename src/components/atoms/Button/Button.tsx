@@ -69,6 +69,8 @@ export const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export const ButtonGroup: React.FC<{ className?: string }> = ({ children, className }) => (
-  <div className={cn(`ebs-button__group`, className)}>{children}</div>
+export const ButtonGroup: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className, ...props }) => (
+  <div className={cn(`ebs-button__group`, className)} {...props}>
+    {children}
+  </div>
 );

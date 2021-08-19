@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SizeSwitcher, Template } from 'components/storybook';
+import { Template } from 'components/storybook';
 
-import { Loader, LoaderProps, SpinnerSize } from './Loader';
+import { Loader, LoaderProps } from './Loader';
 import { exportStory } from '../../../libs';
 
 const { Inline, Spinner } = Loader;
@@ -32,9 +32,18 @@ Regular.args = {
   height: '100%',
 };
 
-export const _Inline = (): React.ReactElement => <Loader.Inline />;
-export const _Spinner = (): React.ReactElement => (
-  <SizeSwitcher sizes={['small', 'middle', 'regular']} defaultSize="regular">
-    {(size) => <Loader.Spinner size={size as SpinnerSize} />}
-  </SizeSwitcher>
+export const _Inline: React.FC<LoaderProps> & { args: LoaderProps } = ({ children, ...props }) => (
+  <Template>
+    <Loader.Inline {...props} />
+  </Template>
 );
+
+_Inline.args = Regular.args;
+
+export const _Spinner: React.FC<LoaderProps> & { args: LoaderProps } = ({ children, ...props }) => (
+  <Template>
+    <Loader.Spinner {...props} />
+  </Template>
+);
+
+_Spinner.args = Regular.args;

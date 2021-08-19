@@ -12,7 +12,6 @@ export interface Option {
 }
 
 export interface Props extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  className?: string;
   checkboxClass?: string;
   checkAlign?: CheckAlign;
   options?: Option[];

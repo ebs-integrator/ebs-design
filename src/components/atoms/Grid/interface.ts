@@ -8,7 +8,6 @@ export type Gutter = 0 | 1 | 2 | 3 | 4 | 5;
 export type ColSizeType = { [key: string]: ColType };
 
 export interface Grid extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
   offset?: Offset | ColSizeType;
   g?: Gutter | ColSizeType;
   gx?: Gutter | ColSizeType;

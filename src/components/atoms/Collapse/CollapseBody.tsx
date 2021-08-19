@@ -3,9 +3,7 @@ import cn from 'classnames';
 import AnimateHeight from 'react-animate-height';
 import { CollapseContext } from './Collapse';
 
-export interface CollapseBodyProps extends React.HTMLAttributes<HTMLDivElement> {
-  className?: string;
-}
+export type CollapseBodyProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const CollapseBody: React.FC<CollapseBodyProps> = ({ className, style, children, ...props }) => {
   const { height } = React.useContext(CollapseContext);

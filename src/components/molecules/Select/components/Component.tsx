@@ -1,13 +1,13 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Label, Input, Icon, Space, Tooltip } from 'components/atoms';
+import { Label, Input, Icon, Tooltip } from 'components/atoms';
 import { Loader } from 'components/molecules';
 import { SizeType } from 'types';
 
 import useSelect from '../Hook';
 import { SelectMode, ValueMode, OptionsMode, Option, OptionValue } from '../interfaces';
 
-export interface ComponentProps {
+export interface SelectProps {
   mode?: SelectMode;
   optionsMode?: OptionsMode;
   valueMode?: ValueMode;
@@ -32,7 +32,7 @@ export interface ComponentProps {
   onAddNew?: (value: string) => void;
 }
 
-const Component: React.FC<ComponentProps> = ({
+const Select: React.FC<SelectProps> = ({
   mode = 'single',
   size = 'medium',
   valueMode = 'regular',
@@ -114,8 +114,10 @@ const Component: React.FC<ComponentProps> = ({
                         onClickSuffix={() => !props.disabled && onDeleteSelect(item.value)}
                       />
                     ))
+                  ) : (textValue as Option).value ? (
+                    (textValue as Option).text
                   ) : (
-                    <Space>{(textValue as Option).value ? (textValue as Option).text : props.placeholder}</Space>
+                    props.placeholder
                   )}
 
                   {mode === 'tags' && (
@@ -153,4 +155,4 @@ const Component: React.FC<ComponentProps> = ({
   );
 };
 
-export { Component };
+export { Select };
