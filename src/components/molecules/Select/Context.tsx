@@ -11,6 +11,7 @@ interface StateProps {
   search: string | boolean;
   style?: React.CSSProperties;
   offsetBottom?: number;
+  maxHeight?: number;
   isOpen: boolean;
   isLoaded: boolean;
 }

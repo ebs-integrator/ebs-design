@@ -81,6 +81,7 @@ const Select: React.FC<SelectProps> = ({
       <Label text={props.label} disabled={props.disabled} />
 
       <Tooltip
+        className="ebs-tooltip--overtop"
         visible={!isBox && isOpen}
         trigger={null}
         tooltip={!props.disabled && (isOpen ? dropdownOptions : null)}

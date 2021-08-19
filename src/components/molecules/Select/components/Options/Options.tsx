@@ -43,9 +43,8 @@ const Options: React.FC<OptionsProps> = ({
   ...props
 }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
-  const { offsetBottom } = React.useContext(Context);
+  const { offsetBottom, maxHeight, setState } = React.useContext(Context);
   const [activeItem, setActiveItem] = React.useState(0);
-  const [maxHeight, setMaxHeight] = React.useState(0);
 
   const onScroll = (e): void => {
     const scrollTop = Math.floor(e.target.scrollTop);
@@ -58,12 +57,12 @@ const Options: React.FC<OptionsProps> = ({
   React.useEffect(() => {
     const rect = ref.current?.getBoundingClientRect();
 
-    if (rect?.height && offsetBottom) {
+    if (!maxHeight && rect?.height && offsetBottom && options.length && !loading) {
       const height = window.innerHeight - offsetBottom;
 
-      setMaxHeight(height <= rect.height ? height : rect.height - +(scrollMode === 'scroll'));
+      setState({ maxHeight: height <= rect.height ? height : rect.height - +(scrollMode === 'scroll') });
     }
-  }, [ref.current, offsetBottom, scrollMode]);
+  }, [ref.current, offsetBottom, scrollMode, options, loading, maxHeight]);
 
   React.useEffect(() => {
     if (ref.current && !scrollMode && options?.length) {
@@ -72,12 +71,12 @@ const Options: React.FC<OptionsProps> = ({
   }, [ref.current, options, scrollMode]);
 
   React.useEffect(() => {
-    if (ref.current && scrollMode) {
+    if (ref.current && scrollMode === 'scroll') {
       ref.current.addEventListener('scroll', onScroll);
     }
 
     return () => {
-      if (ref.current && scrollMode) {
+      if (ref.current && scrollMode === 'scroll') {
         ref.current.removeEventListener('scroll', onScroll);
       }
     };
@@ -127,10 +126,14 @@ const Options: React.FC<OptionsProps> = ({
   return (
     <div
       ref={ref}
-      className={cn('ebs-select__options-items', {
-        'ebs-select__options--multiple': ['multiple', 'tags'].includes(mode),
-      })}
       {...props}
+      className={cn(
+        'ebs-select__options-items',
+        {
+          'ebs-select__options--multiple': ['multiple', 'tags'].includes(mode),
+        },
+        props.className,
+      )}
       style={maxHeight ? { ...props.style, maxHeight } : props.style}
     >
       {newOption && onClickAddNew && (

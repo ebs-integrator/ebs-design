@@ -15,6 +15,10 @@
     }
   }
 
+  &__wrapper.ebs-tooltip--overtop {
+    z-index: 9999;
+  }
+
   &__wrapper {
     @include elevation-2;
     background-color: $white;

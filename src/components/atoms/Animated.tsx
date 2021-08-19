@@ -47,7 +47,7 @@ export const Animated: React.FC<AnimatedProps> = ({
   }
 
   return (
-    <AnimateHeight duration={duration} height={loading ? startFrom : 'auto'} className={cn(className)} {...props}>
+    <AnimateHeight {...props} duration={duration} height={loading ? startFrom : 'auto'} className={cn(className)}>
       {props.children}
     </AnimateHeight>
   );

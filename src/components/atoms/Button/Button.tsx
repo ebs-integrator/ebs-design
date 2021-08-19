@@ -60,8 +60,8 @@ export const Button: React.FC<ButtonProps> = ({
       <button
         type={submit ? 'submit' : 'button'}
         className={cn(`ebs-button`, buttonClass, { 'ebs-button--is-icon': icon })}
-        {...props}
         disabled={props.disabled || loading}
+        {...props}
       >
         {icon ? <Icon type={icon} /> : props.children}
       </button>

@@ -9,7 +9,7 @@ export type DatePickerProps = Modify<
   ReactDatePickerProps,
   {
     size?: SizeType;
-    value?: DateType;
+    value?: any;
     onChange?: (date: DateType, event?: React.SyntheticEvent<HTMLDivElement>) => void;
   }
 >;
