@@ -5,7 +5,7 @@ import { useEventListener } from 'hooks';
 import { isArray, toArray, uniqueArray, isEqual as isEqualArray } from 'libs';
 import { GenericObject } from 'types';
 
-import { Search, Pagination, Options } from './components';
+import { Search, Pagination, Options, OptionsComponent } from './components';
 import { Context, ContextProps } from './Context';
 import { OptionValue, Option } from './interfaces';
 import { isEqual } from './utils';
@@ -51,13 +51,13 @@ export default ({ loading, ref, children, ...params }): Props => {
 
   const childs = React.useMemo(() => {
     const childrens = React.Children.toArray(children) as GenericObject[];
-    const optionsEl = childrens.find((child) => child?.type === Options);
+    const optionsEl = childrens.find((child) => child?.type === OptionsComponent);
 
     return [...childrens, ...(!optionsEl ? (React.Children.toArray(<Options />) as GenericObject[]) : [])];
   }, [children]);
 
   const $options = React.useMemo(() => {
-    const child = childs.find((i) => i?.type === Options);
+    const child = childs.find((i) => i?.type === OptionsComponent);
 
     return !!optionsList.length
       ? optionsList
@@ -258,7 +258,7 @@ export default ({ loading, ref, children, ...params }): Props => {
     () => (
       <div ref={optionsRef} className={cn(`ebs-select__options`, className)} style={optionsStyle}>
         {childs.map((child, i) => {
-          if (child?.type === Options) {
+          if (child?.type === OptionsComponent) {
             return (
               <Options
                 key={i}
