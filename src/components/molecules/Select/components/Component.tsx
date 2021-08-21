@@ -7,7 +7,8 @@ import { SizeType } from 'types';
 import useSelect from '../Hook';
 import { SelectMode, ValueMode, OptionsMode, Option, OptionValue } from '../interfaces';
 
-export interface SelectProps {
+export interface SelectProps
+  extends Omit<Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onChange'>, 'onSelect'> {
   mode?: SelectMode;
   optionsMode?: OptionsMode;
   valueMode?: ValueMode;
@@ -36,8 +37,12 @@ const Select: React.FC<SelectProps> = ({
   mode = 'single',
   size = 'medium',
   valueMode = 'regular',
+  className,
+  prefix,
   loading,
   children,
+  onChange,
+  onSelect,
   ...props
 }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
@@ -60,6 +65,10 @@ const Select: React.FC<SelectProps> = ({
     loading,
     ref,
     children,
+    className,
+    prefix,
+    onChange,
+    onSelect,
     ...props,
   });
 
@@ -69,14 +78,26 @@ const Select: React.FC<SelectProps> = ({
     }
   }, [textValue]);
 
+  const onFocus = (): void => setState((prevState) => ({ isOpen: !prevState.isOpen }));
+
+  React.useEffect(() => {
+    ref.current?.addEventListener('focus', onFocus);
+
+    return () => {
+      ref.current?.removeEventListener('focus', onFocus);
+    };
+  }, [ref]);
+
   return (
     <div
       ref={ref}
-      className={cn(`ebs-select__wrapper`, `ebs-select--${mode}`, `ebs-select--${valueMode}`, props.className, {
+      className={cn(`ebs-select__wrapper`, `ebs-select--${mode}`, `ebs-select--${valueMode}`, className, {
         'ebs-select--box': isBox,
         active: hasValue,
         disabled: props.disabled,
       })}
+      tabIndex={0}
+      {...props}
     >
       <Label text={props.label} disabled={props.disabled} />
 
@@ -90,14 +111,13 @@ const Select: React.FC<SelectProps> = ({
       >
         <div className="ebs-select-dropdown__wrapper">
           <div className="ebs-select-dropdown__container">
-            {props.prefix && <div className="ebs-select__prefix">{props.prefix}</div>}
+            {prefix && <div className="ebs-select__prefix">{prefix}</div>}
 
             <div
               className={cn('ebs-select', `ebs-select--${size}`, {
                 'ebs-select--tags': mode === 'tags',
                 'has-suffix': props.suffix,
               })}
-              onClick={() => setState((prevState) => ({ isOpen: !prevState.isOpen }))}
             >
               <div className="ebs-select-value">
                 <div ref={valueRef} className="ebs-select-value__container">
