@@ -113,6 +113,7 @@
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
+    "storybook-addon-themes": "^6.1.0",
     "typescript": "^3.9.7"
   },
   "files": [

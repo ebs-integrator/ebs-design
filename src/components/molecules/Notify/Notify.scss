@@ -92,12 +92,12 @@
       color: $text-color;
 
       .ebs-icon {
-        color: $primary-color;
+        color: var(--primary-color);
       }
     }
 
     &--primary {
-      background-color: $primary-color;
+      background-color: var(--primary-color);
     }
 
     &--success {

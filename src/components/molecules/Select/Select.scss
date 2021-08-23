@@ -145,7 +145,7 @@
 
       .ebs-select__clear {
         font-weight: 100;
-        color: $primary-color;
+        color: var(--primary-color);
       }
     }
 
@@ -178,11 +178,11 @@
 
     &.active {
       .ebs-select__prefix {
-        border-color: $primary-color;
+        border-color: var(--primary-color);
       }
 
       .ebs-select-dropdown__wrapper .ebs-select {
-        border-color: $primary-color;
+        border-color: var(--primary-color);
         background-color: $white;
 
         .ebs-select-value {
@@ -192,7 +192,7 @@
 
       .ebs-select__suffix {
         .ebs-button__wrapper {
-          border-color: $primary-color;
+          border-color: var(--primary-color);
         }
       }
     }
