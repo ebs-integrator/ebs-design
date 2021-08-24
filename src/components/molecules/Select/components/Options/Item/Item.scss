@@ -10,15 +10,15 @@
   }
 
   &.active {
-    background-color: $primary-000;
+    background-color: var(--primary-000);
   }
 
   &.active &-text {
-    color: $primary-color;
+    color: var(--primary-color);
   }
 
   &.selected {
-    background-color: $primary-000;
+    background-color: var(--primary-000);
   }
 
   &.selected &-suffix,
@@ -29,10 +29,10 @@
   }
 
   &:hover {
-    background-color: $primary-000;
+    background-color: var(--primary-000);
 
     .ebs-select__options-item-text {
-      color: $primary-color;
+      color: var(--primary-color);
     }
 
     &-suffix,

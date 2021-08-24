@@ -56,7 +56,7 @@
 
     &--small {
       border: 2px solid $grey-500;
-      border-top: 2px solid $primary-color;
+      border-top: 2px solid var(--primary-color);
       width: rem(#{$base-size / 2});
       height: rem(#{$base-size / 2});
       top: calc(50% - #{$base-size / 4});
@@ -64,7 +64,7 @@
 
     &--middle {
       border: 2px solid $grey-500;
-      border-top: 2px solid $primary-color;
+      border-top: 2px solid var(--primary-color);
       width: rem(#{$base-size - $gutter-size});
       height: rem(#{$base-size - $gutter-size});
       top: calc(50% - #{($base-size - $gutter-size) / 2});
@@ -73,7 +73,7 @@
 
     &--regular {
       border: 6px solid $grey-500;
-      border-top: 6px solid $primary-color;
+      border-top: 6px solid var(--primary-color);
       width: rem(#{$base-size * 2});
       height: rem(#{$base-size * 2});
       top: calc(50% - #{$base-size});

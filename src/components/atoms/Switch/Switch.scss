@@ -15,8 +15,8 @@
     }
 
     &:hover .ebs-switch__dot {
-      border-color: $primary-200;
-      box-shadow: 0px 0px 0px 2px $primary-color inset;
+      border-color: var(--primary-200);
+      box-shadow: 0px 0px 0px 2px var(--primary-color inset);
     }
   }
 
@@ -32,29 +32,29 @@
   }
 
   &--checked {
-    background-color: $primary-200;
+    background-color: var(--primary-200);
 
     .ebs-switch__dot {
       transform: translate(16px, -50%);
-      background-color: $primary-400;
-      border-color: $primary-200;
+      background-color: var(--primary-400);
+      border-color: var(--primary-200);
     }
 
     &:hover .ebs-switch__dot {
-      border-color: $primary-300;
-      box-shadow: 0px 0px 0px 2px $primary-color inset;
+      border-color: var(--primary-300);
+      box-shadow: 0px 0px 0px 2px var(--primary-color inset);
     }
   }
 
   &--checked.disabled {
     cursor: not-allowed;
-    background-color: $primary-100;
+    background-color: var(--primary-100);
 
     .ebs-switch__dot,
     .ebs-switch__dot:hover {
-      box-shadow: 0px 0px 0px 2px $primary-400 inset;
-      background-color: $primary-300;
-      border-color: $primary-100;
+      box-shadow: 0px 0px 0px 2px var(--primary-400 inset);
+      background-color: var(--primary-300);
+      border-color: var(--primary-100);
     }
   }
 
@@ -66,7 +66,7 @@
     width: rem(16px);
     height: rem(16px);
     border: 2px solid transparent;
-    box-shadow: 0px 0px 0px 2px $primary-color inset;
+    box-shadow: 0px 0px 0px 2px var(--primary-color inset);
     border-radius: 50%;
     overflow: hidden;
     transition: all $transition-time;

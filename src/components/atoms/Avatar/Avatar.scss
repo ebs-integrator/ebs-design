@@ -10,17 +10,17 @@
   }
 
   &--regular {
-    color: $primary-color;
+    color: var(--primary-color);
     background-color: $grey-100;
 
     .ebs-icon {
-      color: $primary-color;
+      color: var(--primary-color);
     }
   }
 
   &--primary {
     color: $white;
-    background-color: $primary-color;
+    background-color: var(--primary-color);
 
     .ebs-icon {
       color: $white;
@@ -100,7 +100,7 @@
     }
 
     &--regular {
-      background-color: $primary-color;
+      background-color: var(--primary-color);
     }
 
     &--inactive {

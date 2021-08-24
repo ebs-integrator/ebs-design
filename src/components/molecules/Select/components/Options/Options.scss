@@ -5,7 +5,7 @@
   background-color: $white;
   border: 1px solid $white;
   border-radius: rem($border-radius);
-  overflow: auto;
+  overflow: hidden;
 
   &--multiple &-item-text {
     padding-right: rem($gutter-size + $gutter-size / 2);

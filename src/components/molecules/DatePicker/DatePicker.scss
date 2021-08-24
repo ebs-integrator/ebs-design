@@ -76,7 +76,7 @@
   }
 
   @include hover-state {
-    border-color: $primary-color;
+    border-color: var(--primary-color);
     background-color: $white;
   }
 
@@ -117,11 +117,11 @@
 
   &.is-opened {
     .ebs-datepicker {
-      border-color: $primary-color;
+      border-color: var(--primary-color);
     }
     .react-datepicker-wrapper:first-child {
       .ebs-datepicker {
-        border-right-color: $primary-color;
+        border-right-color: var(--primary-color);
       }
     }
   }
@@ -129,11 +129,11 @@
   &:not(.disabled) {
     @include hover-state {
       .ebs-datepicker {
-        border-color: $primary-color;
+        border-color: var(--primary-color);
       }
       .react-datepicker-wrapper:first-child {
         .ebs-datepicker {
-          border-right-color: $primary-color;
+          border-right-color: var(--primary-color);
         }
       }
     }
@@ -184,7 +184,7 @@
     }
 
     &__time-list-item:hover {
-      background-color: $primary-100;
+      background-color: var(--primary-100);
       color: $text-color;
     }
 
@@ -194,7 +194,7 @@
 
     &__time-list-item--selected,
     &__time-list-item--selected:hover {
-      background-color: $primary-color;
+      background-color: var(--primary-color);
       color: $white;
     }
 
@@ -318,15 +318,15 @@
     }
 
     &__day:hover {
-      background-color: $primary-100;
+      background-color: var(--primary-100);
     }
 
     &__day--in-range {
-      background-color: $primary-100;
+      background-color: var(--primary-100);
     }
 
     &__day--in-selecting-range {
-      background-color: $primary-000;
+      background-color: var(--primary-000);
     }
 
     &__day--selected,
@@ -336,7 +336,7 @@
     &__day--range-start,
     &__day--range-end {
       border-radius: rem($border-radius);
-      background-color: $primary-color;
+      background-color: var(--primary-color);
       color: $white;
     }
   }
@@ -357,7 +357,7 @@
     color: $text-color;
 
     @include hover-state {
-      background-color: $primary-100;
+      background-color: var(--primary-100);
     }
   }
 
@@ -367,7 +367,7 @@
     ul.react-datepicker__time-list
     li.react-datepicker__time-list-item {
     @include hover-state {
-      background-color: $primary-100;
+      background-color: var(--primary-100);
     }
   }
 
@@ -376,7 +376,7 @@
     .react-datepicker__time-box
     ul.react-datepicker__time-list
     li.react-datepicker__time-list-item--selected {
-    background-color: $primary-color;
+    background-color: var(--primary-color);
   }
 }
 

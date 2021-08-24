@@ -34,19 +34,19 @@
 
   // button type (Color)
   &--primary {
-    border-color: $primary-color;
-    background-color: $primary-color;
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
     color: $white;
 
     &:hover {
-      border-color: $primary-600;
-      background-color: $primary-600;
+      border-color: var(--primary-600);
+      background-color: var(--primary-600);
     }
 
     &:active,
     &.active {
-      border-color: $primary-700;
-      background-color: $primary-700;
+      border-color: var(--primary-700);
+      background-color: var(--primary-700);
     }
 
     .ebs-icon {
@@ -68,8 +68,8 @@
     color: $white;
 
     @include hover-state {
-      border-color: $primary-600;
-      background-color: $primary-600;
+      border-color: var(--primary-600);
+      background-color: var(--primary-600);
     }
 
     .ebs-button,
@@ -92,13 +92,13 @@
   }
 
   &--fill {
-    border-color: $primary-100;
-    background-color: $primary-100;
-    color: $primary-color;
+    border-color: var(--primary-100);
+    background-color: var(--primary-100);
+    color: var(--primary-color);
 
     &:hover {
-      border-color: $primary-color;
-      background-color: $primary-color;
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
       color: $white;
 
       .ebs-button,
@@ -109,8 +109,8 @@
 
     &:active,
     &.active {
-      border-color: $primary-600;
-      background-color: $primary-600;
+      border-color: var(--primary-600);
+      background-color: var(--primary-600);
       color: $white;
 
       .ebs-button,
@@ -120,12 +120,12 @@
     }
 
     .ebs-icon {
-      color: $primary-color;
+      color: var(--primary-color);
     }
   }
 
   &--fill & {
-    color: $primary-color;
+    color: var(--primary-color);
   }
 
   &--ghost.ebs-button__wrapper {
@@ -167,14 +167,14 @@
 
   &--text {
     background-color: transparent;
-    color: $primary-color;
+    color: var(--primary-color);
 
     &:hover {
       background-color: transparent;
 
       .ebs-button,
       .ebs-icon {
-        color: $primary-600;
+        color: var(--primary-600);
       }
     }
 
@@ -184,17 +184,17 @@
 
       .ebs-button,
       .ebs-icon {
-        color: $primary-700;
+        color: var(--primary-700);
       }
     }
 
     .ebs-icon {
-      color: $primary-color;
+      color: var(--primary-color);
     }
   }
 
   &--text & {
-    color: $primary-color;
+    color: var(--primary-color);
   }
 
   &--disabled {

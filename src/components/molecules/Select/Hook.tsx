@@ -53,7 +53,7 @@ export default ({ loading, ref, children, ...params }): Props => {
     const childrens = React.Children.toArray(children) as GenericObject[];
     const optionsEl = childrens.find((child) => child?.type === OptionsComponent);
 
-    return [...childrens, ...(!optionsEl ? (React.Children.toArray(<Options />) as GenericObject[]) : [])];
+    return [...childrens, ...(!optionsEl ? (React.Children.toArray(<OptionsComponent />) as GenericObject[]) : [])];
   }, [children]);
 
   const $options = React.useMemo(() => {

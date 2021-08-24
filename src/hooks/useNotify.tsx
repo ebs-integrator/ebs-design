@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NotifyItemProps } from '../components/molecules/Notify/NotifyItem';
 import { NotifyContext } from '../';
 
-export interface Props {
+export interface NotifyProps {
   error: (item: NotifyItemProps) => void;
   success: (item: NotifyItemProps) => void;
   info: (item: NotifyItemProps) => void;
@@ -11,7 +11,7 @@ export interface Props {
   warning: (item: NotifyItemProps) => void;
 }
 
-export const useNotify = (): Props => {
+export const useNotify = (): NotifyProps => {
   const { push } = React.useContext(NotifyContext);
 
   return {

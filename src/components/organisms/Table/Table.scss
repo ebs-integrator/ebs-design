@@ -216,7 +216,7 @@
     color: $text-color;
 
     a {
-      color: $primary-color;
+      color: var(--primary-color);
     }
 
     b,

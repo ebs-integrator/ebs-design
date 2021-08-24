@@ -9,13 +9,13 @@
   transition: all $transition-time;
 
   &--checked {
-    background-color: $primary-000;
-    border-color: $primary-color;
-    color: $primary-color;
+    background-color: var(--primary-000);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 
     &:hover {
-      background-color: $primary-color;
-      border-color: $primary-color;
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
       color: $white;
 
       .ebs-icon {
@@ -31,8 +31,8 @@
 
     &:hover {
       background-color: transparent;
-      border-color: $primary-400;
-      color: $primary-400;
+      border-color: var(--primary-400);
+      color: var(--primary-400);
     }
   }
 

@@ -82,27 +82,27 @@
     cursor: pointer;
 
     &:hover ~ .ebs-radio {
-      background-color: $primary-100;
+      background-color: var(--primary-100);
 
       &__dot {
-        border-color: $primary-color;
-        background-color: $primary-100;
+        border-color: var(--primary-color);
+        background-color: var(--primary-100);
       }
     }
 
     &:checked:hover ~ .ebs-radio {
-      background-color: $primary-100;
+      background-color: var(--primary-100);
 
       &__dot {
-        border-color: $primary-color;
-        background-color: $primary-color;
-        box-shadow: 0px 0px 0px 3px $primary-100 inset;
+        border-color: var(--primary-color);
+        background-color: var(--primary-color);
+        box-shadow: 0px 0px 0px 3px var(--primary-100 inset);
       }
     }
 
     &:checked ~ .ebs-radio .ebs-radio__dot {
-      border-color: $primary-color;
-      background-color: $primary-color;
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
       box-shadow: 0px 0px 0px 3px $white inset;
     }
   }

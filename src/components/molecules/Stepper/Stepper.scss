@@ -3,11 +3,11 @@
 .ebs-stepper__wrapper {
   &.active .ebs-stepper,
   &.active .ebs-stepper:hover {
-    border-color: $primary-color;
+    border-color: var(--primary-color);
     background-color: $white;
 
     .rc-input-number-handler-wrap {
-      border-color: $primary-color;
+      border-color: var(--primary-color);
     }
 
     .rc-input-number-input {
@@ -70,11 +70,11 @@
     }
 
     &.rc-input-number-focused {
-      border-color: $primary-color;
+      border-color: var(--primary-color);
       background-color: $white;
 
       .rc-input-number-handler-wrap {
-        border-color: $primary-color;
+        border-color: var(--primary-color);
       }
 
       .rc-input-number-input {
