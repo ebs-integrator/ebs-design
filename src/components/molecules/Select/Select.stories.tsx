@@ -24,6 +24,7 @@ const limit = 20;
 export const Regular: React.FC<SelectProps> & { args: SelectProps } = ({ children, ...props }) => {
   const [search, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
+  const [value, setValue] = React.useState<any>();
   const [page, setPage] = React.useState(1);
   const [total, setTotal] = React.useState(0);
   const [loading, setLoaded] = React.useState(true);
@@ -56,7 +57,7 @@ export const Regular: React.FC<SelectProps> & { args: SelectProps } = ({ childre
 
   return (
     <Template>
-      <Select loading={loading} {...props}>
+      <Select loading={loading} value={value} onChange={setValue} {...props}>
         <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
         <Select.Options>
@@ -91,6 +92,7 @@ Regular.args = {
 export const InfiniteScrollPagination: React.FC<SelectProps> & { args: SelectProps } = ({ children, ...props }) => {
   const [search, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
+  const [value, setValue] = React.useState<any>();
   const [page, setPage] = React.useState(1);
   const [total, setTotal] = React.useState(0);
   const [loading, setLoaded] = React.useState(true);
@@ -123,7 +125,7 @@ export const InfiniteScrollPagination: React.FC<SelectProps> & { args: SelectPro
 
   return (
     <Template>
-      <Select loading={loading} {...props}>
+      <Select loading={loading} value={value} onChange={setValue} {...props}>
         <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
         <Select.Options>

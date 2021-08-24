@@ -47,7 +47,7 @@
       margin-right: 10px;
     }
     &__bar {
-      background-color: $primary-color;
+      background-color: var(--primary-color);
       flex-grow: 0;
       height: 4px;
       border-radius: 4px;

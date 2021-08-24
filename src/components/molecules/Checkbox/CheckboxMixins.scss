@@ -1,18 +1,18 @@
 // TODO use these in Checkbox.scss
 
 @mixin checkbox-hover() {
-  border-color: $primary-color;
+  border-color: var(--primary-color);
 
   &:before {
-    background-color: $primary-100;
+    background-color: var(--primary-100);
   }
 }
 
 @mixin checkbox-checked-hover() {
-  border-color: $primary-color;
-  background-color: $primary-color;
+  border-color: var(--primary-color);
+  background-color: var(--primary-color);
 
   &:before {
-    background-color: $primary-100;
+    background-color: var(--primary-100);
   }
 }

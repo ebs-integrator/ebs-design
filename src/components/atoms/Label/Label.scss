@@ -84,9 +84,9 @@
   }
 
   &--primary {
-    background-color: $primary-000;
-    color: $primary-color;
-    border-color: $primary-color;
+    background-color: var(--primary-000);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
   }
 
   &--fill {

@@ -25,12 +25,12 @@
 
     &--active {
       @include fontBold;
-      color: $primary-color;
+      color: var(--primary-color);
     }
 
     &:hover {
       background-color: #f4f3f2;
-      color: $primary-300;
+      color: var(--primary-300);
     }
 
     &:not(:last-child) {

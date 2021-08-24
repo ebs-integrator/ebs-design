@@ -166,7 +166,7 @@
           border-right: 1px solid $layout-top-bar-toggler-border-color;
 
           &:hover {
-            background-color: $primary-000;
+            background-color: var(--primary-000);
 
             .ebs-icon {
               color: $layout-top-bar-toggler-hover-color;

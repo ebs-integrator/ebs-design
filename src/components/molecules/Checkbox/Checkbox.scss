@@ -14,8 +14,8 @@
     }
 
     .ebs-checkbox {
-      border-color: $primary-color;
-      background-color: $primary-color;
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
 
       .ebs-checkbox__check {
         font-size: 0;
@@ -91,8 +91,8 @@
 
   &:checked {
     ~ .ebs-checkbox {
-      border-color: $primary-color;
-      background-color: $primary-color;
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
     }
 
     ~ .ebs-checkbox .ebs-checkbox__check {
@@ -101,20 +101,20 @@
     }
 
     &:hover ~ .ebs-checkbox {
-      border-color: $primary-color;
-      background-color: $primary-color;
+      border-color: var(--primary-color);
+      background-color: var(--primary-color);
 
       &:before {
-        background-color: $primary-100;
+        background-color: var(--primary-100);
       }
     }
   }
 
   &:hover ~ .ebs-checkbox {
-    border-color: $primary-color;
+    border-color: var(--primary-color);
 
     &:before {
-      background-color: $primary-100;
+      background-color: var(--primary-100);
     }
   }
 }

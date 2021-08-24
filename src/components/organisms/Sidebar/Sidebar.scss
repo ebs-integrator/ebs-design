@@ -89,7 +89,7 @@
     .ebs-sidebar__options
       .ebs-sidebar__item.ebs-sidebar__item--invert
       .ebs-sidebar__item.ebs-sidebar__item--active:hover {
-      background-color: $primary-color;
+      background-color: var(--primary-color);
     }
   }
 
