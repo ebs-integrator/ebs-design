@@ -12,8 +12,8 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
   fixed?: boolean;
 }
 
-const Footer: React.FC<FooterProps> = ({ label = <Copyright />, fixed, children, ...props }) => (
-  <footer className={cn('ebs-layout__footer', { 'ebs-layout__footer--fixed': fixed })} {...props}>
+const Footer: React.FC<FooterProps> = ({ label = <Copyright />, fixed, className, children, ...props }) => (
+  <footer className={cn('ebs-layout__footer', className, { 'ebs-layout__footer--fixed': fixed })} {...props}>
     {children || <span>{label}</span>}
   </footer>
 );
