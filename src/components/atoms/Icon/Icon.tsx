@@ -27,7 +27,7 @@ export const Icon: React.FC<IconProps> = ({
   };
 
   if (Component) {
-    return Component.render({ ...defaultProps });
+    return 'render' in Component ? Component.render({ ...defaultProps }) : Component(defaultProps);
   }
 
   if (type in icons[model]) {

@@ -246,6 +246,24 @@
     border-radius: rem($border-radius);
     transition: $transition-base;
     border: 1px solid transparent;
+
+    &.ebs-button--round {
+      border-radius: 100%;
+
+      .ebs-button {
+        @include flex;
+      }
+
+      &.ebs-button--small .ebs-button {
+        padding: rem($btn-padding-x-sm);
+      }
+      &.ebs-button--medium .ebs-button {
+        padding: rem($btn-padding-x);
+      }
+      &.ebs-button--large .ebs-button {
+        padding: rem($btn-padding-x-lg);
+      }
+    }
   }
 
   &__loading {

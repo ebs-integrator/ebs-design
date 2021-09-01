@@ -92,7 +92,7 @@
   }
 
   &__container {
-    height: calc(100vh - #{$layout-top-bar-height});
+    height: calc(100vh - #{rem($layout-top-bar-height)});
     overflow: hidden auto;
   }
 
@@ -132,7 +132,7 @@
 
   .ebs-sidebar {
     @include flex-column;
-    height: rem(calc(100vh - #{$layout-top-bar-height}));
+    height: rem(calc(100vh - #{rem($layout-top-bar-height)}));
 
     @include mq($until: small-desktop) {
       margin-top: 0;

@@ -18,6 +18,7 @@ export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLBu
   form?: string;
   icon?: string;
   block?: boolean;
+  round?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -31,6 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   loading,
   block,
+  round,
   ...props
 }) => {
   return (
@@ -44,6 +46,7 @@ export const Button: React.FC<ButtonProps> = ({
           'ebs-button--block': block,
           'ebs-button--prefix': prefix,
           'ebs-button--icon': icon,
+          'ebs-button--round': round,
         },
       )}
       onClick={onClick}
