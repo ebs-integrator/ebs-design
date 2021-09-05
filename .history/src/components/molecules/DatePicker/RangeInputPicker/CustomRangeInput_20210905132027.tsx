@@ -3,7 +3,7 @@ import type { ReactDatePickerProps } from 'react-datepicker';
 import { omitKeys } from 'libs';
 import { getOutputDate } from '../utils';
 
-const keysToOmit: (keyof ReactDatePickerProps)[] = [
+const keysToOmit: Partial<ReactDatePickerProps> = [
   'autoComplete',
   'autoFocus',
   'dateFormat',

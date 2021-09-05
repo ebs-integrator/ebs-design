@@ -18,12 +18,10 @@ export const validate = (errors: string[] | { [key: string]: string[] }): string
 
 export const isObject = (val: any): boolean => typeof val === 'object';
 
-export const omitKeys = <T extends object, K extends Extract<keyof T, string>>(obj: T, keys: K[]): Omit<T, K> => {
+export const omitKeys = (keys: string[], obj: object): object => {
   const updatedObj = { ...obj };
 
-  for (const key of keys) {
-    delete updatedObj[key];
-  }
+  for (const n of keys) delete updatedObj[n];
 
   return updatedObj;
 };

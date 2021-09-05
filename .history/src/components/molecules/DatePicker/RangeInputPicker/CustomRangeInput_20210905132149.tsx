@@ -3,14 +3,7 @@ import type { ReactDatePickerProps } from 'react-datepicker';
 import { omitKeys } from 'libs';
 import { getOutputDate } from '../utils';
 
-const keysToOmit: (keyof ReactDatePickerProps)[] = [
-  'autoComplete',
-  'autoFocus',
-  'dateFormat',
-  'endDate',
-  'startDate',
-  'value',
-];
+const keysToOmit = ['autoComplete', 'autoFocus', 'dateFormat', 'endDate', 'startDate', 'value'];
 
 const CustomRangeInput = React.forwardRef<HTMLInputElement, Partial<ReactDatePickerProps>>((props, ref) => {
   const range = [getOutputDate(props.startDate, props.dateFormat), getOutputDate(props.endDate, props.dateFormat)];
