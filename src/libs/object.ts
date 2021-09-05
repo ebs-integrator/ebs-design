@@ -16,7 +16,7 @@ export const validate = (errors: string[] | { [key: string]: string[] }): string
   return [];
 };
 
-export const isObject = (val: any): boolean => typeof val === 'object';
+export const isObject = (val: any): boolean => typeof val === 'object' && val !== null;
 
 export const omitKeys = (keys: string[], obj: object): object => {
   const updatedObj = { ...obj };
