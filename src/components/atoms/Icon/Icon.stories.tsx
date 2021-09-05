@@ -28,8 +28,8 @@ export const Regular = (): React.ReactNode => {
             return Object.keys(icons[model]).map((icon) => {
               const iconName = `<Icon type="${icon}" ${model === 'bold' ? 'model="bold"' : ''} />`;
 
-              const onCopy = (): void => {
-                copyToClipboard(iconName);
+              const onCopy = async (): Promise<void> => {
+                await copyToClipboard(iconName);
                 onCopied();
               };
 
