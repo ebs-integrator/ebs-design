@@ -10,6 +10,7 @@ export interface TabsComposition {
 
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   activeTab?: string;
+  contentClass?: string;
   setActiveTab?: (key: string) => void;
 }
 
@@ -20,7 +21,14 @@ export interface TabsContext {
 
 const TabsContext = React.createContext<TabsContext | undefined>(undefined);
 
-const Tabs: React.FC<TabsProps> & TabsComposition = ({ activeTab, setActiveTab, className, children, ...props }) => {
+const Tabs: React.FC<TabsProps> & TabsComposition = ({
+  activeTab,
+  setActiveTab,
+  className,
+  contentClass,
+  children,
+  ...props
+}) => {
   const memoizedContextValue = React.useMemo(
     () => ({
       activeTab,
@@ -39,7 +47,7 @@ const Tabs: React.FC<TabsProps> & TabsComposition = ({ activeTab, setActiveTab, 
             }
           })}
       </div>
-      <div className={`ebs-tabs__content`}>
+      <div className={cn(`ebs-tabs__content`, contentClass)}>
         {children &&
           React.Children.map(children, (child) => {
             if (child && (child as React.ReactElement).type !== Tab) {
