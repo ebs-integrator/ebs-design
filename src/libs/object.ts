@@ -16,12 +16,14 @@ export const validate = (errors: string[] | { [key: string]: string[] }): string
   return [];
 };
 
-export const isObject = (val: any): boolean => typeof val === 'object';
+export const isObject = (val: any): boolean => typeof val === 'object' && val !== null;
 
-export const omitKeys = (keys: string[], obj: object): object => {
+export const omitKeys = <T extends object, K extends Extract<keyof T, string>>(obj: T, keys: K[]): Omit<T, K> => {
   const updatedObj = { ...obj };
 
-  for (const n of keys) delete updatedObj[n];
+  for (const key of keys) {
+    delete updatedObj[key];
+  }
 
   return updatedObj;
 };

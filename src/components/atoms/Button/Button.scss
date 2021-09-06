@@ -216,6 +216,10 @@
     padding: rem($btn-padding-y-lg $btn-padding-x-lg);
     font-weight: $btn-font-weight-lg;
     font-size: rem($btn-font-size-lg);
+
+    &.ebs-button--is-icon {
+      padding: rem($btn-padding-y-lg);
+    }
   }
 
   &--medium {
@@ -226,6 +230,10 @@
     padding: rem($btn-padding-y $btn-padding-x);
     font-weight: $btn-font-weight;
     font-size: rem($btn-font-size);
+
+    &.ebs-button--is-icon {
+      padding: rem($btn-padding-y);
+    }
   }
 
   &--small {
@@ -237,6 +245,10 @@
     font-weight: $btn-font-weight-sm;
     font-size: rem($btn-font-size-sm);
     line-height: rem($btn-line-height-sm);
+
+    &.ebs-button--is-icon {
+      padding: rem($btn-padding-y-sm);
+    }
   }
 
   &__wrapper {

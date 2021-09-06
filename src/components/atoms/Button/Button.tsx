@@ -16,7 +16,7 @@ export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLBu
   submit?: boolean;
   buttonClass?: string;
   form?: string;
-  icon?: string;
+  icon?: any;
   block?: boolean;
   round?: boolean;
 }
@@ -66,7 +66,14 @@ export const Button: React.FC<ButtonProps> = ({
         disabled={props.disabled || loading}
         {...props}
       >
-        {icon ? <Icon type={icon} /> : props.children}
+        {icon ? (
+          <Icon
+            component={typeof icon !== 'string' ? icon : undefined}
+            type={typeof icon === 'string' ? icon : undefined}
+          />
+        ) : (
+          props.children
+        )}
       </button>
     </div>
   );
