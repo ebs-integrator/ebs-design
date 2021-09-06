@@ -88,7 +88,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             `ebs-input__wrapper`,
             `ebs-input__wrapper--${hasValue ? `active` : `unactive`}`,
             `ebs-input__type--${type}`,
-            `ebs-input-style-${styleType}`,
+            `ebs-input-style--${styleType}`,
             className,
             {
               'ebs-input__empty': value === '',

@@ -26,6 +26,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   shortLetters,
   alt = '',
   img,
+  children,
   status,
   ...props
 }) => {
@@ -46,6 +47,8 @@ export const Avatar: React.FC<AvatarProps> = ({
       ) : (
         <div className="ebs-avatar__short-alt">{shortAlt}</div>
       )}
+
+      {children}
 
       {status ? <div className={`ebs-avatar__status ebs-avatar__status--${status}`} /> : null}
     </div>
