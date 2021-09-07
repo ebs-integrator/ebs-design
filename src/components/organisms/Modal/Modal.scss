@@ -56,6 +56,10 @@
     border-bottom: 1px solid $border-color;
     background-color: $white;
 
+    &-container {
+      margin-right: rem($base-size + $gutter-size / 2);
+    }
+
     &--close {
       position: absolute;
       top: 50%;

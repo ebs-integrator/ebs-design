@@ -84,7 +84,7 @@ const Modal: React.FC<ModalProps> = ({
                   <div className="ebs-modal__header">
                     {title && <h2 className="ebs-modal__title">{title}</h2>}
 
-                    <div className="ebs-modal__header--tool">{header}</div>
+                    <div className={cn({ 'ebs-modal__header-container': props.onClose })}>{header}</div>
                     {props.onClose && (
                       <Button
                         icon="close"
