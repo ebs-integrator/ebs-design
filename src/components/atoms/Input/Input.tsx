@@ -104,7 +104,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               className={cn(`ebs-input__prefix`, !loading && props.onClickPrefix ? `clickable` : `not-clickable`)}
               onClick={onClickPrefixHandler}
             >
-              {loading && !suffix ? <Loader.Spinner size="small" /> : prefix}
+              {loading && !prefix ? <Loader.Spinner size="small" /> : prefix}
             </div>
           ) : null}
 
@@ -113,7 +113,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               className={cn(`ebs-input__suffix`, !loading && props.onClickSuffix ? `clickable` : `not-clickable`)}
               onClick={onClickSuffixHandler}
             >
-              {loading && (!prefix || (prefix && suffix)) ? <Loader.Spinner size="small" /> : suffix}
+              {loading && !prefix && suffix ? <Loader.Spinner size="small" /> : suffix}
             </div>
           ) : null}
 
