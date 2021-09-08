@@ -1,32 +1,32 @@
 @for $i from $spacing-from through $spacing-to {
   .m-#{$i} {
-    margin: #{$i}px !important;
+    margin: rem(#{$i}px) !important;
   }
 
   .mt-#{$i} {
-    margin-top: #{$i}px !important;
+    margin-top: rem(#{$i}px) !important;
   }
 
   .mb-#{$i} {
-    margin-bottom: #{$i}px !important;
+    margin-bottom: rem(#{$i}px) !important;
   }
 
   .ml-#{$i} {
-    margin-left: #{$i}px !important;
+    margin-left: rem(#{$i}px) !important;
   }
 
   .mr-#{$i} {
-    margin-right: #{$i}px !important;
+    margin-right: rem(#{$i}px) !important;
   }
 
   .mx-#{$i} {
-    margin-left: #{$i}px !important;
-    margin-right: #{$i}px !important;
+    margin-left: rem(#{$i}px) !important;
+    margin-right: rem(#{$i}px) !important;
   }
 
   .my-#{$i} {
-    margin-top: #{$i}px !important;
-    margin-bottom: #{$i}px !important;
+    margin-top: rem(#{$i}px) !important;
+    margin-bottom: rem(#{$i}px) !important;
   }
 }
 
