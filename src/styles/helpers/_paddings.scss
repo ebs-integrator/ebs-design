@@ -1,31 +1,31 @@
 @for $i from $spacing-from through $spacing-to {
   .p-#{$i} {
-    padding: #{$i}px !important;
+    padding: rem(#{$i}px) !important;
   }
 
   .pr-#{$i} {
-    padding-right: #{$i}px !important;
+    padding-right: rem(#{$i}px) !important;
   }
 
   .pl-#{$i} {
-    padding-left: #{$i}px !important;
+    padding-left: rem(#{$i}px) !important;
   }
 
   .pt-#{$i} {
-    padding-top: #{$i}px !important;
+    padding-top: rem(#{$i}px) !important;
   }
 
   .pb-#{$i} {
-    padding-bottom: #{$i}px !important;
+    padding-bottom: rem(#{$i}px) !important;
   }
 
   .px-#{$i} {
-    padding-left: #{$i}px !important;
-    padding-right: #{$i}px !important;
+    padding-left: rem(#{$i}px) !important;
+    padding-right: rem(#{$i}px) !important;
   }
 
   .py-#{$i} {
-    padding-top: #{$i}px !important;
-    padding-bottom: #{$i}px !important;
+    padding-top: rem(#{$i}px) !important;
+    padding-bottom: rem(#{$i}px) !important;
   }
 }
