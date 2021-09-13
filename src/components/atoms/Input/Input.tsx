@@ -99,21 +99,21 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             },
           )}
         >
-          {loading || prefix ? (
+          {(loading && !suffix) || prefix ? (
             <div
               className={cn(`ebs-input__prefix`, !loading && props.onClickPrefix ? `clickable` : `not-clickable`)}
               onClick={onClickPrefixHandler}
             >
-              {loading && !prefix ? <Loader.Spinner size="small" /> : prefix}
+              {loading && !suffix ? <Loader.Spinner size="small" /> : prefix}
             </div>
           ) : null}
 
-          {loading || suffix ? (
+          {(loading && !prefix && suffix) || suffix ? (
             <div
               className={cn(`ebs-input__suffix`, !loading && props.onClickSuffix ? `clickable` : `not-clickable`)}
               onClick={onClickSuffixHandler}
             >
-              {loading && !prefix && suffix ? <Loader.Spinner size="small" /> : suffix}
+              {loading && suffix ? <Loader.Spinner size="small" /> : suffix}
             </div>
           ) : null}
 
