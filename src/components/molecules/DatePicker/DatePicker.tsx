@@ -41,6 +41,7 @@ const InternalDatePicker = React.forwardRef<ReactDatePicker, DatePickerProps>(
         ref={ref}
         value={val as any}
         onChange={handleChange}
+        onChangeRaw={(e) => handleChange(e.target.valueAsDate, e)}
         selected={parseDate(val, dateFormat)}
         className={cn(`ebs-datepicker ebs-datepicker--${size}`, props.className)}
         wrapperClassName={cn('ebs-datepicker__wrapper', props.wrapperClassName)}
