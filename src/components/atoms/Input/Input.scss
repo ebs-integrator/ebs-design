@@ -103,8 +103,12 @@
 
   &__prefix.not-clickable,
   &__suffix.not-clickable {
-    cursor: pointer;
+    cursor: default;
     z-index: 2;
+  }
+
+  &__wrapper:not(.has-prefix) &__prefix + &__container {
+    padding-left: rem($gutter-size + $gutter-size / 2);
   }
 
   &__suffix {
