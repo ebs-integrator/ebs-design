@@ -24,10 +24,11 @@ const Loader: React.FC<LoaderProps> & LoaderComposition = ({
   loading,
   height = 350,
   children,
+  className,
   ...props
 }) => {
   return (
-    <div className="ebs-loader" style={{ minHeight: loading ? height : undefined }} {...props}>
+    <div className={`ebs-loader ${className}`} style={{ minHeight: loading ? height : undefined }} {...props}>
       <LoaderSpinner fixed={fixed} size={size} className={!loading ? 'hide' : ''} />
 
       {fade ? (
