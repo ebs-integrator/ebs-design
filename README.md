@@ -1,13 +1,24 @@
-# EBS Design System
+<p align="center">
+  <img src="https://i.ibb.co/J260f5z/ebs-design.png">
+</p>
+
+<h1 align="center">EBS Design System</h1>
+
+<div align="center">
+
+A React-based UI toolkit for **enterprise grade applications**
 
 [![NPM version][npm-image]][npm-url]
 [![NPM downloads][download-image]][download-url]
 [![Discussions][discussions-image]][discussions-url]
 
+</div>
+
 [![Elements][elements-image]][elements-url]
 
 [npm-image]: http://img.shields.io/npm/v/ebs-design.svg?style=flat-square
 [npm-url]: http://npmjs.org/package/ebs-design
+[logo-image]: https://i.ibb.co/J260f5z/ebs-design.png
 [elements-image]: https://i.ibb.co/gMSWhYM/Elements-1.png
 [elements-url]: https://ebs-integrator.github.io/ebs-design/
 [download-image]: https://img.shields.io/npm/dm/ebs-design.svg?style=flat-square
