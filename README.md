@@ -26,11 +26,17 @@ A React-based UI toolkit for **enterprise grade applications**
 [discussions-image]: https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square
 [discussions-url]: https://github.com/ebs-integrator/ebs-design/discussions
 
+## 🔥 Motivation
+
+First of all, **ebs-design** started as an internal tool to be a single pattern for enterprise application development, improving the experience of users in our products by using enhanced components. Now designers and developers use the same style for applications such as Administration panels, CRMs, HRMs, Finance and Accounting Apps, Analytics Dashboards, etc. 
+
+We are focused on creating rich components like forms, tables, modals, etc that add an exceptional experience in the most sophisticated apps.
+
 ## ⚠️ WARNING
 
-The UI Kit is UNDER DEVELOPMENT, PLEASE CREATE ISSUES OR PR WITH CHANGES
+The UI Kit is UNDER DEVELOPMENT, we don't recommend using it in production projects until at least RC will be released. We are working on improving and refactoring. If you find  a problem, please create an Issue or PR with your change, will be glad to help. 
 
-DON'T USE IT IN PRODUCTION UNTIL AT LEAST RC WILL BE RELEASED
+Click **Watch** and **Star** to get breaking news about project development.
 
 ## 🧾 Documentation
 
@@ -38,6 +44,7 @@ For more usage details visit [Storybook](https://ebs-integrator.github.io/ebs-de
 
 ## ⭐ Features
 
+- Designed for enterprise apps.
 - Modern design and exceptional user experience.
 - Fully customizable components using variables.
 - Written in TypeScript with predictable static types.
@@ -48,7 +55,11 @@ For more usage details visit [Storybook](https://ebs-integrator.github.io/ebs-de
 
 Use the package manager [yarn](https://classic.yarnpkg.com/en/docs/install/#debian-stable) or npm to install library.
 
-<img width="415px" src="https://nodei.co/npm/ebs-design.png?downloads=true&downloadRank=true&stars=true" />
+<a href="https://www.npmjs.com/package/ebs-design"><img width="415px" src="https://nodei.co/npm/ebs-design.png?downloads=true&downloadRank=true&stars=true" /></a>
+
+```
+npm install ebs-design
+```
 
 #### ⚠️ Peer Dependencies
 Package's name  | Version
