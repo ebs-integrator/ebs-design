@@ -31,6 +31,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
+# TODO: Create action to publish package to github registry from specific branch
 # Publish on Github Registry
 #   publish-gpr:
 #     needs: build
