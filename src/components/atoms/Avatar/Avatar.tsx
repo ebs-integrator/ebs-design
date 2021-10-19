@@ -45,7 +45,7 @@ export const Avatar: React.FC<AvatarProps> = ({
       ) : icon ? (
         icon
       ) : (
-        <div className="ebs-avatar__short-alt">{shortAlt}</div>
+        shortAlt && <div className="ebs-avatar__short-alt">{shortAlt}</div>
       )}
 
       {children}

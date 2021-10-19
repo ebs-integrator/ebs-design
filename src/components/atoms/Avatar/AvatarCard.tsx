@@ -13,7 +13,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   circle?: boolean;
   img?: string;
   status?: string;
-  description?: string;
+  description?: React.ReactNode;
   reversed?: boolean;
 }
 
