@@ -34,9 +34,6 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
-  padding: 0;
-
   &.size {
     &-l {
       font-size: rem(20px);
@@ -54,10 +51,6 @@ h6 {
 
 p,
 span {
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-
   &.size {
     &-l {
       font-size: rem(14px);
