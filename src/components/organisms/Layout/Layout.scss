@@ -63,7 +63,7 @@
     margin-left: auto;
 
     // 191px
-    width: calc(100% - #{$sidebar-width});
+    width: calc(100% - #{rem($sidebar-width)});
   }
 
   &__content-wrapper {
