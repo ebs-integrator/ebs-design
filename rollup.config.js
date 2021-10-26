@@ -45,7 +45,7 @@ export default {
         { files: 'src/components/molecules/**/*.scss', dest: 'dist/components/molecules' },
         { files: 'src/components/organisms/**/*.scss', dest: 'dist/components/organisms' },
         { files: 'src/features/**/*.scss', dest: 'dist/features' },
-        { files: 'src/styles/{global,scrollbar}.scss', dest: 'dist/styles' },
+        { files: 'src/styles/{default,scrollbar}.scss', dest: 'dist/styles' },
       ],
       { verbose: true, watch: false },
     ),

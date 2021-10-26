@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --bs-gutter-x: 1.5rem;
+}
+
+body {
+  @include fontMedium;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+
+  @include mq($until: desktop) {
+    font-size: $font-size-desktop;
+  }
+
+  @include mq($until: small-desktop) {
+    font-size: $font-size-small-desktop;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: $h1-font-size;
+}
+h2 {
+  font-size: $h2-font-size;
+}
+h3 {
+  font-size: $h3-font-size;
+}
+h4 {
+  font-size: $h4-font-size;
+}
+h5 {
+  font-size: $h5-font-size;
+}
+h6 {
+  font-size: $h6-font-size;
+}
