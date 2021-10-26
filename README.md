@@ -84,6 +84,29 @@ $primary-900: #0a1a7a;
 @import 'ebs-design/dist/styles/index.scss';
 ```
 
+#### Additional styles import
+```javascript
+import 'ebs-design/dist/styles/global.scss';
+```
+```scss
+// Default global styles
+$font-size-base: 14px;
+$font-size-desktop: 12.5px;
+$font-size-small-desktop: 10px;
+$line-height-base: 1.414;
+$text-color: #494f7d;
+```
+```javascript
+import 'ebs-design/dist/styles/scrollbar.scss';
+```
+```scss
+// Default base size & colors of scrollbar
+$scrollbar-size: $gutter-size / 2;
+$scrollbar-track-background-color: $background-content;
+$scrollbar-thumb-background-color: $border-color;
+$scrollbar-thumb-hover-background-color: var(--primary-color);
+```
+
 ## ❤️ Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
