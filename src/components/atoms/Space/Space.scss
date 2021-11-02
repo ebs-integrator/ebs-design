@@ -1,6 +1,5 @@
 .ebs-space {
-  display: inline-flex;
-  width: 100%;
+  display: flex;
 
   &--vertical {
     flex-direction: column;
@@ -37,6 +36,9 @@
     &--space-around {
       justify-content: space-around;
     }
+  }
+  &__display--inline {
+    display: inline-flex;
   }
 }
 
