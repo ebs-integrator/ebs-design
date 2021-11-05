@@ -62,10 +62,11 @@ export const Tooltip: React.FC<TooltipProps> = ({
   width,
   nowrap,
   inline,
+  interactive = true,
   ...tooltipConfig
 }) => {
   const { getArrowProps, getTooltipProps, setTooltipRef, setTriggerRef, visible } = usePopperTooltip({
-    ...tooltipConfig,
+    ...{ ...tooltipConfig, interactive },
   });
 
   return (
