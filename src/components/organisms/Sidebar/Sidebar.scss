@@ -7,7 +7,7 @@
   left: 0;
   top: 0;
   width: rem($sidebar-width);
-  height: 100vh;
+  height: 100%;
   border-right: $sidebar-border;
   transition: width $transition-time;
   background-color: $sidebar-background;
@@ -52,7 +52,7 @@
   }
 
   &--toggled {
-    width: rem(57px);
+    width: rem($sidebar-toggled-width);
 
     @media (min-width: 54.84714em) {
       + .ebs-layout__content-wrapper {

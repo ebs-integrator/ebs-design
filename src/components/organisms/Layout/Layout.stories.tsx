@@ -151,6 +151,30 @@ export const withoutSidebarOptions = (): React.ReactNode => (
   </Layout>
 );
 
+export const withoutSidebar = (): React.ReactNode => (
+  <Layout>
+    <Layout.Topbar>
+      <Layout.Topbar.Toggler />
+
+      <Layout.Topbar.Title>Logo</Layout.Topbar.Title>
+
+      <Layout.Topbar.LeftSide>
+        <InputSearch />
+      </Layout.Topbar.LeftSide>
+
+      <Layout.Topbar.RightSide>
+        <Button icon="bell" />
+        <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
+      </Layout.Topbar.RightSide>
+    </Layout.Topbar>
+
+    <Layout.Content>
+      <ExampleContent />
+    </Layout.Content>
+    <Layout.Footer />
+  </Layout>
+);
+
 export const withoutFooter = (): React.ReactNode => (
   <Layout>
     <Layout.Topbar>
