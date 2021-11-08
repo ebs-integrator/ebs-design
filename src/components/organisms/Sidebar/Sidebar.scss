@@ -7,7 +7,7 @@
   left: 0;
   top: 0;
   width: rem($sidebar-width);
-  height: 100vh;
+  height: 100%;
   border-right: $sidebar-border;
   transition: width $transition-time;
   background-color: $sidebar-background;
