@@ -260,7 +260,7 @@ const ExampleContent: React.FC = () => (
           </Card.Header>
 
           <Card.Body className="p-0">
-            <Table data={data} columns={columns} />
+            <Table className="table-no-border" data={data} columns={columns} />
           </Card.Body>
 
           <Card.Footer bordered>

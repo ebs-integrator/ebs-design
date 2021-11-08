@@ -91,7 +91,8 @@
     padding-bottom: rem($layout-footer-height);
   }
 
-  &__container {
+  &__top-bar + &__container,
+  &__top-bar + .ebs-sidebar + &__container {
     height: calc(100vh - #{rem($layout-top-bar-height)});
     overflow: hidden auto;
   }
@@ -127,11 +128,8 @@
   }
 
   &__top-bar + .ebs-sidebar {
-    margin-top: rem($layout-top-bar-height);
-  }
-
-  .ebs-sidebar {
     @include flex-column;
+    margin-top: rem($layout-top-bar-height);
     height: rem(calc(100vh - #{rem($layout-top-bar-height)}));
 
     @include mq($until: small-desktop) {

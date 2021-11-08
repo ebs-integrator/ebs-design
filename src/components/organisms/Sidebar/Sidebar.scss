@@ -119,6 +119,8 @@
   }
 
   &__bottom {
+    position: sticky;
+    bottom: 0;
     background-color: $sidebar-bottom-background;
     width: 100%;
     padding-bottom: rem(20px);
