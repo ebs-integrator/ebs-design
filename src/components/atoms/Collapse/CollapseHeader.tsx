@@ -38,7 +38,7 @@ export const CollapseHeader: React.FC<CollapseHeaderProps> = ({ className, style
     >
       <div className="ebs-collapse__header__title">{children}</div>
       <div className="ebs-collapse__header__toggle" onClick={toggle}>
-        <Icon type={height === 0 ? 'arrow-top' : 'arrow-bottom'} model="bold" />
+        <Icon type={height === 0 ? 'arrow-bottom' : 'arrow-top'} model="bold" />
       </div>
     </header>
   );

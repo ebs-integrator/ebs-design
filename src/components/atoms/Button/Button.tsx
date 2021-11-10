@@ -49,7 +49,7 @@ export const Button: React.FC<ButtonProps> = ({
           'ebs-button--round': round,
         },
       )}
-      onClick={onClick}
+      onClick={!props.disabled ? onClick : undefined}
       role="presentation"
     >
       {prefix ? (
