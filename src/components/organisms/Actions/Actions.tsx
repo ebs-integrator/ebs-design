@@ -48,7 +48,7 @@ const Actions: React.FC<ActionsProps> = ({
         trigger="click"
         placement={placement}
         visible={visible}
-        onVisibleChange={() => setVisible((s) => !s)}
+        onVisibleChange={(value) => setVisible(value)}
         tooltip={
           <>
             {showTitle && <div className="ebs-action__tooltip-title">{title}</div>}
