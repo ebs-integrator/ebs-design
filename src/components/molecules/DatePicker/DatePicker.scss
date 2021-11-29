@@ -59,6 +59,10 @@
     color: $text-color-secondary;
   }
 
+  &__popper {
+    @include fadeAnimation;
+  }
+
   &:disabled {
     border-color: $grey-500;
     background-color: $white;
@@ -382,4 +386,8 @@
 
 .react-datepicker.ebs-datepicker__calendar {
   border: 1px solid $border-color;
+}
+
+.react-datepicker__year-dropdown {
+  @include fadeAnimation;
 }

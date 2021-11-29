@@ -76,6 +76,9 @@ $border-radius-lg: $border-radius !default;
 $transition-base: all 0.3s ease-in-out !default;
 $transition-time: 0.2s !default;
 
+// Animations
+$animation-base: loaderFade $transition-time forwards !default;
+
 // Shadows
 //
 // Set box shadows

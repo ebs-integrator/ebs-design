@@ -19,8 +19,13 @@
 
 .ebs-loader {
   position: relative;
-  animation: loaderFade 0.5s forwards;
   z-index: 2;
+
+  &,
+  .fade-in {
+    animation: $animation-base;
+    transition: opacity $transition-time;
+  }
 
   &__inline {
     color: $text-color-secondary;

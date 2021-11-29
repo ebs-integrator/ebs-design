@@ -31,6 +31,7 @@
   &__body {
     padding: rem($gutter-size);
     font-size: rem($gutter-size);
+    @include fadeAnimation;
 
     &-title {
       color: $heading-color;
