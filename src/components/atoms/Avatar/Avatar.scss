@@ -83,6 +83,7 @@
     z-index: 1;
     border-radius: $border-radius;
     object-fit: cover;
+    @include fadeAnimation;
   }
 
   &__status {

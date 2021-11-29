@@ -102,6 +102,10 @@
 }
 
 .ebs-input__phone {
+  &-dropdown {
+    @include fadeAnimation;
+  }
+
   &-wrapper__container {
     position: relative;
   }
