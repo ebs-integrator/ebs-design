@@ -311,7 +311,11 @@
 
   &__group {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+
+    .ebs-button {
+      @include text-ellipsis;
+    }
 
     .ebs-button__wrapper:first-child {
       border-top-right-radius: 0;

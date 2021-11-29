@@ -56,3 +56,8 @@
     }
   }
 }
+
+@mixin fadeAnimation {
+  animation: $animation-base;
+  transition: opacity $transition-time;
+}
