@@ -88,7 +88,7 @@ export const LabelInValidation: React.FC = () => {
         <Form.Field
           name="cool-name"
           label="Override validation label"
-          messageVariables={{ label: 'Name 😎' }}
+          validationLabel="Name 😎"
           rules={[{ required: true }]}
           initialValue="Clear me"
         >
