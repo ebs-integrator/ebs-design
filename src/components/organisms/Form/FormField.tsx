@@ -33,6 +33,7 @@ export const FormField: React.FC<FormFieldProps> = ({
   controlOptions,
   fieldRow,
   children,
+  messageVariables,
   ...props
 }) => {
   const formCtx = React.useContext(FormContext);
@@ -47,6 +48,7 @@ export const FormField: React.FC<FormFieldProps> = ({
     <div className={cn(`ebs-form__item ebs-form__field`, className)} style={style}>
       <Field
         name={name}
+        messageVariables={{ label: typeof label === 'string' ? label : '', ...messageVariables }}
         {...{
           ...props,
           rules: props.rules
