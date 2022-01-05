@@ -20,6 +20,10 @@ export interface FormFieldProps extends FieldProps {
   className?: string;
   hideLabel?: boolean;
   style?: React.CSSProperties;
+  /**
+   * will be redirected to `messageVariables` as `{ label: validationLabel }`
+   */
+  validationLabel?: string;
 }
 
 export const FormField: React.FC<FormFieldProps> = ({
@@ -33,6 +37,8 @@ export const FormField: React.FC<FormFieldProps> = ({
   controlOptions,
   fieldRow,
   children,
+  validationLabel = typeof label === 'string' ? label : '',
+  messageVariables,
   ...props
 }) => {
   const formCtx = React.useContext(FormContext);
@@ -47,6 +53,7 @@ export const FormField: React.FC<FormFieldProps> = ({
     <div className={cn(`ebs-form__item ebs-form__field`, className)} style={style}>
       <Field
         name={name}
+        messageVariables={{ label: validationLabel, ...messageVariables }}
         {...{
           ...props,
           rules: props.rules

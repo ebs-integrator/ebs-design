@@ -71,6 +71,35 @@ export const Regular: React.FC<FormProps> & { args: FormProps } = ({ children, .
   );
 };
 
+export const LabelInValidation: React.FC = () => {
+  const [form] = useForm();
+  return (
+    <Template>
+      <Form
+        form={form}
+        validateMessages={{
+          // eslint-disable-next-line no-template-curly-in-string
+          required: '${label} should not be empty 😡',
+        }}
+      >
+        <Form.Field name="cool-name" label="Cool name" rules={[{ required: true }]} initialValue="Clear me">
+          <Input />
+        </Form.Field>
+        <Form.Field
+          name="cool-name"
+          label="Override validation label"
+          validationLabel="Name 😎"
+          rules={[{ required: true }]}
+          initialValue="Clear me"
+        >
+          <Input />
+        </Form.Field>
+        <button onClick={() => form.setFieldsValue({ 'cool-name': '' })}>clear field</button>
+      </Form>
+    </Template>
+  );
+};
+
 Regular.args = {
   type: 'vertical',
   draft: false,
