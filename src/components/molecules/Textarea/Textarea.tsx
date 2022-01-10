@@ -2,13 +2,11 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Extra, Label } from 'components/atoms';
 
-export interface TextareaProps extends Omit<React.HTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
+export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   onChange?: (value: string) => void;
-  value?: string;
   hasError?: boolean;
   label?: React.ReactNode;
   extra?: React.ReactNode;
-  disabled?: boolean;
 }
 
 export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
