@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-export const useScrollToggler = (): void => {
+export const useScrollToggler = (active: boolean): void => {
   React.useEffect(() => {
-    document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
+    const prevOverflow = document.body.style.overflowY;
+    document.body.style.overflowY = active ? 'hidden' : '';
 
     return () => {
-      document.getElementsByTagName('body')[0].style.overflowY = 'auto';
+      document.body.style.overflowY = prevOverflow;
     };
-  }, []);
+  }, [active]);
 };
