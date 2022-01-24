@@ -36,21 +36,21 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   const [open, setOpen] = React.useState(false);
   const createPortal = usePortal('modal-portal');
-  useScrollToggler();
+  useScrollToggler(open);
 
   React.useEffect(() => setOpen(isOpen), [isOpen]);
 
   React.useEffect(() => {
-    const event = ({ key }: React.KeyboardEvent): void => {
+    const event = ({ key }: KeyboardEvent): void => {
       if (['Escape'].includes(key) && props.onClose !== undefined) {
         props.onClose();
       }
     };
 
-    window.addEventListener<any>('keydown', event);
+    window.addEventListener('keydown', event);
 
     return (): void => {
-      window.removeEventListener<any>('keydown', event);
+      window.removeEventListener('keydown', event);
     };
   }, []);
 
