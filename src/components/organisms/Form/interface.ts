@@ -11,5 +11,7 @@ export interface LabelOptions extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export interface ControlOptions extends React.HTMLAttributes<HTMLDivElement> {
+  align?: AlignItems;
+  justify?: JustifyContent;
   col?: ColProps; // The layout for input control
 }
