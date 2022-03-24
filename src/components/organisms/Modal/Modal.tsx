@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { usePortal, useScrollToggler } from 'hooks';
+import { usePopupClose, usePortal, useScrollToggler } from 'hooks';
 import { Mask, Button } from 'components/atoms';
 import { ModalContent } from './ModalContent';
 import { ModalFooter } from './ModalFooter';
@@ -38,6 +38,14 @@ const Modal: React.FC<ModalProps> = ({
   const createPortal = usePortal('modal-portal');
   useScrollToggler(open);
 
+  const overlayRef = React.useRef<HTMLDivElement>(null);
+  usePopupClose(overlayRef, () => {
+    if (closeOnClickOutside) {
+      props.onClose?.();
+      setOpen(false);
+    }
+  });
+
   React.useEffect(() => setOpen(isOpen), [isOpen]);
 
   React.useEffect(() => {
@@ -54,18 +62,6 @@ const Modal: React.FC<ModalProps> = ({
     };
   }, []);
 
-  const onClickOutside = (ev: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
-    const target = ev.target as HTMLDivElement;
-
-    if (target && target.classList.contains('ebs-modal__wrapper')) {
-      if (props.onClose !== undefined) {
-        props.onClose();
-      }
-
-      setOpen(false);
-    }
-  };
-
   const showHeader = React.useMemo(() => header || title, [header, title]);
 
   return (
@@ -75,10 +71,7 @@ const Modal: React.FC<ModalProps> = ({
           <>
             <Mask />
 
-            <div
-              className={cn(`ebs-modal__wrapper`, className)}
-              {...(mask ? { ...props, onClick: closeOnClickOutside ? onClickOutside : undefined } : props)}
-            >
+            <div className={cn(`ebs-modal__wrapper`, className)} ref={overlayRef} {...props}>
               <div className={cn(`ebs-modal`, `ebs-modal__size--${size}`, { 'hide-header': !showHeader })}>
                 {showHeader ? (
                   <div className="ebs-modal__header">
