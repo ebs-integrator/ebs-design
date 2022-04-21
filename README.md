@@ -40,7 +40,7 @@ Click **Watch** and **Star** to get breaking news about project development.
 
 ## 🧾 Documentation
 
-For more usage details visit [Storybook](https://ebs-integrator.github.io/ebs-design/)
+For more usage details visit [Storybook](https://ebs-integrator.github.io/ebs-design/) and [Website](https://ebs.io/design/)
 
 ## ⭐ Features
 
