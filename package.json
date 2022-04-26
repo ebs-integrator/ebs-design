@@ -123,5 +123,6 @@
     "moduleNameMapper": {
       "atoms/(.*)": "<rootDir>/src/components/atoms/$1"
     }
-  }
+  },
+  "sideEffects": false
 }
