@@ -8,7 +8,7 @@
   overflow: hidden;
 
   &--multiple &-item-text {
-    padding-right: rem($gutter-size + $gutter-size / 2);
+    padding-right: rem($gutter-size + math.div($gutter-size, 2));
   }
 
   & > &-search,
