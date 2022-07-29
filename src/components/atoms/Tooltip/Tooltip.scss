@@ -16,8 +16,8 @@
   }
 
   &__trigger {
-    margin: rem(-$gutter-size / 2);
-    padding: rem($gutter-size / 2);
+    margin: rem(math.div(-$gutter-size, 2));
+    padding: rem(math.div($gutter-size, 2));
   }
 
   &__wrapper.ebs-tooltip--overtop {
