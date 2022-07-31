@@ -7453,6 +7453,11 @@ date-fns@^2.0.1:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.23.0.tgz#4e886c941659af0cf7b30fafdd1eaa37e88788a9"
   integrity sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==
 
+date-fns@^2.24.0:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.29.1.tgz#9667c2615525e552b5135a3116b95b1961456e60"
+  integrity sha512-dlLD5rKaKxpFdnjrs+5azHDFOPEu4ANy/LTh04A1DTzMM7qoajmKCBc8pkKRFT41CNzw+4gQh79X5C+Jq27HAw==
+
 dayjs@^1.11.0:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.1.tgz#90b33a3dda3417258d48ad2771b415def6545eb0"
@@ -16087,10 +16092,10 @@ rc@^1.0.1, rc@^1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-animate-height@^2.0.23:
-  version "2.0.23"
-  resolved "https://registry.yarnpkg.com/react-animate-height/-/react-animate-height-2.0.23.tgz#2e14ac707b20ae67b87766ccfd581e693e0e7ec7"
-  integrity sha512-DucSC/1QuxWEFzR9IsHMzrf2nrcZ6qAmLIFoENa2kLK7h72XybcMA9o073z7aHccFzdMEW0/fhAdnQG7a4rDow==
+react-animate-height@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-animate-height/-/react-animate-height-2.1.2.tgz#9b450fc64d46f10f5e07da8d0d5e2c47b9f15030"
+  integrity sha512-A9jfz/4CTdsIsE7WCQtO9UkOpMBcBRh8LxyHl2eoZz1ki02jpyUL5xt58gabd0CyeLQ8fRyQ+s2lyV2Ufu8Owg==
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.6.1"
