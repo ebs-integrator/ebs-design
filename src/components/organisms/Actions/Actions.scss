@@ -33,7 +33,7 @@
 
   &-item .loader-display {
     display: inline-block;
-    margin-right: rem(math.div($gutter-size, 2));
+    margin-right: rem(calc($gutter-size / 2));
     vertical-align: middle;
   }
 
