@@ -108,7 +108,7 @@
   }
 
   &__wrapper:not(.has-prefix) &__prefix + &__container {
-    padding-left: rem($gutter-size + calc($gutter-size / 2));
+    padding-left: calc(#{rem($gutter-size)} + #{rem($gutter-size)} / 2);
   }
 
   &__suffix {

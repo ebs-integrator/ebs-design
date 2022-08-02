@@ -139,7 +139,7 @@ import 'ebs-design/dist/styles/scrollbar.scss';
 
 ```scss
 // Default base size & colors of scrollbar
-$scrollbar-size: calc($gutter-size / 2);
+$scrollbar-size: 8px;
 $scrollbar-track-background-color: $background-content;
 $scrollbar-thumb-background-color: $border-color;
 $scrollbar-thumb-hover-background-color: var(--primary-color);
