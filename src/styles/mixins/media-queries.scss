@@ -26,7 +26,7 @@ $mq-media-type: all !default;
   } @else if unit($px) == em {
     @return $px;
   }
-  @return calc($px / $font-size-base * 1em);
+  @return ($px / $font-size-base) * 1em;
 }
 
 @function mq-get-breakpoint-width($name, $breakpoints: $mq-breakpoints) {

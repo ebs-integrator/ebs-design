@@ -118,7 +118,7 @@
 
     &-alt {
       color: #333;
-      padding: rem(0 calc($gutter-size / 2));
+      padding: 0 calc(#{rem($gutter-size)} / 2);
       border-top-right-radius: rem($border-radius);
       border-bottom-right-radius: rem($border-radius);
       font-size: rem(9px);
