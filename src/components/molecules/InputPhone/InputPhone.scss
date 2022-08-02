@@ -115,7 +115,7 @@
     cursor: pointer;
     top: 50%;
     color: $text-color;
-    right: rem(math.div($gutter-size, 2));
+    right: rem(calc($gutter-size / 2));
     font-size: rem(22px);
     padding: rem(0 7px);
     margin: rem(0 -7px);

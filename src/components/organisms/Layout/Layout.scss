@@ -139,7 +139,7 @@
 
     &--toggled .ebs-label {
       @include text-ellipsis;
-      padding: rem(0 math.div($gutter-size, 3));
+      padding: rem(0 calc($gutter-size / 3));
     }
   }
 
