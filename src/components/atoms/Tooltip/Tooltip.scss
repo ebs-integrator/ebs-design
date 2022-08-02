@@ -16,8 +16,8 @@
   }
 
   &__trigger {
-    margin: rem(math.div(-$gutter-size, 2));
-    padding: rem(math.div($gutter-size, 2));
+    margin: rem(calc(-$gutter-size / 2));
+    padding: rem(calc($gutter-size / 2));
   }
 
   &__wrapper.ebs-tooltip--overtop {
@@ -59,12 +59,12 @@
 
   &__wrapper[data-popper-placement*='top'],
   &__wrapper[data-popper-placement*='bottom'] {
-    margin: rem(math.div(-$gutter-size, 4) - 1px 0);
+    margin: rem(calc(-$gutter-size / 4) - 1px 0);
   }
 
   &__wrapper[data-popper-placement*='left'],
   &__wrapper[data-popper-placement*='right'] {
-    margin: rem(0 math.div(-$gutter-size, 4) - 1px);
+    margin: rem(0 calc(-$gutter-size / 4) - 1px);
   }
 
   &__wrapper[data-popper-placement*='top'] &__arrow {

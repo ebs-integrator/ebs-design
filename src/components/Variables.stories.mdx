@@ -311,7 +311,7 @@ $label-padding: 0 12px !default;
 $label-color: $text-color !default;
 $label-border: 1px solid !default;
 $label-border-radius: $border-radius !default;
-$label-circle-border-radius: math.div($label-height, 2) !default;
+$label-circle-border-radius: calc($label-height / 2) !default;
 
 // Sidebar
 //
@@ -362,7 +362,7 @@ $sort-by-text-hover-color: $white !default;
 // Scrollbar
 //
 // Define base size & colors of scrollbar
-$scrollbar-size: math.div($gutter-size, 2) !default;
+$scrollbar-size: calc($gutter-size / 2) !default;
 $scrollbar-track-background-color: $background-content !default;
 $scrollbar-thumb-background-color: $border-color !default;
 $scrollbar-thumb-hover-background-color: $primary-color !default;
