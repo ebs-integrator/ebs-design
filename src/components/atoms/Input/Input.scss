@@ -138,7 +138,7 @@
 
 .ebs-input__clear {
   position: absolute;
-  right: rem(calc($gutter-size / 2));
+  right: calc(#{rem($gutter-size)} / 2);
   top: 50%;
   color: $text-color;
   transform: translate3d(0, -50%, 0);

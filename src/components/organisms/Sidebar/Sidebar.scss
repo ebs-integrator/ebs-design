@@ -74,7 +74,7 @@
     }
 
     .ebs-sidebar__suffix .ebs-icon {
-      right: rem(calc($gutter-size / 2));
+      right: calc(#{rem($gutter-size)} / 2);
     }
 
     .ebs-sidebar__options {
