@@ -130,7 +130,7 @@
   &__top-bar + .ebs-sidebar {
     @include flex-column;
     margin-top: rem($layout-top-bar-height);
-    height: rem(calc(100vh - #{rem($layout-top-bar-height)}));
+    height: calc(100vh - #{rem($layout-top-bar-height)});
 
     @include mq($until: small-desktop) {
       margin-top: 0;
