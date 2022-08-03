@@ -55,7 +55,7 @@
     "rc-upload": "^3.3.4",
     "react-animate-height": "^2.0.23",
     "react-datepicker": "^4.7.0",
-    "react-phone-input-2": "^2.13.8",
+    "react-phone-input-2": "^2.15.1",
     "react-popper-tooltip": "^4.3.0",
     "react-use": "^17.3.2"
   },
