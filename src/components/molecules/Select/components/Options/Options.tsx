@@ -160,7 +160,6 @@ const Options: React.FC<OptionsProps> = ({
                     : value === option.value
                 }
                 mode={mode}
-                text={option.text}
                 selected={activeItem === key + 1}
                 onClick={onChangeHandler}
                 {...option}

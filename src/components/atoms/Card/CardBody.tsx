@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import AnimateHeight from 'react-animate-height';
+import AnimateHeight, { Height } from 'react-animate-height';
 import { CardContext } from './Card';
 
 export type CardBodyProps = React.HTMLAttributes<HTMLDivElement>;
@@ -12,7 +12,7 @@ export const CardBody: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ class
   if (collapsible) {
     return (
       <div className={cn(`ebs-card__body`, className, { 'py-0': height === 0 })} {...props}>
-        <AnimateHeight duration={400} height={height}>
+        <AnimateHeight duration={400} height={height as Height}>
           {children}
         </AnimateHeight>
       </div>

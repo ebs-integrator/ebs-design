@@ -1,116 +1,223 @@
-// Main colors
-$primary-color: #3366ff !default;
-$success-color: #2ac952 !default;
-$info-color: #3bc0f9 !default;
-$warning-color: #ffd83d !default;
-$danger-color: #ff3a30 !default;
-$normal-color: #a5a5a5 !default;
+:root {
+  --primary-color: #3366ff;
+  --primary-000: #eef5ff;
+  --primary-100: #d6e4ff;
+  --primary-200: #adc8ff;
+  --primary-300: #85a9ff;
+  --primary-400: #6690ff;
+  --primary-500: var(--primary-color);
+  --primary-600: #254eda;
+  --primary-700: #1a39b6;
+  --primary-800: #102693;
+  --primary-900: #0a1a7a;
 
-$white: #fff !default;
-$black: #000 !default;
+  --normal-color: #a5a5a5;
+
+  --white: #fff;
+  --black: #000;
+
+  --grey-50: #fafafa;
+  --grey-100: #f5f5f5;
+  --grey-200: #e5e5e5;
+  --grey-300: #d5d5d5;
+  --grey-400: #c5c5c5;
+  --grey-500: #a5a5a5;
+  --grey-600: #888888;
+  --grey-700: #666666;
+  --grey-800: #444444;
+  --grey-900: #222222;
+
+  --success-color: #2ac952;
+  --success-100: #d9fcd4;
+  --success-200: #adf9aa;
+  --success-300: #7dee84;
+  --success-400: #5ade6e;
+  --success-500: var(--success-color);
+  --success-600: #1eac50;
+  --success-700: #15904c;
+  --success-800: #0d7445;
+  --success-900: #086040;
+
+  --info-color: #3bc0f9;
+  --info-100: #d7fdfe;
+  --info-200: #b0f6fe;
+  --info-300: #89eafd;
+  --info-400: #6bd9fc;
+  --info-500: --info-color;
+  --info-600: #2b97d7;
+  --info-700: #1d72b3;
+  --info-800: #11518f;
+  --info-900: #0c3a76;
+
+  --warning-color: #ffd83d;
+  --warning-100: #fffbd8;
+  --warning-200: #fff4b2;
+  --warning-300: #ffed8b;
+  --warning-400: #ffe56e;
+  --warning-500: var(--warning-color);
+  --warning-600: #dbb42b;
+  --warning-700: #b7921f;
+  --warning-800: #937212;
+  --warning-900: #7a5b0b;
+
+  --danger-color: #ff3a30;
+  --danger-100: #ffe5d5;
+  --danger-200: #ffc5ac;
+  --danger-300: #ff9d82;
+  --danger-400: #ff7863;
+  --danger-500: var(--danger-color);
+  --danger-600: #db2329;
+  --danger-700: #b7182b;
+  --danger-800: #930f2a;
+  --danger-900: #7a0929;
+
+  --accent-color-1: #9b1dd9;
+  --accent-1-100: #f9d1fd;
+  --accent-1-200: #efa4fb;
+  --accent-1-300: #da74f3;
+  --accent-1-400: #c051e8;
+  --accent-1-500: var(--accent-color-1);
+  --accent-1-600: #7915ba;
+  --accent-1-700: #5b0e9c;
+  --accent-1-800: #40097d;
+  --accent-1-900: #2e0568;
+
+  --accent-color-2: #fdce14;
+  --accent-2-100: #fef9cf;
+  --accent-2-200: #fef1a0;
+  --accent-2-300: #fee771;
+  --accent-2-400: #fdde4e;
+  --accent-2-500: var(--accent-color-2);
+  --accent-2-600: #d9ac0e;
+  --accent-2-700: #b68c0a;
+  --accent-2-800: #926d06;
+  --accent-2-900: #795703;
+
+  --accent-color-3: #24a677;
+  --accent-3-100: #d3fadc;
+  --accent-3-200: #a9f6c3;
+  --accent-3-300: #79e4a8;
+  --accent-3-400: #53c993;
+  --accent-3-500: var(--accent-color-3);
+  --accent-3-600: #1a8e70;
+  --accent-3-700: #127766;
+  --accent-3-800: #0b605a;
+  --accent-3-900: #064d4f;
+}
+
+// Main colors
+$primary-color: var(--primary-color) !default;
+$success-color: var(--success-color) !default;
+$info-color: var(--info-color) !default;
+$warning-color: var(--warning-color) !default;
+$danger-color: var(--danger-color) !default;
+$normal-color: var(--normal-color) !default;
+
+$white: var(--white) !default;
+$black: var(--black) !default;
 
 // Accent colors
-$accent-color-1: #9b1dd9 !default;
-$accent-color-2: #fdce14 !default;
-$accent-color-3: #24a677 !default;
+$accent-color-1: var(--accent-color-1) !default;
+$accent-color-2: var(--accent-color-2) !default;
+$accent-color-3: var(--accent-color-3) !default;
 
 // Primary colors
-$primary-000: #eef5ff !default;
-$primary-100: #d6e4ff !default;
-$primary-200: #adc8ff !default;
-$primary-300: #85a9ff !default;
-$primary-400: #6690ff !default;
-$primary-500: $primary-color !default; // main one
-$primary-600: #254eda !default;
-$primary-700: #1a39b6 !default;
-$primary-800: #102693 !default;
-$primary-900: #0a1a7a !default;
+$primary-000: var(--primary-000) !default;
+$primary-100: var(--primary-100) !default;
+$primary-200: var(--primary-200) !default;
+$primary-300: var(--primary-300) !default;
+$primary-400: var(--primary-400) !default;
+$primary-500: var(--primary-500) !default;
+$primary-600: var(--primary-600) !default;
+$primary-700: var(--primary-700) !default;
+$primary-800: var(--primary-800) !default;
+$primary-900: var(--primary-900) !default;
 
 // Grey colors
-$grey-50: #fafafa !default;
-$grey-100: #f5f5f5 !default;
-$grey-200: #e5e5e5 !default;
-$grey-300: #d5d5d5 !default;
-$grey-400: #c5c5c5 !default;
-$grey-500: #a5a5a5 !default;
-$grey-600: #888888 !default;
-$grey-700: #666666 !default;
-$grey-800: #444444 !default;
-$grey-900: #222222 !default;
+$grey-50: var(--grey-50) !default;
+$grey-100: var(--grey-100) !default;
+$grey-200: var(--grey-200) !default;
+$grey-300: var(--grey-300) !default;
+$grey-400: var(--grey-400) !default;
+$grey-500: var(--grey-500) !default;
+$grey-600: var(--grey-600) !default;
+$grey-700: var(--grey-700) !default;
+$grey-800: var(--grey-800) !default;
+$grey-900: var(--grey-900) !default;
 
 // Semantic colors
-$success-100: #d9fcd4 !default;
-$success-200: #adf9aa !default;
-$success-300: #7dee84 !default;
-$success-400: #5ade6e !default;
-$success-500: $success-color !default;
-$success-600: #1eac50 !default;
-$success-700: #15904c !default;
-$success-800: #0d7445 !default;
-$success-900: #086040 !default;
+$success-100: var(--success-100) !default;
+$success-200: var(--success-200) !default;
+$success-300: var(--success-300) !default;
+$success-400: var(--success-400) !default;
+$success-500: var(--success-500) !default;
+$success-600: var(--success-600) !default;
+$success-700: var(--success-700) !default;
+$success-800: var(--success-800) !default;
+$success-900: var(--success-900) !default;
 
 // semantic info colors
-$info-100: #d7fdfe !default;
-$info-200: #b0f6fe !default;
-$info-300: #89eafd !default;
-$info-400: #6bd9fc !default;
-$info-500: $info-color !default;
-$info-600: #2b97d7 !default;
-$info-700: #1d72b3 !default;
-$info-800: #11518f !default;
-$info-900: #0c3a76 !default;
+$info-100: var(--info-100) !default;
+$info-200: var(--info-200) !default;
+$info-300: var(--info-300) !default;
+$info-400: var(--info-400) !default;
+$info-500: var(--info-500) !default;
+$info-600: var(--info-600) !default;
+$info-700: var(--info-700) !default;
+$info-800: var(--info-800) !default;
+$info-900: var(--info-900) !default;
 
 // semantic warning colors
-$warning-100: #fffbd8 !default;
-$warning-200: #fff4b2 !default;
-$warning-300: #ffed8b !default;
-$warning-400: #ffe56e !default;
-$warning-500: $warning-color !default;
-$warning-600: #dbb42b !default;
-$warning-700: #b7921f !default;
-$warning-800: #937212 !default;
-$warning-900: #7a5b0b !default;
+$warning-100: var(--warning-100) !default;
+$warning-200: var(--warning-200) !default;
+$warning-300: var(--warning-300) !default;
+$warning-400: var(--warning-400) !default;
+$warning-500: var(--warning-500) !default;
+$warning-600: var(--warning-600) !default;
+$warning-700: var(--warning-700) !default;
+$warning-800: var(--warning-800) !default;
+$warning-900: var(--warning-900) !default;
 
 // semantic danger colors
-$danger-100: #ffe5d5 !default;
-$danger-200: #ffc5ac !default;
-$danger-300: #ff9d82 !default;
-$danger-400: #ff7863 !default;
-$danger-500: $danger-color !default;
-$danger-600: #db2329 !default;
-$danger-700: #b7182b !default;
-$danger-800: #930f2a !default;
-$danger-900: #7a0929 !default;
+$danger-100: var(--danger-100) !default;
+$danger-200: var(--danger-200) !default;
+$danger-300: var(--danger-300) !default;
+$danger-400: var(--danger-400) !default;
+$danger-500: var(--danger-500) !default;
+$danger-600: var(--danger-600) !default;
+$danger-700: var(--danger-700) !default;
+$danger-800: var(--danger-800) !default;
+$danger-900: var(--danger-900) !default;
 
 // accent 1 colors
-$accent-1-100: #f9d1fd !default;
-$accent-1-200: #efa4fb !default;
-$accent-1-300: #da74f3 !default;
-$accent-1-400: #c051e8 !default;
-$accent-1-500: $accent-color-1 !default;
-$accent-1-600: #7915ba !default;
-$accent-1-700: #5b0e9c !default;
-$accent-1-800: #40097d !default;
-$accent-1-900: #2e0568 !default;
+$accent-1-100: var(--accent-1-100) !default;
+$accent-1-200: var(--accent-1-200) !default;
+$accent-1-300: var(--accent-1-300) !default;
+$accent-1-400: var(--accent-1-400) !default;
+$accent-1-500: var(--accent-1-500) !default;
+$accent-1-600: var(--accent-1-600) !default;
+$accent-1-700: var(--accent-1-700) !default;
+$accent-1-800: var(--accent-1-800) !default;
+$accent-1-900: var(--accent-1-900) !default;
 
 // accent 2 colors
-$accent-2-100: #fef9cf !default;
-$accent-2-200: #fef1a0 !default;
-$accent-2-300: #fee771 !default;
-$accent-2-400: #fdde4e !default;
-$accent-2-500: $accent-color-2 !default;
-$accent-2-600: #d9ac0e !default;
-$accent-2-700: #b68c0a !default;
-$accent-2-800: #926d06 !default;
-$accent-2-900: #795703 !default;
+$accent-2-100: var(--accent-2-100) !default;
+$accent-2-200: var(--accent-2-200) !default;
+$accent-2-300: var(--accent-2-300) !default;
+$accent-2-400: var(--accent-2-400) !default;
+$accent-2-500: var(--accent-2-500) !default;
+$accent-2-600: var(--accent-2-600) !default;
+$accent-2-700: var(--accent-2-700) !default;
+$accent-2-800: var(--accent-2-800) !default;
+$accent-2-900: var(--accent-2-900) !default;
 
 // accent 3 colors
-$accent-3-100: #d3fadc !default;
-$accent-3-200: #a9f6c3 !default;
-$accent-3-300: #79e4a8 !default;
-$accent-3-400: #53c993 !default;
-$accent-3-500: $accent-color-3 !default;
-$accent-3-600: #1a8e70 !default;
-$accent-3-700: #127766 !default;
-$accent-3-800: #0b605a !default;
-$accent-3-900: #064d4f !default;
+$accent-3-100: var(--accent-3-100) !default;
+$accent-3-200: var(--accent-3-200) !default;
+$accent-3-300: var(--accent-3-300) !default;
+$accent-3-400: var(--accent-3-400) !default;
+$accent-3-500: var(--accent-3-500) !default;
+$accent-3-600: var(--accent-3-600) !default;
+$accent-3-700: var(--accent-3-700) !default;
+$accent-3-800: var(--accent-3-800) !default;
+$accent-3-900: var(--accent-3-900) !default;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import AnimateHeight from 'react-animate-height';
+import AnimateHeight, { Height } from 'react-animate-height';
 
 export interface AnimatedProps
   extends Omit<Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'aria-hidden'>, 'onAnimationStart'>, 'onAnimationEnd'> {
@@ -47,7 +47,12 @@ export const Animated: React.FC<AnimatedProps> = ({
   }
 
   return (
-    <AnimateHeight {...props} duration={duration} height={loading ? startFrom : 'auto'} className={cn(className)}>
+    <AnimateHeight
+      {...props}
+      duration={duration}
+      height={loading ? (startFrom as Height) : 'auto'}
+      className={cn(className)}
+    >
       {props.children}
     </AnimateHeight>
   );

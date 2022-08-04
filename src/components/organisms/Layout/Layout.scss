@@ -74,7 +74,7 @@
   &__content {
     width: 100%;
     background-color: $layout-content-background;
-    height: calc(100vh - #{$layout-top-bar-height * 2});
+    height: calc(100vh - #{rem($layout-top-bar-height)} * 2);
     margin: 0 auto;
     padding: rem(15px 25px);
 
@@ -201,7 +201,7 @@
   align-items: center;
   transition: width $transition-time;
   width: 100%;
-  padding: rem($gutter-size 24px);
+  padding: rem($gutter-size) rem(24px);
   border-bottom: $layout-top-bar-border-color;
   background-color: $layout-top-bar-background;
 
@@ -220,7 +220,7 @@
     cursor: pointer;
     font-size: rem(14px);
     @include fontBold;
-    min-width: rem($sidebar-width - $gutter-size);
+    min-width: calc(#{rem($sidebar-width)} - #{rem($gutter-size)});
 
     img {
       max-width: rem($sidebar-logo-width);
@@ -237,7 +237,7 @@
       border-right: 1px solid $layout-top-bar-toggler-border-color;
       position: absolute;
       top: 0;
-      left: rem($sidebar-width - 1px);
+      left: calc(#{rem($sidebar-width)} - 1px);
     }
   }
 

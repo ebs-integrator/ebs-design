@@ -215,7 +215,7 @@
 
     // FIXME: Temporary hack
     .ebs-select-value:empty {
-      height: rem($base-size-sm - $select-padding-y-sm * 2);
+      height: calc(#{rem($base-size-sm)} - #{rem($select-padding-y-sm)} * 2);
     }
   }
 
@@ -225,7 +225,7 @@
 
     // FIXME: Temporary hack
     .ebs-select-value:empty {
-      height: rem($base-size - $select-padding-y * 2);
+      height: calc(#{rem($base-size)} - #{rem($select-padding-y)} * 2);
     }
   }
 
@@ -235,7 +235,7 @@
 
     // FIXME: Temporary hack
     .ebs-select-value:empty {
-      height: rem($base-size-lg - $select-padding-y-lg * 2);
+      height: calc(#{rem($base-size-lg)} - #{rem($select-padding-y-lg)} * 2);
     }
   }
 
@@ -260,8 +260,8 @@
       }
 
       > .ebs-avatar {
-        width: rem($font-size-base * 1.5);
-        height: rem($font-size-base * 1.5);
+        width: calc(#{rem($font-size-base)} * 1.5);
+        height: calc(#{rem($font-size-base)} * 1.5);
         min-width: unset;
         min-height: unset;
       }

@@ -79,8 +79,8 @@
     &--regular {
       border: 6px solid $grey-500;
       border-top: 6px solid var(--primary-color);
-      width: rem(#{$base-size * 2});
-      height: rem(#{$base-size * 2});
+      width: calc(#{rem($base-size)} * 2);
+      height: calc(#{rem($base-size)} * 2);
       top: calc(50% - #{$base-size});
       left: calc(50% - #{$base-size});
     }

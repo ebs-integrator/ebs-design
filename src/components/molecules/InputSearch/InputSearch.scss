@@ -29,6 +29,6 @@
   }
 
   .ebs-input__clear {
-    right: rem($gutter-size * 2);
+    right: calc(#{rem($gutter-size)} * 2);
   }
 }
