@@ -6,15 +6,13 @@ module.exports = {
   },
   env: {
     browser: true,
-    jest: true,
     es6: true,
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react-hooks', 'jest'],
+  plugins: ['@typescript-eslint', 'react-hooks'],
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:jest/recommended',
     'react-app',
   ],
   settings: {
@@ -29,6 +27,7 @@ module.exports = {
     'no-use-before-define': 0,
     'one-var-declaration-per-line': 'error',
     '@typescript-eslint/camelcase': 'off',
+    '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/no-var-requires': 'off',

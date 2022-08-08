@@ -40,7 +40,7 @@
 
     &-title {
       color: $heading-color;
-      font-size: rem($font-size-base);
+      font-size: 1rem;
       margin-bottom: rem($border-radius);
       @include fontMedium;
     }

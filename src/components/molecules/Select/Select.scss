@@ -260,8 +260,8 @@
       }
 
       > .ebs-avatar {
-        width: calc(#{rem($font-size-base)} * 1.5);
-        height: calc(#{rem($font-size-base)} * 1.5);
+        width: 1.5rem;
+        height: 1.5rem;
         min-width: unset;
         min-height: unset;
       }
