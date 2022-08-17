@@ -112,7 +112,7 @@
       }
 
       &-title {
-        padding: rem($gutter-size $gutter-size $gutter-size / 2);
+        padding: rem($gutter-size $gutter-size) calc(#{rem($gutter-size)} / 2);
         font-size: rem($table-body-font-size);
         width: 100%;
       }

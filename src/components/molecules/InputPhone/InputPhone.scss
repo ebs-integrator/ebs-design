@@ -115,7 +115,7 @@
     cursor: pointer;
     top: 50%;
     color: $text-color;
-    right: rem($gutter-size / 2);
+    right: calc(#{rem($gutter-size)} / 2);
     font-size: rem(22px);
     padding: rem(0 7px);
     margin: rem(0 -7px);

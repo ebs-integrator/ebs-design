@@ -112,12 +112,12 @@
     @include hiddenScroll;
     color: $text-color-secondary;
     width: 100%;
-    margin-right: rem($gutter-size / 2);
+    margin-right: calc(#{rem($gutter-size)} / 2);
     min-height: 1em;
 
     .ebs-input__container {
       z-index: 2;
-      padding-left: rem($gutter-size / 4);
+      padding-left: calc(#{rem($gutter-size)} / 4);
       min-width: rem(80px);
 
       .ebs-input__wrapper {
@@ -151,7 +151,7 @@
 
     .ebs-label__suffix {
       margin-top: rem(-1px);
-      right: rem($label-font-size / 2);
+      right: calc(#{rem($label-font-size)} / 2);
     }
   }
 
@@ -163,7 +163,7 @@
   }
 
   &-label:not(:last-child) {
-    margin-right: rem($label-font-size / 2);
+    margin-right: calc(#{rem($label-font-size)} / 2);
   }
 
   &__wrapper {
@@ -256,7 +256,7 @@
   .ebs-select-value {
     .ebs-avatar__inline {
       &-alt {
-        margin-left: rem($gutter-size / 2);
+        margin-left: calc(#{rem($gutter-size)} / 2);
       }
 
       > .ebs-avatar {

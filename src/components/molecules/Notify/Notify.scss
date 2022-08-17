@@ -84,7 +84,7 @@
     &-close {
       position: absolute;
       right: 0;
-      top: rem($gutter-size / 4);
+      top: calc(#{rem($gutter-size)} / 4);
     }
 
     &--regular {

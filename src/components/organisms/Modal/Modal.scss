@@ -57,7 +57,7 @@
     background-color: $white;
 
     &-container {
-      margin-right: rem($base-size + $gutter-size / 2);
+      margin-right: calc(#{rem($base-size)} + #{rem($gutter-size)} / 2);
     }
 
     &--close {
