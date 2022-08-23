@@ -1,26 +1,8 @@
 {
   "name": "ebs-design",
-  "version": "0.0.1-beta.132",
+  "version": "0.0.1-beta.133",
   "description": "EBS Design System React UI elements.",
   "author": "EBS Integrator <contact@ebs-integrator.com> (https://ebs-integrator.com/)",
-  "maintainers": [
-    {
-      "name": "Marcel Lefter",
-      "email": "leftermarcel@gmail.com"
-    },
-    {
-      "name": "Nicolae Tataru",
-      "email": "devdfan@gmail.com"
-    },
-    {
-      "name": "Vladimir Josan",
-      "email": "iaskivsky@gmail.com"
-    },
-    {
-      "name": "Dima Danu",
-      "email": "dima.danu@gmail.com"
-    }
-  ],
   "keywords": [
     "react",
     "react-ui",
@@ -57,16 +39,18 @@
     "react-datepicker": "^4.7.0",
     "react-phone-input-2": "^2.13.8",
     "react-popper-tooltip": "^4.3.0",
-    "react-use": "^17.3.2"
+    "react-use": "^17.3.2",
+    "sass": "^1.54.5",
+    "sass-rem": "^3.0.0"
   },
   "peerDependencies": {
-    "node-sass": ">=4.0.0 <5.0.0",
     "react": ">= 16.8",
-    "react-dom": ">= 16.8"
+    "react-dom": ">= 16.8",
+    "sass": "1.x"
   },
   "devDependencies": {
-    "@storybook/addon-controls": "^6.3.12",
     "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-controls": "^6.3.12",
     "@storybook/addon-docs": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
@@ -94,7 +78,6 @@
     "eslint-plugin-jest": "^24.1.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
-    "node-sass": "^4.14.1",
     "prettier": "^2.0.5",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
