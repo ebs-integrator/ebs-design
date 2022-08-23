@@ -67,7 +67,7 @@ npm install ebs-design
 | -------------- | -------------- |
 | react          | >= 16.8        |
 | react-dom      | >= 16.8        |
-| node-sass      | >=4.0.0 <5.0.0 |
+| sass           | >= 1.x         |
 
 ## 🏗️ Usage guide
 
