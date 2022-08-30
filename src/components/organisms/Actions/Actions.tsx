@@ -27,7 +27,7 @@ export interface ActionsProps extends React.HTMLAttributes<HTMLDivElement> {
   placement?: 'right' | 'left' | 'top' | 'bottom';
 }
 
-const Actions: React.FC<ActionsProps> = ({
+const Actions: React.FC<React.PropsWithChildren<ActionsProps>> = ({
   title = 'Actions',
   showTitle = true,
   placement = 'left',
