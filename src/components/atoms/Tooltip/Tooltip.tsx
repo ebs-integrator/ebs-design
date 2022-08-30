@@ -52,7 +52,7 @@ export interface TooltipProps extends TooltipConfig {
   inline?: boolean;
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({
+export const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
   className,
   bodyClass,
   children,
