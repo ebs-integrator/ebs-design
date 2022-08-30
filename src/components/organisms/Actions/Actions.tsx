@@ -9,7 +9,7 @@ const ActionContext = React.createContext<ContextProps>({
   onClickItem: (onClick) => null,
 });
 
-const Item: React.FC<{ onClick?: () => void }> = ({ children, onClick }) => {
+const Item: React.FC<React.PropsWithChildren<{ onClick?: () => void }>> = ({ children, onClick }) => {
   const { onClickItem } = React.useContext(ActionContext);
   const handleOnClick = (): void => {
     onClickItem(onClick);
