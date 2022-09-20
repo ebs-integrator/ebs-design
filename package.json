@@ -40,7 +40,7 @@
     "react-phone-input-2": "^2.13.8",
     "react-popper-tooltip": "^4.3.0",
     "react-use": "^17.3.2",
-    "sass": "^1.54.5",
+    "sass": "^1.54.6",
     "sass-rem": "^3.0.0"
   },
   "peerDependencies": {
