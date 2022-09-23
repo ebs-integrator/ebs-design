@@ -1,6 +1,6 @@
 import * as React from 'react';
 import useSetState from 'react-use/esm/useSetState';
-import { Loader } from 'components/molecules';
+import { Loader } from 'components';
 
 import { Option } from './interfaces';
 

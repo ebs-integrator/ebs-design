@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Input, Icon, Label, Tooltip } from 'components';
-import { Loader } from 'components/molecules';
+import { Input, Icon, Label, Loader, Tooltip } from 'components';
 import { SizeType } from 'types';
 
 import useSelect from '../Hook';

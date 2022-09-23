@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Icon } from 'components';
-import { Loader } from 'components/molecules';
+import { Icon, Loader } from 'components';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 

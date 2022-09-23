@@ -3,10 +3,10 @@ import { Template } from 'components/storybook';
 
 import { Checkbox, CheckboxProps } from './Checkbox';
 import { CheckboxGroup } from './CheckboxGroup';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Checkbox', 'molecules'),
+  title: exportStory('Checkbox', 'inputs'),
   component: Checkbox,
   subcomponents: { CheckboxGroup },
 };

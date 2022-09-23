@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Input, Radio } from 'components';
-import { Textarea, Checkbox, Select, DatePicker, InputPhone } from 'components/molecules';
+import { Checkbox, DatePicker, Input, InputPhone, Radio, Select, Textarea } from 'components';
 import { Template } from 'components/storybook';
 
 import { Form as _Form, FormComponent as Form, FormProps } from './Form';

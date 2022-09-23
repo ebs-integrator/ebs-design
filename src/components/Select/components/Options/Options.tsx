@@ -1,8 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
-import { Space, Label } from 'components';
-import { Loader } from 'components/molecules';
+import { Space, Label, Loader } from 'components';
 import { Item, ItemProps } from './Item';
 
 import { Context } from '../../Context';
@@ -160,7 +159,6 @@ const Options: React.FC<OptionsProps> = ({
                     : value === option.value
                 }
                 mode={mode}
-                text={option.text}
                 selected={activeItem === key + 1}
                 onClick={onChangeHandler}
                 {...option}

@@ -3,8 +3,7 @@ import { useNotify } from 'hooks';
 
 import { icons } from './iconsList';
 import { modelType } from './Icon';
-import { Button, Space, Icon } from 'components';
-import { NotifyProvider, NotifyContainer } from '../molecules';
+import { Button, Space, Icon, NotifyProvider, NotifyContainer } from 'components';
 import { exportStory, copyToClipboard } from 'libs';
 
 export default {

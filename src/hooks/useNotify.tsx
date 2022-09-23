@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NotifyItemProps } from '../components/molecules/Notify/NotifyItem';
+import { NotifyItemProps } from '../components/Notify/NotifyItem';
 import { NotifyContext } from '../';
 
 export interface NotifyProps {

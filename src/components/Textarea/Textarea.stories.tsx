@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Template } from 'components/storybook';
 
 import { Textarea, TextareaProps } from './Textarea';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Textarea', 'molecules'),
+  title: exportStory('Textarea', 'inputs'),
   component: Textarea,
   argTypes: {
     label: { control: 'text' },

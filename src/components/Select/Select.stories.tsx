@@ -6,12 +6,12 @@ import { capitalize, makeid } from 'libs/string';
 import { SelectComponent as Select } from './Select';
 import { Select as _Select, SelectProps, Options } from './components';
 import { Option } from './interfaces';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 const { Pagination, Search } = Select;
 
 export default {
-  title: exportStory('Select', 'molecules'),
+  title: exportStory('Select', 'inputs'),
   component: _Select,
   subcomponents: { Options, Pagination, Search },
   argTypes: {

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Template } from 'components/storybook';
 
 import { InputSearch, InputSearchProps } from './InputSearch';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('InputSearch', 'molecules'),
+  title: exportStory('InputSearch', 'inputs'),
   component: InputSearch,
   argTypes: {
     label: { control: 'text' },

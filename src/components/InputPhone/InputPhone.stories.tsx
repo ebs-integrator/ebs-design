@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Template } from 'components/storybook';
 
 import { InputPhone, InputPhoneProps } from './InputPhone';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('InputPhone', 'molecules'),
+  title: exportStory('InputPhone', 'inputs'),
   component: InputPhone,
   argTypes: {
     label: { control: 'text' },

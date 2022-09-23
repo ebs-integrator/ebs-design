@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Checkbox } from 'components/molecules';
+import { Checkbox } from 'components';
 
 import { SelectMode, OptionValue } from '../../../interfaces';
 

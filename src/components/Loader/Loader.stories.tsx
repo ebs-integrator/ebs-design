@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Template } from 'components/storybook';
 
 import { Loader, LoaderProps } from './Loader';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 const { Inline, Spinner } = Loader;
 
 export default {
-  title: exportStory('Loader', 'molecules'),
+  title: exportStory('Loader', 'feedback'),
   component: Loader,
   subcomponents: { Inline, Spinner },
   argTypes: {

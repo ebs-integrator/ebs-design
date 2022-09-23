@@ -1,7 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Extra, Label } from 'components';
-import { Loader } from 'components/molecules';
+import { Extra, Label, Loader } from 'components';
 
 export type InputSize = 'small' | 'medium' | 'large';
 export type InputStyleType = 'white' | 'grey';

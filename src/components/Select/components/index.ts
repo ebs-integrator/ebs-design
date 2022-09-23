@@ -1,4 +1,4 @@
-export { InputSearchProps as SearchProps } from 'components/molecules/InputSearch/InputSearch';
+export { InputSearchProps as SearchProps } from 'components/InputSearch/InputSearch';
 
 export { Select, SelectProps } from './Component';
 export { Search } from './Search';

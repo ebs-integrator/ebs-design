@@ -5,10 +5,10 @@ import { useNotify } from 'hooks';
 
 import { NotifyContainer, NotifyProvider } from './Notify';
 import { NotifyItem, NotifyItemProps } from './NotifyItem';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Notify', 'molecules'),
+  title: exportStory('Notify', 'feedback'),
   component: NotifyItem,
   subcomponents: { NotifyItem },
 };

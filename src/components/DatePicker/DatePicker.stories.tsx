@@ -3,10 +3,10 @@ import { Template } from 'components/storybook';
 
 import { DatePicker } from './DatePicker';
 import { DatePickerProps, DateType, RangePickerProps } from './types';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('DatePicker', 'molecules'),
+  title: exportStory('DatePicker', 'inputs'),
   component: DatePicker,
 };
 
