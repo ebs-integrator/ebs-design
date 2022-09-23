@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import { Space, Button } from 'components';
-import { exportStory } from '../../libs';
+import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Pagination', 'templates'),
+  title: exportStory('Pagination', 'navigation'),
 };
 
 const t = (value: string): string => value;
