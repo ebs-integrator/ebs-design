@@ -11,7 +11,7 @@ import { exportStory } from 'libs';
 const { Pagination, Search } = Select;
 
 export default {
-  title: exportStory('Select', 'inputs'),
+  title: exportStory('Select', 'form'),
   component: _Select,
   subcomponents: { Options, Pagination, Search },
   argTypes: {

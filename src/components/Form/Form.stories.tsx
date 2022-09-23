@@ -9,7 +9,7 @@ import { exportStory } from 'libs';
 const { Field: FormField, Group: FormGroup } = Form;
 
 export default {
-  title: exportStory('Form', 'inputs'),
+  title: exportStory('Form', 'form'),
   component: _Form,
   subcomponents: { FormField, FormGroup },
 };

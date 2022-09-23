@@ -5,7 +5,7 @@ import { Input, InputProps } from './Input';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Input', 'inputs'),
+  title: exportStory('Input', 'form'),
   component: Input,
   argTypes: {
     label: { control: 'text' },

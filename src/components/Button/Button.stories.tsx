@@ -6,7 +6,7 @@ import { Button, ButtonGroup, ButtonProps } from './Button';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Button', 'inputs'),
+  title: exportStory('Button', 'form'),
   component: Button,
   subcomponents: { ButtonGroup },
 };

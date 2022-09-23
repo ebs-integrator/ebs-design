@@ -4,7 +4,7 @@ import { Upload } from './Upload';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Upload', 'inputs'),
+  title: exportStory('Upload', 'form'),
   component: Upload,
 };
 

@@ -5,7 +5,7 @@ import { Radio, RadioProps } from './Radio';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Radio', 'inputs'),
+  title: exportStory('Radio', 'form'),
   component: Radio,
 };
 

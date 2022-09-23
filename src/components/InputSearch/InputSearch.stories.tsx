@@ -5,7 +5,7 @@ import { InputSearch, InputSearchProps } from './InputSearch';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('InputSearch', 'inputs'),
+  title: exportStory('InputSearch', 'form'),
   component: InputSearch,
   argTypes: {
     label: { control: 'text' },

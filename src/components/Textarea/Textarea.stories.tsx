@@ -5,7 +5,7 @@ import { Textarea, TextareaProps } from './Textarea';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Textarea', 'inputs'),
+  title: exportStory('Textarea', 'form'),
   component: Textarea,
   argTypes: {
     label: { control: 'text' },

@@ -5,7 +5,7 @@ import { Switch, SwitchProps } from './Switch';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Switch', 'inputs'),
+  title: exportStory('Switch', 'form'),
   component: Switch,
 };
 

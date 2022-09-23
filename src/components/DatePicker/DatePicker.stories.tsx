@@ -6,7 +6,7 @@ import { DatePickerProps, DateType, RangePickerProps } from './types';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('DatePicker', 'inputs'),
+  title: exportStory('DatePicker', 'form'),
   component: DatePicker,
 };
 

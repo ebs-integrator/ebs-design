@@ -5,7 +5,7 @@ import { Label, LabelProps } from './Label';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Label', 'inputs'),
+  title: exportStory('Label', 'form'),
   component: Label,
   argTypes: {
     text: { control: 'text' },

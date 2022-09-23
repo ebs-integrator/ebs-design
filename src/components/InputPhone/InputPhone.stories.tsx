@@ -5,7 +5,7 @@ import { InputPhone, InputPhoneProps } from './InputPhone';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('InputPhone', 'inputs'),
+  title: exportStory('InputPhone', 'form'),
   component: InputPhone,
   argTypes: {
     label: { control: 'text' },

@@ -6,7 +6,7 @@ import { CheckboxGroup } from './CheckboxGroup';
 import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('Checkbox', 'inputs'),
+  title: exportStory('Checkbox', 'form'),
   component: Checkbox,
   subcomponents: { CheckboxGroup },
 };
