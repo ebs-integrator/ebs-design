@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Container, Row, Col, Space } from 'components/atoms';
+import { Container, Row, Col, Space } from 'components';
 
 const Template: React.FC = ({ children }) => (
   <Container>

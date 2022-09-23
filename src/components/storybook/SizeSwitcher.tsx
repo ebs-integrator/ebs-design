@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, ButtonGroup } from 'components/atoms';
+import { Button, ButtonGroup } from 'components';
 import { capitalize } from 'libs';
 
 interface Props {

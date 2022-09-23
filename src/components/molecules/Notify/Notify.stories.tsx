@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Label } from 'components/atoms';
+import { Button, Label } from 'components';
 import { Template } from 'components/storybook';
 import { useNotify } from 'hooks';
 

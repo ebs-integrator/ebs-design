@@ -1,4 +1,4 @@
-import { ColProps } from 'components/atoms/Grid/Col/Col';
+import { ColProps } from 'components/Grid/Col/Col';
 import { AlignItems, JustifyContent } from 'types';
 
 // Form type

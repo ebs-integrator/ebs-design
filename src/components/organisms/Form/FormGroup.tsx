@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Row, RowProps } from 'components/atoms/Grid/Row/Row';
-import { Col } from 'components/atoms/Grid/Col/Col';
+import { Row, RowProps } from 'components/Grid/Row/Row';
+import { Col } from 'components/Grid/Col/Col';
 import { LabelOptions, ControlOptions } from './interface';
 import { FormContext } from './Form';
 

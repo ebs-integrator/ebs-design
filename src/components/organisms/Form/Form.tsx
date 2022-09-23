@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import RCForm, { FormProps as RCFormProps } from 'rc-field-form';
-import { RowProps } from 'components/atoms/Grid/Row/Row';
+import { RowProps } from 'components/Grid/Row/Row';
 import { FormField, FormFieldProps } from './FormField';
 import { FormGroup, FormGroupProps } from './FormGroup';
 import { getControlOptions, getLabelOptions } from './utils';

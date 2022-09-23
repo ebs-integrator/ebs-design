@@ -2,8 +2,8 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Field } from 'rc-field-form';
 import { FieldProps } from 'rc-field-form/es/Field';
-import { Row, RowProps } from 'components/atoms/Grid/Row/Row';
-import { Col } from 'components/atoms/Grid/Col/Col';
+import { Row, RowProps } from 'components/Grid/Row/Row';
+import { Col } from 'components/Grid/Col/Col';
 import { LabelOptions, ControlOptions } from './interface';
 import { combineProps, checkRequired } from './utils';
 import { FormContext } from './Form';
@@ -50,10 +50,11 @@ export const FormField: React.FC<FormFieldProps> = ({
   const isRequired = checkRequired(props.rules);
 
   // Compose classes for label and control column
-  const getColClassName = (col: GenericObject) => cn(col.className, {
-    [`align-items--${col.align}`]: col.align,
-    [`justify-content--${col.justify}`]: col.justify,
-  })
+  const getColClassName = (col: GenericObject): string =>
+    cn(col.className, {
+      [`align-items--${col.align}`]: col.align,
+      [`justify-content--${col.justify}`]: col.justify,
+    });
 
   return (
     <div className={cn(`ebs-form__item ebs-form__field`, className)} style={style}>
@@ -91,9 +92,7 @@ export const FormField: React.FC<FormFieldProps> = ({
               <Row className="ebs-form__field__wrapper" {...fieldRowProps}>
                 {label && !hideLabel && (
                   <Col {...labelProps.col}>
-                    <div
-                      className={cn('ebs-form__field__label', getColClassName(labelProps))}
-                    >
+                    <div className={cn('ebs-form__field__label', getColClassName(labelProps))}>
                       {label} {isRequired && <span className="ebs-form__field__required">*</span>}
                     </div>
                   </Col>

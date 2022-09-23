@@ -1,7 +1,7 @@
 import * as React from 'react';
 import AnimateHeight from 'react-animate-height';
 import cn from 'classnames';
-import { Icon, Label, Tooltip } from 'components/atoms';
+import { Icon, Label, Tooltip } from 'components';
 import { useLayoutState } from 'components/organisms/Layout/context';
 import { GenericObject } from 'types';
 

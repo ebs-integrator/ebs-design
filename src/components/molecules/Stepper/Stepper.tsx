@@ -2,7 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 import InputNumber from 'rc-input-number';
 import { InputNumberProps } from 'rc-input-number/es/interface';
-import { Extra, Label, Icon } from 'components/atoms';
+import { Extra, Icon, Label } from 'components';
 
 export type AlignType = 'left' | 'right';
 

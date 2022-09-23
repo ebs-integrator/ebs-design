@@ -1,8 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { usePortal } from 'hooks';
-import { Space } from 'components/atoms';
-import { SpaceDirection, SpaceSize } from 'components/atoms/Space/Space';
+import { Space, SpaceDirection, SpaceSize } from 'components/Space/Space';
 
 import { NotifyItem, NotifyItemProps } from './NotifyItem';
 

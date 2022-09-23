@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon, Button, Space } from 'components/atoms';
+import { Icon, Button, Space } from 'components';
 import { Template } from 'components/storybook';
 
 import { Modal as _Modal, ModalComponent as Modal, ModalProps } from './Modal';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Label, Input, Icon, Tooltip } from 'components/atoms';
+import { Input, Icon, Label, Tooltip } from 'components';
 import { Loader } from 'components/molecules';
 import { SizeType } from 'types';
 

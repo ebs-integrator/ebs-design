@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Space, Button } from 'components/atoms';
+import { Button, Space } from 'components';
 
 export type ScrollMode = 'regular' | 'scroll';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
-import { Space, Label } from 'components/atoms';
+import { Space, Label } from 'components';
 import { Loader } from 'components/molecules';
 import { Item, ItemProps } from './Item';
 

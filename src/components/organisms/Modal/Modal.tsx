@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { usePopupClose, usePortal, useScrollToggler } from 'hooks';
-import { Mask, Button } from 'components/atoms';
+import { Button, Mask } from 'components';
 import { ModalContent } from './ModalContent';
 import { ModalFooter } from './ModalFooter';
 

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Button, Space, Icon } from 'components/atoms';
-import { SpaceDirection, SpaceSize } from 'components/atoms/Space/Space';
+import { Button } from 'components/Button/Button';
+import { Icon } from 'components/Icon/Icon';
+import { Space, SpaceDirection, SpaceSize } from 'components/Space/Space';
 
 export interface NotifyItemType {
   type?: 'regular' | 'primary' | 'success' | 'danger' | 'info' | 'warning';

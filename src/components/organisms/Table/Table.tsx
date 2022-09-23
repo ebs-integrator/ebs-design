@@ -3,7 +3,7 @@ import cn from 'classnames';
 import RCTable, { Column, ColumnGroup, Summary } from 'rc-table';
 import { TableProps as RCTableProps } from 'rc-table/lib/Table';
 import { ColumnType as RCColumnType } from 'rc-table/lib/interface';
-import { Icon } from 'components/atoms';
+import { Icon } from 'components';
 import { SizeType } from 'types';
 import { flattenArray } from 'libs';
 

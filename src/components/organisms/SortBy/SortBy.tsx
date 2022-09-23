@@ -1,7 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Tooltip, Button, Icon } from 'components/atoms';
-import { ButtonSize } from 'components/atoms/Button/Button';
+import { Tooltip } from 'components/Tooltip/Tooltip';
+import { Icon } from 'components/Icon/Icon';
+import { Button, ButtonSize } from 'components/Button/Button';
 
 interface Sort {
   title: React.ReactNode;

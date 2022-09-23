@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Space, Button } from '../atoms';
+import { Space, Button } from 'components';
 import { exportStory } from '../../libs';
 
 export default {

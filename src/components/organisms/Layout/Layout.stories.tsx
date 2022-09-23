@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Icon, AvatarInline, Button, Row, Col, Card, Space } from 'components/atoms';
+import { Icon, AvatarInline, Button, Row, Col, Card } from 'components';
+import { Space } from 'components';
 import { InputSearch } from 'components/molecules';
 import { Table } from 'components/organisms';
 

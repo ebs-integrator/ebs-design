@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Input, Radio } from 'components/atoms';
+import { Input, Radio } from 'components';
 import { Textarea, Checkbox, Select, DatePicker, InputPhone } from 'components/molecules';
 import { Template } from 'components/storybook';
 

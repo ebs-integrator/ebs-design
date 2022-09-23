@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tooltip, Icon } from 'components/atoms';
+import { Icon, Tooltip } from 'components';
 
 interface ContextProps {
   onClickItem: (onClick?: () => void) => void;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon } from 'components/atoms';
+import { Icon } from 'components';
 
 import { Sidebar } from '..';
 import { exportStory } from '../../../libs';

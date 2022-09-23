@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Icon } from 'components/atoms';
+import { Icon } from 'components';
 import { useLayoutState } from 'components/organisms/Layout/context';
 
 import Item from '../Item';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Extra, Label } from 'components/atoms';
+import { Extra, Label } from 'components/';
 
 export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   onChange?: (value: string) => void;

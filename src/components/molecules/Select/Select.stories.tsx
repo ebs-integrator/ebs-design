@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AvatarInline, Icon } from 'components/atoms';
+import { AvatarInline, Icon } from 'components';
 import { Template } from 'components/storybook';
 import { capitalize, makeid } from 'libs/string';
 

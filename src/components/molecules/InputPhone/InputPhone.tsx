@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import PhoneInput, { PhoneInputProps } from 'react-phone-input-2';
-import { Extra, Label } from 'components/atoms';
+import { Extra, Label } from 'components';
 import { SizeType } from 'types';
 
 export interface InputPhoneProps extends PhoneInputProps {

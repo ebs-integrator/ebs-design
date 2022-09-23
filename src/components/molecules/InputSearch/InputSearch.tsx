@@ -2,8 +2,8 @@ import * as React from 'react';
 import useDebounce from 'react-use/esm/useDebounce';
 import cn from 'classnames';
 import { capitalize } from 'libs/string';
-import { Icon, Input } from 'components/atoms';
-import { InputProps } from 'components/atoms/Input/Input';
+import { Icon } from 'components/Icon/Icon';
+import { InputProps, Input } from 'components/Input/Input';
 
 export type InputSearchIconAlign = 'prefix' | 'suffix';
 
