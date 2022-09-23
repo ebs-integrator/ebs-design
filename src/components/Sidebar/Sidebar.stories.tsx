@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Icon } from 'components';
 
-import { Sidebar } from '..';
-import { exportStory } from '../../../libs';
+import Sidebar from './Sidebar';
+import { exportStory } from 'libs';
 
 const { TopMenu, BottomMenu, Options, Item } = Sidebar;
 const { TopSide, BottomSide, Item: OptionItem } = Options;
 
 export default {
-  title: exportStory('Layout/Sidebar', 'organisms'),
+  title: exportStory('Sidebar', 'layout'),
   component: Sidebar,
   subcomponents: { TopMenu, BottomMenu, Options, Item, TopSide, BottomSide, OptionItem },
 };

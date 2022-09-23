@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Template } from 'components/storybook';
 
 import { SortBy, SortByProps } from './SortBy';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 export default {
-  title: exportStory('SortBy', 'organisms'),
+  title: exportStory('SortBy', 'utils'),
   component: SortBy,
 };
 

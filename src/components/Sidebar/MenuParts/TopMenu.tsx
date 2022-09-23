@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { Icon } from 'components';
-import { useLayoutState } from 'components/organisms/Layout/context';
+import { useLayoutState } from 'components/Layout/context';
 
 import Item from '../Item';
 

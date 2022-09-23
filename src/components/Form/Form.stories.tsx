@@ -4,12 +4,12 @@ import { Template } from 'components/storybook';
 
 import { Form as _Form, FormComponent as Form, FormProps } from './Form';
 import { useForm } from './index';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 const { Field: FormField, Group: FormGroup } = Form;
 
 export default {
-  title: exportStory('Form', 'organisms'),
+  title: exportStory('Form', 'inputs'),
   component: _Form,
   subcomponents: { FormField, FormGroup },
 };

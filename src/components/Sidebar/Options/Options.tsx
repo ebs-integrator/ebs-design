@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { ReducerLayoutActionType, useLayoutDispatch } from 'components/organisms/Layout/context';
+import { ReducerLayoutActionType, useLayoutDispatch } from 'components/Layout/context';
 
 import { Item } from './Item';
 import { TopSide, BottomSide } from './Sides';

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Icon, AvatarInline, Button, Row, Col, Card, Space, InputSearch } from 'components';
-import { Table } from 'components/organisms';
+import { Icon, AvatarInline, Button, Row, Col, Card, Space, InputSearch, Table } from 'components';
 
-import { Layout, Sidebar } from '..';
-import { exportStory } from '../../../libs';
+import Layout from './Layout';
+import Sidebar from '../Sidebar/Sidebar';
+import { exportStory } from 'libs';
 
 const { Topbar, Content, Footer } = Layout;
 const { Title, Toggler, LeftSide, RightSide } = Topbar;
@@ -11,7 +11,7 @@ const { TopMenu, BottomMenu, Item, Options } = Sidebar;
 const { TopSide, BottomSide, Item: OptionItem } = Options;
 
 export default {
-  title: exportStory('Layout', 'organisms'),
+  title: exportStory('Layout', 'layout'),
   component: Layout,
   subcomponents: {
     Topbar,

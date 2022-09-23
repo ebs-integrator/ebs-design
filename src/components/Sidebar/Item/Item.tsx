@@ -2,7 +2,7 @@ import * as React from 'react';
 import AnimateHeight from 'react-animate-height';
 import cn from 'classnames';
 import { Icon, Label, Tooltip } from 'components';
-import { useLayoutState } from 'components/organisms/Layout/context';
+import { useLayoutState } from 'components/Layout/context';
 import { GenericObject } from 'types';
 
 export interface ItemProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onClick'> {

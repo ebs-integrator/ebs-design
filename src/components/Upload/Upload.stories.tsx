@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button } from 'components';
-import { Form, useForm } from 'components/organisms';
+import { Button, Form, useForm } from 'components';
 import { Upload } from './Upload';
 import { exportStory } from 'libs';
 

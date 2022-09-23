@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Template } from 'components/storybook';
 
 import { default as Actions, ActionsProps } from './Actions';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 const { Item } = Actions;
 
 export default {
-  title: exportStory('Actions', 'organisms'),
+  title: exportStory('Actions', 'data-display'),
   component: Actions,
   subcomponents: { Item },
 };

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button, Space } from 'components';
-import { Table } from 'components/organisms';
+import { Button, Space, Table } from 'components';
 
 import { Card, CardProps } from './Card';
 import { exportStory } from 'libs';

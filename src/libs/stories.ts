@@ -1,8 +1,6 @@
 export const exportStory = (
   name: string,
   type:
-    | 'molecules'
-    | 'organisms'
     | 'templates'
     | 'introduction'
     | 'inputs'

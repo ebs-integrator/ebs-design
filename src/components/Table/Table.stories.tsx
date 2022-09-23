@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import { Table, TableProps, ColumnType } from './Table';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 import { GenericObject } from 'types';
 
 export default {
-  title: exportStory('Table', 'organisms'),
+  title: exportStory('Table', 'data-display'),
   component: Table,
   argTypes: {
     emptyCell: { control: 'text' },

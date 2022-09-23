@@ -3,12 +3,12 @@ import { Icon, Button, Space } from 'components';
 import { Template } from 'components/storybook';
 
 import { Modal as _Modal, ModalComponent as Modal, ModalProps } from './Modal';
-import { exportStory } from '../../../libs';
+import { exportStory } from 'libs';
 
 const { Content, Footer } = Modal;
 
 export default {
-  title: exportStory('Modal', 'organisms'),
+  title: exportStory('Modal', 'utils'),
   component: _Modal,
   subcomponents: { Content, Footer },
   argTypes: {
