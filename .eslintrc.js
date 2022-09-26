@@ -34,7 +34,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-function-return-type': [
-      'warn',
+      'off',
       {
         allowExpressions: true,
         allowHigherOrderFunctions: true,

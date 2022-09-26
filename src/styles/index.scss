@@ -12,11 +12,5 @@
 @import './mixins/index';
 @import './helpers/index';
 
-// Atoms
-@import '../components/atoms/styles';
-
-// Molecules
-@import '../components/molecules/styles';
-
-// Organisms
-@import '../components/organisms/styles';
+// Components
+@import '../components/styles';
