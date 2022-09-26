@@ -50,6 +50,7 @@ $media-type: all !default;
 ///  p { font-size: px2em(16px); }
 ///
 /// @returns {Number}
+
 @function px2em($px) {
   @if math.is-unitless($px) {
     @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";

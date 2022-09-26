@@ -24,8 +24,7 @@ export const Regular: React.FC<AvatarProps> & { args: AvatarProps } = ({ childre
 
 Regular.args = {
   type: 'regular',
-  img:
-    'https://s3.amazonaws.com/TWFiles/328702/userAvatar/tf_ae0f94af-4f65-47f5-bc9e-e5cebb5537e2.photo_2018-08-07_16-57-45.jpg',
+  img: 'https://s3.amazonaws.com/TWFiles/328702/userAvatar/tf_ae0f94af-4f65-47f5-bc9e-e5cebb5537e2.photo_2018-08-07_16-57-45.jpg',
   alt: 'Wladimir Zhosan',
   size: 'small',
 };

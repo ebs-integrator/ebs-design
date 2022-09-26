@@ -258,6 +258,8 @@ export default ({ loading, ref, children, ...params }): Props => {
     () => (
       <div ref={optionsRef} className={cn(`ebs-select__options`, className)} style={optionsStyle}>
         {childs.map((child, i) => {
+          if (!React.isValidElement(child)) return null;
+
           if (child?.type === OptionsComponent) {
             return (
               <Options
@@ -275,10 +277,12 @@ export default ({ loading, ref, children, ...params }): Props => {
                 onPrev={onPrev}
                 onNext={onNext}
                 onClickAddNew={onClickAddNew}
-                {...child.props}
+                {...(child.props as GenericObject)}
               />
             );
-          } else if (child?.type === Pagination && child.props.mode === 'scroll') {
+          }
+
+          if (child?.type === Pagination && (child.props as GenericObject).mode === 'scroll') {
             return null;
           }
 

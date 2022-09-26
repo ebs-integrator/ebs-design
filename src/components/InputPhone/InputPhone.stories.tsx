@@ -13,7 +13,10 @@ export default {
   },
 };
 
-export const Regular: React.FC<InputPhoneProps> & { args: InputPhoneProps } = ({ children, ...props }) => {
+export const Regular: React.FC<React.PropsWithChildren<InputPhoneProps>> & { args: InputPhoneProps } = ({
+  children,
+  ...props
+}) => {
   const [value, setValue] = React.useState('');
 
   return (

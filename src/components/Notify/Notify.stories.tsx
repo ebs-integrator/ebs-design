@@ -13,7 +13,10 @@ export default {
   subcomponents: { NotifyItem },
 };
 
-export const Regular: React.FC<NotifyItemProps> & { args: NotifyItemProps } = ({ children, ...props }) => {
+export const Regular: React.FC<React.PropsWithChildren<NotifyItemProps>> & { args: NotifyItemProps } = ({
+  children,
+  ...props
+}) => {
   const Notify: React.FC<NotifyItemProps> = ({ ...params }) => {
     const notify = useNotify();
 

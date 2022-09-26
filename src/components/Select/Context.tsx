@@ -31,7 +31,7 @@ const Context = React.createContext<ContextProps>({
   setLoading: () => null,
 });
 
-const Provider: React.FC = ({ children }) => {
+const Provider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [state, setState] = useSetState<StateProps>({
     options: [],
     cache: [],

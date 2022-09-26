@@ -22,7 +22,7 @@ interface FormComposition {
 
 const FormContext = React.createContext<FormProps>({});
 
-const Form: React.FC<FormProps> = ({
+const Form: React.FC<React.PropsWithChildren<FormProps>> = ({
   type = 'vertical',
   draft,
   labelOptions,
@@ -45,7 +45,7 @@ const Form: React.FC<FormProps> = ({
   );
 };
 
-const FormComponent: React.FC<FormProps> & FormComposition = ({ ...props }) => {
+const FormComponent: React.FC<React.PropsWithChildren<FormProps>> & FormComposition = ({ ...props }) => {
   return <Form {...props} />;
 };
 

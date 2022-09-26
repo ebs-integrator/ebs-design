@@ -13,7 +13,7 @@ type FilterType = 'asc' | 'desc';
 interface ColumnType<T> extends RCColumnType<T> {
   onFilter?: (type: FilterType) => FilterType;
   mobileRender?: (data: T) => React.ReactNode;
-  emptyCell?: string | React.ReactNode; // Empty value fallback for the specific column
+  emptyCell?: () => React.ReactNode | string | React.ReactNode; // Empty value fallback for the specific column
   children?: ColumnType<T>[];
 }
 

@@ -12,7 +12,7 @@ export default {
   },
 };
 
-export const Regular: React.FC<TooltipProps> & { args: TooltipProps } = ({
+export const Regular: React.FC<React.PropsWithChildren<TooltipProps>> & { args: TooltipProps } = ({
   children,
   ...props
 }): React.ReactElement => {

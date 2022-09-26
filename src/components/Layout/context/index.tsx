@@ -5,7 +5,7 @@ import { initialState } from './create';
 import { reducer } from './reducer';
 import { ReducerLayoutActionType, ReducerLayoutState } from './interfaces';
 
-const LayoutProvider: React.FC = ({ children }) => {
+const LayoutProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const setToggled = useCallback(

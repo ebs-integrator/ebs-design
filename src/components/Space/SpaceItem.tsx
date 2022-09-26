@@ -7,7 +7,7 @@ export interface ItemProps {
   wrap?: boolean;
 }
 
-export const SpaceItem: React.FC<ItemProps> = ({ direction, index, wrap, children }) => {
+export const SpaceItem: React.FC<React.PropsWithChildren<ItemProps>> = ({ direction, index, wrap, children }) => {
   const { horizontalSize, verticalSize, latestIndex } = React.useContext(SpaceContext);
 
   let style: React.CSSProperties = {};
