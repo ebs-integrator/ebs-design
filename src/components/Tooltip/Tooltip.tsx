@@ -52,7 +52,7 @@ export interface TooltipProps extends TooltipConfig {
   inline?: boolean;
 }
 
-export const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
+export const Tooltip = ({
   className,
   bodyClass,
   children,
@@ -64,7 +64,7 @@ export const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
   inline,
   interactive = true,
   ...tooltipConfig
-}) => {
+}: React.PropsWithChildren<TooltipProps>) => {
   const { getArrowProps, getTooltipProps, setTooltipRef, setTriggerRef, visible } = usePopperTooltip({
     ...{ ...tooltipConfig, interactive },
   });

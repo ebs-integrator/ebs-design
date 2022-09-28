@@ -17,7 +17,7 @@ export interface NotifyItemProps extends NotifyItemType {
   onClose?: () => void;
 }
 
-export const NotifyItem: React.FC<NotifyItemProps> = ({
+export const NotifyItem = ({
   type = 'success',
   title,
   description,
@@ -25,7 +25,7 @@ export const NotifyItem: React.FC<NotifyItemProps> = ({
   size,
   direction = 'vertical',
   onClose,
-}) => {
+}: NotifyItemProps) => {
   if (!icon) {
     switch (type) {
       case 'success':

@@ -27,7 +27,7 @@ export interface StepperProps extends InputNumberProps {
   placeholder?: string;
 }
 
-export const Stepper: React.FC<StepperProps> = ({
+export const Stepper = ({
   className,
   align = 'right',
   hasError,
@@ -36,7 +36,7 @@ export const Stepper: React.FC<StepperProps> = ({
   disabled,
   value,
   ...props
-}) => (
+}: StepperProps) => (
   <div
     className={cn(`ebs-stepper__wrapper`, align, className, {
       'has-error': hasError,

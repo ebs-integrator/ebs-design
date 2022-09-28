@@ -5,7 +5,7 @@ import { ReducerLayoutActionType, useLayoutDispatch } from 'components/Layout/co
 import { Item } from './Item';
 import { TopSide, BottomSide } from './Sides';
 
-const Options: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
+const Options = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const dispatch = useLayoutDispatch();
 
   React.useEffect(() => {

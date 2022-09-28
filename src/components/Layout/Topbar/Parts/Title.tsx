@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const Title: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
+export const Title = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div className="ebs-layout__top-bar-title" {...props}>
       {children}

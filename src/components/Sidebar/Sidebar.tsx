@@ -6,7 +6,7 @@ import Item from './Item';
 import { Options } from './Options';
 import { TopMenu, BottomMenu } from './MenuParts';
 
-const Sidebar: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, children, ...props }) => {
+const Sidebar = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const { toggled, opened, onSetOpened } = useLayoutState();
 
   return (

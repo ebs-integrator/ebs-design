@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import { useLayoutState } from '../context';
 
-export const Container: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, children, ...props }) => {
+export const Container = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const { toggled, hasOptions } = useLayoutState();
 
   return (

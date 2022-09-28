@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { Avatar } from './Avatar';
 import { CardProps } from './AvatarCard';
 
-export const AvatarInline: React.FC<CardProps> = ({
+export const AvatarInline = ({
   className = '',
   type = 'primary',
   size = 'small',
@@ -16,7 +16,7 @@ export const AvatarInline: React.FC<CardProps> = ({
   description,
   reversed = false,
   ...props
-}) => (
+}: CardProps) => (
   <div
     className={cn(
       `ebs-avatar__inline`,

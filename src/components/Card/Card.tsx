@@ -27,14 +27,14 @@ const CardContext = React.createContext<ContextProps>({
   setHeight: () => null,
 });
 
-const Card: React.FC<CardProps> & CardComposition = ({
+const Card = ({
   size = 'medium',
   collapsible = false,
   collapsed = false,
   className,
   children,
   ...props
-}) => {
+}: React.PropsWithChildren<CardProps>) => {
   // Height is used for collapsible state
   const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
 

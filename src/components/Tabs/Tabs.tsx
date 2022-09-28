@@ -21,14 +21,7 @@ export interface TabsContext {
 
 const TabsContext = React.createContext<TabsContext | undefined>(undefined);
 
-const Tabs: React.FC<TabsProps> & TabsComposition = ({
-  activeTab,
-  setActiveTab,
-  className,
-  contentClass,
-  children,
-  ...props
-}) => {
+const Tabs = ({ activeTab, setActiveTab, className, contentClass, children, ...props }: TabsProps) => {
   const memoizedContextValue = React.useMemo(
     () => ({
       activeTab,

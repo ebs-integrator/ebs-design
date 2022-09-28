@@ -7,7 +7,7 @@ export interface RowProps extends Grid {
   size?: ColsType;
 }
 
-export const Row: React.FC<RowProps> = ({ size, offset, g, gx, gy, className, style, children, ...props }) => {
+export const Row = ({ size, offset, g, gx, gy, className, style, children, ...props }: RowProps) => {
   return (
     <div
       className={cn(`row`, className, {

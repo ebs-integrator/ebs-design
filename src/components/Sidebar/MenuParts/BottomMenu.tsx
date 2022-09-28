@@ -1,5 +1,5 @@
 import * as React from 'react';
 
-export const BottomMenu: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
+export const BottomMenu = ({ children }: React.PropsWithChildren) => (
   <div className="ebs-sidebar__bottom">{children}</div>
 );

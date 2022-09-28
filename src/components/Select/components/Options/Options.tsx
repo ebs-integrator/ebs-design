@@ -27,7 +27,7 @@ export interface OptionsProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
   onClickAddNew?: (value: string) => void;
 }
 
-const Options: React.FC<OptionsProps> = ({
+const Options = ({
   mode = 'single',
   scrollMode = 'regular',
   loading,
@@ -40,7 +40,7 @@ const Options: React.FC<OptionsProps> = ({
   onChange,
   onClickAddNew,
   ...props
-}) => {
+}: OptionsProps) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
   const { offsetBottom, maxHeight, setState } = React.useContext(Context);
   const [activeItem, setActiveItem] = React.useState(0);
@@ -180,9 +180,7 @@ const Options: React.FC<OptionsProps> = ({
   );
 };
 
-const OptionsComponent: React.FC<OptionsProps> & OptionsComposition = ({ ...props }) => {
-  return <Options {...props} />;
-};
+const OptionsComponent = (props: OptionsProps) => <Options {...props} />;
 
 OptionsComponent.displayName = 'Options';
 

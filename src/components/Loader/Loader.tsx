@@ -18,7 +18,7 @@ export interface LoaderProps extends React.HTMLAttributes<HTMLDivElement> {
   height?: number | string;
 }
 
-const Loader: React.FC<LoaderProps> & LoaderComposition = ({
+const Loader = ({
   fade = true,
   fixed,
   size = 'regular',
@@ -27,7 +27,7 @@ const Loader: React.FC<LoaderProps> & LoaderComposition = ({
   children,
   className,
   ...props
-}) => {
+}: LoaderProps) => {
   return (
     <div className={cn('ebs-loader', className)} style={{ minHeight: loading ? height : undefined }} {...props}>
       <LoaderSpinner fixed={fixed} size={size} className={!loading ? 'hide' : ''} />

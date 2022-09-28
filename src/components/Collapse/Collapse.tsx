@@ -29,14 +29,14 @@ const CollapseContext = React.createContext<ContextProps>({
   bordered: false,
 });
 
-const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
+const Collapse = ({
   size = 'medium',
   collapsed = false,
   bordered = false,
   className,
   children,
   ...props
-}) => {
+}: CollapseProps) => {
   const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
 
   React.useEffect(() => {

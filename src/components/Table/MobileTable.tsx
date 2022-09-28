@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 // FIXME: Fix table on mobile
-export const MobileTable: React.FC<any> = (props) => {
+export const MobileTable = (props: any) => {
   const { columns, data } = props;
 
   return (

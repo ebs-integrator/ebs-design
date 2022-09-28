@@ -9,7 +9,14 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: BadgeType;
 }
 
-export const Badge: React.FC<BadgeProps> = ({ count, text, type = 'regular', className, children, ...props }) => {
+export const Badge = ({
+  count,
+  text,
+  type = 'regular',
+  className,
+  children,
+  ...props
+}: React.PropsWithChildren<BadgeProps>) => {
   return (
     <div className="ebs-badge" {...props}>
       <span className={cn(`ebs-badge__type--${type}`, className)}>
