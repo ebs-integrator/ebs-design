@@ -9,7 +9,15 @@ module.exports = {
     builder: 'webpack5',
   },
   framework: '@storybook/react',
-  addons: ['@storybook/addon-essentials', 'storybook-addon-themes', '@storybook/preset-create-react-app'],
+  addons: [
+    '@storybook/preset-create-react-app',
+    '@storybook/addon-essentials',
+    'storybook-addon-themes',
+    '@storybook/addon-links',
+    '@storybook/addon-docs',
+    '@storybook/addon-controls',
+    '@storybook/addon-actions',
+  ],
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
