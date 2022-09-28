@@ -1,23 +1,20 @@
-const path = require('path');
-const { override, useEslintRc } = require('customize-cra');
-
 module.exports = {
   stories: [
     '../src/components/ReadMe.stories.mdx',
     '../src/components/*.stories.mdx',
-    '../src/components/**/**/*.stories.@(tsx|mdx)',
+    '../src/components/**/*.stories.@(tsx|mdx)',
   ],
-  addons: ['@storybook/addon-docs', '@storybook/addon-links', '@storybook/addon-controls', 'storybook-addon-themes'],
-  presets: [
-    '@storybook/preset-create-react-app',
-    {
-      name: '@storybook/preset-typescript',
-      options: {
-        tsLoaderOptions: {
-          configFile: path.resolve(__dirname, '../tsconfig.json'),
-        },
-      },
+  core: {
+    builder: 'webpack5',
+  },
+  framework: '@storybook/react',
+  addons: ['@storybook/addon-essentials', 'storybook-addon-themes', '@storybook/preset-create-react-app'],
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
-  ],
-  webpack: override(useEslintRc(path.resolve(__dirname, '../.eslintrc.js'))),
+  },
 };
