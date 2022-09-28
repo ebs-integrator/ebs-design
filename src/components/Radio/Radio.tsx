@@ -24,7 +24,8 @@ export interface RadioProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElemen
 
 export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
   ({ className, radioAlign = 'left', textClass = '', textStyle, options, value, onChange, ...props }, ref) => {
-    const name = props.name || React.useMemo(() => makeid(), []);
+    const id = React.useMemo(() => makeid(), []);
+    const name = props.name || id;
 
     const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
       if (onChange !== undefined) {
