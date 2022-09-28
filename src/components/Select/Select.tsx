@@ -19,7 +19,7 @@ export interface Composition {
   Pagination: React.FC<PaginationProps>;
 }
 
-const SelectComponent: React.FC<SelectProps> & Composition = (props) => {
+export const SelectComponent: React.FC<SelectProps> & Composition = (props) => {
   return (
     <Provider>
       <Select {...props} />
@@ -32,5 +32,3 @@ SelectComponent.displayName = 'Select';
 SelectComponent.Search = Search;
 SelectComponent.Options = OptionsComponent;
 SelectComponent.Pagination = Pagination;
-
-export { SelectComponent };
