@@ -25,13 +25,12 @@
     "build": "rm -rf dist && rollup -c rollup.config.js",
     "start": "rollup -c -w",
     "prepare": "yarn run build && husky install",
-    "storybook": "start-storybook -p 9009 -s ./.storybook/images",
-    "build:storybook": "build-storybook -o docs-build -s ./.storybook/images"
+    "storybook": "start-storybook -p 9009",
+    "build:storybook": "build-storybook -o docs-build"
   },
   "dependencies": {
     "classnames": "^2.3.2",
     "dayjs": "^1.11.5",
-    "husky": "^8.0.1",
     "lint-staged": ">=10",
     "rc-field-form": "^1.27.2",
     "rc-input-number": "^7.3.9",

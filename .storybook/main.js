@@ -4,6 +4,7 @@ module.exports = {
     '../src/components/*.stories.mdx',
     '../src/components/**/*.stories.@(tsx|mdx)',
   ],
+  staticDirs: ['../.storybook/images'],
   core: {
     builder: 'webpack5',
   },
