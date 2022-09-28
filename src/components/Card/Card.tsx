@@ -1,5 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { Height } from 'react-animate-height';
 import { SizeType } from 'types';
 import { CardHeader, CardHeaderProps } from './CardHeader';
 import { CardBody, CardBodyProps } from './CardBody';
@@ -17,8 +18,8 @@ export interface CardComposition {
 }
 
 interface ContextProps {
-  height: string | number;
-  setHeight: (height: string | number) => void;
+  height: Height;
+  setHeight: (height: Height) => void;
   collapsible?: boolean;
 }
 
@@ -36,7 +37,7 @@ const Card: React.FC<CardProps> & CardComposition = ({
   ...props
 }) => {
   // Height is used for collapsible state
-  const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
+  const [height, setHeight] = React.useState<Height>(collapsed ? 0 : 'auto');
 
   return (
     <div className={cn(`ebs-card ebs-card--${size}`, className, { 'ebs-card--collapsed': height === 0 })} {...props}>

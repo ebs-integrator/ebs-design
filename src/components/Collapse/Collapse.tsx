@@ -1,6 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { SizeType } from 'types';
+import { Height } from 'react-animate-height';
 import { CollapseGroup, CollapseGroupProps } from './CollapseGroup';
 import { CollapseHeader, CollapseHeaderProps } from './CollapseHeader';
 import { CollapseBody, CollapseBodyProps } from './CollapseBody';
@@ -18,8 +19,8 @@ export interface CollapseComposition {
 }
 
 interface ContextProps {
-  height: string | number;
-  setHeight: (height: string | number) => void;
+  height: Height;
+  setHeight: (height: Height) => void;
   bordered: boolean;
 }
 
@@ -37,7 +38,7 @@ const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
   children,
   ...props
 }) => {
-  const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
+  const [height, setHeight] = React.useState<Height>(collapsed ? 0 : 'auto');
 
   React.useEffect(() => {
     setHeight(collapsed ? 0 : 'auto');
