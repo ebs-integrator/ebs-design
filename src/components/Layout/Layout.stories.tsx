@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Icon, AvatarInline, Button, Row, Col, Card, Space, InputSearch, Table } from 'components';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import { exportStory } from 'libs';
+import { Icon, AvatarInline, Button, Row, Col, Card, Space, InputSearch, Table } from 'components';
 import Layout from './Layout';
 import Sidebar from '../Sidebar/Sidebar';
-import { exportStory } from 'libs';
 
 const { Topbar, Content, Footer } = Layout;
 const { Title, Toggler, LeftSide, RightSide } = Topbar;
@@ -30,9 +31,9 @@ export default {
     Content,
     Footer,
   },
-};
+} as ComponentMeta<typeof Layout>;
 
-export const Regular = (): React.ReactNode => (
+export const Regular: ComponentStory<typeof Layout> = () => (
   <Layout>
     <Layout.Topbar>
       <Layout.Topbar.Toggler />
@@ -79,7 +80,7 @@ export const Regular = (): React.ReactNode => (
   </Layout>
 );
 
-export const withoutTopbar = (): React.ReactNode => (
+export const withoutTopbar: ComponentStory<typeof Layout> = () => (
   <Layout>
     <Sidebar>
       <Sidebar.TopMenu>
@@ -111,7 +112,7 @@ export const withoutTopbar = (): React.ReactNode => (
   </Layout>
 );
 
-export const withoutSidebarOptions = (): React.ReactNode => (
+export const withoutSidebarOptions: ComponentStory<typeof Layout> = () => (
   <Layout>
     <Layout.Topbar>
       <Layout.Topbar.Toggler />
@@ -150,7 +151,7 @@ export const withoutSidebarOptions = (): React.ReactNode => (
   </Layout>
 );
 
-export const withoutSidebar = (): React.ReactNode => (
+export const withoutSidebar: ComponentStory<typeof Layout> = () => (
   <Layout>
     <Layout.Topbar>
       <Layout.Topbar.Toggler />
@@ -174,7 +175,7 @@ export const withoutSidebar = (): React.ReactNode => (
   </Layout>
 );
 
-export const withoutFooter = (): React.ReactNode => (
+export const withoutFooter: ComponentStory<typeof Layout> = () => (
   <Layout>
     <Layout.Topbar>
       <Layout.Topbar.Toggler />
@@ -220,7 +221,7 @@ export const withoutFooter = (): React.ReactNode => (
   </Layout>
 );
 
-export const withFixedFooter = (): React.ReactNode => (
+export const withFixedFooter: ComponentStory<typeof Layout> = () => (
   <Layout>
     <Layout.Topbar>
       <Layout.Topbar.Toggler />

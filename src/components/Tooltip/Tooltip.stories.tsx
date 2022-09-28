@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Button } from 'components';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Tooltip, TooltipProps } from './Tooltip';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Button } from 'components';
+import { Tooltip } from './Tooltip';
 
 export default {
   title: exportStory('Tooltip', 'data-display'),
@@ -10,26 +12,23 @@ export default {
   argTypes: {
     title: { control: { type: 'text' } },
   },
-};
+} as ComponentMeta<typeof Tooltip>;
 
-export const Regular: React.FC<React.PropsWithChildren<TooltipProps>> & { args: TooltipProps } = ({
-  children,
-  ...props
-}): React.ReactElement => {
+export const Regular: ComponentStory<typeof Tooltip> = (args) => {
   return (
-    <div>
-      <Tooltip {...props}>
+    <Template>
+      <Tooltip {...args}>
         <Button>Example</Button>
       </Tooltip>
       <div className="mr-15 inline"></div>
-      <Tooltip {...props}>
+      <Tooltip {...args}>
         <Button>Example</Button>
       </Tooltip>
       <div className="mr-15 inline"></div>
-      <Tooltip {...props}>
+      <Tooltip {...args}>
         <Button>Example</Button>
       </Tooltip>
-    </div>
+    </Template>
   );
 };
 

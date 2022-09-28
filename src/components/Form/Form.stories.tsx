@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Checkbox, DatePicker, Input, InputPhone, Radio, Select, Textarea } from 'components';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useForm } from 'rc-field-form';
 
-import { Form as _Form, FormComponent as Form, FormProps } from './Form';
-import { useForm } from './index';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Checkbox, DatePicker, Input, InputPhone, Radio, Select, Textarea } from 'components';
+import { Form as _Form, FormComponent as Form } from './Form';
 
 const { Field: FormField, Group: FormGroup } = Form;
 
@@ -12,14 +13,14 @@ export default {
   title: exportStory('Form', 'form'),
   component: _Form,
   subcomponents: { FormField, FormGroup },
-};
+} as ComponentMeta<typeof _Form>;
 
-export const Regular: React.FC<FormProps> & { args: FormProps } = ({ children, ...props }) => {
+export const Regular: ComponentStory<typeof _Form> = ({ children, ...args }) => {
   const [form] = useForm();
 
   return (
     <Template>
-      <Form form={form} {...props}>
+      <Form form={form} {...args}>
         <Form.Field name="firstName" label="First Name" initialValue={'blue'} rules={[{ required: true }]}>
           <Input size="small" />
         </Form.Field>
@@ -70,7 +71,7 @@ export const Regular: React.FC<FormProps> & { args: FormProps } = ({ children, .
   );
 };
 
-export const LabelInValidation: React.FC = () => {
+export const LabelInValidation: ComponentStory<typeof Form> = ({ children }) => {
   const [form] = useForm();
   return (
     <Template>

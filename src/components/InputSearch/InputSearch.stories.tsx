@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { InputSearch, InputSearchProps } from './InputSearch';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { InputSearch } from './InputSearch';
 
 export default {
   title: exportStory('InputSearch', 'form'),
@@ -13,14 +14,14 @@ export default {
     suffix: { control: 'text' },
     extra: { control: 'text' },
   },
-};
+} as ComponentMeta<typeof InputSearch>;
 
-export const Regular: React.FC<InputSearchProps> & { args: InputSearchProps } = ({ children, ...props }) => {
+export const Regular: ComponentStory<typeof InputSearch> = (args) => {
   const [value, setValue] = React.useState('');
 
   return (
     <Template>
-      <InputSearch value={value} onSearch={setValue} {...props} />
+      <InputSearch value={value} onSearch={setValue} {...args} />
     </Template>
   );
 };

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Loader, LoaderProps } from './Loader';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Loader } from './Loader';
 
 const { Inline, Spinner } = Loader;
 
@@ -16,11 +17,11 @@ export default {
       control: { type: 'select' },
     },
   },
-};
+} as ComponentMeta<typeof Loader>;
 
-export const Regular: React.FC<LoaderProps> & { args: LoaderProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Loader> = (args) => (
   <Template>
-    <Loader {...props}>Loaded</Loader>
+    <Loader {...args}>Loaded</Loader>
   </Template>
 );
 
@@ -32,17 +33,17 @@ Regular.args = {
   height: '100%',
 };
 
-export const _Inline: React.FC<LoaderProps> & { args: LoaderProps } = ({ children, ...props }) => (
+export const _Inline: ComponentStory<typeof Loader> = (args) => (
   <Template>
-    <Loader.Inline {...props} />
+    <Loader.Inline {...args} />
   </Template>
 );
 
 _Inline.args = Regular.args;
 
-export const _Spinner: React.FC<LoaderProps> & { args: LoaderProps } = ({ children, ...props }) => (
+export const _Spinner: ComponentStory<typeof Loader> = (args) => (
   <Template>
-    <Loader.Spinner {...props} />
+    <Loader.Spinner {...args} />
   </Template>
 );
 

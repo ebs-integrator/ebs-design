@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Table, TableProps, ColumnType } from './Table';
 import { exportStory } from 'libs';
-import { GenericObject } from 'types';
+import { Table, ColumnType } from './Table';
 
 export default {
   title: exportStory('Table', 'data-display'),
@@ -10,7 +10,7 @@ export default {
   argTypes: {
     emptyCell: { control: 'text' },
   },
-};
+} as ComponentMeta<typeof Table>;
 
 const data = [
   { title: 'Test', desc: 'Desc', date: 'Today' },
@@ -35,10 +35,7 @@ const columns: ColumnType<any>[] = [
   },
 ];
 
-export const Regular: React.FC<TableProps<GenericObject>> & { args: TableProps<GenericObject> } = ({
-  children,
-  ...props
-}) => (
+export const Regular: ComponentStory<typeof Table> = ({ children, ...props }) => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Table</div>
@@ -96,10 +93,7 @@ const columns2: ColumnType<any>[] = [
   },
 ];
 
-export const WithHeadChildrens: React.FC<TableProps<GenericObject>> & { args: TableProps<GenericObject> } = ({
-  children,
-  ...props
-}) => (
+export const WithHeadChildrens: ComponentStory<typeof Table> = ({ children, ...props }) => (
   <div className="storybook-rows">
     <div className="storybook-row">
       <div className="storybook-header">Table</div>

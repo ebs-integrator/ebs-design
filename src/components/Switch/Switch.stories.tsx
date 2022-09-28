@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Switch, SwitchProps } from './Switch';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Switch } from './Switch';
 
 export default {
   title: exportStory('Switch', 'form'),
   component: Switch,
-};
+} as ComponentMeta<typeof Switch>;
 
-export const Regular: React.FC<SwitchProps> & { args: SwitchProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Switch> = ({ children, ...args }) => (
   <Template>
-    <Switch {...props} />
+    <Switch {...args} />
     {children}
   </Template>
 );

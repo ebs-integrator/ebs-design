@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Stepper, StepperProps } from './Stepper';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Stepper } from './Stepper';
 
 export default {
   title: exportStory('Stepper', 'navigation'),
   component: Stepper,
-};
+} as ComponentMeta<typeof Stepper>;
 
-export const Regular: React.FC<StepperProps> = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Stepper> = (args) => (
   <Template>
-    <Stepper {...props} />
+    <Stepper {...args} />
   </Template>
 );

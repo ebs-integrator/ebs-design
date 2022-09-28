@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Label, LabelProps } from './Label';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Label } from './Label';
 
 export default {
   title: exportStory('Label', 'form'),
@@ -12,11 +13,11 @@ export default {
     prefix: { control: 'text' },
     suffix: { control: 'text' },
   },
-};
+} as ComponentMeta<typeof Label>;
 
-export const Regular: React.FC<LabelProps> & { args: LabelProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Label> = (args) => (
   <Template>
-    <Label {...props} />
+    <Label {...args} />
   </Template>
 );
 
