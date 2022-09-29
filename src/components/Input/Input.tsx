@@ -47,6 +47,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className,
       containerClass,
       isClearable,
+      onClickPrefix,
+      onClickSuffix,
       ...props
     },
     ref,
@@ -67,14 +69,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const onClickPrefixHandler = (): void => {
-      if (!loading && props.onClickPrefix) {
-        props.onClickPrefix();
+      if (!loading && onClickPrefix) {
+        onClickPrefix();
       }
     };
 
     const onClickSuffixHandler = (): void => {
-      if (!loading && props.onClickSuffix) {
-        props.onClickSuffix();
+      if (!loading && onClickSuffix) {
+        onClickSuffix();
       }
     };
 
@@ -100,7 +102,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         >
           {(loading && !suffix) || prefix ? (
             <div
-              className={cn(`ebs-input__prefix`, !loading && props.onClickPrefix ? `clickable` : `not-clickable`)}
+              className={cn(`ebs-input__prefix`, !loading && onClickPrefix ? `clickable` : `not-clickable`)}
               onClick={onClickPrefixHandler}
             >
               {loading && !suffix ? <Loader.Spinner size="small" /> : prefix}
@@ -109,7 +111,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           {(loading && !prefix && suffix) || suffix ? (
             <div
-              className={cn(`ebs-input__suffix`, !loading && props.onClickSuffix ? `clickable` : `not-clickable`)}
+              className={cn(`ebs-input__suffix`, !loading && onClickSuffix ? `clickable` : `not-clickable`)}
               onClick={onClickSuffixHandler}
             >
               {loading && suffix ? <Loader.Spinner size="small" /> : suffix}
