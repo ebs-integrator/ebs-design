@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { Button } from 'components';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Badge, BadgeProps } from './Badge';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Button } from 'components';
+import { Badge } from './Badge';
 
 export default {
   title: exportStory('Badge', 'data-display'),
   component: Badge,
-};
+} as ComponentMeta<typeof Badge>;
 
-export const Regular: React.FC<BadgeProps> & { args: BadgeProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Badge> = (args) => (
   <Template>
-    <Badge {...props}>
+    <Badge {...args}>
       <Button>Button</Button>
     </Badge>
   </Template>

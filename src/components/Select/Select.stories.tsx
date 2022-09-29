@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+
+import { exportStory, capitalize, makeid } from 'libs';
+import { Option } from './interfaces';
 import { AvatarInline, Icon } from 'components';
 import { Template } from 'components/storybook';
-import { capitalize, makeid } from 'libs/string';
 
 import { SelectComponent as Select } from './Select';
-import { Select as _Select, SelectProps, Options } from './components';
-import { Option } from './interfaces';
-import { exportStory } from 'libs';
+import { Select as _Select, Options } from './components';
 
 const { Pagination, Search } = Select;
 
@@ -17,11 +18,11 @@ export default {
   argTypes: {
     label: { control: 'text' },
   },
-};
+} as ComponentMeta<typeof _Select>;
 
 const limit = 20;
 
-export const Regular: React.FC<SelectProps> & { args: SelectProps } = ({ children, ...props }) => {
+export const Regular: ComponentStory<typeof _Select> = (args) => {
   const [search, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
   const [value, setValue] = React.useState<any>();
@@ -57,7 +58,7 @@ export const Regular: React.FC<SelectProps> & { args: SelectProps } = ({ childre
 
   return (
     <Template>
-      <Select loading={loading} value={value} onChange={setValue} {...props}>
+      <Select loading={loading} value={value} onChange={setValue} {...args}>
         <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
         <Select.Options>
@@ -89,7 +90,7 @@ Regular.args = {
   suffix: undefined,
 };
 
-export const InfiniteScrollPagination: React.FC<SelectProps> & { args: SelectProps } = ({ children, ...props }) => {
+export const InfiniteScrollPagination: ComponentStory<typeof _Select> = (args) => {
   const [search, setSearch] = React.useState<string>('');
   const [list, setList] = React.useState<Option[]>([]);
   const [value, setValue] = React.useState<any>();
@@ -125,7 +126,7 @@ export const InfiniteScrollPagination: React.FC<SelectProps> & { args: SelectPro
 
   return (
     <Template>
-      <Select loading={loading} value={value} onChange={setValue} {...props}>
+      <Select loading={loading} value={value} onChange={setValue} {...args}>
         <Select.Search value={search} onSearch={(val) => setSearch(val)} />
 
         <Select.Options>

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Button } from 'components';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Space, SpaceProps } from './Space';
 import { exportStory } from 'libs';
+import { Button } from 'components';
+import { Space } from './Space';
 
 export default {
   title: exportStory('Space', 'layout'),
@@ -13,10 +14,10 @@ export default {
       control: { type: 'select' },
     },
   },
-};
+} as ComponentMeta<typeof Space>;
 
-export const Regular: React.FC<SpaceProps> & { args: SpaceProps } = ({ children, ...props }) => (
-  <Space {...props}>
+export const Regular: ComponentStory<typeof Space> = (args) => (
+  <Space {...args}>
     <Button>Button 1</Button>
     <h3>green</h3>
     <Button>Button 2</Button>

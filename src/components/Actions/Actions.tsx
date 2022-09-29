@@ -64,4 +64,6 @@ const Actions = ({
   );
 };
 
-export default Object.assign(Actions, { Item });
+Actions.Item = Item;
+
+export default Actions;

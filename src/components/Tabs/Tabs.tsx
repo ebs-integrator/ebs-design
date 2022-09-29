@@ -9,12 +9,12 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   setActiveTab?: (key: string) => void;
 }
 
-export interface TabsContext {
+export interface TabsContextInterface {
   activeTab?: string;
   setActiveTab?: (key: string) => void;
 }
 
-const TabsContext = React.createContext<TabsContext | undefined>(undefined);
+const TabsContext = React.createContext<TabsContextInterface | undefined>(undefined);
 
 const Tabs = ({ activeTab, setActiveTab, className, contentClass, children, ...props }: TabsProps) => {
   const memoizedContextValue = React.useMemo(
@@ -47,7 +47,7 @@ const Tabs = ({ activeTab, setActiveTab, className, contentClass, children, ...p
   );
 };
 
-export const useTabs = (): TabsContext => {
+export const useTabs = (): TabsContextInterface => {
   const context = React.useContext(TabsContext);
   if (!context) {
     throw new Error('This component must be used within a <Tabs> component.');

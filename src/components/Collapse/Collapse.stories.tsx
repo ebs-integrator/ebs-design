@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Icon, Space } from 'components';
-import { exportStory } from 'libs';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Collapse, CollapseProps } from './Collapse';
+import { exportStory } from 'libs';
+import { Icon, Space } from 'components';
+import { Collapse } from './Collapse';
 
 const { Group: CollapseGroup, Header: CollapseHeader, Body: CollapseBody } = Collapse;
 
@@ -16,18 +17,18 @@ export default {
       control: { type: 'select' },
     },
   },
-};
+} as ComponentMeta<typeof Collapse>;
 
-export const Regular: React.FC<CollapseProps> & { args: CollapseProps } = ({ children, ...props }) => (
-  <Collapse {...props}>
+export const Regular: ComponentStory<typeof Collapse> = ({ children, ...args }) => (
+  <Collapse {...args}>
     <Collapse.Header>Example</Collapse.Header>
     <Collapse.Body>{children}</Collapse.Body>
   </Collapse>
 );
 
-export const Group: React.FC<CollapseProps> & { args: CollapseProps } = ({ children, ...props }) => (
+export const Group: ComponentStory<typeof Collapse> = ({ children, ...args }) => (
   <Collapse.Group>
-    <Collapse {...props}>
+    <Collapse {...args}>
       <Collapse.Header>
         <Space>
           <Icon type="star" />
@@ -36,7 +37,7 @@ export const Group: React.FC<CollapseProps> & { args: CollapseProps } = ({ child
       </Collapse.Header>
       <Collapse.Body>{children}</Collapse.Body>
     </Collapse>
-    <Collapse {...props}>
+    <Collapse {...args}>
       <Collapse.Header>
         <Space>
           <Icon type="star" />
@@ -45,7 +46,7 @@ export const Group: React.FC<CollapseProps> & { args: CollapseProps } = ({ child
       </Collapse.Header>
       <Collapse.Body>{children}</Collapse.Body>
     </Collapse>
-    <Collapse {...props}>
+    <Collapse {...args}>
       <Collapse.Header>
         <Space>
           <Icon type="star" />

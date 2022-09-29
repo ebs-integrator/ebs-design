@@ -1,12 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
-import InputNumber from 'rc-input-number';
-import { InputNumberProps } from 'rc-input-number/es/interface';
+import InputNumber, { InputNumberProps } from 'rc-input-number';
 import { Extra, Icon, Label } from 'components';
 
 export type AlignType = 'left' | 'right';
 
-export interface StepperProps extends InputNumberProps {
+export interface StepperProps extends Omit<InputNumberProps, 'onChange'> {
   align?: AlignType;
   hasError?: boolean;
   label?: React.ReactNode;
@@ -22,7 +21,7 @@ export interface StepperProps extends InputNumberProps {
   decimalSeparator?: string;
   step?: number | string;
   value?: number;
-  onChange?: (value: number | string | undefined) => void;
+  onChange?: (value: number | string | undefined | null) => void;
   onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>;
   placeholder?: string;
 }

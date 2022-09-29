@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Checkbox, CheckboxProps } from './Checkbox';
-import { CheckboxGroup } from './CheckboxGroup';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Checkbox } from './Checkbox';
+import { CheckboxGroup } from './CheckboxGroup';
 
 export default {
   title: exportStory('Checkbox', 'form'),
   component: Checkbox,
   subcomponents: { CheckboxGroup },
-};
+} as ComponentMeta<typeof Checkbox>;
 
-export const Regular: React.FC<CheckboxProps> & { args: CheckboxProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Checkbox> = (args) => (
   <Template>
-    <Checkbox {...props} />
+    <Checkbox {...args} />
   </Template>
 );
 

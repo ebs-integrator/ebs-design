@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { useNotify } from 'hooks';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { icons } from './iconsList';
-import { modelType } from './Icon';
-import { Button, Space, Icon, NotifyProvider, NotifyContainer } from 'components';
 import { exportStory, copyToClipboard } from 'libs';
+import { useNotify } from 'hooks';
+import { Button, NotifyContainer, NotifyProvider, Space } from 'components';
+import { modelType, Icon } from './Icon';
+import { icons } from './iconsList';
 
 export default {
   title: exportStory('Icon', 'data-display'),
   component: Icon,
-};
+} as ComponentMeta<typeof Icon>;
 
-export const Regular = (): React.ReactNode => {
+export const Regular: ComponentStory<typeof Icon> = () => {
   const IconList: React.FC = () => {
     const notify = useNotify();
 

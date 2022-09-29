@@ -1,9 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { Height } from 'react-animate-height';
 import { SizeType } from 'types';
-import { CardHeader, CardHeaderProps } from './CardHeader';
-import { CardBody, CardBodyProps } from './CardBody';
-import { CardFooter, CardFooterProps } from './CardFooter';
+import { CardHeader } from './CardHeader';
+import { CardBody } from './CardBody';
+import { CardFooter } from './CardFooter';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: SizeType;
@@ -12,8 +13,8 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 interface ContextProps {
-  height: string | number;
-  setHeight: (height: string | number) => void;
+  height: Height;
+  setHeight: (height: Height) => void;
   collapsible?: boolean;
 }
 
@@ -31,7 +32,7 @@ const Card = ({
   ...props
 }: React.PropsWithChildren<CardProps>) => {
   // Height is used for collapsible state
-  const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
+  const [height, setHeight] = React.useState<Height>(collapsed ? 0 : 'auto');
 
   return (
     <div className={cn(`ebs-card ebs-card--${size}`, className, { 'ebs-card--collapsed': height === 0 })} {...props}>

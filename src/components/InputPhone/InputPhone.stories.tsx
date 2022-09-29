@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { InputPhone, InputPhoneProps } from './InputPhone';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { InputPhone } from './InputPhone';
 
 export default {
   title: exportStory('InputPhone', 'form'),
@@ -11,17 +12,14 @@ export default {
     label: { control: 'text' },
     extra: { control: 'text' },
   },
-};
+} as ComponentMeta<typeof InputPhone>;
 
-export const Regular: React.FC<React.PropsWithChildren<InputPhoneProps>> & { args: InputPhoneProps } = ({
-  children,
-  ...props
-}) => {
+export const Regular: ComponentStory<typeof InputPhone> = (args) => {
   const [value, setValue] = React.useState('');
 
   return (
     <Template>
-      <InputPhone value={value} onChange={setValue} {...props} />
+      <InputPhone value={value} onChange={setValue} {...args} />
     </Template>
   );
 };

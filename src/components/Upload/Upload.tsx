@@ -61,7 +61,7 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
 
       // Internal save
       if (props.onSuccess) {
-        props.onSuccess(files, file, xhr);
+        props.onSuccess(response, file, xhr);
       }
 
       return files;

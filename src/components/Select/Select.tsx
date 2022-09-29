@@ -16,5 +16,3 @@ SelectComponent.displayName = 'Select';
 SelectComponent.Search = Search;
 SelectComponent.Options = OptionsComponent;
 SelectComponent.Pagination = Pagination;
-
-export { SelectComponent };

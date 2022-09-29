@@ -1,4 +1,4 @@
-export function keys<O>(o: O): (keyof O)[] {
+export function keys<O>(o: object): (keyof O)[] {
   return Object.keys(o) as (keyof O)[];
 }
 

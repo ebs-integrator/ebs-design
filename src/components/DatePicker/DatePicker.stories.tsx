@@ -1,21 +1,24 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 
-import { DatePicker } from './DatePicker';
-import { DatePickerProps, DateType, RangePickerProps } from './types';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { DatePickerProps, RangePickerProps } from './types';
+import { DatePicker } from './DatePicker';
 
 export default {
   title: exportStory('DatePicker', 'form'),
   component: DatePicker,
-};
+} as ComponentMeta<typeof DatePicker>;
 
-export const Regular: React.FC<DatePickerProps> & { args: DatePickerProps } = ({ children, ...props }) => {
-  const [value, setValue] = React.useState<DateType>('');
+export const Regular: ComponentStory<typeof DatePicker> = (args) => {
+  // eslint-disable-next-line no-empty-pattern
+  const [{}, updateArgs] = useArgs();
 
   return (
     <Template>
-      <DatePicker value={value} onChange={setValue} {...props} />
+      <DatePicker {...args} onChange={(value) => updateArgs({ value })} />
     </Template>
   );
 };
