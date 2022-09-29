@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Sort: React.FC = (defaultProps) => {
+export const Sort = (defaultProps: React.HTMLAttributes<HTMLOrSVGElement>) => {
   return (
     <svg viewBox="0 0 16 12" {...defaultProps}>
       <g>

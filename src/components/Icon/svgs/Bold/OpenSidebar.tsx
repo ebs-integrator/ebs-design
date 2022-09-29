@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const OpenSidebar: React.FC = (defaultProps) => {
+export const OpenSidebar = (defaultProps: React.HTMLAttributes<HTMLOrSVGElement>) => {
   return (
     <svg viewBox="0 0 16 16" {...defaultProps}>
       <path
