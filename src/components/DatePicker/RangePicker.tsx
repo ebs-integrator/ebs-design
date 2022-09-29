@@ -13,10 +13,10 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
     const [loaded, setLoaded] = React.useState(false);
     const [isOpen, setIsOpen] = React.useState(false);
 
-    const dateFormat = React.useMemo(() => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect), [
-      props.dateFormat,
-      props.showTimeSelect,
-    ]);
+    const dateFormat = React.useMemo(
+      () => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect),
+      [props.dateFormat, props.showTimeSelect],
+    );
 
     const dateRange = React.useMemo(() => {
       const outputStartDate = getOutputDate(startDate, dateFormat);
