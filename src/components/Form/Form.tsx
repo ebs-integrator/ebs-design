@@ -15,11 +15,6 @@ interface FormProps extends RCFormProps {
   draft?: boolean;
 }
 
-interface FormComposition {
-  Field: React.FC<FormFieldProps>;
-  Group: React.FC<FormGroupProps>;
-}
-
 const FormContext = React.createContext<FormProps>({});
 
 const Form = ({
@@ -54,4 +49,4 @@ FormComponent.displayName = 'Form';
 FormComponent.Field = FormField;
 FormComponent.Group = FormGroup;
 
-export { Form, FormComponent, FormContext, FormProps, FormComposition };
+export { Form, FormComponent, FormContext, FormProps };

@@ -16,10 +16,10 @@ const InternalDatePicker = React.forwardRef<ReactDatePicker, DatePickerProps>(
       }
     }, [value]);
 
-    const dateFormat = React.useMemo(() => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect), [
-      props.dateFormat,
-      props.showTimeSelect,
-    ]);
+    const dateFormat = React.useMemo(
+      () => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect),
+      [props.dateFormat, props.showTimeSelect],
+    );
 
     const handleChange = (date, event): void => {
       const outputDate = getOutputDate(date, dateFormat);

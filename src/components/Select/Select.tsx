@@ -1,23 +1,7 @@
 import * as React from 'react';
 
-import {
-  Select,
-  SelectProps,
-  Search,
-  SearchProps,
-  OptionsComponent,
-  OptionsProps,
-  OptionsComposition,
-  Pagination,
-  PaginationProps,
-} from './components';
+import { Select, SelectProps, Search, OptionsComponent, Pagination } from './components';
 import { Provider } from './Context';
-
-export interface Composition {
-  Options: React.FC<OptionsProps> & OptionsComposition;
-  Search: React.FC<SearchProps>;
-  Pagination: React.FC<PaginationProps>;
-}
 
 const SelectComponent = (props: SelectProps) => {
   return (

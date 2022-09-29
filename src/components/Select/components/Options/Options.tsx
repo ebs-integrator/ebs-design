@@ -2,15 +2,11 @@ import * as React from 'react';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { Space, Label, Loader } from 'components';
-import { Item, ItemProps } from './Item';
+import { Item } from './Item';
 
 import { Context } from '../../Context';
 import { SelectMode, OptionValue, Option } from '../../interfaces';
 import { ScrollMode } from '../Pagination';
-
-export interface OptionsComposition {
-  Item: React.FC<ItemProps>;
-}
 
 export interface OptionsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   mode?: SelectMode;

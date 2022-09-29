@@ -1,10 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { ListGroupItem, ListGroupItemProps } from './ListGroupItem';
-
-export interface ListGroupComposition {
-  Item: React.FC<ListGroupItemProps>;
-}
+import { ListGroupItem } from './ListGroupItem';
 
 export type ListGroupProps = React.HTMLAttributes<HTMLDivElement>;
 

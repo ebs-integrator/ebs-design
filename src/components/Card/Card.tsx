@@ -10,11 +10,6 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsible?: boolean;
   collapsed?: boolean;
 }
-export interface CardComposition {
-  Header: React.FC<CardHeaderProps>;
-  Body: React.FC<CardBodyProps>;
-  Footer: React.FC<CardFooterProps>;
-}
 
 interface ContextProps {
   height: string | number;

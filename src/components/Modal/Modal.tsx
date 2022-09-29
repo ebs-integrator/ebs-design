@@ -7,11 +7,6 @@ import { ModalFooter } from './ModalFooter';
 
 export type ModalSize = 'small' | 'regular' | 'large';
 
-export interface ModalComposition {
-  Content: React.FC<React.HTMLAttributes<HTMLDivElement>>;
-  Footer: React.FC<React.HTMLAttributes<HTMLDivElement>>;
-}
-
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   defaultOpen?: boolean;

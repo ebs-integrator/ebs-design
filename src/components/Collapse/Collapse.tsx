@@ -1,20 +1,14 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { SizeType } from 'types';
-import { CollapseGroup, CollapseGroupProps } from './CollapseGroup';
-import { CollapseHeader, CollapseHeaderProps } from './CollapseHeader';
-import { CollapseBody, CollapseBodyProps } from './CollapseBody';
+import { CollapseGroup } from './CollapseGroup';
+import { CollapseHeader } from './CollapseHeader';
+import { CollapseBody } from './CollapseBody';
 
 export interface CollapseProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsed?: boolean;
   size?: SizeType;
   bordered?: boolean;
-}
-
-export interface CollapseComposition {
-  Group: React.FC<CollapseGroupProps>;
-  Header: React.FC<CollapseHeaderProps>;
-  Body: React.FC<CollapseBodyProps>;
 }
 
 interface ContextProps {
