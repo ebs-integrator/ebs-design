@@ -1,3 +1,9 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
+
+@import 'sass-rem';
+
 // Utilities
 @import './normalize';
 @import './palette';
@@ -6,11 +12,5 @@
 @import './mixins/index';
 @import './helpers/index';
 
-// Atoms
-@import '../components/atoms/styles';
-
-// Molecules
-@import '../components/molecules/styles';
-
-// Organisms
-@import '../components/organisms/styles';
+// Components
+@import '../components/styles';

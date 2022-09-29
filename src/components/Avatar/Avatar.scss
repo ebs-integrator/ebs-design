@@ -1,0 +1,169 @@
+.ebs-avatar {
+  @include elevation-1;
+  @include flex-center;
+  position: relative;
+  border-radius: rem($border-radius);
+
+  &--circle,
+  &--circle &__img {
+    border-radius: 50%;
+  }
+
+  &--regular {
+    color: var(--primary-color);
+    background-color: $grey-100;
+
+    .ebs-icon {
+      color: var(--primary-color);
+    }
+  }
+
+  &--primary {
+    color: $white;
+    background-color: var(--primary-color);
+
+    .ebs-icon {
+      color: $white;
+    }
+  }
+
+  &--light {
+    color: $text-color;
+    background-color: $white;
+
+    .ebs-icon {
+      color: $text-color;
+    }
+  }
+
+  &--dynamic {
+    color: $white;
+
+    .ebs-icon {
+      color: $white;
+    }
+  }
+
+  &--small {
+    min-width: rem($avatar-size-small);
+    width: rem($avatar-size-small);
+    min-height: rem($avatar-size-small);
+    height: rem($avatar-size-small);
+  }
+
+  &--small &-short-alt {
+    font-size: rem($avatar-font-small);
+  }
+
+  &--big {
+    min-width: rem($avatar-size-big);
+    width: rem($avatar-size-big);
+    min-height: rem($avatar-size-big);
+    height: rem($avatar-size-big);
+  }
+
+  &--big &-short-alt {
+    font-size: rem($avatar-font-big);
+  }
+
+  &__short-alt {
+    @include flex-center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    font-weight: $avatar-short-alt-font-weight;
+  }
+
+  &__img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: $border-radius;
+    object-fit: cover;
+    @include fadeAnimation;
+  }
+
+  &__status {
+    position: absolute;
+    bottom: rem(-2.5px);
+    right: rem(-2.5px);
+    width: rem(10px);
+    height: rem(10px);
+    border: 2px solid #fff;
+    border-radius: 50%;
+    z-index: 2;
+
+    &--active {
+      background-color: $avatar-status-active;
+    }
+
+    &--regular {
+      background-color: var(--primary-color);
+    }
+
+    &--inactive {
+      background-color: $avatar-status-uanctive;
+    }
+  }
+
+  &__card {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #dfddd6;
+    border-radius: rem($border-radius);
+
+    &-alt {
+      color: #333;
+      padding: 0 calc(#{rem($gutter-size)} / 2);
+      border-top-right-radius: rem($border-radius);
+      border-bottom-right-radius: rem($border-radius);
+      font-size: rem(9px);
+      font-weight: $avatar-card-alt-font-weight;
+    }
+
+    img {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .ebs-avatar {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      height: rem(23px);
+      width: rem(23px);
+    }
+  }
+
+  &__inline {
+    display: flex;
+    align-items: center;
+    text-align: left;
+
+    &--reversed &-alt {
+      margin-left: 0;
+      margin-right: rem($gutter-size);
+    }
+
+    &-alt {
+      margin-left: rem($gutter-size);
+      font-size: rem(12px);
+      color: $black;
+      overflow: hidden;
+      font-weight: $avatar-inline-alt-font-weight;
+    }
+
+    &--light &-alt {
+      color: $white;
+    }
+
+    &-description {
+      @include text-ellipsis;
+      font-size: rem(10px);
+      color: $avatar-description-color;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.ebs-select__options {
+  position: relative;
+  width: 100%;
+  padding: rem(4px);
+  background-color: $white;
+  border: 1px solid $white;
+  border-radius: rem($border-radius);
+  overflow: hidden;
+
+  &--multiple &-item-text {
+    padding-right: calc(#{rem($gutter-size)} + #{rem($gutter-size)} / 2);
+  }
+
+  & > &-search,
+  &-search.ebs-input__wrapper--active {
+    margin-bottom: rem(4px);
+    border-color: $grey-100;
+    background-color: $grey-100;
+  }
+
+  & > &-items {
+    height: auto;
+    overflow: hidden auto;
+
+    .ebs-select__options-item:not(:last-child) {
+      margin-bottom: rem(4px);
+    }
+  }
+
+  & &--empty {
+    color: $grey-500;
+    text-align: center;
+    margin: rem(5px 0);
+    font-size: rem(12px);
+  }
+
+  .ebs-input__search-wrapper {
+    margin-bottom: rem(4px);
+  }
+}
