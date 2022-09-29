@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { default as Actions, ActionsProps } from './Actions';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import Actions from './Actions';
 
 const { Item } = Actions;
 
@@ -10,12 +11,12 @@ export default {
   title: exportStory('Actions', 'data-display'),
   component: Actions,
   subcomponents: { Item },
-};
+} as ComponentMeta<typeof Actions>;
 
-export const Regular: React.FC<ActionsProps> & { args: ActionsProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Actions> = (args) => (
   <Template>
-    <Actions {...props}>
-      <Item onClick={console.log}>Example</Item>
+    <Actions {...args}>
+      <Item>Example</Item>
     </Actions>
   </Template>
 );

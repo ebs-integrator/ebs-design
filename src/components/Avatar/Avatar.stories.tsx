@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Avatar, AvatarProps } from './Avatar';
-import { AvatarCard, CardProps } from './AvatarCard';
-import { AvatarInline } from './AvatarInline';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Avatar } from './Avatar';
+import { AvatarCard } from './AvatarCard';
+import { AvatarInline } from './AvatarInline';
 
 export default {
   title: exportStory('Avatar', 'data-display'),
@@ -14,11 +15,11 @@ export default {
     icon: { control: 'text' },
     shortAlt: { control: 'text' },
   },
-};
+} as ComponentMeta<typeof Avatar>;
 
-export const Regular: React.FC<AvatarProps> & { args: AvatarProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Avatar> = (args) => (
   <Template>
-    <Avatar {...props} />
+    <Avatar {...args} />
   </Template>
 );
 
@@ -29,17 +30,17 @@ Regular.args = {
   size: 'small',
 };
 
-export const Card: React.FC<CardProps> & { args: CardProps } = ({ children, ...props }) => (
+export const Card: ComponentStory<typeof AvatarCard> = (args) => (
   <Template>
-    <AvatarCard {...props} />
+    <AvatarCard {...args} />
   </Template>
 );
 
 Card.args = Regular.args;
 
-export const Inline: React.FC<CardProps> & { args: CardProps } = ({ children, ...props }) => (
+export const Inline: ComponentStory<typeof AvatarInline> = (args) => (
   <Template>
-    <AvatarInline {...props} />
+    <AvatarInline {...args} />
   </Template>
 );
 

@@ -2,11 +2,11 @@ import * as React from 'react';
 
 export function useEventListener<T extends HTMLElement = HTMLDivElement>(
   eventName: string,
-  handler: Function,
+  handler: (event: any) => void,
   element?: React.RefObject<T>,
 ): void {
   // Create a ref that stores handler
-  const savedHandler = React.useRef<Function>();
+  const savedHandler = React.useRef<(event: any) => void>();
 
   React.useEffect(() => {
     // Define the listening target

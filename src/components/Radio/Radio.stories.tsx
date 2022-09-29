@@ -1,22 +1,23 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Radio, RadioProps } from './Radio';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Radio } from './Radio';
 
 export default {
   title: exportStory('Radio', 'form'),
   component: Radio,
-};
+} as ComponentMeta<typeof Radio>;
 
 const options = [{ text: 'Simple Radio', value: 1 }];
 
-export const Regular: React.FC<RadioProps> & { args: RadioProps } = ({ children, ...props }) => {
+export const Regular: ComponentStory<typeof Radio> = (args) => {
   const [checked, setChecked] = React.useState<string | number | undefined>();
 
   return (
     <Template>
-      <Radio options={options} value={checked} onChange={setChecked} {...props} />
+      <Radio options={options} value={checked} onChange={setChecked} {...args} />
     </Template>
   );
 };

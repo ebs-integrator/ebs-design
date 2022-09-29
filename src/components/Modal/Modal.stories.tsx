@@ -1,9 +1,10 @@
 import React from 'react';
-import { Icon, Button, Space } from 'components';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Modal as _Modal, ModalComponent as Modal, ModalProps } from './Modal';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Icon, Button, Space } from 'components';
+import { Modal as _Modal, ModalComponent as Modal } from './Modal';
 
 const { Content, Footer } = Modal;
 
@@ -14,11 +15,11 @@ export default {
   argTypes: {
     header: { control: 'text' },
   },
-};
+} as ComponentMeta<typeof _Modal>;
 
-export const Regular: React.FC<ModalProps> & { args: ModalProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof _Modal> = (args) => (
   <Template>
-    <Modal {...props}>
+    <Modal {...args}>
       <Modal.Content>Content</Modal.Content>
       <Modal.Footer>
         <Space justify="space-between">

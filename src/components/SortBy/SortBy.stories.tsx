@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { SortBy, SortByProps } from './SortBy';
 import { exportStory } from 'libs';
+import { SortBy } from './SortBy';
+import { Template } from 'components/storybook';
 
 export default {
   title: exportStory('SortBy', 'utils'),
   component: SortBy,
-};
+} as ComponentMeta<typeof SortBy>;
 
-export const Regular: React.FC<SortByProps> & { args: SortByProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof SortBy> = (args) => (
   <Template>
-    <SortBy {...props} />
+    <SortBy {...args} />
   </Template>
 );
 

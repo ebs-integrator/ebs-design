@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Tabs, TabsProps } from './Tabs';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+
 import { exportStory } from 'libs';
+import { Tabs } from './Tabs';
 
 export default {
   title: exportStory('Tabs', 'navigation'),
@@ -11,9 +13,9 @@ export default {
       control: { type: 'select' },
     },
   },
-};
+} as ComponentMeta<typeof Tabs>;
 
-export const Regular: React.FC<TabsProps> & { args: TabsProps } = ({ children, ...props }) => {
+export const Regular: ComponentStory<typeof Tabs> = ({ children, ...props }) => {
   const data = [
     {
       label: <span>First tab</span>,

@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Button, Space, Table } from 'components';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import Table from 'rc-table';
 
-import { Card, CardProps } from './Card';
 import { exportStory } from 'libs';
+import { Button, Space } from 'components';
+import { Card } from './Card';
 
 const { Header: CardHeader, Footer: CardFooter, Body: CardBody } = Card;
 
@@ -16,7 +18,7 @@ export default {
       control: { type: 'select' },
     },
   },
-};
+} as ComponentMeta<typeof Card>;
 
 const data = [
   { title: 'Test', desc: 'Desc', date: 'Today' },
@@ -43,8 +45,8 @@ const columns = [
   },
 ];
 
-export const Regular: React.FC<CardProps> & { args: CardProps } = ({ children, ...props }) => (
-  <Card {...props}>
+export const Regular: ComponentStory<typeof Card> = (args) => (
+  <Card {...args}>
     <Card.Header bordered>
       <Space align="center" justify="space-between">
         <Space align="center">

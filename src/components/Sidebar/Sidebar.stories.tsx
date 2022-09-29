@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Icon } from 'components';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import Sidebar from './Sidebar';
 import { exportStory } from 'libs';
+import { Icon } from 'components';
+import Sidebar from './Sidebar';
 
 const { TopMenu, BottomMenu, Options, Item } = Sidebar;
 const { TopSide, BottomSide, Item: OptionItem } = Options;
@@ -11,9 +12,9 @@ export default {
   title: exportStory('Sidebar', 'layout'),
   component: Sidebar,
   subcomponents: { TopMenu, BottomMenu, Options, Item, TopSide, BottomSide, OptionItem },
-};
+} as ComponentMeta<typeof Sidebar>;
 
-export const Regular = (): React.ReactNode => (
+export const Regular: ComponentStory<typeof Sidebar> = () => (
   <Sidebar>
     <TopMenu>
       <Item label="Category 1" prefix={<Icon type="search" />} text="Top parent tab">

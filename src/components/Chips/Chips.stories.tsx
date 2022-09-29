@@ -1,31 +1,34 @@
 import * as React from 'react';
-import { Icon } from 'components';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 
-import { Chips, ChipsProps } from './Chips';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Icon } from 'components/';
+import { Chips } from './Chips';
 
 export default {
   title: exportStory('Chips', 'data-display'),
   component: Chips,
   argTypes: {
     text: { control: 'text' },
-    prefix: { control: 'text' },
     suffix: { control: 'text' },
+    checked: { control: 'boolean' },
   },
-};
+} as ComponentMeta<typeof Chips>;
 
-export const Regular: React.FC<ChipsProps> = ({
-  children,
-  prefix = <Icon type="check" />,
-  text = 'Simple Chips',
-  ...props
-}) => {
-  const [checked, setChecked] = React.useState(false);
+export const Regular: ComponentStory<typeof Chips> = (args) => {
+  const [{ checked }, updateArgs] = useArgs();
 
   return (
     <Template>
-      <Chips onChange={setChecked} checked={checked} prefix={prefix} text={text} {...props} />
+      <Chips onChange={() => updateArgs({ checked: !checked })} {...args} />
     </Template>
   );
+};
+
+Regular.args = {
+  text: 'Simple Chip',
+  prefix: <Icon type="check" />,
+  checked: false,
 };
