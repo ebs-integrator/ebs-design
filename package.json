@@ -103,11 +103,6 @@
   "files": [
     "dist"
   ],
-  "jest": {
-    "moduleNameMapper": {
-      "atoms/(.*)": "<rootDir>/src/components/atoms/$1"
-    }
-  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,scss}": [
       "npx prettier --write -c .prettierrc"
