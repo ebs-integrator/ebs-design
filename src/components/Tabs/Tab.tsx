@@ -12,7 +12,7 @@ export interface TabProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'on
 /**
  * This component allows changing of the active Tab.
  */
-export const Tab: React.FC<TabProps> = ({ tabKey, disabled, label, className, onClick, ...props }) => {
+export const Tab = ({ tabKey, disabled, label, className, onClick, ...props }: TabProps) => {
   const { activeTab, setActiveTab } = useTabs();
 
   const handleClick = (): void => {

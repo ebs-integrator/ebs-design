@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const LinkBold: React.FC = (defaultProps) => {
+export const LinkBold = (defaultProps: React.HTMLAttributes<HTMLOrSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

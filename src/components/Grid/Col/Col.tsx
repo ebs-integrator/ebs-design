@@ -12,7 +12,7 @@ export interface ColProps extends Grid {
   xxl?: ColType | ColSizeType;
 }
 
-export const Col: React.FC<ColProps> = ({
+export const Col = ({
   size,
   sm,
   md,
@@ -27,7 +27,7 @@ export const Col: React.FC<ColProps> = ({
   style,
   children,
   ...props
-}) => (
+}: ColProps) => (
   <div
     className={cn(`col`, className, {
       [`col-${size}`]: size,

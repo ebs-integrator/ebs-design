@@ -24,7 +24,7 @@ export interface SortByProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   onChange: (newValue: string) => void;
 }
 
-export const SortBy: React.FC<SortByProps> = ({
+export const SortBy = ({
   title = 'Sort By',
   sortByTitle = 'by',
   size = 'medium',
@@ -32,7 +32,7 @@ export const SortBy: React.FC<SortByProps> = ({
   value,
   onChange,
   ...props
-}) => {
+}: SortByProps) => {
   const [selected, setSelected] = React.useState(options.find((item) => item.value === value?.replace('-', '')));
   const [type, setType] = React.useState(value?.charAt(0) === '-' ? SortDirection.DESC : SortDirection.ASC);
 

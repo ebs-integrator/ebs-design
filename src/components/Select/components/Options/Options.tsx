@@ -2,15 +2,11 @@ import * as React from 'react';
 import cn from 'classnames';
 import { useEventListener } from 'hooks';
 import { Space, Label, Loader } from 'components';
-import { Item, ItemProps } from './Item';
+import { Item } from './Item';
 
 import { Context } from '../../Context';
 import { SelectMode, OptionValue, Option } from '../../interfaces';
 import { ScrollMode } from '../Pagination';
-
-export interface OptionsComposition {
-  Item: React.FC<ItemProps>;
-}
 
 export interface OptionsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   mode?: SelectMode;
@@ -27,7 +23,7 @@ export interface OptionsProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
   onClickAddNew?: (value: string) => void;
 }
 
-const Options: React.FC<OptionsProps> = ({
+const Options = ({
   mode = 'single',
   scrollMode = 'regular',
   loading,
@@ -40,7 +36,7 @@ const Options: React.FC<OptionsProps> = ({
   onChange,
   onClickAddNew,
   ...props
-}) => {
+}: OptionsProps) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
   const { offsetBottom, maxHeight, setState } = React.useContext(Context);
   const [activeItem, setActiveItem] = React.useState(0);
@@ -180,9 +176,7 @@ const Options: React.FC<OptionsProps> = ({
   );
 };
 
-const OptionsComponent: React.FC<OptionsProps> & OptionsComposition = ({ ...props }) => {
-  return <Options {...props} />;
-};
+const OptionsComponent = (props: OptionsProps) => <Options {...props} />;
 
 OptionsComponent.displayName = 'Options';
 

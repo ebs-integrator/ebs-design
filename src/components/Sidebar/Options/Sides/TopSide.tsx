@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useLayoutState } from 'components/Layout/context';
 
-export const TopSide: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
+export const TopSide = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const { hasOptions, onSetHasOptions } = useLayoutState();
 
   React.useEffect(() => {

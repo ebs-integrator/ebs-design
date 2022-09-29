@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-const Copyright: React.FC = () => (
+const Copyright = () => (
   <>
     Designed by <b>EBS Integrator</b>
   </>
@@ -12,7 +12,7 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
   fixed?: boolean;
 }
 
-const Footer: React.FC<FooterProps> = ({ label = <Copyright />, fixed, className, children, ...props }) => (
+const Footer = ({ label = <Copyright />, fixed, className, children, ...props }: FooterProps) => (
   <footer className={cn('ebs-layout__footer', className, { 'ebs-layout__footer--fixed': fixed })} {...props}>
     {children || <span>{label}</span>}
   </footer>

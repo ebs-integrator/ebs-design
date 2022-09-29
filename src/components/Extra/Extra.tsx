@@ -9,7 +9,7 @@ export interface ExtraProps extends React.HTMLAttributes<HTMLDivElement> {
   text?: React.ReactNode;
 }
 
-export const Extra: React.FC<ExtraProps> = ({ className, status = 'text', disabled, text, ...props }) => {
+export const Extra = ({ className, status = 'text', disabled, text, ...props }: ExtraProps) => {
   if (!text) {
     return null;
   }

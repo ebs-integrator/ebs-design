@@ -14,7 +14,7 @@ export interface InputPhoneProps extends PhoneInputProps {
   isClearable?: boolean;
 }
 
-export const InputPhone: React.FC<InputPhoneProps> = ({
+export const InputPhone = ({
   className,
   dropdownClass,
   size = 'medium',
@@ -27,7 +27,7 @@ export const InputPhone: React.FC<InputPhoneProps> = ({
   extra,
   isClearable,
   ...props
-}) => (
+}: InputPhoneProps) => (
   <div className="ebs-input__phone-wrapper">
     <Label text={label} disabled={disabled} />
 

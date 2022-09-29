@@ -8,7 +8,7 @@ export interface TopbarProps extends React.HTMLAttributes<HTMLDivElement> {
   fixed?: boolean;
 }
 
-const Topbar: React.FC<TopbarProps> = ({ className, fixed, children, ...props }) => {
+const Topbar = ({ className, fixed, children, ...props }: TopbarProps) => {
   return (
     <div className={cn('ebs-layout__top-bar', className, { fixed })} {...props}>
       {children}

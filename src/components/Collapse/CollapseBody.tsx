@@ -5,7 +5,7 @@ import { CollapseContext } from './Collapse';
 
 export type CollapseBodyProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const CollapseBody: React.FC<CollapseBodyProps> = ({ className, style, children, ...props }) => {
+export const CollapseBody = ({ className, style, children, ...props }: CollapseBodyProps) => {
   const { height } = React.useContext(CollapseContext);
 
   return (

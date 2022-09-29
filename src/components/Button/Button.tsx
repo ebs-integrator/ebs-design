@@ -20,7 +20,7 @@ export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLBu
   round?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   submit = false,
   onClick,
   prefix,
@@ -33,7 +33,7 @@ export const Button: React.FC<ButtonProps> = ({
   block,
   round,
   ...props
-}) => {
+}: ButtonProps) => {
   return (
     <div
       className={cn(
@@ -78,7 +78,7 @@ export const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export const ButtonGroup: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className, ...props }) => (
+export const ButtonGroup = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn(`ebs-button__group`, className)} {...props}>
     {children}
   </div>

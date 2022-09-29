@@ -13,7 +13,7 @@ export interface FormGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   required?: boolean;
 }
 
-export const FormGroup: React.FC<FormGroupProps> = ({
+export const FormGroup = ({
   label,
   labelOptions,
   controlOptions,
@@ -22,7 +22,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   children,
   required,
   ...props
-}) => {
+}: FormGroupProps) => {
   const formCtx = React.useContext(FormContext);
 
   // Field's components props

@@ -10,13 +10,13 @@ export interface TopMenuProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   toggleText?: React.ReactNode;
 }
 
-export const TopMenu: React.FC<React.PropsWithChildren<TopMenuProps>> = ({
+export const TopMenu = ({
   className,
   showToggle = true,
   toggleText = 'Hide titles',
   children,
   ...props
-}) => {
+}: React.PropsWithChildren<TopMenuProps>) => {
   const { toggled, onSetToggled } = useLayoutState();
 
   return (

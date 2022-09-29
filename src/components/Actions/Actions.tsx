@@ -9,7 +9,7 @@ const ActionContext = React.createContext<ContextProps>({
   onClickItem: (onClick) => null,
 });
 
-export const Item = ({ children, onClick }: React.PropsWithChildren<{ onClick?: () => void }>) => {
+const Item = ({ children, onClick }: React.PropsWithChildren<{ onClick?: () => void }>) => {
   const { onClickItem } = React.useContext(ActionContext);
   const handleOnClick = (): void => {
     onClickItem(onClick);
@@ -27,7 +27,7 @@ export interface ActionsProps extends React.HTMLAttributes<HTMLDivElement> {
   placement?: 'right' | 'left' | 'top' | 'bottom';
 }
 
-export const Actions = ({
+const Actions = ({
   title = 'Actions',
   showTitle = true,
   placement = 'left',

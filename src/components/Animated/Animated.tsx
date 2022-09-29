@@ -14,13 +14,7 @@ export interface AnimatedProps
   children: any;
 }
 
-export const Animated: React.FC<AnimatedProps> = ({
-  startFrom = '0%',
-  debounce = 1,
-  duration = 500,
-  className,
-  ...props
-}) => {
+export const Animated = ({ startFrom = '0%', debounce = 1, duration = 500, className, ...props }: AnimatedProps) => {
   const [loading, setLoading] = React.useState(true);
   const timer = React.useRef<NodeJS.Timeout>();
 

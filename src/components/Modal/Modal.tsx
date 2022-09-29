@@ -7,11 +7,6 @@ import { ModalFooter } from './ModalFooter';
 
 export type ModalSize = 'small' | 'regular' | 'large';
 
-export interface ModalComposition {
-  Content: React.FC<React.HTMLAttributes<HTMLDivElement>>;
-  Footer: React.FC<React.HTMLAttributes<HTMLDivElement>>;
-}
-
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   open?: boolean;
   defaultOpen?: boolean;
@@ -23,7 +18,7 @@ export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({
+const Modal = ({
   open: isOpen = false,
   mask = true,
   size = 'regular',
@@ -33,7 +28,7 @@ const Modal: React.FC<ModalProps> = ({
   closeOnClickOutside = true,
   children,
   ...props
-}) => {
+}: React.PropsWithChildren<ModalProps>) => {
   const [open, setOpen] = React.useState(false);
   const createPortal = usePortal('modal-portal');
   useScrollToggler(open);
@@ -99,7 +94,7 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-const ModalComponent: React.FC<ModalProps> & ModalComposition = ({ ...props }) => <Modal {...props} />;
+const ModalComponent = (props: ModalProps) => <Modal {...props} />;
 
 ModalComponent.displayName = 'Modal';
 

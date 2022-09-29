@@ -16,7 +16,7 @@ export interface ItemProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement
   onClick?: (value: OptionValue) => void;
 }
 
-export const Item: React.FC<ItemProps> = ({
+export const Item = ({
   className,
   mode = 'single',
   onClick,
@@ -27,7 +27,7 @@ export const Item: React.FC<ItemProps> = ({
   active,
   selected,
   ...props
-}) => {
+}: ItemProps) => {
   const onClickHandler = (): void => {
     if (onClick) {
       onClick(value);

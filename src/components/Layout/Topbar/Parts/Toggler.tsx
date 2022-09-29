@@ -3,7 +3,7 @@ import { Icon } from 'components';
 
 import { useLayoutState } from '../../context';
 
-export const Toggler: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
+export const Toggler = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const { onSetOpened } = useLayoutState();
 
   return (

@@ -2,19 +2,14 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Height } from 'react-animate-height';
 import { SizeType } from 'types';
-import { CardHeader, CardHeaderProps } from './CardHeader';
-import { CardBody, CardBodyProps } from './CardBody';
-import { CardFooter, CardFooterProps } from './CardFooter';
+import { CardHeader } from './CardHeader';
+import { CardBody } from './CardBody';
+import { CardFooter } from './CardFooter';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: SizeType;
   collapsible?: boolean;
   collapsed?: boolean;
-}
-export interface CardComposition {
-  Header: React.FC<CardHeaderProps>;
-  Body: React.FC<CardBodyProps>;
-  Footer: React.FC<CardFooterProps>;
 }
 
 interface ContextProps {
@@ -28,14 +23,14 @@ const CardContext = React.createContext<ContextProps>({
   setHeight: () => null,
 });
 
-const Card: React.FC<CardProps> & CardComposition = ({
+const Card = ({
   size = 'medium',
   collapsible = false,
   collapsed = false,
   className,
   children,
   ...props
-}) => {
+}: React.PropsWithChildren<CardProps>) => {
   // Height is used for collapsible state
   const [height, setHeight] = React.useState<Height>(collapsed ? 0 : 'auto');
 

@@ -1,12 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Panel, PanelProps } from './Panel';
-import { Tab, TabProps } from './Tab';
-
-export interface TabsComposition {
-  Tab: React.FC<TabProps>;
-  Panel: React.FC<PanelProps>;
-}
+import { Panel } from './Panel';
+import { Tab } from './Tab';
 
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   activeTab?: string;
@@ -21,14 +16,7 @@ export interface TabsContextInterface {
 
 const TabsContext = React.createContext<TabsContextInterface | undefined>(undefined);
 
-const Tabs: React.FC<TabsProps> & TabsComposition = ({
-  activeTab,
-  setActiveTab,
-  className,
-  contentClass,
-  children,
-  ...props
-}) => {
+const Tabs = ({ activeTab, setActiveTab, className, contentClass, children, ...props }: TabsProps) => {
   const memoizedContextValue = React.useMemo(
     () => ({
       activeTab,

@@ -15,14 +15,9 @@ interface FormProps extends RCFormProps {
   draft?: boolean;
 }
 
-interface FormComposition {
-  Field: React.FC<FormFieldProps>;
-  Group: React.FC<FormGroupProps>;
-}
-
 const FormContext = React.createContext<FormProps>({});
 
-const Form: React.FC<React.PropsWithChildren<FormProps>> = ({
+const Form = ({
   type = 'vertical',
   draft,
   labelOptions,
@@ -31,7 +26,7 @@ const Form: React.FC<React.PropsWithChildren<FormProps>> = ({
   className,
   children,
   ...props
-}) => {
+}: React.PropsWithChildren<FormProps>) => {
   // Get label and control options
   const controlProps = getControlOptions(type, controlOptions);
   const labelProps = getLabelOptions(type, labelOptions);
@@ -45,7 +40,7 @@ const Form: React.FC<React.PropsWithChildren<FormProps>> = ({
   );
 };
 
-const FormComponent: React.FC<React.PropsWithChildren<FormProps>> & FormComposition = ({ ...props }) => {
+const FormComponent = (props: React.PropsWithChildren<FormProps>) => {
   return <Form {...props} />;
 };
 
@@ -54,4 +49,4 @@ FormComponent.displayName = 'Form';
 FormComponent.Field = FormField;
 FormComponent.Group = FormGroup;
 
-export { Form, FormComponent, FormContext, FormProps, FormComposition };
+export { Form, FormComponent, FormContext, FormProps };

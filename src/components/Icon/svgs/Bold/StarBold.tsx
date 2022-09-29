@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const StarBold: React.FC = (defaultProps) => {
+export const StarBold = (defaultProps: React.HTMLAttributes<HTMLOrSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

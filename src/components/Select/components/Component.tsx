@@ -32,7 +32,7 @@ export interface SelectProps
   onAddNew?: (value: string) => void;
 }
 
-const Select: React.FC<SelectProps> = ({
+const Select = ({
   mode = 'single',
   size = 'medium',
   valueMode = 'regular',
@@ -43,7 +43,7 @@ const Select: React.FC<SelectProps> = ({
   onChange,
   onSelect,
   ...props
-}) => {
+}: SelectProps) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
   const valueRef = React.useRef<HTMLDivElement | null>(null);
 

@@ -8,7 +8,7 @@ export interface ItemProps extends React.HTMLAttributes<HTMLDivElement> {
   onClick?: () => void;
 }
 
-export const Item: React.FC<ItemProps> = ({ className, onClick, active, disabled, text, ...props }) => {
+export const Item = ({ className, onClick, active, disabled, text, ...props }: ItemProps) => {
   const onClickHandler = (): void => {
     if (onClick !== undefined && !disabled) {
       onClick();

@@ -19,7 +19,7 @@ export interface LabelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   onClickSuffix?: () => void;
 }
 
-export const Label: React.FC<LabelProps> = ({
+export const Label = ({
   className,
   type = 'regular',
   status,
@@ -33,7 +33,7 @@ export const Label: React.FC<LabelProps> = ({
   onClickSuffix,
   disabled,
   ...props
-}) => {
+}: LabelProps) => {
   if (!text && !icon) {
     return null;
   }
