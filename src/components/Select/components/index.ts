@@ -2,5 +2,5 @@ export { InputSearchProps as SearchProps } from 'components/InputSearch/InputSea
 
 export { Select, SelectProps } from './Component';
 export { Search } from './Search';
-export { OptionsComponent, Options, OptionsProps, OptionsComposition } from './Options';
+export { OptionsComponent, Options, OptionsProps } from './Options';
 export { Pagination, PaginationProps } from './Pagination';

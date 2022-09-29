@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Select, SelectProps, Search, OptionsComponent, Pagination } from './components';
 import { Provider } from './Context';
 
-const SelectComponent = (props: SelectProps) => {
+export const SelectComponent = (props: SelectProps) => {
   return (
     <Provider>
       <Select {...props} />
