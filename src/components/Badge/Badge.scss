@@ -1,0 +1,80 @@
+.ebs-badge {
+  @include flex-center-vert;
+
+  min-width: rem($badge-min-size);
+  min-height: rem($badge-min-size);
+
+  &__container {
+    @include flex-center;
+    @include elevation-1;
+    @include fadeAnimation;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    background-color: $badge-regular-bg-color;
+    width: rem($badge-size);
+    height: rem($badge-size);
+    color: $black;
+    border-radius: rem($badge-border-radius);
+    padding: rem($badge-padding);
+    font-size: rem($badge-font-size);
+    font-weight: $badge-font-weight;
+    transform: $badge-transform;
+
+    &--text {
+      width: auto;
+      padding: rem($badge-text-padding);
+      border-radius: rem($badge-text-border-radius);
+    }
+  }
+
+  &__container + *:not(.ebs-button__wrapper) {
+    margin: 0 5px;
+  }
+
+  & span {
+    @include flex-center;
+    position: relative;
+
+    > .ebs-icon {
+      font-size: rem($badge-size);
+    }
+  }
+
+  &__type--success &__container {
+    background-color: $badge-success-bg-color;
+    color: $white;
+  }
+
+  &__type--info &__container {
+    background-color: $badge-info-bg-color;
+    color: $white;
+  }
+
+  &__type--warning &__container {
+    background-color: $badge-warning-bg-color;
+    color: $white;
+  }
+
+  &__type--danger &__container {
+    background-color: $badge-danger-bg-color;
+    color: $white;
+  }
+
+  .ebs-sidebar__prefix > & {
+    position: absolute;
+    left: rem(20px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: rem(18px);
+
+    .ebs-icon {
+      position: unset;
+      left: unset;
+      top: unset;
+      transform: unset;
+      margin-left: 0;
+    }
+  }
+}

@@ -1,0 +1,127 @@
+@keyframes toast-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.ebs-notify {
+  @include flex-center-column;
+  box-sizing: border-box;
+  position: absolute;
+  overflow: hidden auto;
+  z-index: 9999;
+  max-height: 100%;
+  width: rem($notify-width);
+  padding: rem($gutter-size);
+
+  > .ebs-space__item {
+    width: 100%;
+  }
+
+  .ebs-icon {
+    color: $notify-color;
+  }
+
+  &--top-right {
+    top: 0;
+    right: 0;
+  }
+
+  &--top-right &__item {
+    transition: transform 0.6s ease-in-out;
+    animation: toast-in-right 0.7s;
+  }
+
+  &--bottom-right {
+    bottom: 0;
+    right: 0;
+  }
+
+  &--bottom-right &__item {
+    transition: transform 0.6s ease-in-out;
+    animation: toast-in-right 0.7s;
+  }
+
+  &--top-left {
+    top: 0;
+    left: 0;
+  }
+
+  &--top-left &__item {
+    transition: transform 0.6s ease-in;
+    animation: toast-in-left 0.7s;
+  }
+
+  &--bottom-left {
+    bottom: 0;
+    left: 0;
+  }
+
+  &--bottom-left &__item {
+    transition: transform 0.6s ease-in;
+    animation: toast-in-left 0.7s;
+  }
+
+  &__item {
+    position: relative;
+    color: $notify-color;
+    padding: rem($notify-padding);
+    border-radius: $notify-border-radius;
+    box-shadow: $notify-box-shadow;
+
+    &-close {
+      position: absolute;
+      right: 0;
+      top: calc(#{rem($gutter-size)} / 4);
+    }
+
+    &--regular {
+      background-color: $white;
+      color: $text-color;
+
+      .ebs-icon {
+        color: var(--primary-color);
+      }
+    }
+
+    &--primary {
+      background-color: var(--primary-color);
+    }
+
+    &--success {
+      background-color: $success-color;
+    }
+
+    &--danger {
+      background-color: $danger-color;
+
+      .ebs-icon {
+        color: $white;
+      }
+    }
+
+    &--info {
+      background-color: $info-color;
+    }
+
+    &--warning {
+      background-color: $warning-color;
+    }
+
+    .ebs-icon:not(.ebs-icon--close) {
+      font-size: rem($gutter-size * 1.5);
+    }
+  }
+}

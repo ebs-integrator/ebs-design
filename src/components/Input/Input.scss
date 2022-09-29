@@ -1,0 +1,150 @@
+// Input
+.ebs-input__wrapper {
+  position: relative;
+  border: 1px solid $border-color;
+  background-color: $white;
+  border-radius: rem($border-radius);
+
+  &.has-prefix .ebs-input {
+    padding-left: rem(37.5px);
+  }
+
+  &.has-suffix .ebs-input {
+    padding-right: rem(37.5px);
+  }
+
+  &--active,
+  &.focus {
+    border-color: var(--primary-color);
+    background-color: $white;
+
+    .ebs-input {
+      color: $heading-color;
+    }
+  }
+
+  &--unactive {
+    border-color: $border-color;
+    background-color: $white;
+  }
+
+  &.has-error {
+    border-color: $danger-color;
+    background-color: $white;
+  }
+
+  &.disabled {
+    border-color: $grey-500;
+    background-color: $white;
+
+    .ebs-input {
+      color: $grey-500;
+      cursor: not-allowed;
+
+      @include placeholder {
+        color: $grey-500;
+      }
+    }
+  }
+
+  &.ebs-input-style--grey {
+    background-color: $grey-50;
+  }
+
+  .ebs-icon {
+    color: $heading-color;
+  }
+}
+
+// input html element
+.ebs-input {
+  @include fontRegular;
+  background: transparent;
+  border: none;
+  width: 100%;
+  display: block;
+  font-size: rem(14px);
+  padding: rem($select-padding-y $select-padding-x);
+  color: $heading-color;
+  min-height: 100%;
+
+  @include placeholder {
+    color: $text-color-secondary;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &-container {
+    position: relative;
+    width: 100%;
+  }
+
+  &__prefix,
+  &__suffix {
+    position: absolute;
+    left: rem(10px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+
+    .ebs-icon {
+      font-size: rem(16px);
+    }
+  }
+
+  &__prefix.clickable,
+  &__suffix.clickable {
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &__prefix.not-clickable,
+  &__suffix.not-clickable {
+    cursor: default;
+    z-index: 2;
+  }
+
+  &__wrapper:not(.has-prefix) &__prefix + &__container {
+    padding-left: calc(#{rem($gutter-size)} + #{rem($gutter-size)} / 2);
+  }
+
+  &__suffix {
+    left: inherit;
+    right: rem(10px);
+
+    & + .ebs-input__container .ebs-input__clear {
+      right: rem($gutter-size * 2);
+    }
+  }
+
+  // Sizes
+  &--small {
+    max-height: rem($base-size-sm);
+    font-size: rem(12px);
+    padding: rem($input-padding-y-sm $input-padding-x-sm);
+  }
+  &--medium {
+    max-height: rem($base-size);
+    padding: rem($input-padding-y $input-padding-x);
+  }
+  &--large {
+    max-height: rem($base-size-lg);
+    padding: rem($input-padding-y-lg $input-padding-x-lg);
+  }
+}
+
+.ebs-input__clear {
+  position: absolute;
+  right: calc(#{rem($gutter-size)} / 2);
+  top: 50%;
+  color: $text-color;
+  transform: translate3d(0, -50%, 0);
+  font-size: rem(22px);
+  display: inline-block;
+  padding: rem(0 7px);
+  margin: rem(0 -7px);
+  @include close-icon-container;
+}

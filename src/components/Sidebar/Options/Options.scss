@@ -1,0 +1,9 @@
+.ebs-optionsbar {
+  position: absolute;
+  top: 0;
+  width: rem($sidebar-width);
+  height: 100%;
+  background-color: $grey-50;
+  border-right: 1px solid $border-color;
+  transition: $transition-time;
+}

@@ -1,0 +1,169 @@
+@import '~rc-input-number/assets/index.css';
+
+.ebs-stepper__wrapper {
+  &.active .ebs-stepper,
+  &.active .ebs-stepper:hover {
+    border-color: var(--primary-color);
+    background-color: $white;
+
+    .rc-input-number-handler-wrap {
+      border-color: var(--primary-color);
+    }
+
+    .rc-input-number-input {
+      color: $heading-color;
+    }
+  }
+
+  &.has-error .ebs-stepper,
+  &.has-error .rc-input-number-handler-wrap {
+    border-color: $danger-color;
+  }
+
+  &.has-error .ebs-stepper__extra {
+    color: $danger-color;
+  }
+
+  &.disabled .ebs-stepper__label {
+    color: $grey-500;
+  }
+
+  &.disabled .ebs-stepper,
+  &.disabled .ebs-stepper:hover {
+    border-color: $grey-500;
+
+    &.rc-input-number-disabled .rc-input-number-input {
+      background-color: $white;
+
+      @include placeholder {
+        color: $grey-500;
+      }
+    }
+
+    .rc-input-number-handler-wrap,
+    .rc-input-number-handler-wrap:hover {
+      border-color: $grey-500;
+      color: $grey-500;
+    }
+  }
+
+  .ebs-stepper {
+    width: 100%;
+    height: rem($base-size);
+    border: 1px solid $border-color;
+    background-color: $white;
+    border-radius: rem($border-radius);
+
+    &:focus,
+    &:hover,
+    &.rc-input-number-focused {
+      box-shadow: inherit;
+      outline: none;
+    }
+
+    &:hover {
+      border-color: $border-color;
+
+      .rc-input-number-handler-wrap {
+        border-color: $border-color;
+      }
+    }
+
+    &.rc-input-number-focused {
+      border-color: var(--primary-color);
+      background-color: $white;
+
+      .rc-input-number-handler-wrap {
+        border-color: var(--primary-color);
+      }
+
+      .rc-input-number-input {
+        color: $heading-color;
+      }
+    }
+
+    // Label
+    &__label {
+      margin-bottom: rem(5px);
+      color: $text-color;
+      @include fontRegular;
+      font-size: rem(12px);
+    }
+
+    // Extra
+    &__extra {
+      margin-top: rem(2.5px);
+      color: $text-color-secondary;
+      @include fontRegular;
+      font-size: rem(10px);
+    }
+
+    .rc-input-number-handler-wrap {
+      border-color: $border-color;
+      width: rem(30px);
+    }
+
+    .rc-input-number-handler {
+      height: 50%;
+      width: 100%;
+    }
+
+    .rc-input-number-handler > * {
+      font-size: rem(8px);
+    }
+
+    .rc-input-number-handler.rc-input-number-handler-up,
+    .rc-input-number-handler.rc-input-number-handler-down {
+      position: relative;
+
+      .ebs-icon {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $text-color;
+      }
+    }
+
+    .rc-input-number-handler.rc-input-number-handler-up {
+      border-bottom-color: transparent;
+
+      .ebs-icon {
+        bottom: rem(2px);
+      }
+    }
+
+    .rc-input-number-handler.rc-input-number-handler-down {
+      border-bottom-color: transparent;
+
+      .ebs-icon {
+        top: rem(2px);
+        transform: translateX(-50%) rotate(180deg);
+      }
+    }
+
+    .rc-input-number-input-wrap .rc-input-number-input {
+      padding: rem(10px);
+      text-align: left;
+      color: $heading-color;
+      font-size: rem(14px);
+
+      @include placeholder {
+        color: $text-color-secondary;
+      }
+    }
+  }
+
+  &.left .rc-input-number-handler-wrap {
+    float: left;
+    border-left-width: 0px;
+    border-right-width: 1px;
+    border-right-style: solid;
+  }
+
+  &.right .rc-input-number-handler-wrap {
+    float: right;
+    border-right-width: 0px;
+    border-left-width: 1px;
+    border-left-style: solid;
+  }
+}

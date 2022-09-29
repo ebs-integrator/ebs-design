@@ -1,0 +1,10 @@
+.ebs-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+  animation: fadeIn 0.3s forwards;
+  background: rgba(0, 0, 0, 0.4);
+}

@@ -1,0 +1,49 @@
+.ebs-action__wrapper {
+  width: rem($gutter-size);
+  font-size: rem($gutter-size);
+}
+
+.ebs-action__tooltip {
+  min-width: rem($actions-tooltip-min-width);
+  padding: rem($actions-tooltip-padding);
+  max-height: rem($actions-tooltip-height);
+  overflow: hidden auto;
+
+  &-title {
+    @include fontMedium;
+    font-size: rem($actions-tooltip-title-font-size);
+    padding: rem($actions-tooltip-title-padding);
+    border-bottom: $actions-border;
+    color: $actions-tooltip-title-color;
+  }
+
+  &-item {
+    @include fontMedium;
+    cursor: pointer;
+    position: relative;
+    padding: rem($actions-tooltip-item-padding);
+    font-size: rem($actions-tooltip-item-font-size);
+    transition: $transition-time;
+
+    &:hover {
+      background-color: $background-content;
+      color: $link-hover-color;
+    }
+  }
+
+  &-item .loader-display {
+    display: inline-block;
+    margin-right: calc(#{rem($gutter-size)} / 2);
+    vertical-align: middle;
+  }
+
+  &-icon {
+    cursor: pointer;
+    display: block;
+    color: $text-color;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+}

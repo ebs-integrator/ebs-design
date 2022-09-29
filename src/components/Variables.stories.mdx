@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs';
 import { exportStory } from '../libs';
 
 <Meta title={exportStory('Variables/variables.scss', 'introduction')} />
@@ -311,7 +311,7 @@ $label-padding: 0 12px !default;
 $label-color: $text-color !default;
 $label-border: 1px solid !default;
 $label-border-radius: $border-radius !default;
-$label-circle-border-radius: $label-height / 2 !default;
+$label-circle-border-radius: 12px !default;
 
 // Sidebar
 //
@@ -362,7 +362,7 @@ $sort-by-text-hover-color: $white !default;
 // Scrollbar
 //
 // Define base size & colors of scrollbar
-$scrollbar-size: $gutter-size / 2 !default;
+$scrollbar-size: 8px !default;
 $scrollbar-track-background-color: $background-content !default;
 $scrollbar-thumb-background-color: $border-color !default;
 $scrollbar-thumb-hover-background-color: $primary-color !default;

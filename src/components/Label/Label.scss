@@ -1,0 +1,163 @@
+// Label
+.ebs-label {
+  @include fontRegular;
+  position: relative;
+  white-space: nowrap;
+  font-size: rem($label-font-size);
+  color: $label-color;
+  border-radius: rem($label-border-radius);
+
+  .ebs-icon {
+    color: $label-color;
+  }
+
+  // Statuses
+
+  &--success {
+    color: $success-color;
+    border-color: $success-color;
+  }
+
+  &--warning {
+    color: $warning-color;
+    border-color: $warning-color;
+  }
+
+  &--danger {
+    color: $danger-color;
+    border-color: $danger-color;
+  }
+
+  &--danger.ebs-label--icon {
+    background: $white;
+    border-color: $white;
+
+    .ebs-icon {
+      color: $danger-color;
+    }
+  }
+
+  &--info {
+    color: $info-color;
+    border-color: $info-color;
+  }
+
+  // Types
+
+  &--circle,
+  &--fill,
+  &--ghost {
+    @include flex-center;
+    display: inline-flex;
+    height: rem($label-height);
+    padding: rem($label-padding);
+  }
+
+  &--icon {
+    @include flex-center;
+    width: rem($gutter-size);
+    height: rem($gutter-size);
+    float: left;
+    padding: 0;
+    margin-right: calc(#{rem($gutter-size)} / 2);
+  }
+
+  &--circle {
+    font-size: rem($label-font-size);
+    border-radius: rem($label-circle-border-radius);
+
+    &.ebs-label--fill:not(.ebs-label--danger) {
+      color: $white;
+
+      .ebs-icon {
+        color: $white;
+      }
+    }
+
+    .ebs-icon {
+      color: $label-color;
+    }
+  }
+
+  &--ghost {
+    border: $label-border;
+  }
+
+  &--primary {
+    background-color: var(--primary-000);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  &--fill {
+    color: $white;
+    background-color: $label-color;
+
+    &.ebs-label--success {
+      background-color: $success-color;
+    }
+
+    &.ebs-label--warning {
+      background-color: $warning-color;
+    }
+
+    &.ebs-label--danger:not(.ebs-label--icon):not(.disabled) {
+      background-color: $danger-color;
+    }
+
+    &.ebs-label--info {
+      background-color: $info-color;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      color: $grey-500;
+      background: $grey-100;
+    }
+
+    &.ebs-icon {
+      color: $white;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $grey-500;
+    border-color: $grey-500;
+  }
+
+  &.has-prefix,
+  &.has-prefix.ebs-label--circle {
+    padding-left: rem(22.5px);
+  }
+
+  &.has-suffix,
+  &.has-suffix.ebs-label--circle {
+    padding-right: rem(27.5px);
+  }
+
+  &__prefix,
+  &__suffix {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+
+    .ebs-icon__close:hover svg {
+      opacity: 0.5;
+    }
+
+    svg {
+      font-size: rem(12px);
+    }
+  }
+
+  &__prefix {
+    left: rem(7.5px);
+  }
+
+  &__suffix {
+    right: rem(7.5px);
+  }
+}

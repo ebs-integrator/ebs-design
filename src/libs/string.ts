@@ -24,14 +24,24 @@ export const firstLetters = (target: string, count = 1): string =>
         .substr(0, count)
     : '';
 
-export const copyToClipboard = (str: string): void => {
-  const el = document.createElement('textarea');
+export const copyToClipboard = (str: string): Promise<void> => {
+  if (navigator.clipboard) {
+    try {
+      return navigator.clipboard.writeText(str);
+    } catch (err) {}
+  }
 
-  el.value = str;
-  document.body.appendChild(el);
+  return Promise.resolve(deprecatedCopyToClipboard(str));
 
-  el.select();
+  function deprecatedCopyToClipboard(str: string): void {
+    const el = document.createElement('textarea');
 
-  document.execCommand('copy');
-  document.body.removeChild(el);
+    el.value = str;
+    document.body.appendChild(el);
+
+    el.select();
+
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
 };

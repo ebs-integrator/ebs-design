@@ -1,0 +1,58 @@
+.ebs-textarea {
+  @include fontRegular;
+  font-size: rem(14px);
+  padding: rem(10px);
+  min-height: rem(80px);
+  width: 100%;
+  outline: none;
+  border: 1px solid $border-color;
+  border-radius: rem($border-radius);
+  background-color: $white;
+  color: $heading-color;
+
+  @include placeholder {
+    color: $text-color-secondary;
+  }
+
+  &.has-value {
+    border-color: var(--primary-color);
+  }
+
+  &.has-error {
+    border-color: $danger-color;
+  }
+
+  &.disabled {
+    border-color: $grey-500;
+  }
+
+  // Label
+  &__label {
+    @include fontRegular;
+
+    color: $text-color;
+    margin-bottom: rem(5px);
+    font-size: rem(12px);
+  }
+
+  &__label.disabled {
+    color: $grey-500;
+  }
+
+  // Extra
+  &__extra {
+    @include fontRegular;
+
+    color: $text-color-secondary;
+    margin-top: rem(2.5px);
+    font-size: rem(10px);
+  }
+
+  &__extra.has-error {
+    color: $danger-color;
+  }
+
+  &__extra.disabled {
+    color: $grey-500;
+  }
+}

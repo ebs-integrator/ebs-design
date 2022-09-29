@@ -1,0 +1,16 @@
+@mixin close-icon-container {
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  color: $text-color;
+
+  .ebs-icon {
+    padding: rem(3px);
+    font-size: 1rem;
+
+    path {
+      stroke-width: 1;
+    }
+  }
+}

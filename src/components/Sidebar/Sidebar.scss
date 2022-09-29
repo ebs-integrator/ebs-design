@@ -1,0 +1,138 @@
+@import './Item/Item';
+@import './Options/Options';
+@import './Options/Item/Item';
+
+.ebs-sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: rem($sidebar-width);
+  height: 100%;
+  border-right: $sidebar-border;
+  transition: width $transition-time;
+  background-color: $sidebar-background;
+  z-index: 5;
+
+  @include mq($until: small-desktop) {
+    padding-top: rem(80px);
+
+    &__mobile--closed,
+    &__mobile--opened {
+      transition: $transition-time;
+      padding-top: 0;
+    }
+
+    &__mobile--closed {
+      transform: translateX(-100%);
+    }
+
+    &__mobile--opened {
+      width: rem($sidebar-width);
+      transform: translateX(0);
+    }
+  }
+
+  &--toggled &__item.has-options + div {
+    position: absolute;
+    top: 0;
+  }
+
+  &__top {
+    height: 100%;
+    margin-top: rem(5px);
+    overflow: hidden auto;
+  }
+
+  &__text {
+    @include text-ellipsis;
+  }
+
+  &--untoggled &__options {
+    left: rem($sidebar-width);
+  }
+
+  &--toggled {
+    width: rem(57px);
+
+    @media (min-width: 54.84714em) {
+      + .ebs-layout__content-wrapper {
+        width: calc(100% - 4.38462rem);
+      }
+    }
+
+    .ebs-sidebar__label {
+      animation: fadeOut 0.1s;
+      white-space: nowrap;
+    }
+
+    .ebs-sidebar__item {
+      padding-right: 0;
+
+      .ebs-sidebar__text {
+        animation: fadeOut 0.1s;
+      }
+    }
+
+    .ebs-sidebar__suffix .ebs-icon {
+      right: calc(#{rem($gutter-size)} / 2);
+    }
+
+    .ebs-sidebar__options {
+      position: absolute;
+      top: 0;
+      left: rem(57px);
+    }
+
+    .ebs-sidebar__options .ebs-sidebar__item:hover,
+    .ebs-sidebar__options .ebs-sidebar__item.ebs-sidebar__item--active,
+    .ebs-sidebar__options .ebs-sidebar__item.ebs-sidebar__item--invert:hover,
+    .ebs-sidebar__options
+      .ebs-sidebar__item.ebs-sidebar__item--invert
+      .ebs-sidebar__item.ebs-sidebar__item--active:hover {
+      background-color: var(--primary-color);
+    }
+  }
+
+  &--toggled &__item {
+    z-index: 3;
+  }
+
+  &--toggled &__item.has-options {
+    padding-right: 0;
+  }
+
+  &--toggled &__item--active + .rah-static &__options &__item {
+    opacity: 1;
+    left: rem($layout-top-bar-height - 1);
+    transition: all $transition-time;
+  }
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($black, 0.5);
+    z-index: 4;
+    animation: fadeIn 0.3s forwards;
+  }
+
+  &__bottom {
+    position: sticky;
+    bottom: 0;
+    background-color: $sidebar-bottom-background;
+    width: 100%;
+    padding-bottom: rem(20px);
+    overflow: hidden;
+
+    @include mq($until: small-desktop) {
+      padding-bottom: rem(120px);
+    }
+  }
+
+  &__suffix,
+  &__prefix {
+    pointer-events: none;
+  }
+}

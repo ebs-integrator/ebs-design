@@ -76,6 +76,9 @@ $border-radius-lg: $border-radius !default;
 $transition-base: all 0.3s ease-in-out !default;
 $transition-time: 0.2s !default;
 
+// Animations
+$animation-base: loaderFade $transition-time forwards !default;
+
 // Shadows
 //
 // Set box shadows
@@ -114,9 +117,9 @@ $avatar-size-small: 30px !default;
 $avatar-size-big: 60px !default;
 $avatar-font-small: 9px !default;
 $avatar-font-big: 13px !default;
-$avatar-description-color: $primary-color !default;
+$avatar-description-color: var(--primary-color) !default;
 $avatar-status-active: $success-color !default;
-$avatar-status-regular: $primary-color !default;
+$avatar-status-regular: var(--primary-color) !default;
 $avatar-status-uanctive: $success-color !default;
 $avatar-short-alt-font-weight: $font-weight-bold !default;
 $avatar-inline-alt-font-weight: $font-weight-semibold !default;
@@ -135,7 +138,7 @@ $actions-tooltip-item-font-size: 12px !default;
 $actions-tooltip-item-padding: $actions-tooltip-title-padding !default;
 $actions-border: 1px solid $border-color !default;
 $actions-height: 36px !default;
-$actions-icon-color: $primary-color !default;
+$actions-icon-color: var(--primary-color) !default;
 $actions-icon-hover-color: $white !default;
 
 // Badges
@@ -181,7 +184,7 @@ $card-padding-y-lg: 20px !default;
 
 $card-border-radius: $border-radius !default;
 $card-border-color: $border-color !default;
-$card-bordered-color: $primary-color !default;
+$card-bordered-color: var(--primary-color) !default;
 $card-header-bg-color: $white !default;
 $card-body-bg-color: $grey-100 !default;
 $card-footer-bg-color: $white !default;
@@ -197,7 +200,7 @@ $collapse-padding-y-lg: 20px !default;
 
 $collapse-border-radius: $border-radius !default;
 $collapse-border-color: $border-color !default;
-$collapse-bordered-color: $primary-color !default;
+$collapse-bordered-color: var(--primary-color) !default;
 $collapse-header-bg-color: $white !default;
 $collapse-body-bg-color: $grey-100 !default;
 $collapse-group-box-shadow: $box-shadow !default;
@@ -205,10 +208,10 @@ $collapse-group-box-shadow: $box-shadow !default;
 // Links
 //
 // Style anchor elements.
-$link-color: $primary-color !default;
+$link-color: var(--primary-color) !default;
 $link-decoration: none !default;
 $link-shade-percentage: 20% !default;
-$link-hover-color: $primary-600 !default;
+$link-hover-color: var(--primary-600) !default;
 $link-hover-decoration: none !default;
 
 // ListGroup
@@ -256,16 +259,16 @@ $btn-border-radius: $border-radius !default;
 $btn-border-radius-sm: $border-radius-sm !default;
 $btn-border-radius-lg: $border-radius-lg !default;
 
-$btn-type-ghost-border-color: $primary-color !default;
+$btn-type-ghost-border-color: var(--primary-color) !default;
 $btn-type-ghost-background: transparent !default;
-$btn-type-ghost-color: $primary-color !default;
+$btn-type-ghost-color: var(--primary-color) !default;
 $btn-type-ghost-hover-color: $white !default;
-$btn-type-ghost-hover-background: $primary-color !default;
-$btn-type-ghost-hover-border-color: $primary-color !default;
+$btn-type-ghost-hover-background: var(--primary-color) !default;
+$btn-type-ghost-hover-border-color: var(--primary-color) !default;
 $btn-type-ghost-active-color: $white !default;
-$btn-type-ghost-active-background: $primary-600 !default;
-$btn-type-ghost-active-border-color: $primary-600 !default;
-$btn-type-ghost-icon-color: $primary-color !default;
+$btn-type-ghost-active-background: var(--primary-600) !default;
+$btn-type-ghost-active-border-color: var(--primary-600) !default;
+$btn-type-ghost-icon-color: var(--primary-color) !default;
 
 // Layout
 //
@@ -277,15 +280,15 @@ $layout-top-bar-background: $white !default;
 $layout-top-bar-side-left-margin-left: $gutter-size !default;
 $layout-top-bar-side-right-margin-left: $gutter-size !default;
 
-$layout-top-bar-avatar-background: $primary-color !default;
+$layout-top-bar-avatar-background: var(--primary-color) !default;
 $layout-top-bar-avatar-color: $white !default;
 $layout-top-bar-avatar-alt-color: $text-color !default;
-$layout-top-bar-avatar-icon-btn-color: $primary-color !default;
+$layout-top-bar-avatar-icon-btn-color: var(--primary-color) !default;
 $layout-top-bar-avatar-icon-btn-size: 32px !default;
 $layout-top-bar-avatar-icon-btn-padding: 0 !default;
 
-$layout-top-bar-toggler-color: $primary-color !default;
-$layout-top-bar-toggler-hover-color: $primary-color !default;
+$layout-top-bar-toggler-color: var(--primary-color) !default;
+$layout-top-bar-toggler-hover-color: var(--primary-color) !default;
 $layout-top-bar-toggler-border-color: $border-color !default;
 
 $layout-content-background: $white !default;
@@ -303,7 +306,7 @@ $label-padding: 0 12px !default;
 $label-color: $text-color !default;
 $label-border: 1px solid !default;
 $label-border-radius: $border-radius !default;
-$label-circle-border-radius: $label-height / 2 !default;
+$label-circle-border-radius: 12px !default;
 
 // Sidebar
 //
@@ -314,7 +317,7 @@ $sidebar-background: $white !default;
 $sidebar-bottom-background: $white !default;
 
 $sidebar-item-text-color: $text-color !default;
-$sidebar-item-hover-background: $primary-color !default;
+$sidebar-item-hover-background: var(--primary-color) !default;
 $sidebar-item-hover-color: $white !default;
 $sidebar-logo-width: $sidebar-width - $gutter-size * 3 !default;
 
@@ -336,7 +339,7 @@ $table-head-cell-text-align: left !default;
 $table-head-font-size: 13px !default;
 $table-head-background: $white !default;
 $table-head-cell-border: $table-border !default;
-$table-head-cell-bottom-border: 1px solid $primary-color !default;
+$table-head-cell-bottom-border: 1px solid var(--primary-color) !default;
 $table-sub-cell-border: $table-border !default;
 $table-font-size: $font-size-base !default;
 $table-filter-active-color: $text-color-secondary !default;
@@ -346,7 +349,7 @@ $table-filter-active-color: $text-color-secondary !default;
 // Customize height & icon of sortBy
 $sort-by-height: 36px !default;
 $sort-by-tooltip-height: 250px !default;
-$sort-by-icon-color: $primary-color !default;
+$sort-by-icon-color: var(--primary-color) !default;
 $sort-by-icon-hover-color: $white !default;
 $sort-by-text-color: $text-color !default;
 $sort-by-text-hover-color: $white !default;
@@ -354,20 +357,20 @@ $sort-by-text-hover-color: $white !default;
 // Scrollbar
 //
 // Define base size & colors of scrollbar
-$scrollbar-size: $gutter-size / 2 !default;
+$scrollbar-size: 8px !default;
 $scrollbar-track-background-color: $background-content !default;
 $scrollbar-thumb-background-color: $border-color !default;
-$scrollbar-thumb-hover-background-color: $primary-color !default;
+$scrollbar-thumb-hover-background-color: var(--primary-color) !default;
 
 // Icon
-$icon-svg-color: $primary-color !default;
+$icon-svg-color: var(--primary-color) !default;
 
 // Tabs
 $tab-item-margin: 0 30px 0 0 !default;
 $tab-item-padding: 20px 0 !default;
 $tab-border: none !default;
 $tab-border-bottom: 1px solid #111 !default;
-$tab-item-border-bottom-active: 2px solid $primary-color !default;
+$tab-item-border-bottom-active: 2px solid var(--primary-color) !default;
 $tab-item-disabled-color: $normal-color !default;
 $tab-content-padding: 10px !default;
 

@@ -1,0 +1,88 @@
+// animations
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loaderFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ebs-loader {
+  position: relative;
+  z-index: 2;
+
+  &,
+  .fade-in {
+    animation: $animation-base;
+    transition: opacity $transition-time;
+  }
+
+  &__inline {
+    color: $text-color-secondary;
+    @include fontRegular;
+    @include flex-center;
+    font-size: rem(14px);
+  }
+
+  &__inline &__spinner {
+    position: relative;
+    display: inline-block;
+    margin-right: rem(7.5px);
+  }
+
+  & > &__spinner {
+    position: absolute;
+  }
+
+  & > &__spinner.fixed {
+    position: fixed;
+  }
+
+  &__spinner {
+    width: rem(#{$base-size});
+    height: rem(#{$base-size});
+    border-radius: 50%;
+
+    transition-property: transform;
+    animation-name: rotate;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    &--small {
+      border: 2px solid $grey-500;
+      border-top: 2px solid var(--primary-color);
+      width: calc(#{rem($base-size)} / 2);
+      height: calc(#{rem($base-size)} / 2);
+      top: calc(50% - #{rem($base-size)} / 4);
+    }
+
+    &--middle {
+      border: 2px solid $grey-500;
+      border-top: 2px solid var(--primary-color);
+      width: rem(#{$base-size - $gutter-size});
+      height: rem(#{$base-size - $gutter-size});
+      top: calc(50% - #{$base-size - $gutter-size} / 2);
+      left: calc(50% - #{$base-size - $gutter-size} / 2);
+    }
+
+    &--regular {
+      border: 6px solid $grey-500;
+      border-top: 6px solid var(--primary-color);
+      width: rem(#{$base-size * 2});
+      height: rem(#{$base-size * 2});
+      top: calc(50% - #{$base-size});
+      left: calc(50% - #{$base-size});
+    }
+  }
+}
