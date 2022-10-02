@@ -1,5 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { makeBEM } from 'libs';
+
+const bem = makeBEM('ebs-label');
 
 export type LabelType = 'regular' | 'fill' | 'ghost' | 'primary';
 
@@ -40,20 +43,23 @@ export const Label: React.FC<LabelProps> = ({
 
   return (
     <div
-      className={cn(`ebs-label`, `ebs-label--${type}`, className, {
-        'ebs-label--icon': icon,
-        'ebs-label--icon-info': icon && icon.props && icon.props.type === 'info',
-        [`ebs-label--${status}`]: status,
-        'ebs-label--circle': circle,
-        'has-prefix': prefix,
-        'has-suffix': suffix,
-        disabled: disabled,
-      })}
+      className={cn(
+        bem(null, [type], {
+          [status as string]: status,
+          icon,
+          circle,
+          disabled,
+          'icon-info': icon && icon.props && icon.props.type === 'info',
+          'has-prefix': prefix,
+          'has-suffix': suffix,
+        }),
+        className,
+      )}
       onClick={onClick}
       {...props}
     >
       {prefix && (
-        <div className="ebs-label__prefix" onClick={onClickPrefix}>
+        <div className={bem('prefix')} onClick={onClickPrefix}>
           {prefix}
         </div>
       )}
@@ -61,7 +67,7 @@ export const Label: React.FC<LabelProps> = ({
       {text || icon}
 
       {suffix && (
-        <div className="ebs-label__suffix" onClick={onClickSuffix}>
+        <div className={bem('suffix')} onClick={onClickSuffix}>
           {suffix}
         </div>
       )}

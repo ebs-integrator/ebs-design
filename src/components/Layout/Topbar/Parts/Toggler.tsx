@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { Icon } from 'components';
 
+import { makeBEM } from 'libs';
 import { useLayoutState } from '../../context';
+
+const bem = makeBEM('ebs-layout');
 
 export const Toggler: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
   const { onSetOpened } = useLayoutState();
 
   return (
-    <div className="ebs-layout__top-bar-mobile" {...props}>
-      <div className="ebs-layout__top-bar-mobile--toggler" onClick={onSetOpened}>
+    <div className={bem('top-bar-mobile')} {...props}>
+      <div className={bem('top-bar-mobile', ['toggler'])} onClick={onSetOpened}>
         {children || <Icon type="menu-fold" model="bold" />}
       </div>
     </div>

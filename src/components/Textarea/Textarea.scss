@@ -14,15 +14,15 @@
     color: $text-color-secondary;
   }
 
-  &.has-value {
+  &--has-value {
     border-color: var(--primary-color);
   }
 
-  &.has-error {
+  &--has-error {
     border-color: $danger-color;
   }
 
-  &.disabled {
+  &--disabled {
     border-color: $grey-500;
   }
 

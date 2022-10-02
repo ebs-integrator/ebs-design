@@ -1,7 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Panel, PanelProps } from './Panel';
 import { Tab, TabProps } from './Tab';
+
+const bem = makeBEM('ebs-tabs');
 
 export interface TabsComposition {
   Tab: React.FC<TabProps>;
@@ -39,7 +43,7 @@ const Tabs: React.FC<TabsProps> & TabsComposition = ({
 
   return (
     <TabsContext.Provider value={memoizedContextValue} {...props}>
-      <div className={cn(`ebs-tabs`, className)}>
+      <div className={cn(bem(), className)}>
         {children &&
           React.Children.map(children, (child) => {
             if (child && (child as React.ReactElement).type === Tab) {
@@ -47,7 +51,7 @@ const Tabs: React.FC<TabsProps> & TabsComposition = ({
             }
           })}
       </div>
-      <div className={cn(`ebs-tabs__content`, contentClass)}>
+      <div className={cn(bem('content'), contentClass)}>
         {children &&
           React.Children.map(children, (child) => {
             if (child && (child as React.ReactElement).type !== Tab) {

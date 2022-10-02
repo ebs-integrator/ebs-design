@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Icon } from 'components';
 import RCUpload, { UploadProps } from 'rc-upload';
-import { isEqual } from 'libs';
+
+import { isEqual, makeBEM } from 'libs';
+
+const bem = makeBEM('ebs-upload');
 
 export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
   // FIXME: Fix any type for files
@@ -99,21 +102,21 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
         const fileProgress = progress[file.uid] || 100;
 
         return (
-          <div key={`${file?.name}-${idx}`} className="upload__container">
-            <div className="upload__file__remove" onClick={() => handleRemove(file, idx)}>
+          <div key={`${file?.name}-${idx}`} className={bem('container')}>
+            <div className={bem('file-remove')} onClick={() => handleRemove(file, idx)}>
               <Icon type="close" model="bold" />
             </div>
 
-            <div className="upload__file">
-              <a href={file?.url} target="_blank" rel="noopener noreferrer" className="upload__file__name">
+            <div className={bem('file')}>
+              <a href={file?.url} target="_blank" rel="noopener noreferrer" className={bem('file-name')}>
                 {file?.name}
               </a>
 
-              <div className="upload__status">
-                <div className="upload__progress">
-                  <span className="upload__progress__text">{fileProgress}%</span>
+              <div className={bem('status')}>
+                <div className={bem('progress')}>
+                  <span className={bem('progress-text')}>{fileProgress}%</span>
                   <span
-                    className="upload__progress__bar"
+                    className={bem('progress-bar')}
                     style={{ width: `${fileProgress}%`, flexBasis: `${fileProgress}%` }}
                   />
                 </div>
@@ -123,7 +126,7 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
         );
       })}
 
-      {internalFiles.length > 0 && internalError && <div className="upload__error">{internalError.message}</div>}
+      {internalFiles.length > 0 && internalError && <div className={bem('error')}>{internalError.message}</div>}
     </>
   );
 });

@@ -1,9 +1,11 @@
 import * as React from 'react';
-import cn from 'classnames';
 
+import { makeBEM } from 'libs';
 import { Topbar } from './Topbar';
 import { Container, Content, Footer } from './Parts';
 import { LayoutProvider } from './context';
+
+const bem = makeBEM('ebs-layout');
 
 const Layout = ({ className, children }: React.PropsWithChildren<JSX.IntrinsicElements['div']>) => {
   const childs = React.useMemo(() => React.Children.toArray(children), [children]);
@@ -25,10 +27,7 @@ const Layout = ({ className, children }: React.PropsWithChildren<JSX.IntrinsicEl
           const isFooter = child.type === Footer;
 
           return child.type === Content ? (
-            <div
-              key={i}
-              className={cn('ebs-layout__container', { 'ebs-layout__container--has-fixed-footer': isFixedFooter })}
-            >
+            <div key={i} className={bem('container', { 'has-fixed-footer': isFixedFooter })}>
               {child}
               {FooterElement}
             </div>

@@ -109,14 +109,14 @@
     }
   }
 
-  &__card {
+  &-card {
     display: inline-flex;
     align-items: center;
     background-color: #f9f9f9;
     border: 1px solid #dfddd6;
     border-radius: rem($border-radius);
 
-    &-alt {
+    &__alt {
       color: #333;
       padding: 0 calc(#{rem($gutter-size)} / 2);
       border-top-right-radius: rem($border-radius);
@@ -138,17 +138,17 @@
     }
   }
 
-  &__inline {
+  &-inline {
     display: flex;
     align-items: center;
     text-align: left;
 
-    &--reversed &-alt {
+    &--reversed &__alt {
       margin-left: 0;
       margin-right: rem($gutter-size);
     }
 
-    &-alt {
+    &__alt {
       margin-left: rem($gutter-size);
       font-size: rem(12px);
       color: $black;
@@ -156,11 +156,11 @@
       font-weight: $avatar-inline-alt-font-weight;
     }
 
-    &--light &-alt {
+    &--light &__alt {
       color: $white;
     }
 
-    &-description {
+    &__description {
       @include text-ellipsis;
       font-size: rem(10px);
       color: $avatar-description-color;

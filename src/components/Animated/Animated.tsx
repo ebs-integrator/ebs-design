@@ -1,5 +1,4 @@
 import * as React from 'react';
-import cn from 'classnames';
 import AnimateHeight from 'react-animate-height';
 
 export interface AnimatedProps
@@ -47,7 +46,7 @@ export const Animated: React.FC<AnimatedProps> = ({
   }
 
   return (
-    <AnimateHeight {...props} duration={duration} height={loading ? startFrom : 'auto'} className={cn(className)}>
+    <AnimateHeight {...props} duration={duration} height={loading ? startFrom : 'auto'} className={className}>
       {props.children}
     </AnimateHeight>
   );

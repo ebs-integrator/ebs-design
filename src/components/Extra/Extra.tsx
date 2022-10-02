@@ -1,5 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { makeBEM } from 'libs';
+
+const bem = makeBEM('ebs-extra');
 
 export type ExtraStatus = 'success' | 'warning' | 'danger' | 'info' | 'text';
 
@@ -15,7 +18,7 @@ export const Extra: React.FC<ExtraProps> = ({ className, status = 'text', disabl
   }
 
   return (
-    <div className={cn(`ebs-extra`, `ebs-extra--${status}`, className, { disabled: disabled })} {...props}>
+    <div className={cn(bem(null, [status], { disabled }), className)} {...props}>
       {text}
     </div>
   );

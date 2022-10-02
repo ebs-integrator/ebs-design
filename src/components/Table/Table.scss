@@ -87,14 +87,14 @@
     }
   }
 
-  &__mobile {
+  &-mobile {
     display: none;
 
     @include mq($until: desktop) {
       display: block;
     }
 
-    &-item {
+    &__item {
       @include elevation-2;
       position: relative;
       border: $table-body-mobile-cell-border;

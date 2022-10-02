@@ -1,9 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { ReducerLayoutActionType, useLayoutDispatch } from 'components/Layout/context';
 
+import { makeBEM } from 'libs';
+import { ReducerLayoutActionType, useLayoutDispatch } from 'components/Layout/context';
 import { Item } from './Item';
 import { TopSide, BottomSide } from './Sides';
+
+const bem = makeBEM('ebs-sidebar');
 
 const Options: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
   const dispatch = useLayoutDispatch();
@@ -13,7 +16,7 @@ const Options: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...
   }, [dispatch]);
 
   return (
-    <div className={cn(`ebs-optionsbar`, 'ebs-sidebar__options')} {...props}>
+    <div className={cn(bem('options'), 'ebs-optionsbar')} {...props}>
       {children}
     </div>
   );

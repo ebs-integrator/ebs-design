@@ -1,9 +1,13 @@
 import * as React from 'react';
 import cn from 'classnames';
+
 import { SizeType } from 'types';
+import { makeBEM } from 'libs';
 import { CardHeader, CardHeaderProps } from './CardHeader';
 import { CardBody, CardBodyProps } from './CardBody';
 import { CardFooter, CardFooterProps } from './CardFooter';
+
+const bem = makeBEM('ebs-card');
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: SizeType;
@@ -39,7 +43,7 @@ const Card: React.FC<CardProps> & CardComposition = ({
   const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
 
   return (
-    <div className={cn(`ebs-card ebs-card--${size}`, className, { 'ebs-card--collapsed': height === 0 })} {...props}>
+    <div className={cn(bem(null, [size], { collapsed: height === 0 }), className)} {...props}>
       <CardContext.Provider value={{ height, setHeight, collapsible }}>{children}</CardContext.Provider>
     </div>
   );

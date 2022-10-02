@@ -9,7 +9,7 @@ export interface ListGroupComposition {
 export type ListGroupProps = React.HTMLAttributes<HTMLDivElement>;
 
 const ListGroup: React.FC<ListGroupProps> & ListGroupComposition = ({ className, children, ...props }) => (
-  <div className={cn(`ebs-list-group`, className)} {...props}>
+  <div className={cn('ebs-list-group', className)} {...props}>
     {children}
   </div>
 );

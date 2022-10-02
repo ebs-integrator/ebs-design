@@ -1,22 +1,25 @@
 import * as React from 'react';
 import ReactDatePicker from 'react-datepicker';
 import cn from 'classnames';
-import { isEqual } from 'libs';
 
+import { isEqual, makeBEM } from 'libs';
 import { RangePickerProps, DateValueType, DateType } from './types';
 import { getDefaultDateFormat, getOutputDate, parseDate } from './utils';
 
+const rangeBem = makeBEM('ebs-rangepicker');
+const dateBem = makeBEM('ebs-datepicker');
+
 const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
-  ({ size = 'medium', startProps, endProps, value, onChange, ...props }, ref) => {
+  ({ size = 'medium', startProps, endProps, value, onChange, className, disabled, ...props }, ref) => {
     const [startDate, setStartDate] = React.useState<DateValueType>();
     const [endDate, setEndDate] = React.useState<DateValueType>();
     const [loaded, setLoaded] = React.useState(false);
     const [isOpen, setIsOpen] = React.useState(false);
 
-    const dateFormat = React.useMemo(() => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect), [
-      props.dateFormat,
-      props.showTimeSelect,
-    ]);
+    const dateFormat = React.useMemo(
+      () => props?.dateFormat || getDefaultDateFormat(props?.showTimeSelect),
+      [props.dateFormat, props.showTimeSelect],
+    );
 
     const dateRange = React.useMemo(() => {
       const outputStartDate = getOutputDate(startDate, dateFormat);
@@ -46,10 +49,7 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
     }, [dateRange]);
 
     return (
-      <div
-        className={cn('ebs-rangepicker', props.className, { 'is-opened': isOpen, disabled: props.disabled })}
-        style={props.style}
-      >
+      <div className={cn(rangeBem(null, { disabled, 'is-open': isOpen }), className)} style={props.style}>
         <ReactDatePicker
           value={value as any}
           {...props}
@@ -61,9 +61,9 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
           selectsStart
           startDate={startDate}
           endDate={endDate}
-          className={cn(`ebs-datepicker ebs-datepicker--${size}`, startProps?.className)}
-          wrapperClassName={cn('ebs-datepicker__wrapper', startProps?.wrapperClassName)}
-          popperClassName={cn('ebs-datepicker__popper', startProps?.popperClassName)}
+          className={cn(dateBem(null, [size]), startProps?.className)}
+          wrapperClassName={cn(dateBem('wrapper'), startProps?.wrapperClassName)}
+          popperClassName={cn(dateBem('popper'), startProps?.popperClassName)}
           onCalendarOpen={() => setIsOpen(true)}
           onCalendarClose={() => setIsOpen(false)}
         />
@@ -80,9 +80,9 @@ const RangePicker = React.forwardRef<ReactDatePicker, RangePickerProps>(
           selectsEnd
           startDate={startDate}
           endDate={endDate}
-          className={cn(`ebs-datepicker ebs-datepicker--${size}`, endProps?.className)}
-          wrapperClassName={cn('ebs-datepicker__wrapper', endProps?.wrapperClassName)}
-          popperClassName={cn('ebs-datepicker__popper', endProps?.popperClassName)}
+          className={cn(dateBem(null, [size]), endProps?.className)}
+          wrapperClassName={cn(dateBem('wrapper'), endProps?.wrapperClassName)}
+          popperClassName={cn(dateBem('popper'), endProps?.popperClassName)}
           onCalendarOpen={() => setIsOpen(true)}
           onCalendarClose={() => setIsOpen(false)}
         />

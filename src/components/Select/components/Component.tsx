@@ -1,10 +1,13 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Input, Icon, Label, Loader, Tooltip } from 'components';
 import { SizeType } from 'types';
-
 import useSelect from '../Hook';
 import { SelectMode, ValueMode, OptionsMode, Option, OptionValue } from '../interfaces';
+
+const bem = makeBEM('ebs-select');
 
 export interface SelectProps
   extends Omit<Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onChange'>, 'onSelect'> {
@@ -42,6 +45,7 @@ const Select: React.FC<SelectProps> = ({
   children,
   onChange,
   onSelect,
+  disabled,
   ...props
 }) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
@@ -90,48 +94,39 @@ const Select: React.FC<SelectProps> = ({
   return (
     <div
       ref={ref}
-      className={cn(`ebs-select__wrapper`, `ebs-select--${mode}`, `ebs-select--${valueMode}`, className, {
-        'ebs-select--box': isBox,
-        active: hasValue,
-        disabled: props.disabled,
-      })}
+      className={cn(bem('wrapper', { mode, valueMode, disabled, active: hasValue, box: isBox }), className)}
       tabIndex={0}
       {...props}
     >
-      <Label text={props.label} disabled={props.disabled} />
+      <Label text={props.label} disabled={disabled} />
 
       <Tooltip
         className="ebs-tooltip--overtop"
         visible={!isBox && isOpen}
         trigger={null}
-        tooltip={!props.disabled && (isOpen ? dropdownOptions : null)}
+        tooltip={!disabled && (isOpen ? dropdownOptions : null)}
         offset={[0, 10]}
         bodyClass="p-0"
       >
-        <div className="ebs-select-dropdown__wrapper">
-          <div className="ebs-select-dropdown__container">
-            {prefix && <div className="ebs-select__prefix">{prefix}</div>}
+        <div className={bem('dropdown-wrapper')}>
+          <div className={bem('dropdown-container')}>
+            {prefix && <div className={bem('prefix')}>{prefix}</div>}
 
-            <div
-              className={cn('ebs-select', `ebs-select--${size}`, {
-                'ebs-select--tags': mode === 'tags',
-                'has-suffix': props.suffix,
-              })}
-            >
-              <div className="ebs-select-value">
-                <div ref={valueRef} className="ebs-select-value__container">
+            <div className={bem(null, [size], { tags: mode === 'tags', 'has-suffix': props.suffix })}>
+              <div className={bem('value')}>
+                <div ref={valueRef} className={bem('value-container')}>
                   {loading && !isOpen && !isBox ? (
                     <Loader.Inline />
                   ) : Array.isArray(textValue) && textValue?.length ? (
                     textValue.map((item) => (
                       <Label
                         key={item.value}
-                        className="ebs-select-label"
+                        className={bem('label')}
                         type="primary"
                         circle
                         text={item.text}
-                        suffix={!props.disabled ? <div className="ebs-select__clear">&#215;</div> : undefined}
-                        onClickSuffix={() => !props.disabled && onDeleteSelect(item.value)}
+                        suffix={!disabled ? <div className={bem('clear')}>&#215;</div> : undefined}
+                        onClickSuffix={() => !disabled && onDeleteSelect(item.value)}
                       />
                     ))
                   ) : (textValue as Option).value ? (
@@ -152,23 +147,23 @@ const Select: React.FC<SelectProps> = ({
                 </div>
               </div>
 
-              {hasValue && props.isClearable && !props.disabled ? (
-                <div className="ebs-select__clear" onClick={onClear}>
+              {hasValue && props.isClearable && !disabled ? (
+                <div className={bem('clear')} onClick={onClear}>
                   &#215;
                 </div>
               ) : null}
 
               {!isBox && (
-                <div className="ebs-select__suffix">
-                  <Icon type={`arrow-${!props.disabled && isOpen ? 'top' : 'bottom'}`} model="bold" />
+                <div className={bem('suffix')}>
+                  <Icon type={`arrow-${!disabled && isOpen ? 'top' : 'bottom'}`} model="bold" />
                 </div>
               )}
             </div>
 
-            {props.suffix && <div className="ebs-select__suffix">{props.suffix}</div>}
+            {props.suffix && <div className={bem('suffix')}>{props.suffix}</div>}
           </div>
 
-          {!props.disabled && (isBox ? dropdownOptions : null)}
+          {!disabled && (isBox ? dropdownOptions : null)}
         </div>
       </Tooltip>
     </div>

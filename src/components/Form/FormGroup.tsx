@@ -1,10 +1,14 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Row, RowProps } from 'components/Grid/Row/Row';
 import { Col } from 'components/Grid/Col/Col';
 import { LabelOptions, ControlOptions } from './interface';
 import { FormContext } from './Form';
 
+const formBem = makeBEM('ebs-form');
+const fieldBem = makeBEM(formBem('field'));
 export interface FormGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string;
   labelOptions?: LabelOptions;
@@ -34,18 +38,18 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   const fieldRowProps = Object.assign({}, formCtx.fieldRow, fieldRow);
 
   return (
-    <Row className={cn(`ebs-form__item ebs-form__group`, className)} {...fieldRowProps} {...props}>
+    <Row className={cn(formBem('item'), formBem('group'), className)} {...fieldRowProps} {...props}>
       <Col {...labelProps.col}>
         <div
-          className={cn('ebs-form__field__label', labelProps.className, {
+          className={cn(fieldBem('label'), labelProps.className, {
             [`align-items--${labelProps.align}`]: labelProps.align,
             [`justify-content--${labelProps.justify}`]: labelProps.justify,
           })}
         >
-          {label} {label && required && <span className="ebs-form__field__required">*</span>}
+          {label} {label && required && <span className={formBem('required')}>*</span>}
         </div>
       </Col>
-      <Col {...controlProps.col} className={cn('ebs-form__field__control', controlProps.className)}>
+      <Col {...controlProps.col} className={cn(fieldBem('control'), controlProps.className)}>
         {children}
       </Col>
     </Row>

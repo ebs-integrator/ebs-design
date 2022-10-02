@@ -1,9 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Checkbox } from 'components';
 
+import { makeBEM } from 'libs';
+import { Checkbox } from 'components';
 import { SelectMode, OptionValue } from '../../../interfaces';
 
+const bem = makeBEM('ebs-select');
 export interface ItemProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onClick'> {
   mode?: SelectMode;
   prefix?: React.ReactElement;
@@ -38,21 +40,16 @@ export const Item: React.FC<ItemProps> = ({
 
   return (
     <div
-      className={cn(`ebs-select__options-item`, className, {
-        active: active,
-        selected: selected,
-        'has-prefix': prefix,
-        'has-suffix': suffix,
-      })}
+      className={cn(bem('options-item', { active, selected, 'has-prefix': prefix, 'has-suffix': suffix }), className)}
       onClick={onClickHandler}
       {...props}
     >
-      {prefix && <div className="ebs-select__options-item-prefix">{prefix}</div>}
+      {prefix && <div className={bem('options-item-prefix')}>{prefix}</div>}
 
-      <div className="ebs-select__options-item-text">{text}</div>
+      <div className={bem('options-item-text')}>{text}</div>
 
       {suffix || isMultiple ? (
-        <div className="ebs-select__options-item-suffix">{isMultiple ? <Checkbox checked={active} /> : suffix}</div>
+        <div className={bem('options-item-suffix')}>{isMultiple ? <Checkbox checked={active} /> : suffix}</div>
       ) : null}
     </div>
   );

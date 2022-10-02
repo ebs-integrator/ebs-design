@@ -56,7 +56,7 @@
     border-bottom-right-radius: 0;
   }
 
-  &.ebs-sort-asc > .ebs-button__wrapper .ebs-icon {
+  &--asc > .ebs-button__wrapper .ebs-icon {
     transform: rotate(180deg);
   }
 

@@ -1,5 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { makeBEM } from 'libs';
+
+const bem = makeBEM('ebs-switch');
 
 export interface SwitchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   disabled?: boolean;
@@ -12,15 +15,13 @@ export const Switch: React.FC<SwitchProps> = ({ className, disabled, checked, on
 
   return (
     <div
-      className={cn(`ebs-switch`, `ebs-switch--${checked ? `checked` : `unchecked`}`, className, {
-        disabled: disabled,
-      })}
+      className={cn(bem(null, { disabled }, [checked ? 'checked' : 'unchecked']), className)}
       onClick={onClickHandler}
       {...props}
     >
-      {checked && <div className="ebs-switch__checked-sheet" />}
+      {checked && <div className={bem('checked-sheet')} />}
 
-      <div className="ebs-switch__dot" />
+      <div className={bem('dot')} />
     </div>
   );
 };

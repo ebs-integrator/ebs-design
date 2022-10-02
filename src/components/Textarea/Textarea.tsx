@@ -1,6 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Extra, Label } from 'components/';
+
+import { makeBEM } from 'libs';
+import { Extra, Label } from 'components';
+
+const bem = makeBEM('ebs-textarea');
 
 export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   onChange?: (value: string) => void;
@@ -15,12 +19,12 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       onChange !== undefined ? onChange(ev.target.value) : undefined;
 
     return (
-      <div className={cn(`ebs-textarea__wrapper`, className)}>
+      <div className={cn(bem('wrapper'), className)}>
         <Label text={label} disabled={disabled} />
 
         <textarea
           ref={ref}
-          className={cn(`ebs-textarea`, { has__value: value, 'has-error': hasError, disabled: disabled })}
+          className={bem(null, { 'has-value': value, 'has-error': hasError, disabled })}
           onChange={onChangeHandler}
           value={value || ''}
           disabled={disabled}

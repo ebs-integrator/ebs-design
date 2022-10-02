@@ -1,9 +1,13 @@
 import * as React from 'react';
 import cn from 'classnames';
+
 import { SizeType } from 'types';
+import { makeBEM } from 'libs';
 import { CollapseGroup, CollapseGroupProps } from './CollapseGroup';
 import { CollapseHeader, CollapseHeaderProps } from './CollapseHeader';
 import { CollapseBody, CollapseBodyProps } from './CollapseBody';
+
+const bem = makeBEM('ebs-collapse');
 
 export interface CollapseProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsed?: boolean;
@@ -44,7 +48,7 @@ const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
   }, [collapsed]);
 
   return (
-    <div className={cn(`ebs-collapse ebs-collapse--${size}`, className)} {...props}>
+    <div className={cn(bem(null, [size], { bordered }), className)} {...props}>
       <CollapseContext.Provider value={{ height, setHeight, bordered }}>{children}</CollapseContext.Provider>
     </div>
   );

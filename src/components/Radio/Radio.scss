@@ -4,7 +4,7 @@
     flex-wrap: wrap;
   }
 
-  &.ebs-radio__align--left {
+  &--left {
     .ebs-radio {
       right: inherit;
       left: 0;
@@ -15,7 +15,7 @@
     }
   }
 
-  &.ebs-radio__align--right {
+  &--right {
     .ebs-radio {
       left: inherit;
       right: 0;
@@ -34,12 +34,12 @@
       margin-bottom: rem(5px);
     }
 
-    &.has-text .ebs-radio {
+    &--has-text .ebs-radio {
       position: absolute;
       top: rem(-2px);
     }
 
-    &.disabled {
+    &--disabled {
       .ebs-radio__input {
         cursor: not-allowed;
       }

@@ -2,7 +2,11 @@ import * as React from 'react';
 import cn from 'classnames';
 import InputNumber from 'rc-input-number';
 import { InputNumberProps } from 'rc-input-number/es/interface';
+
+import { makeBEM } from 'libs';
 import { Extra, Icon, Label } from 'components';
+
+const bem = makeBEM('ebs-stepper');
 
 export type AlignType = 'left' | 'right';
 
@@ -37,17 +41,11 @@ export const Stepper: React.FC<StepperProps> = ({
   value,
   ...props
 }) => (
-  <div
-    className={cn(`ebs-stepper__wrapper`, align, className, {
-      'has-error': hasError,
-      active: value,
-      disabled: disabled,
-    })}
-  >
+  <div className={cn(bem('wrapper', { 'has-error': hasError, active: value, disabled }), className, align)}>
     <Label text={label} disabled={disabled} />
 
     <InputNumber
-      className="ebs-stepper"
+      className={bem()}
       disabled={disabled}
       value={value}
       {...props}

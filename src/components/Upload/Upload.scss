@@ -11,7 +11,7 @@
     @include text-ellipsis;
     width: 100%;
 
-    &__remove {
+    &-remove {
       margin-right: 10px;
 
       &:hover {
@@ -21,13 +21,13 @@
         color: $text-color;
       }
     }
-    &__name {
+    &-name {
       font-weight: 600;
       margin-bottom: 7px;
       font-size: rem(13px);
       color: $text-color;
     }
-    &__size {
+    &_size {
       min-width: 80px;
       margin-right: 10px;
     }
@@ -43,10 +43,10 @@
     @include flex-center-vert;
     width: 100%;
 
-    &__text {
+    &-text {
       margin-right: 10px;
     }
-    &__bar {
+    &-bar {
       background-color: var(--primary-color);
       flex-grow: 0;
       height: 4px;

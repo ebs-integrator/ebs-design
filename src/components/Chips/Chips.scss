@@ -58,29 +58,30 @@
     font-size: rem(12px);
   }
 
-  &.has-prefix {
+  &--has-prefix {
     padding-left: rem(28px);
   }
 
-  &.has-suffix {
+  &--has-suffix {
     padding-right: rem(28px);
   }
 
-  &.disabled {
+  &--disabled {
     cursor: not-allowed;
   }
 
-  &.disabled,
-  &.disabled:hover {
+  // TODO: Set disabled style. Which one?
+  &--disabled,
+  &--disabled:hover {
     background-color: $border-color;
     border-color: $border-color;
     color: $grey-500;
   }
 
-  &.disabled,
-  &.disabled:hover {
-    background-color: transparent;
-    border-color: $border-color;
-    color: $border-color;
-  }
+  // &--disabled,
+  // &--disabled:hover {
+  //   background-color: transparent;
+  //   border-color: $border-color;
+  //   color: $border-color;
+  // }
 }

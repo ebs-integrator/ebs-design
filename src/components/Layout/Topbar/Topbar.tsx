@@ -1,8 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
 
+import { makeBEM } from 'libs';
 import { Title, Toggler } from './Parts';
 import { LeftSide, RightSide } from './Sides';
+
+const bem = makeBEM('ebs-layout');
 
 export interface TopbarProps extends React.HTMLAttributes<HTMLDivElement> {
   fixed?: boolean;
@@ -10,7 +13,7 @@ export interface TopbarProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Topbar: React.FC<TopbarProps> = ({ className, fixed, children, ...props }) => {
   return (
-    <div className={cn('ebs-layout__top-bar', className, { fixed })} {...props}>
+    <div className={cn(bem('top-bar', { fixed }), className)} {...props}>
       {children}
     </div>
   );

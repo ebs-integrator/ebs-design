@@ -1,8 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Tooltip } from 'components/Tooltip/Tooltip';
 import { Icon } from 'components/Icon/Icon';
 import { Button, ButtonSize } from 'components/Button/Button';
+
+const bem = makeBEM('ebs-sort-by');
 
 interface Sort {
   title: React.ReactNode;
@@ -56,23 +60,23 @@ export const SortBy: React.FC<SortByProps> = ({
   };
 
   return (
-    <div className={`ebs-sort-by__wrapper ebs-sort-${type}`} {...props}>
+    <div className={cn(bem('wrapper', [type]), props.className)} {...props}>
       <Button type="ghost" icon="sort" size={size} onClick={onChangeType} />
       <Tooltip
-        bodyClass="ebs-sort-by__tooltip"
+        bodyClass={bem('tooltip')}
         trigger="click"
         placement="bottom"
         tooltip={
           <>
-            <div className="ebs-sort-by__tooltip-title">{title}</div>
-            <div className="ebs-sort-by__tooltip-items">
+            <div className={bem('tooltip-title')}>{title}</div>
+            <div className={bem('tooltip-items')}>
               {options &&
                 options.map((item) => {
                   const active = selected?.value === item.value;
                   return (
                     <div
                       key={item.value}
-                      className={cn('ebs-sort-by__tooltip-item', { 'ebs-sort-by__tooltip-item--active': active })}
+                      className={bem('tooltip-item', { active })}
                       onClick={() => onChangeHandler(item)}
                     >
                       {item.title}
@@ -84,7 +88,7 @@ export const SortBy: React.FC<SortByProps> = ({
           </>
         }
       >
-        <Button type="ghost" size={size} className={`ebs-sort-by__tooltip-button ebs-sort-${type}`}>
+        <Button type="ghost" size={size} className={bem('tooltip-button', [type])}>
           {selected ? `${sortByTitle} ${selected.title}` : title}
         </Button>
       </Tooltip>

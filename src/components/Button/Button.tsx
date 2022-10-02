@@ -1,6 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Icon, Loader } from 'components';
+
+const bem = makeBEM('ebs-button');
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
@@ -32,37 +36,30 @@ export const Button: React.FC<ButtonProps> = ({
   loading,
   block,
   round,
+  disabled,
   ...props
 }) => {
   return (
     <div
       className={cn(
-        `ebs-button__wrapper`,
-        `ebs-button--${size}`,
-        `ebs-button--${props.disabled ? 'disabled' : type}`,
+        bem(null, [size, disabled ? 'disabled' : type, 'wrapper'], { block, prefix, icon, round }),
         className,
-        {
-          'ebs-button--block': block,
-          'ebs-button--prefix': prefix,
-          'ebs-button--icon': icon,
-          'ebs-button--round': round,
-        },
       )}
-      onClick={!props.disabled ? onClick : undefined}
+      onClick={!disabled ? onClick : undefined}
       role="presentation"
     >
       {prefix ? (
-        <div className="ebs-button__prefix">{loading ? <Loader.Spinner size="small" /> : prefix}</div>
+        <div className={bem('prefix')}>{loading ? <Loader.Spinner size="small" /> : prefix}</div>
       ) : loading ? (
-        <div className={cn(`ebs-button__loading`, `ebs-button__loading-${type}`)}>
+        <div className={bem('loading', [type])}>
           <Loader.Spinner size="small" />
         </div>
       ) : null}
 
       <button
         type={submit ? 'submit' : 'button'}
-        className={cn(`ebs-button`, buttonClass, { 'ebs-button--is-icon': icon })}
-        disabled={props.disabled || loading}
+        className={cn(bem(null, { 'is-icon': icon }), buttonClass)}
+        disabled={disabled || loading}
         {...props}
       >
         {icon ? (
@@ -79,7 +76,7 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 export const ButtonGroup: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className, ...props }) => (
-  <div className={cn(`ebs-button__group`, className)} {...props}>
+  <div className={cn(bem('group'), className)} {...props}>
     {children}
   </div>
 );

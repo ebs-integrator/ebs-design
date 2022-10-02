@@ -119,7 +119,7 @@
   display: inline-flex;
   width: 100%;
 
-  &.is-opened {
+  &--is-open {
     .ebs-datepicker {
       border-color: var(--primary-color);
     }
@@ -130,7 +130,7 @@
     }
   }
 
-  &:not(.disabled) {
+  &:not(&--disabled) {
     @include hover-state {
       .ebs-datepicker {
         border-color: var(--primary-color);

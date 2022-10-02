@@ -11,11 +11,11 @@
   margin: rem($tab-item-margin);
   padding: rem($tab-item-padding);
 
-  &.active {
+  &--active {
     border-bottom: $tab-item-border-bottom-active;
   }
 
-  &.disabled {
+  &--disabled {
     color: $tab-item-disabled-color;
     cursor: initial;
   }

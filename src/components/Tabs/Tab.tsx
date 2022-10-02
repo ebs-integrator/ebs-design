@@ -1,6 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { useTabs } from './Tabs';
+
+const bem = makeBEM('ebs-tabs');
 
 export interface TabProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'> {
   tabKey: string;
@@ -28,7 +32,7 @@ export const Tab: React.FC<TabProps> = ({ tabKey, disabled, label, className, on
   return (
     <div
       onClick={handleClick}
-      className={cn(`ebs-tabs__item`, className, { active: activeTab === tabKey, disabled: disabled })}
+      className={cn(bem('item', { disabled, active: activeTab === tabKey }), className)}
       {...props}
     >
       {label}

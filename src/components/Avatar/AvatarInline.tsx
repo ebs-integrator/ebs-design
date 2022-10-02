@@ -1,7 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Avatar } from './Avatar';
 import { CardProps } from './AvatarCard';
+
+const bem = makeBEM('ebs-avatar-inline');
 
 export const AvatarInline: React.FC<CardProps> = ({
   className = '',
@@ -17,17 +21,7 @@ export const AvatarInline: React.FC<CardProps> = ({
   reversed = false,
   ...props
 }) => (
-  <div
-    className={cn(
-      `ebs-avatar__inline`,
-      {
-        'ebs-avatar__inline--reversed': reversed,
-        'ebs-avatar__inline--light': type === 'light',
-      },
-      className,
-    )}
-    {...props}
-  >
+  <div className={cn(bem(null, { reversed, light: type === 'light' }), className)} {...props}>
     {!reversed && (
       <Avatar
         size={size}
@@ -41,9 +35,9 @@ export const AvatarInline: React.FC<CardProps> = ({
       />
     )}
 
-    <div className="ebs-avatar__inline-alt">
+    <div className={bem('alt')}>
       {alt}
-      {description && <div className="ebs-avatar__inline-description">{description}</div>}
+      {description && <div className={bem('description')}>{description}</div>}
     </div>
 
     {reversed && (

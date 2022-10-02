@@ -1,5 +1,9 @@
 import * as React from 'react';
+
+import { makeBEM } from 'libs';
 import { Button, Space } from 'components';
+
+const bem = makeBEM('ebs-select');
 
 export type ScrollMode = 'regular' | 'scroll';
 
@@ -27,7 +31,7 @@ const Pagination: React.FC<PaginationProps> = ({ count, page, limit, setPage, cl
   const onClickNext = React.useCallback(() => setPage(page + 1), [page, setPage]);
 
   return (
-    <div className="ebs-select__pagination" {...props}>
+    <div className={bem('pagination')} {...props}>
       <Space align="center" justify="space-between" className={className}>
         <span className="no-wrap">{currentPage}</span>
         <Space>

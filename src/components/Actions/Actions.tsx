@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { makeBEM } from 'libs';
 import { Icon, Tooltip } from 'components';
+
+const bem = makeBEM('ebs-action');
 
 interface ContextProps {
   onClickItem: (onClick?: () => void) => void;
@@ -15,7 +18,7 @@ const Item: React.FC<React.PropsWithChildren<{ onClick?: () => void }>> = ({ chi
     onClickItem(onClick);
   };
   return (
-    <div className="ebs-action__tooltip-item" onClick={handleOnClick}>
+    <div className={bem('tooltip-item')} onClick={handleOnClick}>
       {children}
     </div>
   );
@@ -42,23 +45,23 @@ const Actions: React.FC<React.PropsWithChildren<ActionsProps>> = ({
     setVisible(false);
   };
   return (
-    <div className="ebs-action__wrapper" {...props}>
+    <div className={bem('wrapper')} {...props}>
       <Tooltip
-        bodyClass="ebs-action__tooltip"
+        bodyClass={bem('tooltip')}
         trigger="click"
         placement={placement}
         visible={visible}
         onVisibleChange={(value) => setVisible(value)}
         tooltip={
           <>
-            {showTitle && <div className="ebs-action__tooltip-title">{title}</div>}
+            {showTitle && <div className={bem('tooltip-title')}>{title}</div>}
             <ActionContext.Provider value={{ onClickItem }}>
-              <div className="ebs-action__tooltip-items">{children}</div>
+              <div className={bem('tooltip-items')}>{children}</div>
             </ActionContext.Provider>
           </>
         }
       >
-        <Icon type="dots" model="bold" className="ebs-action__tooltip-icon" />
+        <Icon type="dots" model="bold" className={bem('tooltip-icon')} />
       </Tooltip>
     </div>
   );

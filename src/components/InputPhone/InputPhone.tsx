@@ -1,8 +1,12 @@
 import * as React from 'react';
-import cn from 'classnames';
+import { makeBEM } from 'libs';
 import PhoneInput, { PhoneInputProps } from 'react-phone-input-2';
+
+import cn from 'classnames';
 import { Extra, Label } from 'components';
 import { SizeType } from 'types';
+
+const bem = makeBEM('ebs-input-phone');
 
 export interface InputPhoneProps extends PhoneInputProps {
   className?: string;
@@ -28,19 +32,15 @@ export const InputPhone: React.FC<InputPhoneProps> = ({
   isClearable,
   ...props
 }) => (
-  <div className="ebs-input__phone-wrapper">
+  <div className={bem('wrapper')}>
     <Label text={label} disabled={disabled} />
 
-    <div className={cn('ebs-input__phone-wrapper__container', `ebs-input__phone--${size}`)}>
+    <div className={bem('wrapper-container', [size])}>
       <PhoneInput
         value={value}
         onChange={onChange}
-        containerClass={cn(`ebs-input__phone`, className, {
-          'has-error': hasError,
-          active: value,
-          disabled: disabled,
-        })}
-        dropdownClass={cn(`ebs-input__phone-dropdown`, dropdownClass)}
+        containerClass={cn(bem(null, { disabled, active: value, hasError: hasError }), className)}
+        dropdownClass={cn(bem('dropdown'), dropdownClass)}
         placeholder={placeholder}
         disabled={disabled}
         {...props}
@@ -48,7 +48,7 @@ export const InputPhone: React.FC<InputPhoneProps> = ({
 
       {isClearable && !!value?.length && (
         <div
-          className="ebs-input__phone__clear"
+          className={bem('clear')}
           onClick={() => onChange && onChange('', {}, {} as React.ChangeEvent<HTMLInputElement>, '')}
         >
           &#215;

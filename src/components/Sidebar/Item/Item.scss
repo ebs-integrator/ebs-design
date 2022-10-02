@@ -10,7 +10,7 @@
     }
   }
 
-  &:not(.ebs-sidebar--toggled) &__item--collapsed.has-options {
+  &:not(.ebs-sidebar--toggled) &__item--collapsed.ebs-sidebar__item--has-options {
     background-color: rgba($sidebar-item-hover-background, 0.1);
 
     .ebs-sidebar__text,
@@ -57,8 +57,8 @@
     }
 
     // item has no options
-    &--invert:not(.has-options):hover,
-    &--invert .ebs-sidebar__item--active:not(.has-options) {
+    &--invert:not(&--has-options):hover,
+    &--invert .ebs-sidebar__item--active:not(&--has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
@@ -68,8 +68,8 @@
       }
     }
 
-    &:hover:not(.has-options),
-    &--active:not(.has-options) {
+    &:hover:not(&--has-options),
+    &--active:not(&--has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
@@ -80,8 +80,8 @@
     }
 
     // item has options
-    &--invert.has-options:hover,
-    &--invert.has-options.ebs-sidebar__item--active:not(.has-options) {
+    &--invert.ebs-sidebar__item--has-options:hover,
+    &--invert.ebs-sidebar__item--has-options.ebs-sidebar__item--active:not(&--has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 
@@ -91,8 +91,8 @@
       }
     }
 
-    &.has-options:hover,
-    &--active.has-options:not(.has-options) {
+    &--has-options:hover,
+    &--active:not(&--has-options) {
       background-color: $sidebar-item-hover-background;
       color: $sidebar-item-hover-color;
 

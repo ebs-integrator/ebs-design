@@ -3,7 +3,10 @@ import { createPortal } from 'react-dom';
 import cn from 'classnames';
 import { usePopperTooltip } from 'react-popper-tooltip';
 
+import { makeBEM } from 'libs';
 import { Icon } from 'components';
+
+const bem = makeBEM('ebs-tooltip');
 
 export type TooltipTriggerType = 'click' | 'right-click' | 'hover' | 'focus';
 
@@ -70,8 +73,8 @@ export const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
   });
 
   return (
-    <div className={cn(`ebs-tooltip`, { [`ebs-tooltip--nowrap`]: nowrap, [`ebs-tooltip--inline`]: inline })}>
-      <div className="ebs-tooltip__trigger" ref={setTriggerRef}>
+    <div className={bem(null, { nowrap, inline })}>
+      <div className={bem('trigger')} ref={setTriggerRef}>
         {children}
       </div>
       {visible &&
@@ -79,22 +82,22 @@ export const Tooltip: React.FC<React.PropsWithChildren<TooltipProps>> = ({
           <div
             ref={setTooltipRef}
             {...getTooltipProps({
-              className: cn(`ebs-tooltip__wrapper`, className, { [`ebs-tooltip--nowrap`]: nowrap }),
+              className: cn(bem('wrapper', { nowrap }), className),
               style: { width },
             })}
           >
             {!hideArrow && (
               <div
                 {...getArrowProps({
-                  className: 'ebs-tooltip__arrow',
+                  className: bem('arrow'),
                 })}
               >
                 <Icon type="arrow-top" />
               </div>
             )}
 
-            <div className={cn(`ebs-tooltip__body`, bodyClass)}>
-              {title && <div className="ebs-tooltip__body-title">{title}</div>}
+            <div className={cn(bem('body'), bodyClass)}>
+              {title && <div className={bem('body-title')}>{title}</div>}
 
               {tooltip}
             </div>

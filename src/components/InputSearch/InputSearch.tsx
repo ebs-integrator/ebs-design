@@ -1,9 +1,12 @@
 import * as React from 'react';
-import useDebounce from 'react-use/esm/useDebounce';
 import cn from 'classnames';
-import { capitalize } from 'libs/string';
+import useDebounce from 'react-use/esm/useDebounce';
+
+import { capitalize, makeBEM } from 'libs';
 import { Icon } from 'components/Icon/Icon';
 import { InputProps, Input } from 'components/Input/Input';
+
+const bem = makeBEM('ebs-input-search');
 
 export type InputSearchIconAlign = 'prefix' | 'suffix';
 
@@ -66,14 +69,9 @@ export const InputSearch: React.FC<InputSearchProps> = ({
   };
 
   return (
-    <form
-      className={cn(`ebs-input__search-wrapper`, `ebs-input__search--${styleType}`, className, {
-        disabled: disabled,
-      })}
-      onSubmit={onSearchHandler}
-    >
+    <form className={cn(bem('wrapper', { disabled, styleType }), className)} onSubmit={onSearchHandler}>
       <Input
-        className="ebs-input__search"
+        className={bem()}
         autoFocus={autoFocus}
         placeholder={placeholder}
         value={value}
