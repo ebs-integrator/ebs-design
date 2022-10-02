@@ -21,7 +21,7 @@ interface Props extends ContextProps {
   onKeyDownNewOption: (e: React.KeyboardEvent) => void;
 }
 
-export default ({ loading, ref, children, ...params }): Props => {
+const Hook = ({ loading, ref, children, ...params }): Props => {
   const {
     mode = 'single',
     optionsMode = 'dropdown',
@@ -331,3 +331,5 @@ export default ({ loading, ref, children, ...params }): Props => {
     ...props,
   };
 };
+
+export default Hook;

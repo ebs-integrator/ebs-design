@@ -1,11 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { Height } from 'react-animate-height';
 
 import { SizeType } from 'types';
 import { makeBEM } from 'libs';
-import { CardHeader, CardHeaderProps } from './CardHeader';
-import { CardBody, CardBodyProps } from './CardBody';
-import { CardFooter, CardFooterProps } from './CardFooter';
+import { CardHeader } from './CardHeader';
+import { CardBody } from './CardBody';
+import { CardFooter } from './CardFooter';
 
 const bem = makeBEM('ebs-card');
 
@@ -14,15 +15,10 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsible?: boolean;
   collapsed?: boolean;
 }
-export interface CardComposition {
-  Header: React.FC<CardHeaderProps>;
-  Body: React.FC<CardBodyProps>;
-  Footer: React.FC<CardFooterProps>;
-}
 
 interface ContextProps {
-  height: string | number;
-  setHeight: (height: string | number) => void;
+  height: Height;
+  setHeight: (height: Height) => void;
   collapsible?: boolean;
 }
 
@@ -31,16 +27,16 @@ const CardContext = React.createContext<ContextProps>({
   setHeight: () => null,
 });
 
-const Card: React.FC<CardProps> & CardComposition = ({
+const Card = ({
   size = 'medium',
   collapsible = false,
   collapsed = false,
   className,
   children,
   ...props
-}) => {
+}: React.PropsWithChildren<CardProps>) => {
   // Height is used for collapsible state
-  const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
+  const [height, setHeight] = React.useState<Height>(collapsed ? 0 : 'auto');
 
   return (
     <div className={cn(bem(null, [size], { collapsed: height === 0 }), className)} {...props}>

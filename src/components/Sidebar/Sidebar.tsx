@@ -9,7 +9,7 @@ import { TopMenu, BottomMenu } from './MenuParts';
 
 const bem = makeBEM('ebs-sidebar');
 
-const Sidebar: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, children, ...props }) => {
+const Sidebar = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const { toggled, opened, onSetOpened } = useLayoutState();
 
   return (

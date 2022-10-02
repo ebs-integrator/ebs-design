@@ -23,7 +23,7 @@ export interface Props extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onCha
   onChange?: (value: CheckboxGroupValue) => void;
 }
 
-export const CheckboxGroup: React.FC<Props> = ({
+export const CheckboxGroup = ({
   className,
   checkboxClass,
   checkAlign = 'left',
@@ -32,7 +32,7 @@ export const CheckboxGroup: React.FC<Props> = ({
   onChange,
   disabled,
   ...props
-}) => {
+}: Props) => {
   const name = React.useMemo(() => makeid(), []);
 
   const onChangeHandler = (target: string | number, targetValue: boolean): void => {

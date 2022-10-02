@@ -7,17 +7,7 @@ export interface ContainerProps extends Grid {
   size?: ColSize;
 }
 
-export const Container: React.FC<ContainerProps> = ({
-  size,
-  offset,
-  g,
-  gx,
-  gy,
-  className,
-  style,
-  children,
-  ...props
-}) => {
+export const Container = ({ size, offset, g, gx, gy, className, style, children, ...props }: ContainerProps) => {
   return (
     <div
       className={cn(`container`, className, {

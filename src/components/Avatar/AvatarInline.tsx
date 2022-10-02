@@ -7,7 +7,7 @@ import { CardProps } from './AvatarCard';
 
 const bem = makeBEM('ebs-avatar-inline');
 
-export const AvatarInline: React.FC<CardProps> = ({
+export const AvatarInline = ({
   className = '',
   type = 'primary',
   size = 'small',
@@ -20,7 +20,7 @@ export const AvatarInline: React.FC<CardProps> = ({
   description,
   reversed = false,
   ...props
-}) => (
+}: CardProps) => (
   <div className={cn(bem(null, { reversed, light: type === 'light' }), className)} {...props}>
     {!reversed && (
       <Avatar

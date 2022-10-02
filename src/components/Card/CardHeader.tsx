@@ -12,7 +12,7 @@ export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   onClick?: () => void;
 }
 
-export const CardHeader: React.FC<CardHeaderProps> = ({ className, bordered, onClick, children, ...props }) => {
+export const CardHeader = ({ className, bordered, onClick, children, ...props }: CardHeaderProps) => {
   const { collapsible, height, setHeight } = React.useContext(CardContext);
 
   // Card header classNames

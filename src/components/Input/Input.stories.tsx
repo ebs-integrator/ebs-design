@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Input, InputProps } from './Input';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Input } from './Input';
 
 export default {
   title: exportStory('Input', 'form'),
@@ -13,9 +14,9 @@ export default {
     prefix: { control: 'text' },
     suffix: { control: 'text' },
   },
-};
+} as ComponentMeta<typeof Input>;
 
-export const Regular: React.FC<InputProps> & { args: InputProps } = ({ children, ...props }) => {
+export const Regular: ComponentStory<typeof Input> = ({ children, ...props }) => {
   const [value, setValue] = React.useState<string | number | undefined>();
 
   return (

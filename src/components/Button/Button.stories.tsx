@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { Icon } from 'components';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Button, ButtonGroup, ButtonProps } from './Button';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Icon } from 'components';
+import { Button, ButtonGroup } from './Button';
 
 export default {
   title: exportStory('Button', 'form'),
   component: Button,
   subcomponents: { ButtonGroup },
-};
+} as ComponentMeta<typeof Button>;
 
-export const Regular: React.FC<ButtonProps> & { args: ButtonProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Button> = (args) => (
   <Template>
-    <Button {...props}>{children}</Button>
+    <Button {...args}>Button</Button>
   </Template>
 );
 

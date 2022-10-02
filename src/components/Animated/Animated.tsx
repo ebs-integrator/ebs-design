@@ -1,5 +1,6 @@
 import * as React from 'react';
-import AnimateHeight from 'react-animate-height';
+import AnimateHeight, { Height } from 'react-animate-height';
+import cn from 'classnames';
 
 export interface AnimatedProps
   extends Omit<Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'aria-hidden'>, 'onAnimationStart'>, 'onAnimationEnd'> {
@@ -13,13 +14,7 @@ export interface AnimatedProps
   children: any;
 }
 
-export const Animated: React.FC<AnimatedProps> = ({
-  startFrom = '0%',
-  debounce = 1,
-  duration = 500,
-  className,
-  ...props
-}) => {
+export const Animated = ({ startFrom = '0%', debounce = 1, duration = 500, className, ...props }: AnimatedProps) => {
   const [loading, setLoading] = React.useState(true);
   const timer = React.useRef<NodeJS.Timeout>();
 
@@ -46,7 +41,12 @@ export const Animated: React.FC<AnimatedProps> = ({
   }
 
   return (
-    <AnimateHeight {...props} duration={duration} height={loading ? startFrom : 'auto'} className={className}>
+    <AnimateHeight
+      {...props}
+      duration={duration}
+      height={(loading ? startFrom : 'auto') as Height}
+      className={cn(className)}
+    >
       {props.children}
     </AnimateHeight>
   );

@@ -11,7 +11,7 @@ export interface CollapseHeaderProps extends React.HTMLAttributes<HTMLDivElement
   onClick?: () => void;
 }
 
-export const CollapseHeader: React.FC<CollapseHeaderProps> = ({ className, style, onClick, children, ...props }) => {
+export const CollapseHeader = ({ className, style, onClick, children, ...props }: CollapseHeaderProps) => {
   const { bordered, height, setHeight } = React.useContext(CollapseContext);
 
   // Collapse card body

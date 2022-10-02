@@ -21,7 +21,7 @@ export interface ItemProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement
   onClick?: () => void;
 }
 
-export const Item: React.FC<ItemProps> = ({
+export const Item = ({
   className,
   labelClass,
   optionsClass,
@@ -33,7 +33,7 @@ export const Item: React.FC<ItemProps> = ({
   disabled,
   onClick,
   children,
-}) => {
+}: ItemProps) => {
   const { toggled } = useLayoutState();
   const [collapsed, setCollapsed] = React.useState(false);
 

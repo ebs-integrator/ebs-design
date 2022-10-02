@@ -3,8 +3,8 @@ import { makeBEM } from 'libs';
 import PhoneInput, { PhoneInputProps } from 'react-phone-input-2';
 
 import cn from 'classnames';
-import { Extra, Label } from 'components';
 import { SizeType } from 'types';
+import { Extra, Label } from 'components';
 
 const bem = makeBEM('ebs-input-phone');
 
@@ -18,7 +18,7 @@ export interface InputPhoneProps extends PhoneInputProps {
   isClearable?: boolean;
 }
 
-export const InputPhone: React.FC<InputPhoneProps> = ({
+export const InputPhone = ({
   className,
   dropdownClass,
   size = 'medium',
@@ -31,7 +31,7 @@ export const InputPhone: React.FC<InputPhoneProps> = ({
   extra,
   isClearable,
   ...props
-}) => (
+}: InputPhoneProps) => (
   <div className={bem('wrapper')}>
     <Label text={label} disabled={disabled} />
 

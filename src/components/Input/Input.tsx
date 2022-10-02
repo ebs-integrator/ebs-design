@@ -51,6 +51,8 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className,
       containerClass,
       isClearable,
+      onClickPrefix,
+      onClickSuffix,
       ...props
     },
     ref,
@@ -71,14 +73,14 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     const onClickPrefixHandler = (): void => {
-      if (!loading && props.onClickPrefix) {
-        props.onClickPrefix();
+      if (!loading && onClickPrefix) {
+        onClickPrefix();
       }
     };
 
     const onClickSuffixHandler = (): void => {
-      if (!loading && props.onClickSuffix) {
-        props.onClickSuffix();
+      if (!loading && onClickSuffix) {
+        onClickSuffix();
       }
     };
 
@@ -100,7 +102,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         >
           {(loading && !suffix) || prefix ? (
             <div
-              className={bem('prefix', [!loading && props.onClickPrefix ? `clickable` : `unclickable`])}
+              className={bem('prefix', [!loading && onClickPrefix ? `clickable` : `unclickable`])}
               onClick={onClickPrefixHandler}
             >
               {loading && !suffix ? <Loader.Spinner size="small" /> : prefix}
@@ -109,7 +111,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           {(loading && !prefix && suffix) || suffix ? (
             <div
-              className={bem('suffix', [!loading && props.onClickSuffix ? `clickable` : `unclickable`])}
+              className={bem('suffix', [!loading && onClickSuffix ? `clickable` : `unclickable`])}
               onClick={onClickSuffixHandler}
             >
               {loading && suffix ? <Loader.Spinner size="small" /> : suffix}

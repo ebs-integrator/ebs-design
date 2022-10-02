@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Arrow: React.FC = (defaultProps) => {
+export const Arrow = (defaultProps: React.HTMLAttributes<HTMLOrSVGElement>) => {
   return (
     <svg viewBox="0 0 10 5" {...defaultProps}>
       <path

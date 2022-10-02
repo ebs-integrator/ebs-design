@@ -24,7 +24,7 @@ export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLBu
   round?: boolean;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   submit = false,
   onClick,
   prefix,
@@ -38,7 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
   round,
   disabled,
   ...props
-}) => {
+}: ButtonProps) => {
   return (
     <div
       className={cn(

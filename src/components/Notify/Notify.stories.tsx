@@ -1,27 +1,24 @@
 import * as React from 'react';
-import { Button, Label } from 'components';
-import { Template } from 'components/storybook';
-import { useNotify } from 'hooks';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
+import { exportStory } from 'libs';
+import { useNotify } from 'hooks';
+import { Button, Label, Space } from 'components';
 import { NotifyContainer, NotifyProvider } from './Notify';
 import { NotifyItem, NotifyItemProps } from './NotifyItem';
-import { exportStory } from 'libs';
 
 export default {
   title: exportStory('Notify', 'feedback'),
   component: NotifyItem,
   subcomponents: { NotifyItem },
-};
+} as ComponentMeta<typeof NotifyItem>;
 
-export const Regular: React.FC<React.PropsWithChildren<NotifyItemProps>> & { args: NotifyItemProps } = ({
-  children,
-  ...props
-}) => {
+export const Regular: ComponentStory<typeof NotifyItem> = (args) => {
   const Notify: React.FC<NotifyItemProps> = ({ ...params }) => {
     const notify = useNotify();
 
     return (
-      <Template>
+      <Space justify="center">
         <Button size="small" type="fill" onClick={() => notify.regular(params)}>
           Regular
         </Button>
@@ -40,14 +37,14 @@ export const Regular: React.FC<React.PropsWithChildren<NotifyItemProps>> & { arg
         <Button type="text">
           <Label status="warning" type="fill" text="Warning" onClick={() => notify.warning(params)} />
         </Button>
-      </Template>
+      </Space>
     );
   };
 
   return (
     <NotifyProvider>
       <NotifyContainer />
-      <Notify {...props} />
+      <Notify {...args} />
     </NotifyProvider>
   );
 };

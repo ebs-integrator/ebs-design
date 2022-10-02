@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Users: React.FC = (defaultProps) => {
+export const Users = (defaultProps: React.HTMLAttributes<HTMLOrSVGElement>) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" {...defaultProps}>
       <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5">

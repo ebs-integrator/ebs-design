@@ -17,7 +17,7 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
 }
 
-export const Alert: React.FC<AlertProps> = ({
+export const Alert = ({
   type = 'success',
   icon = true,
   outlined,
@@ -27,7 +27,7 @@ export const Alert: React.FC<AlertProps> = ({
   className,
   children,
   ...props
-}) => {
+}: AlertProps) => {
   const [closed, setClosed] = React.useState(false);
 
   return (

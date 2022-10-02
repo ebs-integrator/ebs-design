@@ -1,21 +1,15 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Alert, AlertProps } from './Alert';
 import { exportStory } from 'libs';
+import { Alert } from './Alert';
 
 export default {
   title: exportStory('Alert', 'feedback'),
   component: Alert,
-};
+} as ComponentMeta<typeof Alert>;
 
-export const Regular: React.FC<AlertProps> & { args: AlertProps } = ({ children, ...props }) => (
-  <Template>
-    <Alert icon message="Success" {...props}>
-      {children}
-    </Alert>
-  </Template>
-);
+export const Regular: ComponentStory<typeof Alert> = (args) => <Alert icon message="Success" {...args} />;
 
 Regular.args = {
   message: 'Message',

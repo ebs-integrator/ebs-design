@@ -4,7 +4,7 @@ import { useLayoutState } from 'components/Layout/context';
 
 const bem = makeBEM('ebs-optionsbar');
 
-export const TopSide: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
+export const TopSide = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const { hasOptions, onSetHasOptions } = useLayoutState();
 
   React.useEffect(() => {

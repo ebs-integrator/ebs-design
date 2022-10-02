@@ -6,7 +6,7 @@ import { useLayoutState } from '../../context';
 
 const bem = makeBEM('ebs-layout');
 
-export const Toggler: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
+export const Toggler = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const { onSetOpened } = useLayoutState();
 
   return (

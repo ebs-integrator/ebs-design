@@ -4,10 +4,7 @@ import { LoaderSpinner } from './LoaderSpinner';
 
 const bem = makeBEM('ebs-loader');
 
-export const LoaderInline: React.FC<React.HTMLAttributes<HTMLSpanElement>> = ({
-  children = 'Loading ...',
-  ...props
-}) => {
+export const LoaderInline = ({ children = 'Loading ...', ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span className={bem('inline')} {...props}>
       <LoaderSpinner size="small" />

@@ -14,14 +14,14 @@ export interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
   model?: modelType;
 }
 
-export const Icon: React.FC<IconProps> = ({
+export const Icon = ({
   onClick,
   type = 'none',
   model = 'regular',
   className,
   component: Component,
   ...props
-}) => {
+}: IconProps) => {
   const defaultProps = {
     ...props,
     onClick,

@@ -4,7 +4,7 @@ import { makeBEM } from 'libs';
 const bem = makeBEM('ebs-table-mobile');
 
 // FIXME: Fix table on mobile
-export const MobileTable: React.FC<any> = (props) => {
+export const MobileTable = (props: any) => {
   const { columns, data } = props;
 
   return (

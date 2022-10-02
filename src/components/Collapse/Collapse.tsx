@@ -1,11 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { Height } from 'react-animate-height';
 
 import { SizeType } from 'types';
 import { makeBEM } from 'libs';
-import { CollapseGroup, CollapseGroupProps } from './CollapseGroup';
-import { CollapseHeader, CollapseHeaderProps } from './CollapseHeader';
-import { CollapseBody, CollapseBodyProps } from './CollapseBody';
+import { CollapseGroup } from './CollapseGroup';
+import { CollapseHeader } from './CollapseHeader';
+import { CollapseBody } from './CollapseBody';
 
 const bem = makeBEM('ebs-collapse');
 
@@ -15,15 +16,9 @@ export interface CollapseProps extends React.HTMLAttributes<HTMLDivElement> {
   bordered?: boolean;
 }
 
-export interface CollapseComposition {
-  Group: React.FC<CollapseGroupProps>;
-  Header: React.FC<CollapseHeaderProps>;
-  Body: React.FC<CollapseBodyProps>;
-}
-
 interface ContextProps {
-  height: string | number;
-  setHeight: (height: string | number) => void;
+  height: Height;
+  setHeight: (height: Height) => void;
   bordered: boolean;
 }
 
@@ -33,15 +28,15 @@ const CollapseContext = React.createContext<ContextProps>({
   bordered: false,
 });
 
-const Collapse: React.FC<CollapseProps> & CollapseComposition = ({
+const Collapse = ({
   size = 'medium',
   collapsed = false,
   bordered = false,
   className,
   children,
   ...props
-}) => {
-  const [height, setHeight] = React.useState<string | number>(collapsed ? 0 : 'auto');
+}: CollapseProps) => {
+  const [height, setHeight] = React.useState<Height>(collapsed ? 0 : 'auto');
 
   React.useEffect(() => {
     setHeight(collapsed ? 0 : 'auto');

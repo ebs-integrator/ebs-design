@@ -21,7 +21,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   reversed?: boolean;
 }
 
-export const AvatarCard: React.FC<CardProps> = ({
+export const AvatarCard = ({
   className = '',
   type = 'primary',
   size = 'small',
@@ -31,7 +31,7 @@ export const AvatarCard: React.FC<CardProps> = ({
   alt = '',
   status,
   ...props
-}) => (
+}: CardProps) => (
   <div className={cn(bem(), className)} {...props}>
     <Avatar size={size} type={type} icon={icon} img={img} shortAlt={shortAlt} alt={alt} status={status} />
 

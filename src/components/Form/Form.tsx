@@ -4,8 +4,8 @@ import RCForm, { FormProps as RCFormProps } from 'rc-field-form';
 
 import { makeBEM } from 'libs';
 import { RowProps } from 'components/Grid/Row/Row';
-import { FormField, FormFieldProps } from './FormField';
-import { FormGroup, FormGroupProps } from './FormGroup';
+import { FormField } from './FormField';
+import { FormGroup } from './FormGroup';
 import { getControlOptions, getLabelOptions } from './utils';
 import { FormType, LabelOptions, ControlOptions } from './interface';
 
@@ -19,14 +19,9 @@ interface FormProps extends RCFormProps {
   draft?: boolean;
 }
 
-interface FormComposition {
-  Field: React.FC<FormFieldProps>;
-  Group: React.FC<FormGroupProps>;
-}
-
 const FormContext = React.createContext<FormProps>({});
 
-const Form: React.FC<React.PropsWithChildren<FormProps>> = ({
+const Form = ({
   type = 'vertical',
   draft,
   labelOptions,
@@ -35,7 +30,7 @@ const Form: React.FC<React.PropsWithChildren<FormProps>> = ({
   className,
   children,
   ...props
-}) => {
+}: React.PropsWithChildren<FormProps>) => {
   // Get label and control options
   const controlProps = getControlOptions(type, controlOptions);
   const labelProps = getLabelOptions(type, labelOptions);
@@ -49,7 +44,7 @@ const Form: React.FC<React.PropsWithChildren<FormProps>> = ({
   );
 };
 
-const FormComponent: React.FC<React.PropsWithChildren<FormProps>> & FormComposition = ({ ...props }) => {
+const FormComponent = (props: React.PropsWithChildren<FormProps>) => {
   return <Form {...props} />;
 };
 
@@ -58,4 +53,4 @@ FormComponent.displayName = 'Form';
 FormComponent.Field = FormField;
 FormComponent.Group = FormGroup;
 
-export { Form, FormComponent, FormContext, FormProps, FormComposition };
+export { Form, FormComponent, FormContext, FormProps };

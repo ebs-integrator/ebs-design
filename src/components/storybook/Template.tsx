@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Container, Row, Col, Space } from 'components';
 
-const Template: React.FC<React.PropsWithChildren> = ({ children }) => (
+const Template = ({ children }: React.PropsWithChildren) => (
   <Container>
     <Row>
       <Col className="flex justify-content--center">

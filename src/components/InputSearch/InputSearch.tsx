@@ -19,7 +19,7 @@ export interface InputSearchProps extends Omit<InputProps, 'styleType'> {
   onSearch?: (value: string) => void;
 }
 
-export const InputSearch: React.FC<InputSearchProps> = ({
+export const InputSearch = ({
   className,
   styleType = 'stroke',
   iconAlign = 'suffix',
@@ -33,7 +33,7 @@ export const InputSearch: React.FC<InputSearchProps> = ({
   size,
   isClearable,
   ...props
-}) => {
+}: InputSearchProps) => {
   const [changedValue, setChangedValue] = React.useState(false);
   const [value, setValue] = React.useState('');
 

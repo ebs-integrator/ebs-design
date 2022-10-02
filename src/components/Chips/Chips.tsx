@@ -13,16 +13,7 @@ export interface ChipsProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElemen
   onChange?: (value: boolean) => void;
 }
 
-export const Chips: React.FC<ChipsProps> = ({
-  className,
-  prefix,
-  suffix,
-  disabled,
-  checked,
-  onChange,
-  text,
-  ...props
-}) => {
+export const Chips = ({ className, prefix, suffix, disabled, checked, onChange, text, ...props }: ChipsProps) => {
   const onClickHandler = (): void => (!disabled && onChange !== undefined ? onChange(!checked) : undefined);
 
   return (

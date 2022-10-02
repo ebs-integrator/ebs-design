@@ -8,7 +8,7 @@ export interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   bordered?: boolean;
 }
 
-export const CardFooter: React.FC<CardFooterProps> = ({ className, bordered, children, ...props }) => (
+export const CardFooter = ({ className, bordered, children, ...props }: CardFooterProps) => (
   <footer className={cn(bem('footer', { bordered }), className)} {...props}>
     {children}
   </footer>

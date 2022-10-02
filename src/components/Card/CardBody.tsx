@@ -9,7 +9,7 @@ const bem = makeBEM('ebs-card');
 
 export type CardBodyProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const CardBody: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, children, ...props }) => {
+export const CardBody = ({ className, children, ...props }: CardBodyProps) => {
   const { height, collapsible } = React.useContext(CardContext);
 
   // Return animated card body for collapse

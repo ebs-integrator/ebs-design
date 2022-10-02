@@ -36,7 +36,7 @@ function getNumberSize(size: SpaceSize): number {
   return typeof size === 'string' ? spaceSize[size] : size || 0;
 }
 
-export const Space: React.FC<SpaceProps> = ({
+export const Space = ({
   size = 'medium',
   direction = 'horizontal',
   wrap = false,
@@ -47,7 +47,7 @@ export const Space: React.FC<SpaceProps> = ({
   inline,
   style,
   ...props
-}) => {
+}: SpaceProps) => {
   const [horizontalSize, verticalSize] = React.useMemo(
     () => ((Array.isArray(size) ? size : [size, size]) as [SpaceSize, SpaceSize]).map((item) => getNumberSize(item)),
     [size],

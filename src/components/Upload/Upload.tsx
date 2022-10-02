@@ -1,10 +1,15 @@
 import * as React from 'react';
-import { Icon } from 'components';
-import RCUpload, { UploadProps } from 'rc-upload';
+import RCUpload, { UploadProps as RcUploadProps } from 'rc-upload';
+import { RcFile } from 'rc-upload/lib/interface';
 
 import { isEqual, makeBEM } from 'libs';
+import { Icon } from 'components';
 
 const bem = makeBEM('ebs-upload');
+
+export interface UploadProps extends RcUploadProps {
+  onRemove?: (file: RcFile, idx: number) => void;
+}
 
 export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
   // FIXME: Fix any type for files
@@ -48,6 +53,8 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
       props.multiple ? [...prevState.map((item) => (item.uid === file.uid ? file : item)), file] : [file],
     );
     setProgress({ [file.uid]: 0 });
+
+    props.onStart && props.onStart(file);
   };
 
   const onSuccess = (response, file, xhr): void => {
@@ -64,7 +71,7 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
 
       // Internal save
       if (props.onSuccess) {
-        props.onSuccess(files, file, xhr);
+        props.onSuccess(response, file, xhr);
       }
 
       return files;
@@ -82,6 +89,8 @@ export const Upload = React.forwardRef<RCUpload, UploadProps>((props, ref) => {
   // Handle remove file
   const handleRemove = (file, idx): void => {
     setFiles((prevState) => prevState.filter((_, index) => index !== idx));
+
+    props.onRemove && props.onRemove(file, idx);
   };
 
   const uploadProps = {

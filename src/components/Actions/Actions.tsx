@@ -12,7 +12,7 @@ const ActionContext = React.createContext<ContextProps>({
   onClickItem: (onClick) => null,
 });
 
-const Item: React.FC<React.PropsWithChildren<{ onClick?: () => void }>> = ({ children, onClick }) => {
+const Item = ({ children, onClick }: React.PropsWithChildren<{ onClick?: () => void }>) => {
   const { onClickItem } = React.useContext(ActionContext);
   const handleOnClick = (): void => {
     onClickItem(onClick);
@@ -30,13 +30,13 @@ export interface ActionsProps extends React.HTMLAttributes<HTMLDivElement> {
   placement?: 'right' | 'left' | 'top' | 'bottom';
 }
 
-const Actions: React.FC<React.PropsWithChildren<ActionsProps>> = ({
+const Actions = ({
   title = 'Actions',
   showTitle = true,
   placement = 'left',
   children,
   ...props
-}) => {
+}: React.PropsWithChildren<ActionsProps>) => {
   const [visible, setVisible] = React.useState(false);
   const onClickItem = (onClick): void => {
     if (onClick) {
@@ -67,4 +67,6 @@ const Actions: React.FC<React.PropsWithChildren<ActionsProps>> = ({
   );
 };
 
-export default Object.assign(Actions, { Item });
+Actions.Item = Item;
+
+export default Actions;

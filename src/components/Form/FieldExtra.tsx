@@ -4,7 +4,7 @@ import { makeBEM } from 'libs';
 
 const bem = makeBEM('ebs-form__field');
 
-export const FieldExtra: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => (
+export const FieldExtra = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={cn(bem('explain'), bem('extra'))} {...props}>
     {children}
   </div>

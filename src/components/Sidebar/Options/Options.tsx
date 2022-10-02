@@ -8,7 +8,7 @@ import { TopSide, BottomSide } from './Sides';
 
 const bem = makeBEM('ebs-sidebar');
 
-const Options: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...props }) => {
+const Options = ({ children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const dispatch = useLayoutDispatch();
 
   React.useEffect(() => {

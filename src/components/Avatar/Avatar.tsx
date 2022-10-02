@@ -18,7 +18,7 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   status?: string;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({
+export const Avatar = ({
   type = 'primary',
   size = 'small',
   className = '',
@@ -31,7 +31,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   children,
   status,
   ...props
-}) => {
+}: AvatarProps) => {
   const shortAlt = React.useMemo(() => ($shortAlt ? $shortAlt : alt ? firstLetters(alt, shortLetters) : alt), [alt]);
 
   return (

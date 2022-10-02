@@ -6,7 +6,7 @@ const bem = makeBEM('ebs-collapse');
 
 export type CollapseGroupProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const CollapseGroup: React.FC<CollapseGroupProps> = ({ className, style, children, ...props }) => (
+export const CollapseGroup = ({ className, style, children, ...props }: CollapseGroupProps) => (
   <div className={cn(bem('group'), className)} {...props}>
     {children}
   </div>

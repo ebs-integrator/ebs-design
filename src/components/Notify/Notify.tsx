@@ -28,12 +28,7 @@ export interface NotifyProps {
   timeout?: number;
 }
 
-const NotifyContainer: React.FC<NotifyProps> = ({
-  vertical = 'top',
-  horizontal = 'right',
-  size = 'medium',
-  timeout = 3000,
-}) => {
+const NotifyContainer = ({ vertical = 'top', horizontal = 'right', size = 'medium', timeout = 3000 }: NotifyProps) => {
   const createPortal = usePortal('notify-portal');
   const { list, remove } = React.useContext(NotifyContext);
 

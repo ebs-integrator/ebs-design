@@ -2,15 +2,10 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import { makeBEM } from 'libs';
-import { Panel, PanelProps } from './Panel';
-import { Tab, TabProps } from './Tab';
+import { Panel } from './Panel';
+import { Tab } from './Tab';
 
 const bem = makeBEM('ebs-tabs');
-
-export interface TabsComposition {
-  Tab: React.FC<TabProps>;
-  Panel: React.FC<PanelProps>;
-}
 
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   activeTab?: string;
@@ -18,21 +13,14 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   setActiveTab?: (key: string) => void;
 }
 
-export interface TabsContext {
+export interface TabsContextInterface {
   activeTab?: string;
   setActiveTab?: (key: string) => void;
 }
 
-const TabsContext = React.createContext<TabsContext | undefined>(undefined);
+const TabsContext = React.createContext<TabsContextInterface | undefined>(undefined);
 
-const Tabs: React.FC<TabsProps> & TabsComposition = ({
-  activeTab,
-  setActiveTab,
-  className,
-  contentClass,
-  children,
-  ...props
-}) => {
+const Tabs = ({ activeTab, setActiveTab, className, contentClass, children, ...props }: TabsProps) => {
   const memoizedContextValue = React.useMemo(
     () => ({
       activeTab,
@@ -63,7 +51,7 @@ const Tabs: React.FC<TabsProps> & TabsComposition = ({
   );
 };
 
-export const useTabs = (): TabsContext => {
+export const useTabs = (): TabsContextInterface => {
   const context = React.useContext(TabsContext);
   if (!context) {
     throw new Error('This component must be used within a <Tabs> component.');

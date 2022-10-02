@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Template } from 'components/storybook';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { Textarea, TextareaProps } from './Textarea';
 import { exportStory } from 'libs';
+import { Template } from 'components/storybook';
+import { Textarea } from './Textarea';
 
 export default {
   title: exportStory('Textarea', 'form'),
@@ -11,11 +12,11 @@ export default {
     label: { control: 'text' },
     extra: { control: 'text' },
   },
-};
+} as ComponentMeta<typeof Textarea>;
 
-export const Regular: React.FC<TextareaProps> & { args: TextareaProps } = ({ children, ...props }) => (
+export const Regular: ComponentStory<typeof Textarea> = (args) => (
   <Template>
-    <Textarea {...props} />
+    <Textarea {...args} />
   </Template>
 );
 

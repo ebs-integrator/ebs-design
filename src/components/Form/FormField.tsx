@@ -31,7 +31,7 @@ export interface FormFieldProps extends FieldProps {
   validationLabel?: string;
 }
 
-export const FormField: React.FC<FormFieldProps> = ({
+export const FormField = ({
   label,
   labelOptions,
   hideLabel,
@@ -45,7 +45,7 @@ export const FormField: React.FC<FormFieldProps> = ({
   validationLabel = typeof label === 'string' ? label : '',
   messageVariables,
   ...props
-}) => {
+}: FormFieldProps) => {
   const formCtx = React.useContext(FormContext);
 
   // Field's components props

@@ -8,7 +8,7 @@ export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Individual panel component.
  */
-export const Panel: React.FC<PanelProps> = ({ tabKey, children, ...props }) => {
+export const Panel = ({ tabKey, className, children, ...props }: PanelProps) => {
   const { activeTab } = useTabs();
 
   return activeTab === tabKey ? <div {...props}>{children}</div> : null;

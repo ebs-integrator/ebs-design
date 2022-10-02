@@ -10,7 +10,7 @@ export interface SwitchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   onChange?: (value: boolean) => void;
 }
 
-export const Switch: React.FC<SwitchProps> = ({ className, disabled, checked, onChange, ...props }) => {
+export const Switch = ({ className, disabled, checked, onChange, ...props }: SwitchProps) => {
   const onClickHandler = (): void => (!disabled && onChange !== undefined ? onChange(!checked) : undefined);
 
   return (

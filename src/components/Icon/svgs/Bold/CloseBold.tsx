@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CloseBold: React.FC = (defaultProps) => {
+export const CloseBold = (defaultProps: React.HTMLAttributes<HTMLOrSVGElement>) => {
   return (
     <svg fill="currentColor" stroke="currentColor" viewBox="0 0 32 32" {...defaultProps}>
       <path

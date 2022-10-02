@@ -6,7 +6,7 @@ import { useLayoutState } from '../context';
 
 const bem = makeBEM('ebs-layout');
 
-export const Container: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ className, children, ...props }) => {
+export const Container = ({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>) => {
   const { toggled, hasOptions } = useLayoutState();
 
   return (

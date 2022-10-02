@@ -15,7 +15,7 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
   setPage: (value: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ count, page, limit, setPage, className, ...props }) => {
+const Pagination = ({ count, page, limit, setPage, className, ...props }: PaginationProps) => {
   const totalPages = React.useMemo(() => Math.ceil(count / limit), [count, limit]);
   const currentPage = React.useMemo(() => (count ? `${page} of ${totalPages}` : null), [count, page, totalPages]);
 

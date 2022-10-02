@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Eye: React.FC = (defaultProps) => {
+export const Eye = (defaultProps: React.HTMLAttributes<HTMLOrSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
