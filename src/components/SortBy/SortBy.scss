@@ -50,22 +50,22 @@
   position: relative;
   display: flex;
 
-  > .ebs-button__wrapper {
+  > .ebs-button--wrapper {
     border-right: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  &--asc > .ebs-button__wrapper .ebs-icon {
+  &--asc > .ebs-button--wrapper .ebs-icon {
     transform: rotate(180deg);
   }
 
-  .ebs-tooltip__trigger > .ebs-button__wrapper {
+  .ebs-tooltip__trigger > .ebs-button--wrapper {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  .ebs-button__wrapper {
+  .ebs-button--wrapper {
     .ebs-icon {
       transition: 300ms transform;
     }

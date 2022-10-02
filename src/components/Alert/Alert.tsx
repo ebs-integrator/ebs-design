@@ -42,7 +42,7 @@ export const Alert = ({
       {closable ? (
         <Icon
           type="close"
-          className={cn(bem(null, { hidden: closed }), 'ebs-icon-close')}
+          className="ebs-icon-close"
           onClick={() => {
             setClosed(true);
             if (typeof onClose === 'function') {
