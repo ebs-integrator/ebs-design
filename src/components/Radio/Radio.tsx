@@ -1,6 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { makeid } from 'libs/string';
+import { makeBEM, makeid } from 'libs';
+
+const bem = makeBEM('ebs-radio');
 
 export type RadioAlign = 'left' | 'right';
 
@@ -44,17 +46,17 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     }
 
     return (
-      <div className={cn(`ebs-radio__group`, `ebs-radio__align--${radioAlign}`, className)}>
+      <div className={cn(bem('group', [radioAlign]), className)}>
         {options.map((option, idx) => (
           <div
             key={idx}
-            className={cn(`ebs-radio__wrapper`, { 'has-text': option.text, disabled: option.disabled })}
+            className={bem('wrapper', { 'has-text': option.text, disabled: option.disabled })}
             onClick={() => onClickHandler(option.value)}
           >
             <input
               ref={ref}
               type="radio"
-              className="ebs-radio__input"
+              className={bem('input')}
               name={name}
               value={option.value}
               onChange={onChangeHandler}
@@ -64,12 +66,12 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
                 : props)}
             />
 
-            <div className="ebs-radio">
-              <div className="ebs-radio__dot" />
+            <div className={bem()}>
+              <div className={bem('dot')} />
             </div>
 
             {option.text && (
-              <div className={cn(`ebs-radio__text`, textClass)} style={textStyle}>
+              <div className={cn(bem('text'), textClass)} style={textStyle}>
                 {option.text}
               </div>
             )}

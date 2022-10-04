@@ -1,14 +1,14 @@
-.ebs-input__search-wrapper {
-  &.ebs-input__search--fill {
-    .ebs-input__search,
+.ebs-input-search__wrapper {
+  &.ebs-input-search--fill {
+    .ebs-input-search,
     .ebs-input__wrapper--active {
       background-color: $grey-100;
     }
   }
 
-  &.ebs-input__search--transparent {
-    .ebs-input__search,
-    .ebs-input__wrapper--active {
+  &.ebs-input-search--transparent {
+    .ebs-input-search,
+    .ebs-input-search__wrapper--active {
       background-color: transparent;
       border-color: transparent;
       color: $white;
@@ -24,7 +24,7 @@
     }
   }
 
-  &.disabled .cursor {
+  &--disabled .cursor {
     cursor: not-allowed;
   }
 

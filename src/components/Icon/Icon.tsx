@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { icons } from './iconsList';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
+import { icons } from './iconsList';
+
+const bem = makeBEM('ebs-icon');
 
 export type modelType = 'regular' | 'bold';
 export interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -23,7 +27,7 @@ export const Icon = ({
     onClick,
     width: '1em',
     height: '1em',
-    className: cn(`ebs-icon`, `ebs-icon--${type}`, className),
+    className: cn(bem(null, [type]), className),
   };
 
   if (Component) {

@@ -1,16 +1,19 @@
 import * as React from 'react';
+import { makeBEM } from 'libs';
+
+const bem = makeBEM('ebs-table-mobile');
 
 // FIXME: Fix table on mobile
 export const MobileTable = (props: any) => {
   const { columns, data } = props;
 
   return (
-    <div className="ebs-table__mobile">
+    <div className={bem()}>
       {!data.length && <div className="ebs-empty__list">No data</div>}
 
       {data.map((item: any, key) => (
-        <div key={item.key} className="ebs-table__mobile-item">
-          <div className="ebs-table__mobile-item-key">{item.key}</div>
+        <div key={item.key} className={bem('item')}>
+          <div className={bem('item-key')}>{item.key}</div>
           {columns.map((column) => {
             const render =
               column.mobileRender !== undefined
@@ -25,22 +28,16 @@ export const MobileTable = (props: any) => {
               <React.Fragment key={column.key}>
                 {column.action !== true ? (
                   <div
-                    className={
-                      column.key > 1
-                        ? 'ebs-table__mobile-item-child'
-                        : !column.key
-                        ? 'ebs-table__mobile-item-title'
-                        : 'ebs-table__mobile-item-desc'
-                    }
+                    className={bem(column.key ? 'item-child' : !column.key ? 'item-title' : 'item-desc')}
                     key={column.key}
                   >
-                    {column.key > 1 && <span className="ebs-table__mobile-item-child-title">{column.title}:</span>}
+                    {column.key > 1 && <span className={bem('item-child-title')}>{column.title}:</span>}
 
                     {render}
                   </div>
                 ) : (
                   render && (
-                    <div className="ebs-table__mobile-item-action" key={column.key}>
+                    <div className={bem('item-action')} key={column.key}>
                       {render}
                     </div>
                   )

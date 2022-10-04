@@ -1,7 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Icon } from 'components';
 import { CardContext } from './Card';
+
+const bem = makeBEM('ebs-card__header');
 
 export interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   bordered?: boolean;
@@ -12,10 +16,7 @@ export const CardHeader = ({ className, bordered, onClick, children, ...props }:
   const { collapsible, height, setHeight } = React.useContext(CardContext);
 
   // Card header classNames
-  const classNames = cn(`ebs-card__header`, className, {
-    'ebs-card__header__collapsible': collapsible,
-    'ebs-card__header--bordered': bordered,
-  });
+  const classNames = cn(bem(null, { collapsible, bordered }), className);
 
   // Return simple card header
   if (!collapsible) {
@@ -41,8 +42,8 @@ export const CardHeader = ({ className, bordered, onClick, children, ...props }:
 
   return (
     <header onClick={handleClick} className={classNames} {...props}>
-      <div className="ebs-card__header__content">{children}</div>
-      <div className="ebs-card__header__toggle" onClick={toggle}>
+      <div className={bem('content')}>{children}</div>
+      <div className={bem('toggle')} onClick={toggle}>
         <Icon type={height === 0 ? 'arrow-right' : 'arrow-bottom'} model="bold" />
       </div>
     </header>

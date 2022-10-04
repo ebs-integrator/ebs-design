@@ -1,5 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { makeBEM } from 'libs';
+
+const bem = makeBEM('ebs-optionsbar');
 
 export interface ItemProps extends React.HTMLAttributes<HTMLDivElement> {
   text?: React.ReactNode;
@@ -16,11 +19,7 @@ export const Item = ({ className, onClick, active, disabled, text, ...props }: I
   };
 
   return (
-    <div
-      className={cn(`ebs-optionsbar__item`, className, { active: active, disabled: disabled })}
-      onClick={onClickHandler}
-      {...props}
-    >
+    <div className={cn(bem('item', { active, disabled }), className)} onClick={onClickHandler} {...props}>
       {text}
     </div>
   );

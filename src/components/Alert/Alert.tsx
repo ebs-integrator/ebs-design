@@ -1,7 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
 
-import { Icon } from '../';
+import { makeBEM } from 'libs';
+import { Icon } from 'components';
+
+const bem = makeBEM('ebs-alert');
 
 export type AlertType = 'success' | 'info' | 'warning' | 'error';
 
@@ -28,19 +31,10 @@ export const Alert = ({
   const [closed, setClosed] = React.useState(false);
 
   return (
-    <div
-      className={cn(
-        `ebs-alert`,
-        `ebs-alert--${type}`,
-        { 'ebs-alert--hidden': closed },
-        { 'ebs-alert--outlined': outlined },
-        className,
-      )}
-      {...props}
-    >
+    <div className={cn(bem(null, [type], { outlined, hidden: closed }), className)} {...props}>
       {icon && <Icon type={type} />}
 
-      <div className="ebs-alert-content">
+      <div className={bem('content')}>
         <h3>{message}</h3>
         {children}
       </div>
@@ -48,7 +42,7 @@ export const Alert = ({
       {closable ? (
         <Icon
           type="close"
-          className={cn({ 'ebs-alert--hidden': closed }, 'ebs-icon-close')}
+          className="ebs-icon-close"
           onClick={() => {
             setClosed(true);
             if (typeof onClose === 'function') {

@@ -1,5 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { makeBEM } from 'libs';
+
+const bem = makeBEM('ebs-chips');
 
 export interface ChipsProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onChange'> {
   prefix?: React.ReactNode;
@@ -15,19 +18,18 @@ export const Chips = ({ className, prefix, suffix, disabled, checked, onChange, 
 
   return (
     <div
-      className={cn(`ebs-chips`, `ebs-chips--${checked ? 'checked' : 'unchecked'}`, className, {
-        'has-prefix': prefix,
-        'has-suffix': suffix,
-        disabled: disabled,
-      })}
+      className={cn(
+        bem(null, [checked ? 'checked' : 'unchecked'], { disabled, 'has-prefix': prefix, 'has-suffix': suffix }),
+        className,
+      )}
       onClick={onClickHandler}
       {...props}
     >
-      {prefix && <div className="ebs-chips__prefix">{prefix}</div>}
+      {prefix && <div className={bem('prefix')}>{prefix}</div>}
 
       {text}
 
-      {suffix && <div className="ebs-chips__suffix">{suffix}</div>}
+      {suffix && <div className={bem('prefix')}>{suffix}</div>}
     </div>
   );
 };

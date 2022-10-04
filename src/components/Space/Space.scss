@@ -5,39 +5,40 @@
     flex-direction: column;
   }
 
-  &__align {
-    &--center {
+  &--align {
+    &-center {
       align-items: center;
     }
-    &--start {
+    &-start {
       align-items: flex-start;
     }
-    &--end {
+    &-end {
       align-items: flex-end;
     }
-    &--baseline {
+    &-baseline {
       align-items: baseline;
     }
   }
 
-  &__justify {
-    &--center {
+  &--justify {
+    &-center {
       justify-content: center;
     }
-    &--start {
+    &-start {
       justify-content: flex-start;
     }
-    &--end {
+    &-end {
       justify-content: flex-end;
     }
-    &--space-between {
+    &-space-between {
       justify-content: space-between;
     }
-    &--space-around {
+    &-space-around {
       justify-content: space-around;
     }
   }
-  &__display--inline {
+
+  &--inline {
     display: inline-flex;
   }
 }

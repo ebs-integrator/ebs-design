@@ -1,7 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Icon } from 'components/Icon/Icon';
+
+import { makeBEM } from 'libs';
+import { Icon } from 'components';
 import { CollapseContext } from './Collapse';
+
+const bem = makeBEM('ebs-collapse__header');
 
 export interface CollapseHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   onClick?: () => void;
@@ -29,15 +33,12 @@ export const CollapseHeader = ({ className, style, onClick, children, ...props }
 
   return (
     <header
-      className={cn('ebs-collapse__header', className, {
-        'ebs-collapse__header--collapsed': height === 0,
-        'ebs-collapse__header--bordered': bordered,
-      })}
+      className={cn(bem(null, { bordered, collapsed: height === 0 }), className)}
       onClick={handleClick}
       {...props}
     >
-      <div className="ebs-collapse__header__title">{children}</div>
-      <div className="ebs-collapse__header__toggle" onClick={toggle}>
+      <div className={bem('title')}>{children}</div>
+      <div className={bem('toggle')} onClick={toggle}>
         <Icon type={height === 0 ? 'arrow-bottom' : 'arrow-top'} model="bold" />
       </div>
     </header>

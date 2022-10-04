@@ -16,23 +16,23 @@
   @include mq($until: small-desktop) {
     padding-top: rem(80px);
 
-    &__mobile--closed,
-    &__mobile--opened {
+    &--mobile-closed,
+    &--mobile-opened {
       transition: $transition-time;
       padding-top: 0;
     }
 
-    &__mobile--closed {
+    &--mobile-closed {
       transform: translateX(-100%);
     }
 
-    &__mobile--opened {
+    &--mobile-opened {
       width: rem($sidebar-width);
       transform: translateX(0);
     }
   }
 
-  &--toggled &__item.has-options + div {
+  &--toggled &__item--has-options + div {
     position: absolute;
     top: 0;
   }

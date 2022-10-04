@@ -1,8 +1,10 @@
 import * as React from 'react';
-import cn from 'classnames';
-import { Button } from 'components/Button/Button';
-import { Icon } from 'components/Icon/Icon';
+
+import { makeBEM } from 'libs';
+import { Button, Icon } from 'components';
 import { Space, SpaceDirection, SpaceSize } from 'components/Space/Space';
+
+const bem = makeBEM('ebs-notify__item');
 
 export interface NotifyItemType {
   type?: 'regular' | 'primary' | 'success' | 'danger' | 'info' | 'warning';
@@ -44,18 +46,18 @@ export const NotifyItem = ({
   }
 
   return (
-    <Space size={size} className={cn('ebs-notify__item', `ebs-notify__item--${type}`)}>
+    <Space size={size} className={bem(null, [type])}>
       {icon && (
         <Icon
           type={typeof icon === 'string' ? (icon as string) : undefined}
           component={typeof icon !== 'string' ? icon : undefined}
         />
       )}
-      <Space align="start" size="small" direction={direction} className="ebs-notify__item-icon">
-        {title && <p className="ebs-notify__item-title">{title}</p>}
-        {description && <p className="ebs-notify__item-message">{description}</p>}
+      <Space align="start" size="small" direction={direction} className={bem('icon')}>
+        {title && <p className={bem('title')}>{title}</p>}
+        {description && <p className={bem('message')}>{description}</p>}
       </Space>
-      <Button type="text" className="ebs-notify__item-close" onClick={onClose}>
+      <Button type="text" className={bem('close')} buttonClass={bem('close-button')} onClick={onClose}>
         <Icon type="close" model="bold" />
       </Button>
     </Space>

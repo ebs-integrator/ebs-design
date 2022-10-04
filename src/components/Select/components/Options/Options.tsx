@@ -1,12 +1,15 @@
 import * as React from 'react';
 import cn from 'classnames';
+
 import { useEventListener } from 'hooks';
+import { makeBEM } from 'libs';
 import { Space, Label, Loader } from 'components';
+import { Context } from '../../Context';
+import { ScrollMode } from '../Pagination';
+import { SelectMode, OptionValue, Option } from '../../interfaces';
 import { Item } from './Item';
 
-import { Context } from '../../Context';
-import { SelectMode, OptionValue, Option } from '../../interfaces';
-import { ScrollMode } from '../Pagination';
+const bem = makeBEM('ebs-select');
 
 export interface OptionsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   mode?: SelectMode;
@@ -31,6 +34,7 @@ const Options = ({
   value,
   emptyLabel = 'No found',
   newOption,
+  className,
   onNext,
   onClose,
   onChange,
@@ -122,13 +126,7 @@ const Options = ({
     <div
       ref={ref}
       {...props}
-      className={cn(
-        'ebs-select__options-items',
-        {
-          'ebs-select__options--multiple': ['multiple', 'tags'].includes(mode),
-        },
-        props.className,
-      )}
+      className={cn(bem('options-items', { multiple: ['multiple', 'tags'].includes(mode) }), className)}
       style={maxHeight ? { ...props.style, maxHeight } : props.style}
     >
       {newOption && onClickAddNew && (
@@ -161,7 +159,7 @@ const Options = ({
               />
             ))
           : !loading && (
-              <Space size="large" justify="center" className="ebs-select__options--empty">
+              <Space size="large" justify="center" className={bem('options', ['empty'])}>
                 {emptyLabel}
               </Space>
             )}

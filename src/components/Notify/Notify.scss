@@ -81,10 +81,16 @@
     border-radius: $notify-border-radius;
     box-shadow: $notify-box-shadow;
 
-    &-close {
+    &__close {
       position: absolute;
       right: 0;
       top: calc(#{rem($gutter-size)} / 4);
+      width: 100%;
+
+      &-button {
+        display: flex;
+        justify-content: flex-end;
+      }
     }
 
     &--regular {

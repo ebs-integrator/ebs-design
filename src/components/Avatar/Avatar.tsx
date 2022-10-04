@@ -1,6 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { colorFromString, firstLetters } from 'libs';
+import { colorFromString, firstLetters, makeBEM } from 'libs';
+
+const bem = makeBEM('ebs-avatar');
 
 export type AvatarType = 'regular' | 'primary' | 'light' | 'dynamic';
 
@@ -35,22 +37,20 @@ export const Avatar = ({
   return (
     <div
       {...props}
-      className={cn(`ebs-avatar`, `ebs-avatar--${size}`, `ebs-avatar--${type}`, className, {
-        'ebs-avatar--circle': circle,
-      })}
+      className={cn(bem(null, [size, type], { circle }), className)}
       style={{ backgroundColor: type === 'dynamic' ? colorFromString(alt) : undefined, ...props.style }}
     >
       {img ? (
-        <img className="ebs-avatar__img" src={img} alt={alt} />
+        <img className={bem('img')} src={img} alt={alt} />
       ) : icon ? (
         icon
       ) : (
-        shortAlt && <div className="ebs-avatar__short-alt">{shortAlt}</div>
+        shortAlt && <div className={bem('short-alt')}>{shortAlt}</div>
       )}
 
       {children}
 
-      {status ? <div className={`ebs-avatar__status ebs-avatar__status--${status}`} /> : null}
+      {status ? <div className={bem('status', [status])} /> : null}
     </div>
   );
 };

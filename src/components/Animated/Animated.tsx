@@ -1,6 +1,6 @@
 import * as React from 'react';
-import cn from 'classnames';
 import AnimateHeight, { Height } from 'react-animate-height';
+import cn from 'classnames';
 
 export interface AnimatedProps
   extends Omit<Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'aria-hidden'>, 'onAnimationStart'>, 'onAnimationEnd'> {

@@ -1,13 +1,20 @@
 import * as React from 'react';
 import ReactDatePicker, { registerLocale } from 'react-datepicker';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { DatePickerProps, DatePickerComposition, DateType } from './types';
 import { getDefaultDateFormat, parseDate, getOutputDate } from './utils';
 import RangePicker from './RangePicker';
 import RangeInputPicker from './RangeInputPicker';
 
+const bem = makeBEM('ebs-datepicker');
+
 const InternalDatePicker = React.forwardRef<ReactDatePicker, DatePickerProps>(
-  ({ size = 'medium', value, ...props }, ref) => {
+  (
+    { size = 'medium', value, className, wrapperClassName, popperClassName, calendarClassName, children, ...props },
+    ref,
+  ) => {
     const [val, setVal] = React.useState<DateType>('');
 
     React.useEffect(() => {
@@ -43,12 +50,12 @@ const InternalDatePicker = React.forwardRef<ReactDatePicker, DatePickerProps>(
         onChange={handleChange}
         onChangeRaw={(e) => handleChange(e.target.valueAsDate, e)}
         selected={parseDate(val, dateFormat)}
-        className={cn(`ebs-datepicker ebs-datepicker--${size}`, props.className)}
-        wrapperClassName={cn('ebs-datepicker__wrapper', props.wrapperClassName)}
-        popperClassName={cn('ebs-datepicker__popper', props.popperClassName)}
-        calendarClassName={cn('ebs-datepicker__calendar', props.calendarClassName)}
+        className={cn(bem(null, [size]), className)}
+        wrapperClassName={cn(bem('wrapper'), wrapperClassName)}
+        popperClassName={cn(bem('popper'), popperClassName)}
+        calendarClassName={cn(bem('calendar'), calendarClassName)}
       >
-        {props.children}
+        {children}
       </ReactDatePicker>
     );
   },

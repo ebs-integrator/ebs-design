@@ -25,6 +25,7 @@
   &--icon {
     display: flex;
     align-items: center;
+    width: auto;
   }
 
   &--block {
@@ -128,7 +129,7 @@
     color: var(--primary-color);
   }
 
-  &--ghost.ebs-button__wrapper {
+  &--ghost.ebs-button--wrapper {
     background-color: $btn-type-ghost-background;
     border-color: $btn-type-ghost-border-color;
     color: $btn-type-ghost-color;
@@ -251,13 +252,14 @@
     }
   }
 
-  &__wrapper {
+  &--wrapper {
     position: relative;
     display: inline-block;
     text-align: center;
     border-radius: rem($border-radius);
     transition: $transition-base;
     border: 1px solid transparent;
+    width: auto;
 
     &.ebs-button--round {
       border-radius: 100%;
@@ -287,7 +289,7 @@
     border-radius: rem($border-radius);
     pointer-events: none;
 
-    &-regular {
+    &--regular {
       animation: regularFade 0.25s forwards;
     }
 
@@ -317,20 +319,20 @@
       @include text-ellipsis;
     }
 
-    .ebs-button__wrapper:first-child {
+    .ebs-button--wrapper:first-child {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
 
-    .ebs-button__wrapper:not(:first-child):not(:last-child) {
+    .ebs-button--wrapper:not(:first-child):not(:last-child) {
       border-radius: 0;
     }
 
-    .ebs-button__wrapper:not(:last-child) {
+    .ebs-button--wrapper:not(:last-child) {
       border-right: none;
     }
 
-    .ebs-button__wrapper:last-child {
+    .ebs-button--wrapper:last-child {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }

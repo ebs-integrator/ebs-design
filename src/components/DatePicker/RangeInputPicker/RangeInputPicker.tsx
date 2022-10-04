@@ -1,11 +1,13 @@
 import * as React from 'react';
 import ReactDatePicker from 'react-datepicker';
 import cn from 'classnames';
-import { isEqual } from 'libs';
 
+import { isEqual, makeBEM } from 'libs';
 import { DatePickerProps, DateValueType, DateType } from '../types';
 import { getDefaultDateFormat, getOutputDate, parseDate } from '../utils';
 import CustomRangeInput from './CustomRangeInput';
+
+const bem = makeBEM('ebs-datepicker');
 
 const RangeInputPicker = React.forwardRef<ReactDatePicker, DatePickerProps>(
   ({ size = 'medium', value, onChange, ...props }, ref) => {
@@ -61,9 +63,9 @@ const RangeInputPicker = React.forwardRef<ReactDatePicker, DatePickerProps>(
         endDate={endDate}
         onChange={handleChange}
         customInput={<CustomRangeInput startDate={startDate} endDate={endDate} dateFormat={dateFormat} />}
-        className={cn(`ebs-datepicker ebs-datepicker--${size}`, props?.className)}
-        wrapperClassName={cn('ebs-datepicker__wrapper', props?.wrapperClassName)}
-        popperClassName={cn('ebs-datepicker__popper', props?.popperClassName)}
+        className={cn(bem(null, [size]), props?.className)}
+        wrapperClassName={cn(bem('wrapper'), props?.wrapperClassName)}
+        popperClassName={cn(bem('popper'), props?.popperClassName)}
       />
     );
   },

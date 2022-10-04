@@ -1,5 +1,6 @@
 import * as React from 'react';
+import { makeBEM } from 'libs';
 
-export const BottomMenu = ({ children }: React.PropsWithChildren) => (
-  <div className="ebs-sidebar__bottom">{children}</div>
-);
+const bem = makeBEM('ebs-sidebar');
+
+export const BottomMenu = ({ children }: React.PropsWithChildren) => <div className={bem('bottom')}>{children}</div>;

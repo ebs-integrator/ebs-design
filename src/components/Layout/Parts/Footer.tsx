@@ -1,5 +1,8 @@
 import * as React from 'react';
 import cn from 'classnames';
+import { makeBEM } from 'libs';
+
+const bem = makeBEM('ebs-layout');
 
 const Copyright = () => (
   <>
@@ -13,7 +16,7 @@ export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Footer = ({ label = <Copyright />, fixed, className, children, ...props }: FooterProps) => (
-  <footer className={cn('ebs-layout__footer', className, { 'ebs-layout__footer--fixed': fixed })} {...props}>
+  <footer className={cn(bem('footer', { fixed }), className)} {...props}>
     {children || <span>{label}</span>}
   </footer>
 );

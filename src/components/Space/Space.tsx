@@ -1,7 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { SpaceItem } from './SpaceItem';
+
+import { makeBEM } from 'libs';
 import { SizeType } from 'types';
+import { SpaceItem } from './SpaceItem';
+
+const bem = makeBEM('ebs-space');
 
 export type SpaceSize = SizeType | number;
 export type SpaceDirection = 'horizontal' | 'vertical';
@@ -72,13 +76,7 @@ export const Space = ({
   return (
     <div
       className={cn(
-        'ebs-space',
-        {
-          [`ebs-space--${direction}`]: direction,
-          [`ebs-space__align--${align}`]: align,
-          [`ebs-space__justify--${justify}`]: justify,
-          [`ebs-space__display--inline`]: inline,
-        },
+        bem(null, { inline, [direction]: direction, [`align-${align}`]: align, [`justify-${justify}`]: justify }),
         className,
       )}
       style={{
