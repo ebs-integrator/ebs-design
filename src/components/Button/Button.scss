@@ -197,6 +197,32 @@
     }
   }
 
+  &--danger {
+    color: $white;
+    background-color: $danger-color;
+    border-color: $danger-color;
+
+    &:hover {
+      background-color: $danger-600;
+      border-color: $danger-600;
+    }
+
+    &:active {
+      background-color: $danger-700;
+      border-color: $danger-700;
+    }
+
+    &:focus {
+      box-shadow: $danger-100 0px 0px 0px 3px;
+    }
+
+    &:disabled {
+      color: $danger-200;
+      background-color: $danger-100;
+      border-color: $danger-100;
+    }
+  }
+
   // TODO: Remove !important after fixing Loader component (with color and emptyColor as props)
   // Loader
   &__loader {

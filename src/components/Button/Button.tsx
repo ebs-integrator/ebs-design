@@ -8,7 +8,7 @@ const bem = makeBEM('ebs-button');
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
-export type ButtonType = 'primary' | 'fill' | 'ghost' | 'text' | 'dark' | 'light';
+export type ButtonType = 'primary' | 'fill' | 'ghost' | 'text' | 'dark' | 'light' | 'danger';
 
 export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'>, 'prefix'> {
   prefix?: React.ReactNode;
