@@ -62,8 +62,8 @@
     &--small {
       border: 2px solid $grey-500;
       border-top: 2px solid var(--primary-color);
-      width: calc(#{rem($base-size)} / 2);
-      height: calc(#{rem($base-size)} / 2);
+      width: rem(14px);
+      height: rem(14px);
       top: calc(50% - #{rem($base-size)} / 4);
     }
 
