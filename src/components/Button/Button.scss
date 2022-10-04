@@ -1,314 +1,260 @@
-// fade
-@include fadeBackground('regularFade', #000);
-
-// button
 .ebs-button {
-  @include fontMedium;
-  cursor: pointer;
-  width: 100%;
-  font-size: rem(13px);
-  line-height: rem($btn-line-height);
-  border-color: transparent;
-  background: transparent;
-  padding: 0;
+  display: inline-flex;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  user-select: none;
+  white-space: nowrap;
   outline: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: transparent;
 
-  &--is-icon {
-    @include flex-center;
-    height: 100%;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  font-size: rem($btn-font-size);
+  line-height: $btn-line-height;
+  transition: $transition-base;
+
+  &[data-has-icon='true'] {
+    padding: 0;
   }
 
-  &--prefix button.ebs-button {
-    padding-left: rem(40px);
+  &:disabled,
+  &[data-is-loading='true'] {
+    pointer-events: none;
   }
 
-  &--icon {
-    display: flex;
-    align-items: center;
+  &:focus {
+    box-shadow: $primary-100 0px 0px 0px 3px;
+    z-index: 1;
   }
 
-  &--block {
-    width: 100%;
-    display: block;
-  }
-
-  // button type (Color)
-  &--primary {
-    border-color: var(--primary-color);
-    background-color: var(--primary-color);
-    color: $white;
-
-    &:hover {
-      border-color: var(--primary-600);
-      background-color: var(--primary-600);
-    }
-
-    &:active,
-    &.active {
-      border-color: var(--primary-700);
-      background-color: var(--primary-700);
-    }
-
-    .ebs-icon {
-      color: $white;
-    }
-  }
-
-  &--primary & {
-    color: $white;
-
-    :hover {
-      color: $white;
-    }
-  }
-
-  &--dark {
-    border-color: $black;
-    background-color: $black;
-    color: $white;
-
-    @include hover-state {
-      border-color: var(--primary-600);
-      background-color: var(--primary-600);
-    }
-
-    .ebs-button,
-    .ebs-icon {
-      color: $white;
-    }
-
-    .ebs-button,
-    .ebs-icon {
-      color: $white;
-    }
-  }
-
-  &--dark & {
-    color: $white;
-
-    :hover {
-      color: $white;
-    }
-  }
-
-  &--fill {
-    border-color: var(--primary-100);
-    background-color: var(--primary-100);
-    color: var(--primary-color);
-
-    &:hover {
-      border-color: var(--primary-color);
-      background-color: var(--primary-color);
-      color: $white;
-
-      .ebs-button,
-      .ebs-icon {
-        color: $white;
-      }
-    }
-
-    &:active,
-    &.active {
-      border-color: var(--primary-600);
-      background-color: var(--primary-600);
-      color: $white;
-
-      .ebs-button,
-      .ebs-icon {
-        color: $white;
-      }
-    }
-
-    .ebs-icon {
-      color: var(--primary-color);
-    }
-  }
-
-  &--fill & {
-    color: var(--primary-color);
-  }
-
-  &--ghost.ebs-button__wrapper {
-    background-color: $btn-type-ghost-background;
-    border-color: $btn-type-ghost-border-color;
-    color: $btn-type-ghost-color;
-
-    &:hover {
-      border-color: $btn-type-ghost-hover-border-color;
-      background-color: $btn-type-ghost-hover-background;
-      color: $btn-type-ghost-hover-color;
-
-      .ebs-button,
-      .ebs-icon {
-        color: $btn-type-ghost-hover-color;
-      }
-    }
-
-    &:active,
-    &.active {
-      border-color: $btn-type-ghost-active-border-color;
-      background-color: $btn-type-ghost-active-background;
-      color: $btn-type-ghost-active-color;
-
-      .ebs-button,
-      .ebs-icon {
-        color: $btn-type-ghost-active-color;
-      }
-    }
-
-    .ebs-icon {
-      color: $btn-type-ghost-icon-color;
-    }
-  }
-
-  &--ghost & {
-    color: $btn-type-ghost-color;
-  }
-
-  &--text {
-    background-color: transparent;
-    color: var(--primary-color);
-
-    &:hover {
-      background-color: transparent;
-
-      .ebs-button,
-      .ebs-icon {
-        color: var(--primary-600);
-      }
-    }
-
-    &:active,
-    &.active {
-      background-color: transparent;
-
-      .ebs-button,
-      .ebs-icon {
-        color: var(--primary-700);
-      }
-    }
-
-    .ebs-icon {
-      color: var(--primary-color);
-    }
-  }
-
-  &--text & {
-    color: var(--primary-color);
-  }
-
-  &--disabled {
-    background-color: $border-color;
-
-    .ebs-button,
-    .ebs-icon {
-      cursor: not-allowed;
-      color: $grey-500;
-    }
-  }
-
-  // button size
-  &--large {
-    border-radius: rem($btn-border-radius-lg);
-  }
-
-  &--large & {
-    padding: rem($btn-padding-y-lg $btn-padding-x-lg);
-    font-weight: $btn-font-weight-lg;
-    font-size: rem($btn-font-size-lg);
-
-    &.ebs-button--is-icon {
-      padding: rem($btn-padding-y-lg);
-    }
-  }
-
+  // Sizes
   &--medium {
+    padding: 0 rem($btn-padding-x);
+    height: rem($base-size);
     border-radius: rem($btn-border-radius);
+
+    &[data-has-icon='true'] {
+      width: rem($base-size);
+    }
   }
 
-  &--medium & {
-    padding: rem($btn-padding-y $btn-padding-x);
-    font-weight: $btn-font-weight;
-    font-size: rem($btn-font-size);
+  &--large {
+    padding: 0 rem($btn-padding-x-lg);
+    height: rem($base-size-lg);
+    border-radius: rem($btn-border-radius-lg);
 
-    &.ebs-button--is-icon {
-      padding: rem($btn-padding-y);
+    &[data-has-icon='true'] {
+      width: rem($base-size-lg);
     }
   }
 
   &--small {
+    padding: 0 rem($btn-padding-x-sm);
+    height: rem($base-size-sm);
     border-radius: rem($btn-border-radius-sm);
-  }
 
-  &--small & {
-    padding: rem($btn-padding-y-sm $btn-padding-x-sm);
-    font-weight: $btn-font-weight-sm;
-    font-size: rem($btn-font-size-sm);
-    line-height: rem($btn-line-height-sm);
-
-    &.ebs-button--is-icon {
-      padding: rem($btn-padding-y-sm);
+    &[data-has-icon='true'] {
+      width: rem($base-size-sm);
     }
   }
 
-  &__wrapper {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    border-radius: rem($border-radius);
-    transition: $transition-base;
-    border: 1px solid transparent;
+  // Variants
+  &--primary {
+    color: $white;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 
-    &.ebs-button--round {
-      border-radius: 100%;
+    &:hover {
+      background-color: var(--primary-600);
+      border-color: var(--primary-600);
+    }
 
-      .ebs-button {
-        @include flex;
-      }
+    &:active {
+      background-color: var(--primary-700);
+      border-color: var(--primary-700);
+    }
 
-      &.ebs-button--small .ebs-button {
-        padding: rem($btn-padding-x-sm);
-      }
-      &.ebs-button--medium .ebs-button {
-        padding: rem($btn-padding-x);
-      }
-      &.ebs-button--large .ebs-button {
-        padding: rem($btn-padding-x-lg);
-      }
+    &:disabled {
+      border-color: var(--primary-300);
+      background-color: var(--primary-300);
     }
   }
 
-  &__loading {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    border-radius: rem($border-radius);
-    pointer-events: none;
+  &--text {
+    color: var(--primary-color);
+    background-color: transparent;
+    border-color: transparent;
 
-    &-regular {
-      animation: regularFade 0.25s forwards;
+    &:hover {
+      color: var(--primary-600);
     }
 
-    .ebs-loader__spinner {
+    &:active {
+      color: var(--primary-700);
+    }
+
+    &:disabled {
+      color: var(--primary-300);
+    }
+  }
+
+  &--fill {
+    color: var(--primary-color);
+    background-color: var(--primary-200);
+    border-color: var(--primary-200);
+
+    &:hover {
+      color: $white;
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    &:active {
+      color: $white;
+      background-color: var(--primary-600);
+      border-color: var(--primary-600);
+    }
+
+    &:disabled {
+      color: var(--primary-300);
+      background-color: var(--primary-100);
+      border-color: var(--primary-100);
+    }
+  }
+
+  &--ghost {
+    color: var(--primary-color);
+    background-color: transparent;
+    border-color: var(--primary-color);
+
+    &:hover {
+      color: $white;
+      background-color: var(--primary-color);
+    }
+
+    &:active {
+      color: $white;
+      border-color: var(--primary-700);
+      background-color: var(--primary-700);
+    }
+
+    &:disabled {
+      color: var(--primary-200);
+      background-color: transparent;
+      border-color: var(--primary-200);
+    }
+  }
+
+  &--dark {
+    color: $white;
+    background-color: $grey-800;
+    border-color: $grey-800;
+
+    &:hover {
+      background-color: $grey-900;
+      border-color: $grey-900;
+    }
+
+    &:active {
+      background-color: $black;
+      border-color: $black;
+    }
+
+    &:focus {
+      box-shadow: $grey-400 0px 0px 0px 3px;
+    }
+
+    &:disabled {
+      color: $grey-200;
+      background-color: $grey-500;
+      border-color: $grey-500;
+    }
+  }
+
+  &--light {
+    color: $black;
+    background-color: $white;
+
+    &:hover {
+      background-color: $grey-100;
+    }
+
+    &:active {
+      background-color: $grey-200;
+    }
+
+    &:focus {
+      box-shadow: $grey-100 0px 0px 0px 3px;
+    }
+
+    &:disabled {
+      color: $grey-400;
+    }
+  }
+
+  // TODO: Remove !important after fixing Loader component (with color and emptyColor as props)
+  // Loader
+  &__loader {
+    top: unset;
+
+    &--primary {
+      border-color: var(--primary-300) !important;
+      border-top-color: $white !important;
+    }
+
+    &--text {
+      border-color: $grey-300 !important;
+      border-top-color: var(--primary-color) !important;
+    }
+
+    &--fill,
+    &--ghost {
+      border-color: var(--primary-300) !important;
+      border-top-color: var(--primary-color) !important;
+    }
+
+    &--light {
+      border-color: $grey-300 !important;
+      border-top-color: $grey-600 !important;
+    }
+
+    &--dark {
+      border-color: $grey-600 !important;
+      border-top-color: $white !important;
+    }
+
+    &--absolute {
       position: absolute;
-      left: calc(50% - 7.5px);
-      top: calc(50% - 7.5px);
-      transform: translate(-50%, -50%);
     }
   }
 
+  // Prefix
   &__prefix {
-    position: absolute;
-    left: rem(10px);
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
     display: flex;
     align-items: center;
+    margin-right: rem(8px);
   }
 
+  // Children when button with no icon is loading
+  &__children-transparent {
+    opacity: 0;
+  }
+
+  // Additional styling props
+  &--full {
+    width: 100%;
+  }
+
+  &--rounded {
+    border-radius: $border-radius-pill;
+  }
+
+  // Button Group
   &__group {
     display: flex;
     flex-wrap: nowrap;

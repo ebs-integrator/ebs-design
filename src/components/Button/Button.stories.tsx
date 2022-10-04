@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { exportStory } from 'libs';
-import { Template } from 'components/storybook';
 import { Icon } from 'components';
 import { Button, ButtonGroup } from './Button';
 
@@ -13,21 +12,20 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 export const Regular: ComponentStory<typeof Button> = (args) => (
-  <Template>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
     <Button {...args}>Button</Button>
-  </Template>
+  </div>
 );
 
 Regular.args = {
   type: 'primary',
   size: 'medium',
   children: 'Example',
-  form: '',
+  prefix: <Icon type="home" />,
   icon: '',
-  buttonClass: '',
   loading: false,
   submit: false,
-  block: false,
-  onClick: () => console.log,
-  prefix: <Icon type="home" />,
+  disabled: false,
+  full: false,
+  rounded: false,
 };
