@@ -279,32 +279,4 @@
   &--rounded {
     border-radius: $border-radius-pill;
   }
-
-  // Button Group
-  &__group {
-    display: flex;
-    flex-wrap: nowrap;
-
-    .ebs-button {
-      @include text-ellipsis;
-    }
-
-    .ebs-button__wrapper:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-
-    .ebs-button__wrapper:not(:first-child):not(:last-child) {
-      border-radius: 0;
-    }
-
-    .ebs-button__wrapper:not(:last-child) {
-      border-right: none;
-    }
-
-    .ebs-button__wrapper:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-  }
 }

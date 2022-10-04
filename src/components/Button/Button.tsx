@@ -64,9 +64,3 @@ export const Button = ({
     </button>
   );
 };
-
-export const ButtonGroup = ({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn(bem('group'), className)} {...props}>
-    {children}
-  </div>
-);

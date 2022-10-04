@@ -3,12 +3,11 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { exportStory } from 'libs';
 import { Icon } from 'components';
-import { Button, ButtonGroup } from './Button';
+import { Button } from './Button';
 
 export default {
   title: exportStory('Button', 'form'),
   component: Button,
-  subcomponents: { ButtonGroup },
 } as ComponentMeta<typeof Button>;
 
 export const Regular: ComponentStory<typeof Button> = (args) => (
