@@ -5,16 +5,16 @@
   background-color: $white;
   border-radius: rem($border-radius);
 
-  &.has-prefix .ebs-input {
+  &--has-prefix .ebs-input {
     padding-left: rem(37.5px);
   }
 
-  &.has-suffix .ebs-input {
+  &--has-suffix .ebs-input {
     padding-right: rem(37.5px);
   }
 
   &--active,
-  &.focus {
+  &--focus {
     border-color: var(--primary-color);
     background-color: $white;
 
@@ -23,17 +23,17 @@
     }
   }
 
-  &--unactive {
+  &--inactive {
     border-color: $border-color;
     background-color: $white;
   }
 
-  &.has-error {
+  &--has-error {
     border-color: $danger-color;
     background-color: $white;
   }
 
-  &.disabled {
+  &--disabled {
     border-color: $grey-500;
     background-color: $white;
 
@@ -47,7 +47,7 @@
     }
   }
 
-  &.ebs-input-style--grey {
+  &--grey {
     background-color: $grey-50;
   }
 
@@ -76,7 +76,7 @@
     outline: none;
   }
 
-  &-container {
+  &--container {
     position: relative;
     width: 100%;
   }
@@ -95,16 +95,20 @@
     }
   }
 
-  &__prefix.clickable,
-  &__suffix.clickable {
-    cursor: pointer;
-    z-index: 2;
+  &__prefix,
+  &__suffix {
+    &--clickable {
+      cursor: pointer;
+      z-index: 2;
+    }
   }
 
-  &__prefix.not-clickable,
-  &__suffix.not-clickable {
-    cursor: default;
-    z-index: 2;
+  &__prefix,
+  &__suffix {
+    &--unclickable {
+      cursor: default;
+      z-index: 2;
+    }
   }
 
   &__wrapper:not(.has-prefix) &__prefix + &__container {

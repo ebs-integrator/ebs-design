@@ -8,7 +8,8 @@
     }
   }
 
-  &--nowrap {
+  &--nowrap,
+  &__wrapper--nowrap {
     #{$self}__body,
     #{$self}__body-title {
       white-space: nowrap;

@@ -1,6 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { Icon } from 'components/Icon/Icon';
+
+import { makeBEM } from 'libs';
+import { Icon } from 'components';
+
+const bem = makeBEM('ebs-checkbox');
 
 export type CheckAlign = 'left' | 'right';
 
@@ -36,31 +40,27 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <div
-        className={cn(`ebs-checkbox__wrapper`, `ebs-checkbox--${checkAlign}`, className, {
-          'has-text': text,
-          indeterminate: indeterminate,
-          disabled: disabled,
-        })}
+        className={cn(bem('wrapper', [checkAlign], { indeterminate, disabled, 'has-text': text }), className)}
         {...props}
       >
         <input
           ref={ref}
           name={name}
           type="checkbox"
-          className="ebs-checkbox__input"
+          className={bem('input')}
           value={value}
           onChange={onChangeHandler}
           {...(checked !== undefined ? { checked } : {})}
           disabled={disabled}
         />
 
-        <div className="ebs-checkbox">
-          <Icon type="indeterminate" model="bold" className="ebs-checkbox__indeterminate" />
+        <div className={bem()}>
+          <Icon type="indeterminate" model="bold" className={bem('indeterminate')} />
 
-          <Icon type="check" model="bold" className="ebs-checkbox__check" />
+          <Icon type="check" model="bold" className={bem('check')} />
         </div>
 
-        {text && <div className="ebs-checkbox__text">{text}</div>}
+        {text && <div className={bem('text')}>{text}</div>}
       </div>
     );
   },

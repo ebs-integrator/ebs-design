@@ -1,6 +1,6 @@
 @import '~react-phone-input-2/lib/style.css';
 
-.react-tel-input.ebs-input__phone {
+.react-tel-input.ebs-input-phone {
   position: relative;
 
   &.active .form-control,
@@ -101,13 +101,21 @@
   }
 }
 
-.ebs-input__phone {
-  &-dropdown {
+.ebs-input-phone {
+  &__dropdown {
     @include fadeAnimation;
   }
 
-  &-wrapper__container {
+  &__wrapper-container {
     position: relative;
+
+    // Sizes
+    &--small .react-tel-input .form-control {
+      height: rem($base-size-sm);
+    }
+    &--large .react-tel-input .form-control {
+      height: rem($base-size-lg);
+    }
   }
 
   &__clear {
@@ -120,13 +128,5 @@
     padding: rem(0 7px);
     margin: rem(0 -7px);
     transform: translate3d(0, -50%, 0);
-  }
-
-  // Sizes
-  &--small .react-tel-input .form-control {
-    height: rem($base-size-sm);
-  }
-  &--large .react-tel-input .form-control {
-    height: rem($base-size-lg);
   }
 }

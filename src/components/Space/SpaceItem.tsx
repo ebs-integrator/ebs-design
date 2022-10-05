@@ -1,5 +1,9 @@
 import * as React from 'react';
+
+import { makeBEM } from 'libs';
 import { SpaceContext, SpaceDirection } from './Space';
+
+const bem = makeBEM('ebs-space');
 
 export interface ItemProps {
   index: number;
@@ -28,7 +32,7 @@ export const SpaceItem = ({ direction, index, wrap, children }: React.PropsWithC
   }
 
   return (
-    <div className="ebs-space__item" style={style}>
+    <div className={bem('item')} style={style}>
       {children}
     </div>
   );

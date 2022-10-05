@@ -3,9 +3,12 @@ import cn from 'classnames';
 import RCTable, { Column, ColumnGroup, Summary } from 'rc-table';
 import { TableProps as RCTableProps } from 'rc-table/lib/Table';
 import { ColumnType as RCColumnType } from 'rc-table/lib/interface';
-import { Icon } from 'components';
+
+import { flattenArray, makeBEM } from 'libs';
 import { SizeType } from 'types';
-import { flattenArray } from 'libs';
+import { Icon } from 'components';
+
+const bem = makeBEM('ebs-table');
 
 type FilterType = 'asc' | 'desc';
 
@@ -60,7 +63,7 @@ const Table = <T extends object>({
       }),
       title: column.onFilter ? (
         <span
-          className={cn(`ebs-table__th--filtered`, `ebs-table__th--filtered-${filters[key] || 'none'}`)}
+          className={bem('th', [filters[key] ? `filtered-${filters[key]}` : 'filtered-none'])}
           onClick={(): void => onFilterHandler(key)}
         >
           {column.title} <Icon type="arrow-outline-bottom" model="bold" />
@@ -115,7 +118,7 @@ const Table = <T extends object>({
     <RCTable
       rowKey={(_, i) => `row-key-${i}`}
       {...props}
-      className={cn(`ebs-table ebs-table--${size}`, props.className)}
+      className={cn(bem(null, [size]), props.className)}
       columns={columns}
     >
       {children}

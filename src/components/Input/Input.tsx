@@ -1,6 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Extra, Label, Loader } from 'components';
+
+const bem = makeBEM('ebs-input');
 
 export type InputSize = 'small' | 'medium' | 'large';
 export type InputStyleType = 'white' | 'grey';
@@ -81,28 +85,24 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     };
 
     return (
-      <div className={cn(`ebs-input__container`, containerClass)}>
+      <div className={cn(bem('container'), containerClass)}>
         <Label text={label} disabled={disabled} />
 
         <div
           className={cn(
-            `ebs-input__wrapper`,
-            `ebs-input__wrapper--${hasValue ? `active` : `unactive`}`,
-            `ebs-input__type--${type}`,
-            `ebs-input-style--${styleType}`,
-            className,
-            {
-              'ebs-input__empty': value === '',
+            bem('wrapper', [hasValue ? 'active' : 'inactive', type, styleType], {
+              disabled,
+              empty: value === '',
               'has-prefix': prefix,
               'has-suffix': suffix,
               'has-error': hasError,
-              disabled: disabled,
-            },
+            }),
+            className,
           )}
         >
           {(loading && !suffix) || prefix ? (
             <div
-              className={cn(`ebs-input__prefix`, !loading && onClickPrefix ? `clickable` : `not-clickable`)}
+              className={bem('prefix', [!loading && onClickPrefix ? `clickable` : `unclickable`])}
               onClick={onClickPrefixHandler}
             >
               {loading && !suffix ? <Loader.Spinner size="small" /> : prefix}
@@ -111,21 +111,21 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           {(loading && !prefix && suffix) || suffix ? (
             <div
-              className={cn(`ebs-input__suffix`, !loading && onClickSuffix ? `clickable` : `not-clickable`)}
+              className={bem('suffix', [!loading && onClickSuffix ? `clickable` : `unclickable`])}
               onClick={onClickSuffixHandler}
             >
               {loading && suffix ? <Loader.Spinner size="small" /> : suffix}
             </div>
           ) : null}
 
-          <div className="ebs-input__container">
+          <div className="ebs-input-container">
             <input
               ref={ref}
               name={name}
               type={type}
               value={value}
               autoFocus={autoFocus}
-              className={cn('ebs-input', `ebs-input--${size}`)}
+              className={bem(null, [size])}
               disabled={disabled || loading}
               onClick={onClick}
               onKeyDown={onKeyDown}
@@ -134,7 +134,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             />
 
             {hasValue && isClearable ? (
-              <div className="ebs-input__clear" onClick={onChange && (() => onChange(''))}>
+              <div className={bem('clear')} onClick={onChange && (() => onChange(''))}>
                 &#215;
               </div>
             ) : null}

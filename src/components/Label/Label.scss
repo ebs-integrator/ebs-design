@@ -44,6 +44,7 @@
 
   // Types
 
+  &--primary,
   &--circle,
   &--fill,
   &--ghost {
@@ -120,19 +121,19 @@
     }
   }
 
-  &.disabled {
+  &--disabled {
     cursor: not-allowed;
     color: $grey-500;
     border-color: $grey-500;
   }
 
-  &.has-prefix,
-  &.has-prefix.ebs-label--circle {
+  &--has-prefix,
+  &--has-prefix.ebs-label--circle {
     padding-left: rem(22.5px);
   }
 
-  &.has-suffix,
-  &.has-suffix.ebs-label--circle {
+  &--has-suffix,
+  &--has-suffix.ebs-label--circle {
     padding-right: rem(27.5px);
   }
 

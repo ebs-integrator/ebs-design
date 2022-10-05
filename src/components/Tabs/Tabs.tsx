@@ -1,7 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Panel } from './Panel';
 import { Tab } from './Tab';
+
+const bem = makeBEM('ebs-tabs');
 
 export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
   activeTab?: string;
@@ -27,7 +31,7 @@ const Tabs = ({ activeTab, setActiveTab, className, contentClass, children, ...p
 
   return (
     <TabsContext.Provider value={memoizedContextValue} {...props}>
-      <div className={cn(`ebs-tabs`, className)}>
+      <div className={cn(bem(), className)}>
         {children &&
           React.Children.map(children, (child) => {
             if (child && (child as React.ReactElement).type === Tab) {
@@ -35,7 +39,7 @@ const Tabs = ({ activeTab, setActiveTab, className, contentClass, children, ...p
             }
           })}
       </div>
-      <div className={cn(`ebs-tabs__content`, contentClass)}>
+      <div className={cn(bem('content'), contentClass)}>
         {children &&
           React.Children.map(children, (child) => {
             if (child && (child as React.ReactElement).type !== Tab) {

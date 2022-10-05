@@ -1,6 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { SpinnerSize } from './Loader';
+
+const bem = makeBEM('ebs-loader');
 
 export interface LoaderSpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: SpinnerSize;
@@ -8,5 +12,5 @@ export interface LoaderSpinnerProps extends React.HTMLAttributes<HTMLDivElement>
 }
 
 export const LoaderSpinner = ({ fixed, size = 'regular', className, ...props }: LoaderSpinnerProps) => (
-  <div className={cn(`ebs-loader__spinner`, `ebs-loader__spinner--${size}`, className, { fixed: fixed })} {...props} />
+  <div className={cn(bem('spinner', [size], { fixed }), className)} {...props} />
 );

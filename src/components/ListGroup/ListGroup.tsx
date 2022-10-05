@@ -5,7 +5,7 @@ import { ListGroupItem } from './ListGroupItem';
 export type ListGroupProps = React.HTMLAttributes<HTMLDivElement>;
 
 const ListGroup = ({ className, children, ...props }: ListGroupProps) => (
-  <div className={cn(`ebs-list-group`, className)} {...props}>
+  <div className={cn('ebs-list-group', className)} {...props}>
     {children}
   </div>
 );

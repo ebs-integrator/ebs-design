@@ -1,9 +1,13 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { usePopupClose, usePortal, useScrollToggler } from 'hooks';
 import { Button, Mask } from 'components';
 import { ModalContent } from './ModalContent';
 import { ModalFooter } from './ModalFooter';
+
+const bem = makeBEM('ebs-modal');
 
 export type ModalSize = 'small' | 'regular' | 'large';
 
@@ -66,18 +70,18 @@ const Modal = ({
           <>
             <Mask />
 
-            <div className={cn(`ebs-modal__wrapper`, className)} ref={overlayRef} {...props}>
-              <div className={cn(`ebs-modal`, `ebs-modal__size--${size}`, { 'hide-header': !showHeader })}>
+            <div className={cn(bem('wrapper'), className)} ref={overlayRef} {...props}>
+              <div className={bem(null, [size], { 'hide-header': !showHeader })}>
                 {showHeader ? (
-                  <div className="ebs-modal__header">
-                    {title && <h2 className="ebs-modal__title">{title}</h2>}
+                  <div className={bem('header')}>
+                    {title && <h2 className={bem('title')}>{title}</h2>}
 
-                    <div className={cn({ 'ebs-modal__header-container': props.onClose })}>{header}</div>
+                    <div className={props.onClose && bem('header-container')}>{header}</div>
                     {props.onClose && (
                       <Button
                         icon="close"
                         size="small"
-                        className="ebs-modal__header--close"
+                        className={bem('header--close')}
                         type="text"
                         onClick={props.onClose}
                       />

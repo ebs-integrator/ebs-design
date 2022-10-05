@@ -1,7 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { makeid } from 'libs/string';
+
+import { makeBEM, makeid } from 'libs';
 import { Checkbox, CheckAlign } from './Checkbox';
+
+const bem = makeBEM('ebs-checkbox-group');
 
 export type CheckboxGroupValue = (string | number)[];
 
@@ -43,11 +46,11 @@ export const CheckboxGroup = ({
   }
 
   return (
-    <div className={cn(`ebs-checkbox__group`, className)} {...props}>
+    <div className={cn(bem(), className)} {...props}>
       {options.map((option) => (
         <Checkbox
           key={option.value}
-          className={cn(checkboxClass)}
+          className={checkboxClass}
           checkAlign={checkAlign}
           name={name}
           text={option.text}

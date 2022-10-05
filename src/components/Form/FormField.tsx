@@ -2,6 +2,9 @@ import * as React from 'react';
 import cn from 'classnames';
 import { Field } from 'rc-field-form';
 import { FieldProps } from 'rc-field-form/es/Field';
+
+import { GenericObject } from 'types';
+import { makeBEM } from 'libs';
 import { Row, RowProps } from 'components/Grid/Row/Row';
 import { Col } from 'components/Grid/Col/Col';
 import { LabelOptions, ControlOptions } from './interface';
@@ -9,7 +12,9 @@ import { combineProps, checkRequired } from './utils';
 import { FormContext } from './Form';
 import { FieldError } from './FieldError';
 import { FieldExtra } from './FieldExtra';
-import { GenericObject } from 'types';
+
+const formBem = makeBEM('ebs-form');
+const fieldBem = makeBEM(formBem('field'));
 
 export interface FormFieldProps extends FieldProps {
   label?: React.ReactNode;
@@ -49,6 +54,8 @@ export const FormField = ({
   const fieldRowProps = combineProps(formCtx.fieldRow, fieldRow);
   const isRequired = checkRequired(props.rules);
 
+  console.log(labelProps);
+
   // Compose classes for label and control column
   const getColClassName = (col: GenericObject): string =>
     cn(col.className, {
@@ -57,7 +64,7 @@ export const FormField = ({
     });
 
   return (
-    <div className={cn(`ebs-form__item ebs-form__field`, className)} style={style}>
+    <div className={cn(formBem('item'), fieldBem(null), className)} style={style}>
       <Field
         name={name}
         messageVariables={{ label: validationLabel, ...messageVariables }}
@@ -89,21 +96,21 @@ export const FormField = ({
 
           return (
             <>
-              <Row className="ebs-form__field__wrapper" {...fieldRowProps}>
+              <Row className={fieldBem('wrapper')} {...fieldRowProps}>
                 {label && !hideLabel && (
                   <Col {...labelProps.col}>
-                    <div className={cn('ebs-form__field__label', getColClassName(labelProps))}>
-                      {label} {isRequired && <span className="ebs-form__field__required">*</span>}
+                    <div className={cn(fieldBem('label'), getColClassName(labelProps))}>
+                      {label} {isRequired && <span className={fieldBem('required')}>*</span>}
                     </div>
                   </Col>
                 )}
-                <Col {...controlProps.col} className={cn('ebs-form__field__control', getColClassName(controlProps))}>
+                <Col {...controlProps.col} className={cn(fieldBem('control'), getColClassName(controlProps))}>
                   {childNode}
                 </Col>
               </Row>
 
               {/* FIXME: Find a better way to display extra and errors below the input control  */}
-              <Row className="ebs-form__field__footer">
+              <Row className={fieldBem('footer')}>
                 <Col {...labelProps.col} />
                 <Col {...controlProps.col}>
                   {extra && <FieldExtra>{extra}</FieldExtra>}

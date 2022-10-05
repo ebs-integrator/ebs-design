@@ -1,9 +1,13 @@
 import * as React from 'react';
 import AnimateHeight from 'react-animate-height';
 import cn from 'classnames';
+
+import { GenericObject } from 'types';
+import { makeBEM } from 'libs';
 import { Icon, Label, Tooltip } from 'components';
 import { useLayoutState } from 'components/Layout/context';
-import { GenericObject } from 'types';
+
+const bem = makeBEM('ebs-sidebar');
 
 export interface ItemProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onClick'> {
   labelClass?: string;
@@ -65,7 +69,7 @@ export const Item = ({
 
   return (
     <>
-      {label && <Label className={cn(`ebs-sidebar__label`, labelClass)} text={label} />}
+      {label && <Label className={cn(bem('label'), labelClass)} text={label} />}
 
       <div className="relative">
         <Tooltip
@@ -73,17 +77,11 @@ export const Item = ({
           placement="right"
           trigger={toggled && children ? 'click' : undefined}
           visible={toggled && collapsed}
-          tooltip={toggled ? <div className={cn(`ebs-sidebar__options`)}>{children}</div> : undefined}
+          tooltip={toggled ? <div className={bem('options')}>{children}</div> : undefined}
         >
           <div className="relative">
             <div
-              className={cn(`ebs-sidebar__item`, className, {
-                'ebs-sidebar__item--invert': invert,
-                'ebs-sidebar__item--active': active,
-                'ebs-sidebar__item--collapsed': collapsed,
-                'ebs-sidebar__item--disabled': disabled,
-                'has-options': children,
-              })}
+              className={cn(bem('item', { invert, active, collapsed, disabled, 'has-options': children }), className)}
               onClick={onClickHandler}
             >
               {prefix && <div className="ebs-sidebar__prefix">{prefix}</div>}

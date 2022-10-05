@@ -1,10 +1,14 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { SizeType } from 'types';
 import { Height } from 'react-animate-height';
+
+import { SizeType } from 'types';
+import { makeBEM } from 'libs';
 import { CollapseGroup } from './CollapseGroup';
 import { CollapseHeader } from './CollapseHeader';
 import { CollapseBody } from './CollapseBody';
+
+const bem = makeBEM('ebs-collapse');
 
 export interface CollapseProps extends React.HTMLAttributes<HTMLDivElement> {
   collapsed?: boolean;
@@ -39,7 +43,7 @@ const Collapse = ({
   }, [collapsed]);
 
   return (
-    <div className={cn(`ebs-collapse ebs-collapse--${size}`, className)} {...props}>
+    <div className={cn(bem(null, [size], { bordered }), className)} {...props}>
       <CollapseContext.Provider value={{ height, setHeight, bordered }}>{children}</CollapseContext.Provider>
     </div>
   );

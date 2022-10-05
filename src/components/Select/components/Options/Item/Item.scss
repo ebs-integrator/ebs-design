@@ -5,24 +5,24 @@
   cursor: pointer;
   transition: all 0.3s;
 
-  &.has-prefix {
+  &--has-prefix {
     padding-left: rem(32.5px);
   }
 
-  &.active {
+  &--active {
     background-color: var(--primary-000);
   }
 
-  &.active &-text {
+  &--active &-text {
     color: var(--primary-color);
   }
 
-  &.selected {
+  &--selected {
     background-color: var(--primary-000);
   }
 
-  &.selected &-suffix,
-  &.selected &-prefix {
+  &--selected &-suffix,
+  &--selected &-prefix {
     .ebs-checkbox__wrapper .ebs-checkbox {
       @include checkbox-hover;
     }

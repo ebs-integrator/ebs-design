@@ -1,6 +1,10 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Avatar, AvatarType } from './Avatar';
+
+const bem = makeBEM('ebs-avatar-card');
 
 export type AvatarSize = 'small' | 'big';
 
@@ -28,9 +32,9 @@ export const AvatarCard = ({
   status,
   ...props
 }: CardProps) => (
-  <div className={cn('ebs-avatar__card', className)} {...props}>
+  <div className={cn(bem(), className)} {...props}>
     <Avatar size={size} type={type} icon={icon} img={img} shortAlt={shortAlt} alt={alt} status={status} />
 
-    <div className="ebs-avatar__card-alt">{alt}</div>
+    <div className={bem('alt')}>{alt}</div>
   </div>
 );

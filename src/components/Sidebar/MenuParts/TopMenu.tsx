@@ -1,9 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { Icon } from 'components';
 import { useLayoutState } from 'components/Layout/context';
-
 import Item from '../Item';
+
+const bem = makeBEM('ebs-sidebar');
 
 export interface TopMenuProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   showToggle?: boolean;
@@ -20,10 +23,10 @@ export const TopMenu = ({
   const { toggled, onSetToggled } = useLayoutState();
 
   return (
-    <div className={cn('ebs-sidebar__top', className)} {...props}>
+    <div className={cn(bem('top'), className)} {...props}>
       {showToggle && onSetToggled !== undefined && (
         <Item
-          className="ebs-sidebar__toggler"
+          className={bem('toggler')}
           invert
           prefix={<Icon type={`${toggled ? 'open' : 'close'}-sidebar`} />}
           text={toggleText}

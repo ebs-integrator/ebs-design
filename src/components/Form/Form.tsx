@@ -1,11 +1,15 @@
 import * as React from 'react';
 import cn from 'classnames';
 import RCForm, { FormProps as RCFormProps } from 'rc-field-form';
+
+import { makeBEM } from 'libs';
 import { RowProps } from 'components/Grid/Row/Row';
 import { FormField } from './FormField';
 import { FormGroup } from './FormGroup';
 import { getControlOptions, getLabelOptions } from './utils';
 import { FormType, LabelOptions, ControlOptions } from './interface';
+
+const bem = makeBEM('ebs-form');
 
 interface FormProps extends RCFormProps {
   type?: FormType;
@@ -32,7 +36,7 @@ const Form = ({
   const labelProps = getLabelOptions(type, labelOptions);
 
   return (
-    <RCForm className={cn(`ebs-form ebs-form--${type}`, className)} {...props}>
+    <RCForm className={cn(bem(null, [type]), className)} {...props}>
       <FormContext.Provider value={{ type, fieldRow, labelOptions: labelProps, controlOptions: controlProps, draft }}>
         {children}
       </FormContext.Provider>

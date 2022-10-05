@@ -10,46 +10,14 @@
   background-color: $white;
   overflow: hidden;
 
-  &.has-suffix {
+  &--has-suffix {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  &--box {
-    .ebs-select {
-      position: relative;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-
-    .ebs-select__options {
-      position: relative;
-      box-shadow: none;
-      border: 1px solid $border-color;
-      border-top: none;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
-
   &--tags {
-    .ebs-select-value .ebs-input {
+    .ebs-select__value .ebs-input {
       padding: 0;
-    }
-  }
-
-  &--box &__clear {
-    margin-right: 0;
-  }
-
-  &--inline {
-    .ebs-select-value__container {
-      flex-wrap: nowrap;
-      overflow: auto hidden;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
     }
   }
 
@@ -102,11 +70,7 @@
     }
   }
 
-  &--multiple &-value {
-    text-overflow: unset;
-  }
-
-  &-value {
+  &__value {
     @include flex-center-vert;
     @include text-ellipsis;
     @include hiddenScroll;
@@ -125,7 +89,7 @@
       }
     }
 
-    &__container {
+    &-container {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -167,25 +131,37 @@
   }
 
   &__wrapper {
-    &.disabled .ebs-select-dropdown__wrapper .ebs-select {
-      cursor: not-allowed;
-      border-color: $grey-500;
+    &--box {
+      .ebs-select {
+        position: relative;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
 
-      .ebs-select-value {
-        color: $grey-500;
+        &__clear {
+          margin-right: 0;
+        }
+      }
+
+      .ebs-select__options {
+        position: relative;
+        box-shadow: none;
+        border: 1px solid $border-color;
+        border-top: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
       }
     }
 
-    &.active {
+    &--active {
       .ebs-select__prefix {
         border-color: var(--primary-color);
       }
 
-      .ebs-select-dropdown__wrapper .ebs-select {
+      .ebs-select__dropdown-wrapper .ebs-select {
         border-color: var(--primary-color);
         background-color: $white;
 
-        .ebs-select-value {
+        .ebs-select__value {
           color: $heading-color;
         }
       }
@@ -193,6 +169,36 @@
       .ebs-select__suffix {
         .ebs-button__wrapper {
           border-color: var(--primary-color);
+        }
+      }
+    }
+
+    &--disabled .ebs-select__dropdown-wrapper .ebs-select {
+      cursor: not-allowed;
+      border-color: $grey-500;
+
+      .ebs-select__value {
+        color: $grey-500;
+      }
+    }
+
+    &--tags {
+      .ebs-select__value .ebs-input {
+        padding: 0;
+      }
+    }
+
+    &--multiple .ebs-select__value {
+      text-overflow: unset;
+    }
+
+    &--inline {
+      .ebs-select__value-container {
+        flex-wrap: nowrap;
+        overflow: auto hidden;
+
+        &::-webkit-scrollbar {
+          display: none;
         }
       }
     }
@@ -214,7 +220,7 @@
     min-height: rem($base-size-sm);
 
     // FIXME: Temporary hack
-    .ebs-select-value:empty {
+    .ebs-select__value:empty {
       height: rem($base-size-sm - $select-padding-y-sm * 2);
     }
   }
@@ -224,7 +230,7 @@
     min-height: rem($base-size);
 
     // FIXME: Temporary hack
-    .ebs-select-value:empty {
+    .ebs-select__value:empty {
       height: rem($base-size - $select-padding-y * 2);
     }
   }
@@ -234,7 +240,7 @@
     min-height: rem($base-size-lg);
 
     // FIXME: Temporary hack
-    .ebs-select-value:empty {
+    .ebs-select__value:empty {
       height: rem($base-size-lg - $select-padding-y-lg * 2);
     }
   }
@@ -253,7 +259,7 @@
     top: 0;
   }
 
-  .ebs-select-value {
+  .ebs-select__value {
     .ebs-avatar__inline {
       &-alt {
         margin-left: calc(#{rem($gutter-size)} / 2);
@@ -273,14 +279,14 @@
   }
 }
 
-.ebs-select-dropdown {
-  &__wrapper {
+.ebs-select__dropdown {
+  &-wrapper {
     position: relative;
     display: flex;
     flex-wrap: wrap;
   }
 
-  &__container {
+  &-container {
     position: relative;
     display: flex;
     width: 100%;

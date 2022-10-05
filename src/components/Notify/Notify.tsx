@@ -1,9 +1,11 @@
 import * as React from 'react';
-import cn from 'classnames';
+
+import { makeBEM } from 'libs';
 import { usePortal } from 'hooks';
 import { Space, SpaceDirection, SpaceSize } from 'components/Space/Space';
-
 import { NotifyItem, NotifyItemProps } from './NotifyItem';
+
+const bem = makeBEM('ebs-notify');
 
 interface ContextProps {
   list: NotifyItemProps[];
@@ -47,7 +49,7 @@ const NotifyContainer = ({ vertical = 'top', horizontal = 'right', size = 'mediu
   const onClose = React.useCallback((i) => remove(i), []);
 
   return createPortal(
-    <Space direction="vertical" size={size} className={cn('ebs-notify', `ebs-notify--${position}`)}>
+    <Space direction="vertical" size={size} className={bem(null, [position])}>
       {list.map((props, i) => (
         <NotifyItem key={i} size={size} onClose={() => onClose(i)} {...props} />
       ))}
