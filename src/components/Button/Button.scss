@@ -152,8 +152,8 @@
 
   &--dark {
     color: $white;
-    background-color: $grey-800;
-    border-color: $grey-800;
+    background-color: $black;
+    border-color: $black;
 
     &:hover {
       background-color: $grey-900;
@@ -161,8 +161,8 @@
     }
 
     &:active {
-      background-color: $black;
-      border-color: $black;
+      background-color: $grey-800;
+      border-color: $grey-800;
     }
 
     &:focus {
@@ -181,15 +181,15 @@
     background-color: $white;
 
     &:hover {
-      background-color: $grey-100;
+      background-color: $grey-50;
     }
 
     &:active {
-      background-color: $grey-200;
+      background-color: $grey-100;
     }
 
     &:focus {
-      box-shadow: $grey-100 $btn-box-shadow-length;
+      box-shadow: $grey-200 $btn-box-shadow-length;
     }
 
     &:disabled {
