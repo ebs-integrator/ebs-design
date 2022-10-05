@@ -217,9 +217,8 @@
     }
 
     &:disabled {
-      color: $danger-200;
-      background-color: $danger-100;
-      border-color: $danger-100;
+      background-color: $danger-300;
+      border-color: $danger-300;
     }
   }
 
