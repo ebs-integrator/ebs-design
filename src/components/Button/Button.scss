@@ -28,7 +28,7 @@
   }
 
   &:focus {
-    box-shadow: $primary-100 0px 0px 0px 3px;
+    box-shadow: var(--primary-100) $btn-box-shadow-length;
     z-index: 1;
   }
 
@@ -166,7 +166,7 @@
     }
 
     &:focus {
-      box-shadow: $grey-400 0px 0px 0px 3px;
+      box-shadow: $grey-400 $btn-box-shadow-length;
     }
 
     &:disabled {
@@ -189,7 +189,7 @@
     }
 
     &:focus {
-      box-shadow: $grey-100 0px 0px 0px 3px;
+      box-shadow: $grey-100 $btn-box-shadow-length;
     }
 
     &:disabled {
@@ -213,7 +213,7 @@
     }
 
     &:focus {
-      box-shadow: $danger-100 0px 0px 0px 3px;
+      box-shadow: $danger-100 $btn-box-shadow-length;
     }
 
     &:disabled {
