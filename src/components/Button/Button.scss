@@ -254,6 +254,11 @@
       border-top-color: $white !important;
     }
 
+    &--danger {
+      border-color: $danger-300 !important;
+      border-top-color: $white !important;
+    }
+
     &--absolute {
       position: absolute;
     }
