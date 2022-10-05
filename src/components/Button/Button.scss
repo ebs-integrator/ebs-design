@@ -225,7 +225,7 @@
   // TODO: Remove !important after fixing Loader component (with color and emptyColor as props)
   // Loader
   &__loader {
-    top: unset;
+    top: unset !important;
 
     &--primary {
       border-color: var(--primary-300) !important;
