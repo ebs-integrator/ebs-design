@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { exportStory } from 'libs';
 import { Button } from 'components';
+import { Template } from 'components/storybook';
 import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
 
 export default {
@@ -11,13 +12,13 @@ export default {
 } as ComponentMeta<typeof ButtonGroup>;
 
 export const Primary: ComponentStory<typeof ButtonGroup> = (args) => (
-  <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Template>
     <ButtonGroup {...args}>
       <Button>Button 1</Button>
       <Button>Button 2</Button>
       <Button>Button 3</Button>
     </ButtonGroup>
-  </div>
+  </Template>
 );
 
 Primary.args = {
@@ -25,13 +26,13 @@ Primary.args = {
 };
 
 export const Ghost: ComponentStory<typeof ButtonGroup> = (args) => (
-  <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Template>
     <ButtonGroup {...args}>
       <Button type="ghost">Button 1</Button>
       <Button type="ghost">Button 2</Button>
       <Button type="ghost">Button 3</Button>
     </ButtonGroup>
-  </div>
+  </Template>
 );
 
 Ghost.args = {
