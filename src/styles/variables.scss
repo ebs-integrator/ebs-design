@@ -428,3 +428,17 @@ $notify-width: auto !default;
 $notify-color: $white !default;
 $notify-padding: $gutter-size !default;
 $notify-border-radius: $border-radius !default;
+
+// Radio
+$radio-dot-size: 16px !default;
+$radio-dot-size-sm: 12px !default;
+$radio-dot-size-lg: 20px !default;
+$radio-font-family: $font-family !default;
+$radio-font-weight: $font-weight-medium !default;
+$radio-font-size: $font-size-base !default;
+$radio-font-size-lg: $radio-font-size !default;
+$radio-line-height: 24px !default;
+$radio-line-height-lg: $radio-line-height !default;
+$radio-font-size-sm: 12px !default;
+$radio-line-height-sm: 16px !default;
+$radio-spacing: 8px !default;

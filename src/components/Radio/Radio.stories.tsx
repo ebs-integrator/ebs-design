@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useArgs } from '@storybook/client-api';
 
 import { exportStory } from 'libs';
 import { Template } from 'components/storybook';
@@ -10,24 +11,25 @@ export default {
   component: Radio,
 } as ComponentMeta<typeof Radio>;
 
-const options = [{ text: 'Simple Radio', value: 1 }];
-
 export const Regular: ComponentStory<typeof Radio> = (args) => {
-  const [checked, setChecked] = React.useState<string | number | undefined>();
+  // eslint-disable-next-line no-empty-pattern
+  const [{}, updateArgs] = useArgs();
 
   return (
     <Template>
-      <Radio options={options} value={checked} onChange={setChecked} {...args} />
+      <Radio onClick={() => updateArgs({ checked: true })} {...args}>
+        Radio input
+      </Radio>
     </Template>
   );
 };
 
 Regular.args = {
-  className: '',
+  size: 'medium',
   radioAlign: 'left',
-  textClass: '',
-  textStyle: {},
-  value: undefined,
-  options,
-  onChange: (value?: string | number) => console.log(value),
+  value: 'yes',
+  name: 'yes-no',
+  id: 'yes-no',
+  checked: false,
+  error: false,
 };
