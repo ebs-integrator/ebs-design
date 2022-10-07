@@ -47,6 +47,7 @@ const Actions = ({
   return (
     <div className={bem('wrapper')} {...props}>
       <Tooltip
+        interactive
         bodyClass={bem('tooltip')}
         trigger="click"
         placement={placement}
