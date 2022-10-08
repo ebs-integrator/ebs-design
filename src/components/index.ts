@@ -7,7 +7,7 @@ export { Badge } from './Badge/Badge';
 export { Button, ButtonGroup } from './Button/Button';
 export { Card } from './Card/Card';
 export { Checkbox } from './Checkbox/Checkbox';
-export { CheckboxGroup } from './Checkbox/CheckboxGroup';
+export { CheckboxGroup } from './CheckboxGroup/CheckboxGroup';
 export { Chips } from './Chips/Chips';
 export { Collapse } from './Collapse/Collapse';
 export { Container, Row, Col } from './Grid';
