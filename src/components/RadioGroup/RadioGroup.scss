@@ -23,15 +23,17 @@
     flex-direction: column;
   }
 
-  &--spacing-medium {
-    @include radioSpacing($radio-spacing);
-  }
+  &--spacing {
+    &-medium {
+      @include radioSpacing($radio-spacing);
+    }
 
-  &--spacing-large {
-    @include radioSpacing($radio-spacing-lg);
-  }
+    &-large {
+      @include radioSpacing($radio-spacing-lg);
+    }
 
-  &--spacing-small {
-    @include radioSpacing($radio-spacing-sm);
+    &-small {
+      @include radioSpacing($radio-spacing-sm);
+    }
   }
 }
