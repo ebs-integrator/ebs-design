@@ -1,0 +1,37 @@
+@mixin radioSpacing($spacing) {
+  &[data-direction='row'] {
+    > * + * {
+      margin-left: rem($spacing * 2);
+    }
+  }
+
+  &[data-direction='column'] {
+    > * + * {
+      margin-top: rem($spacing);
+    }
+  }
+}
+
+.ebs-radio-group {
+  display: flex;
+
+  &[data-direction='row'] {
+    flex-direction: row;
+  }
+
+  &[data-direction='column'] {
+    flex-direction: column;
+  }
+
+  &--spacing-medium {
+    @include radioSpacing($radio-spacing);
+  }
+
+  &--spacing-large {
+    @include radioSpacing($radio-spacing-lg);
+  }
+
+  &--spacing-small {
+    @include radioSpacing($radio-spacing-sm);
+  }
+}
