@@ -16,7 +16,7 @@ export const Regular: ComponentStory<typeof Checkbox> = (args) => {
 
   return (
     <Template>
-      <Checkbox onClick={() => updateArgs({ checked: !args.checked })} {...args} />
+      <Checkbox {...args} onChange={(checked) => updateArgs({ checked })} />
     </Template>
   );
 };
@@ -28,7 +28,6 @@ Regular.args = {
   value: 'value-1',
   name: 'checkbox',
   id: 'checkbox',
-  checked: false,
   error: false,
   disabled: false,
 };

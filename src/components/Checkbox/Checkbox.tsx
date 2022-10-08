@@ -10,7 +10,7 @@ type CheckboxValue = string | number;
 
 export interface CheckboxProps extends Omit<Omit<React.HTMLAttributes<HTMLInputElement>, 'size'>, 'onChange'> {
   name?: string;
-  text?: string;
+  text?: React.ReactNode;
   value?: CheckboxValue;
   size?: CheckboxSize;
   checked?: boolean;
@@ -18,7 +18,7 @@ export interface CheckboxProps extends Omit<Omit<React.HTMLAttributes<HTMLInputE
   checkAlign?: CheckboxAlign;
   disabled?: boolean;
   error?: boolean;
-  onChange?: (value: CheckboxValue) => void;
+  onChange?: (value: boolean) => void;
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
@@ -27,9 +27,10 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       className,
       value,
       text,
-      indeterminate = false,
+      name,
+      indeterminate,
       checkAlign = 'left',
-      checked = false,
+      checked,
       error = false,
       size = 'medium',
       disabled,
@@ -41,28 +42,35 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   ) => {
     const id = React.useMemo(() => makeid(), []);
     const [isFocused, setIsFocused] = React.useState(false);
+    const [isChecked, setIsChecked] = React.useState(checked);
 
     const labelDataAttributes = {
-      'data-checked': checked,
+      'data-checked': isChecked,
       ...(error && { 'data-error': true }),
       ...(disabled && { 'data-disabled': true }),
       ...(isFocused && { 'data-focused': true }),
       ...(indeterminate && !checked && { 'data-indeterminate': true }),
     };
 
+    const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+      setIsChecked(target.checked);
+      onChange && onChange(target.checked);
+    };
+
     return (
-      <label className={cn(bem(), className)} data-checked={checked}>
+      <label className={cn(bem(), className)} data-checked={isChecked}>
         <input
           ref={ref}
           type="checkbox"
           className={bem('input')}
           id={id}
           value={value}
-          defaultChecked={checked}
+          name={name}
+          defaultChecked={isChecked}
           disabled={disabled}
-          aria-checked={checked}
+          aria-checked={isChecked}
           aria-hidden
-          onClick={() => onChange && value && onChange(value)}
+          onChange={handleChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           {...props}
