@@ -10,6 +10,7 @@ type RadioValue = string | number;
 
 export interface RadioProps extends Omit<Omit<React.HTMLAttributes<HTMLInputElement>, 'size'>, 'onChange'> {
   name?: string;
+  text?: React.ReactNode;
   value: RadioValue;
   size?: RadioSize;
   checked?: boolean;
@@ -25,12 +26,12 @@ export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<
       className,
       value,
       name,
+      text,
       radioAlign = 'left',
       checked = false,
       error = false,
       size = 'medium',
       disabled,
-      children,
       onChange,
       ...props
     },
@@ -65,7 +66,7 @@ export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<
           {...props}
         />
         <span className={bem('label', [size, `radio-align-${radioAlign}`])} {...labelDataAttributes}>
-          {children}
+          {text}
         </span>
       </label>
     );

@@ -45,9 +45,7 @@ export const RadioGroup = React.forwardRef<HTMLInputElement, RadioGroupProps>(
             checked={value === option.value}
             {...option}
             {...props}
-          >
-            {option.text}
-          </Radio>
+          />
         ))}
       </div>
     );

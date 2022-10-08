@@ -24,7 +24,7 @@ export const Regular: ComponentStory<typeof Radio> = (args) => {
 Regular.args = {
   size: 'medium',
   radioAlign: 'left',
-  children: 'Radio input',
+  text: 'Radio input',
   value: 'example',
   name: 'example',
   id: 'example',
