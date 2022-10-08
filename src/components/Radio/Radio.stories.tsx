@@ -12,14 +12,11 @@ export default {
 } as ComponentMeta<typeof Radio>;
 
 export const Regular: ComponentStory<typeof Radio> = (args) => {
-  // eslint-disable-next-line no-empty-pattern
-  const [{}, updateArgs] = useArgs();
+  const [, updateArgs] = useArgs();
 
   return (
     <Template>
-      <Radio onClick={() => updateArgs({ checked: true })} {...args}>
-        Radio input
-      </Radio>
+      <Radio onClick={() => updateArgs({ checked: true })} {...args} />
     </Template>
   );
 };
@@ -27,9 +24,11 @@ export const Regular: ComponentStory<typeof Radio> = (args) => {
 Regular.args = {
   size: 'medium',
   radioAlign: 'left',
+  children: 'Radio input',
   value: 'yes',
   name: 'yes-no',
   id: 'yes-no',
   checked: false,
   error: false,
+  disabled: false,
 };

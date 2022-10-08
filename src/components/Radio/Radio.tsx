@@ -4,25 +4,19 @@ import { makeBEM, makeid } from 'libs';
 
 const bem = makeBEM('ebs-radio');
 
-export type RadioAlign = 'left' | 'right';
-export type RadioSize = 'small' | 'medium' | 'large';
-
+type RadioAlign = 'left' | 'right';
+type RadioSize = 'small' | 'medium' | 'large';
 type RadioValue = string | number;
 
-export interface Option {
-  text: React.ReactNode;
+export interface RadioProps extends Omit<Omit<React.HTMLAttributes<HTMLInputElement>, 'size'>, 'onChange'> {
+  name: string;
   value: RadioValue;
-  disabled?: boolean;
-}
-
-export interface RadioProps extends Omit<React.HTMLAttributes<HTMLInputElement>, 'size'> {
   size?: RadioSize;
-  name?: string;
-  value?: RadioValue;
   checked?: boolean;
   radioAlign?: RadioAlign;
   disabled?: boolean;
   error?: boolean;
+  onChange: (value: RadioValue) => void;
 }
 
 export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<RadioProps>>(
@@ -30,13 +24,13 @@ export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<
     {
       className,
       value,
-      name,
       radioAlign = 'left',
       checked = false,
       error = false,
       size = 'medium',
       disabled,
       children,
+      onChange,
       ...props
     },
     ref,
@@ -58,12 +52,12 @@ export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<
           type="radio"
           className={bem('input')}
           id={id}
-          name={name || id}
           value={value}
           defaultChecked={checked}
           disabled={disabled}
           aria-checked={checked}
           aria-hidden
+          onClick={() => onChange && onChange(value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           {...props}
