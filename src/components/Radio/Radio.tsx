@@ -24,6 +24,7 @@ export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<
     {
       className,
       value,
+      name,
       radioAlign = 'left',
       checked = false,
       error = false,
@@ -53,11 +54,12 @@ export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<
           className={bem('input')}
           id={id}
           value={value}
-          defaultChecked={checked}
+          name={name}
+          checked={checked}
           disabled={disabled}
           aria-checked={checked}
           aria-hidden
-          onClick={() => onChange && onChange(value)}
+          onChange={() => onChange && onChange(value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           {...props}

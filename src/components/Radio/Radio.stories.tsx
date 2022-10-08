@@ -16,7 +16,7 @@ export const Regular: ComponentStory<typeof Radio> = (args) => {
 
   return (
     <Template>
-      <Radio onClick={() => updateArgs({ checked: true })} {...args} />
+      <Radio {...args} onChange={() => updateArgs({ checked: true })} />
     </Template>
   );
 };
@@ -25,9 +25,9 @@ Regular.args = {
   size: 'medium',
   radioAlign: 'left',
   children: 'Radio input',
-  value: 'yes',
-  name: 'yes-no',
-  id: 'yes-no',
+  value: 'example',
+  name: 'example',
+  id: 'example',
   checked: false,
   error: false,
   disabled: false,

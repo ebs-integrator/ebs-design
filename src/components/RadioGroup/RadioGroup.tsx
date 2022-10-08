@@ -41,7 +41,7 @@ export const RadioGroup = React.forwardRef<HTMLInputElement, RadioGroupProps>(
             key={idx}
             className={bem('item')}
             radioAlign={radioAlign}
-            onChange={() => (onChange ? onChange(option.value) : null)}
+            onChange={onChange}
             checked={value === option.value}
             {...option}
             {...props}

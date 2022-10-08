@@ -34,19 +34,10 @@ const options = [
 
 export const Regular: ComponentStory<typeof RadioGroup> = (args) => {
   const [, updateArgs] = useArgs();
-  const [value, setValue] = React.useState(args.value);
-
-  React.useEffect(() => console.log('radio value:', value), [value]);
 
   return (
     <Template>
-      <RadioGroup
-        {...args}
-        onChange={(value) => {
-          updateArgs({ value });
-          setValue(value);
-        }}
-      />
+      <RadioGroup {...args} onChange={(value) => updateArgs({ value })} />
     </Template>
   );
 };
