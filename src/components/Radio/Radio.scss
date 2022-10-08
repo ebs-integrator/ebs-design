@@ -54,6 +54,7 @@ $dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org
 
       &-right {
         flex-direction: row-reverse;
+        justify-content: space-between;
 
         &::before {
           margin-left: rem($radio-spacing);
