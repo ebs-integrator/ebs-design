@@ -9,14 +9,14 @@ type RadioSize = 'small' | 'medium' | 'large';
 type RadioValue = string | number;
 
 export interface RadioProps extends Omit<Omit<React.HTMLAttributes<HTMLInputElement>, 'size'>, 'onChange'> {
-  name: string;
+  name?: string;
   value: RadioValue;
   size?: RadioSize;
   checked?: boolean;
   radioAlign?: RadioAlign;
   disabled?: boolean;
   error?: boolean;
-  onChange: (value: RadioValue) => void;
+  onChange?: (value: RadioValue) => void;
 }
 
 export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<RadioProps>>(

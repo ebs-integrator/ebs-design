@@ -19,14 +19,14 @@ export interface Option {
 }
 
 export interface RadioGroupProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'value'>, 'onChange'> {
-  name: string;
+  name?: string;
   options: Option[];
-  value: RadioValue;
+  value?: RadioValue;
   size?: RadioSize;
   radioAlign?: RadioAlign;
   direction?: RadioDirection;
   spacing?: RadioSpacing;
-  onChange: (value: string | number) => void;
+  onChange?: (value: string | number) => void;
 }
 
 export const RadioGroup = React.forwardRef<HTMLInputElement, RadioGroupProps>(
@@ -41,7 +41,7 @@ export const RadioGroup = React.forwardRef<HTMLInputElement, RadioGroupProps>(
             key={idx}
             className={bem('item')}
             radioAlign={radioAlign}
-            onChange={() => onChange(option.value)}
+            onChange={() => (onChange ? onChange(option.value) : null)}
             checked={value === option.value}
             {...option}
             {...props}

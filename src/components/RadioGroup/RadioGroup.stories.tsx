@@ -34,7 +34,7 @@ const options = [
 
 export const Regular: ComponentStory<typeof RadioGroup> = (args) => {
   const [, updateArgs] = useArgs();
-  const [value, setValue] = React.useState<string | number>(args.value);
+  const [value, setValue] = React.useState(args.value);
 
   React.useEffect(() => console.log('radio value:', value), [value]);
 
