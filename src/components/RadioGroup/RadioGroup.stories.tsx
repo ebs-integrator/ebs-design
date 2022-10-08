@@ -23,7 +23,6 @@ const options = [
   {
     text: 'Radio input 3',
     value: 'value-3',
-    error: true,
   },
   {
     text: 'Radio input 4',
