@@ -57,3 +57,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Changelog file
+
+## 07/10/2022
+
+### Changed
+
+- Radio component
+
+## 08/10/2022
+
+### Added
+
+- Separate RadioGroup component
