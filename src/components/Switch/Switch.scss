@@ -1,83 +1,164 @@
+@mixin switchSize($width) {
+  $height: $width - 12px;
+  $thumbSize: $height - 4px;
+
+  width: rem($width);
+  height: rem($height);
+
+  &::before {
+    height: rem($thumbSize);
+    width: rem($thumbSize);
+  }
+}
+
 .ebs-switch {
-  border-radius: rem(8px);
-  height: rem(16px);
-  width: rem(32px);
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   cursor: pointer;
 
-  &--unchecked {
-    background-color: $border-color;
+  font-family: $font-family;
+  font-weight: $switch-font-weight;
+  color: $text-color;
 
-    .ebs-switch__dot {
-      border-color: $border-color;
-      background-color: $white;
-      box-shadow: 0px 0px 0px 2px $grey-500 inset;
-    }
-
-    &:hover .ebs-switch__dot {
-      border-color: var(--primary-200);
-      box-shadow: 0px 0px 0px 2px var(--primary-color inset);
-    }
+  // States
+  &[data-disabled] {
+    color: $grey-500;
   }
 
-  &--unchecked.disabled {
-    cursor: not-allowed;
-    background-color: $border-color;
-
-    .ebs-switch__dot,
-    .ebs-switch__dot:hover {
-      background-color: $white;
-      border-color: $border-color;
-    }
+  &[data-loading],
+  &[data-disabled] {
+    pointer-events: none;
   }
 
-  &--checked {
-    background-color: var(--primary-200);
-
-    .ebs-switch__dot {
-      transform: translate(16px, -50%);
-      background-color: var(--primary-400);
-      border-color: var(--primary-200);
-    }
-
-    &:hover .ebs-switch__dot {
-      border-color: var(--primary-300);
-      box-shadow: 0px 0px 0px 2px var(--primary-color inset);
-    }
+  // Sizes
+  &--medium,
+  &--large {
+    font-size: $font-size-base;
+    line-height: rem(24px);
   }
 
-  &--checked.disabled {
-    cursor: not-allowed;
-    background-color: var(--primary-100);
-
-    .ebs-switch__dot,
-    .ebs-switch__dot:hover {
-      box-shadow: 0px 0px 0px 2px var(--primary-400 inset);
-      background-color: var(--primary-300);
-      border-color: var(--primary-100);
-    }
+  &--small {
+    font-size: rem(12px);
+    line-height: rem(16px);
   }
 
-  &__dot {
+  &__input {
     position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translate(0, -50%);
-    width: rem(16px);
-    height: rem(16px);
-    border: 2px solid transparent;
-    box-shadow: 0px 0px 0px 2px var(--primary-color inset);
-    border-radius: 50%;
-    overflow: hidden;
-    transition: all $transition-time;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
   }
 
-  &__checked-sheet {
-    border-radius: rem(25px);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
+  &__slider {
+    position: relative;
+    transition: $transition-time;
+    border-radius: 999px;
+    border-width: 2px;
+    border-style: solid;
+    margin-right: rem(8px);
+
+    // Slider sizes
+    &--medium {
+      @include switchSize(28px);
+    }
+
+    &--large {
+      @include switchSize(32px);
+    }
+
+    &--small {
+      @include switchSize(24px);
+    }
+
+    // Thumb
+    &::before {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background-color: $white;
+      transition: $transition-time;
+    }
+
+    &[data-checked='false'] {
+      background-color: $grey-400;
+      border-color: $grey-400;
+
+      &[data-hovered] {
+        background-color: $grey-500;
+        border-color: $grey-500;
+      }
+
+      &[data-active] {
+        background-color: $grey-600;
+        border-color: $grey-600;
+      }
+    }
+
+    &[data-checked='true'] {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+
+      &[data-hovered] {
+        background-color: var(--primary-600);
+        border-color: var(--primary-600);
+      }
+
+      &[data-active] {
+        background-color: var(--primary-700);
+        border-color: var(--primary-700);
+      }
+
+      &::before {
+        transform: translateX(rem(12px));
+      }
+    }
+
+    &[data-focused] {
+      box-shadow: 0 0 0 rem(4px) var(--primary-100);
+    }
+
+    &[data-error] {
+      border-color: $danger-500;
+
+      &[data-hovered] {
+        border-color: $danger-500;
+      }
+    }
+
+    &[data-loading]:not(&[data-disabled]) {
+      background-color: $grey-300;
+      border-color: $grey-300;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &[data-disabled] {
+      background-color: $grey-200;
+      border-color: $grey-200;
+    }
+  }
+
+  // TODO: Fix !important and such nested styling after fixing Loader component
+  &__loader {
     height: 100%;
+    min-height: unset !important;
+    width: 100% !important;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > .ebs-loader__spinner {
+      width: rem(8px);
+      height: rem(8px);
+      border: 1px solid $grey-600;
+      border-top: 1px solid $grey-400;
+      top: unset;
+    }
   }
 }
