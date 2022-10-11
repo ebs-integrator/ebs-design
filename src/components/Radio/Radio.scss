@@ -13,7 +13,7 @@ $dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org
 }
 
 .ebs-radio {
-  font-family: $radio-font-family;
+  font-family: $font-family;
   font-weight: $radio-font-weight;
   color: $text-color;
 
@@ -35,15 +35,15 @@ $dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org
 
     // Sizes
     &--medium {
-      @include radioSize($radio-font-size, $radio-line-height, $radio-dot-size, 6px);
+      @include radioSize($font-size-base, 24px, $radio-dot-size, 6px);
     }
 
     &--large {
-      @include radioSize($radio-font-size, $radio-line-height-lg, $radio-dot-size-lg, 8px);
+      @include radioSize($font-size-base, 24px, $radio-dot-size-lg, 8px);
     }
 
     &--small {
-      @include radioSize($radio-font-size-sm, $radio-line-height-sm, $radio-dot-size-sm, 4px);
+      @include radioSize(12px, 16px, $radio-dot-size-sm, 4px);
     }
 
     // Radio placements
