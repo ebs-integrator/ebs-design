@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeBEM } from 'libs';
 import { Icon, Tooltip } from 'components';
+import { TooltipProps } from 'components/Tooltip/Tooltip';
 
 const bem = makeBEM('ebs-action');
 
@@ -28,6 +29,7 @@ export interface ActionsProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   showTitle?: boolean;
   placement?: 'right' | 'left' | 'top' | 'bottom';
+  tooltipProps?: TooltipProps;
 }
 
 const Actions = ({
@@ -35,6 +37,7 @@ const Actions = ({
   showTitle = true,
   placement = 'left',
   children,
+  tooltipProps,
   ...props
 }: React.PropsWithChildren<ActionsProps>) => {
   const [visible, setVisible] = React.useState(false);
@@ -47,7 +50,6 @@ const Actions = ({
   return (
     <div className={bem('wrapper')} {...props}>
       <Tooltip
-        interactive
         bodyClass={bem('tooltip')}
         trigger="click"
         placement={placement}
@@ -61,6 +63,7 @@ const Actions = ({
             </ActionContext.Provider>
           </>
         }
+        {...tooltipProps}
       >
         <Icon type="dots" model="bold" className={bem('tooltip-icon')} />
       </Tooltip>
