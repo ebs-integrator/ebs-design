@@ -12,8 +12,8 @@
 }
 
 .ebs-checkbox {
-  font-family: $option-font-family;
-  font-weight: $option-font-weight;
+  font-family: $font-family;
+  font-weight: $font-size-base;
   color: $text-color;
 
   &__input {
@@ -34,15 +34,15 @@
 
     // Sizes
     &--medium {
-      @include checkSize($option-font-size, $option-line-height, $option-dot-size, 8px);
+      @include checkSize($font-size-base, 24px, $option-dot-size, 8px);
     }
 
     &--large {
-      @include checkSize($option-font-size, $option-line-height-lg, $option-dot-size-lg, 12px);
+      @include checkSize($font-size-base, 24px, $option-dot-size-lg, 12px);
     }
 
     &--small {
-      @include checkSize($option-font-size-sm, $option-line-height-sm, $option-dot-size-sm, 6px, 2px);
+      @include checkSize(12px, 16px, $option-dot-size-sm, 6px, 2px);
     }
 
     // Radio placements
