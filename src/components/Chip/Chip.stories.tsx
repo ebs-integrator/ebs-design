@@ -28,7 +28,12 @@ export const Regular: ComponentStory<typeof Chip> = (args) => {
 };
 
 Regular.args = {
+  size: 'medium',
+  type: 'outlined',
+  color: 'primary',
   text: 'Simple Chip',
-  prefix: <Icon type="check" />,
+  clickable: true,
+  // prefix: <Icon type="check" />,
   checked: false,
+  disabled: false,
 };

@@ -428,3 +428,8 @@ $notify-width: auto !default;
 $notify-color: $white !default;
 $notify-padding: $gutter-size !default;
 $notify-border-radius: $border-radius !default;
+
+// Chip
+$chip-padding-x: 12px !default;
+$chip-padding-x-sm: $gutter-size / 2 !default;
+$chip-padding-x-lg: $gutter-size * 1.5 !default;
