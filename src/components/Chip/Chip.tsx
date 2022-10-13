@@ -2,9 +2,9 @@ import * as React from 'react';
 import cn from 'classnames';
 import { makeBEM } from 'libs';
 
-const bem = makeBEM('ebs-chips');
+const bem = makeBEM('ebs-chip');
 
-export interface ChipsProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onChange'> {
+export interface ChipProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onChange'> {
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   text?: React.ReactNode;
@@ -13,7 +13,7 @@ export interface ChipsProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElemen
   onChange?: (value: boolean) => void;
 }
 
-export const Chips = ({ className, prefix, suffix, disabled, checked, onChange, text, ...props }: ChipsProps) => {
+export const Chip = ({ className, prefix, suffix, disabled, checked, onChange, text, ...props }: ChipProps) => {
   const onClickHandler = (): void => (!disabled && onChange !== undefined ? onChange(!checked) : undefined);
 
   return (

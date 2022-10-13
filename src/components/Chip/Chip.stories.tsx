@@ -5,24 +5,24 @@ import { useArgs } from '@storybook/client-api';
 import { exportStory } from 'libs';
 import { Template } from 'components/storybook';
 import { Icon } from 'components/';
-import { Chips } from './Chips';
+import { Chip } from './Chip';
 
 export default {
-  title: exportStory('Chips', 'data-display'),
-  component: Chips,
+  title: exportStory('Chip', 'data-display'),
+  component: Chip,
   argTypes: {
     text: { control: 'text' },
     suffix: { control: 'text' },
     checked: { control: 'boolean' },
   },
-} as ComponentMeta<typeof Chips>;
+} as ComponentMeta<typeof Chip>;
 
-export const Regular: ComponentStory<typeof Chips> = (args) => {
+export const Regular: ComponentStory<typeof Chip> = (args) => {
   const [{ checked }, updateArgs] = useArgs();
 
   return (
     <Template>
-      <Chips onChange={() => updateArgs({ checked: !checked })} {...args} />
+      <Chip onChange={() => updateArgs({ checked: !checked })} {...args} />
     </Template>
   );
 };
