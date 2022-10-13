@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 import { makeBEM } from 'libs';
 import { Icon, Loader } from 'components';
+import { modelType } from 'components/Icon/Icon';
 
 const bem = makeBEM('ebs-button');
 
@@ -17,6 +18,7 @@ export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLBu
   loading?: boolean;
   submit?: boolean;
   icon?: string | React.ReactNode;
+  iconModel?: modelType;
   full?: boolean;
   rounded?: boolean;
 }
@@ -33,6 +35,7 @@ export const Button = ({
   size = 'medium',
   type = 'primary',
   icon,
+  iconModel,
   loading,
   full,
   rounded,
@@ -52,7 +55,9 @@ export const Button = ({
       data-has-icon={!!icon}
       {...props}
     >
-      {icon && !showSpinner && <Icon {...(typeof icon === 'string' ? { type: icon } : { component: icon })} />}
+      {icon && !showSpinner && (
+        <Icon {...(typeof icon === 'string' ? { type: icon, model: iconModel || undefined } : { component: icon })} />
+      )}
 
       {showSpinner && <ButtonSpinner type={type} absolute />}
 
