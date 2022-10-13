@@ -99,11 +99,8 @@
 
   .storybook-icon-item {
     cursor: pointer;
-    width: 18.486%;
-    margin: rem(12.5px);
-    padding: rem(22.5px 12.5px);
-    border-radius: rem(8px);
-    border: 1px solid $primary-100;
+    margin: 8px;
+    flex-direction: column;
     text-align: center;
 
     .ebs-icon {
@@ -112,7 +109,7 @@
 
     .storybook-icon-name {
       font-size: rem(12px);
-      color: $text-color-secondary;
+      // color: $text-color-secondary;
       @include fontMedium;
       margin-top: rem(25px);
     }

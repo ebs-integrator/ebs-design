@@ -16,8 +16,8 @@ export const Regular: ComponentStory<typeof Icon> = () => {
   const IconList: React.FC = () => {
     const notify = useNotify();
 
-    const onCopied = (): void => {
-      notify.success({ title: 'Success', description: 'Copied to clipboard' });
+    const onCopied = (iconName: string): void => {
+      notify.success({ title: 'Success', description: iconName + '\n Copied to clipboard' });
     };
 
     return (
@@ -30,17 +30,20 @@ export const Regular: ComponentStory<typeof Icon> = () => {
 
               const onCopy = async (): Promise<void> => {
                 await copyToClipboard(iconName);
-                onCopied();
+                onCopied(iconName);
               };
 
               return (
-                <Button className="storybook-icon-item" key={icon} onClick={onCopy}>
-                  <div className="storybook-icon">
-                    <Icon type={icon} model={model} />
-                  </div>
-
-                  <div className="storybook-icon-name">{iconName}</div>
-                </Button>
+                <Button
+                  key={icon}
+                  type="ghost"
+                  size="large"
+                  icon={icon}
+                  iconModel={model}
+                  className="storybook-icon-item"
+                  title={iconName}
+                  onClick={onCopy}
+                />
               );
             });
           })}
