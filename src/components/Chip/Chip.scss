@@ -14,7 +14,7 @@
 
   font-family: $font-family;
   font-weight: $font-weight-base;
-  line-height: 1.2;
+  line-height: rem(24px);
   transition: $transition-time;
 
   // Sizes
@@ -140,12 +140,13 @@
     pointer-events: all;
 
     &:hover {
-      color: var(--primary-700);
+      color: var(--primary-800);
     }
 
     // TODO: Fix this after Icon component refactor
     svg {
       font-size: 1rem;
+      color: inherit;
     }
   }
 }
