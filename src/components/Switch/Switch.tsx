@@ -13,7 +13,7 @@ export interface SwitchProps extends Omit<Omit<React.HTMLAttributes<HTMLInputEle
   size?: SwitchSize;
   name?: string;
   text?: string;
-  error?: boolean;
+  invalid?: boolean;
   loading?: boolean;
   onChange?: (value: boolean) => void;
 }
@@ -26,7 +26,7 @@ export const Switch = ({
   loading = false,
   size = 'medium',
   text,
-  error,
+  invalid,
   onChange,
   ...props
 }: SwitchProps) => {
@@ -51,7 +51,7 @@ export const Switch = ({
     ...(isHovered && { 'data-hovered': true }),
     ...(isActive && { 'data-active': true }),
     ...(loading && { 'data-loading': true }),
-    ...(error && { 'data-error': true }),
+    ...(invalid && { 'data-invalid': true }),
   };
 
   return (

@@ -120,7 +120,7 @@
       box-shadow: 0 0 0 rem(4px) var(--primary-100);
     }
 
-    &[data-error] {
+    &[data-invalid] {
       border-color: $danger-500;
 
       &[data-hovered] {
