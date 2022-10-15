@@ -16,7 +16,7 @@ export interface RadioProps extends Omit<Omit<React.HTMLAttributes<HTMLInputElem
   checked?: boolean;
   radioAlign?: RadioAlign;
   disabled?: boolean;
-  error?: boolean;
+  invalid?: boolean;
   onChange?: (value: RadioValue) => void;
 }
 
@@ -27,10 +27,10 @@ export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<
       value,
       name,
       text,
+      size = 'medium',
       radioAlign = 'left',
       checked = false,
-      error = false,
-      size = 'medium',
+      invalid,
       disabled,
       onChange,
       ...props
@@ -42,7 +42,7 @@ export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<
 
     const labelDataAttributes = {
       'data-checked': checked,
-      ...(error && { 'data-error': true }),
+      ...(invalid && { 'data-invalid': true }),
       ...(disabled && { 'data-disabled': true }),
       ...(isFocused && { 'data-focused': true }),
     };

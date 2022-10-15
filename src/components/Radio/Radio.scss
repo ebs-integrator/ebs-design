@@ -90,7 +90,7 @@ $dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org
         transform: scale(0.8);
       }
 
-      &[data-error] {
+      &[data-invalid] {
         &:hover,
         &:active {
           &::before {
@@ -118,7 +118,7 @@ $dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org
         border-color: var(--primary-700);
       }
 
-      &[data-error] {
+      &[data-invalid] {
         pointer-events: none;
 
         &::before {
@@ -131,7 +131,7 @@ $dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org
       box-shadow: 0 0 0 4px var(--primary-100);
     }
 
-    &[data-error]:not([data-disabled])::before {
+    &[data-invalid]:not([data-disabled])::before {
       box-shadow: 0 0 0 1px $danger-500;
       border-color: $danger-500;
     }
