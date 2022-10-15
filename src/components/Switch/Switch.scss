@@ -12,15 +12,14 @@
 }
 
 .ebs-switch {
+  @include fontRegular;
+  color: $text-color;
+
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-
-  font-family: $font-family;
-  font-weight: $font-weight-base;
-  color: $text-color;
 
   // States
   &[data-disabled] {
