@@ -1,24 +1,23 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { makeBEM } from 'libs';
+import { Icon } from 'components';
 
 const bem = makeBEM('ebs-chip');
 
 type ChipType = 'filled' | 'outlined';
-type ChipSize = 'small' | 'medium' | 'large';
+type ChipSize = 'small' | 'medium';
 type ChipColor = 'default' | 'primary';
 
-export interface ChipProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'>, 'onChange'> {
+export interface ChipProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'prefix'> {
   type?: ChipType;
   size?: ChipSize;
   color?: ChipColor;
   prefix?: React.ReactNode;
-  suffix?: React.ReactNode;
   text?: React.ReactNode;
-  checked?: boolean;
   disabled?: boolean;
-  clickable?: boolean;
-  onChange?: (value: boolean) => void;
+  onDelete?: () => void;
+  deleteIcon?: React.ReactNode;
 }
 
 export const Chip = ({
@@ -26,24 +25,22 @@ export const Chip = ({
   size = 'medium',
   type = 'outlined',
   color = 'primary',
-  prefix,
-  clickable,
-  suffix,
-  disabled,
-  checked,
-  onChange,
   text,
+  prefix,
+  disabled,
+  deleteIcon,
+  onClick,
+  onDelete,
   ...props
 }: ChipProps) => {
-  const onClickHandler = (): void => (!disabled && onChange !== undefined ? onChange(!checked) : undefined);
-
   return (
     <div
-      className={cn(bem(null, [size, color], { clickable, 'has-prefix': prefix, 'has-suffix': suffix }), className)}
+      className={cn(bem(null, [size, color]), className)}
+      role="button"
+      onClick={onClick}
       data-type={type}
-      onClick={onClickHandler}
-      data-checked={checked}
-      {...(checked && { 'data-checked': true })}
+      {...(onDelete && { 'data-removable': true })}
+      {...(onClick && { 'data-clickable': true })}
       {...(disabled && { 'data-disabled': true })}
       {...props}
     >
@@ -51,7 +48,11 @@ export const Chip = ({
 
       {text}
 
-      {suffix && <div className={bem('prefix')}>{suffix}</div>}
+      {onDelete && (
+        <div className={bem('delete')} onClick={onDelete}>
+          {deleteIcon ? deleteIcon : <Icon type="error" />}
+        </div>
+      )}
     </div>
   );
 };

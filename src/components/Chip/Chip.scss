@@ -17,24 +17,10 @@
   line-height: 1.2;
   transition: $transition-time;
 
-  &--clickable {
-    cursor: pointer;
-    pointer-events: unset;
-
-    &[data-disabled] {
-      pointer-events: none;
-    }
-  }
-
   // Sizes
   &--medium {
     padding: 0 rem($chip-padding-x);
     height: rem($base-size);
-  }
-
-  &--large {
-    padding: 0 rem($chip-padding-x-lg);
-    height: rem($base-size-lg);
   }
 
   &--small {
@@ -53,12 +39,14 @@
     &[data-type='outlined'] {
       border-color: var(--primary-color);
 
-      &:hover {
-        background-color: var(--primary-000);
-      }
+      &:not([data-removable]) {
+        &:hover {
+          background-color: var(--primary-000);
+        }
 
-      &:active {
-        background-color: var(--primary-100);
+        &:active {
+          background-color: var(--primary-100);
+        }
       }
 
       &[data-disabled] {
@@ -69,12 +57,14 @@
     &[data-type='filled'] {
       background-color: var(--primary-100);
 
-      &:hover {
-        background-color: var(--primary-200);
-      }
+      &:not([data-removable]) {
+        &:hover {
+          background-color: var(--primary-200);
+        }
 
-      &:active {
-        background-color: var(--primary-300);
+        &:active {
+          background-color: var(--primary-300);
+        }
       }
 
       &[data-disabled] {
@@ -93,12 +83,14 @@
     &[data-type='outlined'] {
       border-color: $grey-900;
 
-      &:hover {
-        background-color: $grey-100;
-      }
+      &:not([data-removable]) {
+        &:hover {
+          background-color: $grey-100;
+        }
 
-      &:active {
-        background-color: $grey-200;
+        &:active {
+          background-color: $grey-200;
+        }
       }
 
       &[data-disabled] {
@@ -109,17 +101,51 @@
     &[data-type='filled'] {
       background-color: $grey-200;
 
-      &:hover {
-        background-color: $grey-300;
-      }
+      &:not([data-removable]) {
+        &:hover {
+          background-color: $grey-300;
+        }
 
-      &:active {
-        background-color: $grey-400;
+        &:active {
+          background-color: $grey-400;
+        }
       }
 
       &[data-disabled] {
         background-color: $grey-100;
       }
+    }
+  }
+
+  &[data-clickable] {
+    cursor: pointer;
+    pointer-events: unset;
+
+    &[data-disabled] {
+      pointer-events: none;
+    }
+  }
+
+  &__prefix {
+    display: flex;
+    margin-right: rem(8px);
+  }
+
+  &__delete {
+    display: flex;
+    margin-left: rem(16px);
+    margin-right: rem(-4px);
+    position: relative;
+    cursor: pointer;
+    pointer-events: all;
+
+    &:hover {
+      color: var(--primary-700);
+    }
+
+    // TODO: Fix this after Icon component refactor
+    svg {
+      font-size: 1rem;
     }
   }
 }

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { useArgs } from '@storybook/client-api';
 
 import { exportStory } from 'libs';
 import { Template } from 'components/storybook';
@@ -11,29 +10,46 @@ export default {
   title: exportStory('Chip', 'data-display'),
   component: Chip,
   argTypes: {
-    text: { control: 'text' },
-    suffix: { control: 'text' },
-    checked: { control: 'boolean' },
+    text: {
+      control: {
+        type: 'text',
+      },
+    },
   },
+  parameters: { actions: { argTypesRegex: null } },
 } as ComponentMeta<typeof Chip>;
 
 export const Regular: ComponentStory<typeof Chip> = (args) => {
-  const [{ checked }, updateArgs] = useArgs();
-
   return (
     <Template>
-      <Chip onChange={() => updateArgs({ checked: !checked })} {...args} />
+      <Chip {...args} />
     </Template>
   );
 };
+
+export const WithPrefix = Regular.bind({});
+export const Removable = Regular.bind({});
+export const Clickable = Regular.bind({});
 
 Regular.args = {
   size: 'medium',
   type: 'outlined',
   color: 'primary',
   text: 'Simple Chip',
-  clickable: true,
-  // prefix: <Icon type="check" />,
-  checked: false,
   disabled: false,
+};
+
+WithPrefix.args = {
+  ...Regular.args,
+  prefix: <Icon type="bell" />,
+};
+
+Clickable.args = {
+  ...Regular.args,
+  onClick: () => console.log('click'),
+};
+
+Removable.args = {
+  ...Regular.args,
+  onDelete: () => console.log('delete'),
 };
