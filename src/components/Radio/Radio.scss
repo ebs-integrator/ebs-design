@@ -13,8 +13,7 @@ $dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org
 }
 
 .ebs-radio {
-  font-family: $font-family;
-  font-weight: $font-weight-base;
+  @include fontRegular;
   color: $text-color;
 
   &__input {
