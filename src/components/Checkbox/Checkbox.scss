@@ -88,7 +88,7 @@
         transform: scale(0.8);
       }
 
-      &[data-error] {
+      &[data-invalid] {
         &:hover,
         &:active {
           &::before {
@@ -128,7 +128,7 @@
         border-color: var(--primary-700);
       }
 
-      &[data-error] {
+      &[data-invalid] {
         pointer-events: none;
 
         &::before {
@@ -141,7 +141,7 @@
       box-shadow: 0 0 0 4px var(--primary-100);
     }
 
-    &[data-error]:not([data-disabled])::before {
+    &[data-invalid]:not([data-disabled])::before {
       box-shadow: 0 0 0 1px $danger-500;
       border-color: $danger-500;
     }

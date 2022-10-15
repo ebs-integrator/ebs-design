@@ -17,7 +17,7 @@ export interface CheckboxProps extends Omit<Omit<React.HTMLAttributes<HTMLInputE
   indeterminate?: boolean;
   checkAlign?: CheckboxAlign;
   disabled?: boolean;
-  error?: boolean;
+  invalid?: boolean;
   onChange?: (value: boolean) => void;
 }
 
@@ -31,7 +31,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       indeterminate,
       checkAlign = 'left',
       checked,
-      error = false,
+      invalid = false,
       size = 'medium',
       disabled,
       children,
@@ -46,7 +46,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     const labelDataAttributes = {
       'data-checked': isChecked,
-      ...(error && { 'data-error': true }),
+      ...(invalid && { 'data-invalid': true }),
       ...(disabled && { 'data-disabled': true }),
       ...(isFocused && { 'data-focused': true }),
       ...(indeterminate && !checked && { 'data-indeterminate': true }),
