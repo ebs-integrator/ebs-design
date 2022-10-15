@@ -57,3 +57,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Changelog file
+
+## 15/10/2022
+
+### Added
+
+- onDelete & size props to the Chip component
+
+### Changed
+
+- Markup and SCSS of Chip component
