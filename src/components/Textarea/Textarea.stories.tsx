@@ -8,10 +8,6 @@ import { Textarea } from './Textarea';
 export default {
   title: exportStory('Textarea', 'form'),
   component: Textarea,
-  argTypes: {
-    label: { control: 'text' },
-    extra: { control: 'text' },
-  },
 } as ComponentMeta<typeof Textarea>;
 
 export const Regular: ComponentStory<typeof Textarea> = (args) => (
@@ -22,4 +18,11 @@ export const Regular: ComponentStory<typeof Textarea> = (args) => (
 
 Regular.args = {
   placeholder: 'Text field',
+  radius: 'medium',
+  resize: 'none',
+  autoresize: false,
+  disabled: false,
+  invalid: false,
+  value: '',
+  name: 'textarea',
 };
