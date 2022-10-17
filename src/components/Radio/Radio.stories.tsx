@@ -29,6 +29,5 @@ Regular.args = {
   name: 'example',
   id: 'example',
   checked: false,
-  error: false,
   disabled: false,
 };
