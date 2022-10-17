@@ -1,0 +1,34 @@
+.ebs-input-search__wrapper {
+  &.ebs-input-search--fill {
+    .ebs-input-search,
+    .ebs-input__wrapper--active {
+      background-color: $grey-100;
+    }
+  }
+
+  &.ebs-input-search--transparent {
+    .ebs-input-search,
+    .ebs-input-search__wrapper--active {
+      background-color: transparent;
+      border-color: transparent;
+      color: $white;
+
+      .ebs-input,
+      .ebs-icon {
+        color: $white;
+
+        @include placeholder {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &--disabled .cursor {
+    cursor: not-allowed;
+  }
+
+  .ebs-input__clear {
+    right: rem($gutter-size * 2);
+  }
+}

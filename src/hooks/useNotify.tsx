@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { NotifyItemProps } from '../components/molecules/Notify/NotifyItem';
-import { NotifyContext } from '../';
+
+import { NotifyContext } from 'components';
+import { NotifyItemProps } from 'components/Notify/NotifyItem';
 
 export interface NotifyProps {
   error: (item: NotifyItemProps) => void;
