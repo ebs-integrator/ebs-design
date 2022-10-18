@@ -25,15 +25,15 @@
 
   &--spacing {
     &-medium {
-      @include radioSpacing($radio-spacing);
+      @include radioSpacing($radio-group-spacing);
     }
 
     &-large {
-      @include radioSpacing($radio-spacing-lg);
+      @include radioSpacing($radio-group-spacing-lg);
     }
 
     &-small {
-      @include radioSpacing($radio-spacing-sm);
+      @include radioSpacing($radio-group-spacing-sm);
     }
   }
 }
