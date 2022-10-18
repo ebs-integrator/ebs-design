@@ -46,7 +46,7 @@ $dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org
     }
 
     // Radio placements
-    &--radio-align {
+    &--align {
       &-left::before {
         margin-right: rem($radio-spacing);
       }

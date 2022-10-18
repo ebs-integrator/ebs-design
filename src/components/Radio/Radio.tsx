@@ -65,7 +65,7 @@ export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<
           onBlur={() => setIsFocused(false)}
           {...props}
         />
-        <span className={bem('label', [size, `radio-align-${radioAlign}`])} {...labelDataAttributes}>
+        <span className={bem('label', [size, `align-${radioAlign}`])} {...labelDataAttributes}>
           {text}
         </span>
       </label>
