@@ -67,9 +67,7 @@ $dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org
       display: inline-block;
       position: relative;
       flex-shrink: 0;
-      border-width: 1px;
-      border-color: $grey-400;
-      border-style: solid;
+      border: 1px solid $grey-400;
       border-radius: 50%;
       background-color: $white;
       background-repeat: no-repeat;
