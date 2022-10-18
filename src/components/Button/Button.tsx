@@ -2,9 +2,9 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import { makeBEM } from 'libs';
-import { Loader } from 'components';
+import { ButtonSpinner } from './ButtonSpinner';
 
-const bem = makeBEM('ebs-button');
+export const bem = makeBEM('ebs-button');
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
@@ -19,10 +19,6 @@ export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLBu
   full?: boolean;
   rounded?: boolean;
 }
-
-export const ButtonSpinner = ({ type, absolute = false }: { type: ButtonType; absolute?: boolean }) => (
-  <Loader.Spinner size="small" className={bem('loader', [type], { absolute })} />
-);
 
 export const Button = ({
   submit,

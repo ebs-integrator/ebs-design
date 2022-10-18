@@ -2,14 +2,14 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import { makeBEM } from 'libs';
-import { Icon } from 'components';
-import { modelType } from 'components/Icon/Icon';
-import { Button, ButtonProps, ButtonSpinner } from './Button';
+import { Icon, modelType } from 'components/Icon/Icon';
+import { Button, ButtonProps } from './Button';
+import { ButtonSpinner } from './ButtonSpinner';
 
 const bem = makeBEM('ebs-icon-button');
 
 export interface IconButtonProps extends Omit<Omit<ButtonProps, 'prefix'>, 'full'> {
-  icon?: string | React.ReactNode;
+  icon: string | React.ReactNode;
   iconType?: modelType;
 }
 
@@ -28,7 +28,7 @@ export const IconButton = ({
       {loading && !disabled ? (
         <ButtonSpinner type={type} />
       ) : (
-        <Icon {...(typeof icon === 'string' ? { type: icon, model: iconType || undefined } : { component: icon })} />
+        <Icon {...(typeof icon === 'string' ? { type: icon, model: iconType || 'regular' } : { component: icon })} />
       )}
     </Button>
   );
