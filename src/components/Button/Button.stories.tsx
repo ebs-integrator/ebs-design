@@ -9,14 +9,6 @@ import { Button } from './Button';
 export default {
   title: exportStory('Button', 'form'),
   component: Button,
-  argTypes: {
-    icon: {
-      control: {
-        type: 'select',
-        options: ['home', 'eye', 'search', 'bell', 'info', 'star', 'error'],
-      },
-    },
-  },
 } as ComponentMeta<typeof Button>;
 
 export const Regular: ComponentStory<typeof Button> = (args) => (
@@ -31,21 +23,15 @@ export const WithPrefix: ComponentStory<typeof Button> = (args) => (
   </Template>
 );
 
-export const IconButton: ComponentStory<typeof Button> = (args) => (
-  <Template>
-    <Button {...args} />
-  </Template>
-);
-
 Regular.args = {
   type: 'primary',
   size: 'medium',
   prefix: '',
   loading: false,
-  submit: false,
   disabled: false,
   full: false,
   rounded: false,
+  submit: false,
 };
 
 WithPrefix.args = {

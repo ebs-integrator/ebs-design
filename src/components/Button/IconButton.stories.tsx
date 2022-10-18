@@ -29,7 +29,7 @@ Regular.args = {
   size: 'medium',
   icon: 'home',
   loading: false,
-  submit: false,
-  disabled: false,
   rounded: false,
+  disabled: false,
+  submit: false,
 };
