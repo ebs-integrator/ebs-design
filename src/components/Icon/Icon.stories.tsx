@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { exportStory, copyToClipboard } from 'libs';
 import { useNotify } from 'hooks';
-import { Button, NotifyContainer, NotifyProvider, Space } from 'components';
+import { IconButton, NotifyContainer, NotifyProvider, Space } from 'components';
 import { modelType, Icon } from './Icon';
 import { icons } from './iconsList';
 
@@ -34,12 +34,12 @@ export const Regular: ComponentStory<typeof Icon> = () => {
               };
 
               return (
-                <Button
+                <IconButton
                   key={icon}
                   type="ghost"
                   size="large"
                   icon={icon}
-                  iconModel={model}
+                  iconType={model}
                   className="storybook-icon-item"
                   title={iconName}
                   onClick={onCopy}
