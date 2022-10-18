@@ -1,0 +1,15 @@
+.ebs-icon-button {
+  padding: 0;
+
+  &--medium {
+    width: rem($base-size);
+  }
+
+  &--large {
+    width: rem($base-size-lg);
+  }
+
+  &--small {
+    width: rem($base-size-sm);
+  }
+}

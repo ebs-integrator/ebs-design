@@ -18,10 +18,6 @@
   line-height: $btn-line-height;
   transition: $transition-base;
 
-  &[data-has-icon='true'] {
-    padding: 0;
-  }
-
   &:disabled,
   &[data-is-loading='true'] {
     pointer-events: none;
@@ -37,30 +33,18 @@
     padding: 0 rem($btn-padding-x);
     height: rem($base-size);
     border-radius: rem($btn-border-radius);
-
-    &[data-has-icon='true'] {
-      width: rem($base-size);
-    }
   }
 
   &--large {
     padding: 0 rem($btn-padding-x-lg);
     height: rem($base-size-lg);
     border-radius: rem($btn-border-radius-lg);
-
-    &[data-has-icon='true'] {
-      width: rem($base-size-lg);
-    }
   }
 
   &--small {
     padding: 0 rem($btn-padding-x-sm);
     height: rem($base-size-sm);
     border-radius: rem($btn-border-radius-sm);
-
-    &[data-has-icon='true'] {
-      width: rem($base-size-sm);
-    }
   }
 
   // Variants

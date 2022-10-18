@@ -5,6 +5,7 @@ export { Animated } from './Animated/Animated';
 export { Avatar, AvatarCard, AvatarInline } from './Avatar';
 export { Badge } from './Badge/Badge';
 export { Button } from './Button/Button';
+export { IconButton } from './Button/IconButton';
 export { ButtonGroup } from './ButtonGroup/ButtonGroup';
 export { Card } from './Card/Card';
 export { Checkbox } from './Checkbox/Checkbox';

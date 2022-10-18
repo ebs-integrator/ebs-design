@@ -41,7 +41,6 @@ Regular.args = {
   type: 'primary',
   size: 'medium',
   prefix: '',
-  icon: '',
   loading: false,
   submit: false,
   disabled: false,
@@ -52,10 +51,4 @@ Regular.args = {
 WithPrefix.args = {
   ...Regular.args,
   prefix: <Icon type="home" />,
-};
-
-IconButton.args = {
-  ...Regular.args,
-  type: 'danger',
-  icon: 'error',
 };

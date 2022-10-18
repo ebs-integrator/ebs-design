@@ -2,8 +2,7 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import { makeBEM } from 'libs';
-import { Icon, Loader } from 'components';
-import { modelType } from 'components/Icon/Icon';
+import { Loader } from 'components';
 
 const bem = makeBEM('ebs-button');
 
@@ -17,30 +16,26 @@ export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLBu
   type?: ButtonType;
   loading?: boolean;
   submit?: boolean;
-  icon?: string | React.ReactNode;
-  iconModel?: modelType;
   full?: boolean;
   rounded?: boolean;
 }
 
-const ButtonSpinner = ({ type, absolute = false }: { type: ButtonType; absolute?: boolean }) => (
+export const ButtonSpinner = ({ type, absolute = false }: { type: ButtonType; absolute?: boolean }) => (
   <Loader.Spinner size="small" className={bem('loader', [type], { absolute })} />
 );
 
 export const Button = ({
-  submit = false,
-  onClick,
+  submit,
   prefix,
   className,
   size = 'medium',
   type = 'primary',
-  icon,
-  iconModel,
   loading,
   full,
   rounded,
   children,
   disabled,
+  onClick,
   ...props
 }: ButtonProps) => {
   const showSpinner = loading && !disabled && !prefix;
@@ -52,20 +47,13 @@ export const Button = ({
       onClick={onClick}
       disabled={disabled}
       data-is-loading={loading}
-      data-has-icon={!!icon}
       {...props}
     >
-      {icon && !showSpinner && (
-        <Icon {...(typeof icon === 'string' ? { type: icon, model: iconModel || undefined } : { component: icon })} />
-      )}
-
       {showSpinner && <ButtonSpinner type={type} absolute />}
 
-      {prefix && !icon && (
-        <span className={bem('prefix')}>{loading && !disabled ? <ButtonSpinner type={type} /> : prefix}</span>
-      )}
+      {prefix && <span className={bem('prefix')}>{loading && !disabled ? <ButtonSpinner type={type} /> : prefix}</span>}
 
-      {children && !icon && (showSpinner ? <span className={bem('children-transparent')}>{children}</span> : children)}
+      {children && (showSpinner ? <span className={bem('children-transparent')}>{children}</span> : children)}
     </button>
   );
 };
