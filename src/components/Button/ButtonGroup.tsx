@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 
 import { makeBEM } from 'libs';
-import { ButtonSize } from 'components/Button/Button';
+import { ButtonSize } from './Button';
 
 const bem = makeBEM('ebs-button-group');
 

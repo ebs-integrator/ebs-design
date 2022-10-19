@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { exportStory } from 'libs';
 import { Button } from 'components';
 import { Template } from 'components/storybook';
-import { ButtonGroup } from '../ButtonGroup/ButtonGroup';
+import { ButtonGroup } from './ButtonGroup';
 
 export default {
   title: exportStory('ButtonGroup', 'form'),
