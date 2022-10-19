@@ -62,7 +62,7 @@
 
   &:disabled {
     box-shadow: 0 0 0 1px $border-color-hover;
-    background-color: $grey-000;
+    background-color: $grey-50;
   }
 
   &[data-invalid] {
