@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { makeBEM } from 'libs';
-import { Checkbox } from 'components';
+import { Checkbox } from './Checkbox';
 
 const bem = makeBEM('ebs-checkbox-group');
 

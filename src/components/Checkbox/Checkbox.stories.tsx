@@ -28,6 +28,6 @@ Regular.args = {
   value: 'value-1',
   name: 'checkbox',
   id: 'checkbox',
-  error: false,
+  invalid: false,
   disabled: false,
 };
