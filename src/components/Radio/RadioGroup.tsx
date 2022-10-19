@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import { makeBEM } from 'libs';
-import { Radio } from 'components/Radio/Radio';
+import { Radio } from './Radio';
 
 const bem = makeBEM('ebs-radio-group');
 

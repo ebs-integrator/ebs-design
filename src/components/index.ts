@@ -26,7 +26,7 @@ export { Mask } from './Mask/Mask';
 export { ModalComponent as Modal } from './Modal/Modal';
 export { NotifyContainer, NotifyContext, NotifyProvider } from './Notify/Notify';
 export { Radio } from './Radio/Radio';
-export { RadioGroup } from './RadioGroup/RadioGroup';
+export { RadioGroup } from './Radio/RadioGroup';
 export { SelectComponent as Select } from './Select/Select';
 export { default as Sidebar } from './Sidebar/Sidebar';
 export { SortBy } from './SortBy/SortBy';
