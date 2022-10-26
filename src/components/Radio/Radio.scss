@@ -1,136 +1,153 @@
-.ebs-radio__group {
-  &.vertical {
-    display: flex;
-    flex-wrap: wrap;
+$dot-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cg class='nc-icon-wrapper' fill='%23ffffff'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23ffffff'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E") !default;
+
+@mixin radioSize($font-size, $line-height, $dot-size, $bg-size) {
+  font-size: rem($font-size);
+  line-height: rem($line-height);
+
+  &:before {
+    width: rem($dot-size);
+    height: rem($dot-size);
+    top: calc(($line-height - $dot-size) / 2);
+    background-size: $bg-size;
   }
+}
 
-  &--left {
-    .ebs-radio {
-      right: inherit;
-      left: 0;
+.ebs-radio {
+  @include fontRegular;
+  color: $text-color;
 
-      &__text {
-        padding-left: rem(26px);
-      }
-    }
-  }
-
-  &--right {
-    .ebs-radio {
-      left: inherit;
-      right: 0;
-
-      &__text {
-        padding-right: rem(26px);
-        width: rem(160px);
-      }
-    }
-  }
-
-  .ebs-radio__wrapper {
-    position: relative;
-
-    &:not(:last-child) {
-      margin-bottom: rem(5px);
-    }
-
-    &--has-text .ebs-radio {
-      position: absolute;
-      top: rem(-2px);
-    }
-
-    &--disabled {
-      .ebs-radio__input {
-        cursor: not-allowed;
-      }
-
-      .ebs-radio__text {
-        color: $grey-500;
-      }
-
-      .ebs-radio,
-      .ebs-radio__input:hover ~ .ebs-radio {
-        background-color: transparent;
-
-        &__dot {
-          border: 1px solid $border-color;
-          box-shadow: none;
-          background-color: transparent;
-        }
-      }
-
-      .ebs-radio__input:checked ~ .ebs-radio,
-      .ebs-radio__input:checked:hover ~ .ebs-radio {
-        background-color: transparent;
-
-        &__dot {
-          border: 1px solid $grey-500;
-          box-shadow: 0px 0px 0px 3px $white inset;
-          background-color: $grey-500;
-        }
-      }
-    }
-  }
-
-  .ebs-radio__input {
+  &__input {
     position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    cursor: pointer;
-
-    &:hover ~ .ebs-radio {
-      background-color: var(--primary-100);
-
-      &__dot {
-        border-color: var(--primary-color);
-        background-color: var(--primary-100);
-      }
-    }
-
-    &:checked:hover ~ .ebs-radio {
-      background-color: var(--primary-100);
-
-      &__dot {
-        border-color: var(--primary-color);
-        background-color: var(--primary-color);
-        box-shadow: 0px 0px 0px 3px var(--primary-100 inset);
-      }
-    }
-
-    &:checked ~ .ebs-radio .ebs-radio__dot {
-      border-color: var(--primary-color);
-      background-color: var(--primary-color);
-      box-shadow: 0px 0px 0px 3px $white inset;
-    }
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
   }
 
-  .ebs-radio {
-    transition: all $transition-time;
-    width: rem(20px);
-    height: rem(20px);
-    background-color: transparent;
-    pointer-events: none;
-    border-radius: 50%;
+  &__label {
+    display: inline-flex;
+    align-items: flex-start;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
 
-    &__dot {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: rem(16px);
-      height: rem(16px);
-      border: 1px solid $border-color;
-      border-radius: 50%;
-      background-color: transparent;
+    // Sizes
+    &--medium {
+      @include radioSize($font-size-base, 24px, $radio-dot-size, 6px);
     }
 
-    &__text {
+    &--large {
+      @include radioSize($font-size-base, 24px, $radio-dot-size-lg, 8px);
+    }
+
+    &--small {
+      @include radioSize(12px, 16px, $radio-dot-size-sm, 4px);
+    }
+
+    // Radio placements
+    &--align {
+      &-left::before {
+        margin-right: rem($radio-dot-margin);
+      }
+
+      &-right {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+
+        &::before {
+          margin-left: rem($radio-dot-margin);
+        }
+      }
+    }
+
+    // Dot
+    &::before {
+      content: '';
+      display: inline-block;
+      position: relative;
+      flex-shrink: 0;
+      border: 1px solid $grey-400;
+      border-radius: 50%;
+      background-color: $white;
+      background-repeat: no-repeat;
+      background-position: center;
+      transition: $transition-time;
+    }
+
+    &[data-checked='false'] {
+      &:hover::before {
+        border-color: $grey-500;
+        background-color: $grey-100;
+      }
+
+      &:active::before {
+        border-color: $grey-600;
+        background-color: $grey-200;
+        transform: scale(0.8);
+      }
+
+      &[data-invalid] {
+        &:hover,
+        &:active {
+          &::before {
+            border-color: $danger-500;
+          }
+        }
+      }
+    }
+
+    &[data-checked='true'] {
+      &::before {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        background-image: $dot-image;
+        box-shadow: none;
+      }
+
+      &:hover::before {
+        background-color: var(--primary-600);
+        border-color: var(--primary-600);
+      }
+
+      &:active::before {
+        background-color: var(--primary-700);
+        border-color: var(--primary-700);
+      }
+
+      &[data-invalid] {
+        pointer-events: none;
+
+        &::before {
+          border-color: $danger-500;
+        }
+      }
+    }
+
+    &[data-focused]::before {
+      box-shadow: 0 0 0 4px var(--primary-100);
+    }
+
+    &[data-invalid]:not([data-disabled])::before {
+      box-shadow: 0 0 0 1px $danger-500;
+      border-color: $danger-500;
+    }
+
+    &[data-disabled] {
       pointer-events: none;
-      color: $text-color;
-      font-size: rem(14px);
+      color: $grey-500;
+
+      &::before {
+        border-color: $grey-500;
+        background-color: $grey-100;
+      }
+
+      &[data-checked='true'] {
+        &::before {
+          background-color: $grey-500;
+          border-color: $grey-500;
+        }
+      }
     }
   }
 }

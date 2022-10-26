@@ -58,7 +58,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Changelog file
 
-### 04/10/2022
+## 07/10/2022
+
+### Changed
+
+- Radio component
+
+## 08/10/2022
+
+### Added
+
+- Separate RadioGroup component
+
+## 04/10/2022
 
 ### Added
 
@@ -72,3 +84,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Removed
 
 - Button SCSS variables related to ghost and link types, and paddings based on size
+
