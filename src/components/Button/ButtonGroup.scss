@@ -1,0 +1,19 @@
+.ebs-button-group {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  &__item {
+    &:not(:last-of-type) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right-color: transparent;
+    }
+
+    &:not(:first-of-type) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      margin-left: -1px;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 .ebs-icon {
   font-size: 1em;
-  color: $icon-svg-color;
+  color: inherit;
   transition: transform $transition-time;
 
   &--arrow-right {
