@@ -4,7 +4,7 @@ import { useForm } from 'rc-field-form';
 
 import { exportStory } from 'libs';
 import { Template } from 'components/storybook';
-import { Checkbox, DatePicker, Input, InputPhone, Radio, Select, Textarea } from 'components';
+import { Checkbox, DatePicker, Input, InputPhone, RadioGroup, Select, Textarea } from 'components';
 import { Form as _Form, FormComponent as Form } from './Form';
 
 const { Field: FormField, Group: FormGroup } = Form;
@@ -45,7 +45,7 @@ export const Regular: ComponentStory<typeof _Form> = ({ children, ...args }) => 
         </Form.Field>
 
         <Form.Field name="sex" label="Sex" extra="This field is required">
-          <Radio
+          <RadioGroup
             options={[
               { text: 'Male', value: 'm' },
               { text: 'Female', value: 'f' },

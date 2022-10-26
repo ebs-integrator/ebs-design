@@ -57,7 +57,7 @@ export const NotifyItem = ({
         {title && <p className={bem('title')}>{title}</p>}
         {description && <p className={bem('message')}>{description}</p>}
       </Space>
-      <Button type="text" className={bem('close')} buttonClass={bem('close-button')} onClick={onClose}>
+      <Button type="text" className={bem('close')} onClick={onClose}>
         <Icon type="close" model="bold" />
       </Button>
     </Space>
