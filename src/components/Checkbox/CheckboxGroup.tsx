@@ -1,69 +1,61 @@
 import * as React from 'react';
 import cn from 'classnames';
-
-import { makeBEM, makeid } from 'libs';
-import { Checkbox, CheckAlign } from './Checkbox';
+import { makeBEM } from 'libs';
+import { Checkbox } from './Checkbox';
 
 const bem = makeBEM('ebs-checkbox-group');
 
-export type CheckboxGroupValue = (string | number)[];
+type CheckboxAlign = 'left' | 'right';
+type CheckboxSize = 'small' | 'medium' | 'large';
+type CheckboxSpacing = 'small' | 'medium' | 'large';
+type CheckboxDirection = 'column' | 'row';
+type CheckboxValue = string | number;
 
 export interface Option {
   text: React.ReactNode;
-  value: string | number;
+  value: CheckboxValue;
   disabled?: boolean;
+  error?: boolean;
 }
 
-export interface Props extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  checkboxClass?: string;
-  checkAlign?: CheckAlign;
-  options?: Option[];
-  values: CheckboxGroupValue;
-  disabled?: boolean;
-  onChange?: (value: CheckboxGroupValue) => void;
+export interface CheckboxGroupProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'value'>, 'onChange'> {
+  name?: string;
+  options: Option[];
+  values?: CheckboxValue[];
+  size?: CheckboxSize;
+  checkAlign?: CheckboxAlign;
+  direction?: CheckboxDirection;
+  spacing?: CheckboxSpacing;
+  onChange?: (value: CheckboxValue[]) => void;
 }
 
-export const CheckboxGroup = ({
-  className,
-  checkboxClass,
-  checkAlign = 'left',
-  options,
-  values,
-  onChange,
-  disabled,
-  ...props
-}: Props) => {
-  const name = React.useMemo(() => makeid(), []);
+export const CheckboxGroup = React.forwardRef<HTMLInputElement, CheckboxGroupProps>(
+  (
+    { className, options, values, checkAlign = 'left', direction = 'column', spacing = 'medium', onChange, ...props },
+    ref,
+  ) => {
+    const [checkedValues, setCheckedValues] = React.useState(values || []);
 
-  const onChangeHandler = (target: string | number, targetValue: boolean): void => {
-    if (onChange !== undefined) {
-      onChange(targetValue ? [...values, target] : values.filter((value) => target !== value));
-    }
-  };
+    const handleChange = (target: string | number, targetValue: boolean): void => {
+      const newValues = targetValue ? [...checkedValues, target] : checkedValues.filter((value) => value !== target);
+      setCheckedValues(newValues);
+      onChange && onChange(newValues);
+    };
 
-  if (!options || (options && options.length === 0)) {
-    return null;
-  }
-
-  return (
-    <div className={cn(bem(), className)} {...props}>
-      {options.map((option) => (
-        <Checkbox
-          key={option.value}
-          className={checkboxClass}
-          checkAlign={checkAlign}
-          name={name}
-          text={option.text}
-          value={option.value}
-          {...(values !== undefined
-            ? {
-                checked: values.includes(option.value),
-              }
-            : {})}
-          onChange={(value) => onChangeHandler(option.value, value)}
-          disabled={disabled || option.disabled}
-        />
-      ))}
-    </div>
-  );
-};
+    return (
+      <div className={cn(bem(null, [`spacing-${spacing}`]), className)} data-direction={direction} ref={ref}>
+        {options.map((option, idx) => (
+          <Checkbox
+            key={idx}
+            className={bem('item')}
+            checkAlign={checkAlign}
+            onChange={(value) => handleChange(option.value, value)}
+            checked={checkedValues?.includes(option.value)}
+            {...option}
+            {...props}
+          />
+        ))}
+      </div>
+    );
+  },
+);
