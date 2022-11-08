@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: $font-family;
 
     .row,
     .container {
@@ -124,23 +125,9 @@
   }
 }
 
-.docs-story {
-  #story--react-ebs-ui-organisms-sidebar--regular {
-    min-height: 90vh;
-  }
-
-  #story--react-ebs-ui-organisms-layout-sidebar--regular {
-    min-height: 50vh;
-  }
-
-  #story--react-ebs-ui-molecules-loader--regular .ebs-loader {
-    height: 200px;
-  }
-
-  .ebs-loader {
-    > .ebs-loader__spinner.fixed {
-      position: absolute;
-    }
+.docs-story .ebs-loader {
+  > .ebs-loader__spinner.fixed {
+    position: absolute;
   }
 }
 

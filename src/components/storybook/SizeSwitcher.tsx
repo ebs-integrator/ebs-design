@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, ButtonGroup } from 'components/atoms';
+import { Button, ButtonGroup } from 'components';
 import { capitalize } from 'libs';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   children: (size: string) => React.ReactNode;
 }
 
-const SizeSwitcher: React.FC<Props> = ({ sizes = ['small', 'medium', 'large'], defaultSize = 'medium', children }) => {
+const SizeSwitcher = ({ sizes = ['small', 'medium', 'large'], defaultSize = 'medium', children }: Props) => {
   const [size, setSize] = React.useState(defaultSize);
 
   return (

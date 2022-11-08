@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -10,17 +10,8 @@ export const usePortal = (id = 'portal') => {
     div.id = id;
 
     wrapperRef.current = div;
+    document.body.appendChild(wrapperRef.current);
   }
-
-  useLayoutEffect(() => {
-    const wrapper = wrapperRef.current;
-
-    if (!wrapper || typeof document === 'undefined') {
-      return;
-    }
-
-    document.body.appendChild(wrapper);
-  }, []);
 
   return (children) => wrapperRef.current && createPortal(children, wrapperRef.current);
 };
