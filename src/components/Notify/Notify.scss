@@ -80,6 +80,7 @@
     padding: rem($notify-padding);
     border-radius: $notify-border-radius;
     box-shadow: $notify-box-shadow;
+    white-space: pre-line;
 
     &__close {
       position: absolute;

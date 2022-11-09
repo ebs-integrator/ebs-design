@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import { makeBEM } from 'libs';
 import { usePopupClose, usePortal, useScrollToggler } from 'hooks';
-import { Button, Mask } from 'components';
+import { IconButton, Mask } from 'components';
 import { ModalContent } from './ModalContent';
 import { ModalFooter } from './ModalFooter';
 
@@ -78,7 +78,7 @@ const Modal = ({
 
                     <div className={props.onClose && bem('header-container')}>{header}</div>
                     {props.onClose && (
-                      <Button
+                      <IconButton
                         icon="close"
                         size="small"
                         className={bem('header--close')}

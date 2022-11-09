@@ -10,14 +10,17 @@ export default {
   component: Switch,
 } as ComponentMeta<typeof Switch>;
 
-export const Regular: ComponentStory<typeof Switch> = ({ children, ...args }) => (
+export const Regular: ComponentStory<typeof Switch> = (args) => (
   <Template>
     <Switch {...args} />
-    {children}
   </Template>
 );
 
 Regular.args = {
+  size: 'medium',
+  text: 'Example',
   checked: false,
-  children: 'Example',
+  error: false,
+  loading: false,
+  disabled: false,
 };

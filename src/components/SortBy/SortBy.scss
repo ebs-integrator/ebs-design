@@ -50,7 +50,7 @@
   position: relative;
   display: flex;
 
-  > .ebs-button--wrapper {
+  > .ebs-button {
     border-right: none;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -60,7 +60,7 @@
     transform: rotate(180deg);
   }
 
-  .ebs-tooltip__trigger > .ebs-button--wrapper {
+  .ebs-tooltip__trigger > .ebs-button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
