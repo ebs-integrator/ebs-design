@@ -1,340 +1,270 @@
-// fade
-@include fadeBackground('regularFade', #000);
-
-// button
 .ebs-button {
-  @include fontMedium;
-  cursor: pointer;
-  width: 100%;
-  font-size: rem(13px);
-  line-height: rem($btn-line-height);
-  border-color: transparent;
-  background: transparent;
-  padding: 0;
+  display: inline-flex;
+  appearance: none;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  user-select: none;
+  white-space: nowrap;
   outline: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: transparent;
 
-  &--is-icon {
-    @include flex-center;
-    height: 100%;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  font-size: rem($btn-font-size);
+  line-height: $btn-line-height;
+  transition: $transition-base;
+
+  &:disabled,
+  &[data-is-loading='true'] {
+    pointer-events: none;
   }
 
-  &--prefix button.ebs-button {
-    padding-left: rem(40px);
+  &:focus {
+    box-shadow: var(--primary-100) $btn-box-shadow-length;
+    z-index: 1;
   }
 
-  &--icon {
-    display: flex;
-    align-items: center;
-    width: auto;
+  // Sizes
+  &--medium {
+    padding: 0 rem($btn-padding-x);
+    height: rem($base-size);
+    border-radius: rem($btn-border-radius);
   }
 
-  &--block {
-    width: 100%;
-    display: block;
+  &--large {
+    padding: 0 rem($btn-padding-x-lg);
+    height: rem($base-size-lg);
+    border-radius: rem($btn-border-radius-lg);
   }
 
-  // button type (Color)
+  &--small {
+    padding: 0 rem($btn-padding-x-sm);
+    height: rem($base-size-sm);
+    border-radius: rem($btn-border-radius-sm);
+  }
+
+  // Variants
   &--primary {
-    border-color: var(--primary-color);
-    background-color: var(--primary-color);
     color: $white;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 
     &:hover {
-      border-color: var(--primary-600);
       background-color: var(--primary-600);
+      border-color: var(--primary-600);
     }
 
-    &:active,
-    &.active {
-      border-color: var(--primary-700);
+    &:active {
       background-color: var(--primary-700);
+      border-color: var(--primary-700);
     }
 
-    .ebs-icon {
-      color: $white;
-    }
-  }
-
-  &--primary & {
-    color: $white;
-
-    :hover {
-      color: $white;
+    &:disabled {
+      border-color: var(--primary-300);
+      background-color: var(--primary-300);
     }
   }
 
-  &--dark {
-    border-color: $black;
-    background-color: $black;
-    color: $white;
+  &--text {
+    color: var(--primary-color);
+    background-color: transparent;
+    border-color: transparent;
 
-    @include hover-state {
-      border-color: var(--primary-600);
-      background-color: var(--primary-600);
+    &:hover {
+      color: var(--primary-600);
     }
 
-    .ebs-button,
-    .ebs-icon {
-      color: $white;
+    &:active {
+      color: var(--primary-700);
     }
 
-    .ebs-button,
-    .ebs-icon {
-      color: $white;
-    }
-  }
-
-  &--dark & {
-    color: $white;
-
-    :hover {
-      color: $white;
+    &:disabled {
+      color: var(--primary-300);
     }
   }
 
   &--fill {
-    border-color: var(--primary-100);
-    background-color: var(--primary-100);
     color: var(--primary-color);
+    background-color: var(--primary-200);
+    border-color: var(--primary-200);
 
     &:hover {
-      border-color: var(--primary-color);
+      color: $white;
       background-color: var(--primary-color);
-      color: $white;
-
-      .ebs-button,
-      .ebs-icon {
-        color: $white;
-      }
+      border-color: var(--primary-color);
     }
 
-    &:active,
-    &.active {
-      border-color: var(--primary-600);
+    &:active {
+      color: $white;
       background-color: var(--primary-600);
-      color: $white;
-
-      .ebs-button,
-      .ebs-icon {
-        color: $white;
-      }
+      border-color: var(--primary-600);
     }
 
-    .ebs-icon {
-      color: var(--primary-color);
+    &:disabled {
+      color: var(--primary-300);
+      background-color: var(--primary-100);
+      border-color: var(--primary-100);
     }
   }
 
-  &--fill & {
+  &--ghost {
     color: var(--primary-color);
-  }
-
-  &--ghost.ebs-button--wrapper {
-    background-color: $btn-type-ghost-background;
-    border-color: $btn-type-ghost-border-color;
-    color: $btn-type-ghost-color;
-
-    &:hover {
-      border-color: $btn-type-ghost-hover-border-color;
-      background-color: $btn-type-ghost-hover-background;
-      color: $btn-type-ghost-hover-color;
-
-      .ebs-button,
-      .ebs-icon {
-        color: $btn-type-ghost-hover-color;
-      }
-    }
-
-    &:active,
-    &.active {
-      border-color: $btn-type-ghost-active-border-color;
-      background-color: $btn-type-ghost-active-background;
-      color: $btn-type-ghost-active-color;
-
-      .ebs-button,
-      .ebs-icon {
-        color: $btn-type-ghost-active-color;
-      }
-    }
-
-    .ebs-icon {
-      color: $btn-type-ghost-icon-color;
-    }
-  }
-
-  &--ghost & {
-    color: $btn-type-ghost-color;
-  }
-
-  &--text {
     background-color: transparent;
-    color: var(--primary-color);
+    border-color: var(--primary-color);
 
     &:hover {
+      color: $white;
+      background-color: var(--primary-color);
+    }
+
+    &:active {
+      color: $white;
+      border-color: var(--primary-700);
+      background-color: var(--primary-700);
+    }
+
+    &:disabled {
+      color: var(--primary-200);
       background-color: transparent;
-
-      .ebs-button,
-      .ebs-icon {
-        color: var(--primary-600);
-      }
-    }
-
-    &:active,
-    &.active {
-      background-color: transparent;
-
-      .ebs-button,
-      .ebs-icon {
-        color: var(--primary-700);
-      }
-    }
-
-    .ebs-icon {
-      color: var(--primary-color);
+      border-color: var(--primary-200);
     }
   }
 
-  &--text & {
-    color: var(--primary-color);
-  }
+  &--dark {
+    color: $white;
+    background-color: $black;
+    border-color: $black;
 
-  &--disabled {
-    background-color: $border-color;
+    &:hover {
+      background-color: $grey-900;
+      border-color: $grey-900;
+    }
 
-    .ebs-button,
-    .ebs-icon {
-      cursor: not-allowed;
-      color: $grey-500;
+    &:active {
+      background-color: $grey-800;
+      border-color: $grey-800;
+    }
+
+    &:focus {
+      box-shadow: $grey-400 $btn-box-shadow-length;
+    }
+
+    &:disabled {
+      color: $grey-200;
+      background-color: $grey-500;
+      border-color: $grey-500;
     }
   }
 
-  // button size
-  &--large {
-    border-radius: rem($btn-border-radius-lg);
-  }
+  &--light {
+    color: $black;
+    background-color: $white;
 
-  &--large & {
-    padding: rem($btn-padding-y-lg $btn-padding-x-lg);
-    font-weight: $btn-font-weight-lg;
-    font-size: rem($btn-font-size-lg);
+    &:hover {
+      background-color: $grey-50;
+    }
 
-    &.ebs-button--is-icon {
-      padding: rem($btn-padding-y-lg);
+    &:active {
+      background-color: $grey-100;
+    }
+
+    &:focus {
+      box-shadow: $grey-200 $btn-box-shadow-length;
+    }
+
+    &:disabled {
+      color: $grey-400;
     }
   }
 
-  &--medium {
-    border-radius: rem($btn-border-radius);
-  }
+  &--danger {
+    color: $white;
+    background-color: $danger-color;
+    border-color: $danger-color;
 
-  &--medium & {
-    padding: rem($btn-padding-y $btn-padding-x);
-    font-weight: $btn-font-weight;
-    font-size: rem($btn-font-size);
+    &:hover {
+      background-color: $danger-600;
+      border-color: $danger-600;
+    }
 
-    &.ebs-button--is-icon {
-      padding: rem($btn-padding-y);
+    &:active {
+      background-color: $danger-700;
+      border-color: $danger-700;
+    }
+
+    &:focus {
+      box-shadow: $danger-100 $btn-box-shadow-length;
+    }
+
+    &:disabled {
+      background-color: $danger-300;
+      border-color: $danger-300;
     }
   }
 
-  &--small {
-    border-radius: rem($btn-border-radius-sm);
-  }
+  // TODO: Remove !important after fixing Loader component (with color and emptyColor as props)
+  // Loader
+  &__loader {
+    top: unset !important;
 
-  &--small & {
-    padding: rem($btn-padding-y-sm $btn-padding-x-sm);
-    font-weight: $btn-font-weight-sm;
-    font-size: rem($btn-font-size-sm);
-    line-height: rem($btn-line-height-sm);
-
-    &.ebs-button--is-icon {
-      padding: rem($btn-padding-y-sm);
-    }
-  }
-
-  &--wrapper {
-    position: relative;
-    display: inline-block;
-    text-align: center;
-    border-radius: rem($border-radius);
-    transition: $transition-base;
-    border: 1px solid transparent;
-    width: auto;
-
-    &.ebs-button--round {
-      border-radius: 100%;
-
-      .ebs-button {
-        @include flex;
-      }
-
-      &.ebs-button--small .ebs-button {
-        padding: rem($btn-padding-x-sm);
-      }
-      &.ebs-button--medium .ebs-button {
-        padding: rem($btn-padding-x);
-      }
-      &.ebs-button--large .ebs-button {
-        padding: rem($btn-padding-x-lg);
-      }
-    }
-  }
-
-  &__loading {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    border-radius: rem($border-radius);
-    pointer-events: none;
-
-    &--regular {
-      animation: regularFade 0.25s forwards;
+    &--primary {
+      border-color: var(--primary-300) !important;
+      border-top-color: $white !important;
     }
 
-    .ebs-loader__spinner {
+    &--text {
+      border-color: $grey-300 !important;
+      border-top-color: var(--primary-color) !important;
+    }
+
+    &--fill,
+    &--ghost {
+      border-color: var(--primary-300) !important;
+      border-top-color: var(--primary-color) !important;
+    }
+
+    &--light {
+      border-color: $grey-300 !important;
+      border-top-color: $grey-600 !important;
+    }
+
+    &--dark {
+      border-color: $grey-600 !important;
+      border-top-color: $white !important;
+    }
+
+    &--danger {
+      border-color: $danger-300 !important;
+      border-top-color: $white !important;
+    }
+
+    &--absolute {
       position: absolute;
-      left: calc(50% - 7.5px);
-      top: calc(50% - 7.5px);
-      transform: translate(-50%, -50%);
     }
   }
 
+  // Prefix
   &__prefix {
-    position: absolute;
-    left: rem(10px);
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
     display: flex;
     align-items: center;
+    margin-right: rem(8px);
   }
 
-  &__group {
-    display: flex;
-    flex-wrap: nowrap;
+  // Children when button with no icon is loading
+  &__children-transparent {
+    opacity: 0;
+  }
 
-    .ebs-button {
-      @include text-ellipsis;
-    }
+  // Additional styling props
+  &--full {
+    width: 100%;
+  }
 
-    .ebs-button--wrapper:first-child {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-
-    .ebs-button--wrapper:not(:first-child):not(:last-child) {
-      border-radius: 0;
-    }
-
-    .ebs-button--wrapper:not(:last-child) {
-      border-right: none;
-    }
-
-    .ebs-button--wrapper:last-child {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
+  &--rounded {
+    border-radius: $border-radius-pill;
   }
 }

@@ -4,80 +4,71 @@ import { makeBEM, makeid } from 'libs';
 
 const bem = makeBEM('ebs-radio');
 
-export type RadioAlign = 'left' | 'right';
-
+type RadioAlign = 'left' | 'right';
+type RadioSize = 'small' | 'medium' | 'large';
 type RadioValue = string | number;
 
-export interface Option {
-  text: React.ReactNode;
-  value: RadioValue;
-  disabled?: boolean;
-}
-
-export interface RadioProps extends Omit<Omit<React.HTMLAttributes<HTMLDivElement>, 'value'>, 'onChange'> {
+export interface RadioProps extends Omit<Omit<React.HTMLAttributes<HTMLInputElement>, 'size'>, 'onChange'> {
   name?: string;
-  textClass?: string;
+  text?: React.ReactNode;
+  value: RadioValue;
+  size?: RadioSize;
+  checked?: boolean;
   radioAlign?: RadioAlign;
-  value?: RadioValue;
-  options?: Option[];
-  textStyle?: React.CSSProperties;
-  onChange?: (value?: string | number) => void;
+  disabled?: boolean;
+  invalid?: boolean;
+  onChange?: (value: RadioValue) => void;
 }
 
-export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
-  ({ className, radioAlign = 'left', textClass = '', textStyle, options, value, onChange, ...props }, ref) => {
+export const Radio = React.forwardRef<HTMLInputElement, React.PropsWithChildren<RadioProps>>(
+  (
+    {
+      className,
+      value,
+      name,
+      text,
+      size = 'medium',
+      radioAlign = 'left',
+      checked = false,
+      invalid,
+      disabled,
+      onChange,
+      ...props
+    },
+    ref,
+  ) => {
     const id = React.useMemo(() => makeid(), []);
-    const name = props.name || id;
+    const [isFocused, setIsFocused] = React.useState(false);
 
-    const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
-      if (onChange !== undefined) {
-        onChange(target.value);
-      }
+    const labelDataAttributes = {
+      'data-checked': checked,
+      ...(invalid && { 'data-invalid': true }),
+      ...(disabled && { 'data-disabled': true }),
+      ...(isFocused && { 'data-focused': true }),
     };
-
-    const onClickHandler = (newValue: string | number): void => {
-      if (onChange !== undefined && `${value}` === `${newValue}`) {
-        onChange('');
-      }
-    };
-
-    if (!options || (options && options.length === 0)) {
-      return null;
-    }
 
     return (
-      <div className={cn(bem('group', [radioAlign]), className)}>
-        {options.map((option, idx) => (
-          <div
-            key={idx}
-            className={bem('wrapper', { 'has-text': option.text, disabled: option.disabled })}
-            onClick={() => onClickHandler(option.value)}
-          >
-            <input
-              ref={ref}
-              type="radio"
-              className={bem('input')}
-              name={name}
-              value={option.value}
-              onChange={onChangeHandler}
-              disabled={option.disabled}
-              {...(value !== undefined && option.value !== undefined
-                ? { ...props, checked: `${value}` === `${option.value}` }
-                : props)}
-            />
-
-            <div className={bem()}>
-              <div className={bem('dot')} />
-            </div>
-
-            {option.text && (
-              <div className={cn(bem('text'), textClass)} style={textStyle}>
-                {option.text}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      <label className={cn(bem(), className)} data-checked={checked}>
+        <input
+          ref={ref}
+          type="radio"
+          className={bem('input')}
+          id={id}
+          value={value}
+          name={name}
+          checked={checked}
+          disabled={disabled}
+          aria-checked={checked}
+          aria-hidden
+          onChange={() => onChange && onChange(value)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          {...props}
+        />
+        <span className={bem('label', [size, `align-${radioAlign}`])} {...labelDataAttributes}>
+          {text}
+        </span>
+      </label>
     );
   },
 );

@@ -1,67 +1,84 @@
 import * as React from 'react';
 import cn from 'classnames';
-
-import { makeBEM } from 'libs';
-import { Icon } from 'components';
+import { makeBEM, makeid } from 'libs';
 
 const bem = makeBEM('ebs-checkbox');
 
-export type CheckAlign = 'left' | 'right';
+type CheckboxAlign = 'left' | 'right';
+type CheckboxSize = 'small' | 'medium' | 'large';
+type CheckboxValue = string | number;
 
-export type CheckboxValue = string | number;
-
-export interface Option {
-  text: React.ReactNode;
-  value: string | number;
-  disabled?: boolean;
-}
-
-export interface CheckboxProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  checkAlign?: CheckAlign;
+export interface CheckboxProps extends Omit<Omit<React.HTMLAttributes<HTMLInputElement>, 'size'>, 'onChange'> {
   name?: string;
-  value?: CheckboxValue;
   text?: React.ReactNode;
-  indeterminate?: boolean;
+  value?: CheckboxValue;
+  size?: CheckboxSize;
   checked?: boolean;
+  indeterminate?: boolean;
+  checkAlign?: CheckboxAlign;
   disabled?: boolean;
+  invalid?: boolean;
   onChange?: (value: boolean) => void;
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    { className, checkAlign = 'left', name, value, indeterminate, checked, onChange, text, disabled, ...props },
+    {
+      className,
+      value,
+      text,
+      name,
+      indeterminate,
+      checkAlign = 'left',
+      checked,
+      invalid = false,
+      size = 'medium',
+      disabled,
+      children,
+      onChange,
+      ...props
+    },
     ref,
   ) => {
-    const onChangeHandler = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
-      if (onChange !== undefined) {
-        onChange(target.checked);
-      }
+    const id = React.useMemo(() => makeid(), []);
+    const [isFocused, setIsFocused] = React.useState(false);
+    const [isChecked, setIsChecked] = React.useState(checked);
+
+    const labelDataAttributes = {
+      'data-checked': isChecked,
+      ...(invalid && { 'data-invalid': true }),
+      ...(disabled && { 'data-disabled': true }),
+      ...(isFocused && { 'data-focused': true }),
+      ...(indeterminate && !checked && { 'data-indeterminate': true }),
+    };
+
+    const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+      setIsChecked(target.checked);
+      onChange && onChange(target.checked);
     };
 
     return (
-      <div
-        className={cn(bem('wrapper', [checkAlign], { indeterminate, disabled, 'has-text': text }), className)}
-        {...props}
-      >
+      <label className={cn(bem(), className)} data-checked={isChecked}>
         <input
           ref={ref}
-          name={name}
           type="checkbox"
           className={bem('input')}
+          id={id}
           value={value}
-          onChange={onChangeHandler}
-          {...(checked !== undefined ? { checked } : {})}
+          name={name}
+          defaultChecked={isChecked}
           disabled={disabled}
+          aria-checked={isChecked}
+          aria-hidden
+          onChange={handleChange}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          {...props}
         />
-
-        <div className={bem()}>
-          <Icon type="indeterminate" model="bold" className={bem('indeterminate')} />
-
-          <Icon type="check" model="bold" className={bem('check')} />
-        </div>
-
-        {text && <div className={bem('text')}>{text}</div>}
-      </div>
+        <span className={bem('label', [size, `check-align-${checkAlign}`])} {...labelDataAttributes}>
+          {text}
+        </span>
+      </label>
     );
   },
 );

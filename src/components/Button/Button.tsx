@@ -2,81 +2,54 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import { makeBEM } from 'libs';
-import { Icon, Loader } from 'components';
+import { ButtonSpinner } from './ButtonSpinner';
 
-const bem = makeBEM('ebs-button');
+export const bem = makeBEM('ebs-button');
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
-export type ButtonType = 'text' | 'primary' | 'fill' | 'ghost' | 'dark' | 'light';
+export type ButtonType = 'primary' | 'fill' | 'ghost' | 'text' | 'dark' | 'light' | 'danger';
 
 export interface ButtonProps extends Omit<Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'>, 'prefix'> {
-  onClick?: () => void;
   prefix?: React.ReactNode;
   size?: ButtonSize;
   type?: ButtonType;
   loading?: boolean;
   submit?: boolean;
-  buttonClass?: string;
-  form?: string;
-  icon?: any;
-  block?: boolean;
-  round?: boolean;
+  full?: boolean;
+  rounded?: boolean;
 }
 
 export const Button = ({
-  submit = false,
-  onClick,
+  submit,
   prefix,
   className,
-  buttonClass,
   size = 'medium',
-  type = 'ghost',
-  icon,
+  type = 'primary',
   loading,
-  block,
-  round,
+  full,
+  rounded,
+  children,
   disabled,
+  onClick,
   ...props
 }: ButtonProps) => {
-  return (
-    <div
-      className={cn(
-        bem(null, [size, disabled ? 'disabled' : type, 'wrapper'], { block, prefix, icon, round }),
-        className,
-      )}
-      onClick={!disabled ? onClick : undefined}
-      role="presentation"
-    >
-      {prefix ? (
-        <div className={bem('prefix')}>{loading ? <Loader.Spinner size="small" /> : prefix}</div>
-      ) : loading ? (
-        <div className={bem('loading', [type])}>
-          <Loader.Spinner size="small" />
-        </div>
-      ) : null}
+  const showSpinner = loading && !disabled && !prefix;
 
-      <button
-        type={submit ? 'submit' : 'button'}
-        className={cn(bem(null, { 'is-icon': icon }), buttonClass)}
-        disabled={disabled || loading}
-        {...props}
-      >
-        {icon ? (
-          <Icon
-            component={typeof icon !== 'string' ? icon : undefined}
-            type={typeof icon === 'string' ? icon : undefined}
-          />
-        ) : (
-          props.children
-        )}
-      </button>
-    </div>
+  return (
+    <button
+      type={submit ? 'submit' : 'button'}
+      className={cn(bem(null, [size, type], { full, rounded }), className)}
+      onClick={onClick}
+      disabled={disabled}
+      data-is-loading={loading}
+      {...props}
+    >
+      {showSpinner && <ButtonSpinner type={type} absolute />}
+
+      {prefix && <span className={bem('prefix')}>{loading && !disabled ? <ButtonSpinner type={type} /> : prefix}</span>}
+
+      {children && (showSpinner ? <span className={bem('children-transparent')}>{children}</span> : children)}
+    </button>
   );
 };
-
-export const ButtonGroup: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, className, ...props }) => (
-  <div className={cn(bem('group'), className)} {...props}>
-    {children}
-  </div>
-);
