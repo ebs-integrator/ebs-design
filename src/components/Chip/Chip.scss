@@ -1,0 +1,152 @@
+.ebs-chip {
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  user-select: none;
+  white-space: nowrap;
+  outline: none;
+  border: 1px solid transparent;
+  background-color: transparent;
+  pointer-events: none;
+
+  font-family: $font-family;
+  font-weight: $font-weight-base;
+  line-height: rem(24px);
+  transition: $transition-time;
+
+  // Sizes
+  &--medium {
+    padding: 0 rem($chip-padding-x);
+    height: rem($base-size);
+  }
+
+  &--small {
+    padding: 0 rem($chip-padding-x-sm);
+    height: rem($base-size-sm);
+  }
+
+  // Colors
+  &--primary {
+    color: var(--primary-color);
+
+    &[data-disabled] {
+      color: var(--primary-300);
+    }
+
+    &[data-type='outlined'] {
+      border-color: var(--primary-color);
+
+      &:not([data-removable]) {
+        &:hover {
+          background-color: var(--primary-000);
+        }
+
+        &:active {
+          background-color: var(--primary-100);
+        }
+      }
+
+      &[data-disabled] {
+        border-color: var(--primary-300);
+      }
+    }
+
+    &[data-type='filled'] {
+      background-color: var(--primary-100);
+
+      &:not([data-removable]) {
+        &:hover {
+          background-color: var(--primary-200);
+        }
+
+        &:active {
+          background-color: var(--primary-300);
+        }
+      }
+
+      &[data-disabled] {
+        background-color: var(--primary-000);
+      }
+    }
+  }
+
+  &--default {
+    color: $grey-900;
+
+    &[data-disabled] {
+      color: $grey-500;
+    }
+
+    &[data-type='outlined'] {
+      border-color: $grey-900;
+
+      &:not([data-removable]) {
+        &:hover {
+          background-color: $grey-100;
+        }
+
+        &:active {
+          background-color: $grey-200;
+        }
+      }
+
+      &[data-disabled] {
+        border-color: $grey-500;
+      }
+    }
+
+    &[data-type='filled'] {
+      background-color: $grey-200;
+
+      &:not([data-removable]) {
+        &:hover {
+          background-color: $grey-300;
+        }
+
+        &:active {
+          background-color: $grey-400;
+        }
+      }
+
+      &[data-disabled] {
+        background-color: $grey-100;
+      }
+    }
+  }
+
+  &[data-clickable] {
+    cursor: pointer;
+    pointer-events: unset;
+
+    &[data-disabled] {
+      pointer-events: none;
+    }
+  }
+
+  &__prefix {
+    display: flex;
+    margin-right: rem(8px);
+  }
+
+  &__delete {
+    display: flex;
+    margin-left: rem(16px);
+    margin-right: rem(-4px);
+    position: relative;
+    cursor: pointer;
+    pointer-events: all;
+
+    &:hover {
+      color: var(--primary-800);
+    }
+
+    // TODO: Fix this after Icon component refactor
+    svg {
+      font-size: 1rem;
+      color: inherit;
+    }
+  }
+}

@@ -10,7 +10,7 @@ export { ButtonGroup } from './Button/ButtonGroup';
 export { Card } from './Card/Card';
 export { Checkbox } from './Checkbox/Checkbox';
 export { CheckboxGroup } from './Checkbox/CheckboxGroup';
-export { Chips } from './Chips/Chips';
+export { Chip } from './Chip/Chip';
 export { Collapse } from './Collapse/Collapse';
 export { Container, Row, Col } from './Grid';
 export { DatePicker } from './DatePicker/DatePicker';
