@@ -1,58 +1,112 @@
 .ebs-textarea {
   @include fontRegular;
-  font-size: rem(14px);
-  padding: rem(10px);
-  min-height: rem(80px);
+  font-size: $font-size-base;
+  line-height: $line-height-sm;
+
+  position: relative;
+  display: block;
+  padding: rem($textarea-padding-y) rem($textarea-padding-x);
+  min-height: rem($textarea-min-height);
+  min-width: rem($textarea-min-width);
   width: 100%;
+
   outline: none;
-  border: 1px solid $border-color;
-  border-radius: rem($border-radius);
-  background-color: $white;
-  color: $heading-color;
+  box-shadow: 0 0 0 1px $border-color;
+  border: 3px solid transparent;
+  transition: border $transition-time;
 
-  @include placeholder {
-    color: $text-color-secondary;
+  &--radius {
+    &-small {
+      border-radius: rem(2px);
+
+      &::-webkit-scrollbar-track {
+        margin: rem(1px) 0;
+      }
+    }
+
+    &-medium {
+      border-radius: rem(6px);
+
+      &::-webkit-scrollbar-track {
+        margin: rem(5px) 0;
+      }
+    }
   }
 
-  &--has-value {
-    border-color: var(--primary-color);
+  &--resize {
+    &-none {
+      resize: none;
+    }
+
+    &-both {
+      resize: both;
+    }
+
+    &-horizontal {
+      resize: horizontal;
+    }
+
+    &-vertical {
+      resize: vertical;
+    }
   }
 
-  &--has-error {
-    border-color: $danger-color;
+  // States
+  &:hover {
+    box-shadow: 0 0 0 1px $border-color-hover;
   }
 
-  &--disabled {
-    border-color: $grey-500;
+  &:focus {
+    box-shadow: 0 0 0 1px $border-color-active;
   }
 
-  // Label
-  &__label {
-    @include fontRegular;
-
-    color: $text-color;
-    margin-bottom: rem(5px);
-    font-size: rem(12px);
+  &:disabled {
+    box-shadow: 0 0 0 1px $border-color-hover;
+    background-color: $grey-50;
   }
 
-  &__label.disabled {
-    color: $grey-500;
+  &[data-invalid] {
+    box-shadow: 0 0 0 1px $danger-500;
   }
 
-  // Extra
-  &__extra {
-    @include fontRegular;
+  // Scrollbar
+  &::-webkit-scrollbar {
+    width: 4px;
 
-    color: $text-color-secondary;
-    margin-top: rem(2.5px);
-    font-size: rem(10px);
+    &-track {
+      background: $white;
+    }
+
+    &-thumb {
+      border-radius: 20px;
+      background: $border-color-hover;
+
+      &:hover {
+        background: $border-color-active;
+      }
+    }
   }
 
-  &__extra.has-error {
-    color: $danger-color;
+  // Resizer
+  &::-webkit-resizer {
+    opacity: 0;
+    visibility: hidden;
   }
 
-  &__extra.disabled {
-    color: $grey-500;
+  &__wrapper {
+    position: relative;
+    display: flex;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      height: 6px;
+      width: 6px;
+      background-image: url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.8409 0.159095C7.62878 -0.0530321 7.28485 -0.0530316 7.07272 0.159096L0.159096 7.07272C-0.0530318 7.28485 -0.0530319 7.62878 0.159095 7.8409C0.371223 8.05303 0.71515 8.05303 0.927277 7.8409L7.8409 0.927276C8.05303 0.715149 8.05303 0.371223 7.8409 0.159095Z' fill='%23c5c5c5'/%3E%3Cpath d='M7.5755 4.50518C7.36337 4.29306 7.01944 4.29306 6.80732 4.50518L4.50277 6.80973C4.29065 7.02185 4.29065 7.36578 4.50277 7.57791C4.7149 7.79003 5.05883 7.79003 5.27095 7.57791L7.5755 5.27337C7.78762 5.06124 7.78762 4.71731 7.5755 4.50518Z' fill='%23c5c5c5'/%3E%3C/svg%3E%0A");
+      background-size: contain;
+      pointer-events: none;
+    }
   }
 }

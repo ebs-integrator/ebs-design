@@ -95,8 +95,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
-- onDelete & size props to the Chip component
+- react-textarea-autosize dependency
+- custom resize handle for textarea component
 
 ### Changed
 
+- Update Textarea component to use react-textarea-autosize
+- Refactor markup and styles for Textarea component
+- onDelete & size props to the Chip component
 - Markup and SCSS of Chip component
