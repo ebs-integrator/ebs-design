@@ -2,9 +2,8 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import { makeBEM } from 'libs';
-import { Tooltip } from 'components/Tooltip/Tooltip';
-import { Icon } from 'components/Icon/Icon';
-import { Button, ButtonSize } from 'components/Button/Button';
+import { Tooltip, Icon, Button, IconButton } from 'components';
+import { ButtonSize } from 'components/Button/Button';
 
 const bem = makeBEM('ebs-sort-by');
 
@@ -61,7 +60,7 @@ export const SortBy = ({
 
   return (
     <div className={cn(bem('wrapper', [type]), props.className)} {...props}>
-      <Button type="ghost" icon="sort" size={size} onClick={onChangeType} />
+      <IconButton type="ghost" icon="sort" size={size} onClick={onChangeType} />
       <Tooltip
         bodyClass={bem('tooltip')}
         trigger="click"

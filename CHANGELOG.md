@@ -57,3 +57,39 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 
 - Changelog file
+
+## 04/10/2022
+
+### Added
+
+- ButtonGroup component with story in separate folder
+- _Danger_ type for Button component
+
+### Changed
+
+- Refactor Button component — markup, styles and story
+
+### Removed
+
+- Button SCSS variables related to ghost and link types, and paddings based on size
+
+
+## 07/10/2022
+
+### Changed
+
+- Radio component
+
+## 08/10/2022
+
+### Added
+
+- Separate RadioGroup component
+
+
+## 08/10/2022
+
+### Changed
+
+- Refactor Checkbox & CheckboxGroup components
+

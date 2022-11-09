@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { exportStory } from 'libs';
-import { Icon, AvatarInline, Button, Row, Col, Card, Space, InputSearch, Table } from 'components';
+import { Icon, AvatarInline, Button, Row, Col, Card, Space, InputSearch, Table, IconButton } from 'components';
 import Layout from './Layout';
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -45,7 +45,7 @@ export const Regular: ComponentStory<typeof Layout> = () => (
       </Layout.Topbar.LeftSide>
 
       <Layout.Topbar.RightSide>
-        <Button type="ghost" icon="bell" />
+        <IconButton type="ghost" icon="bell" />
         <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
       </Layout.Topbar.RightSide>
     </Layout.Topbar>
@@ -124,7 +124,7 @@ export const withoutSidebarOptions: ComponentStory<typeof Layout> = () => (
       </Layout.Topbar.LeftSide>
 
       <Layout.Topbar.RightSide>
-        <Button icon="bell" />
+        <IconButton icon="bell" />
         <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
       </Layout.Topbar.RightSide>
     </Layout.Topbar>
@@ -163,7 +163,7 @@ export const withoutSidebar: ComponentStory<typeof Layout> = () => (
       </Layout.Topbar.LeftSide>
 
       <Layout.Topbar.RightSide>
-        <Button icon="bell" />
+        <IconButton icon="bell" />
         <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
       </Layout.Topbar.RightSide>
     </Layout.Topbar>
@@ -187,7 +187,7 @@ export const withoutFooter: ComponentStory<typeof Layout> = () => (
       </Layout.Topbar.LeftSide>
 
       <Layout.Topbar.RightSide>
-        <Button icon="bell" />
+        <IconButton icon="bell" />
         <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
       </Layout.Topbar.RightSide>
     </Layout.Topbar>
@@ -233,7 +233,7 @@ export const withFixedFooter: ComponentStory<typeof Layout> = () => (
       </Layout.Topbar.LeftSide>
 
       <Layout.Topbar.RightSide>
-        <Button icon="bell" />
+        <IconButton icon="bell" />
         <AvatarInline alt="Wladimir Zhosan" status="active" reversed />
       </Layout.Topbar.RightSide>
     </Layout.Topbar>

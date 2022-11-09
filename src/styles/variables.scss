@@ -69,6 +69,7 @@ $border-color: $grey-200 !default;
 $border-radius: 4px !default;
 $border-radius-sm: $border-radius !default;
 $border-radius-lg: $border-radius !default;
+$border-radius-pill: 50rem !default;
 
 // Transitions
 //
@@ -224,51 +225,21 @@ $list-group-item-border-bottom: 1px solid $border-color !default;
 
 // Buttons
 //
-// For each of Bootstrap's buttons, define text, background, and border color.
-// button medium height = 32px
-$btn-padding-y: 5px !default;
-$btn-padding-x: 11px !default;
+// Style buttons
+$btn-padding-x: 12px !default;
+$btn-padding-x-sm: $gutter-size / 2 !default;
+$btn-padding-x-lg: $gutter-size !default;
 
 $btn-font-family: $font-family !default;
 $btn-font-weight: $font-weight-medium !default;
 $btn-font-size: $font-size-base !default;
-$btn-line-height: $line-height-base !default;
+$btn-line-height: 1.2 !default;
 
-// button small height = 24px
-$btn-padding-y-sm: 3px !default;
-$btn-padding-x-sm: 7px !default;
-$btn-font-size-sm: $font-size-sm !default;
-$btn-font-weight-sm: $font-weight-medium !default;
-$btn-line-height-sm: $line-height-sm !default;
+$btn-border-radius: 6px !default;
+$btn-border-radius-sm: 6px !default;
+$btn-border-radius-lg: 8px !default;
 
-// button large height = 40px
-$btn-padding-y-lg: 9px !default;
-$btn-padding-x-lg: 19px !default;
-$btn-font-size-lg: $font-size-base !default;
-$btn-font-weight-lg: $font-weight-bold !default;
-$btn-line-height-lg: $line-height-base !default;
-
-$btn-border-width: $border-width !default;
-
-$btn-link-color: $link-color !default;
-$btn-link-hover-color: $link-hover-color !default;
-$btn-link-disabled-color: $grey-500 !default;
-
-// Allows for customizing button radius independently from global border radius
-$btn-border-radius: $border-radius !default;
-$btn-border-radius-sm: $border-radius-sm !default;
-$btn-border-radius-lg: $border-radius-lg !default;
-
-$btn-type-ghost-border-color: var(--primary-color) !default;
-$btn-type-ghost-background: transparent !default;
-$btn-type-ghost-color: var(--primary-color) !default;
-$btn-type-ghost-hover-color: $white !default;
-$btn-type-ghost-hover-background: var(--primary-color) !default;
-$btn-type-ghost-hover-border-color: var(--primary-color) !default;
-$btn-type-ghost-active-color: $white !default;
-$btn-type-ghost-active-background: var(--primary-600) !default;
-$btn-type-ghost-active-border-color: var(--primary-600) !default;
-$btn-type-ghost-icon-color: var(--primary-color) !default;
+$btn-box-shadow-length: 0px 0px 0px 3px !default;
 
 // Layout
 //
@@ -428,3 +399,25 @@ $notify-width: auto !default;
 $notify-color: $white !default;
 $notify-padding: $gutter-size !default;
 $notify-border-radius: $border-radius !default;
+
+
+// Radio & Checkbox options
+$option-dot-size: 16px !default;
+$option-dot-size-sm: 12px !default;
+$option-dot-size-lg: 20px !default;
+$option-spacing: 8px !default;
+$option-spacing-sm: 4px !default;
+$option-spacing-lg: 16px !default;
+
+$check-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpolyline points='1 6.5 4 9.5 11 2.5' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E") !default;
+$indeterminate-check-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cline x1='1' y1='6.5' x2='11' y2='6.5' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'/%3E%3C/svg%3E") !default;
+
+// Radio
+// FIXME: Remove or replace by option-dot
+$radio-dot-size: 16px !default;
+$radio-dot-size-sm: 12px !default;
+$radio-dot-size-lg: 20px !default;
+$radio-group-spacing: 8px !default;
+$radio-group-spacing-sm: 4px !default;
+$radio-group-spacing-lg: 16px !default;
+$radio-dot-margin: 8px !default;
