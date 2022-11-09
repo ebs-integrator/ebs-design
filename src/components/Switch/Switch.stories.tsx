@@ -20,7 +20,6 @@ Regular.args = {
   size: 'medium',
   text: 'Example',
   checked: false,
-  error: false,
   loading: false,
   disabled: false,
 };
